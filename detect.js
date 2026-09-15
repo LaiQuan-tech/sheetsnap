@@ -505,7 +505,10 @@
       var avg = total / n;
       var fill = cells.length / Math.max(a.rows.length, 1);
 
-      if (n < 2 || n > 60) return;               // 只有一種值篩了沒意義；太多也沒用
+      // 上限不能設太低：普渡流程表活動擴大後有 62 位人員，60 的上限直接把
+      // 「只看我的」整個關掉——而人越多這個功能越有價值。
+      // 軌道可以橫向捲，150 個選項仍可用；「平均每項 ≥1.5 筆」擋住每列都不同的欄。
+      if (n < 2 || n > 150) return;
       if (avg < 1.5) return;                     // 幾乎每列都不同 → 篩完只剩一筆
       if (fill < 0.4) return;                    // 大半列沒填 → 篩掉的比留下的多
       if (use.avgLen > 12) return;

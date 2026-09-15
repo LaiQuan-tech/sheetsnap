@@ -172,6 +172,13 @@
   .orail button.now.on{color:var(--paper)}
   .orail.tables button.on{background:var(--gold);border-color:var(--gold)}
   .out{padding:16px 14px 40px;color:var(--pink);font-size:15px;line-height:1.65}
+  .octl .orail.who button.on{background:var(--gold);border-color:var(--gold)}
+  .out .prompt{padding:26px 16px;text-align:center;color:var(--pmuted);font-size:14px}
+  .out details.more{margin-top:12px}
+  .out details.more summary{cursor:pointer;list-style:none;text-align:center;padding:12px;
+    border:1px dashed var(--prule);border-radius:6px;color:var(--gold);font-weight:600;font-size:13.5px}
+  .out details.more summary::-webkit-details-marker{display:none}
+  .out details.more[open] summary{margin-bottom:8px}
   .out .before{margin:0 0 10px;font-size:12px;color:var(--pmuted);
     display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
   .out .before b{color:var(--pink);font-weight:700;font-variant-numeric:tabular-nums}
@@ -301,19 +308,19 @@
     </details>
   </div>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v31<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v35<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=31"></script>
+<script src="detect.js?v=35"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
 var outQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
-var VIEWS = [], focusFilter = null;
+var VIEWS = [], focusFilter = null, VIEW = null;
 var SRC = null;            // {type:'gsheet', id, gid} 或 {type:'file'}
 var VIEWER = false;        // 從分享網址打開的人
 
@@ -412,6 +419,7 @@ function renderSheetTabs(){
 
 function showSheet(i){
   curSheet = i;
+  scrollToTop($('sheets'));
   var sh = SHEETS[i];
   [].forEach.call($('sheets').children, function(b, j){ b.classList.toggle('on', i === j) });
   sheetKey = 'file:' + sh.file + ':' + sh.name;
@@ -655,16 +663,28 @@ function showPicker(){
     }).join('') + '</ul>';
   el.hidden = false;
   $('split').hidden = true;
+  scrollToTop(el);
 }
 
 function applyView(v, remember){
+  VIEW = v;
   focusFilter = v.filter || null;
+  outPicks = {};
   $('ovGroup').value = v.group === '__none__' ? '__none__' : v.group;
   if(remember){ try{ localStorage.setItem(viewKey(), v.id) }catch(e){} }
   $('pick').hidden = true;
   $('split').hidden = false;
   paint();
   renderShare(v.id);
+  // 選完看法要從表頭開始看。不捲的話畫面會停在原本選單的位置，
+  // 結果一出現就落在表格中間或尾端。
+  scrollToTop($('split'));
+}
+
+function scrollToTop(el){
+  if(!el) return;
+  var y = el.getBoundingClientRect().top + window.pageYOffset - 8;
+  window.scrollTo(0, Math.max(0, y));
 }
 
 function renderControls(groupName){
@@ -678,8 +698,31 @@ function renderControls(groupName){
   if(!bigEnough && !filterCols.length){ box.hidden = true; return; }
 
   var html = '';
-  if(bigEnough) html += '<input id="oq" type="search" placeholder="搜尋…" autocomplete="off" value="' + esc(outQ) + '">';
-  filterCols.forEach(function(f){
+  var personMode = VIEW && VIEW.filter;
+  if(bigEnough && !personMode) html += '<input id="oq" type="search" placeholder="搜尋…" autocomplete="off" value="' + esc(outQ) + '">';
+
+  // 「只看某個人員」是以人為主軸的頁面：人名排成一列，點一個就只剩他的事。
+  // 這才跟「直接搜尋」有真正的差別——原本只是把下拉選單排到第一個，看不出來。
+  if(personMode){
+    var f0 = filterCols.filter(function(f){ return f.name === VIEW.filter })[0];
+    if(f0){
+      var i0 = A.header.indexOf(f0.name), tal0 = {}, lab0 = {};
+      A.rows.forEach(function(r){
+        var v = String(r[i0] == null ? '' : r[i0]).trim(); if(!v) return;
+        (f0.multi ? SheetShape.tokenizeCell(v) : [v]).forEach(function(t){
+          var k = t.toLowerCase(); tal0[k] = (tal0[k]||0)+1; if(!lab0[k]) lab0[k] = t;
+        });
+      });
+      var keys0 = Object.keys(tal0).sort(function(a,b){ return tal0[b]-tal0[a] || lab0[a].localeCompare(lab0[b],'zh-Hant') });
+      html += '<div class="orail who">' + keys0.map(function(k){
+        return '<button type="button" data-who="' + esc(k) + '" class="' + (outPicks[f0.name] === k ? 'on' : '') + '">' +
+               esc(lab0[k]) + '<span style="opacity:.6"> ' + tal0[k] + '</span></button>';
+      }).join('') + '</div>';
+      filterCols = [f0];
+    }
+  }
+
+  (personMode ? [] : filterCols).forEach(function(f){
     var i = A.header.indexOf(f.name), tal = {}, lab = {};
     A.rows.forEach(function(r){
       var v = String(r[i] == null ? '' : r[i]).trim(); if(!v) return;
@@ -705,7 +748,8 @@ function renderControls(groupName){
    兩個軸一起才撐得住手機。23 個日期塞進下拉選單或一路往下捲都難用。 */
 function renderRails(){
   var box = $('octl');
-  [].forEach.call(box.querySelectorAll('.orail'), function(el){ el.remove() });
+  // 只清自己管的軌道；人名軌是 renderControls 建的，砍掉它「只看某個人員」就空了
+  [].forEach.call(box.querySelectorAll('.orail.tables, .orail.groups'), function(el){ el.remove() });
 
   // 多個表格（請假表的五個年度）要能在頁面裡切換，不能只靠工具列的分頁
   if(TABLES.length > 1){
@@ -777,6 +821,10 @@ function renderPage(shape, roles){
     skippedBlank = before - recs.length;
   }
   var beforeFilter = recs.length;
+  if(VIEW && VIEW.filter && !outPicks[VIEW.filter]){
+    window.__groups = [];      // 不重設的話日期軌會殘留上一個看法的
+    return head + '<div class="prompt">上面選一個' + esc(VIEW.filter) + '，就只看他的</div>';
+  }
   recs = recs.filter(function(rec){ return matchFilters(rec.r) && matchQuery(rec.r) });
   var filtering = outQ || Object.keys(outPicks).some(function(k){ return outPicks[k] });
   window.__hits = filtering ? recs.length + ' / ' + beforeFilter + ' 筆' : '';
@@ -905,7 +953,7 @@ function renderPage(shape, roles){
     g.rows.sort(function(a,b){ return a.mins - b.mins });
   });
 
-  return head + groups.map(function(g){
+  var body = groups.map(function(g){
     var head = roles.group ? '<div class="g-head"><span class="g-name">' + esc(g.label) + '</span>' +
         (g.sub ? '<span class="g-sub">' + esc(g.sub) + '</span>' : '') +
         '<span class="g-cnt">' + g.rows.length + ' 筆</span></div>' : '';
@@ -940,6 +988,12 @@ function renderPage(shape, roles){
         '</div></li>';
     }).join('') + '</ol>';
   }).join('');
+
+  // 「看重點數字」：重點是上面的摘要，明細收起來，要看再展開。
+  // 不收的話跟「直接搜尋」看起來一模一樣。
+  if(VIEW && VIEW.id === 'facts')
+    return head + '<details class="more"><summary>查看全部 ' + recs.length + ' 筆明細</summary>' + body + '</details>';
+  return head + body;
 }
 
 /* 診斷文字刻意不含任何儲存格內容——測試者會用公司的真實表格，
@@ -972,7 +1026,7 @@ function diagnosticText(){
          '、前導=' + (eff.roles.lead ? eff.roles.lead.name : '無'));
   var q = (SheetShape.quotedFacts && raw) ? SheetShape.quotedFacts(raw, A).length : 0;
   L.push('摘要引述：' + q + ' 條');
-  L.push('版本：SheetSnap detect v31');
+  L.push('版本：SheetSnap detect v35');
   return L.join('\n');
 }
 
@@ -1010,6 +1064,10 @@ $('octl').addEventListener('click', function(e){
   var b = e.target.closest('button'); if(!b) return;
   if(b.dataset.t !== undefined){ showTable(+b.dataset.t); return; }
   if(b.dataset.g !== undefined){ outGroup = b.dataset.g; repaintOut() }
+  if(b.dataset.who !== undefined && VIEW && VIEW.filter){
+    outPicks[VIEW.filter] = (outPicks[VIEW.filter] === b.dataset.who) ? '' : b.dataset.who;   // 再點一次取消
+    paint();
+  }
 });
 $('octl').addEventListener('change', function(e){
   var col = e.target.dataset && e.target.dataset.col;
