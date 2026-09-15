@@ -121,6 +121,8 @@
   body.viewer .panel.input{display:none}
   body.viewer header p{display:none}
   body.viewer .reset{display:none}
+  /* 觀看者只能讀：不切分頁、不看引擎判定、不改設定。搜尋與篩選是閱讀，留著。 */
+  body.viewer .tabs,body.viewer .whybox,body.viewer .ask{display:none}
   .reset{display:flex;align-items:center;gap:10px;margin:10px 0 0}
   .reset .cur{flex:1;min-width:0;font-size:12.5px;color:var(--muted);
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -324,13 +326,13 @@
     </details>
   </div>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v38<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v39<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=38"></script>
+<script src="detect.js?v=39"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -467,9 +469,10 @@ function showTable(i){
   [].forEach.call($('tabs').children, function(b, j){ b.classList.toggle('on', i === j) });
   fillOverrides();
   buildViews();
-  // 分享網址指定了看法 → 直接呈現
-  if(PARAMS.v){
-    var pv = VIEWS.filter(function(x){ return x.id === PARAMS.v })[0] || VIEWS[0];
+  // 分享網址指定了看法 → 直接呈現。
+  // 觀看者只能讀，不做任何設定：網址沒帶看法就用引擎的第一選擇，不給他選單。
+  if(PARAMS.v || VIEWER){
+    var pv = (PARAMS.v && VIEWS.filter(function(x){ return x.id === PARAMS.v })[0]) || VIEWS[0];
     if(pv){ applyView(pv, false); askGrouping('__dismissed__'); return; }
   }
   var savedView = null;
@@ -709,8 +712,8 @@ function applyView(v, remember){
   paint();
   renderShare(v.id);
   // 選完看法要從表頭開始看。不捲的話畫面會停在原本選單的位置，
-  // 結果一出現就落在表格中間或尾端。
-  scrollToTop($('split'));
+  // 結果一出現就落在表格中間或尾端。觀看者沒有選單，一打開就是表頭，不用捲。
+  if(!VIEWER) scrollToTop($('split'));
 }
 
 function scrollToTop(el){
