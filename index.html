@@ -15,14 +15,16 @@
     --line:#e2e5ea; --accent:#427a3a; --accent-bg:#e9f1e4; --on-accent:#fff;   /* 美鈔綠 */
     --ok:#1c7a4a; --ok-bg:#e6f4ec; --warn:#9a6b00; --warn-bg:#fbf1d9;
     --paper:#f6f2e6; --card:#fffdf6; --sunk:#efe9d8; --pink:#231e18; --pmuted:#8a7d6b;
-    --prule:#e2d9c3; --cinnabar:#b3261e; --gold:#8a6a2b; --gold-bg:#f1e7cd;
+    --prule:#e2d9c3; --cinnabar:#b3261e; --gold:#7d5b12; --gold-bg:#f8edc9;
+    --strap:#e0b23a; --strap-ink:#2a1f05; --strap-bg:#f8edc9;   /* 鈔票捆條的芥末黃與紙白 */
   }
   @media (prefers-color-scheme:dark){:root{
     --bg:#0f1114; --surface:#171a1f; --ink:#e8ebef; --ink2:#aeb6c0; --muted:#79828e;
     --line:#272c33; --accent:#85bb65; --accent-bg:#1c281a; --on-accent:#0f1114;  /* 深色底用鈔票本身的淺綠，字反過來用深色 */
     --ok:#5cc48b; --ok-bg:#14291e; --warn:#d4a63c; --warn-bg:#2b2312;
     --paper:#13110e; --card:#1d1a15; --sunk:#171410; --pink:#f0e9db; --pmuted:#948877;
-    --prule:#332d24; --cinnabar:#e4756a; --gold:#cba55f; --gold-bg:#2c2415;
+    --prule:#332d24; --cinnabar:#e4756a; --gold:#e0bd63; --gold-bg:#2f2712;
+    --strap:#d3a838; --strap-ink:#1a1400; --strap-bg:#2f2712;
   }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -31,6 +33,7 @@
   code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
 
   header h1{font-family:"Noto Serif TC",serif;font-size:30px;font-weight:900;margin:0;letter-spacing:.01em;color:var(--accent)}
+  header h1::after{content:"";display:block;width:48px;height:5px;border-radius:3px;background:var(--strap);margin-top:4px}
   header p{margin:8px 0 0;color:var(--ink2);font-size:14.5px;line-height:1.65}
 
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:18px}
@@ -104,7 +107,8 @@
     stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .ver{margin:26px 0 0;text-align:center;font-size:11px;color:var(--muted)}
   .ver button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline;margin-left:6px}
-  .share{margin:12px 0 0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:9px}
+  .share{margin:12px 0 0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:9px;
+    border-top:4px solid var(--strap)}
   .share[hidden]{display:none}
   .share h4{margin:0 0 6px;font-size:12.5px;color:var(--ink2);font-weight:700}
   .share .row2{display:flex;gap:6px}
@@ -182,12 +186,11 @@
   .orail button{flex:0 0 auto;font:inherit;font-size:12px;line-height:1;white-space:nowrap;
     padding:7px 10px;border-radius:99px;border:1px solid var(--prule);background:var(--card);
     color:var(--pmuted);cursor:pointer;font-variant-numeric:tabular-nums}
-  .orail button.on{background:var(--pink);border-color:var(--pink);color:var(--paper);font-weight:700}
+  .orail button.on{background:var(--strap);border-color:var(--strap);color:var(--strap-ink);font-weight:700}
   .orail button.now{border-color:var(--cinnabar);color:var(--cinnabar);font-weight:700}
-  .orail button.now.on{color:var(--paper)}
-  .orail.tables button.on{background:var(--gold);border-color:var(--gold)}
+  .orail button.now.on{color:var(--strap-ink)}
   .out{padding:16px 14px 40px;color:var(--pink);font-size:15px;line-height:1.65}
-  .octl .orail.who button.on{background:var(--gold);border-color:var(--gold)}
+  .out mark{background:var(--strap);color:var(--strap-ink);border-radius:2px;padding:0 1px}
   .out .prompt{padding:26px 16px;text-align:center;color:var(--pmuted);font-size:14px}
   .out details.more{margin-top:12px}
   .out details.more summary{cursor:pointer;list-style:none;text-align:center;padding:12px;
@@ -215,9 +218,7 @@
   .out .upnext button{all:unset;background:var(--card);padding:9px 10px 10px;cursor:pointer;
     display:flex;flex-direction:column;gap:2px}
   .out .upnext button:hover{background:var(--gold-bg)}
-  .out .upnext button.on{background:var(--pink)}
-  .out .upnext button.on .k,.out .upnext button.on .n{color:var(--paper);opacity:.75}
-  .out .upnext button.on .d{color:var(--paper)}
+  .out .upnext button.on{background:var(--strap-bg);box-shadow:inset 0 3px 0 var(--strap)}
   .out .upnext .k{font-size:10px;letter-spacing:.14em;color:var(--pmuted);font-weight:700}
   .out .upnext .d{font-family:"Noto Serif TC",serif;font-size:17px;font-weight:700;
     font-variant-numeric:tabular-nums;color:var(--pink)}
@@ -323,13 +324,13 @@
     </details>
   </div>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v37<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v38<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=37"></script>
+<script src="detect.js?v=38"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
