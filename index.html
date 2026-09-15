@@ -7,7 +7,7 @@
 <!-- 測試期間會頻繁更新，不讓瀏覽器抱著舊的 HTML 不放 -->
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
-<title>CellFlow</title>
+<title>SheetSnap</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
   :root{
@@ -94,6 +94,19 @@
   .pick .d{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5}
   .ver{margin:26px 0 0;text-align:center;font-size:11px;color:var(--muted)}
   .ver button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline;margin-left:6px}
+  .share{margin:12px 0 0;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:9px}
+  .share[hidden]{display:none}
+  .share h4{margin:0 0 6px;font-size:12.5px;color:var(--ink2);font-weight:700}
+  .share .row2{display:flex;gap:6px}
+  .share input{flex:1;min-width:0;font-family:"JetBrains Mono",monospace;font-size:11.5px;
+    padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+  .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
+  .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
+  .made{margin:22px 0 0;text-align:center;font-size:12px;color:var(--muted)}
+  .made a{color:var(--accent)}
+  body.viewer .panel.input{display:none}
+  body.viewer header p{display:none}
+  body.viewer .reset{display:none}
   .reset{margin:10px 0 0;font-size:12.5px}
   .reset button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
   .ask{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;
@@ -217,11 +230,11 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>CellFlow</h1>
+    <h1>SheetSnap</h1>
     <p>把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。</p>
   </header>
 
-  <div class="panel">
+  <div class="panel input">
     <div class="row">
       <input id="url" type="url" placeholder="貼上 Google 試算表網址">
       <button id="go">開啟</button>
@@ -241,6 +254,11 @@
 
   <div class="split" id="split" hidden>
     <p class="reset"><button type="button" id="reView">換個看法</button></p>
+    <div class="share" id="share" hidden>
+      <h4>分享這個網址，對方打開就是這個畫面</h4>
+      <div class="row2"><input id="shareUrl" type="text" readonly><button type="button" id="copyShare">複製</button></div>
+      <p id="shareNote"></p>
+    </div>
     <section class="phonewrap">
       <p class="phonelabel">使用者看到的畫面</p>
       <div class="phone"><div class="octl" id="octl" hidden></div><div class="out" id="out"></div></div>
@@ -282,18 +300,22 @@
     </section>
     </details>
   </div>
-  <p class="ver">CellFlow v30<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
+  <p class="ver">SheetSnap v31<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=30"></script>
+<script src="detect.js?v=31"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
 var outQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
 var VIEWS = [], focusFilter = null;
+var SRC = null;            // {type:'gsheet', id, gid} 或 {type:'file'}
+var VIEWER = false;        // 從分享網址打開的人
 
 /* 使用者對「怎麼分段」的選擇要記住，同一份表不該問第二次。 */
 function choiceKey(){ return 'shape-choice:' + sheetKey + ':' + cur }
@@ -331,6 +353,7 @@ function loadUrl(u){
   if(!id) return say('看不出這是 Google 試算表的網址，請貼包含 /spreadsheets/d/ 的完整網址。', true);
   sheetKey = id;
   var gid = (String(u).match(/[#&?]gid=(\d+)/) || [])[1];
+  SRC = { type:'gsheet', id:id, gid:gid || '' };
   var csv = 'https://docs.google.com/spreadsheets/d/' + id + '/export?format=csv' +
             (gid ? '&gid=' + gid : '') + '&_=' + Date.now();
   say('載入中…');
@@ -362,6 +385,7 @@ function loadFile(file){
 
 /* 挑第一張真的有資料的工作表。範本的第一張常常是 Start／說明頁。 */
 function openWorkbook(wb, fname){
+  SRC = { type:'file' };
   // 收集所有有資料的工作表，不只第一張。
   // 五天的節目表就是五張工作表——只顯示第一張，使用者會以為資料不見了。
   SHEETS = []; var skipped = [];
@@ -410,7 +434,7 @@ function run(rows){
   if(TABLES.length > 1) say('這張工作表上並排著 ' + TABLES.length + ' 個獨立表格，已自動切開。');
   $('split').hidden = false;
   $('diag').hidden = false;
-  showTable(0);
+  showTable(PARAMS.t && TABLES[+PARAMS.t] ? +PARAMS.t : 0);
 }
 
 function showTable(i){
@@ -419,6 +443,11 @@ function showTable(i){
   [].forEach.call($('tabs').children, function(b, j){ b.classList.toggle('on', i === j) });
   fillOverrides();
   buildViews();
+  // 分享網址指定了看法 → 直接呈現
+  if(PARAMS.v){
+    var pv = VIEWS.filter(function(x){ return x.id === PARAMS.v })[0] || VIEWS[0];
+    if(pv){ applyView(pv, false); askGrouping('__dismissed__'); return; }
+  }
   var savedView = null;
   try{ savedView = localStorage.getItem(viewKey()) }catch(e){}
   var v = savedView && VIEWS.filter(function(x){ return x.id === savedView })[0];
@@ -582,6 +611,38 @@ function buildViews(){
 
 function viewKey(){ return 'view:' + sheetKey + ':' + cur }
 
+/* 每份表一個網址。
+   Google 試算表：網址只帶 ID 與看法，收到的人自己的瀏覽器去抓——零後端，資料不經過我們。
+   上傳的檔案：檔案在使用者手機裡，唯一不上傳的做法是把資料壓進網址本身，
+   所以只有小檔案做得到。做不到就明講，不假裝。 */
+function buildShareUrl(viewId){
+  var base = location.origin + location.pathname;
+  var q = ['v=' + encodeURIComponent(viewId), 't=' + cur];
+  if(SRC && SRC.type === 'gsheet'){
+    q.unshift('s=' + SRC.id + (SRC.gid ? '&gid=' + SRC.gid : ''));
+    return { url: base + '?' + q.join('&'), note: '對方的瀏覽器會直接讀你的 Google 試算表，內容不經過任何伺服器。試算表要維持「知道連結的任何人」可檢視。' };
+  }
+  if(SRC && SRC.type === 'file' && raw && window.LZString){
+    var packed = LZString.compressToEncodedURIComponent(JSON.stringify(raw));
+    var url = base + '?d=' + packed + '&' + q.join('&');
+    if(url.length <= 4000)
+      return { url: url, note: '這份表的內容已壓縮進網址裡（' + url.length + ' 字），不經過任何伺服器。網址較長，用訊息軟體傳送即可。' };
+    return { url: '', note: '這份表太大（壓縮後 ' + url.length + ' 字），放不進網址。要分享的話，請先把它放到 Google 試算表，再用試算表網址開啟——那樣網址只帶 ID，不受大小限制。' };
+  }
+  return { url: '', note: '' };
+}
+
+function renderShare(viewId){
+  var el = $('share');
+  if(VIEWER){ el.hidden = true; return; }
+  var r = buildShareUrl(viewId);
+  if(!r.url && !r.note){ el.hidden = true; return; }
+  $('shareUrl').value = r.url;
+  $('shareNote').textContent = r.note;
+  $('copyShare').disabled = !r.url;
+  el.hidden = false;
+}
+
 function showPicker(){
   buildViews();
   var el = $('pick');
@@ -603,6 +664,7 @@ function applyView(v, remember){
   $('pick').hidden = true;
   $('split').hidden = false;
   paint();
+  renderShare(v.id);
 }
 
 function renderControls(groupName){
@@ -885,7 +947,7 @@ function renderPage(shape, roles){
 function diagnosticText(){
   if(!A) return '';
   var L = [];
-  L.push('【CellFlow 診斷】');
+  L.push('【SheetSnap 診斷】');
   L.push('來源：' + (sheetKey || '未知'));
   L.push('表格數：' + TABLES.length + '（目前第 ' + (cur + 1) + ' 個）');
   if(A.name) L.push('表格名稱：' + A.name);
@@ -910,7 +972,7 @@ function diagnosticText(){
          '、前導=' + (eff.roles.lead ? eff.roles.lead.name : '無'));
   var q = (SheetShape.quotedFacts && raw) ? SheetShape.quotedFacts(raw, A).length : 0;
   L.push('摘要引述：' + q + ' 條');
-  L.push('版本：CellFlow detect v30');
+  L.push('版本：SheetSnap detect v31');
   return L.join('\n');
 }
 
@@ -961,6 +1023,36 @@ $('ask').addEventListener('click', function(e){
   $('ask').hidden = true;
   if(k !== '__dismissed__'){ $('ovGroup').value = k; paint(); }
 });
+
+var PARAMS = (function(){
+  var o = {};
+  location.search.slice(1).split('&').forEach(function(kv){
+    if(!kv) return; var i = kv.indexOf('=');
+    o[decodeURIComponent(kv.slice(0, i < 0 ? kv.length : i))] = i < 0 ? '' : decodeURIComponent(kv.slice(i + 1));
+  });
+  return o;
+})();
+
+$('copyShare').addEventListener('click', function(){
+  var t = $('shareUrl').value; if(!t) return;
+  var done = function(){ var b = $('copyShare'), o = b.textContent; b.textContent = '已複製 ✓'; setTimeout(function(){ b.textContent = o }, 1600) };
+  if(navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){ $('shareUrl').select() });
+  else $('shareUrl').select();
+});
+
+// 收到分享網址的人：直接看到成品，不看輸入框、不被問
+(function(){
+  if(PARAMS.s){
+    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false;
+    loadUrl('https://docs.google.com/spreadsheets/d/' + PARAMS.s + '/edit' + (PARAMS.gid ? '?gid=' + PARAMS.gid : ''));
+  } else if(PARAMS.d && window.LZString){
+    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false;
+    try{
+      var grid = JSON.parse(LZString.decompressFromEncodedURIComponent(PARAMS.d));
+      SRC = { type:'file' }; sheetKey = 'shared'; SHEETS = []; renderSheetTabs(); run(grid);
+    }catch(e){ say('這個分享網址讀不出來，可能被訊息軟體截斷了。', true); }
+  }
+})();
 
 $('hardReload').addEventListener('click', function(){
   location.href = location.pathname + '?v=' + Date.now();
