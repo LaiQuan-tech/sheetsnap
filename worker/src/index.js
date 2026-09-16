@@ -2,7 +2,7 @@
 //   POST /e            頁面送事件進來（sendBeacon，text/plain，不用 preflight）
 //   GET  /stats?key=…  統計頁（HTML；加 &json=1 給 JSON）
 const ALLOW = 'https://sheetsnap.link';
-const EVS = new Set(['upload', 'open', 'view', 'share', 'made']);
+const EVS = new Set(['land', 'upload', 'open', 'view', 'share', 'made', 'error', 'warn', 'diag', 'interact']);
 
 const cors = (extra = {}) => ({
   'Access-Control-Allow-Origin': ALLOW,
@@ -23,8 +23,8 @@ export default {
       const s = (v) => String(v ?? '').slice(0, 120);
       const ts = Date.now(), day = new Date(ts).toISOString().slice(0, 10);
       await env.DB.prepare(
-        'INSERT INTO events (ts, day, ev, sheet, vid, role, src, lang, view) VALUES (?,?,?,?,?,?,?,?,?)'
-      ).bind(ts, day, s(p.ev), s(p.sheet), s(p.vid), s(p.role), s(p.src), s(p.lang), s(p.view)).run();
+        'INSERT INTO events (ts, day, ev, sheet, vid, role, src, lang, view, info) VALUES (?,?,?,?,?,?,?,?,?,?)'
+      ).bind(ts, day, s(p.ev), s(p.sheet), s(p.vid), s(p.role), s(p.src), s(p.lang), s(p.view), s(p.info)).run();
       return new Response(null, { status: 204, headers: cors() });
     }
 
@@ -65,7 +65,47 @@ async function stats(DB) {
   const days = await all(`SELECT day, SUM(ev='upload') AS uploads, SUM(ev='open' AND role='viewer') AS opens,
       COUNT(DISTINCT CASE WHEN ev='open' AND role='viewer' THEN vid END) AS viewers
       FROM events GROUP BY day ORDER BY day DESC LIMIT 30`);
-  return { makers, viewers, returning: ret, shares, made, views, sheets, days, generated: new Date().toISOString() };
+  // 做表這一端的漏斗：來了 → 載入了一份表 → 選了看法 → 複製了網址
+  const funnel = await one(`SELECT
+      COUNT(DISTINCT CASE WHEN ev='land' THEN vid END) AS land,
+      COUNT(DISTINCT CASE WHEN ev='upload' THEN vid END) AS upload,
+      COUNT(DISTINCT CASE WHEN ev='view' THEN vid END) AS view,
+      COUNT(DISTINCT CASE WHEN ev='share' THEN vid END) AS share FROM events`);
+  // 貼了網址卻讀不到：最安靜的流失
+  const errors = await all(`SELECT info AS code, COUNT(*) AS n, COUNT(DISTINCT vid) AS people FROM events WHERE ev='error' GROUP BY info ORDER BY n DESC`);
+  const errRate = await one(`SELECT SUM(ev='error') AS err, SUM(ev='upload') AS ok FROM events WHERE ev IN ('error','upload')`);
+  // 引擎健康：自己標了「可能沒讀對」的比例、使用者按了「顯示不對」的次數、換看法的頻率
+  const engine = await one(`SELECT
+      (SELECT COUNT(DISTINCT sheet) FROM events WHERE ev='warn') AS warned,
+      (SELECT COUNT(DISTINCT sheet) FROM events WHERE ev='upload') AS sheets,
+      (SELECT COUNT(*) FROM events WHERE ev='diag') AS diag,
+      (SELECT COUNT(*) FROM (SELECT sheet, vid, COUNT(*) c FROM events WHERE ev='view' GROUP BY sheet, vid HAVING c>=2)) AS switched,
+      (SELECT COUNT(*) FROM (SELECT sheet, vid FROM events WHERE ev='view' GROUP BY sheet, vid)) AS chose`);
+  const shapes = await all(`SELECT substr(info,1,instr(info,'/')-1) AS shape, COUNT(*) AS n FROM events WHERE ev='upload' AND info LIKE '%/%' GROUP BY shape ORDER BY n DESC`);
+  const sizes = await all(`SELECT CASE WHEN instr(substr(info,instr(info,'/')+1),'/')>0
+        THEN substr(substr(info,instr(info,'/')+1),1,instr(substr(info,instr(info,'/')+1),'/')-1)
+        ELSE substr(info,instr(info,'/')+1) END AS size, COUNT(*) AS n
+      FROM events WHERE ev='upload' AND info LIKE '%/%' GROUP BY size ORDER BY n DESC`);
+  // 分享有沒有真的送到：複製過網址的表，有幾份被別人打開
+  const shareHit = await one(`SELECT COUNT(*) AS shared,
+      SUM(EXISTS(SELECT 1 FROM events o WHERE o.ev='open' AND o.role='viewer' AND o.sheet=s.sheet AND o.vid<>s.vid)) AS opened
+      FROM (SELECT sheet, vid FROM events WHERE ev='share' GROUP BY sheet) s`);
+  // 觀看者變成做表的人：同一台裝置先以觀看者身分打開過，之後自己載入了表
+  const loop = await one(`SELECT COUNT(*) AS viewers,
+      SUM(EXISTS(SELECT 1 FROM events u WHERE u.ev='upload' AND u.vid=v.vid AND u.ts>v.first)) AS became
+      FROM (SELECT vid, MIN(ts) AS first FROM events WHERE ev='open' AND role='viewer' GROUP BY vid) v`);
+  // 觀看者有沒有真的用：搜尋、點籤、點日期
+  const inter = await one(`SELECT
+      (SELECT COUNT(*) FROM (SELECT sheet, vid FROM events WHERE ev='open' AND role='viewer' GROUP BY sheet, vid)) AS pairs,
+      (SELECT COUNT(*) FROM (SELECT sheet, vid FROM events WHERE ev='interact' GROUP BY sheet, vid)) AS used`);
+  const interKinds = await all(`SELECT info AS kind, COUNT(*) AS n FROM events WHERE ev='interact' GROUP BY info ORDER BY n DESC`);
+  // 連結活多久：第一次被打開之後第 7 天還有人開的表
+  const life = await one(`SELECT COUNT(*) AS sheets, SUM(span>=7) AS week
+      FROM (SELECT sheet, (MAX(ts)-MIN(ts))/86400000.0 AS span FROM events WHERE ev='open' AND role='viewer' GROUP BY sheet)`);
+  const refs = await all(`SELECT substr(info,1,instr(info,'|')-1) AS ref, COUNT(DISTINCT vid) AS people FROM events WHERE ev='land' GROUP BY ref ORDER BY people DESC LIMIT 12`);
+  const devices = await one(`SELECT SUM(info LIKE '%|m') AS mobile, SUM(info LIKE '%|d') AS desktop FROM events WHERE ev='land'`);
+  return { makers, viewers, returning: ret, shares, made, views, sheets, days, funnel, errors, errRate, engine, shapes, sizes,
+           shareHit, loop, inter, interKinds, life, refs, devices, generated: new Date().toISOString() };
 }
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -78,7 +118,7 @@ const label = (sheet) => {
 };
 
 function page(d) {
-  const m = d.makers, v = d.viewers, r = d.returning;
+  const m = d.makers, v = d.viewers, r = d.returning, f = d.funnel;
   const row = (cells) => '<tr>' + cells.map((c) => '<td>' + c + '</td>').join('') + '</tr>';
   return `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>SheetSnap 使用量</title>
@@ -103,6 +143,24 @@ tr:last-child td{border-bottom:0} td.n{text-align:right;font-variant-numeric:tab
   <div><b>${d.shares.n || 0}</b><span>按了複製網址</span><i>${d.shares.sheets || 0} 份表</i></div>
   <div><b>${d.made.people || 0}</b><span>觀看者點了「做一份自己的」</span><i>${d.made.n || 0} 次</i></div>
 </div>
+<h2>做表這一端的漏斗</h2><div class="wrap"><table><tr><th>來到首頁</th><th>載入了表</th><th>選了看法</th><th>複製了網址</th></tr>
+${row([f.land || 0, (f.upload || 0) + '（' + pct(f.upload, f.land) + '）', (f.view || 0) + '（' + pct(f.view, f.upload) + '）', (f.share || 0) + '（' + pct(f.share, f.view) + '）'])}
+</table></div>
+<div class="k">
+  <div><b>${pct(d.shareHit.opened || 0, d.shareHit.shared || 0)}</b><span>複製了網址的表，真的有別人打開</span><i>${d.shareHit.opened || 0} / ${d.shareHit.shared || 0} 份</i></div>
+  <div><b>${pct(d.loop.became || 0, d.loop.viewers || 0)}</b><span>觀看者後來自己做了表</span><i>${d.loop.became || 0} / ${d.loop.viewers || 0} 人</i></div>
+  <div><b>${pct(d.inter.used || 0, d.inter.pairs || 0)}</b><span>觀看者有搜尋／點籤</span><i>${d.interKinds.map((x) => esc(x.kind) + ' ' + x.n).join(' · ') || '–'}</i></div>
+  <div><b>${pct(d.life.week || 0, d.life.sheets || 0)}</b><span>連結一週後還有人開</span><i>${d.life.week || 0} / ${d.life.sheets || 0} 份</i></div>
+  <div><b>${pct(d.errRate.err || 0, (d.errRate.err || 0) + (d.errRate.ok || 0))}</b><span>載入失敗率</span><i>${d.errors.map((x) => esc(x.code || '?') + ' ' + x.n).join(' · ') || '沒有失敗'}</i></div>
+  <div><b>${pct(d.engine.warned || 0, d.engine.sheets || 0)}</b><span>引擎標「可能沒讀對」的表</span><i>按了「顯示不對」${d.engine.diag || 0} 次 · 換過看法 ${pct(d.engine.switched || 0, d.engine.chose || 0)}</i></div>
+</div>
+<h2>來的是什麼表</h2><div class="wrap"><table><tr><th>形狀</th><th>份</th><th></th><th>大小</th><th>份</th></tr>
+${Array.from({ length: Math.max(d.shapes.length, d.sizes.length, 1) }, (_, i) => row([esc((d.shapes[i] || {}).shape || ''), (d.shapes[i] || {}).n ?? '', '', esc((d.sizes[i] || {}).size || ''), (d.sizes[i] || {}).n ?? ''])).join('')}
+</table></div>
+<h2>做表的人從哪來</h2><div class="wrap"><table><tr><th>來源</th><th>人</th></tr>
+${d.refs.map((x) => row([esc(x.ref || 'direct'), x.people])).join('') || row(['還沒有資料'])}
+${row(['<i>手機 ' + (d.devices.mobile || 0) + ' · 電腦 ' + (d.devices.desktop || 0) + '</i>', ''])}
+</table></div>
 <h2>每份表</h2><div class="wrap"><table><tr><th>表</th><th>看的人</th><th>打開次數</th><th>回訪的人</th><th>平均每人</th><th>最多</th><th>期間</th></tr>
 ${d.sheets.map((s) => row([esc(label(s.sheet)), '<span class="n hi">' + s.viewers + '</span>', s.opens, s.back + '（' + pct(s.back, s.viewers) + '）', s.avg_opens, s.max_opens, esc(s.first.slice(5)) + ' – ' + esc(s.last.slice(5))])).join('') || row(['還沒有資料'])}
 </table></div>

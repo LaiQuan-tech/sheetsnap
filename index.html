@@ -480,13 +480,13 @@
     <details><summary>要收費嗎？</summary><p>測試期間免費。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v50<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v51<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=50"></script>
+<script src="detect.js?v=51"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -536,11 +536,12 @@ function choiceKey(){ return 'shape-choice:' + sheetKey + ':' + cur }
 function readChoice(){ try { return localStorage.getItem(choiceKey()) } catch(e){ return null } }
 function saveChoice(v){ try { localStorage.setItem(choiceKey(), v) } catch(e){} }
 
-function say(t, isErr){
+function say(t, isErr, code){
   var m = $('msg');
   m.className = 'msg show' + (isErr ? ' err' : '');
   m.textContent = t;
   if(!t) m.className = 'msg';
+  if(isErr && code) track('error', { info:code });
 }
 
 function parseCSV(t){
@@ -564,7 +565,7 @@ function sheetId(u){
 
 function loadUrl(u){
   var id = sheetId(u);
-  if(!id) return say('看不出這是 Google 試算表的網址，請貼包含 /spreadsheets/d/ 的完整網址。', true);
+  if(!id) return say('看不出這是 Google 試算表的網址，請貼包含 /spreadsheets/d/ 的完整網址。', true, 'notsheet');
   sheetKey = id;
   var gid = (String(u).match(/[#&?]gid=(\d+)/) || [])[1];
   SRC = { type:'gsheet', id:id, gid:gid || '' };
@@ -575,7 +576,7 @@ function loadUrl(u){
     .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.text() })
     .then(function(t){ SHEETS = []; renderSheetTabs(); say(''); run(parseCSV(t)) })
     .catch(function(e){
-      say('讀不到這份試算表（' + e.message + '）。請確認共用設定是「知道連結的任何人 · 檢視者」。', true);
+      say('讀不到這份試算表（' + e.message + '）。請確認共用設定是「知道連結的任何人 · 檢視者」。', true, 'read');
     });
 }
 
@@ -584,11 +585,11 @@ function loadFile(file){
   var fr = new FileReader();
   if(ext === 'xlsx' || ext === 'xls'){
     if(typeof XLSX === 'undefined')
-      return say('Excel 解析元件沒載入成功，請改用 .csv 或試算表網址。', true);
+      return say('Excel 解析元件沒載入成功，請改用 .csv 或試算表網址。', true, 'xlsxlib');
     fr.onload = function(e){
       try{
         openWorkbook(XLSX.read(new Uint8Array(e.target.result), { type:'array' }), file.name);
-      }catch(err){ say('這個 Excel 檔解析失敗：' + err.message, true) }
+      }catch(err){ say('這個 Excel 檔解析失敗：' + err.message, true, 'xlsx') }
     };
     fr.readAsArrayBuffer(file);
   } else {
@@ -609,7 +610,7 @@ function openWorkbook(wb, fname){
     if(v.show === true) SHEETS.push({ name:nm, grid:gr, file:fname });
     else skipped.push(nm + '（' + v.why + '）');
   });
-  if(!SHEETS.length){ say('這個檔案裡找不到可讀的資料表。略過：' + skipped.join('、'), true); return; }
+  if(!SHEETS.length){ say('這個檔案裡找不到可讀的資料表。略過：' + skipped.join('、'), true, 'nodata'); return; }
   say(skipped.length ? '略過 ' + skipped.length + ' 張非資料頁：' + skipped.join('、') : '');
   renderSheetTabs();
   showSheet(0);
@@ -637,7 +638,7 @@ function showSheet(i){
 function run(rows){
   raw = rows;
   TABLES = SheetShape.analyseSheet(rows).tables;
-  if(!TABLES.length) return say('這份表看起來是空的，或找不到任何表格區塊。', true);
+  if(!TABLES.length) return say('這份表看起來是空的，或找不到任何表格區塊。', true, 'empty');
   cur = 0;
   var t = $('tabs');
   t.hidden = TABLES.length < 2;
@@ -650,7 +651,11 @@ function run(rows){
   $('split').hidden = false;
   $('diag').hidden = false;
   var tag = sheetTag();
-  if(!tracked[tag]){ tracked[tag] = 1; track(VIEWER ? 'open' : 'upload') }
+  if(!tracked[tag]){
+    tracked[tag] = 1;
+    var n = TABLES[0].rows.length, size = n < 20 ? '<20' : n < 100 ? '20-99' : n < 500 ? '100-499' : '500+';
+    track(VIEWER ? 'open' : 'upload', { info:(TABLES[0].shape.shape || '') + '/' + size + (TABLES.length > 1 ? '/multi' : '') });
+  }
   showTable(PARAMS.t && TABLES[+PARAMS.t] ? +PARAMS.t : 0);
 }
 
@@ -1129,6 +1134,7 @@ function renderPage(shape, roles){
   // 使用者看到數字之後才被告知「可能是錯的」已經太晚了
   if(SheetShape.fidelityWarnings){
     var warns = SheetShape.fidelityWarnings(A);
+    if(warns.length && !tracked['warn:' + sheetTag()]){ tracked['warn:' + sheetTag()] = 1; track('warn', { info:String(warns.length) }) }
     if(warns.length)
       head += '<div class="warn"><b>這張表可能沒被正確讀取</b>' +
               warns.map(esc).join(' ') + ' 請對照原始檔案確認。</div>';
@@ -1269,6 +1275,7 @@ function repaintOut(){
   var h = $('hits'); if(h) h.textContent = window.__hits || '';
 }
 $('copyDiag').addEventListener('click', function(){
+  track('diag');
   var t = diagnosticText();
   if(!t) return;
   var done = function(){ var b = $('copyDiag'); var o = b.textContent;
@@ -1325,6 +1332,22 @@ $('copyShare').addEventListener('click', function(){
   else $('shareUrl').select();
 });
 
+// 落地：做表的人從哪裡來、用什麼裝置（觀看者不算，他們有自己的 open）
+if(!PARAMS.s && !PARAMS.d){
+  var ref = ''; try{ ref = document.referrer ? new URL(document.referrer).hostname : '' }catch(e){}
+  track('land', { sheet:'', info:(ref || 'direct') + '|' + (/Mobi|Android|iPhone|iPad/.test(navigator.userAgent) ? 'm' : 'd') });
+}
+// 觀看者有沒有真的用（搜尋、點籤、點日期）：每次打開只記第一次
+var interacted = false;
+function noteInteract(kind){
+  if(interacted || !VIEWER) return; interacted = true; track('interact', { info:kind });
+}
+document.addEventListener('input', function(e){ if(e.target.closest('#octl')) noteInteract(e.target.tagName === 'SELECT' ? 'filter' : 'search') });
+document.addEventListener('click', function(e){
+  if(e.target.closest('#octl button')) noteInteract('chip');
+  else if(e.target.closest('.out .upnext button')) noteInteract('upnext');
+});
+
 // 收到分享網址的人：直接看到成品，不看輸入框、不被問
 (function(){
   if(PARAMS.s){
@@ -1341,7 +1364,7 @@ $('copyShare').addEventListener('click', function(){
     try{
       var grid = JSON.parse(LZString.decompressFromEncodedURIComponent(PARAMS.d));
       SRC = { type:'file' }; sheetKey = 'shared'; SHEETS = []; renderSheetTabs(); run(grid);
-    }catch(e){ say('這個分享網址讀不出來，可能被訊息軟體截斷了。', true); }
+    }catch(e){ say('這個分享網址讀不出來，可能被訊息軟體截斷了。', true, 'badshare'); }
   }
 })();
 
