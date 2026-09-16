@@ -2,7 +2,7 @@
 
 把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。
 
-<https://laiquan-tech.github.io/sheetsnap/>
+<https://sheetsnap.link/>
 
 貼上 Google 試算表網址，或選一個 `.xlsx`。**資料不會上傳**——
 整個過程都在瀏覽器裡完成，這是純靜態網頁，沒有後端。
