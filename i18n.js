@@ -2,25 +2,27 @@
    只翻介面，表裡的內容一個字都不動——那是使用者寫的，引述不加工。
    找不到的句子退回英文，再退回繁中。新增語言＝加一個物件。 */
 (function (g) {
+  // 選單順序＝網路使用人數（英文、中文、西班牙文、阿拉伯文、印尼文、葡萄牙文、法文、日文、俄文、德文……）。
+  // 繁體中文人數其實排在中後段，但放在简体旁邊，兩個中文挨著比較好找。
   var LANGS = [
-    { code: 'zh',      name: '繁體中文',        tag: 'zh-TW' },
-    { code: 'zh-Hans', name: '简体中文',        tag: 'zh-CN' },
     { code: 'en',      name: 'English',         tag: 'en-US' },
-    { code: 'ja',      name: '日本語',          tag: 'ja' },
-    { code: 'ko',      name: '한국어',          tag: 'ko' },
+    { code: 'zh-Hans', name: '简体中文',        tag: 'zh-CN' },
+    { code: 'zh',      name: '繁體中文',        tag: 'zh-TW' },
     { code: 'es',      name: 'Español',         tag: 'es' },
+    { code: 'ar',      name: 'العربية',         tag: 'ar', rtl: true },
+    { code: 'id',      name: 'Bahasa Indonesia', tag: 'id' },
     { code: 'pt',      name: 'Português',       tag: 'pt-BR' },
     { code: 'fr',      name: 'Français',        tag: 'fr' },
-    { code: 'de',      name: 'Deutsch',         tag: 'de' },
-    { code: 'it',      name: 'Italiano',        tag: 'it' },
+    { code: 'ja',      name: '日本語',          tag: 'ja' },
     { code: 'ru',      name: 'Русский',         tag: 'ru' },
-    { code: 'tr',      name: 'Türkçe',          tag: 'tr' },
-    { code: 'id',      name: 'Bahasa Indonesia', tag: 'id' },
-    { code: 'vi',      name: 'Tiếng Việt',      tag: 'vi' },
-    { code: 'th',      name: 'ไทย',             tag: 'th' },
+    { code: 'de',      name: 'Deutsch',         tag: 'de' },
     { code: 'hi',      name: 'हिन्दी',           tag: 'hi' },
+    { code: 'ko',      name: '한국어',          tag: 'ko' },
+    { code: 'tr',      name: 'Türkçe',          tag: 'tr' },
+    { code: 'vi',      name: 'Tiếng Việt',      tag: 'vi' },
+    { code: 'it',      name: 'Italiano',        tag: 'it' },
+    { code: 'th',      name: 'ไทย',             tag: 'th' },
     { code: 'bn',      name: 'বাংলা',           tag: 'bn' },
-    { code: 'ar',      name: 'العربية',         tag: 'ar', rtl: true },
     { code: 'ur',      name: 'اردو',            tag: 'ur', rtl: true }
   ];
   var T = {};
