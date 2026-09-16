@@ -1,0 +1,14 @@
+# SheetSnap 使用量統計：一個小 Worker，收頁面送來的事件、存進 D1、給一頁統計。
+# 事件裡沒有任何試算表內容，只有「哪份表、哪台裝置、做了什麼」。
+name = "sheetsnap-stats"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+routes = [{ pattern = "t.sheetsnap.link", custom_domain = true }]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sheetsnap-stats"
+database_id = "TBD"
+
+[observability]
+enabled = true

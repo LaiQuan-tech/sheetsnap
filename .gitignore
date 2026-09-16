@@ -3,3 +3,5 @@ corpus/
 corpus-ms/files/
 *.xlsx
 *.xls
+worker/.wrangler/
+worker/node_modules/
