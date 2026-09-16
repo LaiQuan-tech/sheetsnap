@@ -69,7 +69,7 @@
         { "@type": "Question", "name": "資料會上傳嗎？",
           "acceptedAnswer": { "@type": "Answer", "text": "不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。" } },
         { "@type": "Question", "name": "支援哪些檔案？",
-          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址（權限設「知道連結的任何人可檢視」）、.xlsx、.csv。" } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。" } },
         { "@type": "Question", "name": "試算表改了，分享網址會跟著變嗎？",
           "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。" } },
         { "@type": "Question", "name": "數字是算出來的嗎？",
@@ -89,7 +89,7 @@
     --ok:#1c7a4a; --ok-bg:#e6f4ec; --warn:#9a6b00; --warn-bg:#fbf1d9;
     --paper:#f6f2e6; --card:#fffdf6; --sunk:#efe9d8; --pink:#231e18; --pmuted:#8a7d6b;
     --prule:#e2d9c3; --cinnabar:#b3261e; --gold:#7d5b12; --gold-bg:#f8edc9;
-    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc;   /* logo 的黃 */
+    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc; --hl:#ffe9a6;   /* logo 的黃；hl 是螢光筆 */
   }
   @media (prefers-color-scheme:dark){:root{
     --bg:#0f1114; --surface:#171a1f; --ink:#e8ebef; --ink2:#aeb6c0; --muted:#79828e;
@@ -97,7 +97,7 @@
     --ok:#5cc48b; --ok-bg:#14291e; --warn:#d4a63c; --warn-bg:#2b2312;
     --paper:#13110e; --card:#1d1a15; --sunk:#171410; --pink:#f0e9db; --pmuted:#948877;
     --prule:#332d24; --cinnabar:#e4756a; --gold:#e0bd63; --gold-bg:#2f2712;
-    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d;
+    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d; --hl:#4d3f0e;
   }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -189,6 +189,7 @@
     padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
   .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
   .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
+  .hl{background:linear-gradient(transparent 42%,var(--hl) 42%,var(--hl) 94%,transparent 94%);padding:0 2px;border-radius:2px}
   .about{margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line);color:var(--ink2);font-size:13.5px;line-height:1.75}
   .about h2{margin:22px 0 6px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:900;color:var(--ink)}
   .about h2:first-child{margin-top:0}
@@ -198,8 +199,10 @@
   .about .steps li{counter-increment:s;padding:6px 11px 6px 8px;border:1px solid var(--line);border-radius:99px;
     background:var(--surface);color:var(--ink);font-size:12.5px;font-weight:600}
   .about .steps li::before{content:counter(s);display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;
-    border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:11px;margin-right:6px}
-  .about .fit b{display:inline-block;min-width:3.2em;color:var(--ink);font-weight:700}
+    border-radius:50%;background:var(--strap);color:var(--strap-ink);font-size:11px;font-weight:700;margin-right:6px}
+  .about .fit b{display:inline-block;margin:0 8px 4px 0;padding:1px 8px;border-radius:99px;font-size:12px;font-weight:700}
+  .about .fit b.yes{background:var(--strap);color:var(--strap-ink)}
+  .about .fit b.no{background:var(--line);color:var(--ink2)}
   .about details{border-top:1px solid var(--line)}
   .about details:last-child{border-bottom:1px solid var(--line)}
   .about summary{cursor:pointer;padding:9px 0;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}
@@ -351,7 +354,7 @@
       <source srcset="logo-dark.png?v=40" media="(prefers-color-scheme: dark)">
       <img src="logo.png?v=40" alt="SheetSnap" width="400" height="74">
     </picture></a></h1>
-    <p>把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。</p>
+    <p>把複雜 Excel，一鍵變成<span class="hl">最適合手機閱讀</span>的流暢網頁。</p>
   </header>
 
   <div class="panel input">
@@ -422,27 +425,27 @@
   </div>
   <section class="about" id="about">
     <h2>SheetSnap 是什麼</h2>
-    <p>貼上 Google 試算表網址或上傳 Excel，選一個看法，得到一個手機好讀、不用登入的分享網址。資料不上傳。</p>
-    <p lang="en">Turn a Google Sheet or an Excel file into a phone-friendly page you can share with one link. Nothing is uploaded.</p>
+    <p>貼上 Google 試算表網址或上傳 Excel，選一個看法，得到一個<span class="hl">手機好讀、不用登入</span>的分享網址。<span class="hl">資料不上傳</span>。</p>
+    <p lang="en">Turn a Google Sheet or an Excel file into a <span class="hl">phone-friendly page</span> you can share with one link. <span class="hl">Nothing is uploaded.</span></p>
     <ol class="steps"><li>貼網址或丟檔案</li><li>選怎麼看</li><li>傳網址</li></ol>
-    <p class="fit"><b>適合</b>流程表、排班、帳表、名單、價目表、待辦<br><b>不適合</b>財報、多層合併標題、雙向矩陣</p>
+    <p class="fit"><b class="yes">適合</b>流程表、排班、帳表、名單、價目表、待辦<br><b class="no">不適合</b>財報、多層合併標題、雙向矩陣</p>
 
     <h2>常見問題</h2>
-    <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：跳到今天、點名字只看他的、能搜尋。</p></details>
-    <details><summary>資料會上傳嗎？</summary><p>不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。</p></details>
-    <details><summary>支援哪些檔案？</summary><p>Google 試算表網址（權限設「知道連結的任何人可檢視」）、.xlsx、.csv。</p></details>
-    <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
-    <details><summary>數字是算出來的嗎？</summary><p>不是，每個數字都直接引述表上原本就有的，不自己加總。</p></details>
-    <details><summary>要收費嗎？</summary><p>測試期間免費。</p></details>
+    <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：<span class="hl">跳到今天、點名字只看他的、能搜尋</span>。</p></details>
+    <details><summary>資料會上傳嗎？</summary><p><span class="hl">不會</span>。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。</p></details>
+    <details><summary>支援哪些檔案？</summary><p><span class="hl">Google 試算表網址、.xlsx、.csv</span>。試算表權限要設「知道連結的任何人可檢視」。</p></details>
+    <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表<span class="hl">會</span>，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
+    <details><summary>數字是算出來的嗎？</summary><p>不是，每個數字都<span class="hl">直接引述表上原本就有的</span>，不自己加總。</p></details>
+    <details><summary>要收費嗎？</summary><p>測試期間<span class="hl">免費</span>。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v43<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v44<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=43"></script>
+<script src="detect.js?v=44"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
