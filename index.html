@@ -72,6 +72,8 @@
           "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。" } },
         { "@type": "Question", "name": "試算表改了，分享網址會跟著變嗎？",
           "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。" } },
+        { "@type": "Question", "name": "適合什麼樣的表？",
+          "acceptedAnswer": { "@type": "Answer", "text": "一列標題、底下一列一筆的清單：流程表、排班、帳表、名單、價目表、待辦。財報、多層合併標題、雙向矩陣不適合。" } },
         { "@type": "Question", "name": "數字是算出來的嗎？",
           "acceptedAnswer": { "@type": "Answer", "text": "不是，每個數字都直接引述表上原本就有的，不自己加總。" } },
         { "@type": "Question", "name": "要收費嗎？",
@@ -89,7 +91,7 @@
     --ok:#1c7a4a; --ok-bg:#e6f4ec; --warn:#9a6b00; --warn-bg:#fbf1d9;
     --paper:#f6f2e6; --card:#fffdf6; --sunk:#efe9d8; --pink:#231e18; --pmuted:#8a7d6b;
     --prule:#e2d9c3; --cinnabar:#b3261e; --gold:#7d5b12; --gold-bg:#f8edc9;
-    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc; --hl:#ffe08a;   /* logo 的黃；hl 是螢光筆 */
+    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc;   /* logo 的黃 */
   }
   @media (prefers-color-scheme:dark){:root{
     --bg:#0f1114; --surface:#171a1f; --ink:#e8ebef; --ink2:#aeb6c0; --muted:#79828e;
@@ -97,7 +99,7 @@
     --ok:#5cc48b; --ok-bg:#14291e; --warn:#d4a63c; --warn-bg:#2b2312;
     --paper:#13110e; --card:#1d1a15; --sunk:#171410; --pink:#f0e9db; --pmuted:#948877;
     --prule:#332d24; --cinnabar:#e4756a; --gold:#e0bd63; --gold-bg:#2f2712;
-    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d; --hl:#5e4b12;
+    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d;
   }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -189,29 +191,26 @@
     padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
   .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
   .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
-  .hl{color:var(--ink);font-weight:600;padding:0 3px;margin:0 -1px;border-radius:2px;
-    background:linear-gradient(transparent 38%,var(--hl) 38%,var(--hl) 96%,transparent 96%);
-    -webkit-box-decoration-break:clone;box-decoration-break:clone}
-  .about{margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line);color:var(--ink2);font-size:13.5px;line-height:1.75}
-  .about h2{margin:22px 0 6px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:900;color:var(--ink)}
-  .about h2:first-child{margin-top:0}
-  .about p{margin:0 0 8px}
-  .about p[lang=en]{color:var(--muted);font-size:12.5px}
-  .about .steps{margin:12px 0;padding:0;list-style:none;display:flex;gap:6px;flex-wrap:wrap;counter-reset:s}
-  .about .steps li{counter-increment:s;padding:6px 11px 6px 8px;border:1px solid var(--line);border-radius:99px;
-    background:var(--surface);color:var(--ink);font-size:12.5px;font-weight:600}
-  .about .steps li::before{content:counter(s);display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;
-    border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:11px;font-weight:700;margin-right:6px}
-  .about .fit b{display:inline-block;margin:0 8px 4px 0;padding:1px 8px;border-radius:99px;font-size:12px;font-weight:700}
-  .about .fit b.yes{background:var(--accent-bg);color:var(--accent)}
-  .about .fit b.no{background:var(--line);color:var(--ink2)}
+  .about{margin:72px 0 0;color:var(--ink2);font-size:14px;line-height:1.7}
+  .about .mo{margin:0 0 64px}
+  .about h2{margin:0 0 8px;font-family:"Noto Serif TC",serif;font-size:27px;line-height:1.25;font-weight:900;color:var(--ink);letter-spacing:.01em}
+  .about .mo > p{margin:0 0 20px;font-size:15px}
+  .about .demo{pointer-events:none;user-select:none}
+  .about .demo .octl,.about .demo .g-head{position:static}
+  .about .demo .out{padding:12px 14px 14px}
+  .about .linkpill{display:flex;align-items:center;gap:10px;padding:10px 12px 10px 16px;border:1px solid var(--line);
+    border-radius:99px;background:var(--surface);font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink)}
+  .about .linkpill b{margin-left:auto;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;font-weight:600;
+    padding:6px 13px;border-radius:99px;background:var(--accent);color:var(--on-accent)}
+  .about .fine{margin:0 0 6px;text-align:center;font-size:12.5px;color:var(--muted)}
+  .about .fine[lang=en]{margin-bottom:40px}
   .about details{border-top:1px solid var(--line)}
   .about details:last-child{border-bottom:1px solid var(--line)}
-  .about summary{cursor:pointer;padding:9px 0;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}
+  .about summary{cursor:pointer;padding:11px 0;font-size:14px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}
   .about summary::-webkit-details-marker{display:none}
   .about summary::after{content:"+";color:var(--muted);font-weight:400}
   .about details[open] summary::after{content:"−"}
-  .about details p{margin:0 0 10px;color:var(--ink2)}
+  .about details p{margin:0 0 12px;color:var(--ink2)}
   body.viewer .about{display:none}
   .made{margin:22px 0 0;text-align:center;font-size:12px;color:var(--muted)}
   .made a{color:var(--accent)}
@@ -426,28 +425,68 @@
     </details>
   </div>
   <section class="about" id="about">
-    <h2>SheetSnap 是什麼</h2>
-    <p>貼上 Google 試算表網址或上傳 Excel，選一個看法，得到一個<span class="hl">手機好讀、不用登入</span>的分享網址。<span class="hl">資料不上傳</span>。</p>
-    <p lang="en">Turn a Google Sheet or an Excel file into a phone-friendly page you can share with one link. <span class="hl">Nothing is uploaded.</span></p>
-    <ol class="steps"><li>貼網址或丟檔案</li><li>選怎麼看</li><li>傳網址</li></ol>
-    <p class="fit"><b class="yes">適合</b>流程表、排班、帳表、名單、價目表、待辦<br><b class="no">不適合</b>財報、多層合併標題、雙向矩陣</p>
+    <div class="mo">
+      <h2>打開就是今天。</h2>
+      <p>不用找，日期自動停在今天，往後幾天一眼看完。</p>
+      <div class="demo phone" aria-hidden="true">
+        <div class="octl"><div class="orail groups">
+          <button tabindex="-1" class="now on">今天 3</button><button tabindex="-1">明天 2</button><button tabindex="-1">後天 5</button><button tabindex="-1">週六 1</button><button tabindex="-1">週日 2</button>
+        </div></div>
+        <div class="out">
+          <div class="g-head"><span class="g-name">今天</span><span class="g-cnt">3 筆</span></div>
+          <ol>
+            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t">場地佈置</p></div><div class="metas"><span class="m">小美</span><span class="m">阿德</span></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t">音響測試</p></div><div class="metas"><span class="m">阿德</span></div></div></li>
+            <li class="rec"><div class="lead">18:00</div><div><div class="titleline"><p class="t">志工報到</p></div><div class="metas"><span class="m">小美</span><span class="m">佩珊</span></div></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
 
-    <h2>常見問題</h2>
-    <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：<span class="hl">跳到今天、點名字只看他的、能搜尋</span>。</p></details>
-    <details><summary>資料會上傳嗎？</summary><p><span class="hl">不會</span>。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。</p></details>
-    <details><summary>支援哪些檔案？</summary><p><span class="hl">Google 試算表網址、.xlsx、.csv</span>。試算表權限要設「知道連結的任何人可檢視」。</p></details>
-    <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表<span class="hl">會</span>，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
-    <details><summary>數字是算出來的嗎？</summary><p>不是，每個數字都<span class="hl">直接引述表上原本就有的</span>，不自己加總。</p></details>
-    <details><summary>要收費嗎？</summary><p>測試期間<span class="hl">免費</span>。</p></details>
+    <div class="mo">
+      <h2>點一個名字，只看他的。</h2>
+      <p>六十個人各查各的，不用在表裡找自己。</p>
+      <div class="demo phone" aria-hidden="true">
+        <div class="octl"><div class="orail who">
+          <button tabindex="-1">小美 12</button><button tabindex="-1" class="on">阿德 9</button><button tabindex="-1">佩珊 7</button><button tabindex="-1">阿宏 5</button><button tabindex="-1">小芸 4</button>
+        </div></div>
+        <div class="out">
+          <div class="g-head"><span class="g-name">今天</span><span class="g-cnt">2 筆</span></div>
+          <ol>
+            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t">場地佈置</p></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t">音響測試</p></div></div></li>
+          </ol>
+          <div class="g-head"><span class="g-name">後天</span><span class="g-cnt">1 筆</span></div>
+          <ol><li class="rec"><div class="lead">10:00</div><div><div class="titleline"><p class="t">舞台拆卸</p></div></div></li></ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <h2>一個網址，不用登入。</h2>
+      <p>做表的人選一次，看的人打開就是。試算表改了，網址裡的內容跟著改。</p>
+      <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b>複製</b></div>
+    </div>
+
+    <p class="fine">資料不上傳 · 沒有後端 · 測試期間免費</p>
+    <p class="fine" lang="en">Turn a Google Sheet or an Excel file into a phone-friendly page you can share with one link. Nothing is uploaded.</p>
+
+    <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：跳到今天、點名字只看他的、能搜尋。</p></details>
+    <details><summary>資料會上傳嗎？</summary><p>不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。</p></details>
+    <details><summary>支援哪些檔案？</summary><p>Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。</p></details>
+    <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
+    <details><summary>適合什麼樣的表？</summary><p>一列標題、底下一列一筆的清單：流程表、排班、帳表、名單、價目表、待辦。財報、多層合併標題、雙向矩陣不適合。</p></details>
+    <details><summary>數字是算出來的嗎？</summary><p>不是，每個數字都直接引述表上原本就有的，不自己加總。</p></details>
+    <details><summary>要收費嗎？</summary><p>測試期間免費。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v47<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v48<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=47"></script>
+<script src="detect.js?v=48"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
