@@ -8,7 +8,7 @@ routes = [{ pattern = "t.sheetsnap.link", custom_domain = true }]
 [[d1_databases]]
 binding = "DB"
 database_name = "sheetsnap-stats"
-database_id = "TBD"
+database_id = "6199bbf7-3ec8-42f0-a3bf-224c5dfb7313"
 
 [observability]
 enabled = true

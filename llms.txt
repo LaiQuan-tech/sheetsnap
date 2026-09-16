@@ -13,7 +13,7 @@ SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼�
 - Numbers shown are quoted from the sheet, never computed by SheetSnap
 - Best for list-shaped sheets: event schedules, shift rosters, ledgers, contact lists, price lists, to-do lists
 - Not for financial statements, multi-level merged headers, two-way matrices, or invoice layouts
-- Privacy: static site, no backend, no upload
+- Privacy: static site, sheet content is never uploaded; only anonymous usage counts (which sheet was opened, random device id) are recorded
 - Pricing: free during testing
 - Languages: Traditional Chinese interface; English planned
 

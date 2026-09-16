@@ -67,7 +67,7 @@
         { "@type": "Question", "name": "跟直接傳試算表連結差在哪？",
           "acceptedAnswer": { "@type": "Answer", "text": "試算表連結打開是格子，要縮放、左右拖。SheetSnap 的連結打開是頁面：跳到今天、點名字只看他的、能搜尋。" } },
         { "@type": "Question", "name": "資料會上傳嗎？",
-          "acceptedAnswer": { "@type": "Answer", "text": "不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。" } },
+          "acceptedAnswer": { "@type": "Answer", "text": "內容不會。觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。我們只記使用次數：哪份表被打開幾次、用一個隨機編號分辨裝置，不含任何內容。" } },
         { "@type": "Question", "name": "支援哪些檔案？",
           "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。" } },
         { "@type": "Question", "name": "試算表改了，分享網址會跟著變嗎？",
@@ -468,11 +468,11 @@
       <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b>複製</b></div>
     </div>
 
-    <p class="fine">資料不上傳 · 沒有後端 · 測試期間免費</p>
+    <p class="fine">內容不上傳 · 只記使用次數 · 測試期間免費</p>
     <p class="fine" lang="en">Turn a Google Sheet or an Excel file into a phone-friendly page you can share with one link. Nothing is uploaded.</p>
 
     <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：跳到今天、點名字只看他的、能搜尋。</p></details>
-    <details><summary>資料會上傳嗎？</summary><p>不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。</p></details>
+    <details><summary>資料會上傳嗎？</summary><p>內容不會。觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。我們只記使用次數：哪份表被打開幾次、用一個隨機編號分辨裝置，不含任何內容。</p></details>
     <details><summary>支援哪些檔案？</summary><p>Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。</p></details>
     <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
     <details><summary>適合什麼樣的表？</summary><p>一列標題、底下一列一筆的清單：流程表、排班、帳表、名單、價目表、待辦。財報、多層合併標題、雙向矩陣不適合。</p></details>
@@ -480,13 +480,13 @@
     <details><summary>要收費嗎？</summary><p>測試期間免費。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v49<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v50<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=49"></script>
+<script src="detect.js?v=50"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -499,6 +499,36 @@ var VIEWER = false;        // 從分享網址打開的人
 function noindex(){
   var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex,nofollow';
   document.head.appendChild(m);
+}
+
+/* ── 使用量（不含任何內容）──
+   只記三件事：哪一份表（Google 試算表用它的 ID，上傳檔案用檔名的雜湊）、
+   哪一台裝置（隨機編號，存在這個瀏覽器裡）、做了什麼。
+   用來回答：多少人做表、一份表多少人看、同一個人回來看幾次。 */
+var TRACK_URL = 'https://t.sheetsnap.link/e', tracked = {};
+var VID = (function(){
+  try{
+    var v = localStorage.getItem('vid');
+    if(!v){ v = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('vid', v) }
+    return v;
+  }catch(e){ return 'anon' }
+})();
+function fnv(str){ var h = 0x811c9dc5; for(var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0 } return h.toString(16) }
+function sheetTag(){
+  if(SRC && SRC.type === 'gsheet') return 'g:' + SRC.id + (SRC.gid ? '/' + SRC.gid : '');
+  if(window.PARAMS && PARAMS.d) return 'd:' + fnv(PARAMS.d);
+  return 'f:' + fnv(String(sheetKey));
+}
+function track(ev, extra){
+  if(location.hostname !== 'sheetsnap.link') return;      // 本機測試不算
+  var p = { ev:ev, sheet:sheetTag(), vid:VID, role:VIEWER ? 'viewer' : 'maker',
+            src:SRC ? SRC.type : '', lang:document.documentElement.lang, view:(VIEW && VIEW.id) || '' };
+  for(var k in (extra || {})) p[k] = extra[k];
+  try{
+    var body = JSON.stringify(p);
+    if(!(navigator.sendBeacon && navigator.sendBeacon(TRACK_URL, body)))
+      fetch(TRACK_URL, { method:'POST', body:body, keepalive:true, mode:'cors' }).catch(function(){});
+  }catch(e){}
 }
 
 /* 使用者對「怎麼分段」的選擇要記住，同一份表不該問第二次。 */
@@ -619,6 +649,8 @@ function run(rows){
   if(TABLES.length > 1) say('這張工作表上並排著 ' + TABLES.length + ' 個獨立表格，已自動切開。');
   $('split').hidden = false;
   $('diag').hidden = false;
+  var tag = sheetTag();
+  if(!tracked[tag]){ tracked[tag] = 1; track(VIEWER ? 'open' : 'upload') }
   showTable(PARAMS.t && TABLES[+PARAMS.t] ? +PARAMS.t : 0);
 }
 
@@ -864,7 +896,7 @@ function applyView(v, remember){
   focusFilter = v.filter || null;
   outPicks = {};
   $('ovGroup').value = v.group === '__none__' ? '__none__' : v.group;
-  if(remember){ try{ localStorage.setItem(viewKey(), v.id) }catch(e){} }
+  if(remember){ try{ localStorage.setItem(viewKey(), v.id) }catch(e){}; track('view', { view:v.id }) }
   $('pick').hidden = true;
   $('split').hidden = false;
   $('curView').innerHTML = '目前：<b>' + esc(v.k) + '</b>';
@@ -1287,6 +1319,7 @@ var PARAMS = (function(){
 
 $('copyShare').addEventListener('click', function(){
   var t = $('shareUrl').value; if(!t) return;
+  track('share');
   var done = function(){ var b = $('copyShare'), o = b.textContent; b.textContent = '已複製 ✓'; setTimeout(function(){ b.textContent = o }, 1600) };
   if(navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){ $('shareUrl').select() });
   else $('shareUrl').select();
@@ -1311,6 +1344,8 @@ $('copyShare').addEventListener('click', function(){
     }catch(e){ say('這個分享網址讀不出來，可能被訊息軟體截斷了。', true); }
   }
 })();
+
+$('made').addEventListener('click', function(e){ if(e.target.closest('a')) track('made') });
 
 $('hardReload').addEventListener('click', function(){
   location.href = location.pathname + '?v=' + Date.now();
