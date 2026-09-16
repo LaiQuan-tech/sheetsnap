@@ -11,6 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import crypto from 'node:crypto';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const g = {};
@@ -65,7 +66,7 @@ function expand(args) {
   for (const a of args) {
     if (/^https?:/.test(a)) { out.push(a); continue; }
     if (fs.existsSync(a) && fs.statSync(a).isDirectory()) {
-      fs.readdirSync(a).filter(f => /\.(csv|tsv|xlsx|xls|xlsm)$/i.test(f))
+      fs.readdirSync(a).filter(f => /\.(csv|tsv|xlsx|xls|xlsm)$/i.test(f)).sort()
         .forEach(f => out.push(path.join(a, f)));
     } else out.push(a);
   }
@@ -131,33 +132,62 @@ function checkup(a, srcRows) {
 }
 
 /* ── 跑 ── */
-const C = { d: s => `\x1b[2m${s}\x1b[0m`, b: s => `\x1b[1m${s}\x1b[0m`,
-            g: s => `\x1b[32m${s}\x1b[0m`, y: s => `\x1b[33m${s}\x1b[0m`, r: s => `\x1b[31m${s}\x1b[0m` };
-
-const args = expand(process.argv.slice(2));
+/* --json：把每張表的判定印成 JSON 給 stdout，人看的進度走 stderr。
+   為什麼要這個：這套語料存在的理由是抓「修 A 弄壞 B」，
+   但只印到畫面上就沒有「上次的結果」可以比對，回歸得靠人眼記住上一輪的數字。
+   刻意不放時間戳——baseline 要進版控，每跑一次就換一行的東西會讓 diff 全是雜訊；
+   跑的時間由 commit 本身記錄。改了 detect.js 或 audit.mjs 指紋就會變，
+   那是「結果應該不一樣」的訊號，不是雜訊。 */
+const rawArgs = process.argv.slice(2);
+const JSONOUT = rawArgs.includes('--json');
+const args = expand(rawArgs.filter(a => a !== '--json'));
 if (!args.length) {
-  console.error('用法：node audit.mjs <檔案 / 資料夾 / 試算表網址> [更多...]');
+  console.error('用法：node audit.mjs <檔案 / 資料夾 / 試算表網址> [更多...] [--json]');
   process.exit(1);
 }
 
+const P = s => process.stdout.write(s + '\n');
+const say = JSONOUT ? s => process.stderr.write(s + '\n') : P;
+const ident = s => s;
+const C = JSONOUT
+  ? { d: ident, b: ident, g: ident, y: ident, r: ident }
+  : { d: s => `\x1b[2m${s}\x1b[0m`, b: s => `\x1b[1m${s}\x1b[0m`,
+      g: s => `\x1b[32m${s}\x1b[0m`, y: s => `\x1b[33m${s}\x1b[0m`, r: s => `\x1b[31m${s}\x1b[0m` };
+
+const sha = b => crypto.createHash('sha256').update(b).digest('hex').slice(0, 12);
+const roleName = r => (r && r.name) || null;
+
 let clean = 0, flagged = 0, broken = 0, skipped = 0;
-const shapes = {}, allFlags = {};
+const shapes = {}, allFlags = {}, records = [];
 
 for (const src of args) {
+  const base = path.basename(src);
   let sheets;
   try { sheets = await load(src); }
-  catch (e) { broken++; console.log(`\n${C.r('✗')} ${src}\n  ${C.r(e.message)}`); continue; }
+  catch (e) {
+    broken++;
+    records.push({ src: base, sheet: null, status: 'unreadable', why: e.message });
+    say(`\n${C.r('✗')} ${src}\n  ${C.r(e.message)}`);
+    continue;
+  }
 
   for (const sh of sheets) {
     let tables;
     try { tables = SheetShape.analyseSheet(sh.grid).tables; }
-    catch (e) { broken++; console.log(`\n${C.r('✗')} ${sh.name}\n  ${C.r('引擎爆掉：' + e.message)}`); continue; }
+    catch (e) {
+      broken++;
+      records.push({ src: base, sheet: sh.name, status: 'engine-threw', why: e.message });
+      say(`\n${C.r('✗')} ${sh.name}\n  ${C.r('引擎爆掉：' + e.message)}`);
+      continue;
+    }
 
     // 說明頁、下拉選單來源、圖表暫存區不是「壞掉」，是本來就不該渲染
     const v = SheetShape.sheetVerdict(sh.grid, tables);
     if (v.show !== true) {
       skipped++;
-      console.log(`${C.d('–')} ${C.d(sh.name)} ${C.d(v.why)}`);
+      records.push({ src: base, sheet: sh.name, status: 'not-shown', show: v.show, why: v.why,
+                     srcRows: sh.grid.length });
+      say(`${C.d('–')} ${C.d(sh.name)} ${C.d(v.why)}`);
       continue;
     }
 
@@ -165,25 +195,53 @@ for (const src of args) {
       const flags = checkup(a, sh.grid.length);
       const tag = tables.length > 1 ? ` [表${i + 1}/${tables.length}]` : '';
       shapes[a.shape.label] = (shapes[a.shape.label] || 0) + 1;
+      flags.forEach(f => { allFlags[f.split('：')[0]] = (allFlags[f.split('：')[0]] || 0) + 1; });
+      if (flags.length) flagged++; else clean++;
+
+      records.push({
+        src: base, sheet: sh.name, status: flags.length ? 'flagged' : 'clean',
+        table: i + 1, of: tables.length,
+        shape: a.shape.shape, label: a.shape.label,
+        reason: a.shape.reason || null,        // 引擎為什麼這樣判——真正要人複核的東西
+        srcRows: sh.grid.length, rows: a.rows.length,
+        cols: a.cols.length, live: a.cols.filter(c => c.type !== 'empty').length,
+        headerRow: a.headerRow, title: a.title || null,
+        notes: a.notes || [],                  // 做過哪些結構轉換
+        roles: { title: roleName(a.roles.title), group: roleName(a.roles.group),
+                 lead: roleName(a.roles.lead), person: roleName(a.roles.person) },
+        colTypes: a.header.map((h, j) => `${h}:${a.cols[j].type}`),
+        flags
+      });
+
       if (flags.length) {
-        flagged++;
-        console.log(`\n${C.y('!')} ${C.b(sh.name + tag)}`);
-        console.log(C.d(`  ${a.shape.label} · ${a.rows.length} 列 · 標題列第 ${a.headerRow + 1} 列` +
-                        `${a.title ? ' · ' + a.title.slice(0, 40) : ''}`));
-        flags.forEach(f => { console.log(C.y(`  · ${f}`)); allFlags[f.split('：')[0]] = (allFlags[f.split('：')[0]] || 0) + 1; });
+        say(`\n${C.y('!')} ${C.b(sh.name + tag)}`);
+        say(C.d(`  ${a.shape.label} · ${a.rows.length} 列 · 標題列第 ${a.headerRow + 1} 列` +
+                `${a.title ? ' · ' + a.title.slice(0, 40) : ''}`));
+        flags.forEach(f => say(C.y(`  · ${f}`)));
       } else {
-        clean++;
-        console.log(`${C.g('✓')} ${sh.name + tag} ${C.d(a.shape.label + ' · ' + a.rows.length + ' 列')}`);
+        say(`${C.g('✓')} ${sh.name + tag} ${C.d(a.shape.label + ' · ' + a.rows.length + ' 列')}`);
       }
     });
   }
 }
 
-console.log('\n' + '='.repeat(66));
-console.log(C.b(`${clean} 乾淨 · ${flagged} 可疑 · ${skipped} 非資料頁（略過） · ${broken} 讀不進來`));
-console.log(C.d('形狀分佈：' + Object.entries(shapes).map(([k, v]) => `${k} ${v}`).join('、')));
+// 鍵要排序：計數沒變但「第一次遇到的順序」變了，不該讓 baseline 的 diff 整段重排
+const sortKeys = o => Object.fromEntries(Object.entries(o).sort((a, b) => a[0] < b[0] ? -1 : 1));
+const summary = { inputs: args.length, sheets: clean + flagged + skipped + broken,
+                  clean, flagged, skipped, broken,
+                  shapes: sortKeys(shapes), flags: sortKeys(allFlags) };
+
+say('\n' + '='.repeat(66));
+say(C.b(`${clean} 乾淨 · ${flagged} 可疑 · ${skipped} 非資料頁（略過） · ${broken} 讀不進來`));
+say(C.d('形狀分佈：' + Object.entries(shapes).map(([k, v]) => `${k} ${v}`).join('、')));
 if (Object.keys(allFlags).length) {
-  console.log(C.d('最常見的問題：'));
+  say(C.d('最常見的問題：'));
   Object.entries(allFlags).sort((a, b) => b[1] - a[1]).slice(0, 5)
-    .forEach(([k, v]) => console.log(C.d(`  ${v}×  ${k}`)));
+    .forEach(([k, v]) => say(C.d(`  ${v}×  ${k}`)));
+}
+
+if (JSONOUT) {
+  const fp = { engine: sha(fs.readFileSync(path.join(here, 'detect.js'))),
+               audit: sha(fs.readFileSync(fileURLToPath(import.meta.url))) };
+  P(JSON.stringify({ fingerprint: fp, summary, records }, null, 1));
 }

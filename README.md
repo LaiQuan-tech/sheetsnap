@@ -24,9 +24,16 @@ npm install
 node test.mjs                          # 回歸測試（9 個已知案例）
 ./corpus-ms/fetch.sh                   # 下載 163 個微軟公開範本
 node audit.mjs corpus-ms/files         # 批次體檢
+node audit.mjs corpus-ms/files --json > corpus-ms/baseline.json   # 存成可 diff 的 baseline
 node header-quality.mjs corpus-ms/files # 欄名品質單一指標
 node fidelity.mjs corpus-ms/files      # 內容忠實度
 ```
+
+`--json` 把每張表的判定寫成可進版控的 baseline：形狀、引擎給的理由、
+欄位型別、角色、體檢旗標。改完引擎再跑一次、`git diff` 一看就知道動到了哪幾張表——
+「修 A 弄壞 B」靠人眼記上一輪的數字是記不住的。刻意不寫時間戳，
+diff 才不會每次都整片變動；`fingerprint` 記的是 `detect.js` 與 `audit.mjs` 的雜湊，
+結果該不該變由它說明。進度走 stderr，所以 stdout 可以直接重導成檔案。
 
 **改任何規則前後都跑一次。** 放寬一條規則很容易把別的表吸進來——
 這四支工具就是為了讓那件事被抓到而存在。
