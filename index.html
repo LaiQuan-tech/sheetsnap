@@ -64,22 +64,18 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "SheetSnap 是什麼？",
-          "acceptedAnswer": { "@type": "Answer", "text": "SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼上試算表網址或上傳 .xlsx，選一個看法，就得到一個分享網址；打開的人不用登入、不用裝 app。" } },
-        { "@type": "Question", "name": "跟直接傳 Google 試算表的連結有什麼不同？",
-          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表的連結在手機上打開是一格一格的表格，要縮放、左右拖。SheetSnap 的連結打開是一頁一頁的內容：排程會直接跳到今天，點一個名字只看他的事，也能搜尋。" } },
-        { "@type": "Question", "name": "資料會上傳到 SheetSnap 的伺服器嗎？",
-          "acceptedAnswer": { "@type": "Answer", "text": "不會。SheetSnap 是純靜態網頁，沒有後端。Google 試算表由觀看者自己的瀏覽器直接讀取；上傳的 Excel 檔只在你的手機或電腦裡處理。" } },
+        { "@type": "Question", "name": "跟直接傳試算表連結差在哪？",
+          "acceptedAnswer": { "@type": "Answer", "text": "試算表連結打開是格子，要縮放、左右拖。SheetSnap 的連結打開是頁面：跳到今天、點名字只看他的、能搜尋。" } },
+        { "@type": "Question", "name": "資料會上傳嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。" } },
         { "@type": "Question", "name": "支援哪些檔案？",
-          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址（權限需設為「知道連結的任何人可檢視」）、.xlsx 與 .csv 檔案。" } },
-        { "@type": "Question", "name": "什麼樣的表適合？",
-          "acceptedAnswer": { "@type": "Answer", "text": "一列標題、底下一列一筆的清單型表格最適合：活動流程表、排班表、帳表、名單、價目表、待辦清單。財務報表、多層合併標題、雙向矩陣、發票版面這類用試算表排版出來的文件不適合。" } },
-        { "@type": "Question", "name": "試算表更新了，分享出去的網址會跟著更新嗎？",
-          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表會：每次打開網址都是當下的內容。上傳的 Excel 檔是當時的快照，改了要重新產生。" } },
-        { "@type": "Question", "name": "看到的數字是 SheetSnap 算出來的嗎？",
-          "acceptedAnswer": { "@type": "Answer", "text": "不是。頁面上的每一個數字都直接引述試算表裡原本就有的內容，SheetSnap 不自己加總或計算。" } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址（權限設「知道連結的任何人可檢視」）、.xlsx、.csv。" } },
+        { "@type": "Question", "name": "試算表改了，分享網址會跟著變嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。" } },
+        { "@type": "Question", "name": "數字是算出來的嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不是，每個數字都直接引述表上原本就有的，不自己加總。" } },
         { "@type": "Question", "name": "要收費嗎？",
-          "acceptedAnswer": { "@type": "Answer", "text": "目前測試期間免費。" } }
+          "acceptedAnswer": { "@type": "Answer", "text": "測試期間免費。" } }
       ]
     }
   ]
@@ -196,11 +192,21 @@
   .about{margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line);color:var(--ink2);font-size:13.5px;line-height:1.75}
   .about h2{margin:22px 0 6px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:900;color:var(--ink)}
   .about h2:first-child{margin-top:0}
-  .about p{margin:0 0 10px}
-  .about p[lang=en]{color:var(--muted)}
-  .about dl{margin:0}
-  .about dt{font-weight:700;color:var(--ink);margin-top:10px}
-  .about dd{margin:2px 0 0}
+  .about p{margin:0 0 8px}
+  .about p[lang=en]{color:var(--muted);font-size:12.5px}
+  .about .steps{margin:12px 0;padding:0;list-style:none;display:flex;gap:6px;flex-wrap:wrap;counter-reset:s}
+  .about .steps li{counter-increment:s;padding:6px 11px 6px 8px;border:1px solid var(--line);border-radius:99px;
+    background:var(--surface);color:var(--ink);font-size:12.5px;font-weight:600}
+  .about .steps li::before{content:counter(s);display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;
+    border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:11px;margin-right:6px}
+  .about .fit b{display:inline-block;min-width:3.2em;color:var(--ink);font-weight:700}
+  .about details{border-top:1px solid var(--line)}
+  .about details:last-child{border-bottom:1px solid var(--line)}
+  .about summary{cursor:pointer;padding:9px 0;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}
+  .about summary::-webkit-details-marker{display:none}
+  .about summary::after{content:"+";color:var(--muted);font-weight:400}
+  .about details[open] summary::after{content:"−"}
+  .about details p{margin:0 0 10px;color:var(--ink2)}
   body.viewer .about{display:none}
   .made{margin:22px 0 0;text-align:center;font-size:12px;color:var(--muted)}
   .made a{color:var(--accent)}
@@ -416,32 +422,27 @@
   </div>
   <section class="about" id="about">
     <h2>SheetSnap 是什麼</h2>
-    <p>SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼上試算表網址或上傳 .xlsx，選一個看法，就得到一個分享網址；打開的人不用登入、不用裝 app。整個過程在瀏覽器裡完成，沒有後端，資料不會上傳。</p>
-    <p lang="en">SheetSnap turns a Google Sheet or an Excel file into a page that is easy to read on a phone. Paste a link or drop an .xlsx, pick how you want to read it — by date, by person, key numbers, or search — and share one URL. Nothing is uploaded; everything runs in the browser.</p>
-
-    <h2>跟直接傳試算表連結差在哪</h2>
-    <p>Google 試算表的連結在手機上打開是一格一格的表格，要縮放、左右拖，找不到今天，也找不到自己。SheetSnap 的連結打開是一頁一頁的內容：排程直接跳到今天，點一個名字只看他的事，能搜尋。做表的人選一次看法，看的人什麼都不用選。</p>
-
-    <h2>適合的表</h2>
-    <p>一列標題、底下一列一筆的清單型表格：活動流程表、排班表、帳表、名單、價目表、待辦清單。財務報表、多層合併標題、雙向矩陣、發票版面這類用試算表排版出來的文件不適合，遇到會明講。</p>
+    <p>貼上 Google 試算表網址或上傳 Excel，選一個看法，得到一個手機好讀、不用登入的分享網址。資料不上傳。</p>
+    <p lang="en">Turn a Google Sheet or an Excel file into a phone-friendly page you can share with one link. Nothing is uploaded.</p>
+    <ol class="steps"><li>貼網址或丟檔案</li><li>選怎麼看</li><li>傳網址</li></ol>
+    <p class="fit"><b>適合</b>流程表、排班、帳表、名單、價目表、待辦<br><b>不適合</b>財報、多層合併標題、雙向矩陣</p>
 
     <h2>常見問題</h2>
-    <dl>
-      <dt>資料會上傳嗎？</dt><dd>不會。Google 試算表由觀看者自己的瀏覽器直接讀取；上傳的 Excel 檔只在你的裝置裡處理。</dd>
-      <dt>支援哪些檔案？</dt><dd>Google 試算表網址（權限設為「知道連結的任何人可檢視」）、.xlsx、.csv。</dd>
-      <dt>試算表更新了，分享網址會跟著更新嗎？</dt><dd>Google 試算表會，每次打開都是當下的內容；上傳的 Excel 檔是當時的快照。</dd>
-      <dt>頁面上的數字是算出來的嗎？</dt><dd>不是。每個數字都直接引述試算表裡原本就有的內容，SheetSnap 不自己加總。</dd>
-      <dt>要收費嗎？</dt><dd>目前測試期間免費。</dd>
-    </dl>
+    <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：跳到今天、點名字只看他的、能搜尋。</p></details>
+    <details><summary>資料會上傳嗎？</summary><p>不會。沒有後端，觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。</p></details>
+    <details><summary>支援哪些檔案？</summary><p>Google 試算表網址（權限設「知道連結的任何人可檢視」）、.xlsx、.csv。</p></details>
+    <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
+    <details><summary>數字是算出來的嗎？</summary><p>不是，每個數字都直接引述表上原本就有的，不自己加總。</p></details>
+    <details><summary>要收費嗎？</summary><p>測試期間免費。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v42<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v43<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=42"></script>
+<script src="detect.js?v=43"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
