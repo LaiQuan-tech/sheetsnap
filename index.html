@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
 <!-- 測試期間會頻繁更新，不讓瀏覽器抱著舊的 HTML 不放 -->
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
-<title>SheetSnap</title>
+<title>SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁</title>
+<meta name="apple-mobile-web-app-title" content="SheetSnap">
 <meta name="description" content="把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。貼上 Google 試算表網址或上傳 xlsx，資料不上傳，選一個看法就能分享。">
 <link rel="canonical" href="https://sheetsnap.link/">
 <!-- Favicon：Google 要求邊長是 48 的倍數、網址固定不常變，所以這幾個不加版本參數 -->
@@ -20,7 +20,7 @@
 <!-- Open Graph / Twitter：LINE、Facebook、Slack 貼連結時的預覽卡 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SheetSnap">
-<meta property="og:title" content="SheetSnap">
+<meta property="og:title" content="SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁">
 <meta property="og:description" content="把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。">
 <meta property="og:url" content="https://sheetsnap.link/">
 <meta property="og:image" content="https://sheetsnap.link/og.png">
@@ -31,11 +31,60 @@
 <meta property="og:image:alt" content="SheetSnap：把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SheetSnap">
+<meta name="twitter:title" content="SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁">
 <meta name="twitter:description" content="把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。">
 <meta name="twitter:image" content="https://sheetsnap.link/og.png">
 <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1114" media="(prefers-color-scheme: dark)">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://sheetsnap.link/#app",
+      "name": "SheetSnap",
+      "url": "https://sheetsnap.link/",
+      "description": "把 Google 試算表或 Excel 檔變成手機上好讀的網頁：貼上網址或上傳 .xlsx，選一個看法（照時間、只看某個人、重點數字、搜尋），產生一個不用登入就能看的分享網址。資料不上傳，全部在瀏覽器裡完成。",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": ["zh-Hant", "en"],
+      "image": "https://sheetsnap.link/og.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "測試期間免費" },
+      "publisher": { "@id": "https://sheetsnap.link/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://sheetsnap.link/#org",
+      "name": "SheetSnap",
+      "url": "https://sheetsnap.link/",
+      "logo": "https://sheetsnap.link/icon-512.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "SheetSnap 是什麼？",
+          "acceptedAnswer": { "@type": "Answer", "text": "SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼上試算表網址或上傳 .xlsx，選一個看法，就得到一個分享網址；打開的人不用登入、不用裝 app。" } },
+        { "@type": "Question", "name": "跟直接傳 Google 試算表的連結有什麼不同？",
+          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表的連結在手機上打開是一格一格的表格，要縮放、左右拖。SheetSnap 的連結打開是一頁一頁的內容：排程會直接跳到今天，點一個名字只看他的事，也能搜尋。" } },
+        { "@type": "Question", "name": "資料會上傳到 SheetSnap 的伺服器嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不會。SheetSnap 是純靜態網頁，沒有後端。Google 試算表由觀看者自己的瀏覽器直接讀取；上傳的 Excel 檔只在你的手機或電腦裡處理。" } },
+        { "@type": "Question", "name": "支援哪些檔案？",
+          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表網址（權限需設為「知道連結的任何人可檢視」）、.xlsx 與 .csv 檔案。" } },
+        { "@type": "Question", "name": "什麼樣的表適合？",
+          "acceptedAnswer": { "@type": "Answer", "text": "一列標題、底下一列一筆的清單型表格最適合：活動流程表、排班表、帳表、名單、價目表、待辦清單。財務報表、多層合併標題、雙向矩陣、發票版面這類用試算表排版出來的文件不適合。" } },
+        { "@type": "Question", "name": "試算表更新了，分享出去的網址會跟著更新嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "Google 試算表會：每次打開網址都是當下的內容。上傳的 Excel 檔是當時的快照，改了要重新產生。" } },
+        { "@type": "Question", "name": "看到的數字是 SheetSnap 算出來的嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不是。頁面上的每一個數字都直接引述試算表裡原本就有的內容，SheetSnap 不自己加總或計算。" } },
+        { "@type": "Question", "name": "要收費嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "目前測試期間免費。" } }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
   :root{
@@ -144,6 +193,15 @@
     padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
   .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
   .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
+  .about{margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line);color:var(--ink2);font-size:13.5px;line-height:1.75}
+  .about h2{margin:22px 0 6px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:900;color:var(--ink)}
+  .about h2:first-child{margin-top:0}
+  .about p{margin:0 0 10px}
+  .about p[lang=en]{color:var(--muted)}
+  .about dl{margin:0}
+  .about dt{font-weight:700;color:var(--ink);margin-top:10px}
+  .about dd{margin:2px 0 0}
+  body.viewer .about{display:none}
   .made{margin:22px 0 0;text-align:center;font-size:12px;color:var(--muted)}
   .made a{color:var(--accent)}
   body.viewer .panel.input{display:none}
@@ -356,14 +414,34 @@
     </section>
     </details>
   </div>
+  <section class="about" id="about">
+    <h2>SheetSnap 是什麼</h2>
+    <p>SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼上試算表網址或上傳 .xlsx，選一個看法，就得到一個分享網址；打開的人不用登入、不用裝 app。整個過程在瀏覽器裡完成，沒有後端，資料不會上傳。</p>
+    <p lang="en">SheetSnap turns a Google Sheet or an Excel file into a page that is easy to read on a phone. Paste a link or drop an .xlsx, pick how you want to read it — by date, by person, key numbers, or search — and share one URL. Nothing is uploaded; everything runs in the browser.</p>
+
+    <h2>跟直接傳試算表連結差在哪</h2>
+    <p>Google 試算表的連結在手機上打開是一格一格的表格，要縮放、左右拖，找不到今天，也找不到自己。SheetSnap 的連結打開是一頁一頁的內容：排程直接跳到今天，點一個名字只看他的事，能搜尋。做表的人選一次看法，看的人什麼都不用選。</p>
+
+    <h2>適合的表</h2>
+    <p>一列標題、底下一列一筆的清單型表格：活動流程表、排班表、帳表、名單、價目表、待辦清單。財務報表、多層合併標題、雙向矩陣、發票版面這類用試算表排版出來的文件不適合，遇到會明講。</p>
+
+    <h2>常見問題</h2>
+    <dl>
+      <dt>資料會上傳嗎？</dt><dd>不會。Google 試算表由觀看者自己的瀏覽器直接讀取；上傳的 Excel 檔只在你的裝置裡處理。</dd>
+      <dt>支援哪些檔案？</dt><dd>Google 試算表網址（權限設為「知道連結的任何人可檢視」）、.xlsx、.csv。</dd>
+      <dt>試算表更新了，分享網址會跟著更新嗎？</dt><dd>Google 試算表會，每次打開都是當下的內容；上傳的 Excel 檔是當時的快照。</dd>
+      <dt>頁面上的數字是算出來的嗎？</dt><dd>不是。每個數字都直接引述試算表裡原本就有的內容，SheetSnap 不自己加總。</dd>
+      <dt>要收費嗎？</dt><dd>目前測試期間免費。</dd>
+    </dl>
+  </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v41<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v42<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=41"></script>
+<script src="detect.js?v=42"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -372,6 +450,11 @@ var SHEETS = [], curSheet = 0;
 var VIEWS = [], focusFilter = null, VIEW = null;
 var SRC = null;            // {type:'gsheet', id, gid} 或 {type:'file'}
 var VIEWER = false;        // 從分享網址打開的人
+// 分享出去的頁面裝的是別人的資料，不該被搜尋引擎收錄；首頁才要被找到
+function noindex(){
+  var m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex,nofollow';
+  document.head.appendChild(m);
+}
 
 /* 使用者對「怎麼分段」的選擇要記住，同一份表不該問第二次。 */
 function choiceKey(){ return 'shape-choice:' + sheetKey + ':' + cur }
@@ -1167,7 +1250,7 @@ $('copyShare').addEventListener('click', function(){
 // 收到分享網址的人：直接看到成品，不看輸入框、不被問
 (function(){
   if(PARAMS.s){
-    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false;
+    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false; noindex();
     loadUrl('https://docs.google.com/spreadsheets/d/' + PARAMS.s + '/edit' + (PARAMS.gid ? '?gid=' + PARAMS.gid : ''));
     // 釘在主畫面或放在背景的分頁，回來時不會重新載入，會一直看到舊表。
     // 離開超過五分鐘再回來就整頁重載，拿最新的。
@@ -1176,7 +1259,7 @@ $('copyShare').addEventListener('click', function(){
       if(document.visibilityState === 'visible' && Date.now() - openedAt > 5 * 60 * 1000) location.reload();
     });
   } else if(PARAMS.d && window.LZString){
-    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false;
+    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false; noindex();
     try{
       var grid = JSON.parse(LZString.decompressFromEncodedURIComponent(PARAMS.d));
       SRC = { type:'file' }; sheetKey = 'shared'; SHEETS = []; renderSheetTabs(); run(grid);

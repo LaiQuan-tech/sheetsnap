@@ -1,0 +1,22 @@
+# SheetSnap
+
+> SheetSnap turns a Google Sheet or an Excel (.xlsx / .csv) file into a page that is easy to read on a phone. Paste a link or drop a file, pick how you want to read it (by date, by person, key numbers, or search), and share one URL that opens without login or an app. Nothing is uploaded: the site is static, the viewer's browser reads the sheet directly, and uploaded files are processed on the device.
+
+SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼上網址或上傳 .xlsx，選一個看法（照時間、只看某個人、重點數字、搜尋），得到一個不用登入就能看的分享網址。資料不上傳，全部在瀏覽器裡完成。
+
+## Facts
+
+- URL: https://sheetsnap.link/
+- Input: Google Sheets link (sharing set to "anyone with the link can view"), .xlsx, .csv
+- Output: one shareable URL; viewers never log in or install anything; the sheet's author chooses the view once
+- Google Sheets links stay live (every open reads the current sheet); uploaded files are a snapshot
+- Numbers shown are quoted from the sheet, never computed by SheetSnap
+- Best for list-shaped sheets: event schedules, shift rosters, ledgers, contact lists, price lists, to-do lists
+- Not for financial statements, multi-level merged headers, two-way matrices, or invoice layouts
+- Privacy: static site, no backend, no upload
+- Pricing: free during testing
+- Languages: Traditional Chinese interface; English planned
+
+## Pages
+
+- [Home](https://sheetsnap.link/): the app and the FAQ
