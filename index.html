@@ -8,23 +8,28 @@
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <title>SheetSnap</title>
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png?v=40">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png?v=40">
+<link rel="manifest" href="manifest.webmanifest?v=40">
+<meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1114" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
   :root{
     --bg:#f3f4f6; --surface:#fff; --ink:#16191d; --ink2:#4b5563; --muted:#8b94a0;
-    --line:#e2e5ea; --accent:#427a3a; --accent-bg:#e9f1e4; --on-accent:#fff;   /* 美鈔綠 */
+    --line:#e2e5ea; --accent:#0c744a; --accent-bg:#e4f2ea; --on-accent:#fff;   /* logo 的綠 */
     --ok:#1c7a4a; --ok-bg:#e6f4ec; --warn:#9a6b00; --warn-bg:#fbf1d9;
     --paper:#f6f2e6; --card:#fffdf6; --sunk:#efe9d8; --pink:#231e18; --pmuted:#8a7d6b;
     --prule:#e2d9c3; --cinnabar:#b3261e; --gold:#7d5b12; --gold-bg:#f8edc9;
-    --strap:#e0b23a; --strap-ink:#2a1f05; --strap-bg:#f8edc9;   /* 鈔票捆條的芥末黃與紙白 */
+    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc;   /* logo 的黃 */
   }
   @media (prefers-color-scheme:dark){:root{
     --bg:#0f1114; --surface:#171a1f; --ink:#e8ebef; --ink2:#aeb6c0; --muted:#79828e;
-    --line:#272c33; --accent:#85bb65; --accent-bg:#1c281a; --on-accent:#0f1114;  /* 深色底用鈔票本身的淺綠，字反過來用深色 */
+    --line:#272c33; --accent:#4fc38f; --accent-bg:#142a1f; --on-accent:#0f1114;  /* 深色底把 logo 綠提亮，字反過來用深色 */
     --ok:#5cc48b; --ok-bg:#14291e; --warn:#d4a63c; --warn-bg:#2b2312;
     --paper:#13110e; --card:#1d1a15; --sunk:#171410; --pink:#f0e9db; --pmuted:#948877;
     --prule:#332d24; --cinnabar:#e4756a; --gold:#e0bd63; --gold-bg:#2f2712;
-    --strap:#d3a838; --strap-ink:#1a1400; --strap-bg:#2f2712;
+    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d;
   }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -32,8 +37,8 @@
   .wrap{max-width:560px;margin:0 auto;padding:20px 16px 60px}
   code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
 
-  header h1{font-family:"Noto Serif TC",serif;font-size:30px;font-weight:900;margin:0;letter-spacing:.01em;color:var(--accent)}
-  header h1::after{content:"";display:block;width:48px;height:5px;border-radius:3px;background:var(--strap);margin-top:4px}
+  header h1{margin:0;line-height:0}
+  header h1 img{height:36px;width:auto;display:block}
   header p{margin:8px 0 0;color:var(--ink2);font-size:14.5px;line-height:1.65}
 
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:18px}
@@ -255,7 +260,10 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>SheetSnap</h1>
+    <h1><a href="./"><picture>
+      <source srcset="logo-dark.png?v=40" media="(prefers-color-scheme: dark)">
+      <img src="logo.png?v=40" alt="SheetSnap" width="400" height="74">
+    </picture></a></h1>
     <p>把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。</p>
   </header>
 
@@ -326,13 +334,13 @@
     </details>
   </div>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v39<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v40<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=39"></script>
+<script src="detect.js?v=40"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -1138,6 +1146,12 @@ $('copyShare').addEventListener('click', function(){
   if(PARAMS.s){
     VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false;
     loadUrl('https://docs.google.com/spreadsheets/d/' + PARAMS.s + '/edit' + (PARAMS.gid ? '?gid=' + PARAMS.gid : ''));
+    // 釘在主畫面或放在背景的分頁，回來時不會重新載入，會一直看到舊表。
+    // 離開超過五分鐘再回來就整頁重載，拿最新的。
+    var openedAt = Date.now();
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'visible' && Date.now() - openedAt > 5 * 60 * 1000) location.reload();
+    });
   } else if(PARAMS.d && window.LZString){
     VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false;
     try{
