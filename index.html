@@ -199,9 +199,9 @@
   .about .steps li{counter-increment:s;padding:6px 11px 6px 8px;border:1px solid var(--line);border-radius:99px;
     background:var(--surface);color:var(--ink);font-size:12.5px;font-weight:600}
   .about .steps li::before{content:counter(s);display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;
-    border-radius:50%;background:var(--strap);color:var(--strap-ink);font-size:11px;font-weight:700;margin-right:6px}
+    border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:11px;font-weight:700;margin-right:6px}
   .about .fit b{display:inline-block;margin:0 8px 4px 0;padding:1px 8px;border-radius:99px;font-size:12px;font-weight:700}
-  .about .fit b.yes{background:var(--strap);color:var(--strap-ink)}
+  .about .fit b.yes{background:var(--accent-bg);color:var(--accent)}
   .about .fit b.no{background:var(--line);color:var(--ink2)}
   .about details{border-top:1px solid var(--line)}
   .about details:last-child{border-bottom:1px solid var(--line)}
@@ -439,13 +439,13 @@
     <details><summary>要收費嗎？</summary><p>測試期間<span class="hl">免費</span>。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v44<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v45<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=44"></script>
+<script src="detect.js?v=45"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
