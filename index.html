@@ -89,7 +89,7 @@
     --ok:#1c7a4a; --ok-bg:#e6f4ec; --warn:#9a6b00; --warn-bg:#fbf1d9;
     --paper:#f6f2e6; --card:#fffdf6; --sunk:#efe9d8; --pink:#231e18; --pmuted:#8a7d6b;
     --prule:#e2d9c3; --cinnabar:#b3261e; --gold:#7d5b12; --gold-bg:#f8edc9;
-    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc; --hl:#ffe9a6;   /* logo 的黃；hl 是螢光筆 */
+    --strap:#ffc318; --strap-ink:#2a1f05; --strap-bg:#fff3cc;   /* logo 的黃 */
   }
   @media (prefers-color-scheme:dark){:root{
     --bg:#0f1114; --surface:#171a1f; --ink:#e8ebef; --ink2:#aeb6c0; --muted:#79828e;
@@ -97,7 +97,7 @@
     --ok:#5cc48b; --ok-bg:#14291e; --warn:#d4a63c; --warn-bg:#2b2312;
     --paper:#13110e; --card:#1d1a15; --sunk:#171410; --pink:#f0e9db; --pmuted:#948877;
     --prule:#332d24; --cinnabar:#e4756a; --gold:#e0bd63; --gold-bg:#2f2712;
-    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d; --hl:#4d3f0e;
+    --strap:#f0b818; --strap-ink:#1a1400; --strap-bg:#332a0d;
   }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -189,7 +189,8 @@
     padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
   .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
   .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
-  .hl{background:linear-gradient(transparent 42%,var(--hl) 42%,var(--hl) 94%,transparent 94%);padding:0 2px;border-radius:2px}
+  .hl{background:var(--strap);color:var(--strap-ink);font-weight:600;padding:1px 5px;border-radius:4px;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone}
   .about{margin:44px 0 0;padding-top:22px;border-top:1px solid var(--line);color:var(--ink2);font-size:13.5px;line-height:1.75}
   .about h2{margin:22px 0 6px;font-family:"Noto Serif TC",serif;font-size:16px;font-weight:900;color:var(--ink)}
   .about h2:first-child{margin-top:0}
@@ -439,13 +440,13 @@
     <details><summary>要收費嗎？</summary><p>測試期間<span class="hl">免費</span>。</p></details>
   </section>
   <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v45<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v46<button type="button" id="hardReload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=45"></script>
+<script src="detect.js?v=46"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
