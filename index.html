@@ -107,7 +107,12 @@
   .wrap{max-width:560px;margin:0 auto;padding:20px 16px 60px}
   code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
 
+  header{position:relative}
   header h1{margin:0;line-height:0}
+  #lang{position:absolute;top:2px;inset-inline-end:0;max-width:44%;font:inherit;font-size:12px;padding:5px 26px 5px 9px;border:1px solid var(--line);
+    border-radius:99px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b94a0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 8px center/12px;
+    color:var(--ink2);-webkit-appearance:none;appearance:none;cursor:pointer;text-overflow:ellipsis}
+  [dir=rtl] #lang{background-position:left 8px center;padding:5px 9px 5px 26px}
   header h1 img{height:36px;width:auto;display:block}
   header p{margin:8px 0 0;color:var(--ink2);font-size:14.5px;line-height:1.65}
 
@@ -203,7 +208,7 @@
   .about .linkpill b{margin-left:auto;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;font-weight:600;
     padding:6px 13px;border-radius:99px;background:var(--accent);color:var(--on-accent)}
   .about .fine{margin:0 0 6px;text-align:center;font-size:12.5px;color:var(--muted)}
-  .about .fine[lang=en]{margin-bottom:40px}
+  .about .fine{margin-bottom:40px}
   .about details{border-top:1px solid var(--line)}
   .about details:last-child{border-bottom:1px solid var(--line)}
   .about summary{cursor:pointer;padding:11px 0;font-size:14px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}
@@ -355,19 +360,17 @@
       <source srcset="logo-dark.png?v=40" media="(prefers-color-scheme: dark)">
       <img src="logo.png?v=40" alt="SheetSnap" width="400" height="74">
     </picture></a></h1>
-    <p>把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。</p>
+    <select id="lang" data-i18n-aria="lang"></select>
+    <p data-i18n="tagline">把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。</p>
   </header>
 
   <div class="panel input">
     <div class="row">
-      <input id="url" type="url" placeholder="貼上 Google 試算表網址">
-      <button id="go">開啟</button>
+      <input id="url" type="url" placeholder="貼上 Google 試算表網址" data-i18n-ph="url_ph">
+      <button id="go" data-i18n="open">開啟</button>
     </div>
-    <div class="drop" id="drop">或點這裡選擇 .xlsx / .csv 檔案</div>
-    <p class="hint2">
-      <b>資料不會上傳。</b>整個過程都在你的手機裡完成，這頁沒有後端伺服器。<br>
-      Google 試算表請先在「共用」把權限改成<b>「知道連結的任何人」</b>，否則讀不到。
-    </p>
+    <div class="drop" id="drop" data-i18n="drop">或點這裡選擇 .xlsx / .csv 檔案</div>
+    <p class="hint2" data-i18n="hint"></p>
     <div class="msg" id="msg"></div>
   </div>
 
@@ -377,22 +380,22 @@
   <div class="ask" id="ask" hidden></div>
 
   <div class="split" id="split" hidden>
-    <div class="reset"><span class="cur" id="curView"></span><button type="button" id="reView">⇄ 換個看法</button></div>
+    <div class="reset"><span class="cur" id="curView"></span><button type="button" id="reView" data-i18n="reset">⇄ 換個看法</button></div>
     <div class="share" id="share" hidden>
-      <h4>分享這個網址，對方打開就是這個畫面</h4>
-      <div class="row2"><input id="shareUrl" type="text" readonly><button type="button" id="copyShare">複製</button></div>
+      <h4 data-i18n="share_title">分享這個網址，對方打開就是這個畫面</h4>
+      <div class="row2"><input id="shareUrl" type="text" readonly><button type="button" id="copyShare" data-i18n="copy">複製</button></div>
       <p id="shareNote"></p>
     </div>
     <section class="phonewrap">
       <p class="phonelabel">使用者看到的畫面</p>
-      <div class="phone"><div class="octl" id="octl" hidden></div><div class="out" id="out"></div></div>
+      <div class="phone" translate="no"><div class="octl" id="octl" hidden></div><div class="out" id="out"></div></div>
     </section>
 
     <details class="whybox">
-      <summary>為什麼這樣顯示？</summary>
+      <summary data-i18n="why">為什麼這樣顯示？</summary>
     <div class="diag" id="diag" hidden>
-      <button type="button" id="copyDiag">複製診斷資訊</button>
-      <span>顯示不對的話，按這個再貼給我們。<b>只含欄位結構，不含任何內容。</b></span>
+      <button type="button" id="copyDiag" data-i18n="diag_btn">複製診斷資訊</button>
+      <span data-i18n="diag_note"></span>
     </div>
     <section class="panel">
       <div class="verdict">
@@ -426,70 +429,71 @@
   </div>
   <section class="about" id="about">
     <div class="mo">
-      <h2>打開就是今天。</h2>
-      <p>不用找，日期自動停在今天，往後幾天一眼看完。</p>
+      <h2 data-i18n="a1_h"></h2>
+      <p data-i18n="a1_p"></p>
       <div class="demo phone" aria-hidden="true">
         <div class="octl"><div class="orail groups">
-          <button tabindex="-1" class="now on">今天 3</button><button tabindex="-1">明天 2</button><button tabindex="-1">後天 5</button><button tabindex="-1">週六 1</button><button tabindex="-1">週日 2</button>
+          <button tabindex="-1" class="now on"><span data-i18n="d_today"></span> 3</button><button tabindex="-1"><span data-i18n="d_tomorrow"></span> 2</button><button tabindex="-1"><span data-i18n="d_day2"></span> 5</button><button tabindex="-1"><span data-i18n="d_sat"></span> 1</button><button tabindex="-1"><span data-i18n="d_sun"></span> 2</button>
         </div></div>
         <div class="out">
-          <div class="g-head"><span class="g-name">今天</span><span class="g-cnt">3 筆</span></div>
+          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="3"></span></div>
           <ol>
-            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t">場地佈置</p></div><div class="metas"><span class="m">小美</span><span class="m">阿德</span></div></div></li>
-            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t">音響測試</p></div><div class="metas"><span class="m">阿德</span></div></div></li>
-            <li class="rec"><div class="lead">18:00</div><div><div class="titleline"><p class="t">志工報到</p></div><div class="metas"><span class="m">小美</span><span class="m">佩珊</span></div></div></li>
+            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n2"></span></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div><div class="metas"><span class="m" data-i18n="d_n2"></span></div></div></li>
+            <li class="rec"><div class="lead">18:00</div><div><div class="titleline"><p class="t" data-i18n="d_i3"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n3"></span></div></div></li>
           </ol>
         </div>
       </div>
     </div>
 
     <div class="mo">
-      <h2>點一個名字，眼裡只有他。</h2>
-      <p>六十個人各查各的，不用在表裡找自己。</p>
+      <h2 data-i18n="a2_h"></h2>
+      <p data-i18n="a2_p"></p>
       <div class="demo phone" aria-hidden="true">
         <div class="octl"><div class="orail who">
-          <button tabindex="-1">小美 12</button><button tabindex="-1" class="on">阿德 9</button><button tabindex="-1">佩珊 7</button><button tabindex="-1">阿宏 5</button><button tabindex="-1">小芸 4</button>
+          <button tabindex="-1"><span data-i18n="d_n1"></span> 12</button><button tabindex="-1" class="on"><span data-i18n="d_n2"></span> 9</button><button tabindex="-1"><span data-i18n="d_n3"></span> 7</button><button tabindex="-1"><span data-i18n="d_n4"></span> 5</button><button tabindex="-1"><span data-i18n="d_n5"></span> 4</button>
         </div></div>
         <div class="out">
-          <div class="g-head"><span class="g-name">今天</span><span class="g-cnt">2 筆</span></div>
+          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="2"></span></div>
           <ol>
-            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t">場地佈置</p></div></div></li>
-            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t">音響測試</p></div></div></li>
+            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1"></p></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div></div></li>
           </ol>
-          <div class="g-head"><span class="g-name">後天</span><span class="g-cnt">1 筆</span></div>
-          <ol><li class="rec"><div class="lead">10:00</div><div><div class="titleline"><p class="t">舞台拆卸</p></div></div></li></ol>
+          <div class="g-head"><span class="g-name" data-i18n="d_day2"></span><span class="g-cnt" data-i18n="rows" data-n="1"></span></div>
+          <ol><li class="rec"><div class="lead">10:00</div><div><div class="titleline"><p class="t" data-i18n="d_i4"></p></div></div></li></ol>
         </div>
       </div>
     </div>
 
     <div class="mo">
-      <h2>一個網址，不用登入。</h2>
-      <p>做表的人選一次，看的人打開就是。試算表改了，網址裡的內容跟著改。</p>
-      <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b>複製</b></div>
+      <h2 data-i18n="a3_h"></h2>
+      <p data-i18n="a3_p"></p>
+      <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b data-i18n="copy"></b></div>
     </div>
 
-    <p class="fine">內容不上傳 · 只記使用次數 · 測試期間免費</p>
-    <p class="fine" lang="en">Turn a Google Sheet or an Excel file into a phone-friendly page you can share with one link. Nothing is uploaded.</p>
+    <p class="fine" data-i18n="fine"></p>
 
-    <details><summary>跟直接傳試算表連結差在哪？</summary><p>試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：跳到今天、點名字只看他的、能搜尋。</p></details>
-    <details><summary>資料會上傳嗎？</summary><p>內容不會。觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。我們只記使用次數：哪份表被打開幾次、用一個隨機編號分辨裝置，不含任何內容。</p></details>
-    <details><summary>支援哪些檔案？</summary><p>Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。</p></details>
-    <details><summary>試算表改了，分享網址會跟著變嗎？</summary><p>Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
-    <details><summary>適合什麼樣的表？</summary><p>一列標題、底下一列一筆的清單：流程表、排班、帳表、名單、價目表、待辦。財報、多層合併標題、雙向矩陣不適合。</p></details>
-    <details><summary>數字是算出來的嗎？</summary><p>不是，每個數字都直接引述表上原本就有的，不自己加總。</p></details>
-    <details><summary>要收費嗎？</summary><p>測試期間免費。</p></details>
+    <details><summary data-i18n="q1"></summary><p data-i18n="f1"></p></details>
+    <details><summary data-i18n="q2"></summary><p data-i18n="f2"></p></details>
+    <details><summary data-i18n="q3"></summary><p data-i18n="f3"></p></details>
+    <details><summary data-i18n="q4"></summary><p data-i18n="f4"></p></details>
+    <details><summary data-i18n="q5"></summary><p data-i18n="f5"></p></details>
+    <details><summary data-i18n="q6"></summary><p data-i18n="f6"></p></details>
+    <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
-  <p class="made" id="made" hidden>用 <a href="./">SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v51<button type="button" id="hardReload">重新載入最新版</button></p>
+  <p class="made" id="made" hidden data-i18n="made"></p>
+  <p class="ver">SheetSnap v52<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=51"></script>
+<script src="detect.js?v=52"></script>
+<script src="i18n.js?v=52"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
+var TX = I18N.t;   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
 var outQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
 var VIEWS = [], focusFilter = null, VIEW = null;
@@ -565,18 +569,18 @@ function sheetId(u){
 
 function loadUrl(u){
   var id = sheetId(u);
-  if(!id) return say('看不出這是 Google 試算表的網址，請貼包含 /spreadsheets/d/ 的完整網址。', true, 'notsheet');
+  if(!id) return say(TX('err_notsheet'), true, 'notsheet');
   sheetKey = id;
   var gid = (String(u).match(/[#&?]gid=(\d+)/) || [])[1];
   SRC = { type:'gsheet', id:id, gid:gid || '' };
   var csv = 'https://docs.google.com/spreadsheets/d/' + id + '/export?format=csv' +
             (gid ? '&gid=' + gid : '') + '&_=' + Date.now();
-  say('載入中…');
+  say(TX('loading'));
   fetch(csv, { cache:'no-store' })
     .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.text() })
     .then(function(t){ SHEETS = []; renderSheetTabs(); say(''); run(parseCSV(t)) })
     .catch(function(e){
-      say('讀不到這份試算表（' + e.message + '）。請確認共用設定是「知道連結的任何人 · 檢視者」。', true, 'read');
+      say(TX('err_read', { msg:e.message }), true, 'read');
     });
 }
 
@@ -585,11 +589,11 @@ function loadFile(file){
   var fr = new FileReader();
   if(ext === 'xlsx' || ext === 'xls'){
     if(typeof XLSX === 'undefined')
-      return say('Excel 解析元件沒載入成功，請改用 .csv 或試算表網址。', true, 'xlsxlib');
+      return say(TX('err_xlsxlib'), true, 'xlsxlib');
     fr.onload = function(e){
       try{
         openWorkbook(XLSX.read(new Uint8Array(e.target.result), { type:'array' }), file.name);
-      }catch(err){ say('這個 Excel 檔解析失敗：' + err.message, true, 'xlsx') }
+      }catch(err){ say(TX('err_xlsx', { msg:err.message }), true, 'xlsx') }
     };
     fr.readAsArrayBuffer(file);
   } else {
@@ -610,8 +614,8 @@ function openWorkbook(wb, fname){
     if(v.show === true) SHEETS.push({ name:nm, grid:gr, file:fname });
     else skipped.push(nm + '（' + v.why + '）');
   });
-  if(!SHEETS.length){ say('這個檔案裡找不到可讀的資料表。略過：' + skipped.join('、'), true, 'nodata'); return; }
-  say(skipped.length ? '略過 ' + skipped.length + ' 張非資料頁：' + skipped.join('、') : '');
+  if(!SHEETS.length){ say(TX('err_nodata', { list:skipped.join(', ') }), true, 'nodata'); return; }
+  say(skipped.length ? TX('skipped', { n:skipped.length, list:skipped.join(', ') }) : '');
   renderSheetTabs();
   showSheet(0);
 }
@@ -638,16 +642,16 @@ function showSheet(i){
 function run(rows){
   raw = rows;
   TABLES = SheetShape.analyseSheet(rows).tables;
-  if(!TABLES.length) return say('這份表看起來是空的，或找不到任何表格區塊。', true, 'empty');
+  if(!TABLES.length) return say(TX('err_empty'), true, 'empty');
   cur = 0;
   var t = $('tabs');
   t.hidden = TABLES.length < 2;
   t.innerHTML = TABLES.length < 2 ? '' : TABLES.map(function(a, i){
     var nm = a.name || (a.title ? a.title.split('·')[0].trim() : '');
     return '<button type="button" data-i="' + i + '" class="' + (i ? '' : 'on') + '">' +
-           esc(nm || ('表 ' + (i + 1))) + '</button>';
+           esc(nm || TX('table_n', { n:i + 1 })) + '</button>';
   }).join('');
-  if(TABLES.length > 1) say('這張工作表上並排著 ' + TABLES.length + ' 個獨立表格，已自動切開。');
+  if(TABLES.length > 1) say(TX('split_note', { n:TABLES.length }));
   $('split').hidden = false;
   $('diag').hidden = false;
   var tag = sheetTag();
@@ -690,16 +694,14 @@ function askGrouping(saved){
   var choices = opts.filter(function(o){ return o.name !== curName })
     .map(function(o){
       return '<button type="button" data-k="' + esc(o.name) + '">' +
-             esc(o.name) + '（' + o.groups + ' 組）</button>';
+             TX('ask_opt', { name:esc(o.name), n:o.groups }) + '</button>';
     });
-  if(curName) choices.push('<button type="button" data-k="__none__">不分段</button>');
+  if(curName) choices.push('<button type="button" data-k="__none__">' + TX('ask_none') + '</button>');
   if(!choices.length) return;
 
   bar.innerHTML =
-    '<span class="q">目前' +
-      (curName ? '按<b>「' + esc(curName) + '」</b>分段' : '<b>不分段</b>') +
-    '。要改成？</span>' + choices.join('') +
-    '<button type="button" class="x" data-k="__dismissed__" title="維持現狀">×</button>';
+    '<span class="q">' + (curName ? TX('ask_by', { name:esc(curName) }) : TX('ask_none_now')) + '</span>' + choices.join('') +
+    '<button type="button" class="x" data-k="__dismissed__" title="' + esc(TX('ask_keep')) + '">×</button>';
   bar.hidden = false;
 }
 
@@ -805,31 +807,31 @@ function buildViews(){
 
   if(date){
     var gd = gopts.filter(function(x){ return x.name === date.name })[0];
-    if(gd) VIEWS.push({ id:'time', k:'照時間看',
-      d:'按「' + date.name + '」分成 ' + gd.groups + ' 段，開啟時跳到今天', group:date.name });
+    if(gd) VIEWS.push({ id:'time', k:TX('v_time'),
+      d:TX('v_time_d', { name:date.name, n:gd.groups }), group:date.name });
   } else if(time){
-    VIEWS.push({ id:'time', k:'照時間看',
-      d:'依「' + String(time.name).replace(/\s+/g,' ') + '」排序', group:'__none__' });
+    VIEWS.push({ id:'time', k:TX('v_time'),
+      d:TX('v_time_d2', { name:String(time.name).replace(/\s+/g,' ') }), group:'__none__' });
   }
 
   SheetShape.filterOptions(A).slice(0, 2).forEach(function(f){
-    VIEWS.push({ id:'filter:' + f.name, k:'只看某個' + f.name,
-      d:f.options + ' 個選項，平均每項 ' + f.avg + ' 筆', group:'__none__', filter:f.name });
+    VIEWS.push({ id:'filter:' + f.name, k:TX('v_filter', { name:f.name }),
+      d:TX('v_filter_d', { n:f.options, avg:f.avg }), group:'__none__', filter:f.name });
   });
 
   if(raw && SheetShape.quotedFacts){
     var q = SheetShape.summarise(SheetShape.quotedFacts(raw, A));
-    if(q.length) VIEWS.push({ id:'facts', k:'看重點數字',
-      d:'引述表上 ' + q.length + ' 個數字，不自己計算', group:'__none__' });
+    if(q.length) VIEWS.push({ id:'facts', k:TX('v_facts'),
+      d:TX('v_facts_d', { n:q.length }), group:'__none__' });
   }
 
   gopts.filter(function(x){ return x.type !== 'date' }).slice(0, 1).forEach(function(c){
-    VIEWS.push({ id:'group:' + c.name, k:'照' + c.name + '分類',
-      d:'分成 ' + c.groups + ' 組，平均每組 ' + c.avg + ' 筆', group:c.name });
+    VIEWS.push({ id:'group:' + c.name, k:TX('v_group', { name:c.name }),
+      d:TX('v_group_d', { n:c.groups, avg:c.avg }), group:c.name });
   });
 
-  VIEWS.push({ id:'all', k:'直接搜尋',
-    d:A.rows.length + ' 筆全部列出，用關鍵字找', group:'__none__' });
+  VIEWS.push({ id:'all', k:TX('v_all'),
+    d:TX('v_all_d', { n:A.rows.length }), group:'__none__' });
 }
 
 // 每種看法一個線條圖示。不用 emoji：各家手機畫出來差很多，也沒辦法跟著主題變色。
@@ -853,17 +855,17 @@ function viewKey(){ return 'view:' + sheetKey + ':' + cur }
    所以只有小檔案做得到。做不到就明講，不假裝。 */
 function buildShareUrl(viewId){
   var base = location.origin + location.pathname;
-  var q = ['v=' + encodeURIComponent(viewId), 't=' + cur];
+  var q = ['v=' + encodeURIComponent(viewId), 't=' + cur, 'lang=' + I18N.get()];
   if(SRC && SRC.type === 'gsheet'){
     q.unshift('s=' + SRC.id + (SRC.gid ? '&gid=' + SRC.gid : ''));
-    return { url: base + '?' + q.join('&'), note: '對方的瀏覽器會直接讀你的 Google 試算表，內容不經過任何伺服器。試算表要維持「知道連結的任何人」可檢視。' };
+    return { url: base + '?' + q.join('&'), note: TX('share_gsheet') };
   }
   if(SRC && SRC.type === 'file' && raw && window.LZString){
     var packed = LZString.compressToEncodedURIComponent(JSON.stringify(raw));
     var url = base + '?d=' + packed + '&' + q.join('&');
     if(url.length <= 4000)
-      return { url: url, note: '這份表的內容已壓縮進網址裡（' + url.length + ' 字），不經過任何伺服器。網址較長，用訊息軟體傳送即可。' };
-    return { url: '', note: '這份表太大（壓縮後 ' + url.length + ' 字），放不進網址。要分享的話，請先把它放到 Google 試算表，再用試算表網址開啟——那樣網址只帶 ID，不受大小限制。' };
+      return { url: url, note: TX('share_file', { n:url.length }) };
+    return { url: '', note: TX('share_toolarge', { n:url.length }) };
   }
   return { url: '', note: '' };
 }
@@ -882,8 +884,8 @@ function renderShare(viewId){
 function showPicker(){
   buildViews();
   var el = $('pick');
-  el.innerHTML = '<h3>你想怎麼看這份表？</h3>' +
-    '<p class="sub">' + A.rows.length + ' 筆資料 · 選一個就好，之後可以再換</p><ul>' +
+  el.innerHTML = '<h3>' + TX('pick_title') + '</h3>' +
+    '<p class="sub">' + TX('pick_sub', { n:A.rows.length }) + '</p><ul>' +
     VIEWS.map(function(v, i){
       return '<li><button type="button" data-v="' + i + '">' +
              '<span class="ic">' + viewIcon(v.id) + '</span>' +
@@ -904,7 +906,7 @@ function applyView(v, remember){
   if(remember){ try{ localStorage.setItem(viewKey(), v.id) }catch(e){}; track('view', { view:v.id }) }
   $('pick').hidden = true;
   $('split').hidden = false;
-  $('curView').innerHTML = '目前：<b>' + esc(v.k) + '</b>';
+  $('curView').innerHTML = esc(TX('cur')) + '<b>' + esc(v.k) + '</b>';
   paint();
   renderShare(v.id);
   // 選完看法要從表頭開始看。不捲的話畫面會停在原本選單的位置，
@@ -930,7 +932,7 @@ function renderControls(groupName){
 
   var html = '';
   var personMode = VIEW && VIEW.filter;
-  if(bigEnough && !personMode) html += '<input id="oq" type="search" placeholder="搜尋…" autocomplete="off" value="' + esc(outQ) + '">';
+  if(bigEnough && !personMode) html += '<input id="oq" type="search" placeholder="' + esc(TX('search_ph')) + '" autocomplete="off" value="' + esc(outQ) + '">';
 
   // 「只看某個人員」是以人為主軸的頁面：人名排成一列，點一個就只剩他的事。
   // 這才跟「直接搜尋」有真正的差別——原本只是把下拉選單排到第一個，看不出來。
@@ -964,7 +966,7 @@ function renderControls(groupName){
     var keys = Object.keys(tal).sort(function(a,b){
       return tal[b]-tal[a] || lab[a].localeCompare(lab[b],'zh-Hant');
     });
-    html += '<select data-col="' + esc(f.name) + '"><option value="">所有' + esc(f.name) + '</option>' +
+    html += '<select data-col="' + esc(f.name) + '"><option value="">' + TX('all_of', { name:esc(f.name) }) + '</option>' +
       keys.map(function(k){
         return '<option value="' + esc(k) + '"' + (outPicks[f.name] === k ? ' selected' : '') +
                '>' + esc(lab[k]) + '（' + tal[k] + '）</option>';
@@ -987,7 +989,7 @@ function renderRails(){
     var t = document.createElement('div');
     t.className = 'orail tables';
     t.innerHTML = TABLES.map(function(a, i){
-      var name = a.name || (a.title ? a.title.split('·')[0].trim() : '') || ('表 ' + (i+1));
+      var name = a.name || (a.title ? a.title.split('·')[0].trim() : '') || TX('table_n', { n:i+1 });
       return '<button type="button" data-t="' + i + '" class="' + (i === cur ? 'on' : '') + '">' +
              esc(name) + '</button>';
     }).join('');
@@ -1001,11 +1003,11 @@ function renderRails(){
     var today = new Date();
     var todayKey = today.getFullYear() + '-' + ('0'+(today.getMonth()+1)).slice(-2) +
                    '-' + ('0'+today.getDate()).slice(-2);
-    g.innerHTML = '<button type="button" data-g="" class="' + (outGroup ? '' : 'on') + '">全部</button>' +
+    g.innerHTML = '<button type="button" data-g="" class="' + (outGroup ? '' : 'on') + '">' + TX('all') + '</button>' +
       gs.map(function(x){
         var cls = (x.key === todayKey ? 'now ' : '') + (x.key === outGroup ? 'on' : '');
         return '<button type="button" data-g="' + esc(x.key) + '" class="' + cls.trim() + '">' +
-               (x.key === todayKey ? '今天 ' : '') + esc(x.label) +
+               (x.key === todayKey ? TX('today') + ' ' : '') + esc(x.label) +
                '<span style="opacity:.6"> ' + x.count + '</span></button>';
       }).join('');
     box.appendChild(g);
@@ -1055,13 +1057,13 @@ function renderPage(shape, roles){
   var head = '';   // 下面兩個提早 return 也會用到，宣告得晚就會印出 "undefined"
   if(VIEW && VIEW.filter && !outPicks[VIEW.filter]){
     window.__groups = [];      // 不重設的話日期軌會殘留上一個看法的
-    return head + '<div class="prompt">上面選一個' + esc(VIEW.filter) + '，就只看他的</div>';
+    return head + '<div class="prompt">' + TX('prompt_pick', { name:esc(VIEW.filter) }) + '</div>';
   }
   recs = recs.filter(function(rec){ return matchFilters(rec.r) && matchQuery(rec.r) });
   var filtering = outQ || Object.keys(outPicks).some(function(k){ return outPicks[k] });
-  window.__hits = filtering ? recs.length + ' / ' + beforeFilter + ' 筆' : '';
+  window.__hits = filtering ? TX('hits', { a:recs.length, b:beforeFilter }) : '';
   if(filtering && !recs.length)
-    return head + '<div class="none">沒有符合的資料</div>';
+    return head + '<div class="none">' + TX('none') + '</div>';
 
   // 矩陣報表：整列數值都空白代表「這個月沒發生」，列出來只是雜訊
   if(shape.matrix){
@@ -1083,26 +1085,27 @@ function renderPage(shape, roles){
     }
   }
   window.__skippedBlank = skippedBlank;
-  if(!recs.length) return head + '<div class="none">這個表沒有任何有值的資料列</div>';
+  if(!recs.length) return head + '<div class="none">' + TX('none_rows') + '</div>';
 
   var isDate = roles.group && roles.group.type === 'date';
   var isTime = roles.lead && roles.lead.type === 'time';
   var isMoney = roles.lead && roles.lead.type === 'money';
-  var DOW = ['日','一','二','三','四','五','六'];
+  var fmtMD = new Intl.DateTimeFormat(I18N.tag(), { month:'numeric', day:'numeric' });
+  var fmtDow = new Intl.DateTimeFormat(I18N.tag(), { weekday:'short' });
 
   // 分組（日期欄要沿用上一列的值，排程表常常只在變更時才填日期）
   var groups = [], byKey = {}, last = '';
   recs.forEach(function(rec){
-    var key = '全部', sub = '';
+    var key = TX('all'), sub = '';
     if(roles.group){
       var v = cell(rec.r, roles.group);
       if(isDate){
         var d = v ? SheetShape.parseDateish(v) : null;
         if(d){ last = d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
-               rec.label = (d.getMonth()+1)+'/'+d.getDate(); rec.dow = '週'+DOW[d.getDay()]; }
-        key = last || '未排定';
-        rec.label = rec.label || (last ? byKey[last] && byKey[last].label : '') || '未排定';
-      } else { key = v || '未分類'; rec.label = key; }
+               rec.label = fmtMD.format(d); rec.dow = fmtDow.format(d); }
+        key = last || TX('unscheduled');
+        rec.label = rec.label || (last ? byKey[last] && byKey[last].label : '') || TX('unscheduled');
+      } else { key = v || TX('uncategorized'); rec.label = key; }
     }
     if(!byKey[key]){ byKey[key] = { key:key, label:rec.label || key, sub:rec.dow || '', rows:[] }; groups.push(byKey[key]); }
     byKey[key].rows.push(rec);
@@ -1124,9 +1127,8 @@ function renderPage(shape, roles){
     raw.forEach(function(r){ if(r){ for(var i = r.length - 1; i >= 0; i--){
       if(String(r[i] == null ? '' : r[i]).trim()){ if(i + 1 > srcCols) srcCols = i + 1; break; } } } });
     if(srcRows > 2 && srcCols > 1){
-      head += '<div class="before">原始試算表 <b>' + srcRows + '</b> 列 × <b>' + srcCols +
-              '</b> 欄 <span class="arrow">→</span> 整理成 <b>' + A.rows.length + '</b> 筆' +
-              (TABLES.length > 1 ? '（' + TABLES.length + ' 個表格）' : '') + '</div>';
+      head += '<div class="before">' + TX('before', { r:srcRows, c:srcCols, n:A.rows.length }) +
+              (TABLES.length > 1 ? TX('before_tables', { n:TABLES.length }) : '') + '</div>';
     }
   }
 
@@ -1136,8 +1138,8 @@ function renderPage(shape, roles){
     var warns = SheetShape.fidelityWarnings(A);
     if(warns.length && !tracked['warn:' + sheetTag()]){ tracked['warn:' + sheetTag()] = 1; track('warn', { info:String(warns.length) }) }
     if(warns.length)
-      head += '<div class="warn"><b>這張表可能沒被正確讀取</b>' +
-              warns.map(esc).join(' ') + ' 請對照原始檔案確認。</div>';
+      head += '<div class="warn"><b>' + TX('warn_title') + '</b>' +
+              warns.map(esc).join(' ') + ' ' + TX('warn_tail') + '</div>';
   }
 
   // 摘要：只引述表上原本就寫著的數字，不自己加總
@@ -1145,7 +1147,7 @@ function renderPage(shape, roles){
     try{
       var qf = SheetShape.summarise(SheetShape.quotedFacts(raw, A), 6);
       if(qf.length){
-        head += '<div class="quote"><h4>摘要 · 引述自表上</h4><dl>' + qf.map(function(f){
+        head += '<div class="quote"><h4>' + TX('quote_title') + '</h4><dl>' + qf.map(function(f){
           return '<dt>' + esc(f.value) + '</dt><dd>' + esc(f.label) +
                  '<span class="src">' + esc(f.at) + '</span></dd>';
         }).join('') + '</dl></div>';
@@ -1167,12 +1169,12 @@ function renderPage(shape, roles){
     var hotAt = Math.max(3, mid * 2.5);
 
     head += '<div class="upnext">' + up.map(function(g, i){
-      var k = g.key === tk ? '今天' : (i === 0 ? '接下來' : (g.sub || '　'));
+      var k = g.key === tk ? TX('today') : (i === 0 ? TX('next') : (g.sub || '　'));
       var cls = (g.rows.length >= hotAt ? 'hot ' : '') + (g.key === outGroup ? 'on' : '');
       return '<button type="button" data-g="' + esc(g.key) + '" class="' + cls.trim() + '">' +
              '<span class="k">' + esc(k) + '</span>' +
              '<span class="d">' + esc(g.label) + '</span>' +
-             '<span class="n">' + g.rows.length + ' 項</span></button>';
+             '<span class="n">' + TX('items', { n:g.rows.length }) + '</span></button>';
     }).join('') + '</div>';
   }
   if(outGroup) groups = groups.filter(function(g){ return g.key === outGroup });
@@ -1188,7 +1190,7 @@ function renderPage(shape, roles){
   var body = groups.map(function(g){
     var head = roles.group ? '<div class="g-head"><span class="g-name">' + esc(g.label) + '</span>' +
         (g.sub ? '<span class="g-sub">' + esc(g.sub) + '</span>' : '') +
-        '<span class="g-cnt">' + g.rows.length + ' 筆</span></div>' : '';
+        '<span class="g-cnt">' + TX('rows', { n:g.rows.length }) + '</span></div>' : '';
     return head + '<ol>' + g.rows.map(function(rec){
       var r = rec.r;
       var lead = isTime ? (rec.lead || '') : (roles.lead && !isMoney ? cell(r, roles.lead) : '');
@@ -1199,7 +1201,7 @@ function renderPage(shape, roles){
         var v = cell(r, c); if(!v) return '';
         if(c.type === 'phone') return '<a class="m" href="tel:' + esc(v.replace(/[^\d+]/g,'')) + '">' + esc(v) + '</a>';
         if(c.type === 'email') return '<a class="m" href="mailto:' + esc(v) + '">' + esc(v) + '</a>';
-        if(c.type === 'url')   return '<a class="m" href="' + esc(v) + '" target="_blank" rel="noopener">連結</a>';
+        if(c.type === 'url')   return '<a class="m" href="' + esc(v) + '" target="_blank" rel="noopener">' + TX('link') + '</a>';
         return '<span class="m">' + hl(v) + '</span>';
       }).filter(Boolean).join('');
 
@@ -1213,7 +1215,7 @@ function renderPage(shape, roles){
 
       return '<li class="rec' + (lead ? '' : ' nolead') + '">' +
         (lead ? '<div class="lead">' + esc(lead) + '</div>' : '') +
-        '<div><div class="titleline"><p class="t">' + (hl(title) || '<span style="opacity:.4">（無標題）</span>') + '</p>' +
+        '<div><div class="titleline"><p class="t">' + (hl(title) || '<span style="opacity:.4">' + TX('untitled') + '</span>') + '</p>' +
           (price ? '<span class="price">' + esc(price) + '</span>' : '') + '</div>' +
           (metas ? '<div class="metas">' + metas + '</div>' : '') + body +
           (kv ? '<div class="kv">' + kv + '</div>' : '') +
@@ -1224,7 +1226,7 @@ function renderPage(shape, roles){
   // 「看重點數字」：重點是上面的摘要，明細收起來，要看再展開。
   // 不收的話跟「直接搜尋」看起來一模一樣。
   if(VIEW && VIEW.id === 'facts')
-    return head + '<details class="more"><summary>查看全部 ' + recs.length + ' 筆明細</summary>' + body + '</details>';
+    return head + '<details class="more"><summary>' + TX('more', { n:recs.length }) + '</summary>' + body + '</details>';
   return head + body;
 }
 
@@ -1279,7 +1281,7 @@ $('copyDiag').addEventListener('click', function(){
   var t = diagnosticText();
   if(!t) return;
   var done = function(){ var b = $('copyDiag'); var o = b.textContent;
-    b.textContent = '已複製 ✓'; setTimeout(function(){ b.textContent = o }, 1600) };
+    b.textContent = TX('copied'); setTimeout(function(){ b.textContent = o }, 1600) };
   if(navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){ window.prompt('複製這段：', t) });
   else window.prompt('複製這段：', t);
 });
@@ -1315,6 +1317,21 @@ $('ask').addEventListener('click', function(e){
   if(k !== '__dismissed__'){ $('ovGroup').value = k; paint(); }
 });
 
+// 語言：網址帶的 > 上次選的 > 瀏覽器的；換語言時把已經畫出來的東西重畫一次
+(function(){
+  var sel = $('lang');
+  sel.innerHTML = I18N.LANGS.map(function(L){ return '<option value="' + L.code + '">' + L.name + '</option>' }).join('');
+  I18N.set(I18N.get(), false);
+  sel.addEventListener('change', function(){
+    I18N.set(sel.value, true);
+    if(!TABLES.length) return;
+    buildViews();
+    if(!$('pick').hidden){ showPicker(); return; }
+    var v = VIEW && VIEWS.filter(function(x){ return x.id === VIEW.id })[0];
+    if(v){ VIEW = v; $('curView').innerHTML = esc(TX('cur')) + '<b>' + esc(v.k) + '</b>'; paint(); renderShare(v.id); }
+  });
+})();
+
 var PARAMS = (function(){
   var o = {};
   location.search.slice(1).split('&').forEach(function(kv){
@@ -1327,7 +1344,7 @@ var PARAMS = (function(){
 $('copyShare').addEventListener('click', function(){
   var t = $('shareUrl').value; if(!t) return;
   track('share');
-  var done = function(){ var b = $('copyShare'), o = b.textContent; b.textContent = '已複製 ✓'; setTimeout(function(){ b.textContent = o }, 1600) };
+  var done = function(){ var b = $('copyShare'), o = b.textContent; b.textContent = TX('copied'); setTimeout(function(){ b.textContent = o }, 1600) };
   if(navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){ $('shareUrl').select() });
   else $('shareUrl').select();
 });
@@ -1364,7 +1381,7 @@ document.addEventListener('click', function(e){
     try{
       var grid = JSON.parse(LZString.decompressFromEncodedURIComponent(PARAMS.d));
       SRC = { type:'file' }; sheetKey = 'shared'; SHEETS = []; renderSheetTabs(); run(grid);
-    }catch(e){ say('這個分享網址讀不出來，可能被訊息軟體截斷了。', true, 'badshare'); }
+    }catch(e){ say(TX('err_badshare'), true, 'badshare'); }
   }
 })();
 

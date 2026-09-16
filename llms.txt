@@ -15,7 +15,7 @@ SheetSnap 把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼�
 - Not for financial statements, multi-level merged headers, two-way matrices, or invoice layouts
 - Privacy: static site, sheet content is never uploaded; only anonymous usage counts (which sheet was opened, random device id) are recorded
 - Pricing: free during testing
-- Languages: Traditional Chinese interface; English planned
+- Languages: interface in 19 languages (繁體中文, 简体中文, English, 日本語, 한국어, Español, Português, Français, Deutsch, Italiano, Русский, Türkçe, Bahasa Indonesia, Tiếng Việt, ไทย, हिन्दी, বাংলা, العربية, اردو); sheet content is never translated
 
 ## Pages
 
