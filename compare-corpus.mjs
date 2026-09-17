@@ -24,8 +24,12 @@ const MODEL = 'claude-opus-5';
 const LIMIT = +(process.argv[2] || 40);
 const DIR = process.argv[3] || 'corpus-ms/files';
 
-const KEY = process.env.ANTHROPIC_API_KEY;
-if (!KEY) { console.error('請先設定 ANTHROPIC_API_KEY'); process.exit(1); }
+// 金鑰：環境變數優先；沒有就讀 ~/.anthropic-key（只在你電腦上的檔案，不進 repo）
+let KEY = process.env.ANTHROPIC_API_KEY;
+if (!KEY) {
+  try { KEY = fs.readFileSync(path.join(process.env.HOME || '', '.anthropic-key'), 'utf8').replace(/\s+/g, ''); process.env.ANTHROPIC_API_KEY = KEY; } catch {}
+}
+if (!KEY) { console.error('找不到金鑰：請設定 ANTHROPIC_API_KEY，或把金鑰存在 ~/.anthropic-key'); process.exit(1); }
 if (!/^[\x20-\x7E]+$/.test(KEY) || !/^sk-ant-\S{20,}$/.test(KEY)) { console.error('ANTHROPIC_API_KEY 看起來不是真的金鑰'); process.exit(1); }
 
 // ── 挑出問題表 ──

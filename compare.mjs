@@ -116,7 +116,11 @@ if (!args.length) {
   console.error('用法：node compare.mjs <試算表網址或 csv 檔> [更多...]');
   process.exit(1);
 }
-const KEY = process.env.ANTHROPIC_API_KEY;
+// 金鑰：環境變數優先；沒有就讀 ~/.anthropic-key（只在你電腦上的檔案，不進 repo）
+let KEY = process.env.ANTHROPIC_API_KEY;
+if (!KEY) {
+  try { KEY = fs.readFileSync(path.join(process.env.HOME || '', '.anthropic-key'), 'utf8').replace(/\s+/g, ''); process.env.ANTHROPIC_API_KEY = KEY; } catch {}
+}
 if (!KEY) {
   console.error('請先設定 ANTHROPIC_API_KEY');
   process.exit(1);
