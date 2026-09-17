@@ -426,10 +426,14 @@
   /* 有哪些欄位當分組軸說得通。
      日期和分類的標準不同：日期天生有序、可以用日期軌導覽，組數多不是問題；
      分類沒有順序，組數一多就等於沒分組。 */
+  // 十幾列以下的表，一眼就看完了，切段、篩選只是多一個步驟；只有日期軸例外（跳到今天還是有用）
+  var SMALL = 12;
+
   function groupOptions(a) {
     var out = [];
     a.cols.forEach(function (c) {
       if (['date', 'category', 'status', 'person'].indexOf(c.type) < 0) return;
+      if (c.type !== 'date' && a.rows.length < SMALL) return;
       var i = a.header.indexOf(c.name);
       var vals = a.rows.map(function (r) { return String(r[i] == null ? '' : r[i]).trim(); })
                        .filter(Boolean);
@@ -500,7 +504,7 @@
       var i = a.header.indexOf(c.name);
       var cells = a.rows.map(function (r) { return String(r[i] == null ? '' : r[i]).trim(); })
                         .filter(Boolean);
-      if (cells.length < 4) return;
+      if (cells.length < 4 || a.rows.length < SMALL) return;
 
       // 一格多值的欄位（「副壇主、執行長」）要拆開才篩得準。
       // 但「蔡宜勳建築師」不該被拆，所以只有拆了真的變多才採用。
