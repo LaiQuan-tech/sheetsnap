@@ -22,9 +22,10 @@ export default {
       if (!p || !EVS.has(p.ev)) return new Response(null, { status: 400, headers: cors() });
       const s = (v) => String(v ?? '').slice(0, 120);
       const ts = Date.now(), day = new Date(ts).toISOString().slice(0, 10);
+      const cc = (req.cf && req.cf.country) || '';          // Cloudflare 看到的來源國家，頁面不用送
       await env.DB.prepare(
-        'INSERT INTO events (ts, day, ev, sheet, vid, role, src, lang, view, info) VALUES (?,?,?,?,?,?,?,?,?,?)'
-      ).bind(ts, day, s(p.ev), s(p.sheet), s(p.vid), s(p.role), s(p.src), s(p.lang), s(p.view), s(p.info)).run();
+        'INSERT INTO events (ts, day, ev, sheet, vid, role, src, lang, view, info, cc) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
+      ).bind(ts, day, s(p.ev), s(p.sheet), s(p.vid), s(p.role), s(p.src), s(p.lang), s(p.view), s(p.info), s(cc)).run();
       return new Response(null, { status: 204, headers: cors() });
     }
 
@@ -104,8 +105,13 @@ async function stats(DB) {
       FROM (SELECT sheet, (MAX(ts)-MIN(ts))/86400000.0 AS span FROM events WHERE ev='open' AND role='viewer' GROUP BY sheet)`);
   const refs = await all(`SELECT substr(info,1,instr(info,'|')-1) AS ref, COUNT(DISTINCT vid) AS people FROM events WHERE ev='land' GROUP BY ref ORDER BY people DESC LIMIT 12`);
   const devices = await one(`SELECT SUM(info LIKE '%|m') AS mobile, SUM(info LIKE '%|d') AS desktop FROM events WHERE ev='land'`);
+  // 哪個國家、哪種語言的人來——做表的人和看表的人分開算
+  const countries = await all(`SELECT cc, COUNT(DISTINCT CASE WHEN role='maker' THEN vid END) AS makers,
+      COUNT(DISTINCT CASE WHEN role='viewer' THEN vid END) AS viewers FROM events WHERE cc<>'' GROUP BY cc ORDER BY makers+viewers DESC LIMIT 20`);
+  const langs = await all(`SELECT lang, COUNT(DISTINCT CASE WHEN role='maker' THEN vid END) AS makers,
+      COUNT(DISTINCT CASE WHEN role='viewer' THEN vid END) AS viewers FROM events WHERE lang<>'' GROUP BY lang ORDER BY makers+viewers DESC LIMIT 20`);
   return { makers, viewers, returning: ret, shares, made, views, sheets, days, funnel, errors, errRate, engine, shapes, sizes,
-           shareHit, loop, inter, interKinds, life, refs, devices, generated: new Date().toISOString() };
+           shareHit, loop, inter, interKinds, life, refs, devices, countries, langs, generated: new Date().toISOString() };
 }
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -156,6 +162,9 @@ ${row([f.land || 0, (f.upload || 0) + '（' + pct(f.upload, f.land) + '）', (f.
 </div>
 <h2>來的是什麼表</h2><div class="wrap"><table><tr><th>形狀</th><th>份</th><th></th><th>大小</th><th>份</th></tr>
 ${Array.from({ length: Math.max(d.shapes.length, d.sizes.length, 1) }, (_, i) => row([esc((d.shapes[i] || {}).shape || ''), (d.shapes[i] || {}).n ?? '', '', esc((d.sizes[i] || {}).size || ''), (d.sizes[i] || {}).n ?? ''])).join('')}
+</table></div>
+<h2>哪個國家、哪種語言的人</h2><div class="wrap"><table><tr><th>國家</th><th>做表的人</th><th>看表的人</th><th></th><th>介面語言</th><th>做表的人</th><th>看表的人</th></tr>
+${Array.from({ length: Math.max(d.countries.length, d.langs.length, 1) }, (_, i) => row([esc((d.countries[i] || {}).cc || ''), (d.countries[i] || {}).makers ?? '', (d.countries[i] || {}).viewers ?? '', '', esc((d.langs[i] || {}).lang || ''), (d.langs[i] || {}).makers ?? '', (d.langs[i] || {}).viewers ?? ''])).join('')}
 </table></div>
 <h2>做表的人從哪來</h2><div class="wrap"><table><tr><th>來源</th><th>人</th></tr>
 ${d.refs.map((x) => row([esc(x.ref || 'direct'), x.people])).join('') || row(['還沒有資料'])}
