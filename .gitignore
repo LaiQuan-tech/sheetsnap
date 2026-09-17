@@ -5,3 +5,4 @@ corpus-ms/files/
 *.xls
 worker/.wrangler/
 worker/node_modules/
+corpus-ms/gallery.html

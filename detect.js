@@ -460,13 +460,23 @@
      多了就是災難；篩選只是下拉選單，50 個選項完全沒問題。
      普渡的「人員」有 50 個相異值——當分組軸糟透了，當篩選軸完美。 */
 
-  var SPLIT = /[、,，;；\/\n]+|\s{1,}/;
+  var SPLIT = /[、,，;；\/\n]+/;
+  var RE_DOW = /^(mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)(day|nesday|rsday|urday)?\.?$|^(週|周|星期|禮拜|礼拜)[一二三四五六日天]$|^[月火水木金土日]曜?日?$|^(월|화|수|목|금|토|일)(요일)?$/i;
+  var CJK = /[\u3400-\u9fff]/;
 
+  // 一格多值：「副壇主、執行長」用頓號分；中文名字常用空白隔開（「王大明 李小華」）。
+  // 英文的空白是詞與詞之間——"Public Speaking" 拆成 Public 和 Speaking 就變成一堆碎詞，
+  // 所以只有整段都是中文時才拿空白當分隔。
   function tokenizeCell(v) {
-    return String(v).replace(/[（(]/g, '、').replace(/[)）]/g, '、')
-      .split(SPLIT)
+    var out = [];
+    String(v).replace(/[（(]/g, '、').replace(/[)）]/g, '、').split(SPLIT).forEach(function (p) {
+      p = p.trim(); if (!p) return;
+      if (/\s/.test(p) && !/[A-Za-z0-9]/.test(p)) p.split(/\s+/).forEach(function (x) { out.push(x); });
+      else out.push(p);
+    });
+    return out
       .map(function (x) { return x.trim().replace(/^[-–]+|[-–]+$/g, ''); })
-      .filter(function (x) { return x && x.length <= 8 && !/[：:]/.test(x); });
+      .filter(function (x) { return x && x.length <= (CJK.test(x) ? 8 : 24) && !/[：:]/.test(x); });
   }
 
   function tally(list) {
@@ -543,7 +553,8 @@
     analyse: analyse,
     detectColumn: detectColumn,
     parseDateish: parseDateish,
-    parseTimeish: parseTimeish
+    parseTimeish: parseTimeish,
+    RE_DOW: RE_DOW              // 第二段（切表、週表攤平）也要用
   };
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -554,6 +565,7 @@
 (function (root) {
   'use strict';
   var S = root.SheetShape;
+  var RE_DOW = S.RE_DOW;
 
   function blank(v) { return String(v == null ? '' : v).trim() === ''; }
 
@@ -778,6 +790,8 @@
   function fillDownLabels(header, rows) {
     var done = [];
     for (var c = 0; c < Math.min(header.length, 2); c++) {
+      // 週表的星期欄不填：空格代表「這個時段沒事」，填了就是憑空排出課來。
+      if (RE_DOW.test(String(header[c] == null ? '' : header[c]).trim())) continue;
       var vals = rows.map(function (r) { return String(r[c] == null ? '' : r[c]).trim(); });
       var filled = vals.filter(Boolean);
       if (!filled.length) continue;
@@ -941,6 +955,13 @@
   var RE_IDLIKE = /(單號|編號|代號|序號|號碼|invoice\s*#|\bno\.?$|#$|\bid$)/i;
   var RE_NUMLIKE = /^\(?\s*[$€£¥＄]?\s*-?[\d,]+(\.\d+)?\s*[%)]?\s*\)?$/;
 
+  // 儲存格座標用 Excel 的寫法（G4），使用者對得回原檔；R4C7 沒人看得懂
+  function a1(r, c) {
+    var col = ''; c = c + 1;
+    while (c > 0) { var m = (c - 1) % 26; col = String.fromCharCode(65 + m) + col; c = Math.floor((c - 1) / 26); }
+    return col + (r + 1);
+  }
+
   function quotedFacts(grid, t) {
     var g = normalize(grid || []);
     var out = [], seen = {};
@@ -963,7 +984,7 @@
         for (var d = 1; d <= 4 && c + d < row.length; d++) {
           var val = txt(row[c + d]);
           if (!val) continue;                       // 中間的空格跳過
-          if (RE_NUMLIKE.test(val)) push(lab, val, 'preamble', 'R' + (r + 1) + 'C' + (c + d + 1));
+          if (RE_NUMLIKE.test(val)) push(lab, val, 'preamble', a1(r, c + d));
           break;                                    // 碰到第一個有值的就停，不再往右找
         }
       }
@@ -984,7 +1005,7 @@
         if (!lab && !named) return;
         if (RE_IDLIKE.test(lab) || RE_IDLIKE.test(colName)) return;                 // 沒有列標籤也沒有欄名 → 這個數字說明不了什麼
         var full = lab ? (named ? lab + ' · ' + colName : lab) : colName;
-        push(full, val, 'total', 'T' + (i + 1) + 'C' + (c + 1));
+        push(full, val, 'total', '');   // 合計列的原始位置在切表時就沒留下來，不硬湊
       });
     });
 
@@ -1082,6 +1103,7 @@
     if (!tables.length) return { show: false, why: '切不出任何表格區塊' };
 
     var main = tables.reduce(function (a, b) { return b.rows.length > a.rows.length ? b : a; });
+    if (main.calendar) return { show: false, why: '月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現' };
     if (main.rows.length < 2) return { show: false, why: '只有 ' + main.rows.length + ' 列資料' };
 
     var live = main.cols.filter(function (c) { return c.type !== 'empty'; });
@@ -1121,8 +1143,61 @@
   S.sheetVerdict = sheetVerdict;
 
   /* 包一層：先切表，再對每一塊做原本的判型 */
+  /* 週表：時間直著排、星期橫著排（課表、班表、每週菜單）。
+     手機上一次只看一天才讀得了，所以把它攤平成「星期 | 時間 | 內容」的長表——
+     之後「只看某個星期」就是切天、「照時間看」就是排時間，不用另外做一種畫面。
+     月曆（格子裡是 1 到 31 的日期數字）不是這種東西，攤平沒有意義，留給 sheetVerdict 拒絕。 */
+  function weekGrid(header) {
+    var idx = [];
+    header.forEach(function (h, i) { if (RE_DOW.test(String(h == null ? '' : h).trim())) idx.push(i); });
+    return idx.length >= 3 ? idx : null;
+  }
+  function isCalendarGrid(t, idx) {
+    var cells = [];
+    t.grid.slice(1).forEach(function (r) { idx.forEach(function (i) { var v = String(r[i] == null ? '' : r[i]).trim(); if (v) cells.push(v); }); });
+    if (cells.length < 6) return false;
+    var days = cells.filter(function (v) { return /^\d{1,2}$/.test(v) && +v >= 1 && +v <= 31; }).length;
+    return days / cells.length >= 0.6;
+  }
+  function unpivotWeek(t, idx) {
+    var header = t.grid[0], body = t.grid.slice(1);
+    var rest = [];
+    header.forEach(function (h, i) { if (idx.indexOf(i) < 0) rest.push(i); });
+    // 時間軸：星期欄以外，第一個有值的欄（TIME、Period、時段……）
+    var axis = -1;
+    rest.forEach(function (i) { if (axis < 0 && body.some(function (r) { return !blank(r[i]); })) axis = i; });
+    var zh = idx.some(function (i) { return /[\u3400-\u9fff]/.test(String(header[i])); });
+    var dayName = zh ? '星期' : 'Day', itemName = zh ? '內容' : 'Item';
+    var axisName = axis >= 0 ? String(header[axis]).trim() || (zh ? '時間' : 'Time') : '';
+    var out = [];
+    idx.forEach(function (ci) {
+      var day = String(header[ci]).trim();
+      body.forEach(function (r) {
+        var v = String(r[ci] == null ? '' : r[ci]).trim();
+        if (!v) return;
+        var row = [day];
+        if (axis >= 0) row.push(String(r[axis] == null ? '' : r[axis]).trim());
+        row.push(v);
+        out.push(row);
+      });
+    });
+    if (out.length < 4) return null;
+    var h = [dayName]; if (axis >= 0) h.push(axisName); h.push(itemName);
+    return {
+      name: t.name, title: t.title, preambleRows: t.preambleRows, headerRow: t.headerRow,
+      grid: [h].concat(out), totals: [], skipped: t.skipped, range: t.range,
+      notes: (t.notes || []).concat(['把 ' + idx.length + ' 個星期欄位攤平成「' + dayName + '」欄，一次看一天']),
+      unpivoted: 'week'
+    };
+  }
+
   S.analyseSheet = function (grid) {
-    var tables = findTables(grid);
+    var tables = findTables(grid).map(function (t) {
+      var idx = weekGrid(t.grid[0] || []);
+      if (!idx) return t;
+      if (isCalendarGrid(t, idx)) { t.calendar = true; return t; }
+      return unpivotWeek(t, idx) || t;
+    });
     if (!tables.length) return { tables: [] };
     return {
       tables: tables.map(function (t) {
@@ -1134,6 +1209,25 @@
           a.totals = t.totals;
           a.notes = t.notes || [];      // 做過哪些結構轉換，要讓使用者看得到
           a.range = t.range;
+          a.calendar = !!t.calendar;    // 月曆格子：交給 sheetVerdict 拒絕
+          a.unpivoted = t.unpivoted || '';
+          if (t.unpivoted === 'week') {
+            // 攤平出來的三欄角色是固定的：星期＝標籤（拿來切天）、時間＝前導、內容＝標題。
+            // 交給一般規則會把短短的「THU」挑成標題，內容反而被塞進內文區。
+            var byName = {}; a.cols.forEach(function (c) { byName[c.name] = c; });
+            var h = t.grid[0], dayC = byName[h[0]], itemC = byName[h[h.length - 1]], timeC = h.length === 3 ? byName[h[1]] : null;
+            if (dayC && itemC) {
+              // 頁面是拿 shape.title / lead / group 重算角色的，所以改在 shape 上
+              a.shape.title = itemC;
+              a.shape.lead = (timeC && timeC.type === 'time') ? timeC : null;
+              a.shape.group = null;
+              dayC.type = 'category';   // 星期一定是分類，不管值多寡
+              a.roles = { group: null, lead: a.shape.lead, title: itemC, meta: [dayC], body: [], rest: [], hidden: [], assigned: {} };
+              a.roles.assigned[dayC.name] = 'meta'; a.roles.assigned[itemC.name] = 'title';
+              if (a.shape.lead) a.roles.assigned[timeC.name] = 'lead';
+              if (timeC && !a.shape.lead) { a.roles.rest.push(timeC); a.roles.assigned[timeC.name] = 'rest'; }
+            }
+          }
         }
         return a;
       }).filter(Boolean)

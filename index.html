@@ -482,14 +482,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v53<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v54<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=52"></script>
-<script src="i18n.js?v=53"></script>
+<script src="detect.js?v=54"></script>
+<script src="i18n.js?v=54"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -947,6 +947,24 @@ function renderControls(groupName){
         });
       });
       var keys0 = Object.keys(tal0).sort(function(a,b){ return tal0[b]-tal0[a] || lab0[a].localeCompare(lab0[b],'zh-Hant') });
+      // 選項是星期的話（課表、班表攤平出來的），照一週的順序排，而且一打開就停在今天
+      var dowOf = function(k){
+        var m = k.match(/^(mon|tue|wed|thu|fri|sat|sun)|^(週|周|星期|禮拜|礼拜)?([一二三四五六日天])$|^([月火水木金土日])曜?日?$|^(월|화|수|목|금|토|일)/i);
+        if(!m) return -1;
+        var t = (m[1] || m[3] || m[4] || m[5] || '').toLowerCase();
+        return ['mon','tue','wed','thu','fri','sat','sun'].indexOf(t) >= 0 ? ['mon','tue','wed','thu','fri','sat','sun'].indexOf(t)
+             : '一二三四五六日'.indexOf(t.replace('天','日')) >= 0 ? '一二三四五六日'.indexOf(t.replace('天','日'))
+             : '月火水木金土日'.indexOf(t) >= 0 ? '月火水木金土日'.indexOf(t)
+             : '월화수목금토일'.indexOf(t);
+      };
+      if(keys0.length >= 3 && keys0.every(function(k){ return dowOf(k) >= 0 })){
+        keys0.sort(function(a,b){ return dowOf(a) - dowOf(b) });
+        if(!outPicks[f0.name]){
+          var todayDow = (new Date().getDay() + 6) % 7;                 // 週一=0
+          var hit = keys0.filter(function(k){ return dowOf(k) === todayDow })[0];
+          if(hit) outPicks[f0.name] = hit;
+        }
+      }
       html += '<div class="orail who">' + keys0.map(function(k){
         return '<button type="button" data-who="' + esc(k) + '" class="' + (outPicks[f0.name] === k ? 'on' : '') + '">' +
                esc(lab0[k]) + '<span style="opacity:.6"> ' + tal0[k] + '</span></button>';
@@ -1142,14 +1160,15 @@ function renderPage(shape, roles){
               warns.map(esc).join(' ') + ' ' + TX('warn_tail') + '</div>';
   }
 
-  // 摘要：只引述表上原本就寫著的數字，不自己加總
-  if(raw && SheetShape.quotedFacts && SheetShape.summarise){
+  // 摘要：只引述表上原本就寫著的數字，不自己加總。
+  // 只在「看重點數字」這個看法出現——照時間看、只看某個人的時候，一張摘要卡擋在最前面只是干擾。
+  if(VIEW && VIEW.id === 'facts' && raw && SheetShape.quotedFacts && SheetShape.summarise){
     try{
       var qf = SheetShape.summarise(SheetShape.quotedFacts(raw, A), 6);
       if(qf.length){
         head += '<div class="quote"><h4>' + TX('quote_title') + '</h4><dl>' + qf.map(function(f){
           return '<dt>' + esc(f.value) + '</dt><dd>' + esc(f.label) +
-                 '<span class="src">' + esc(f.at) + '</span></dd>';
+                 (f.at ? '<span class="src">' + esc(f.at) + '</span>' : '') + '</dd>';
         }).join('') + '</dl></div>';
       }
     }catch(e){ /* 摘要失敗不該影響明細 */ }
@@ -1199,6 +1218,8 @@ function renderPage(shape, roles){
 
       var metas = roles.meta.map(function(c){
         var v = cell(r, c); if(!v) return '';
+        // 已經用籤選定的那個值不再印在每張卡上——籤本身就寫著了
+        if(VIEW && VIEW.filter === c.name && outPicks[c.name] && v.toLowerCase() === String(outPicks[c.name]).toLowerCase()) return '';
         if(c.type === 'phone') return '<a class="m" href="tel:' + esc(v.replace(/[^\d+]/g,'')) + '">' + esc(v) + '</a>';
         if(c.type === 'email') return '<a class="m" href="mailto:' + esc(v) + '">' + esc(v) + '</a>';
         if(c.type === 'url')   return '<a class="m" href="' + esc(v) + '" target="_blank" rel="noopener">' + TX('link') + '</a>';
@@ -1364,6 +1385,19 @@ document.addEventListener('click', function(e){
   if(e.target.closest('#octl button')) noteInteract('chip');
   else if(e.target.closest('.out .upnext button')) noteInteract('upnext');
 });
+
+// 開發用：?f=corpus-ms/files/xxx.xlsx（&sheet=N）直接載本機語料，看真實畫面。
+// 只接受同源相對路徑；正式站沒有這些檔案，頂多讀不到。
+(function(){
+  var f = PARAMS.f;
+  if(!f || /^[a-z]+:|\/\/|\.\./i.test(f)) return;
+  fetch(f).then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer() })
+    .then(function(buf){
+      openWorkbook(XLSX.read(new Uint8Array(buf), { type:'array' }), f.split('/').pop());
+      if(PARAMS.sheet && SHEETS[+PARAMS.sheet]) showSheet(+PARAMS.sheet);
+    })
+    .catch(function(e){ say(TX('err_read', { msg:e.message }), true, 'read') });
+})();
 
 // 收到分享網址的人：直接看到成品，不看輸入框、不被問
 (function(){
