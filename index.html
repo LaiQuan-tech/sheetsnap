@@ -125,6 +125,12 @@
     border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);cursor:pointer}
   button.ghost{background:transparent;color:var(--accent)}
   button:disabled{opacity:.5;cursor:default}
+  /* 開啟、複製、換個看法——整個網站就是在操作這三個按鈕。
+     原本三個一個比一個小：.share button 縮到 12.5px、.reset button 是透明外框，
+     最主要的動作反而最不顯眼。三個統一成填滿、放大、手機上至少 44px 的點擊區
+     （iOS 的建議值）。用 id 選擇器蓋掉那兩條情境規則，不必改動它們本身。 */
+  #go,#copyShare,#reView{font-size:15px;font-weight:700;padding:12px 20px;min-height:44px;
+    background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
   select{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);
     border-radius:6px;background:var(--surface);color:var(--ink)}
   .drop{display:block;margin-top:10px;border:1.5px dashed var(--line);border-radius:8px;padding:14px;
@@ -488,7 +494,7 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v56<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v57<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
@@ -502,7 +508,8 @@ var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
 var TX = I18N.t;   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
 var outQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
-var VIEWS = [], focusFilter = null, VIEW = null;
+var VIEWS = [], ALL_VIEWS = [], focusFilter = null, VIEW = null;
+var PICK_MAX = 3;          // 選單一次只建議三張卡
 var SRC = null;            // {type:'gsheet', id, gid} 或 {type:'file'}
 var VIEWER = false;        // 從分享網址打開的人
 // 分享出去的頁面裝的是別人的資料，不該被搜尋引擎收錄；首頁才要被找到
@@ -675,15 +682,23 @@ function showTable(i){
   [].forEach.call($('tabs').children, function(b, j){ b.classList.toggle('on', i === j) });
   fillOverrides();
   buildViews();
-  // 分享網址指定了看法 → 直接呈現。
+  // 網址帶的看法要從候選全集裡找，不是只看選單那三張——
+  // 別人手上的舊連結指的可能是我們不再建議、但仍然做得出來的看法。
+  var byId = function(id){ return id && ALL_VIEWS.filter(function(x){ return x.id === id })[0] };
   // 觀看者只能讀，不做任何設定：網址沒帶看法就用引擎的第一選擇，不給他選單。
-  if(PARAMS.v || VIEWER){
-    var pv = (PARAMS.v && VIEWS.filter(function(x){ return x.id === PARAMS.v })[0]) || VIEWS[0];
+  if(VIEWER){
+    var pv0 = byId(PARAMS.v) || VIEWS[0];
+    if(pv0){ applyView(pv0, false); askGrouping('__dismissed__'); return; }
+  }
+  if(PARAMS.v){
+    var pv = byId(PARAMS.v);
     if(pv){ applyView(pv, false); askGrouping('__dismissed__'); return; }
+    // v 認不出來就往下走去問。原本是退回第一個看法並跳過選單，
+    // 於是任何帶了 v 的網址都會讓人以為自己沒得選。
   }
   var savedView = null;
   try{ savedView = localStorage.getItem(viewKey()) }catch(e){}
-  var v = savedView && VIEWS.filter(function(x){ return x.id === savedView })[0];
+  var v = byId(savedView);
   if(v){ applyView(v, false); askGrouping('__dismissed__'); return; }
   showPicker();
 }
@@ -805,7 +820,7 @@ function paint(){
    選「照時間看」時，金額欄判錯完全不影響畫面。
    而且做不到的事不會出現在選單上，選單本身就是誠實的。 */
 function buildViews(){
-  VIEWS = [];
+  var cand = [];
   var live = A.cols.filter(function(c){ return c.type !== 'empty' });
   var date = live.filter(function(c){ return c.type === 'date' })[0];
   var time = live.filter(function(c){ return c.type === 'time' })[0];
@@ -813,31 +828,43 @@ function buildViews(){
 
   if(date){
     var gd = gopts.filter(function(x){ return x.name === date.name })[0];
-    if(gd) VIEWS.push({ id:'time', k:TX('v_time'),
+    if(gd) cand.push({ id:'time', k:TX('v_time'),
       d:TX('v_time_d', { name:date.name, n:gd.groups }), group:date.name });
   } else if(time){
-    VIEWS.push({ id:'time', k:TX('v_time'),
+    cand.push({ id:'time', k:TX('v_time'),
       d:TX('v_time_d2', { name:String(time.name).replace(/\s+/g,' ') }), group:'__none__' });
   }
 
   SheetShape.filterOptions(A).slice(0, 2).forEach(function(f){
-    VIEWS.push({ id:'filter:' + f.name, k:TX('v_filter', { name:f.name }),
+    cand.push({ id:'filter:' + f.name, k:TX('v_filter', { name:f.name }),
       d:TX('v_filter_d', { n:f.options, avg:f.avg }), group:'__none__', filter:f.name });
   });
 
   if(raw && SheetShape.quotedFacts){
     var q = SheetShape.summarise(SheetShape.quotedFacts(raw, A));
-    if(q.length) VIEWS.push({ id:'facts', k:TX('v_facts'),
+    if(q.length) cand.push({ id:'facts', k:TX('v_facts'),
       d:TX('v_facts_d', { n:q.length }), group:'__none__' });
   }
 
   gopts.filter(function(x){ return x.type !== 'date' }).slice(0, 1).forEach(function(c){
-    VIEWS.push({ id:'group:' + c.name, k:TX('v_group', { name:c.name }),
+    cand.push({ id:'group:' + c.name, k:TX('v_group', { name:c.name }),
       d:TX('v_group_d', { n:c.groups, avg:c.avg }), group:c.name });
   });
 
-  VIEWS.push({ id:'all', k:TX('v_all'),
-    d:TX('v_all_d', { n:A.rows.length }), group:'__none__' });
+  var escapeView = { id:'all', k:TX('v_all'),
+    d:TX('v_all_d', { n:A.rows.length }), group:'__none__' };
+  cand.push(escapeView);
+
+  // 候選全集不進選單，只用來還原網址或記住的看法 id——
+  // 我們把建議從六張收到三張，不該讓別人手上的舊分享連結跟著換版面。
+  ALL_VIEWS = cand;
+
+  /* 少就是多：選單一次只給三張——兩個最重要的主軸，加一條逃生門。
+     逃生門（全部列出＋搜尋）一定留。README 的原則是「摘要不必完整，
+     因為查得到」；少了它，三張卡剛好都是篩選的表就沒有「我就是要看全部」的路。 */
+  VIEWS = cand.filter(function(v){ return v.id !== 'all' })
+              .slice(0, PICK_MAX - 1)
+              .concat([escapeView]);
 }
 
 // 每種看法一個線條圖示。不用 emoji：各家手機畫出來差很多，也沒辦法跟著主題變色。
@@ -1354,7 +1381,7 @@ $('ask').addEventListener('click', function(e){
     if(!TABLES.length) return;
     buildViews();
     if(!$('pick').hidden){ showPicker(); return; }
-    var v = VIEW && VIEWS.filter(function(x){ return x.id === VIEW.id })[0];
+    var v = VIEW && ALL_VIEWS.filter(function(x){ return x.id === VIEW.id })[0];
     if(v){ VIEW = v; $('curView').innerHTML = esc(TX('cur')) + '<b>' + esc(v.k) + '</b>'; paint(); renderShare(v.id); }
   });
 })();
@@ -1428,7 +1455,9 @@ document.addEventListener('click', function(e){
 $('made').addEventListener('click', function(e){ if(e.target.closest('a')) track('made') });
 
 $('hardReload').addEventListener('click', function(){
-  location.href = location.pathname + '?v=' + Date.now();
+  // 破快取用 r，不能用 v——v 是「看法」參數，
+  // 帶著時間戳回來會被當成指定看法，選單就整個不出現了。
+  location.href = location.pathname + '?r=' + Date.now();
 });
 
 $('pick').addEventListener('click', function(e){
