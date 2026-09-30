@@ -312,6 +312,9 @@
     padding:7px 10px;border-radius:99px;border:1px solid var(--prule);background:var(--card);
     color:var(--pmuted);cursor:pointer;font-variant-numeric:tabular-nums}
   .orail button.on{background:var(--strap);border-color:var(--strap);color:var(--strap-ink);font-weight:700}
+  .orail button[hidden]{display:none}
+  .orail .wnone{flex:0 0 auto;font-size:12px;color:var(--pmuted);padding:7px 2px;white-space:nowrap}
+  .orail .wnone[hidden]{display:none}
   .orail button.now{border-color:var(--cinnabar);color:var(--cinnabar);font-weight:700}
   .orail button.now.on{color:var(--strap-ink)}
   .out{padding:16px 14px 40px;color:var(--pink);font-size:15px;line-height:1.65}
@@ -508,19 +511,19 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v61<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v62<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
 <script src="detect.js?v=61"></script>
-<script src="i18n.js?v=59"></script>
+<script src="i18n.js?v=62"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
 var TX = I18N.t;   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
-var outQ = '', outPicks = {}, filterCols = [], outGroup = '';
+var outQ = '', whoQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
 var VIEWS = [], ALL_VIEWS = [], focusFilter = null, VIEW = null;
 var PICK_MAX = 3;          // 選單一次只建議三張卡
@@ -692,7 +695,7 @@ function run(rows){
 
 function showTable(i){
   cur = i; A = TABLES[i];
-  outQ = ''; outPicks = {}; outGroup = '';
+  outQ = ''; whoQ = ''; outPicks = {}; outGroup = '';
   [].forEach.call($('tabs').children, function(b, j){ b.classList.toggle('on', i === j) });
   fillOverrides();
   buildViews();
@@ -1023,7 +1026,7 @@ function showPicker(){
 function applyView(v, remember){
   VIEW = v;
   focusFilter = v.filter || null;
-  outPicks = {};
+  outPicks = {}; whoQ = '';      // 換看法就換一組名字，舊的搜尋字留著沒意義
   $('ovGroup').value = v.group === '__none__' ? '__none__' : v.group;
   if(remember){ try{ localStorage.setItem(viewKey(), v.id) }catch(e){}; track('view', { view:v.id }) }
   $('pick').hidden = true;
@@ -1087,10 +1090,21 @@ function renderControls(groupName){
           if(hit) outPicks[f0.name] = hit;
         }
       }
+      /* 名字一多，要在一條橫向捲軸裡用手指滑到自己。
+         這個輸入框篩的是下面那排籤，不是資料列——要解的是「我的名字在哪」。
+         人員看法沒有資料列的搜尋框（籤就是導覽），所以原本完全沒有辦法找名字。
+         門檻 12：再少就一兩下滑完，多一個輸入框反而是雜訊。 */
+      var manyWho = keys0.length >= 12;
+      if(manyWho) html += '<input id="oqwho" type="search" autocomplete="off" placeholder="' +
+        esc(TX('who_ph', { name:f0.name })) + '" value="' + esc(whoQ) + '">';
+      var hitWho = 0;
       html += '<div class="orail who">' + keys0.map(function(k){
-        return '<button type="button" data-who="' + esc(k) + '" class="' + (outPicks[f0.name] === k ? 'on' : '') + '">' +
+        var show = !whoQ || k.indexOf(whoQ) >= 0;
+        if(show) hitWho++;
+        return '<button type="button" data-who="' + esc(k) + '" class="' + (outPicks[f0.name] === k ? 'on' : '') + '"' +
+               (show ? '' : ' hidden') + '>' +
                esc(lab0[k]) + '<span style="opacity:.6"> ' + tal0[k] + '</span></button>';
-      }).join('') + '</div>';
+      }).join('') + '<span class="wnone"' + (hitWho ? ' hidden' : '') + '>' + esc(TX('who_none')) + '</span></div>';
       filterCols = [f0];
     }
   }
@@ -1438,6 +1452,18 @@ $('copyDiag').addEventListener('click', function(){
 
 $('octl').addEventListener('input', function(e){
   if(e.target.id === 'oq'){ outQ = e.target.value.trim().toLowerCase(); repaintOut() }
+  // 找名字：只在原地開關那排籤。重建 #octl 會把焦點搶走，打第二個字就中斷了。
+  if(e.target.id === 'oqwho'){
+    whoQ = e.target.value.trim().toLowerCase();
+    var rail = $('octl').querySelector('.orail.who'); if(!rail) return;
+    var hit = 0;
+    [].forEach.call(rail.querySelectorAll('button[data-who]'), function(b){
+      var show = !whoQ || b.dataset.who.indexOf(whoQ) >= 0;
+      b.hidden = !show; if(show) hit++;
+    });
+    var none = rail.querySelector('.wnone');
+    if(none) none.hidden = !!hit;
+  }
 });
 $('out').addEventListener('click', function(e){
   var b = e.target.closest('.upnext button'); if(!b) return;
