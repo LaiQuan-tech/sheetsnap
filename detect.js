@@ -326,9 +326,13 @@
       reason: '偵測到狀態欄「' + status.name + '」（' + status.distinct + ' 種狀態）',
       group: status, lead: null, title: title, person: person
     };
+    // 落到這裡不代表沒有軸：底下仍然把 cat 當分組欄。
+    // 說明要講實際做了什麼，不能一律說「沒有可辨識的主軸」——
+    // 163 份範本裡有 40 張是這種情況，畫面上卻跟使用者說沒有軸。
     return {
       shape: 'cards', label: '一般表格',
-      reason: title ? '沒有可辨識的主軸，以「' + title.name + '」為標題逐列呈現'
+      reason: cat ? '沒有時間或人員這類主軸，改以「' + cat.name + '」分組後逐列呈現'
+            : title ? '沒有可辨識的主軸，以「' + title.name + '」為標題逐列呈現'
                     : '沒有可辨識的結構，逐列呈現所有欄位',
       group: cat, lead: null, title: title, person: person
     };

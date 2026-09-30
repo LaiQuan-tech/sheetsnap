@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v62<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v63<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=61"></script>
+<script src="detect.js?v=63"></script>
 <script src="i18n.js?v=62"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -837,36 +837,46 @@ function paint(){
    選「照時間看」時，金額欄判錯完全不影響畫面。
    而且做不到的事不會出現在選單上，選單本身就是誠實的。 */
 function buildViews(){
-  var cand = [];
   var live = A.cols.filter(function(c){ return c.type !== 'empty' });
   var date = live.filter(function(c){ return c.type === 'date' })[0];
   var time = live.filter(function(c){ return c.type === 'time' })[0];
   var gopts = SheetShape.groupOptions(A);
 
+  var timeView = null;
   if(date){
     var gd = gopts.filter(function(x){ return x.name === date.name })[0];
-    if(gd) cand.push({ id:'time', k:TX('v_time'),
-      d:TX('v_time_d', { name:date.name, n:gd.groups }), group:date.name });
+    if(gd) timeView = { id:'time', k:TX('v_time'),
+      d:TX('v_time_d', { name:date.name, n:gd.groups }), group:date.name };
   } else if(time){
-    cand.push({ id:'time', k:TX('v_time'),
-      d:TX('v_time_d2', { name:String(time.name).replace(/\s+/g,' ') }), group:'__none__' });
+    timeView = { id:'time', k:TX('v_time'),
+      d:TX('v_time_d2', { name:String(time.name).replace(/\s+/g,' ') }), group:'__none__' };
   }
 
-  SheetShape.filterOptions(A).slice(0, 2).forEach(function(f){
-    cand.push({ id:'filter:' + f.name, k:TX('v_filter', { name:f.name }),
-      d:TX('v_filter_d', { n:f.options, avg:f.avg }), group:'__none__', filter:f.name });
+  var g0 = gopts.filter(function(x){ return x.type !== 'date' })[0];
+  var groupView = g0 ? { id:'group:' + g0.name, k:TX('v_group', { name:g0.name }),
+    d:TX('v_group_d', { n:g0.groups, avg:g0.avg }), group:g0.name } : null;
+
+  var filterViews = SheetShape.filterOptions(A).slice(0, 2).map(function(f){
+    return { id:'filter:' + f.name, k:TX('v_filter', { name:f.name }),
+      d:TX('v_filter_d', { n:f.options, avg:f.avg }), group:'__none__', filter:f.name };
   });
 
+  var factsView = null;
   if(raw && SheetShape.quotedFacts){
     var q = SheetShape.summarise(SheetShape.quotedFacts(raw, A));
-    if(q.length) cand.push({ id:'facts', k:TX('v_facts'),
-      d:TX('v_facts_d', { n:q.length }), group:'__none__' });
+    if(q.length) factsView = { id:'facts', k:TX('v_facts'),
+      d:TX('v_facts_d', { n:q.length }), group:'__none__' };
   }
 
-  gopts.filter(function(x){ return x.type !== 'date' }).slice(0, 1).forEach(function(c){
-    cand.push({ id:'group:' + c.name, k:TX('v_group', { name:c.name }),
-      d:TX('v_group_d', { n:c.groups, avg:c.avg }), group:c.name });
-  });
+  /* 順序：有時間軸就時間優先，分組排最後（原本的順序）。
+     沒有時間軸時把分組提到篩選之前——清單、預算、庫存這種表，
+     「全部都在、依分類分段」比「挑一個分類、其他看不到」更接近一眼讀完。
+     163 份微軟範本裡有 40 張落到「一般表格」卻其實已經有分組軸，
+     就是因為分組排在篩選後面，三張卡的上限一卡就永遠輪不到。 */
+  var cand = timeView
+    ? [timeView].concat(filterViews, factsView ? [factsView] : [], groupView ? [groupView] : [])
+    : (groupView ? [groupView] : []).concat(filterViews, factsView ? [factsView] : []);
+
 
   var escapeView = { id:'all', k:TX('v_all'),
     d:TX('v_all_d', { n:A.rows.length }), group:'__none__' };
@@ -876,12 +886,25 @@ function buildViews(){
   // 我們把建議從六張收到三張，不該讓別人手上的舊分享連結跟著換版面。
   ALL_VIEWS = cand;
 
+  /* 同一欄不要在選單裡出現兩張卡（「依 X 分組」與「只看某個 X」是同一件事）。
+     兩個順序都很要緊：
+     一、要在排序之後才去重，否則會拿一張排最後、根本擠不進三張卡的分組卡，
+         去刪掉一張該出現的篩選卡。
+     二、只能作用在建議清單上，不能動 ALL_VIEWS——動了的話，別人手上的舊
+         ?v=group:X 連結就解不開了。 */
+  var seenCol = {};
+  var suggest = cand.filter(function(v){
+    if(v.id === 'all') return false;
+    var col = v.filter || (v.group !== '__none__' ? v.group : null);
+    if(!col) return true;
+    if(seenCol[col]) return false;
+    seenCol[col] = 1; return true;
+  });
+
   /* 少就是多：選單一次只給三張——兩個最重要的主軸，加一條逃生門。
      逃生門（全部列出＋搜尋）一定留。README 的原則是「摘要不必完整，
      因為查得到」；少了它，三張卡剛好都是篩選的表就沒有「我就是要看全部」的路。 */
-  VIEWS = cand.filter(function(v){ return v.id !== 'all' })
-              .slice(0, PICK_MAX - 1)
-              .concat([escapeView]);
+  VIEWS = suggest.slice(0, PICK_MAX - 1).concat([escapeView]);
 }
 
 // 每種看法一個線條圖示。不用 emoji：各家手機畫出來差很多，也沒辦法跟著主題變色。
