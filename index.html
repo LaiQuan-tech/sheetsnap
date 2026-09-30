@@ -212,6 +212,9 @@
     padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
   .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
   .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
+  #shortLink{margin-top:9px;font-size:13.5px;padding:10px 16px;min-height:44px}
+  #shortNote{margin:7px 0 0;font-size:11.5px;line-height:1.55}
+  #shortNote.bad{color:var(--warn,#b3261e)}
   .about{margin:72px 0 0;color:var(--ink2);font-size:14px;line-height:1.7}
   .about .mo{margin:0 0 64px}
   .about h2{margin:0 0 8px;font-family:"Noto Serif TC",serif;font-size:27px;line-height:1.25;font-weight:900;color:var(--ink);letter-spacing:.01em}
@@ -403,6 +406,8 @@
       <h4 data-i18n="share_title">分享這個網址，對方打開就是這個畫面</h4>
       <div class="row2"><input id="shareUrl" type="text" readonly><button type="button" id="copyShare" data-i18n="copy">複製</button></div>
       <p id="shareNote"></p>
+      <button type="button" id="shortLink" class="ghost" hidden data-i18n="short_make">做一個短連結</button>
+      <p id="shortNote" hidden></p>
     </div>
     <section class="phonewrap">
       <p class="phonelabel">使用者看到的畫面</p>
@@ -500,7 +505,7 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v58<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v59<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
@@ -888,6 +893,73 @@ function viewIcon(id){
 
 function viewKey(){ return 'view:' + sheetKey + ':' + cur }
 
+/* ══ 短連結 ══
+   長網址把整份表壓進 ?d= 裡（103 列的表要 2,900 字），看起來像詐騙連結，
+   有些訊息軟體還會截斷。短連結的做法是：內容在這支瀏覽器裡用 AES-GCM 加密，
+   只有密文上傳，金鑰放在網址的 # 片段裡——片段依規格不會送到伺服器，
+   所以我們手上沒有金鑰。這是「我們沒有」，不是「無法被強制交出」，別過度宣稱。
+   代價：少數訊息軟體會吃掉 # 後面的東西，那種連結會明確報錯，不會默默壞掉。 */
+var SHARE_API = TRACK_URL.replace(/\/e$/, '/s');
+
+function b64uEnc(buf){
+  var b = new Uint8Array(buf), s = '';
+  for(var i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
+  return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+function b64uDec(str){
+  var t = String(str).replace(/-/g, '+').replace(/_/g, '/');
+  while(t.length % 4) t += '=';               // base64url 省掉的 padding 要補回來
+  var s = atob(t), b = new Uint8Array(s.length);
+  for(var i = 0; i < s.length; i++) b[i] = s.charCodeAt(i);
+  return b;
+}
+
+/* 做一個短連結。回傳 Promise，成功給 { url, exp }。 */
+function makeShortLink(viewId){
+  if(!(window.crypto && crypto.subtle && window.LZString))
+    return Promise.reject(new Error('nocrypto'));
+  var bytes = LZString.compressToUint8Array(JSON.stringify(raw));
+  var iv = crypto.getRandomValues(new Uint8Array(12));
+  return crypto.subtle.generateKey({ name:'AES-GCM', length:128 }, true, ['encrypt','decrypt'])
+    .then(function(key){
+      return Promise.all([
+        crypto.subtle.encrypt({ name:'AES-GCM', iv:iv }, key, bytes),
+        crypto.subtle.exportKey('raw', key)
+      ]);
+    })
+    .then(function(pair){
+      return fetch(SHARE_API, { method:'POST', mode:'cors',
+        body: JSON.stringify({ data:b64uEnc(pair[0]), iv:b64uEnc(iv) }) })
+        .then(function(r){
+          if(r.status === 413) throw new Error('toolarge');
+          if(!r.ok) throw new Error('http' + r.status);
+          return r.json();
+        })
+        .then(function(j){
+          var q = ['k=' + j.k, 'v=' + encodeURIComponent(viewId), 'lang=' + I18N.get()];
+          if(cur) q.push('t=' + cur);          // 第一張表是預設值，不必寫進網址
+          return { url: location.origin + location.pathname + '?' + q.join('&') +
+                        '#' + b64uEnc(pair[1]), exp: j.exp };
+        });
+    });
+}
+
+/* 打開短連結：取密文，用 # 片段裡的金鑰解開。 */
+function loadShortLink(k, keyB64){
+  if(!keyB64) return Promise.reject(new Error('nokey'));
+  return fetch(SHARE_API + '?k=' + encodeURIComponent(k), { mode:'cors' })
+    .then(function(r){ if(!r.ok) throw new Error(r.status === 404 ? 'gone' : 'http' + r.status); return r.json() })
+    .then(function(j){
+      return crypto.subtle.importKey('raw', b64uDec(keyB64), 'AES-GCM', false, ['decrypt'])
+        .then(function(key){
+          return crypto.subtle.decrypt({ name:'AES-GCM', iv:b64uDec(j.iv) }, key, b64uDec(j.data));
+        });
+    })
+    .then(function(plain){
+      return JSON.parse(LZString.decompressFromUint8Array(new Uint8Array(plain)));
+    });
+}
+
 /* 每份表一個網址。
    Google 試算表：網址只帶 ID 與看法，收到的人自己的瀏覽器去抓——零後端，資料不經過我們。
    上傳的檔案：檔案在使用者手機裡，唯一不上傳的做法是把資料壓進網址本身，
@@ -917,6 +989,13 @@ function renderShare(viewId){
   $('shareUrl').value = r.url;
   $('shareNote').textContent = r.note;
   $('copyShare').disabled = !r.url;
+  // 短連結只對上傳的檔案有意義。Google 試算表那條路網址本來就只有 80 幾字，
+  // 而且內容從來不經過我們，沒有理由改成上傳。
+  var canShort = !!(SRC && SRC.type === 'file' && raw && window.crypto && crypto.subtle && window.LZString);
+  $('shortLink').hidden = !canShort;
+  $('shortLink').disabled = false;
+  $('shortNote').hidden = true;
+  $('shortNote').className = '';
   el.hidden = false;
 }
 
@@ -1417,7 +1496,7 @@ $('copyShare').addEventListener('click', function(){
 });
 
 // 落地：做表的人從哪裡來、用什麼裝置（觀看者不算，他們有自己的 open）
-if(!PARAMS.s && !PARAMS.d){
+if(!PARAMS.s && !PARAMS.d && !PARAMS.k){
   var ref = ''; try{ ref = document.referrer ? new URL(document.referrer).hostname : '' }catch(e){}
   track('land', { sheet:'', info:(ref || 'direct') + '|' + (/Mobi|Android|iPhone|iPad/.test(navigator.userAgent) ? 'm' : 'd') });
 }
@@ -1456,6 +1535,20 @@ document.addEventListener('click', function(e){
     document.addEventListener('visibilitychange', function(){
       if(document.visibilityState === 'visible' && Date.now() - openedAt > 5 * 60 * 1000) location.reload();
     });
+  } else if(PARAMS.k){
+    VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false; noindex();
+    say(TX('loading'));
+    // 金鑰在 # 片段裡。被訊息軟體吃掉的話這裡就是空的——
+    // 明確說「連結不完整」，不要讓人以為是表壞了。
+    loadShortLink(PARAMS.k, location.hash.replace(/^#/, ''))
+      .then(function(grid){
+        SRC = { type:'file' }; sheetKey = 'k:' + PARAMS.k; SHEETS = [];
+        renderSheetTabs(); say(''); run(grid);
+      })
+      .catch(function(e){
+        var m = e && e.message;
+        say(TX(m === 'gone' ? 'short_gone' : m === 'nokey' ? 'short_nokey' : 'err_badshare'), true, 'shortopen');
+      });
   } else if(PARAMS.d && window.LZString){
     VIEWER = true; document.body.classList.add('viewer'); $('made').hidden = false; noindex();
     try{
@@ -1476,6 +1569,23 @@ $('hardReload').addEventListener('click', function(){
 $('pick').addEventListener('click', function(e){
   var b = e.target.closest('button'); if(!b) return;
   applyView(VIEWS[+b.dataset.v], true);
+});
+$('shortLink').addEventListener('click', function(){
+  var b = $('shortLink'), note = $('shortNote');
+  b.disabled = true;
+  note.hidden = false; note.className = ''; note.textContent = TX('short_working');
+  makeShortLink((VIEW && VIEW.id) || 'all').then(function(r){
+    $('shareUrl').value = r.url;
+    $('copyShare').disabled = false;
+    b.hidden = true;
+    var days = Math.max(1, Math.round((r.exp - Date.now()) / 86400000));
+    note.textContent = TX('short_done', { n:r.url.length, days:days });
+    track('share', { info:'short' });
+  }).catch(function(e){
+    b.disabled = false;
+    note.className = 'bad';
+    note.textContent = e && e.message === 'toolarge' ? TX('short_toolarge') : TX('short_failed');
+  });
 });
 $('reView').addEventListener('click', function(){
   try{ localStorage.removeItem(viewKey()) }catch(e){}

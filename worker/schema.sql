@@ -14,3 +14,15 @@ CREATE TABLE IF NOT EXISTS events (
 );
 CREATE INDEX IF NOT EXISTS ev_sheet_vid ON events(ev, sheet, vid);
 CREATE INDEX IF NOT EXISTS ev_day ON events(ev, day);
+
+-- 分享的表格內容。頁面先在瀏覽器裡加密才送過來，金鑰在網址的 # 片段裡、
+-- 不會送到伺服器，所以這張表存的是我們解不開的東西。
+-- 30 天到期；過期的列在下一次寫入時順手清掉。
+CREATE TABLE IF NOT EXISTS shares (
+  k    TEXT PRIMARY KEY,       -- 短 key，出現在網址的 ?k=
+  data TEXT NOT NULL,          -- 密文（base64url），伺服器不解讀
+  iv   TEXT NOT NULL,          -- AES-GCM 的 IV（base64url，不必保密）
+  ts   INTEGER NOT NULL,       -- 建立時間（毫秒）
+  exp  INTEGER NOT NULL        -- 到期時間（毫秒）
+);
+CREATE INDEX IF NOT EXISTS shares_exp ON shares(exp);

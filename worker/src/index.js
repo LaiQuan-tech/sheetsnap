@@ -1,12 +1,16 @@
 // t.sheetsnap.link
 //   POST /e            頁面送事件進來（sendBeacon，text/plain，不用 preflight）
+//   POST /s            存一份分享的表（已在瀏覽器加密），回一個短 key
+//   GET  /s?k=…        取回密文
 //   GET  /stats?key=…  統計頁（HTML；加 &json=1 給 JSON）
 const ALLOW = 'https://sheetsnap.link';
+const SHARE_TTL = 30 * 24 * 3600 * 1000;   // 30 天
+const SHARE_MAX = 256 * 1024;              // 密文上限；103 列的表壓完只有 2.4KB
 const EVS = new Set(['land', 'upload', 'open', 'view', 'share', 'made', 'error', 'warn', 'diag', 'interact']);
 
 const cors = (extra = {}) => ({
   'Access-Control-Allow-Origin': ALLOW,
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
   ...extra,
 });
@@ -27,6 +31,43 @@ export default {
         'INSERT INTO events (ts, day, ev, sheet, vid, role, src, lang, view, info, cc) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
       ).bind(ts, day, s(p.ev), s(p.sheet), s(p.vid), s(p.role), s(p.src), s(p.lang), s(p.view), s(p.info), s(cc)).run();
       return new Response(null, { status: 204, headers: cors() });
+    }
+
+    /* 分享一份表：頁面送來的已經是密文，金鑰在網址的 # 片段裡，
+       不會送到這裡，所以下面存的東西我們自己也解不開。
+       這不是「無法被強制交出」的保證，只是我們手上沒有金鑰。 */
+    if (url.pathname === '/s' && req.method === 'POST') {
+      let p;
+      try { p = JSON.parse(await req.text()); } catch { return new Response(null, { status: 400, headers: cors() }); }
+      const data = String((p && p.data) || ''), iv = String((p && p.iv) || '');
+      if (!data || !iv) return new Response(null, { status: 400, headers: cors() });
+      if (data.length > SHARE_MAX)
+        return new Response(JSON.stringify({ err: 'toolarge', max: SHARE_MAX }), 
+          { status: 413, headers: cors({ 'content-type': 'application/json' }) });
+
+      const ts = Date.now(), exp = ts + SHARE_TTL;
+      // 過期的順手清掉，省得再排一個 cron
+      await env.DB.prepare('DELETE FROM shares WHERE exp < ?').bind(ts).run();
+
+      // 12 個 base62 字元 ≈ 71 bits，猜不到；連結本身就是憑證
+      const A = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let k = '';
+      for (const b of crypto.getRandomValues(new Uint8Array(12))) k += A[b % 62];
+
+      await env.DB.prepare('INSERT INTO shares (k, data, iv, ts, exp) VALUES (?,?,?,?,?)')
+        .bind(k, data, iv, ts, exp).run();
+      return new Response(JSON.stringify({ k, exp }), { headers: cors({ 'content-type': 'application/json' }) });
+    }
+
+    if (url.pathname === '/s' && req.method === 'GET') {
+      const k = url.searchParams.get('k') || '';
+      if (!/^[A-Za-z0-9]{1,32}$/.test(k)) return new Response(null, { status: 400, headers: cors() });
+      const row = await env.DB.prepare('SELECT data, iv, exp FROM shares WHERE k = ?').bind(k).first();
+      // 找不到和過期給同一個答案：連結失效就是失效，不必讓人分辨是哪一種
+      if (!row || row.exp < Date.now())
+        return new Response(JSON.stringify({ err: 'gone' }), { status: 404, headers: cors({ 'content-type': 'application/json' }) });
+      return new Response(JSON.stringify({ data: row.data, iv: row.iv, exp: row.exp }),
+        { headers: cors({ 'content-type': 'application/json', 'cache-control': 'private, max-age=60' }) });
     }
 
     if (url.pathname === '/stats') {
