@@ -533,7 +533,17 @@
         score: fill * Math.min(avg, 8)           // 填得滿、每個選項有料 → 越適合
       });
     });
-    out.sort(function (x, y) { return y.score - x.score; });
+    /* 型別優先，score 只在同型別內比。
+       score 的 avg 對人員欄是反向訊號：人越多，平均每人筆數越少，分數越低。
+       但「只看我的」正好是人越多越有價值——上面那個 150 的選項上限就是
+       為此放寬的。選單只給三張卡之後，排序決定誰消失，而粗分類（地點、
+       狀態）只要每項筆數夠多就頂到 min(avg,8) 的天花板，穩定壓掉人員欄：
+       62 位人員時平均 1.9，對上地點的 8.0，差四倍。
+       person 靠欄名關鍵字判定（含中英文），是作者自己標的，誤判成本低。 */
+    var RANK = { person: 0, status: 1, category: 2, text: 3 };
+    out.sort(function (x, y) {
+      return (RANK[x.type] - RANK[y.type]) || (y.score - x.score);
+    });
     return out;
   }
 
