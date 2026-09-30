@@ -212,7 +212,10 @@
     padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
   .share button{font-size:12.5px;padding:8px 13px;white-space:nowrap}
   .share p{margin:7px 0 0;font-size:11.5px;color:var(--muted);line-height:1.55}
-  #shortLink{margin-top:9px;font-size:13.5px;padding:10px 16px;min-height:44px}
+  /* 跟開啟一樣填滿整個欄寬。留外框而不是填色：它上面的「複製」是填色的，
+     兩顆都填色會分不出哪個是主要動作——短連結是換一種連結，複製才是要做的事。 */
+  #shortLink{display:block;width:100%;margin-top:9px;font-size:15px;font-weight:700;
+    padding:12px 20px;min-height:44px}
   #shortNote{margin:7px 0 0;font-size:11.5px;line-height:1.55}
   #shortNote.bad{color:var(--warn,#b3261e)}
   .about{margin:72px 0 0;color:var(--ink2);font-size:14px;line-height:1.7}
@@ -505,7 +508,7 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v59<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v60<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
@@ -988,6 +991,7 @@ function renderShare(viewId){
   if(!r.url && !r.note){ el.hidden = true; return; }
   $('shareUrl').value = r.url;
   $('shareNote').textContent = r.note;
+  $('shareNote').hidden = false;
   $('copyShare').disabled = !r.url;
   // 短連結只對上傳的檔案有意義。Google 試算表那條路網址本來就只有 80 幾字，
   // 而且內容從來不經過我們，沒有理由改成上傳。
@@ -1578,6 +1582,9 @@ $('shortLink').addEventListener('click', function(){
     $('shareUrl').value = r.url;
     $('copyShare').disabled = false;
     b.hidden = true;
+    // 描述長網址的那句要收掉——字數是舊的，而且它說「不經過任何伺服器」，
+    // 對短連結來說是假的。下面 short_done 那句才是這個連結的真實說明。
+    $('shareNote').hidden = true;
     var days = Math.max(1, Math.round((r.exp - Date.now()) / 86400000));
     note.textContent = TX('short_done', { n:r.url.length, days:days });
     track('share', { info:'short' });
