@@ -131,6 +131,12 @@
      （iOS 的建議值）。用 id 選擇器蓋掉那兩條情境規則，不必改動它們本身。 */
   #go,#copyShare,#reView{font-size:15px;font-weight:700;padding:12px 20px;min-height:44px;
     background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+  /* 網址列改成上下兩排：輸入框一整行，開啟一整行。整頁欄寬本來就只有
+     560px（.wrap），所以不必加斷點，桌機上也是同一個窄欄。
+     用 flex-basis 100% 讓它換行，而不是改 flex-direction——改成 column 的話
+     input 的 flex:1 1 320px 會變成「高 320px」。 */
+  .row input[type=url]{flex:1 1 100%}
+  #go{width:100%}
   select{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);
     border-radius:6px;background:var(--surface);color:var(--ink)}
   .drop{display:block;margin-top:10px;border:1.5px dashed var(--line);border-radius:8px;padding:14px;
@@ -494,7 +500,7 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v57<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v58<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
@@ -1320,6 +1326,13 @@ function diagnosticText(){
 
 /* ══ 事件 ══ */
 $('go').addEventListener('click', function(){ loadUrl($('url').value.trim()) });
+/* 沒東西可開就不給按。Open 現在是畫面上最大的按鈕，
+   空著按下去只會跳「這不是試算表網址」——最顯眼的東西一按就報錯。 */
+(function(){
+  var syncGo = function(){ $('go').disabled = !$('url').value.trim() };
+  $('url').addEventListener('input', syncGo);
+  syncGo();
+})();
 $('url').addEventListener('keydown', function(e){ if(e.key === 'Enter') $('go').click() });
 ['ovShape','ovGroup','ovTitle'].forEach(function(id){ $(id).addEventListener('change', paint) });
 
