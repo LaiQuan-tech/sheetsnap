@@ -25,6 +25,7 @@ node test.mjs                          # 回歸測試（9 個已知案例）
 ./corpus-ms/fetch.sh                   # 下載 163 個微軟公開範本
 node audit.mjs corpus-ms/files         # 批次體檢
 node audit.mjs corpus-ms/files --json > corpus-ms/baseline.json   # 存成可 diff 的 baseline
+node corpus-report.mjs corpus-ms/baseline.json      # 依分類總結：通用做不做得到
 node header-quality.mjs corpus-ms/files # 欄名品質單一指標
 node fidelity.mjs corpus-ms/files      # 內容忠實度
 ```
@@ -34,6 +35,11 @@ node fidelity.mjs corpus-ms/files      # 內容忠實度
 「修 A 弄壞 B」靠人眼記上一輪的數字是記不住的。刻意不寫時間戳，
 diff 才不會每次都整片變動；`fingerprint` 記的是 `detect.js` 與 `audit.mjs` 的雜湊，
 結果該不該變由它說明。進度走 stderr，所以 stdout 可以直接重導成檔案。
+
+`corpus-report.mjs` 讀那份 baseline，依範本分類切開來看。不看總數的理由：
+163 份裡有 86 份是財務或圖表類，其中 `chart` 那 24 份本來就是圖表資料區，
+引擎「拒絕渲染」才是正確答案——混在一起算，乾淨率會被這批拉歪。
+最重要的一個數字是「落到一般表格的比例」，那等於「沒辨識出任何主軸」。
 
 **改任何規則前後都跑一次。** 放寬一條規則很容易把別的表吸進來——
 這四支工具就是為了讓那件事被抓到而存在。
