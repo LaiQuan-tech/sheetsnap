@@ -1,54 +1,38 @@
 {
  "fingerprint": {
-  "engine": "31efa8d66448",
+  "engine": "f883f6796515",
   "audit": "95275a3c40d5"
  },
  "summary": {
   "inputs": 163,
-  "sheets": 440,
-  "clean": 181,
-  "flagged": 151,
-  "skipped": 108,
+  "sheets": 436,
+  "clean": 200,
+  "flagged": 127,
+  "skipped": 109,
   "broken": 0,
   "shapes": {
-   "一般表格": 82,
+   "一般表格": 79,
    "名冊／通訊錄": 6,
-   "品項／價目表": 133,
+   "品項／價目表": 116,
    "帳務／明細表": 4,
    "排程／時程表": 27,
    "狀態清單": 1,
-   "矩陣／報表": 79
+   "矩陣／報表": 94
   },
   "flags": {
+   "10/11 列沒有標題，會被整列略過": 1,
    "10/19 列沒有標題，會被整列略過": 1,
-   "12/15 欄整欄空白，欄位邊界可能抓錯": 4,
+   "12/14 欄整欄空白，欄位邊界可能抓錯": 1,
    "13/25 列沒有標題，會被整列略過": 1,
-   "14/16 欄整欄空白，欄位邊界可能抓錯": 1,
-   "16/30 欄整欄空白，欄位邊界可能抓錯": 1,
-   "17/21 欄整欄空白，欄位邊界可能抓錯": 1,
-   "19/24 欄整欄空白，欄位邊界可能抓錯": 1,
    "2/4 列沒有標題，會被整列略過": 3,
    "2/5 列沒有標題，會被整列略過": 1,
    "2/6 列沒有標題，會被整列略過": 1,
-   "26/36 欄整欄空白，欄位邊界可能抓錯": 1,
-   "27/41 欄整欄空白，欄位邊界可能抓錯": 1,
    "3/6 列沒有標題，會被整列略過": 2,
-   "30/42 欄整欄空白，欄位邊界可能抓錯": 1,
    "4/12 列沒有標題，會被整列略過": 1,
-   "4/6 欄整欄空白，欄位邊界可能抓錯": 1,
    "5/14 列沒有標題，會被整列略過": 1,
    "5/6 欄整欄空白，欄位邊界可能抓錯": 1,
-   "5/8 欄整欄空白，欄位邊界可能抓錯": 1,
-   "5/9 欄整欄空白，欄位邊界可能抓錯": 1,
-   "6/10 欄整欄空白，欄位邊界可能抓錯": 1,
    "6/7 欄整欄空白，欄位邊界可能抓錯": 1,
-   "6/9 欄整欄空白，欄位邊界可能抓錯": 4,
-   "7/10 欄整欄空白，欄位邊界可能抓錯": 2,
-   "8/12 欄整欄空白，欄位邊界可能抓錯": 2,
-   "8/13 欄整欄空白，欄位邊界可能抓錯": 1,
    "8/20 列沒有標題，會被整列略過": 1,
-   "9/12 欄整欄空白，欄位邊界可能抓錯": 1,
-   "9/13 欄整欄空白，欄位邊界可能抓錯": 1,
    "9/18 列沒有標題，會被整列略過": 1,
    "分組欄「2.5」只有一種值，等於沒分組": 1,
    "分組欄「Approved by」只有一種值，等於沒分組": 1,
@@ -69,7 +53,6 @@
    "分組欄「Semester」只有一種值，等於沒分組": 1,
    "分組欄「TOTAL」只有一種值，等於沒分組": 1,
    "分組欄「Type」只有一種值，等於沒分組": 1,
-   "分組欄「VACATION」只有一種值，等於沒分組": 1,
    "分組欄「Vendor」只有一種值，等於沒分組": 2,
    "分組欄「Week 1」只有一種值，等於沒分組": 1,
    "分組欄「Yes」只有一種值，等於沒分組": 1,
@@ -88,14 +71,11 @@
    "原始工作表有 21 列，只抽出 2 列，結構可能判壞": 3,
    "原始工作表有 21 列，只抽出 4 列，結構可能判壞": 2,
    "原始工作表有 22 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 23 列，只抽出 3 列，結構可能判壞": 1,
    "原始工作表有 23 列，只抽出 4 列，結構可能判壞": 1,
    "原始工作表有 25 列，只抽出 3 列，結構可能判壞": 1,
    "原始工作表有 254 列，只抽出 3 列，結構可能判壞": 2,
    "原始工作表有 260 列，只抽出 12 列，結構可能判壞": 1,
-   "原始工作表有 28 列，只抽出 1 列，結構可能判壞": 3,
    "原始工作表有 28 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 29 列，只抽出 1 列，結構可能判壞": 1,
    "原始工作表有 29 列，只抽出 2 列，結構可能判壞": 1,
    "原始工作表有 30 列，只抽出 1 列，結構可能判壞": 1,
    "原始工作表有 30 列，只抽出 4 列，結構可能判壞": 1,
@@ -125,11 +105,11 @@
    "原始工作表有 947 列，只抽出 5 列，結構可能判壞": 1,
    "原始工作表有 99 列，只抽出 11 列，結構可能判壞": 1,
    "原始工作表有 99 列，只抽出 6 列，結構可能判壞": 1,
-   "只有一列資料，判斷幾乎沒有依據": 12,
-   "所有欄位都只判成一般文字，型別偵測沒抓到東西": 7,
-   "找不到主標題欄，卡片會沒有名字": 26,
-   "標題列可能判錯": 37,
-   "落到一般表格": 52
+   "只有一列資料，判斷幾乎沒有依據": 8,
+   "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
+   "找不到主標題欄，卡片會沒有名字": 24,
+   "標題列可能判錯": 8,
+   "落到一般表格": 51
   }
  },
  "records": [
@@ -500,39 +480,33 @@
   {
    "src": "accounting_36836876.xlsx",
    "sheet": "accounting_36836876.xlsx › Income statement",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「FYXX Q2」，以「Quinn Campbell」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Quinn Campbell」是標籤，後面 2 欄是數值（欄 2、FYXX Q2）",
    "srcRows": 60,
    "rows": 47,
-   "cols": 8,
+   "cols": 3,
    "live": 3,
    "headerRow": 1,
    "title": "Income Statement",
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Quinn Campbell",
     "group": null,
-    "lead": "FYXX Q2",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
     "Quinn Campbell:text",
-    "欄 4:empty",
-    "欄 5:number",
-    "FYXX Q2:money",
-    "欄 7:empty",
-    "欄 8:empty"
+    "欄 2:number",
+    "FYXX Q2:money"
    ],
-   "flags": [
-    "標題列可能判錯：6/8 欄沒有欄名",
-    "5/8 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_36836876.xlsx",
@@ -969,11 +943,13 @@
    "reason": "偵測到金額欄「Debit   (-)」，以「Description of transaction」為品項名稱",
    "srcRows": 15,
    "rows": 4,
-   "cols": 8,
+   "cols": 7,
    "live": 7,
    "headerRow": 1,
    "title": "√ · Check register",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Description of transaction",
     "group": null,
@@ -981,7 +957,6 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Number:number",
     "Date:text",
     "Description of transaction:text",
@@ -1110,40 +1085,7 @@
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
    "status": "flagged",
    "table": 1,
-   "of": 8,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「ANNUAL CASH FLOW」是標籤，後面 2 欄是數值（欄 2：整欄空白、欄 3：整欄空白）",
-   "srcRows": 28,
-   "rows": 1,
-   "cols": 3,
-   "live": 1,
-   "headerRow": 0,
-   "title": null,
-   "notes": [],
-   "roles": {
-    "title": "ANNUAL CASH FLOW",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "colTypes": [
-    "ANNUAL CASH FLOW:text",
-    "欄 2:empty",
-    "欄 3:empty"
-   ],
-   "flags": [
-    "標題列可能判錯：2/3 欄沒有欄名",
-    "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 28 列，只抽出 1 列，結構可能判壞"
-   ]
-  },
-  {
-   "src": "accounting_b55730e7.xlsx",
-   "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
-   "status": "flagged",
-   "table": 2,
-   "of": 8,
+   "of": 5,
    "shape": "cards",
    "label": "一般表格",
    "reason": "沒有可辨識的結構，逐列呈現所有欄位",
@@ -1173,75 +1115,9 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
-   "status": "flagged",
-   "table": 3,
-   "of": 8,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
-   "srcRows": 28,
-   "rows": 1,
-   "cols": 2,
-   "live": 1,
-   "headerRow": 0,
-   "title": null,
-   "notes": [],
-   "roles": {
-    "title": null,
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "colTypes": [
-    "欄 1:text",
-    "欄 2:empty"
-   ],
-   "flags": [
-    "標題列可能判錯：2/2 欄沒有欄名",
-    "找不到主標題欄，卡片會沒有名字",
-    "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 28 列，只抽出 1 列，結構可能判壞"
-   ]
-  },
-  {
-   "src": "accounting_b55730e7.xlsx",
-   "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
-   "status": "flagged",
-   "table": 4,
-   "of": 8,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
-   "srcRows": 28,
-   "rows": 1,
-   "cols": 2,
-   "live": 1,
-   "headerRow": 0,
-   "title": null,
-   "notes": [],
-   "roles": {
-    "title": null,
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "colTypes": [
-    "欄 1:text",
-    "欄 2:empty"
-   ],
-   "flags": [
-    "標題列可能判錯：2/2 欄沒有欄名",
-    "找不到主標題欄，卡片會沒有名字",
-    "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 28 列，只抽出 1 列，結構可能判壞"
-   ]
-  },
-  {
-   "src": "accounting_b55730e7.xlsx",
-   "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 5,
-   "of": 8,
+   "table": 2,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Annual Income」，以「Row Labels」為品項名稱",
@@ -1268,8 +1144,8 @@
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 6,
-   "of": 8,
+   "table": 3,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Sum of Annual」，以「Row Labels」為品項名稱",
@@ -1296,8 +1172,8 @@
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 7,
-   "of": 8,
+   "table": 4,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Sum of Annual」，以「Row Labels」為品項名稱",
@@ -1324,8 +1200,8 @@
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 8,
-   "of": 8,
+   "table": 5,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Sum of Annual」，以「Row Labels」為品項名稱",
@@ -1351,178 +1227,126 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Income",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Income」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Income」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 10,
    "rows": 6,
-   "cols": 15,
+   "cols": 3,
    "live": 3,
    "headerRow": 2,
    "title": "INCOME · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values. If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 12 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Income",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Income:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty",
-    "欄 14:empty",
-    "欄 15:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：12/15 欄沒有欄名",
-    "12/15 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Expenses",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Expenses」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Expenses」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 22,
    "rows": 18,
-   "cols": 15,
+   "cols": 3,
    "live": 3,
    "headerRow": 2,
    "title": "EXPENSES · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 12 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Expenses",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Expenses:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty",
-    "欄 14:empty",
-    "欄 15:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：12/15 欄沒有欄名",
-    "12/15 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Discretionary",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Expenses」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Expenses」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 15,
    "rows": 11,
-   "cols": 15,
+   "cols": 3,
    "live": 3,
    "headerRow": 2,
    "title": "DISCRETIONARY · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 12 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Expenses",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Expenses:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty",
-    "欄 14:empty",
-    "欄 15:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：12/15 欄沒有欄名",
-    "12/15 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Savings",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Savings」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Savings」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 9,
    "rows": 5,
-   "cols": 15,
+   "cols": 3,
    "live": 3,
    "headerRow": 2,
    "title": "SAVINGS · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 12 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Savings",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Savings:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty",
-    "欄 14:empty",
-    "欄 15:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：12/15 欄沒有欄名",
-    "12/15 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_efbf4064.xlsx",
@@ -1532,7 +1356,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「ASSET TYPE」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「CURRENT YEAR」分組後逐列呈現",
    "srcRows": 14,
    "rows": 7,
    "cols": 3,
@@ -1561,7 +1385,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「DESCRIPTION」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「ASSET TYPE」分組後逐列呈現",
    "srcRows": 16,
    "rows": 10,
    "cols": 4,
@@ -1829,11 +1653,13 @@
    "reason": "沒有可辨識的主軸，以「jan」為標題逐列呈現",
    "srcRows": 24,
    "rows": 9,
-   "cols": 16,
+   "cols": 14,
    "live": 2,
    "headerRow": 9,
    "title": "***This sheet should remain HIDDEN*** · january · Dynamic Chart Titles · january income: · $1,225 · january expenses: · $1,056 · january cash flow: · 169 · $169",
-   "notes": [],
+   "notes": [
+    "剔除 2 個排版用的空白欄"
+   ],
    "roles": {
     "title": "jan",
     "group": null,
@@ -1841,9 +1667,7 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
-    "欄 3:longtext",
+    "欄 1:longtext",
     "jan:text",
     "feb:empty",
     "mar:empty",
@@ -1859,7 +1683,7 @@
     "year:empty"
    ],
    "flags": [
-    "14/16 欄整欄空白，欄位邊界可能抓錯"
+    "12/14 欄整欄空白，欄位邊界可能抓錯"
    ]
   },
   {
@@ -2059,43 +1883,34 @@
   {
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "budget_2d4c31d3.xlsx › Monthly budget report",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Projected」，以「欄 3」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「欄 1」是標籤，後面 3 欄是數值（Projected、Actual、Difference）",
    "srcRows": 20,
    "rows": 7,
-   "cols": 12,
+   "cols": 4,
    "live": 4,
    "headerRow": 3,
    "title": "Budget Overview · Overview",
-   "notes": [],
+   "notes": [
+    "剔除 8 個排版用的空白欄"
+   ],
    "roles": {
-    "title": "欄 3",
+    "title": "欄 1",
     "group": null,
-    "lead": "Projected",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
-    "欄 3:text",
+    "欄 1:text",
     "Projected:money",
     "Actual:money",
-    "Difference:money",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty"
+    "Difference:money"
    ],
-   "flags": [
-    "標題列可能判錯：9/12 欄沒有欄名",
-    "8/12 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "budget_2d4c31d3.xlsx",
@@ -2517,7 +2332,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
+   "reason": "沒有時間或人員這類主軸，改以「DATE」分組後逐列呈現",
    "srcRows": 6,
    "rows": 3,
    "cols": 2,
@@ -2716,11 +2531,13 @@
    "reason": "偵測到金額欄「欄 1」，以「欄 2」為品項名稱",
    "srcRows": 71,
    "rows": 66,
-   "cols": 20,
+   "cols": 16,
    "live": 16,
    "headerRow": 2,
    "title": "CHANNEL MARKETING BUDGET",
-   "notes": [],
+   "notes": [
+    "剔除 4 個排版用的空白欄"
+   ],
    "roles": {
     "title": "欄 2",
     "group": "Rate",
@@ -2743,11 +2560,7 @@
     "Oct:text",
     "Nov:text",
     "Dec:text",
-    "欄 16:empty",
-    "Total:money",
-    "欄 18:empty",
-    "欄 19:empty",
-    "欄 20:empty"
+    "Total:money"
    ],
    "flags": []
   },
@@ -2911,7 +2724,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Field」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Solve Order」分組後逐列呈現",
    "srcRows": 12,
    "rows": 6,
    "cols": 3,
@@ -3062,40 +2875,34 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Additional data",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Cost」，以「Categories」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Categories」是標籤，後面 3 欄是數值（Cost、To add a category, type below、`：整欄空白）",
    "srcRows": 18,
    "rows": 13,
-   "cols": 9,
+   "cols": 4,
    "live": 3,
    "headerRow": 3,
    "title": "ADDITIONAL DATA · PivotTable for budget chart · Category list",
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Categories",
     "group": null,
-    "lead": "Cost",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Categories:text",
     "Cost:money",
-    "欄 4:empty",
     "To add a category, type below:text",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
     "`:empty"
    ],
-   "flags": [
-    "標題列可能判錯：5/9 欄沒有欄名",
-    "6/9 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "budget_8f6b87a5.xlsx",
@@ -3445,7 +3252,7 @@
   {
    "src": "budget_af824d68.xlsx",
    "sheet": "budget_af824d68.xlsx › Summary",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -3453,11 +3260,13 @@
    "reason": "偵測到金額欄「Total」，以「Category」為品項名稱",
    "srcRows": 18,
    "rows": 11,
-   "cols": 6,
+   "cols": 2,
    "live": 2,
    "headerRow": 4,
    "title": "Monthly Budget Summary · Having difficulty planning your budget? Use this monthly budget calculator to help you identify your monthly income and expenses. Add new categories you want to track to the budget summary table or modify those that have been added to fit your needs. Then, enter all of your income and expenses for a single month in the monthly income and expenses table and assign each item a category. When you enter an amount, the associated category in the budget summary table will be summarized automatically. · [ENTER MONTH] · Under/Over: $928.00 · Budget Summary",
-   "notes": [],
+   "notes": [
+    "剔除 4 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Category",
     "group": null,
@@ -3465,17 +3274,10 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
     "Category:text",
-    "Total:money",
-    "欄 5:empty",
-    "欄 6:empty"
+    "Total:money"
    ],
-   "flags": [
-    "標題列可能判錯：4/6 欄沒有欄名",
-    "4/6 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "budget_af824d68.xlsx",
@@ -3703,49 +3505,32 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「AMOUNT」，以「ACTUAL EXPENSES」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「ACTUAL EXPENSES」是標籤，後面 3 欄是數值（AMOUNT、% OF EXPENSES、15% REDUCTION）",
    "srcRows": 42,
    "rows": 5,
-   "cols": 21,
+   "cols": 4,
    "live": 4,
    "headerRow": 9,
    "title": "COMPANY NAME · DATE · MONTHLY BUDGET · YOUR LOGO HERE · BUDGET TOTALS · ESTIMATED · ACTUAL · DIFFERENCE · Income · 63,300.00 · 57,450.00 · (5,850.00) · Personnel expenses · 18,500.00 · 14,100.00 · 4,400.00 · Operating expenses · 36,000.00 · 35,530.00 · 470.00 · Balance (income minus expenses) · 8,800.00 · 7,820.00 · (980.00)",
-   "notes": [],
+   "notes": [
+    "剔除 17 個排版用的空白欄"
+   ],
    "roles": {
     "title": "ACTUAL EXPENSES",
-    "group": "% OF EXPENSES",
-    "lead": "AMOUNT",
+    "group": null,
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "ACTUAL EXPENSES:text",
     "AMOUNT:money",
     "% OF EXPENSES:category",
-    "15% REDUCTION:number",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty",
-    "欄 14:empty",
-    "欄 15:empty",
-    "欄 16:empty",
-    "欄 17:empty",
-    "欄 18:empty",
-    "欄 19:empty",
-    "欄 20:empty",
-    "欄 21:empty"
+    "15% REDUCTION:number"
    ],
    "flags": [
-    "標題列可能判錯：17/21 欄沒有欄名",
-    "原始工作表有 42 列，只抽出 5 列，結構可能判壞",
-    "17/21 欄整欄空白，欄位邊界可能抓錯"
+    "原始工作表有 42 列，只抽出 5 列，結構可能判壞"
    ]
   },
   {
@@ -4117,40 +3902,7 @@
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
    "status": "flagged",
    "table": 1,
-   "of": 6,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「PERSONAL CASH FLOW」是標籤，後面 2 欄是數值（欄 2：整欄空白、欄 3：整欄空白）",
-   "srcRows": 29,
-   "rows": 1,
-   "cols": 3,
-   "live": 1,
-   "headerRow": 0,
-   "title": null,
-   "notes": [],
-   "roles": {
-    "title": "PERSONAL CASH FLOW",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "colTypes": [
-    "PERSONAL CASH FLOW:person",
-    "欄 2:empty",
-    "欄 3:empty"
-   ],
-   "flags": [
-    "標題列可能判錯：2/3 欄沒有欄名",
-    "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 29 列，只抽出 1 列，結構可能判壞"
-   ]
-  },
-  {
-   "src": "cashflow_281b542f.xlsx",
-   "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
-   "status": "flagged",
-   "table": 2,
-   "of": 6,
+   "of": 5,
    "shape": "cards",
    "label": "一般表格",
    "reason": "沒有可辨識的結構，逐列呈現所有欄位",
@@ -4181,8 +3933,8 @@
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 3,
-   "of": 6,
+   "table": 2,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Annual Income」，以「Row Labels」為品項名稱",
@@ -4209,8 +3961,8 @@
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 4,
-   "of": 6,
+   "table": 3,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Sum of Annual」，以「Row Labels」為品項名稱",
@@ -4237,8 +3989,8 @@
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 5,
-   "of": 6,
+   "table": 4,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Sum of Annual」，以「Row Labels」為品項名稱",
@@ -4265,8 +4017,8 @@
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
    "status": "clean",
-   "table": 6,
-   "of": 6,
+   "table": 5,
+   "of": 5,
    "shape": "pricelist",
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Sum of Annual」，以「Row Labels」為品項名稱",
@@ -4292,156 +4044,126 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Income",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Income」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Income」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 11,
    "rows": 6,
-   "cols": 9,
+   "cols": 3,
    "live": 3,
    "headerRow": 3,
    "title": "PERSONAL CASH FLOW · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values. If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 6 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Income",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Income:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：6/9 欄沒有欄名",
-    "6/9 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Expenses",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Expenses」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Expenses」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 23,
    "rows": 18,
-   "cols": 9,
+   "cols": 3,
    "live": 3,
    "headerRow": 3,
    "title": "PERSONAL CASH FLOW · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 6 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Expenses",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Expenses:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：6/9 欄沒有欄名",
-    "6/9 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Discretionary",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Expenses」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Expenses」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 16,
    "rows": 11,
-   "cols": 10,
+   "cols": 3,
    "live": 3,
    "headerRow": 3,
    "title": "PERSONAL CASH FLOW · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 7 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Expenses",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Expenses:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：7/10 欄沒有欄名",
-    "7/10 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Savings",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Annual」，以「Savings」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Savings」是標籤，後面 2 欄是數值（Annual、Monthly）",
    "srcRows": 10,
    "rows": 5,
-   "cols": 10,
+   "cols": 3,
    "live": 3,
    "headerRow": 3,
    "title": "PERSONAL CASH FLOW · Total cash flow to date: · $42,250.00 · This is an annual estimation. Use this worksheet if you wish to view annual amounts with estimated monthly values If you wish to add daily items to the tables, estimate their annual amount/value and place value in the annual column.",
-   "notes": [],
+   "notes": [
+    "剔除 7 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Savings",
     "group": null,
-    "lead": "Annual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Savings:text",
     "Annual:money",
-    "Monthly:money",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty"
+    "Monthly:money"
    ],
-   "flags": [
-    "標題列可能判錯：7/10 欄沒有欄名",
-    "7/10 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "cashflow_9d4519ee.xlsx",
@@ -4454,11 +4176,13 @@
    "reason": "沒有可辨識的結構，逐列呈現所有欄位",
    "srcRows": 666,
    "rows": 240,
-   "cols": 10,
+   "cols": 7,
    "live": 7,
    "headerRow": 7,
    "title": "Annuity investment · Present value · 10,000.00 · Value after 7 years · $14,430 · Interest rate · 5.25% · Monthly payment after 7 years · $63 · Term (in years) · 20 · Value after 20 years · $28,511 · Contribution each month (reinvested interest) · 100.0% · Monthly payment after 20 years · $124",
-   "notes": [],
+   "notes": [
+    "剔除 3 個排版用的空白欄"
+   ],
    "roles": {
     "title": null,
     "group": null,
@@ -4466,16 +4190,13 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Month:number",
     "Balance:number",
     "Interest earned:number",
     "Interest + balance:number",
     "Amount paid to investor:money",
     "New balance:number",
-    "欄 8:empty",
-    "欄 9:money",
-    "欄 10:empty"
+    "欄 7:money"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -4644,7 +4365,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「PROJECT TYPE」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「TOTAL」分組後逐列呈現",
    "srcRows": 21,
    "rows": 11,
    "cols": 8,
@@ -4679,24 +4400,25 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「GENERAL PARTNER」，以「PROJECT NAME」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「PROJECT NAME」是標籤，後面 21 欄是數值（PROJECT TYPE、ESTIMATED START、ESTIMATED FINISH、ACTUAL START、ACTUAL FINISH、ESTIMATED WORK、ACTUAL WORK、ESTIMATED DURATION、ACTUAL DURATION、GENERAL PARTNER、BUSINESS LAWYER、DEFENSE LITIGATOR、INTELLECTUAL PROPERTY LAWYER、BANKRUPTCY LAWYER、ADMIN STAFF、GENERAL PARTNER 2、BUSINESS LAWYER 2、DEFENSE LITIGATOR 2、INTELLECTUAL PROPERTY LAWYER 2、BANKRUPTCY LAWYER 2、ADMIN STAFF 2）",
    "srcRows": 10,
    "rows": 5,
-   "cols": 29,
+   "cols": 22,
    "live": 22,
    "headerRow": 3,
    "title": "Mitchell, Morris, Ward, & Cook · Project planning for law firms · INFO: To add a row, select the bottom-right most cell in the body of the table (not the totals row) and press Tab, or press SHIFT and then F10 within table where you want the row inserted and select Insert | Table Rows Above/Below. Be sure all unused rows are deleted, as the PROJECT TOTALS PivotTable will use all of the tables cells, and otherwise would give erroneous results. · Mitchell, Morris, Ward, & Cook Confidential",
-   "notes": [],
+   "notes": [
+    "剔除 7 個排版用的空白欄"
+   ],
    "roles": {
     "title": "PROJECT NAME",
-    "group": "ACTUAL START",
-    "lead": "GENERAL PARTNER",
+    "group": null,
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "PROJECT NAME:person",
     "PROJECT TYPE:text",
     "ESTIMATED START:text",
@@ -4718,13 +4440,7 @@
     "DEFENSE LITIGATOR 2:money",
     "INTELLECTUAL PROPERTY LAWYER 2:money",
     "BANKRUPTCY LAWYER 2:money",
-    "ADMIN STAFF 2:money",
-    "欄 24:empty",
-    "欄 25:empty",
-    "欄 26:empty",
-    "欄 27:empty",
-    "欄 28:empty",
-    "欄 29:empty"
+    "ADMIN STAFF 2:money"
    ],
    "flags": []
   },
@@ -4899,55 +4615,48 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Label」，以「Rim」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Rim」是標籤，後面 26 欄是數值（欄 2、Label、Value、x、y、Label、Value、x、y、Label、Value、x、y、Label、Value、x、y、2、250：整欄空白、Identified、58、308、308、0、0、0）",
    "srcRows": 17,
    "rows": 5,
-   "cols": 36,
+   "cols": 27,
    "live": 26,
    "headerRow": 7,
    "title": "*** This sheet to remain hidden *** · Average Y: · 183 · 183 · Percentages Series & Labels · Stage Totals & Labels · Lost Totals & Labels · Unqualified Total & Label · Edges · Stage · x · Offsets · 0.45 · 7.0455 · Offsets · 0.45 · -7.0455 · Offsets · 0.45 · -35.136 · Offsets · 0.45 · -47.031 · 1.8 · 50 · 316",
-   "notes": [],
+   "notes": [
+    "剔除 9 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Rim",
     "group": null,
-    "lead": "Label",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Rim:text",
-    "欄 3:number",
-    "欄 4:empty",
+    "欄 2:number",
     "Label:text",
     "Value:text",
     "x:number",
     "y:number",
-    "欄 9:empty",
     "Label:money",
     "Value:number",
     "x:number",
     "y:number",
-    "欄 14:empty",
     "Label:text",
     "Value:number",
     "x:number",
     "y:number",
-    "欄 19:empty",
     "Label:text",
     "Value:number",
     "x:number",
     "y:number",
-    "欄 24:empty",
     "2:number",
-    "欄 26:empty",
     "250:empty",
     "Identified:text",
-    "欄 29:empty",
     "58:number",
     "308:number",
-    "欄 32:empty",
     "308:number",
     "0:number",
     "0:number",
@@ -5072,7 +4781,7 @@
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「TASK」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「PROGRESS」分組後逐列呈現",
    "srcRows": 36,
    "rows": 26,
    "cols": 6,
@@ -5264,81 +4973,65 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Actual」，以「欄 10」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Monthly budget」是標籤，後面 3 欄是數值（欄 2、Actual、Target）",
    "srcRows": 19,
    "rows": 11,
-   "cols": 12,
+   "cols": 4,
    "live": 4,
    "headerRow": 3,
    "title": "PROFIT AND LOSS SUMMARY CHART · 2022 · Contoso Pharmaceuticals",
-   "notes": [],
+   "notes": [
+    "剔除 8 個排版用的空白欄"
+   ],
    "roles": {
-    "title": "欄 10",
+    "title": "Monthly budget",
     "group": null,
-    "lead": "Actual",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Monthly budget:text",
-    "欄 3:empty",
-    "欄 4:empty",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:text",
+    "欄 2:text",
     "Actual:money",
     "Target:money"
    ],
    "flags": [
-    "標題列可能判錯：9/12 欄沒有欄名",
-    "8/12 欄整欄空白，欄位邊界可能抓錯"
+    "10/11 列沒有標題，會被整列略過"
    ]
   },
   {
    "src": "chart_6860aa13.xlsx",
    "sheet": "chart_6860aa13.xlsx › Balance chart",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Actual」，以「欄 10」為品項名稱",
+   "reason": "偵測到金額欄「Actual」，以「欄 2」為品項名稱",
    "srcRows": 12,
    "rows": 6,
-   "cols": 12,
+   "cols": 4,
    "live": 3,
    "headerRow": 3,
    "title": "BALANCE SHEET SUMMARY CHART · 2022 · Contoso Pharmaceuticals",
-   "notes": [],
+   "notes": [
+    "剔除 8 個排版用的空白欄"
+   ],
    "roles": {
-    "title": "欄 10",
+    "title": "欄 2",
     "group": null,
     "lead": "Actual",
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Monthly budget:empty",
-    "欄 3:empty",
-    "欄 4:empty",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:text",
+    "欄 2:text",
     "Actual:money",
     "Target:money"
    ],
-   "flags": [
-    "標題列可能判錯：9/12 欄沒有欄名",
-    "9/12 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "chart_86466670.xlsx",
@@ -5386,11 +5079,13 @@
    "reason": "沒有可辨識的結構，逐列呈現所有欄位",
    "srcRows": 45,
    "rows": 1,
-   "cols": 3,
+   "cols": 2,
    "live": 2,
    "headerRow": 18,
    "title": "Breakdown of withdrawals · Mortgage · $ 961.77 · Credit card · $ 936.48 · Groceries · $ 205.61 · Investment · $ 200.00 · Utilities · $ 194.20",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": null,
     "group": null,
@@ -5398,7 +5093,6 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Other:text",
     "$ 53.65:money"
    ],
@@ -5696,7 +5390,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Category」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5731,7 +5425,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Category」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5766,7 +5460,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Category」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5801,7 +5495,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Category」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5836,7 +5530,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Category」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5940,7 +5634,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Column2」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Column4」分組後逐列呈現",
    "srcRows": 22,
    "rows": 14,
    "cols": 4,
@@ -6137,58 +5831,10 @@
   {
    "src": "chart_ab449fed.xlsx",
    "sheet": "chart_ab449fed.xlsx › Layered 5 level",
-   "status": "flagged",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「PRINCIPAL」為標題逐列呈現",
-   "srcRows": 23,
-   "rows": 3,
-   "cols": 24,
-   "live": 5,
-   "headerRow": 6,
-   "title": "Layered 5 level · SCHOOL DISTRICT · SUPERINTENDENT · SUPERINTENDENT · SUPERINTENDENT · SUPERINTENDENT · SUPERINTENDENT",
-   "notes": [],
-   "roles": {
-    "title": "PRINCIPAL",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "colTypes": [
-    "欄 1:empty",
-    "PRINCIPAL:text",
-    "欄 3:empty",
-    "欄 4:empty",
-    "PRINCIPAL:text",
-    "欄 6:empty",
-    "欄 7:empty",
-    "PRINCIPAL:text",
-    "欄 9:empty",
-    "欄 10:empty",
-    "PRINCIPAL:text",
-    "欄 12:empty",
-    "欄 13:empty",
-    "PRINCIPAL:text",
-    "欄 15:empty",
-    "欄 16:empty",
-    "欄 17:empty",
-    "欄 18:empty",
-    "欄 19:empty",
-    "欄 20:empty",
-    "欄 21:empty",
-    "欄 22:empty",
-    "欄 23:empty",
-    "欄 24:empty"
-   ],
-   "flags": [
-    "標題列可能判錯：19/24 欄沒有欄名",
-    "所有欄位都只判成一般文字，型別偵測沒抓到東西",
-    "落到一般表格：沒有辨識出任何主軸",
-    "原始工作表有 23 列，只抽出 3 列，結構可能判壞",
-    "19/24 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "status": "not-shown",
+   "show": "weak",
+   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
+   "srcRows": 23
   },
   {
    "src": "chart_ab449fed.xlsx",
@@ -6201,12 +5847,13 @@
    "reason": "沒有可辨識的主軸，以「PILAR ACKERMAN」為標題逐列呈現",
    "srcRows": 45,
    "rows": 14,
-   "cols": 36,
+   "cols": 10,
    "live": 10,
    "headerRow": 4,
    "title": "Sub-layered 5 level · FIELD TRIP CHAPERONES",
    "notes": [
-    "向下填補合併儲存格：欄 2"
+    "向下填補合併儲存格：欄 2",
+    "剔除 26 個排版用的空白欄"
    ],
    "roles": {
     "title": "PILAR ACKERMAN",
@@ -6215,48 +5862,21 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:longtext",
-    "欄 3:empty",
-    "欄 4:empty",
-    "欄 5:empty",
+    "欄 1:longtext",
     "PILAR ACKERMAN:text",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:text",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
+    "欄 3:text",
     "HAZEN ABOIROUS:text",
-    "欄 14:empty",
-    "欄 15:empty",
-    "欄 16:longtext",
-    "欄 17:empty",
-    "欄 18:empty",
-    "欄 19:empty",
+    "欄 5:longtext",
     "GUDMUNDUR ADALSTEINSSON:text",
-    "欄 21:empty",
-    "欄 22:empty",
-    "欄 23:longtext",
-    "欄 24:empty",
-    "欄 25:empty",
-    "欄 26:empty",
+    "欄 7:longtext",
     "ANTONIO ALWAN:text",
-    "欄 28:empty",
-    "欄 29:empty",
-    "欄 30:text",
-    "欄 31:empty",
-    "欄 32:empty",
-    "欄 33:empty",
-    "BRIAN SMITH:text",
-    "欄 35:empty",
-    "欄 36:empty"
+    "欄 9:text",
+    "BRIAN SMITH:text"
    ],
    "flags": [
-    "標題列可能判錯：31/36 欄沒有欄名",
+    "標題列可能判錯：5/10 欄沒有欄名",
     "5/14 列沒有標題，會被整列略過",
-    "落到一般表格：沒有辨識出任何主軸",
-    "26/36 欄整欄空白，欄位邊界可能抓錯"
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -6309,14 +5929,16 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「GOAL WEIGHT」是標籤，後面 8 欄是數值（CHART VIEW、Madison Butler、欄 4：整欄空白、欄 5：整欄空白、欄 6：整欄空白、欄 7：整欄空白、WEIGHT LOSS：整欄空白、欄 9：整欄空白）",
+   "reason": "第一欄「GOAL WEIGHT」是標籤，後面 3 欄是數值（CHART VIEW、Madison Butler、WEIGHT LOSS：整欄空白）",
    "srcRows": 330,
    "rows": 16,
-   "cols": 9,
+   "cols": 4,
    "live": 3,
    "headerRow": 0,
    "title": null,
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "GOAL WEIGHT",
     "group": null,
@@ -6327,15 +5949,9 @@
     "GOAL WEIGHT:text",
     "CHART VIEW:number",
     "Madison Butler:text",
-    "欄 4:empty",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "WEIGHT LOSS:empty",
-    "欄 9:empty"
+    "WEIGHT LOSS:empty"
    ],
    "flags": [
-    "標題列可能判錯：5/9 欄沒有欄名",
     "原始工作表有 330 列，只抽出 16 列，結構可能判壞"
    ]
   },
@@ -6390,7 +6006,7 @@
    "of": 3,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Milestone description」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6549,7 +6165,7 @@
    "of": 3,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Start」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6708,7 +6324,7 @@
    "of": 3,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Start」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6937,7 +6553,7 @@
   {
    "src": "chart_f79af0fb.xlsx",
    "sheet": "chart_f79af0fb.xlsx › Cost data and chart",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -6945,11 +6561,13 @@
    "reason": "偵測到金額欄「Annual cost」，以「Cost center」為品項名稱",
    "srcRows": 17,
    "rows": 10,
-   "cols": 10,
+   "cols": 4,
    "live": 4,
    "headerRow": 3,
    "title": "Cost Analysis · PARETO CHART · COST ANALYSIS · COST CENTER",
-   "notes": [],
+   "notes": [
+    "剔除 6 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Cost center",
     "group": null,
@@ -6957,21 +6575,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
     "Cost center:text",
     "Annual cost:money",
     "Percent of total:text",
-    "Cumulative percent:text",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty"
+    "Cumulative percent:text"
    ],
-   "flags": [
-    "標題列可能判錯：6/10 欄沒有欄名",
-    "6/10 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "expense_68cc5838.xlsx",
@@ -7096,44 +6705,35 @@
   {
    "src": "expense_68cc5838.xlsx",
    "sheet": "expense_68cc5838.xlsx › Expenses analysis",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「PLANNED EXPENSES」，以「CATEGORY」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「CATEGORY」是標籤，後面 4 欄是數值（PLANNED EXPENSES、ACTUAL EXPENSES、VARIANCE、VARIANCE %）",
    "srcRows": 19,
    "rows": 4,
-   "cols": 13,
+   "cols": 5,
    "live": 5,
    "headerRow": 7,
    "title": "Market Financial Consulting · EXPENSES ANALYSIS · Analysis of data from January to June · PLANNED vs ACTUAL EXPENSES · MONTHLY EXPENSES",
-   "notes": [],
+   "notes": [
+    "剔除 8 個排版用的空白欄"
+   ],
    "roles": {
     "title": "CATEGORY",
     "group": null,
-    "lead": "PLANNED EXPENSES",
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "CATEGORY:text",
     "PLANNED EXPENSES:money",
     "ACTUAL EXPENSES:money",
     "VARIANCE:money",
-    "VARIANCE %:text",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty"
+    "VARIANCE %:text"
    ],
-   "flags": [
-    "標題列可能判錯：8/13 欄沒有欄名",
-    "8/13 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "expense_b273e96f.xlsx",
@@ -7412,7 +7012,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Expense」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Difference ($)」分組後逐列呈現",
    "srcRows": 25,
    "rows": 21,
    "cols": 6,
@@ -7482,20 +7082,21 @@
   {
    "src": "inventory_2ebe081e.xlsx",
    "sheet": "inventory_2ebe081e.xlsx › Assets",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Asset」是標籤，後面 8 欄是數值（Amount、欄 3：整欄空白、My assets：整欄空白、欄 5：整欄空白、欄 6：整欄空白、欄 7、欄 8、欄 9：整欄空白）",
+   "reason": "第一欄「Asset」是標籤，後面 4 欄是數值（Amount、My assets：整欄空白、欄 4、欄 5）",
    "srcRows": 40,
    "rows": 14,
-   "cols": 9,
+   "cols": 5,
    "live": 4,
    "headerRow": 2,
    "title": "Personal asset inventory",
    "notes": [
-    "向下填補合併儲存格：Asset"
+    "向下填補合併儲存格：Asset",
+    "剔除 4 個排版用的空白欄"
    ],
    "roles": {
     "title": "Asset",
@@ -7506,17 +7107,11 @@
    "colTypes": [
     "Asset:category",
     "Amount:money",
-    "欄 3:empty",
     "My assets:empty",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:text",
-    "欄 8:money",
-    "欄 9:empty"
+    "欄 4:text",
+    "欄 5:money"
    ],
-   "flags": [
-    "標題列可能判錯：6/9 欄沒有欄名"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_4655f40a.xlsx",
@@ -7649,68 +7244,39 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「欄 23」，以「欄 15」為品項名稱",
+   "reason": "偵測到金額欄「欄 8」，以「欄 5」為品項名稱",
    "srcRows": 65,
    "rows": 20,
-   "cols": 42,
+   "cols": 12,
    "live": 12,
    "headerRow": 14,
    "title": "Probate inventory · Name of executor(s) · Allan Mattsson · Contact information · 4567 Main St, Buffalo, NY 98052 · Decedent's name · August Bergquist · Street address · 6789 Main St · City · Buffalo · State · NY · Zip · 98052 · SSN · AAA-GG-SSSS · Occupation · Dentist · Date of birth · Wednesday, December 08, 1965 · Place of birth · NY · Date of death · Thursday, November 03, 2022 · Place of death · NY · Additional information · Spouse, children and other dependents",
-   "notes": [],
+   "notes": [
+    "剔除 30 個排版用的空白欄"
+   ],
    "roles": {
-    "title": "欄 15",
+    "title": "欄 5",
     "group": "Dependent",
-    "lead": "欄 23",
+    "lead": "欄 8",
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Name:person",
-    "欄 3:longtext",
-    "欄 4:empty",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
+    "欄 2:longtext",
     "Relationship:text",
-    "欄 9:empty",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty",
     "Dependent:category",
-    "欄 15:text",
-    "欄 16:empty",
+    "欄 5:text",
     "Age:number",
-    "欄 18:empty",
-    "欄 19:empty",
     "Address:text",
-    "欄 21:empty",
-    "欄 22:empty",
-    "欄 23:money",
-    "欄 24:empty",
-    "欄 25:empty",
-    "欄 26:empty",
-    "欄 27:text",
+    "欄 8:money",
+    "欄 9:text",
     "Phone number:text",
-    "欄 29:empty",
-    "欄 30:empty",
-    "欄 31:empty",
-    "欄 32:empty",
     "Email:text",
-    "欄 34:empty",
-    "欄 35:money",
-    "欄 36:empty",
-    "欄 37:empty",
-    "欄 38:empty",
-    "欄 39:empty",
-    "欄 40:empty",
-    "欄 41:empty",
-    "欄 42:empty"
+    "欄 12:money"
    ],
    "flags": [
-    "標題列可能判錯：35/42 欄沒有欄名",
-    "8/20 列沒有標題，會被整列略過",
-    "30/42 欄整欄空白，欄位邊界可能抓錯"
+    "標題列可能判錯：5/12 欄沒有欄名",
+    "8/20 列沒有標題，會被整列略過"
    ]
   },
   {
@@ -7721,7 +7287,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Financial institution」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Phone」分組後逐列呈現",
    "srcRows": 101,
    "rows": 24,
    "cols": 7,
@@ -7758,7 +7324,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Financial institution」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Phone」分組後逐列呈現",
    "srcRows": 58,
    "rows": 8,
    "cols": 7,
@@ -7800,11 +7366,13 @@
    "reason": "偵測到金額欄「UNIT PRICE」，以「ITEM」為品項名稱",
    "srcRows": 30,
    "rows": 18,
-   "cols": 13,
+   "cols": 10,
    "live": 10,
    "headerRow": 1,
    "title": "GROCERY LIST",
-   "notes": [],
+   "notes": [
+    "剔除 3 個排版用的空白欄"
+   ],
    "roles": {
     "title": "ITEM",
     "group": "CATEGORY",
@@ -7812,7 +7380,6 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "DONE:category",
     "ITEM:text",
     "STORE:category",
@@ -7822,9 +7389,7 @@
     "UNIT PRICE:money",
     "TOTAL:money",
     "COMMENT:text",
-    "欄 11:empty",
-    "SEAFOOD TOTAL:money",
-    "欄 13:empty"
+    "SEAFOOD TOTAL:money"
    ],
    "flags": []
   },
@@ -8082,7 +7647,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「BIN #」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「ORDER #」分組後逐列呈現",
    "srcRows": 9,
    "rows": 5,
    "cols": 8,
@@ -8236,7 +7801,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「BIN #」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「ORDER #」分組後逐列呈現",
    "srcRows": 947,
    "rows": 5,
    "cols": 8,
@@ -8373,7 +7938,7 @@
   {
    "src": "invoice_02f1e98d.xlsx",
    "sheet": "invoice_02f1e98d.xlsx › Sheet1",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -8381,11 +7946,13 @@
    "reason": "偵測到金額欄「Unit Price」，以「Salesperson」為品項名稱",
    "srcRows": 28,
    "rows": 8,
-   "cols": 10,
+   "cols": 6,
    "live": 6,
    "headerRow": 9,
    "title": "CC · CREATE & CO · Make all checks payable to Create & Co. 4567 8th Ave, Carson City, NV · Invoice #1 · Contact · Customer · 9/27/23 · 458-555-0148 · Michelle Harris, Extra Frame Photography · createco@example.com · 987 6th Ave, Santa Fe, NM",
-   "notes": [],
+   "notes": [
+    "剔除 4 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Salesperson",
     "group": "Quantity",
@@ -8393,20 +7960,14 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "Salesperson:person",
-    "欄 3:empty",
     "Description:text",
     "Quantity:category",
     "Unit Price:money",
     "Line Total:money",
-    "欄 8:text",
-    "欄 9:empty",
-    "欄 10:empty"
+    "欄 6:text"
    ],
-   "flags": [
-    "標題列可能判錯：5/10 欄沒有欄名"
-   ]
+   "flags": []
   },
   {
    "src": "invoice_7c5c0318.xlsx",
@@ -8450,7 +8011,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「November 6, 2023」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「DATE:」分組後逐列呈現",
    "srcRows": 28,
    "rows": 17,
    "cols": 3,
@@ -8622,11 +8183,13 @@
    "reason": "沒有可辨識的結構，逐列呈現所有欄位",
    "srcRows": 114,
    "rows": 45,
-   "cols": 33,
+   "cols": 23,
    "live": 23,
    "headerRow": 13,
    "title": "Calculations · This sheet should remain hidden. Any modifications may result in errors in the Retirement Planner. · 84 · Failure Template: · Oops. This plan will only provide income to age [AGE]. You'll need to make some modifications. · $25,813 · 84 · Success Template: · Congratulations! Your plan seems to work. At age [AGE], you will still have a savings balance of [BALANCE]. · 84 · Failure display: · 84 · Success display: · Congratulations! Your plan seems to work. At age 84, you will still have a savings balance of $25,813. · Success: · TRUE · Success · Failure · 1 · CONGRATULATIONS! · 2 · At age · 3 · 84, · 4 · you will have a savings balance of · 5 · $25,813.",
-   "notes": [],
+   "notes": [
+    "剔除 10 個排版用的空白欄"
+   ],
    "roles": {
     "title": null,
     "group": null,
@@ -8642,31 +8205,21 @@
     "Desired retirement income:number",
     "Pension income:number",
     "End balance:number",
-    "欄 9:empty",
-    "欄 10:empty",
     "Balance:number",
     "Interest:number",
     "Yearly savings:number",
     "Desired retirement income:number",
     "Pension income:number",
     "End balance:number",
-    "欄 17:empty",
-    "欄 18:empty",
     "Balance:number",
     "Interest:number",
     "Yearly Savings:number",
     "Desired Retirement Income:number",
     "Pension Income:number",
     "End Balance:number",
-    "欄 25:empty",
-    "欄 26:empty",
     "Saving:number",
     "Retired:number",
-    "欄 29:empty",
-    "欄 30:empty",
-    "Uncertainty:number",
-    "欄 32:empty",
-    "欄 33:empty"
+    "Uncertainty:number"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -8871,7 +8424,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Destination」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Reservation」分組後逐列呈現",
    "srcRows": 17,
    "rows": 2,
    "cols": 7,
@@ -8960,14 +8513,16 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Nov 07」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Reading」分組後逐列呈現",
    "srcRows": 31,
    "rows": 24,
-   "cols": 8,
+   "cols": 7,
    "live": 7,
    "headerRow": 3,
    "title": "Weekly lesson planner · 8:00 – 8:45 · 8:45 – 9:30 · 9:30 – 10:15 · 10:30 – 11:30 · 11:30 – 12:00 · Notes",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Nov 07",
     "group": "Reading",
@@ -8981,8 +8536,7 @@
     "English:category",
     "Spelling:category",
     "Math:category",
-    "Science:category",
-    "欄 8:empty"
+    "Science:category"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -8997,14 +8551,16 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Nov 07」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Reading」分組後逐列呈現",
    "srcRows": 30,
    "rows": 24,
-   "cols": 8,
+   "cols": 7,
    "live": 7,
    "headerRow": 3,
    "title": "Weekly lesson planner · 8:00 – 8:45 · 8:45 – 9:30 · 9:30 – 10:15 · 10:30 – 11:30 · 11:30 – 12:00 · Notes",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Nov 07",
     "group": "Reading",
@@ -9018,8 +8574,7 @@
     "English:category",
     "Spelling:category",
     "Math:category",
-    "Science:category",
-    "欄 8:empty"
+    "Science:category"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -9034,14 +8589,16 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Nov 07」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Reading」分組後逐列呈現",
    "srcRows": 30,
    "rows": 24,
-   "cols": 8,
+   "cols": 7,
    "live": 7,
    "headerRow": 3,
    "title": "Weekly lesson planner · 8:00 – 8:45 · 8:45 – 9:30 · 9:30 – 10:15 · 10:30 – 11:30 · 11:30 – 12:00 · Notes",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Nov 07",
     "group": "Reading",
@@ -9055,8 +8612,7 @@
     "English:category",
     "Spelling:category",
     "Math:category",
-    "Science:category",
-    "欄 8:empty"
+    "Science:category"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -9111,11 +8667,13 @@
    "reason": "沒有可辨識的主軸，以「Description」為標題逐列呈現",
    "srcRows": 13,
    "rows": 5,
-   "cols": 8,
+   "cols": 6,
    "live": 6,
    "headerRow": 5,
    "title": "Step-by-step idea planner · Goal: · To win a grant and weeklong trip to Silicon Valley and Seattle. · Objective: · Project due date: · Develop a technology solution and submit it to the upcoming innovative app competition. · Date:",
-   "notes": [],
+   "notes": [
+    "剔除 2 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Description",
     "group": null,
@@ -9125,11 +8683,9 @@
    "colTypes": [
     "Steps:number",
     "Description:text",
-    "欄 3:empty",
     "Tasks:text",
     "Assigned to:text",
     "Status:text",
-    "欄 7:empty",
     "Resource list:longtext"
    ],
    "flags": [
@@ -9280,7 +8836,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Tasks」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Done?」分組後逐列呈現",
    "srcRows": 10,
    "rows": 4,
    "cols": 6,
@@ -9346,7 +8902,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Estimated start」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Assigned to」分組後逐列呈現",
    "srcRows": 14,
    "rows": 9,
    "cols": 12,
@@ -9397,11 +8953,13 @@
    "reason": "沒有可辨識的主軸，以「S」為標題逐列呈現",
    "srcRows": 45,
    "rows": 4,
-   "cols": 30,
+   "cols": 14,
    "live": 14,
    "headerRow": 14,
    "title": "January 2022 · Sunday · Monday · Tuesday · Wednesday · Thursday · Friday · Saturday · Goals and priorities · 01 · 02 · 03 · 04 · 05 · 06 · 07 · 08 · • Finish exercise routine · • Start my new project! · • Project progress review · • Mom's birthday · • Fix my bike · • Project meeting at 10 am · • Call Ian · • Open investment account · • Check new horror movies! · • Family dinner with April · 09 · 10 · 11 · 12 · 13 · 14 · 15 · 16 · 17 · 18 · 19 · 20 · 21 · 22 · December",
-   "notes": [],
+   "notes": [
+    "剔除 16 個排版用的空白欄"
+   ],
    "roles": {
     "title": "S",
     "group": null,
@@ -9410,41 +8968,24 @@
    },
    "colTypes": [
     "欄 1:number",
-    "欄 2:empty",
-    "欄 3:empty",
+    "欄 2:number",
+    "欄 3:number",
     "欄 4:number",
-    "欄 5:empty",
-    "欄 6:empty",
+    "欄 5:number",
+    "欄 6:number",
     "欄 7:number",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:number",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:number",
-    "欄 14:empty",
-    "欄 15:empty",
-    "欄 16:number",
-    "欄 17:empty",
-    "欄 18:empty",
-    "欄 19:number",
-    "欄 20:empty",
-    "欄 21:empty",
-    "欄 22:empty",
     "S:text",
     "M:text",
     "T:text",
     "W:text",
     "T:text",
     "F:text",
-    "S:text",
-    "欄 30:empty"
+    "S:text"
    ],
    "flags": [
-    "標題列可能判錯：23/30 欄沒有欄名",
+    "標題列可能判錯：7/14 欄沒有欄名",
     "落到一般表格：沒有辨識出任何主軸",
-    "原始工作表有 45 列，只抽出 4 列，結構可能判壞",
-    "16/30 欄整欄空白，欄位邊界可能抓錯"
+    "原始工作表有 45 列，只抽出 4 列，結構可能判壞"
    ]
   },
   {
@@ -9529,14 +9070,16 @@
    "of": 1,
    "shape": "directory",
    "label": "名冊／通訊錄",
-   "reason": "偵測到信箱欄「欄 12」，以「TIME」為主要名稱",
+   "reason": "偵測到信箱欄「欄 5」，以「TIME」為主要名稱",
    "srcRows": 56,
    "rows": 26,
-   "cols": 41,
+   "cols": 14,
    "live": 14,
    "headerRow": 9,
    "title": "Event planner · EVENT TITLE · Annual networking conference · EVENT ORGANIZER · Allan Mattsson · VENUE / LOCATION · Alpha Convention Center · EVENT START DATE & TIME · April 24 @ 10:00 AM · EVENT END DATE & TIME · April 26 @ 10:00 PM · ADDITIONAL INFO · Venue contact is Ian Hansson · Agenda",
-   "notes": [],
+   "notes": [
+    "剔除 27 個排版用的空白欄"
+   ],
    "roles": {
     "title": "TIME",
     "group": "PRESENTER",
@@ -9544,52 +9087,24 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
     "TIME:text",
-    "欄 4:text",
-    "欄 5:empty",
-    "欄 6:empty",
-    "欄 7:empty",
-    "欄 8:text",
+    "欄 2:text",
+    "欄 3:text",
     "TOPIC:text",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:email",
-    "欄 13:empty",
-    "欄 14:empty",
-    "欄 15:empty",
-    "欄 16:text",
-    "欄 17:category",
-    "欄 18:empty",
-    "欄 19:empty",
-    "欄 20:empty",
-    "欄 21:empty",
-    "欄 22:category",
-    "欄 23:empty",
-    "欄 24:empty",
-    "欄 25:empty",
-    "欄 26:category",
-    "欄 27:text",
-    "欄 28:empty",
+    "欄 5:email",
+    "欄 6:text",
+    "欄 7:category",
+    "欄 8:category",
+    "欄 9:category",
+    "欄 10:text",
     "PRESENTER:category",
-    "欄 30:empty",
-    "欄 31:email",
-    "欄 32:empty",
-    "欄 33:empty",
-    "欄 34:money",
-    "欄 35:empty",
-    "欄 36:category",
-    "欄 37:empty",
-    "欄 38:empty",
-    "欄 39:empty",
-    "欄 40:empty",
-    "欄 41:empty"
+    "欄 12:email",
+    "欄 13:money",
+    "欄 14:category"
    ],
    "flags": [
-    "標題列可能判錯：38/41 欄沒有欄名",
-    "分組欄「PRESENTER」只有一種值，等於沒分組",
-    "27/41 欄整欄空白，欄位邊界可能抓錯"
+    "標題列可能判錯：11/14 欄沒有欄名",
+    "分組欄「PRESENTER」只有一種值，等於沒分組"
    ]
   },
   {
@@ -9629,7 +9144,7 @@
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「REFRESHMENTS」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「ESTIMATED」分組後逐列呈現",
    "srcRows": 56,
    "rows": 13,
    "cols": 3,
@@ -9911,11 +9426,13 @@
    "reason": "偵測到信箱欄「Email」，以「Name」為主要名稱",
    "srcRows": 4,
    "rows": 2,
-   "cols": 4,
+   "cols": 3,
    "live": 3,
    "headerRow": 1,
    "title": "Share list · Share this list with others so they can contribute. Select Share in the upper right or press ALT and then press “Z” followed by “S”. Save the file to OneDrive and send the link to your friends.",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": "Name",
     "group": null,
@@ -9925,8 +9442,7 @@
    "colTypes": [
     "Name:person",
     "Email:email",
-    "Shared?:text",
-    "欄 4:empty"
+    "Shared?:text"
    ],
    "flags": []
   },
@@ -9938,7 +9454,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「CLOSED ON」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「PRIORITY」分組後逐列呈現",
    "srcRows": 96,
    "rows": 91,
    "cols": 9,
@@ -10016,7 +9532,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「2-3 months before」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「DONE」分組後逐列呈現",
    "srcRows": 135,
    "rows": 28,
    "cols": 2,
@@ -10076,7 +9592,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「NAME」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「INVITED」分組後逐列呈現",
    "srcRows": 131,
    "rows": 13,
    "cols": 3,
@@ -10758,7 +10274,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Item」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Day」分組後逐列呈現",
    "srcRows": 15,
    "rows": 8,
    "cols": 3,
@@ -10789,7 +10305,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Prep for lab」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「5/25/23」分組後逐列呈現",
    "srcRows": 15,
    "rows": 6,
    "cols": 4,
@@ -11026,11 +10542,13 @@
    "reason": "偵測到時間欄「TIME START」但沒有日期欄，視為單日流程表",
    "srcRows": 11,
    "rows": 7,
-   "cols": 15,
+   "cols": 10,
    "live": 10,
    "headerRow": 2,
    "title": "CLASS LIST",
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "INSTRUCTOR",
     "group": null,
@@ -11038,7 +10556,6 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "COURSE ID:category",
     "NAME:person",
     "INSTRUCTOR:text",
@@ -11048,11 +10565,7 @@
     "TIME START:time",
     "TIME END:time",
     "DURATION:time",
-    "欄 11:empty",
-    "欄 12:empty",
-    "CLASS \r\nLIST TIP::longtext",
-    "欄 14:empty",
-    "欄 15:empty"
+    "CLASS \r\nLIST TIP::longtext"
    ],
    "flags": []
   },
@@ -11067,11 +10580,13 @@
    "reason": "偵測到金額欄「ITEM DESCRIPTION」，以「COURSE ID」為品項名稱",
    "srcRows": 11,
    "rows": 7,
-   "cols": 12,
+   "cols": 7,
    "live": 7,
    "headerRow": 2,
    "title": "DEADLINES",
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "COURSE ID",
     "group": "SEMESTER",
@@ -11079,28 +10594,22 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "COURSE ID:category",
     "NAME:person",
     "YEAR:number",
     "SEMESTER:category",
     "ITEM DESCRIPTION:money",
     "DUE DATE:text",
-    "欄 8:empty",
-    "欄 9:empty",
-    "WORK DATA ENTRY TIP::longtext",
-    "欄 11:empty",
-    "欄 12:empty"
+    "WORK DATA ENTRY TIP::longtext"
    ],
    "flags": [
-    "標題列可能判錯：5/12 欄沒有欄名",
     "分組欄「SEMESTER」只有一種值，等於沒分組"
    ]
   },
   {
    "src": "student_786cd45b.xlsx",
    "sheet": "student_786cd45b.xlsx › Weekly schedule",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -11108,11 +10617,13 @@
    "reason": "偵測到時間欄「TIME START」但沒有日期欄，視為單日流程表",
    "srcRows": 11,
    "rows": 7,
-   "cols": 9,
+   "cols": 4,
    "live": 4,
    "headerRow": 2,
    "title": "WEEKLY SCHEDULE",
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "DAY",
     "group": null,
@@ -11120,20 +10631,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "DAY:text",
     "TIME START:time",
     "CLASS:text",
-    "欄 5:empty",
-    "欄 6:empty",
-    "WEEKLY \r\nSCHEDULE  TIP::longtext",
-    "欄 8:empty",
-    "欄 9:empty"
+    "WEEKLY \r\nSCHEDULE  TIP::longtext"
    ],
-   "flags": [
-    "標題列可能判錯：5/9 欄沒有欄名",
-    "5/9 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "student_786cd45b.xlsx",
@@ -11151,7 +10654,7 @@
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「DESCRIPTION」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「DONE」分組後逐列呈現",
    "srcRows": 28,
    "rows": 19,
    "cols": 2,
@@ -11181,7 +10684,7 @@
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「DESCRIPTION」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「DONE」分組後逐列呈現",
    "srcRows": 28,
    "rows": 14,
    "cols": 2,
@@ -11338,12 +10841,13 @@
    "reason": "沒有可辨識的主軸，以「CREDIT REQUIREMENTS」為標題逐列呈現",
    "srcRows": 12,
    "rows": 4,
-   "cols": 6,
+   "cols": 5,
    "live": 5,
    "headerRow": 3,
    "title": "College credit planner · Bachelor of Arts Music History",
    "notes": [
-    "向下填補合併儲存格：SEMESTER SUMMARY"
+    "向下填補合併儲存格：SEMESTER SUMMARY",
+    "剔除 1 個排版用的空白欄"
    ],
    "roles": {
     "title": "CREDIT REQUIREMENTS",
@@ -11353,7 +10857,6 @@
    },
    "colTypes": [
     "SEMESTER SUMMARY:longtext",
-    "欄 2:empty",
     "CREDIT REQUIREMENTS:text",
     "TOTAL:text",
     "EARNED:number",
@@ -11371,7 +10874,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「COURSE TITLE」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「COMPLETED?」分組後逐列呈現",
    "srcRows": 29,
    "rows": 27,
    "cols": 6,
@@ -11434,7 +10937,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Item」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Day」分組後逐列呈現",
    "srcRows": 39,
    "rows": 24,
    "cols": 3,
@@ -11442,6 +10945,7 @@
    "headerRow": 0,
    "title": null,
    "notes": [
+    "剔除 8 個排版用的空白欄",
     "把 7 個星期欄位攤平成「Day」欄，一次看一天"
    ],
    "roles": {
@@ -11553,14 +11057,15 @@
    "of": 3,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「S」是標籤，後面 7 欄是數值（M、T、W、T、F、S、欄 8：整欄空白）",
+   "reason": "第一欄「S」是標籤，後面 6 欄是數值（M、T、W、T、F、S）",
    "srcRows": 64,
    "rows": 25,
-   "cols": 8,
+   "cols": 7,
    "live": 7,
    "headerRow": 5,
-   "title": "Year · 2024 · Month · 2024 · Year-at-a-glance · January '24",
+   "title": "Year · 2024 · 2024 · January '24",
    "notes": [
+    "剔除 2 個排版用的空白欄",
     "依重複的欄名切成並排的表格"
    ],
    "roles": {
@@ -11576,8 +11081,7 @@
     "W:number",
     "T:number",
     "F:number",
-    "S:number",
-    "欄 8:empty"
+    "S:number"
    ],
    "flags": []
   },
@@ -11589,14 +11093,15 @@
    "of": 3,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「S」是標籤，後面 7 欄是數值（M、T、W、T、F、S、欄 8：整欄空白）",
+   "reason": "第一欄「S」是標籤，後面 6 欄是數值（M、T、W、T、F、S）",
    "srcRows": 64,
    "rows": 25,
-   "cols": 8,
+   "cols": 7,
    "live": 7,
    "headerRow": 5,
-   "title": "1 · Start Day · 1 · 1:Sun, 2:Mon … · February '24",
+   "title": "1 · Start Day · 1 · February '24",
    "notes": [
+    "剔除 2 個排版用的空白欄",
     "依重複的欄名切成並排的表格"
    ],
    "roles": {
@@ -11612,8 +11117,7 @@
     "W:number",
     "T:number",
     "F:number",
-    "S:number",
-    "欄 8:empty"
+    "S:number"
    ],
    "flags": []
   },
@@ -11633,6 +11137,7 @@
    "headerRow": 5,
    "title": "March '24",
    "notes": [
+    "剔除 2 個排版用的空白欄",
     "依重複的欄名切成並排的表格"
    ],
    "roles": {
@@ -11671,11 +11176,13 @@
    "reason": "偵測到時間欄「TIME」但沒有日期欄，視為單日流程表",
    "srcRows": 26,
    "rows": 15,
-   "cols": 9,
+   "cols": 6,
    "live": 6,
    "headerRow": 6,
    "title": "CONFERENCE / TRAINING SESSION · SPONSORED BY CANEIRO GROUP · See the below schedule for all conference training session dates, times, and locations. · 10/9/23 · 10/10/23 · 10/11/23 · 10/12/23 · 10/13/23",
-   "notes": [],
+   "notes": [
+    "剔除 3 個排版用的空白欄"
+   ],
    "roles": {
     "title": null,
     "group": null,
@@ -11683,15 +11190,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "TIME:time",
-    "欄 3:empty",
     "Room A623:category",
     "Room C256:category",
     "Room A620:category",
     "Room A6202:category",
-    "Room B345:category",
-    "欄 9:empty"
+    "Room B345:category"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字"
@@ -11737,7 +11241,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Identify a need」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「欄 1」分組後逐列呈現",
    "srcRows": 31,
    "rows": 9,
    "cols": 6,
@@ -11860,11 +11364,13 @@
    "reason": "沒有可辨識的結構，逐列呈現所有欄位",
    "srcRows": 349,
    "rows": 1,
-   "cols": 3,
+   "cols": 2,
    "live": 2,
    "headerRow": 3,
    "title": "Sort the dates to populate the timeline in chronological order",
-   "notes": [],
+   "notes": [
+    "剔除 1 個排版用的空白欄"
+   ],
    "roles": {
     "title": null,
     "group": null,
@@ -11872,7 +11378,6 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "start row:text",
     "5:number"
    ],
@@ -11958,15 +11463,16 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Start」是標籤，後面 9 欄是數值（End、Duration、Label、Vert. Position、Vert. Line、欄 7：整欄空白、欄 8：整欄空白、欄 9：整欄空白、欄 10：整欄空白）",
+   "reason": "第一欄「Start」是標籤，後面 5 欄是數值（End、Duration、Label、Vert. Position、Vert. Line）",
    "srcRows": 46,
    "rows": 17,
-   "cols": 10,
+   "cols": 6,
    "live": 6,
    "headerRow": 16,
    "title": "TIMELINE TEMPLATES by Vertex42.com · https://www.vertex42.com/ExcelTemplates/timeline.html · Tips for Using this Template · • Insert and delete entire rows when editing the data tables · • Avoid leaving the label column blank · • Format the horizontal axis to set min/max bounds · • Enter a vertical position between -100 and 50 · • Format individual data labels or markers to highlight specific events · Other Notes · • Milestone leader lines are Y Error bars · • Task leader lines are Y Error bars · • Task durations are X Error bars · Tasks",
    "notes": [
-    "向下填補合併儲存格：End"
+    "向下填補合併儲存格：End",
+    "剔除 4 個排版用的空白欄"
    ],
    "roles": {
     "title": "Start",
@@ -11980,11 +11486,7 @@
     "Duration:number",
     "Label:longtext",
     "Vert. Position:number",
-    "Vert. Line:number",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty",
-    "欄 10:empty"
+    "Vert. Line:number"
    ],
    "flags": []
   },
@@ -12048,15 +11550,16 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Arrange a gathering for you and your parents.」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「☐」分組後逐列呈現",
    "srcRows": 87,
    "rows": 70,
-   "cols": 9,
+   "cols": 3,
    "live": 3,
    "headerRow": 3,
    "title": "Wedding timeline planner · DONE?",
    "notes": [
-    "向下填補合併儲存格：9 - 12"
+    "向下填補合併儲存格：9 - 12",
+    "剔除 6 個排版用的空白欄"
    ],
    "roles": {
     "title": "Arrange a gathering for you and your parents.",
@@ -12065,20 +11568,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "9 - 12:category",
-    "欄 3:empty",
-    "欄 4:empty",
     "☐:category",
-    "Arrange a gathering for you and your parents.:longtext",
-    "欄 7:empty",
-    "欄 8:empty",
-    "欄 9:empty"
+    "Arrange a gathering for you and your parents.:longtext"
    ],
    "flags": [
-    "標題列可能判錯：6/9 欄沒有欄名",
-    "分組欄「☐」只有一種值，等於沒分組",
-    "6/9 欄整欄空白，欄位邊界可能抓錯"
+    "分組欄「☐」只有一種值，等於沒分組"
    ]
   },
   {
@@ -12224,7 +11719,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「MONTH」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「PUBLISH DATE」分組後逐列呈現",
    "srcRows": 87,
    "rows": 60,
    "cols": 5,
@@ -12267,7 +11762,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「MONTH」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「PUBLISH DATE」分組後逐列呈現",
    "srcRows": 87,
    "rows": 60,
    "cols": 5,
@@ -12617,14 +12112,16 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「January」為標題逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Week 1」分組後逐列呈現",
    "srcRows": 53727,
    "rows": 88,
-   "cols": 16,
+   "cols": 11,
    "live": 11,
    "headerRow": 5,
    "title": "EMPLOYEE TIMECARD · Employee name: · Mohan Narang · Regular hrs.: · Overtime hrs.: · Total · Manager: · E-mail: · mohan@example.com · 400 · 2 · 402 · Shir Rosenstein · Phone: · (212) 555-0123 · January, February, March | Employee timecard: daily, weekly, monthly, yearly",
-   "notes": [],
+   "notes": [
+    "剔除 5 個排版用的空白欄"
+   ],
    "roles": {
     "title": "January",
     "group": "Week 1",
@@ -12632,10 +12129,6 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
-    "欄 2:empty",
-    "欄 3:empty",
-    "欄 4:empty",
     "January:text",
     "Week 1:category",
     "Overtime:category",
@@ -12646,8 +12139,7 @@
     "Week 4:category",
     "Overtime:category",
     "Week 5:category",
-    "Overtime:category",
-    "欄 16:empty"
+    "Overtime:category"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -12825,45 +12317,37 @@
   {
    "src": "timesheet_d3ccfb24.xlsx",
    "sheet": "timesheet_d3ccfb24.xlsx › Weekly Time Record",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「TOTAL」，以「DAY」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「DAY」是標籤，後面 6 欄是數值（DATE、REGULAR HOURS：整欄空白、OVERTIME HOURS：整欄空白、SICK：整欄空白、VACATION、TOTAL）",
    "srcRows": 26,
    "rows": 10,
-   "cols": 13,
+   "cols": 7,
    "live": 4,
    "headerRow": 7,
    "title": "WEEKLY TIME RECORD · MODERN DESIGN CO · EMPLOYEE: · Miguel Reyes · EMPLOYEE PHONE: · (805) 555-0123 · MANAGER: · Jyeshta Davgar · EMPLOYEE E-MAIL: · miguel@example.com · WEEK ENDING: · 2/9/23",
-   "notes": [],
+   "notes": [
+    "剔除 6 個排版用的空白欄"
+   ],
    "roles": {
     "title": "DAY",
-    "group": "VACATION",
-    "lead": "TOTAL",
+    "group": null,
+    "lead": null,
     "person": null
    },
    "colTypes": [
-    "欄 1:empty",
     "DAY:text",
-    "欄 3:empty",
     "DATE:text",
     "REGULAR HOURS:empty",
     "OVERTIME HOURS:empty",
     "SICK:empty",
     "VACATION:category",
-    "TOTAL:money",
-    "欄 10:empty",
-    "欄 11:empty",
-    "欄 12:empty",
-    "欄 13:empty"
+    "TOTAL:money"
    ],
-   "flags": [
-    "標題列可能判錯：6/13 欄沒有欄名",
-    "分組欄「VACATION」只有一種值，等於沒分組",
-    "9/13 欄整欄空白，欄位邊界可能抓錯"
-   ]
+   "flags": []
   },
   {
    "src": "timesheet_eafc43ca.xlsx",
