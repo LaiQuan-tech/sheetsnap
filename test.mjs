@@ -34,6 +34,39 @@ for(const [n,[want,t]] of Object.entries(cases)){
   console.log(`${pass?'✓':'✗'} ${n.padEnd(6)} 期望=${want.padEnd(10)} 實際=${a.shape.shape}`);
   pass?ok++:bad++;
 }
+/* 欄名含「name」不等於人員欄。
+   person 在篩選排序裡是最高優先（v61）、又排在排名之前（v68），
+   所以誤判一欄品名就會擠掉真正的狀態欄或排名看法。
+   163 份微軟範本的 33 個 person 欄裡有 13 個是這種誤判。 */
+const REP = ['甲','乙','甲','乙','甲','乙','甲','乙','甲','乙','甲','乙','甲'];
+const UNI = Array.from({ length: 13 }, (_, i) => '值' + i);
+const personCases = [
+  // [欄名, 值有重複時期望, 值全相異時期望]
+  ['負責人',          'person', 'person'],   // 明確的人字樣：兩種情況都算
+  ['專案負責人',      'person', 'person'],   // 「專案」不能覆蓋「負責」
+  ['Salesperson',     'person', 'person'],
+  ['ADMIN STAFF',     'person', 'person'],
+  ['Name',            'person', 'text'],     // 光一個 name：要有人重複出現才算
+  ['Contact name',    'person', 'text'],
+  ['PRODUCT NAME',    null,     null],       // 欄名指名了非人的主體 → 一律不算
+  ['PROJECT NAME',    null,     null],
+  ['Course name',     null,     null],
+  ['Company name',    null,     null],
+  ['Merchant name',   null,     null],
+  ['ASSET NAME',      null,     null],
+  ['Team name',       null,     null],
+  ['NAME OF ORGANIZATION', null, null],
+  ['PERSONNEL EXPENSES',   null, null],
+];
+for (const [name, wRep, wUni] of personCases) {
+  for (const [vals, want, how] of [[REP, wRep, '有重複'], [UNI, wUni, '全相異']]) {
+    const got = S.detectColumn(name, vals).type;
+    const pass = want === null ? got !== 'person' : got === want;
+    console.log(`${pass ? '✓' : '✗'} 欄別 ${name.padEnd(22)} ${how} → ${got}${want === null ? '（不該是 person）' : ''}`);
+    pass ? ok++ : bad++;
+  }
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};

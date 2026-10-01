@@ -42,8 +42,11 @@ function views(a, raw) {
   const g0 = go.filter(x => x.type !== 'date')[0];
   const groupView = g0 ? { id: 'group', k: `照${g0.name}分類（${g0.groups}）`, col: g0.name } : null;
 
-  const filterViews = S.filterOptions(a).slice(0, 2)
-    .map(f => ({ id: 'filter', k: `只看某個${f.name}（${f.options}）`, col: f.name }));
+  const fopts = S.filterOptions(a).slice(0, 2);
+  const mkF = f => ({ id: 'filter', k: `只看某個${f.name}（${f.options}）`, col: f.name });
+  const whoFilters = fopts.filter(f => f.type === 'person').map(mkF);
+  const otherFilters = fopts.filter(f => f.type !== 'person').map(mkF);
+  const filterViews = whoFilters.concat(otherFilters);
 
   const q = S.summarise(S.quotedFacts(raw, a));
   const factsView = q.length ? { id: 'facts', k: `看重點數字（${q.length}）`, col: null } : null;
@@ -64,11 +67,13 @@ function views(a, raw) {
   const rankView = (rankCol && a.rows.length >= 5)
     ? { id: 'rank', k: `照${rankCol.name}由大到小`, col: null } : null;
 
+  // v68：沒有時間軸時人員篩選插在排名之前（index.html 才是正本）
   let cand = timeView
     ? [timeView].concat(filterViews, factsView ? [factsView] : [],
         groupView ? [groupView] : [], rankView ? [rankView] : [])
-    : (groupView ? [groupView] : []).concat(rankView ? [rankView] : [],
-        filterViews, factsView ? [factsView] : []);
+    : (groupView ? [groupView] : []).concat(whoFilters,
+        rankView ? [rankView] : [], otherFilters,
+        factsView ? [factsView] : []);
 
   const seen = {};
   cand = cand.filter(v => { if (!v.col) return true; if (seen[v.col]) return false; seen[v.col] = 1; return true; });

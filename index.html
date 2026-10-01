@@ -511,14 +511,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v67<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v68<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=66"></script>
-<script src="i18n.js?v=67"></script>
+<script src="detect.js?v=68"></script>
+<script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -856,10 +856,17 @@ function buildViews(){
   var groupView = g0 ? { id:'group:' + g0.name, k:TX('v_group', { name:g0.name }),
     d:TX('v_group_d', { n:g0.groups, avg:g0.avg }), group:g0.name } : null;
 
-  var filterViews = SheetShape.filterOptions(A).slice(0, 2).map(function(f){
+  /* 人員篩選要跟其他篩選分開放——理由寫在下面排序那段。
+     filterOptions 本來就把人員型排在最前面，所以 whoFilters.concat(otherFilters)
+     跟原本的順序完全一樣，有時間軸的那條路徑一個字都沒變。 */
+  var fopts = SheetShape.filterOptions(A).slice(0, 2);
+  var mkFilterView = function(f){
     return { id:'filter:' + f.name, k:TX('v_filter', { name:f.name }),
       d:TX('v_filter_d', { n:f.options, avg:f.avg }), group:'__none__', filter:f.name };
-  });
+  };
+  var whoFilters   = fopts.filter(function(f){ return f.type === 'person' }).map(mkFilterView);
+  var otherFilters = fopts.filter(function(f){ return f.type !== 'person' }).map(mkFilterView);
+  var filterViews  = whoFilters.concat(otherFilters);
 
   /* 排名：依主要數值欄由大到小。
      163 份微軟範本裡 80% 有數值欄、只有 3% 有日期欄——預算表、庫存表在
@@ -902,15 +909,29 @@ function buildViews(){
   }
 
   /* 順序：有時間軸就時間優先，分組排最後（原本的順序）。
-     沒有時間軸時把分組提到篩選之前——清單、預算、庫存這種表，
-     「全部都在、依分類分段」比「挑一個分類、其他看不到」更接近一眼讀完。
-     163 份微軟範本裡有 40 張落到「一般表格」卻其實已經有分組軸，
-     就是因為分組排在篩選後面，三張卡的上限一卡就永遠輪不到。 */
+     沒有時間軸時是「分組 → 人員篩選 → 排名 → 其他篩選 → 重點數字」。
+
+     分組提到篩選之前（v63）：清單、預算、庫存這種表，「全部都在、依分類
+     分段」比「挑一個分類、其他看不到」更接近一眼讀完。163 份微軟範本裡有
+     40 張落到「一般表格」卻其實已經有分組軸，就是因為分組排在篩選後面，
+     三張卡的上限一卡就永遠輪不到。
+
+     人員篩選插在排名之前（v68）：排名（v67）進來之後，把「只看某個 X」
+     從 69 張壓到 31 張。但「只看我的」是共用表單上唯一無法用別的看法
+     代替的——別人幾十列裡只有我那三列跟我有關。
+     只保護人員型、不保護整個篩選，是因為量過代價很小：327 張會渲染的
+     表裡，有排名候選的 145 張（44%），而人員欄有過篩選門檻（≥12 列）的
+     只有 4 張，兩者真的會互搶的 2 張——而那 2 張的「Name」是庫存清單的
+     品名誤判，已經被同一版的 NOT_PERSON／值要重複那兩道關擋掉。
+     所以這個排序在微軟範本上幾乎不會觸發，它是為真正有人員軸的表
+     （普渡流程表、值班表、分工表）準備的，且不損失其餘排名表。
+     分類、狀態欄仍然輸給排名：那些表用排名重讀一次通常比挑一類更有用。 */
   var cand = timeView
     ? [timeView].concat(filterViews, factsView ? [factsView] : [],
         groupView ? [groupView] : [], rankView ? [rankView] : [])
-    : (groupView ? [groupView] : []).concat(rankView ? [rankView] : [],
-        filterViews, factsView ? [factsView] : []);
+    : (groupView ? [groupView] : []).concat(whoFilters,
+        rankView ? [rankView] : [], otherFilters,
+        factsView ? [factsView] : []);
 
 
   var escapeView = { id:'all', k:TX('v_all'),

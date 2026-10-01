@@ -84,7 +84,7 @@
     date:     /日期|時間|date|day|時程|檔期|deadline|due|到期/i,
     time:     /時間|時刻|time|hour|開始|結束/i,
     money:    /價|金額|費用|費$|價格|單價|小計|總計|預算|薪|稅|帳款|收款|付款|營收|支出|請款|報價|price|amount|cost|fee|budget|total|salary|revenue|invoice/i,
-    person:   /人員|負責|姓名|名字|承辦|窗口|聯絡人|主辦|owner|assignee|name|person|contact|staff|member/i,
+    person:   /人員|負責|姓名|名字|承辦|窗口|聯絡人|主辦|owner|assignee|name|person|people|contact|staff|member/i,
     phone:    /電話|手機|聯絡|分機|phone|tel|mobile|cell/i,
     email:    /信箱|郵件|email|mail/i,
     status:   /狀態|進度|階段|status|state|stage|phase|完成|處理/i,
@@ -94,6 +94,26 @@
   };
 
   var RE_NULLISH = /^([-–—－]|N\/A|n\/a|NA|無|nil|null)$/;
+
+  /* person 是純關鍵字判定、沒有內容檢查，而「name」在真實範本裡太好中：
+     163 份微軟範本抓出 33 個 person 欄，其中 13 個根本不是人——
+     PRODUCT NAME、PROJECT NAME×2、Course name×3、Merchant name、
+     Company name、ASSET NAME、Team name、NAME OF ORGANIZATION、
+     PERSONNEL EXPENSES×2。（「name」本來就是每一種東西都有的欄名）
+     誤判的代價不小：person 在篩選排序裡是最高優先（v61），又排在排名
+     之前（v68），所以一欄品名會擠掉真正的狀態欄或排名看法。
+     兩道關：欄名指名了「非人的主體」就不算人員；只憑一個 name 中的，
+     還要求值有重複——「只看某個人」要成立，同一個人至少得出現兩次，
+     每列都不同的 Name 是品名。
+     明確的人字樣不受這兩條影響：「專案負責人」要留著。 */
+  var PERSON_SURE = /人員|負責|姓名|名字|承辦|窗口|聯絡人|主辦|owner|assignee|staff|member|salesperson|\bperson\b|\bpeople\b/i;
+  var NOT_PERSON  = /產品|商品|品名|品項|專案|課程|公司|廠商|供應商|品牌|資產|團隊|組織|機構|檔案|活動|帳戶|科目|product|project|course|compan|vendor|merchant|supplier|brand|asset|team|organi[sz]|institut|\bitem|\bfile|event|account|personnel/i;
+
+  function personish(name, repeats) {
+    if (PERSON_SURE.test(name)) return true;
+    if (NOT_PERSON.test(name)) return false;
+    return repeats;
+  }
 
   function detectColumn(name, values) {
     var all = values.map(function (v) { return String(v == null ? '' : v); });
@@ -166,7 +186,7 @@
       col.reason = col.multilineRatio >= 0.15
         ? Math.round(col.multilineRatio * 100) + '% 的值有換行，屬長文字'
         : '平均長度 ' + Math.round(col.avgLen) + ' 字，屬長文字';
-    } else if (hint('person')) {
+    } else if (hint('person') && personish(name, repeats)) {
       col.type = 'person'; col.confidence = 0.8;
       col.reason = '欄名含人員／負責人字樣';
     } else if (repeats && !hint('note') && col.distinct <= 8 && col.avgLen <= 10) {
