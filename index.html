@@ -511,14 +511,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v66<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v67<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
 <script src="detect.js?v=66"></script>
-<script src="i18n.js?v=65"></script>
+<script src="i18n.js?v=67"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -861,6 +861,39 @@ function buildViews(){
       d:TX('v_filter_d', { n:f.options, avg:f.avg }), group:'__none__', filter:f.name };
   });
 
+  /* 排名：依主要數值欄由大到小。
+     163 份微軟範本裡 80% 有數值欄、只有 3% 有日期欄——預算表、庫存表在
+     手機上真正的問題是「哪幾項最大」，不是「第 37 列是什麼」。
+     不截斷成前十名：那批表 117/137 在 40 列以內，取前十等於砍掉一半，
+     價值在重新排序本身。
+     矩陣不給：月份橫排的表挑其中一個月來排沒有意義，而矩陣的 lead 本來
+     就是 null，所以這裡自然不會觸發。 */
+  var moneyCols = live.filter(function(c){ return c.type === 'money' });
+  var numCols   = live.filter(function(c){ return c.type === 'number' });
+  // 作者自己寫出來的「合計」欄——那一欄才是整列的量體
+  var totalCol = moneyCols.concat(numCols).filter(function(c){
+    return /含稅|總|合計|應收|小計|total|amount|sum/i.test(c.name);
+  })[0];
+  var rankCol;
+  if(A.shape.matrix){
+    /* 矩陣是月份或項目橫排，挑其中一個月來排沒有意義，所以只在有「合計」
+       欄時才給。注意「品名｜單價｜數量｜合計｜備註」也會被判成矩陣——
+       那種表依合計排名很有用，一律擋掉會錯殺。 */
+    rankCol = totalCol || null;
+  } else {
+    rankCol = (A.roles.lead && /^(money|number)$/.test(A.roles.lead.type)) ? A.roles.lead
+            : totalCol
+              || (moneyCols.length ? moneyCols[moneyCols.length - 1] : null)
+              || (numCols.length === 1 ? numCols[0] : null);
+  }
+  // 標題欄不能拿來排名：Annuity 的 Month 由大到小只是把表倒過來
+  if(rankCol && A.roles.title && rankCol.name === A.roles.title.name) rankCol = null;
+  var rankView = (rankCol && A.rows.length >= 5)
+    ? { id:'rank:' + rankCol.name, k:TX('v_rank', { name:rankCol.name }),
+        d:TX('v_rank_d', { name:rankCol.name, n:A.rows.length }),
+        group:'__none__', sort:rankCol.name }
+    : null;
+
   var factsView = null;
   if(raw && SheetShape.quotedFacts){
     var q = SheetShape.summarise(SheetShape.quotedFacts(raw, A));
@@ -874,8 +907,10 @@ function buildViews(){
      163 份微軟範本裡有 40 張落到「一般表格」卻其實已經有分組軸，
      就是因為分組排在篩選後面，三張卡的上限一卡就永遠輪不到。 */
   var cand = timeView
-    ? [timeView].concat(filterViews, factsView ? [factsView] : [], groupView ? [groupView] : [])
-    : (groupView ? [groupView] : []).concat(filterViews, factsView ? [factsView] : []);
+    ? [timeView].concat(filterViews, factsView ? [factsView] : [],
+        groupView ? [groupView] : [], rankView ? [rankView] : [])
+    : (groupView ? [groupView] : []).concat(rankView ? [rankView] : [],
+        filterViews, factsView ? [factsView] : []);
 
 
   var escapeView = { id:'all', k:TX('v_all'),
@@ -1215,6 +1250,19 @@ function hl(v){
   return esc(v).replace(new RegExp('('+outQ.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig'), '<mark>$1</mark>');
 }
 
+/* 把格子裡的字變成可比較的數字。$1,234 / 1,234 元 / (500) 會計式負數
+   都要吃得下；吃不下就回 null，由呼叫端決定怎麼排。 */
+function numOf(v){
+  var t = String(v == null ? '' : v).trim();
+  if(!t) return null;
+  var neg = /^\(.*\)$/.test(t);              // 會計式負數寫成 (500)
+  t = t.replace(/[()]/g, '').replace(/[^\d.\-]/g, '');
+  if(!/\d/.test(t)) return null;
+  var n = parseFloat(t);
+  if(!isFinite(n)) return null;
+  return neg ? -Math.abs(n) : n;
+}
+
 /* ══ 渲染使用者實際看到的頁面 ══ */
 function renderPage(shape, roles){
   var idx = {}; A.cols.forEach(function(c,i){ idx[c.name] = i });
@@ -1237,6 +1285,19 @@ function renderPage(shape, roles){
     return head + '<div class="prompt">' + TX('prompt_pick', { name:esc(VIEW.filter) }) + '</div>';
   }
   recs = recs.filter(function(rec){ return matchFilters(rec.r) && matchQuery(rec.r) });
+
+  /* 排名看法：依指定欄位由大到小。沒有值的列排在最後，不要混在中間，
+     否則「金額最大」的清單中間會插進一堆空白。 */
+  if(VIEW && VIEW.sort){
+    var sortCol = A.cols.filter(function(c){ return c.name === VIEW.sort })[0];
+    if(sortCol) recs.sort(function(a, b){
+      var x = numOf(cell(a.r, sortCol)), y = numOf(cell(b.r, sortCol));
+      if(x === null && y === null) return 0;
+      if(x === null) return 1;
+      if(y === null) return -1;
+      return y - x;
+    });
+  }
   var filtering = outQ || Object.keys(outPicks).some(function(k){ return outPicks[k] });
   window.__hits = filtering ? TX('hits', { a:recs.length, b:beforeFilter }) : '';
   if(filtering && !recs.length)
