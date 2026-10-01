@@ -1,19 +1,19 @@
 {
  "fingerprint": {
-  "engine": "f883f6796515",
-  "audit": "95275a3c40d5"
+  "engine": "32901f4f30a4",
+  "audit": "75043020497a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 200,
-  "flagged": 127,
+  "clean": 203,
+  "flagged": 124,
   "skipped": 109,
   "broken": 0,
   "shapes": {
-   "一般表格": 79,
+   "一般表格": 76,
    "名冊／通訊錄": 6,
-   "品項／價目表": 116,
+   "品項／價目表": 119,
    "帳務／明細表": 4,
    "排程／時程表": 27,
    "狀態清單": 1,
@@ -22,7 +22,7 @@
   "flags": {
    "10/11 列沒有標題，會被整列略過": 1,
    "10/19 列沒有標題，會被整列略過": 1,
-   "12/14 欄整欄空白，欄位邊界可能抓錯": 1,
+   "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "13/25 列沒有標題，會被整列略過": 1,
    "2/4 列沒有標題，會被整列略過": 3,
    "2/5 列沒有標題，會被整列略過": 1,
@@ -30,8 +30,8 @@
    "3/6 列沒有標題，會被整列略過": 2,
    "4/12 列沒有標題，會被整列略過": 1,
    "5/14 列沒有標題，會被整列略過": 1,
-   "5/6 欄整欄空白，欄位邊界可能抓錯": 1,
-   "6/7 欄整欄空白，欄位邊界可能抓錯": 1,
+   "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
+   "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "8/20 列沒有標題，會被整列略過": 1,
    "9/18 列沒有標題，會被整列略過": 1,
    "分組欄「2.5」只有一種值，等於沒分組": 1,
@@ -107,9 +107,9 @@
    "原始工作表有 99 列，只抽出 6 列，結構可能判壞": 1,
    "只有一列資料，判斷幾乎沒有依據": 8,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
-   "找不到主標題欄，卡片會沒有名字": 24,
+   "找不到主標題欄，卡片會沒有名字": 19,
    "標題列可能判錯": 8,
-   "落到一般表格": 51
+   "落到一般表格": 48
   }
  },
  "records": [
@@ -1683,7 +1683,7 @@
     "year:empty"
    ],
    "flags": [
-    "12/14 欄整欄空白，欄位邊界可能抓錯"
+    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本"
    ]
   },
   {
@@ -4168,12 +4168,12 @@
   {
    "src": "cashflow_9d4519ee.xlsx",
    "sheet": "cashflow_9d4519ee.xlsx › Annuity",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Amount paid to investor」，以「Month」為品項名稱",
    "srcRows": 666,
    "rows": 240,
    "cols": 7,
@@ -4184,9 +4184,9 @@
     "剔除 3 個排版用的空白欄"
    ],
    "roles": {
-    "title": null,
+    "title": "Month",
     "group": null,
-    "lead": null,
+    "lead": "Amount paid to investor",
     "person": null
    },
    "colTypes": [
@@ -4198,10 +4198,7 @@
     "New balance:number",
     "欄 7:money"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "cashflow_eb47068d.xlsx",
@@ -5110,7 +5107,7 @@
    "of": 3,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
+   "reason": "沒有可辨識的主軸，以「4」為標題逐列呈現",
    "srcRows": 45,
    "rows": 1,
    "cols": 3,
@@ -5119,7 +5116,7 @@
    "title": null,
    "notes": [],
    "roles": {
-    "title": null,
+    "title": "4",
     "group": null,
     "lead": null,
     "person": null
@@ -5130,7 +5127,6 @@
     "200.0006:number"
    ],
    "flags": [
-    "找不到主標題欄，卡片會沒有名字",
     "只有一列資料，判斷幾乎沒有依據",
     "原始工作表有 45 列，只抽出 1 列，結構可能判壞"
    ]
@@ -8137,12 +8133,12 @@
   {
    "src": "planner_0ffdef6d.xlsx",
    "sheet": "planner_0ffdef6d.xlsx › Retirement planner",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Salary」，以「Age」為品項名稱",
    "srcRows": 59,
    "rows": 45,
    "cols": 9,
@@ -8151,9 +8147,9 @@
    "title": "Retirement planner · CONGRATULATIONS! At age 84, you will have a savings balance of $25,813. · Input · Now · At retirement · Uncertainty · Your current age · 40 · Annual pension benefit ($) · 0 · Investment return uncertainty (%) · 2.00% · Annual income ($) · 50,000 · Annual pension benefit increases (%) · 0.00% · Annual savings amount uncertainty (%) · 0.00% · Annual inflation and income increases (%) · 3.00% · Desired retirement age · 65 · Annual savings increases uncertainty (%) · 0.00% · Retirement savings balance ($) · 60,000 · Number of years of retirement income · 20 · Annual pension benefit amount uncertainty (%) · 0.00% · Annual savings amount ($) · 15,000 · Income replacement (%) · 75.00% · Annual pension benefit increases uncertainty (%) · 0.00% · Annual savings increases (%) · 0.00% · Investment return (%) · 6.25% · Investment return (%) · 6.25% · Chart details",
    "notes": [],
    "roles": {
-    "title": null,
+    "title": "Age",
     "group": null,
-    "lead": null,
+    "lead": "Salary",
     "person": null
    },
    "colTypes": [
@@ -8167,20 +8163,17 @@
     "Year ending balance:money",
     "Notes:empty"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "planner_0ffdef6d.xlsx",
    "sheet": "planner_0ffdef6d.xlsx › Calculations",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Salary」，以「Age」為品項名稱",
    "srcRows": 114,
    "rows": 45,
    "cols": 23,
@@ -8191,9 +8184,9 @@
     "剔除 10 個排版用的空白欄"
    ],
    "roles": {
-    "title": null,
+    "title": "Age",
     "group": null,
-    "lead": null,
+    "lead": "Salary",
     "person": null
    },
    "colTypes": [
@@ -8221,10 +8214,7 @@
     "Retired:number",
     "Uncertainty:number"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "planner_11bf9a22.xlsx",
@@ -8477,7 +8467,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
+   "reason": "沒有可辨識的主軸，以「Order」為標題逐列呈現",
    "srcRows": 9,
    "rows": 5,
    "cols": 7,
@@ -8486,7 +8476,7 @@
    "title": "EMERGENCY CONTACTS",
    "notes": [],
    "roles": {
-    "title": null,
+    "title": "Order",
     "group": null,
     "lead": null,
     "person": null
@@ -8501,8 +8491,7 @@
     "Notes:empty"
    ],
    "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "6/7 欄整欄空白，欄位邊界可能抓錯"
+    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本"
    ]
   },
   {
@@ -12058,7 +12047,7 @@
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
-    "5/6 欄整欄空白，欄位邊界可能抓錯"
+    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本"
    ]
   },
   {
