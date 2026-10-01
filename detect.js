@@ -894,6 +894,35 @@
       });
 
       var t = buildTable(main.rows, { c0: cr[0], c1: cr[1], r0: main.r0 });
+
+      /* 整欄空白、而且連欄名都沒有的欄，是排版用的留白，不是欄位。
+         微軟範本大量這樣排版：Event planner 的 TIME / TOPIC / PRESENTER 落在
+         第 3、9、29 欄，中間 27 欄全空。上面那段「每塊都找不到標題列就退回
+         整個寬度」是對的（甘特圖不該被絞碎），但退回之後這些空欄留在表裡，
+         變成「欄 1、欄 2…」，接著「超過 40% 欄位沒有欄名」就誤報成標題列判錯。
+         163 份範本裡 37 張掛著那個旗標，每一張同時掛著「整欄空白，欄位邊界
+         可能抓錯」——是同一件事。
+
+         有欄名的空欄不能砍：請假表整年沒請假時「事假」本來就整欄空白，
+         那是真欄位，砍了會讓同結構的表因為某年沒資料而判成不同形狀。 */
+      var keepCols = [];
+      for (var j = 0; j < t.grid[0].length; j++) {
+        if (!blank(t.grid[0][j])) { keepCols.push(j); continue; }
+        for (var i = 1; i < t.grid.length; i++)
+          if (!blank(t.grid[i][j])) { keepCols.push(j); break; }
+      }
+      if (keepCols.length && keepCols.length < t.grid[0].length) {
+        var dropped = t.grid[0].length - keepCols.length;
+        var pickCols = function (row) {
+          return keepCols.map(function (j) { return row[j]; });
+        };
+        t.grid = t.grid.map(pickCols);
+        t.totals = (t.totals || []).map(pickCols);
+        // 前言也要跟著砍，否則下面依欄名週期切表時兩邊的欄位對不起來
+        t.preambleRows = (t.preambleRows || []).map(pickCols);
+        t.notes = (t.notes || []).concat(['剔除 ' + dropped + ' 個排版用的空白欄']);
+      }
+
       if (!(t.grid.length >= 2 && t.grid[0].length >= 2)) return;
 
       // 欄名重複 → 這其實是好幾張並排的表，切開才不會把數字配錯項目
