@@ -113,12 +113,15 @@ function checkup(a, srcRows) {
   if (srcRows && rows > 0 && rows < srcRows * 0.2 && srcRows >= 10)
     flags.push(`原始工作表有 ${srcRows} 列，只抽出 ${rows} 列，結構可能判壞`);
 
-  // 大半欄位是空的，通常是欄位邊界抓錯。
-  // 但矩陣報表例外：請假表整年沒請假時「事假／病假」本來就整欄空白，
-  // 那是正常資料，而且引擎刻意保留這些欄以維持形狀穩定。
+  /* 大半欄位有名字卻整欄沒資料 → 這是還沒填的空白範本，渲染出來會是一頁空卡片。
+     這條原本寫「欄位邊界可能抓錯」，v64 之後那個說法一定是錯的：
+     沒有欄名的空白欄已經在 findTables 裡被剔除，留下來的都是作者宣告過的欄位。
+     163 份語料實測剩三張，全是空白表單（Emergency Contacts、Timesheet、chart_calcs）。
+     矩陣報表例外：請假表整年沒請假時「事假／病假」本來就整欄空白，
+     那是正常資料，而且引擎刻意保留這些欄以維持形狀穩定。 */
   const empties = a.cols.length - live.length;
   if (a.shape.shape !== 'matrix' && a.cols.length >= 4 && empties > a.cols.length * 0.5)
-    flags.push(`${empties}/${a.cols.length} 欄整欄空白，欄位邊界可能抓錯`);
+    flags.push(`${empties}/${a.cols.length} 欄有欄名但整欄沒資料，像還沒填的空白範本`);
 
   // 判成排程但日期幾乎每列都不同、又有金額欄 → 多半是明細帳不是行程
   if (a.shape.shape === 'schedule' && a.roles.group && a.roles.group.type === 'date') {
