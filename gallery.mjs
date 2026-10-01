@@ -21,17 +21,59 @@ const dir = process.argv[2] || 'corpus-ms/files';
 const base = 'http://localhost:8765/';
 
 // 跟 index.html 的 buildViews 同一套規則（中文標籤）
+/* index.html 的 buildViews() 在這裡的鏡像。兩邊重複是為了讓這支工具能
+   獨立跑，代價是會漂移——v57 的三張卡上限、v63 的分組優先與去重、
+   v67 的排名，這裡原本一個都沒有，於是表格顯示的是「候選清單」而不是
+   使用者真正看到的三張卡。改 buildViews 時要回來同步這裡。 */
 function views(a, raw) {
-  const V = [], live = a.cols.filter(c => c.type !== 'empty');
+  const live = a.cols.filter(c => c.type !== 'empty');
+  const roles = a.roles || {};
   const date = live.find(c => c.type === 'date'), time = live.find(c => c.type === 'time');
   const go = S.groupOptions(a);
-  if (date) { const gd = go.find(x => x.name === date.name); if (gd) V.push({ id: 'time', k: `照時間看（${gd.groups} 段）` }); }
-  else if (time) V.push({ id: 'time', k: `照時間看（依「${String(time.name).replace(/\s+/g, ' ')}」排序）` });
-  S.filterOptions(a).slice(0, 2).forEach(f => V.push({ id: 'filter', k: `只看某個${f.name}（${f.options}）` }));
-  const q = S.summarise(S.quotedFacts(raw, a)); if (q.length) V.push({ id: 'facts', k: `看重點數字（${q.length}）` });
-  go.filter(x => x.type !== 'date').slice(0, 1).forEach(c => V.push({ id: 'group', k: `照${c.name}分類（${c.groups}）` }));
-  V.push({ id: 'all', k: '直接搜尋' });
-  return V;
+
+  let timeView = null;
+  if (date) {
+    const gd = go.find(x => x.name === date.name);
+    if (gd) timeView = { id: 'time', k: `照時間看（${gd.groups} 段）`, col: date.name };
+  } else if (time) {
+    timeView = { id: 'time', k: `照時間看（依「${String(time.name).replace(/\s+/g, ' ')}」排序）`, col: null };
+  }
+
+  const g0 = go.filter(x => x.type !== 'date')[0];
+  const groupView = g0 ? { id: 'group', k: `照${g0.name}分類（${g0.groups}）`, col: g0.name } : null;
+
+  const filterViews = S.filterOptions(a).slice(0, 2)
+    .map(f => ({ id: 'filter', k: `只看某個${f.name}（${f.options}）`, col: f.name }));
+
+  const q = S.summarise(S.quotedFacts(raw, a));
+  const factsView = q.length ? { id: 'facts', k: `看重點數字（${q.length}）`, col: null } : null;
+
+  // 排名：矩陣只在有「合計」欄時才給（月份橫排挑一個月來排沒有意義）
+  const moneyCols = live.filter(c => c.type === 'money');
+  const numCols = live.filter(c => c.type === 'number');
+  const totalCol = moneyCols.concat(numCols)
+    .find(c => /含稅|總|合計|應收|小計|total|amount|sum/i.test(c.name));
+  let rankCol = a.shape.matrix
+    ? (totalCol || null)
+    : ((roles.lead && /^(money|number)$/.test(roles.lead.type)) ? roles.lead
+       : totalCol
+         || (moneyCols.length ? moneyCols[moneyCols.length - 1] : null)
+         || (numCols.length === 1 ? numCols[0] : null));
+  if (rankCol && roles.title && rankCol.name === roles.title.name) rankCol = null;
+  // col 留 null：index.html 的去重也不拿排名去比，兩邊要一致
+  const rankView = (rankCol && a.rows.length >= 5)
+    ? { id: 'rank', k: `照${rankCol.name}由大到小`, col: null } : null;
+
+  let cand = timeView
+    ? [timeView].concat(filterViews, factsView ? [factsView] : [],
+        groupView ? [groupView] : [], rankView ? [rankView] : [])
+    : (groupView ? [groupView] : []).concat(rankView ? [rankView] : [],
+        filterViews, factsView ? [factsView] : []);
+
+  const seen = {};
+  cand = cand.filter(v => { if (!v.col) return true; if (seen[v.col]) return false; seen[v.col] = 1; return true; });
+
+  return cand.slice(0, 2).concat([{ id: 'all', k: '直接搜尋', col: null }]);   // PICK_MAX - 1 = 2
 }
 
 const rows = [];
@@ -39,7 +81,15 @@ const files = fs.readdirSync(dir).filter(f => /\.(xlsx|xls|csv)$/i.test(f)).sort
 for (const f of files) {
   const cat = f.split('_')[0];
   let wb;
-  try { wb = XLSX.readFile(path.join(dir, f)); } catch (e) { rows.push({ f, cat, err: e.message }); continue; }
+  /* CSV 要指明 utf8。XLSX.readFile 會把 UTF-8 的 CSV 當成單位元組編碼讀，
+     「工作項目」變成「å·¥ä½é ç®」——型別偵測看到亂碼，形狀就判成另一種。
+     .xlsx 是 zip、編碼寫在裡面，照舊走二進位。audit.mjs 本來就是分開處理的。 */
+  try {
+    const fp = path.join(dir, f);
+    wb = /\.(csv|tsv)$/i.test(f)
+      ? XLSX.read(fs.readFileSync(fp, 'utf8'), { type: 'string' })
+      : XLSX.readFile(fp);
+  } catch (e) { rows.push({ f, cat, err: e.message }); continue; }
   let shown = 0;
   wb.SheetNames.forEach((nm, si) => {
     const grid = XLSX.utils.sheet_to_json(wb.Sheets[nm], { header: 1, defval: '', raw: false });
@@ -68,7 +118,10 @@ const summary = {
   files: files.length, sheets: rows.length, shown: n, skipped: rows.filter(r => r.skipped).length,
   warned: cnt(r => r.warns.length), generic: cnt(r => r.generic), noTitle: cnt(r => r.noTitle), oneRow: cnt(r => r.oneRow),
   withTime: cnt(r => r.views.some(v => v.id === 'time')), withFilter: cnt(r => r.views.some(v => v.id === 'filter')),
-  withFacts: cnt(r => r.views.some(v => v.id === 'facts')), onlySearch: cnt(r => r.views.length === 1),
+  withFacts: cnt(r => r.views.some(v => v.id === 'facts')),
+  withGroup: cnt(r => r.views.some(v => v.id === 'group')),
+  withRank: cnt(r => r.views.some(v => v.id === 'rank')),
+  onlySearch: cnt(r => r.views.length === 1),
   shapes: Object.entries(shownRows.reduce((m, r) => (m[r.shape] = (m[r.shape] || 0) + 1, m), {})).sort((a, b) => b[1] - a[1]),
   byCat: Object.entries(shownRows.reduce((m, r) => {
     const c = m[r.cat] || (m[r.cat] = { n: 0, ok: 0 }); c.n++;
@@ -107,6 +160,8 @@ tr.skip{color:#8b94a0} .v{display:inline-block;margin:1px 4px 1px 0;padding:1px 
 <div><b>${pct(summary.withTime, n)}</b>有「照時間看」</div>
 <div><b>${pct(summary.withFilter, n)}</b>有「只看某個 X」</div>
 <div><b>${pct(summary.withFacts, n)}</b>有「看重點數字」</div>
+<div><b>${pct(summary.withGroup, n)}</b>有「照 X 分類」</div>
+<div><b>${pct(summary.withRank, n)}</b>有「照 X 由大到小」</div>
 <div><b>${pct(summary.onlySearch, n)}</b>只剩「直接搜尋」</div>
 </div>
 <p>形狀：${summary.shapes.map(([k, v]) => esc(k) + ' ' + v).join(' · ')}<br>
