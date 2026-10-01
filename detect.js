@@ -237,6 +237,24 @@
     return cand[0];
   }
 
+  /* 整張表都是數字的時候（年金試算、退休試算、計價表），沒有任何名稱欄，
+     但第一欄的序號就是那一列的身分：Month 1、Age 30。
+     163 份範本裡 11 張是這種，其中 Annuity 一張就有 240 列全部渲染成
+     沒有名字的卡片——那是「渲染了但根本不能用」。
+
+     只在 pickTitle 找不到文字候選時才退到這裡，所以不會搶走正常表的標題。
+     限 number：money 不是序號（FINANCE CHARGE 的第一欄被判成 money，
+     拿它當標題會變成「$1,200」當列名）。
+     要求幾乎每列都不同，否則重複的數值欄（工時 8、8、8）會被誤認成序號。 */
+  function pickIndexTitle(cols) {
+    var first = cols.filter(function (c) { return c.type !== 'empty'; })[0];
+    if (!first || first.type !== 'number') return null;
+    if (first.fillRate < 0.9) return null;
+    if (first.distinct / Math.max(first.filled, 1) < 0.9) return null;
+    if (codeLike(first)) return null;                 // 單號不是序號
+    return first;
+  }
+
   function detectShape(cols, allCols) {
     allCols = allCols || cols;
     var date  = pick(cols, 'date');
@@ -247,7 +265,7 @@
     var status = pick(cols, 'status');
     var person = pick(cols, 'person');
     var cat   = pick(cols, 'category');
-    var title = pickTitle(cols);
+    var title = pickTitle(cols) || pickIndexTitle(cols);
 
     // 有日期不等於是排程。帳表的日期幾乎每列都不同，按日期分組會變成
     // 幾十組各一兩筆；那裡的主角是金額，不是時間軸。

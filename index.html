@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v65<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v66<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=64"></script>
+<script src="detect.js?v=66"></script>
 <script src="i18n.js?v=65"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -1372,7 +1372,10 @@ function renderPage(shape, roles){
     return head + '<ol>' + g.rows.map(function(rec){
       var r = rec.r;
       var lead = isTime ? (rec.lead || '') : (roles.lead && !isMoney ? cell(r, roles.lead) : '');
+      /* 標題欄是數字序號時，光印「1」當列名沒有意義，要連欄名一起印成
+         「Month 1」。只有數字欄會這樣——文字欄本身就是名字，加前綴反而囉嗦。 */
       var title = roles.title ? cell(r, roles.title) : '';
+      if(title && roles.title.type === 'number') title = roles.title.name + ' ' + title;
       var price = isMoney ? cell(r, roles.lead) : '';
 
       var metas = roles.meta.map(function(c){
