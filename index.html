@@ -511,14 +511,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v64<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v65<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
 <script src="detect.js?v=64"></script>
-<script src="i18n.js?v=62"></script>
+<script src="i18n.js?v=65"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -1540,12 +1540,32 @@ var PARAMS = (function(){
   return o;
 })();
 
+/* 複製網址。抽出來共用，因為做完短連結之後要自動複製——
+   使用者下一步一定是貼給別人，不該再找一次按鈕。
+   回傳 Promise：成功 resolve；失敗就改成把文字選起來並 reject，
+   由呼叫端決定要不要宣稱「已複製」。瀏覽器對非同步之後的剪貼簿寫入
+   有使用者手勢的時效限制（Safari 最嚴），所以失敗是正常路徑，不是例外。 */
+function copyShareUrl(){
+  var t = $('shareUrl').value;
+  if(!t) return Promise.reject(new Error('empty'));
+  var flash = function(){
+    var b = $('copyShare'), o = b.textContent;
+    b.textContent = TX('copied');
+    setTimeout(function(){ b.textContent = o }, 1600);
+  };
+  if(!(navigator.clipboard && navigator.clipboard.writeText)){
+    $('shareUrl').select();
+    return Promise.reject(new Error('noapi'));
+  }
+  return navigator.clipboard.writeText(t).then(flash, function(e){
+    $('shareUrl').select();
+    throw e;
+  });
+}
 $('copyShare').addEventListener('click', function(){
-  var t = $('shareUrl').value; if(!t) return;
+  if(!$('shareUrl').value) return;
   track('share');
-  var done = function(){ var b = $('copyShare'), o = b.textContent; b.textContent = TX('copied'); setTimeout(function(){ b.textContent = o }, 1600) };
-  if(navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){ $('shareUrl').select() });
-  else $('shareUrl').select();
+  copyShareUrl().catch(function(){});
 });
 
 // 落地：做表的人從哪裡來、用什麼裝置（觀看者不算，他們有自己的 open）
@@ -1635,7 +1655,12 @@ $('shortLink').addEventListener('click', function(){
     // 對短連結來說是假的。下面 short_done 那句才是這個連結的真實說明。
     $('shareNote').hidden = true;
     var days = Math.max(1, Math.round((r.exp - Date.now()) / 86400000));
-    note.textContent = TX('short_done', { n:r.url.length, days:days });
+    var msg = TX('short_done', { n:r.url.length, days:days });
+    note.textContent = msg;
+    // 自動複製。成功才在前面掛「已複製」——複製不成卻說複製了，
+    // 使用者會貼出空的或舊的東西。用既有的 copied 字串，不必多一組翻譯。
+    copyShareUrl().then(function(){ note.textContent = TX('copied') + ' · ' + msg; },
+                        function(){});
     track('share', { info:'short' });
   }).catch(function(e){
     b.disabled = false;
