@@ -1547,25 +1547,41 @@
     '|^\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(\\s*[-/.]\\s*\\d{2,4})?$', 'i');
   var RE_SUMCOL = /合計|總計|小計|累計|平均|total|sum|average|avg|ytd|variance|差異/i;
 
+  /* 時段也算期間。schedule_54d4fddf 那七張排班表是
+     「Employee ｜ 7:00 AM ｜ 8:00 AM ｜ … ｜ 3:00 PM」——員工直排、時段橫排，
+     跟月份橫排是同一種結構，只是橫軸的單位從月變成小時。
+     攤平前它們只拿到「照 Total 排名」一張卡，連分組都沒有。
+     用 parseTimeish 而不是自己寫正則：純數字（甘特圖的 21｜22｜23）不會被
+     當成時間，所以甘特圖不會被誤攤成一千多列的「x」。 */
   function periodGrid(header) {
-    var idx = [];
+    var idx = [], times = 0;
     header.forEach(function (h, i) {
       var t = String(h == null ? '' : h).replace(/\s+/g, ' ').trim();
       if (!t || RE_SUMCOL.test(t)) return;        // 合計欄不是期間
-      if (RE_PERIOD.test(t)) idx.push(i);
+      if (RE_PERIOD.test(t)) { idx.push(i); return; }
+      if (S.parseTimeish(t)) { idx.push(i); times++; }
     });
-    return idx.length >= 3 ? idx : null;
+    if (idx.length < 3) return null;
+    return { idx: idx, allTime: times === idx.length };
   }
 
-  function unpivotPeriods(t, idx) {
+  function unpivotPeriods(t, idx, allTime) {
     var header = t.grid[0], body = t.grid.slice(1);
     if (body.length < 2) return null;
-    /* 合計欄一起丟掉：它是那幾個期間欄的橫向加總，攤平之後每一列都會掛著
-       同一個年度總額，看起來像那一列自己的值。期間沒了，它的意義也沒了。 */
+    /* 剩下的欄只留「文字的」。
+       合計欄要丟掉是明顯的：它是那幾個期間欄的橫向加總，攤平之後每一列都會
+       掛著同一個年度總額，看起來像那一列自己的值。
+       但光靠欄名擋不乾淨——budget_1cbd5c5c 的那一欄叫「YEAR」、
+       budget_6667de34 的叫「Rate」，都不會中合計的字樣，照樣跟著每一列跑。
+       改成看內容：在一張期間表裡，不是期間值的數字幾乎都是橫向的彙總
+       （年度總額、佔比、費率），留著只會變成每列重複的雜訊。
+       文字欄留著，那是列名跟分類。 */
     var rest = [];
     header.forEach(function (h, i) {
       if (idx.indexOf(i) >= 0) return;
       if (RE_SUMCOL.test(String(h == null ? '' : h).trim())) return;
+      var vals = body.map(function (r) { return String(r[i] == null ? '' : r[i]).trim(); }).filter(Boolean);
+      if (vals.length && vals.filter(function (v) { return RE_NUMLIKE.test(v); }).length / vals.length > 0.6) return;
       rest.push(i);
     });
 
@@ -1580,29 +1596,57 @@
     });
     if (!hasLabel) return null;
 
-    var out = [], money = 0, filled = 0;
+    var out = [], money = 0, filled = 0, numeric = 0, seen = {};
     idx.forEach(function (ci) {
       var label = String(header[ci]).replace(/\s+/g, ' ').trim();
       body.forEach(function (r) {
         var v = String(r[ci] == null ? '' : r[ci]).trim();
         if (!v) return;
-        filled++;
+        filled++; seen[label] = 1;
         if (/[$€£¥＄]/.test(v)) money++;
+        if (RE_NUMLIKE.test(v)) numeric++;
         out.push(rest.map(function (i) { return r[i]; }).concat([label, v]));
       });
     });
     if (out.length < 4 || out.length > 3000) return null;
 
+    /* 格子裡要嘛是數值，要嘛是「時間直排」的排程格。
+
+       數值的情況是預算表、現金流：項目 × 期間 = 一個金額。
+       格子裡放文字時絕大多數攤了更糟——budget_6667de34 › Channel marketing
+       budget 攤出 693 列、值欄判成 text，形狀沒有前導可用、整張掉到
+       「一般表格」；budget_b6c07597 › PERSONAL BUDGET 一樣。
+
+       但有一種例外：timeline_cc8dfa38 › SCHEDULE 是「時間直排、日期橫排」的
+       節目表，格子裡是活動名稱。那跟週表是同一種東西（只是橫軸是日期而不是
+       星期），攤平完全正確——16 列 × 5 個日期欄攤成 36 筆活動、依日期分段，
+       而原本一列會並排五個活動，手機上根本讀不了。
+       分辨的方法：剩下的欄裡有一欄是時間，那就是排程格而不是亂攤。 */
+    var timeAxis = rest.some(function (i) {
+      var vals = body.map(function (r) { return String(r[i] == null ? '' : r[i]).trim(); }).filter(Boolean);
+      return vals.length >= 2 &&
+             vals.filter(function (v) { return !!S.parseTimeish(v); }).length / vals.length > 0.6;
+    });
+    /* 時段橫排的排班表也是排程格：格子裡是班別／工作內容，不是數值，
+       而時間軸在欄名上而不是在剩下的欄裡。兩種排程格都要放過。 */
+    if (numeric / filled < 0.7 && !timeAxis && !allTime) return null;
+
+    /* 只有一個期間真的有值時，攤平等於什麼都沒做，還多一個只有一種值的分組欄。
+       budget_60c5b272 › Budget by month 的 12 個月欄只有一欄填了，
+       攤完 17 列還是 17 列，卻多了一個「Month 只有一種值」的警示。 */
+    if (Object.keys(seen).length < 2) return null;
+
     var zh = /[㐀-鿿]/.test(header.join(''));
-    var allMonth = idx.every(function (i) { return /^[a-z一-鿿]/i.test(String(header[i]).trim()); });
-    var pName = zh ? (allMonth ? '月份' : '期間') : (allMonth ? 'Month' : 'Period');
+    var allMonth = !allTime && idx.every(function (i) { return /^[a-z一-鿿]/i.test(String(header[i]).trim()); });
+    var pName = allTime ? (zh ? '時段' : 'Time')
+              : zh ? (allMonth ? '月份' : '期間') : (allMonth ? 'Month' : 'Period');
     var vName = money / Math.max(filled, 1) > 0.3 ? (zh ? '金額' : 'Amount') : (zh ? '數值' : 'Value');
     return {
       name: t.name, title: t.title, preambleRows: t.preambleRows, headerRow: t.headerRow,
       grid: [rest.map(function (i) { return header[i]; }).concat([pName, vName])].concat(out),
       totals: [], skipped: t.skipped, range: t.range,
       notes: (t.notes || []).concat(['把 ' + idx.length + ' 個期間欄位攤平成「' + pName +
-        '」欄，一次看一個' + (allMonth ? '月' : '期間')]),
+        '」欄，一次看一個' + (allTime ? '時段' : allMonth ? '月' : '期間')]),
       unpivoted: 'period'
     };
   }
@@ -1614,8 +1658,8 @@
         if (isCalendarGrid(t, idx)) { t.calendar = true; return t; }
         return unpivotWeek(t, idx) || t;
       }
-      var pid = periodGrid(t.grid[0] || []);
-      if (pid) return unpivotPeriods(t, pid) || t;
+      var pg = periodGrid(t.grid[0] || []);
+      if (pg) return unpivotPeriods(t, pg.idx, pg.allTime) || t;
       return t;
     });
     if (!tables.length) return { tables: [] };
@@ -1640,7 +1684,15 @@
             var hp = t.grid[0], byP = {}; a.cols.forEach(function (c) { byP[c.name] = c; });
             var periodC = byP[hp[hp.length - 2]], valueC = byP[hp[hp.length - 1]], labelC = byP[hp[0]];
             if (periodC && valueC && labelC && hp.length >= 3) {
-              a.shape.group = periodC; a.shape.title = labelC; a.shape.lead = valueC;
+              a.shape.group = periodC;
+              /* 排程格（時間直排、日期橫排）的角色跟值矩陣剛好相反：
+                 格子裡是活動名稱，那才是列名；左邊那欄是時間，當前導。
+                 跟週表攤平的處理一致。 */
+              if (labelC.type === 'time' && !/^(money|number)$/.test(valueC.type)) {
+                a.shape.title = valueC; a.shape.lead = labelC;
+              } else {
+                a.shape.title = labelC; a.shape.lead = valueC;
+              }
               a.roles = S.assignRoles(a.cols.filter(function (c) { return c.type !== 'empty' }), a.shape);
             }
           }

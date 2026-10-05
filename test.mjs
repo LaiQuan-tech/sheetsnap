@@ -436,6 +436,67 @@ for (const [head, want, why] of titleCases) {
   chk('沒有列標籤不攤平',  U([['Jan','Feb','Mar','Apr'],['1','2','3','4'],['5','6','7','8'],['9','10','11','12']]), '');
   chk('星期橫排仍走週表',  U([['時間','週一','週二','週三','週四'],['09:00','數學','國文','英文','數學'],
     ['10:00','理化','歷史','地理','體育'],['11:00','美術','音樂','數學','國文']]), 'week');
+
+  /* 163 份跑出來的三個反例，都是「攤了反而更糟」：
+
+     budget_6667de34 › Channel marketing budget 的 12 個月欄裡放的是文字，
+     攤出 693 列、值欄判成 text，形狀沒有前導可用、整張掉到「一般表格」。
+     攤平的前提是「項目 × 期間 = 一個值」，值不是值就沒有前提。
+
+     budget_60c5b272 › Budget by month 的 12 個月欄只有一欄填了，
+     攤完 17 列還是 17 列，卻多一個「Month 只有一種值」的警示。
+
+     budget_1cbd5c5c 的「YEAR」、budget_6667de34 的「Rate」都是橫向彙總，
+     但欄名不含合計字樣，光看欄名擋不掉，要看內容是不是數字。 */
+  const txt = ['電視','報紙','網路','廣播','戶外','社群','郵寄','展覽'];
+  chk('期間欄放文字不攤平', U([['Channel'].concat(MON)].concat(
+    Array.from({ length: 8 }, (_, i) => ['通路' + (i + 1)].concat(MON.map((_, m) => txt[(i + m) % 8]))))), '');
+  chk('只有一個期間有值不攤平', U([['Item'].concat(MON)].concat(
+    Array.from({ length: 8 }, (_, i) => ['項目' + (i + 1), '$' + (100 + i)].concat(MON.slice(1).map(() => ''))))), '');
+
+  // YEAR 是橫向彙總，欄名不含「合計」，要靠內容是數字才擋得掉
+  const withYear = S.analyseSheet([['EXPENSE'].concat(MON).concat(['YEAR'])].concat(
+    Array.from({ length: 8 }, (_, i) => ['項目' + (i + 1)]
+      .concat(MON.map((_, m) => '$' + (500 + i * 120 + m * 7)))
+      .concat(['$' + (6000 + i * 1440)])))).tables[0];
+  chk('YEAR 彙總欄丟掉', withYear.cols.some(c => /YEAR/i.test(c.name)), false);
+  chk('YEAR 的表仍照攤', withYear.unpivoted, 'period');
+
+  /* 「格子裡要是數值」有一個例外：timeline_cc8dfa38 › SCHEDULE 是
+     時間直排、日期橫排的節目表，格子裡是活動名稱。那跟週表是同一種東西
+     （只是橫軸是日期而不是星期），攤平完全正確——原本一列並排五個活動，
+     手機上根本讀不了。分辨的方法是剩下的欄裡有一欄是時間。
+     角色也跟值矩陣相反：活動名稱當列名、時間當前導。 */
+  const D = ['10/22/23','10/23/23','10/24/23','10/25/23','10/26/23'];
+  const ev = ['開幕','專題演講','工作坊','午餐','圓桌','展示','閉幕','交流'];
+  const grid = S.analyseSheet([['Date'].concat(D)].concat(
+    Array.from({ length: 8 }, (_, i) =>
+      [String(9 + i).padStart(2, '0') + ':00'].concat(D.map((_, d) => ev[(i + d) % 8]))))).tables[0];
+  chk('排程格照攤',       grid.unpivoted, 'period');
+  chk('排程格分組是日期',  grid.roles.group && grid.roles.group.name, 'Period');
+  chk('排程格列名是活動',  grid.roles.title && grid.roles.title.name, 'Value');
+  chk('排程格前導是時間',  grid.roles.lead && grid.roles.lead.name, 'Date');
+
+  /* 時段橫排也是同一種結構，只是橫軸的單位從月變成小時。
+     schedule_54d4fddf 那七張排班表是「Employee ｜ 7:00 AM ｜ … ｜ 3:00 PM」，
+     攤平前只拿到「照 Total 排名」一張卡，連分組都沒有。
+     用 parseTimeish 判欄名而不是自己寫正則：純數字不會被當成時間，
+     所以甘特圖（欄名是 1…30 的日號）不會被誤攤成一千多列的「x」。 */
+  const HR = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM'];
+  const role = ['櫃檯','後場','外場','備料','收銀'];
+  const shift = S.analyseSheet([['Employee'].concat(HR).concat(['Sick?','Total'])].concat(
+    Array.from({ length: 5 }, (_, i) => ['員工' + (i + 1)]
+      .concat(HR.map((_, h) => (h >= 1 && h <= 7) ? role[(i + h) % 5] : ''))
+      .concat(['', '8'])))).tables[0];
+  chk('時段橫排照攤',     shift.unpivoted, 'period');
+  chk('時段欄叫「Time」',  shift.cols.some(c => c.name === 'Time'), true);
+  chk('時段橫排分組是時段', shift.roles.group && shift.roles.group.name, 'Time');
+  chk('時段橫排列名是員工', shift.roles.title && shift.roles.title.name, 'Employee');
+
+  // 甘特圖的欄名是純數字，不是時間也不是期間
+  chk('甘特圖不攤平', U([['工作項目'].concat(Array.from({ length: 30 }, (_, d) => String(d + 1)))].concat(
+    Array.from({ length: 20 }, (_, i) => ['工作' + (i + 1)]
+      .concat(Array.from({ length: 30 }, (_, d) => (d >= i && d < i + 4) ? 'x' : ''))))), '');
 }
 
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
