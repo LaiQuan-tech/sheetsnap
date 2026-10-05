@@ -1,6 +1,6 @@
 {
  "fingerprint": {
-  "engine": "ed2df831a318",
+  "engine": "8376561d9fdc",
   "audit": "3327044e93ad"
  },
  "summary": {
@@ -7221,7 +7221,7 @@
    },
    "colTypes": [
     "Inventory ID:text",
-    "Name:text",
+    "Name:person",
     "Description:text",
     "Unit \r\nprice:date",
     "Quantity \r\nin stock:number",
@@ -7729,7 +7729,7 @@
    "colTypes": [
     "欄 1:category",
     "Inventory ID:text",
-    "Name:text",
+    "Name:person",
     "Description:text",
     "Unit price:money",
     "Quantity in stock:number",
@@ -7899,7 +7899,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Unit price」，以「Inventory ID」為品項名稱",
+   "reason": "偵測到金額欄「Unit price」，以「Name」為品項名稱",
    "srcRows": 749,
    "rows": 25,
    "cols": 11,
@@ -7908,7 +7908,7 @@
    "title": "Inventory list · Patheros Labs · Highlight items to reorder? · Yes",
    "notes": [],
    "roles": {
-    "title": "Inventory ID",
+    "title": "Name",
     "group": "Discontinued?",
     "lead": "Unit price",
     "person": null
@@ -7916,7 +7916,7 @@
    "colTypes": [
     "For reorder:number",
     "Inventory ID:text",
-    "Name:text",
+    "Name:person",
     "Description:text",
     "Unit price:money",
     "Quantity \r\nin stock:number",
@@ -8282,7 +8282,7 @@
     "Lookup:money",
     "Company #:number",
     "Company name:text",
-    "Contact name:text",
+    "Contact name:person",
     "Address:text",
     "City:text",
     "State:text",
@@ -8704,7 +8704,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME:text",
+    "NAME:person",
     "APPLYING FOR:text",
     "STATUS:text",
     "CANDIDATE \r\nTYPE:category",
@@ -8774,7 +8774,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME:text",
+    "NAME:person",
     "DEPARTMENT:money",
     "POSITION:text",
     "AVAILABILITY:time",
@@ -9254,7 +9254,7 @@
     "person": null
    },
    "colTypes": [
-    "Lead name:text",
+    "Lead name:person",
     "Lead contact:empty",
     "Lead \r\nsource:empty",
     "Lead \r\nregion:empty",
@@ -9289,7 +9289,7 @@
     "person": null
    },
    "colTypes": [
-    "Lead name:text",
+    "Lead name:person",
     "January \r\nforecast:money",
     "February \r\nforecast:money",
     "March \r\nforecast:money",
@@ -9429,7 +9429,7 @@
     "person": null
    },
    "colTypes": [
-    "Name:text",
+    "Name:person",
     "Email:email",
     "Shared?:text"
    ],
@@ -9596,7 +9596,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME:text",
+    "NAME:person",
     "INVITED:category",
     "RSVP:category"
    ],
@@ -10342,7 +10342,7 @@
    },
    "colTypes": [
     "#:number",
-    "Name:text",
+    "Name:person",
     "Position:text",
     "Email:email",
     "Phone:phone"
@@ -10408,7 +10408,7 @@
    },
    "colTypes": [
     "Team name:text",
-    "Contact name:text",
+    "Contact name:person",
     "Email:email",
     "Phone:phone",
     "Wins:number"
