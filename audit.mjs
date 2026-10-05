@@ -5,6 +5,10 @@
  *   node audit.mjs <檔案或資料夾或網址> [更多...]
  *   node audit.mjs ./corpus            # 整個資料夾的 csv / xlsx
  *
+ * 要產 baseline 用 --out，不要用 shell 重導：
+ *   node audit.mjs corpus-ms/files --out corpus-ms/baseline.json
+ * （> 會在 node 跑之前先把檔清空，跑失敗就連舊的一起沒）
+ *
  * 不需要 API 金鑰。重點不是「跑得完」，是把可疑的結果標出來——
  * 今天最痛的問題是「修 A 弄壞 B」，有一組固定的表每次跑過就有解。
  */
@@ -142,10 +146,32 @@ function checkup(a, srcRows) {
    跑的時間由 commit 本身記錄。改了 detect.js 或 audit.mjs 指紋就會變，
    那是「結果應該不一樣」的訊號，不是雜訊。 */
 const rawArgs = process.argv.slice(2);
-const JSONOUT = rawArgs.includes('--json');
-const args = expand(rawArgs.filter(a => a !== '--json'));
+
+/* zsh 預設沒開 interactive_comments，行尾的 # 註解不是註解，是參數。
+   販上來的「node audit.mjs --json > baseline.json  # 說明文字」會變成
+   拿 # 跟後面每一個詞当檔名，跑出一份 0 筆的 baseline——而 shell 的
+   重導在 node 啟動前已經把舊的結果清掉了。寧可絕不可濾。 */
+const hashArg = rawArgs.findIndex(a => a.startsWith('#'));
+if (hashArg >= 0) {
+  console.error(`停下來：第 ${hashArg + 1} 個參數是「${rawArgs[hashArg]}」。`);
+  console.error('zsh 不把行尾的 # 當註解，整句話都變成了檔名。把註解刪掉再跑一次。');
+  process.exit(2);
+}
+
+/* --out：寫完才換上去（先寫 .tmp 再 rename）。
+   用 shell 重導寫 baseline 有個隱形的危險：> 在 node 跑之前就把檔清空了，
+   所以任何一次跑失敗都會連上一份好的 baseline 一起沒。 */
+const outIdx = rawArgs.indexOf('--out');
+const OUT = outIdx >= 0 ? rawArgs[outIdx + 1] : null;
+if (outIdx >= 0 && !OUT) {
+  console.error('--out 後面要接檔名，例如 --out corpus-ms/baseline.json');
+  process.exit(1);
+}
+const JSONOUT = rawArgs.includes('--json') || !!OUT;
+const args = expand(rawArgs.filter((a, i) =>
+  a !== '--json' && a !== '--out' && !(outIdx >= 0 && i === outIdx + 1)));
 if (!args.length) {
-  console.error('用法：node audit.mjs <檔案 / 資料夾 / 試算表網址> [更多...] [--json]');
+  console.error('用法：node audit.mjs <檔案 / 資料夾 / 試算表網址> [更多...] [--json] [--out <檔名>]');
   process.exit(1);
 }
 
@@ -246,5 +272,22 @@ if (Object.keys(allFlags).length) {
 if (JSONOUT) {
   const fp = { engine: sha(fs.readFileSync(path.join(here, 'detect.js'))),
                audit: sha(fs.readFileSync(fileURLToPath(import.meta.url))) };
-  P(JSON.stringify({ fingerprint: fp, summary, records }, null, 1));
+  const body = JSON.stringify({ fingerprint: fp, summary, records }, null, 1);
+
+  /* 一張都沒讀進來的 baseline 沒有任何價值，卻足以覆蔓上一份好的。
+     路徑打錯、資料夾沒抱下來、參數被 # 吃掉，都會落到這裡。 */
+  if (clean + flagged === 0) {
+    console.error(`停下來：${args.length} 個輸入沒有任何一張表跑出結果（${broken} 讀不進來）。`);
+    console.error('不寫 baseline——先確認路徑。');
+    process.exit(3);
+  }
+
+  if (OUT) {
+    const tmp = OUT + '.tmp';
+    fs.writeFileSync(tmp, body + '\n');
+    fs.renameSync(tmp, OUT);
+    say(C.d(`baseline 寫入 ${OUT}`));
+  } else {
+    P(body);
+  }
 }

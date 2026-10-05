@@ -17,7 +17,20 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const g = {};
 new Function('window', fs.readFileSync(path.join(here, 'detect.js'), 'utf8'))(g);
 const S = g.SheetShape;
-const dir = process.argv[2] || 'corpus-ms/files';
+/* zsh 預設沒開 interactive_comments，行尾的 # 註解不是註解而是參數，
+   所以「node gallery.mjs  # 看卡片供給」會拿 # 當資料夾，丟出一堆 node:fs 堆疊。 */
+const arg = process.argv[2];
+if (arg && arg.startsWith('#')) {
+  console.error(`停下來：資料夾參數是「${arg}」。`);
+  console.error('zsh 不把行尾的 # 當註解。把註解刪掉再跑一次。');
+  process.exit(2);
+}
+const dir = arg || 'corpus-ms/files';
+if (!fs.existsSync(dir)) {
+  console.error(`找不到資料夾 ${dir}`);
+  console.error('語料沒進版控；先跑 ./corpus-ms/fetch.sh 把 163 份範本抓下來。');
+  process.exit(1);
+}
 const base = 'http://localhost:8765/';
 
 // 跟 index.html 的 buildViews 同一套規則（中文標籤）
