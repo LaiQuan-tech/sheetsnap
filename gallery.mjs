@@ -7,10 +7,15 @@
  *   node gallery.mjs corpus-ms/files > corpus-ms/gallery.html
  *   node gallery.mjs corpus-ms/files --out corpus-ms/gallery-summary.json > corpus-ms/gallery.html
  *
+ * 跑真實檔案時加 --private：寫出去的 JSON 會把檔名與工作表名換成雜湊。
+ * HTML 照原樣產——那是給你在自己機器上看畫面的，不該遮。
+ * 看法標籤裡的欄名留著（「照 Category 分類」），那是判定本身。
+ *
  * 用途只有一個：回答「通用做不做得到」——不是看數字，是看畫面。
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import XLSX from 'xlsx';
 
@@ -31,8 +36,11 @@ if (outIdx >= 0 && !OUT) {
   console.error('--out 後面要接檔名，例如 --out corpus-ms/gallery-summary.json');
   process.exit(1);
 }
+const PRIVATE = argv.includes('--private');
+// 穩定雜湊：同一個檔每次跑都是同一個代號，diff 才對得起來
+const hid = s => 'f' + crypto.createHash('sha1').update(String(s)).digest('hex').slice(0, 8);
 const arg = argv.filter((a, i) =>
-  a !== '--out' && !(outIdx >= 0 && i === outIdx + 1))[0];
+  a !== '--out' && a !== '--private' && !(outIdx >= 0 && i === outIdx + 1))[0];
 if (arg && arg.startsWith('#')) {
   console.error(`停下來：資料夾參數是「${arg}」。`);
   console.error('zsh 不把行尾的 # 當註解。把註解刪掉再跑一次。');
@@ -176,9 +184,14 @@ summary.clean = okAll;
    一張進來就有一張要走，而加總看不出誰換了誰。
    一列一行，排序固定（檔名、工作表、第幾張表），diff 才讀得出來。 */
 summary.rows = shownRows.map(r => ({
-  src: r.f, sheet: r.sheet, table: r.si, shape: r.shape,
+  src: PRIVATE ? hid(r.f) : r.f,
+  // 工作表名可能帶人名、客戶、專案；同一個活頁簿裡的表要看得出是同一個檔
+  sheet: PRIVATE ? hid(r.f) + ' › #' + r.si : r.sheet,
+  table: r.si, shape: r.shape,
   views: r.views.map(v => v.id + (v.col ? ':' + v.col : '')),
 })).sort((a, b) => (a.src + '|' + a.sheet + '|' + a.table) < (b.src + '|' + b.sheet + '|' + b.table) ? -1 : 1);
+// byCat 的鍵是檔名前綴（語料是 timesheet_／budget_ 這種分類），真實檔案就是檔名
+if (PRIVATE) { summary.byCat = summary.byCat.map(([k, v]) => [hid(k), v]); summary.private = true; }
 const summaryJSON = JSON.stringify(summary, null, 1) + '\n';
 if (OUT) {
   if (!n) {

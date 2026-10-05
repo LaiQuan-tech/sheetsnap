@@ -9,6 +9,17 @@
  *   node audit.mjs corpus-ms/files --out corpus-ms/baseline.json
  * （> 會在 node 跑之前先把檔清空，跑失敗就連舊的一起沒）
  *
+ * 跑真實檔案時加 --private：
+ *   node audit.mjs ~/我的檔案 --out corpus-real/baseline.json --private
+ * 寫出去的 JSON 會把檔名與工作表名換成雜湊、整段前言（title）丟掉——
+ * 前言是表格上方那幾列的原始文字，真實檔案裡那就是客戶名、統編、金額。
+ * 終端機上照原樣印，那是在你自己的機器上。
+ *
+ * 留著的是：形狀、列數欄數、標題列位置、每一欄的「欄名:型別:填充率:相異值數」、
+ * 角色、做過哪些結構轉換、警示。判定問題幾乎都能用這些回答。
+ * 欄名有留著——引擎的規則大半是看欄名的（NAME_HINTS、合計欄、人員欄），
+ * 洗掉就等於看不見。JSON 不大也讀得懂，推之前自己掃一遍。
+ *
  * 不需要 API 金鑰。重點不是「跑得完」，是把可疑的結果標出來——
  * 今天最痛的問題是「修 A 弄壞 B」，有一組固定的表每次跑過就有解。
  */
@@ -168,10 +179,14 @@ if (outIdx >= 0 && !OUT) {
   process.exit(1);
 }
 const JSONOUT = rawArgs.includes('--json') || !!OUT;
+const PRIVATE = rawArgs.includes('--private');
+/* 雜湊要穩定：同一個檔在不同次跑要得到同一個代號，diff 才對得起來。
+   前 8 位夠分辨 163 份、也夠分辨幾百份。 */
+const hid = s => 'f' + crypto.createHash('sha1').update(String(s)).digest('hex').slice(0, 8);
 const args = expand(rawArgs.filter((a, i) =>
-  a !== '--json' && a !== '--out' && !(outIdx >= 0 && i === outIdx + 1)));
+  a !== '--json' && a !== '--private' && a !== '--out' && !(outIdx >= 0 && i === outIdx + 1)));
 if (!args.length) {
-  console.error('用法：node audit.mjs <檔案 / 資料夾 / 試算表網址> [更多...] [--json] [--out <檔名>]');
+  console.error('用法：node audit.mjs <檔案 / 資料夾 / 試算表網址> [更多...] [--json] [--out <檔名>] [--private]');
   process.exit(1);
 }
 
@@ -200,12 +215,12 @@ for (const src of args) {
     continue;
   }
 
-  for (const sh of sheets) {
+  for (const [shIdx, sh] of sheets.entries()) {
     let tables;
     try { tables = SheetShape.analyseSheet(sh.grid).tables; }
     catch (e) {
       broken++;
-      records.push({ src: base, sheet: sh.name, status: 'engine-threw', why: e.message });
+      records.push({ src: base, sheet: sh.name, sheetIndex: shIdx, status: 'engine-threw', why: e.message });
       say(`\n${C.r('✗')} ${sh.name}\n  ${C.r('引擎爆掉：' + e.message)}`);
       continue;
     }
@@ -214,7 +229,7 @@ for (const src of args) {
     const v = SheetShape.sheetVerdict(sh.grid, tables);
     if (v.show !== true) {
       skipped++;
-      records.push({ src: base, sheet: sh.name, status: 'not-shown', show: v.show, why: v.why,
+      records.push({ src: base, sheet: sh.name, sheetIndex: shIdx, status: 'not-shown', show: v.show, why: v.why,
                      srcRows: sh.grid.length });
       say(`${C.d('–')} ${C.d(sh.name)} ${C.d(v.why)}`);
       continue;
@@ -228,7 +243,7 @@ for (const src of args) {
       if (flags.length) flagged++; else clean++;
 
       records.push({
-        src: base, sheet: sh.name, status: flags.length ? 'flagged' : 'clean',
+        src: base, sheet: sh.name, sheetIndex: shIdx, status: flags.length ? 'flagged' : 'clean',
         table: i + 1, of: tables.length,
         shape: a.shape.shape, label: a.shape.label,
         reason: a.shape.reason || null,        // 引擎為什麼這樣判——真正要人複核的東西
@@ -285,7 +300,23 @@ if (Object.keys(allFlags).length) {
 if (JSONOUT) {
   const fp = { engine: sha(fs.readFileSync(path.join(here, 'detect.js'))),
                audit: sha(fs.readFileSync(fileURLToPath(import.meta.url))) };
-  const body = JSON.stringify({ fingerprint: fp, summary, records }, null, 1);
+  /* --private：在寫出去的那一刻遮，不在每個 records.push 那邊遮。
+     理由是會漏——記錄有四個產生點（讀不進來、引擎爆掉、不渲染、正常），
+     而以後加欄位時不會有人記得去補第五個地方。這裡是唯一的出口。 */
+  const mask = r => {
+    if (!PRIVATE) return r;
+    const o = { ...r };
+    // 工作表名換成「檔案代號 › #序號」：原名可能帶人名、客戶、專案，
+    // 但同一個活頁簿裡的表要看得出是同一個檔（它們通常共用結構）。
+    o.src = hid(r.src);
+    o.sheet = r.sheet == null ? null : o.src + ' › #' + (r.sheetIndex ?? 0);
+    delete o.sheetIndex;
+    delete o.title;        // 表格上方的前言，整段都是原始內容
+    return o;
+  };
+  const body = JSON.stringify({
+    fingerprint: fp, private: PRIVATE || undefined, summary, records: records.map(mask)
+  }, null, 1);
 
   /* 一張都沒讀進來的 baseline 沒有任何價值，卻足以覆蔓上一份好的。
      路徑打錯、資料夾沒抱下來、參數被 # 吃掉，都會落到這裡。 */
