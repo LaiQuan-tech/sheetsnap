@@ -23,7 +23,7 @@ function badHeader(h){
   }).length;
   return bad/n;
 }
-let tables=0, bad=0;
+let tables=0, bad=0, shown=0, shownBad=0;
 const worst=[];
 for(const f of fs.readdirSync(dir).filter(f=>f.endsWith('.xlsx'))){
   const wb=XLSX.read(fs.readFileSync(path.join(dir,f)),{type:'buffer'});
@@ -35,10 +35,21 @@ for(const f of fs.readdirSync(dir).filter(f=>f.endsWith('.xlsx'))){
     if(!ts.length) continue;
     const a=ts.reduce((x,y)=>y.rows.length>x.rows.length?y:x);
     tables++;
+    // 這張工作表會不會真的渲染給人看？不會的話，欄名判成什麼都不影響使用者。
+    // 最糟的六個裡有三個（budget_94d2de40 › Budget summary、
+    // chart_8eab671c › Project Planner、timeline_25d7e007 › Project timeline）
+    // 都是 sheetVerdict 擋掉的圖表資料區，混在一起算會讓數字看起來比實際差。
+    const show=S.sheetVerdict(grid, S.analyseSheet(grid).tables).show===true;
+    if(show) shown++;
     const r=badHeader(a.header);
-    if(r>0.4){ bad++; worst.push({f,n,r:+r.toFixed(2),hdr:a.header.slice(0,7).map(x=>String(x).slice(0,12))}); }
+    if(r>0.4){
+      bad++; if(show) shownBad++;
+      worst.push({f,n,r:+r.toFixed(2),show,hdr:a.header.slice(0,7).map(x=>String(x).slice(0,12))});
+    }
   }
 }
 console.log(`基準線：${tables} 個表（≥3 列），其中 ${bad} 個欄名可疑 = ${(bad/tables*100).toFixed(1)}%`);
-console.log('\n最糟的 6 個：');
-worst.sort((a,b)=>b.r-a.r).slice(0,6).forEach(w=>console.log(`  ${w.r} ${w.f} › ${w.n}\n      ${JSON.stringify(w.hdr)}`));
+console.log(`其中會渲染的：${shown} 個表，${shownBad} 個欄名可疑 = ${(shownBad/shown*100).toFixed(1)}%  ← 改標題列偵測時看這個`);
+console.log('\n最糟的 8 個（「藏」= sheetVerdict 本來就不渲染，欄名判成什麼都不影響使用者）：');
+worst.sort((a,b)=>b.r-a.r).slice(0,8).forEach(w=>
+  console.log(`  ${w.r} ${w.show?'　　':'（藏）'} ${w.f} › ${w.n}\n      ${JSON.stringify(w.hdr)}`));

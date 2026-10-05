@@ -358,7 +358,7 @@
     return hit[0] || null;
   }
 
-  /* 挑金額欄要先問「這一欄真的有值嗎」。confidence 是在有值的格子裡算的，
+  /* 挑金額／聯絡欄要先問「這一欄真的有值嗎」。confidence 是在有值的格子裡算的，
      所以一欄 66 列只填 1 格的 money 照樣拿到 1.0，排在前面。
      budget_6667de34 › Channel marketing budget 的「欄 1」就是這樣當上前導的，
      旁邊明明有填了 68% 的「Total」，排名卻照一個只有一個值的欄排。
@@ -490,8 +490,17 @@
     var date  = pick(cols, 'date');
     var time  = pick(cols, 'time');
     var money = pickFilled(cols, 'money');
-    var phone = pick(cols, 'phone');
-    var mail  = pick(cols, 'email');
+    /* 聯絡欄要真的有值，才算得上名冊／通訊錄。
+       planner_c2b640a6 › Event planner 是一張 26×14 的議程，裡面有兩欄只填了
+       19% 的信箱（併存格留下的碎片），整張表因此被判成名冊／通訊錄、
+       列名給了「欄 8」而不是議程該有的 TIME。
+       這裡要的是「有沒有」而不是「挑哪一個」，所以先篩掉稀疏的欄再 pick：
+       pickFilled 在全都稀疏時會退回原樣，那對金額是對的（不然沒有前導），
+       對聯絡欄卻剛好擋不到這一張。
+       語料裡其餘五張有聯絡欄的表都是 100% 填滿，不受影響。 */
+    var contacts = cols.filter(function (c) { return c.fillRate >= 0.3; });
+    var phone = pick(contacts, 'phone');
+    var mail  = pick(contacts, 'email');
     var status = pick(cols, 'status');
     var person = pick(cols, 'person');
     var cat   = pick(cols, 'category');
@@ -1522,6 +1531,14 @@
       return { show: false, why: '欄名本身就是句子，像說明頁' };
     if (live.length <= 1 && avgLen > 25)
       return { show: false, why: '只有一欄長文字，像說明頁' };
+    /* 兩欄以內、而且每一欄都是長文字，那是說明頁而不是資料表。
+       上面那條用「欄名本身就是句子」擋，門檻是平均欄名長度 20——
+       budget_926cf263 › Start 的欄名是「About this template」19 個字，差一個字躲過，
+       於是一頁範本使用說明被渲染成六張卡片。
+       看內容比看欄名可靠：資料表不會整張都是長文字。
+       （語料 327 個有渲染的表裡，只有這一張符合。） */
+    if (live.length <= 2 && live.every(function (c) { return c.type === 'longtext'; }))
+      return { show: false, why: '每一欄都是長文字，像說明頁' };
 
     /* 宣告了好幾欄、卻只有一欄有值，而那一欄又沒有任何數值——這是整張沒填的
        範本，列名以外什麼都沒有，渲染出來是一疊只有標籤的卡片。

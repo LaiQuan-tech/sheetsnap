@@ -668,6 +668,23 @@ for (const [head, want, why] of titleCases) {
     chk('稀疏的金額欄不當前導', a.roles.lead && a.roles.lead.name, 'Total');
   }
 
+  /* 聯絡欄要真的有值才算名冊。planner_c2b640a6 › Event planner 是 26×14 的議程，
+     裡面兩欄只填 19% 的信箱是併存格碎片，整張表卻被判成名冊／通訊錄。
+     這裡要的是「有沒有」而不是「挑哪一個」——pickFilled 在全都稀疏時會退回原樣，
+     那對金額是對的（不然沒有前導），對聯絡欄剛好擋不到。 */
+  {
+    const g2 = [['TIME', '欄 2', 'TOPIC', '欄 4', '欄 5']];
+    for (let i = 0; i < 26; i++) g2.push([(9 + (i % 16)) + ':00 - ' + (10 + (i % 16)) + ':00',
+      i % 4 ? '' : '碎片' + i, i % 4 ? '' : '主題 ' + i, i % 5 ? '' : 'a' + i + '@x.com',
+      i % 2 ? '' : '備註 ' + i]);
+    const ev = S.analyseSheet(g2).tables[0];
+    chk('19% 的信箱不算名冊', ev.shape.shape === 'directory', false);
+    // 真的通訊錄不受影響
+    const g4 = [['Name', 'Phone', 'Email']];
+    for (let i = 0; i < 10; i++) g4.push(['成員 ' + (i + 1), '0912-345-' + (100 + i), 'm' + i + '@x.com']);
+    chk('填滿的通訊錄還是名冊', S.analyseSheet(g4).tables[0].shape.shape, 'directory');
+  }
+
   /* 下拉選單那條要看「宣告了幾欄」。expense_d75b85c4 › Expenses 是一張還沒填的
      預算範本，宣告六欄、金額欄全空；$- 當空白之後 live 剩兩欄，
      整張表就被當成選單來源藏起來了。 */
@@ -677,6 +694,15 @@ for (const [head, want, why] of titleCases) {
     const grid = [['Expense','Category','Budget','Actual','Difference ($)','Difference (%)']].concat(rows);
     const v = S.sheetVerdict(grid, S.analyseSheet(grid).tables);
     chk('還沒填的範本要顯示', v.show, true);
+    /* 兩欄以內、而且每一欄都是長文字，那是說明頁。
+       上面那條用「欄名本身就是句子」擋、門檻是平均欄名長度 20，
+       budget_926cf263 › Start 的欄名是「About this template」19 個字差一個字躲過，
+       一頁範本使用說明被渲染成六張卡片。看內容比看欄名可靠。 */
+    const doc = [['About this template', '']].concat(
+      Array.from({ length: 6 }, (_, i) => [
+        '這是一段很長的範本使用說明文字，講解每一個欄位要怎麼填寫 ' + i,
+        '補充說明，同樣是一段相當長的文字，長度足以被判成長文字欄 ' + i]));
+    chk('每欄都是長文字要藏起來', S.sheetVerdict(doc, S.analyseSheet(doc).tables).show, false);
     /* 但只有一欄有值、其餘整欄空白的就沒東西可讀了——
        student_b6316bb6 › Applications 是五列比較項目加三所學校的空欄，
        timeline_c7bfc3e8 那三張內容日曆是 60 列只有 MONTH 有值。 */
