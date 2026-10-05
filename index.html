@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v79<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v80<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=79"></script>
+<script src="detect.js?v=80"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -1278,7 +1278,12 @@ function hl(v){
 function numOf(v){
   var t = String(v == null ? '' : v).trim();
   if(!t) return null;
-  var neg = /^\(.*\)$/.test(t);              // 會計式負數寫成 (500)
+  /* 會計式負數寫成 (500)，帶貨幣符號時符號在括號外面：$(635.00)。
+     舊的 /^\(.*\)$/ 被那個 $ 擋在外面，於是 $(635.00) 排成 +635——
+     差異表「由大到小」第一名會是超支最多的那筆。
+     改成「第一個數字前面就開括號、括號裡只有數字」，
+     Q1 (2023) 這種數字在前的就不會被當成負數。 */
+  var neg = /^[^\d(]*\(\s*[\d.,]+\s*\)$/.test(t);
   t = t.replace(/[()]/g, '').replace(/[^\d.\-]/g, '');
   if(!/\d/.test(t)) return null;
   var n = parseFloat(t);

@@ -215,7 +215,17 @@
     qty:      /數量|人數|件數|qty|quantity|count|數$/i
   };
 
-  var RE_NULLISH = /^([-–—－]|N\/A|n\/a|NA|無|nil|null)$/;
+  /* 會計格式的零寫成「$-」：Excel 的 Accounting 把 0 印成貨幣符號
+     加一個破折號，匯出來就是「$-」。它跟「-」是同一件事——這一格沒有
+     金額——只是多了個貨幣符號，上面那串字樣擋不到，整欄就被當成有值。
+
+     expense_68cc5838 › Expense variances 是最清楚的例子：192 格差異有一半
+     以上是「$-」（差異為零），rMoney 要求同時有符號跟數字，所以不到
+     五成，金額欄被判成 text：排不了名、當不了前導。
+     「Actual expenses」的七月到十二月同理：那六個月還沒發生、整欄都是
+     「$-」，卻拿到 28% 填充率跟兩種值，剛好符合分類欄的條件，
+     於是被挑去當分組軸——一個全是零的月份欄。 */
+  var RE_NULLISH = /^(?:NT\$?|[$＄¥￥€£])?\s*([-–—－]|N\/A|n\/a|NA|無|nil|null)$/;
 
   /* person 是純關鍵字判定、沒有內容檢查，而「name」在真實範本裡太好中：
      163 份微軟範本抓出 33 個 person 欄，其中 13 個根本不是人——
@@ -306,8 +316,10 @@
       col.reason = pct(rPhone) + ' 的值像電話號碼' + (hint('phone') ? '，欄名也含電話字樣' : '');
     } else if ((rMoney >= 0.5) || (rNum >= 0.7 && hint('money'))) {
       col.type = 'money'; col.confidence = Math.max(rMoney, rNum);
-      col.reason = hint('money') ? '欄名含金額字樣，且 ' + pct(rNum) + ' 是數字'
-                                 : pct(rMoney) + ' 的值帶有金額符號';
+      // 理由要跟真正成立的那一條一致。原本只看欄名有沒有金額字樣，
+      // 所以一欄全是 $(635.00) 的 Amount 會寫「且 0% 是數字」，看起來像弄錯了。
+      col.reason = rMoney >= 0.5 ? pct(rMoney) + ' 的值帶有金額符號'
+                                 : '欄名含金額字樣，且 ' + pct(rNum) + ' 是數字';
     } else if (rNum >= 0.8) {
       col.type = 'number'; col.confidence = rNum;
       col.reason = pct(rNum) + ' 的值是數字';
@@ -863,7 +875,8 @@
     parseMonth: parseMonth,
     dateish: dateish,
     parseTimeish: parseTimeish,
-    RE_DOW: RE_DOW              // 第二段（切表、週表攤平）也要用
+    RE_DOW: RE_DOW,            // 第二段（切表、週表攤平）也要用
+    RE_NULLISH: RE_NULLISH     // 同上：攤平時要跟判型認定「沒有值」的標準一致
   };
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -875,6 +888,7 @@
   'use strict';
   var S = root.SheetShape;
   var RE_DOW = S.RE_DOW;
+  var RE_NULLISH = S.RE_NULLISH;
 
   function blank(v) { return String(v == null ? '' : v).trim() === ''; }
 
@@ -1596,15 +1610,19 @@
     });
     if (!hasLabel) return null;
 
-    var out = [], money = 0, filled = 0, numeric = 0, seen = {};
+    var out = [], money = 0, filled = 0, vals = [], seen = {};
     idx.forEach(function (ci) {
       var label = String(header[ci]).replace(/\s+/g, ' ').trim();
       body.forEach(function (r) {
         var v = String(r[ci] == null ? '' : r[ci]).trim();
-        if (!v) return;
-        filled++; seen[label] = 1;
+        /* 空白跟「$-」都是「這個期間沒有值」，攤平時都不要變成一張卡。
+           不跳的話 expense_68cc5838 › Expense variances 會攤出 192 張卡、
+           其中三分之二寫著「某項目·某月·$-」；跳了就是 54 筆真的有差異的
+           項目，月份軸也只留下真的發生過的月份——「Actual expenses」的七月到
+           十二月還沒到，不必在分組軸上排六個空月份。 */
+        if (!v || RE_NULLISH.test(v)) return;
+        filled++; seen[label] = 1; vals.push(v);
         if (/[$€£¥＄]/.test(v)) money++;
-        if (RE_NUMLIKE.test(v)) numeric++;
         out.push(rest.map(function (i) { return r[i]; }).concat([label, v]));
       });
     });
@@ -1628,8 +1646,16 @@
              vals.filter(function (v) { return !!S.parseTimeish(v); }).length / vals.length > 0.6;
     });
     /* 時段橫排的排班表也是排程格：格子裡是班別／工作內容，不是數值，
-       而時間軸在欄名上而不是在剩下的欄裡。兩種排程格都要放過。 */
-    if (numeric / filled < 0.7 && !timeAxis && !allTime) return null;
+       而時間軸在欄名上而不是在剩下的欄裡。兩種排程格都要放過。
+
+       「是不是數值」直接問 detectColumn，不要自己再寫一套門檻。
+       第一版用 RE_NUMLIKE 算比例、門檻 0.7，而 detectColumn 用另一個正則、
+       門檻 0.8——budget_6667de34 › Channel marketing budget 剛好卡在中間：
+       我這邊算過了、它那邊判成 text，於是攤出 693 列、值欄沒有型別可用。
+       真正要問的就是「攤出來的值欄會不會變成 money 或 number」，
+       那就直接問那個函式。 */
+    var vType = S.detectColumn('v', vals).type;
+    if (!/^(money|number)$/.test(vType) && !timeAxis && !allTime) return null;
 
     /* 只有一個期間真的有值時，攤平等於什麼都沒做，還多一個只有一種值的分組欄。
        budget_60c5b272 › Budget by month 的 12 個月欄只有一欄填了，

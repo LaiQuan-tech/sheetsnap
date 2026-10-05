@@ -497,17 +497,80 @@ for (const [head, want, why] of titleCases) {
   chk('甘特圖不攤平', U([['工作項目'].concat(Array.from({ length: 30 }, (_, d) => String(d + 1)))].concat(
     Array.from({ length: 20 }, (_, i) => ['工作' + (i + 1)]
       .concat(Array.from({ length: 30 }, (_, d) => (d >= i && d < i + 4) ? 'x' : ''))))), '');
+
+  /* v79 的「值要是數值」是自己算 RE_NUMLIKE 的比例、門檻 0.7，
+     而 detectColumn 用另一個正則、門檻 0.8——budget_6667de34 ›
+     Channel marketing budget 剛好卡在兩者中間：我這邊算過了、
+     它那邊判成 text，於是攤出 693 列、值欄沒有型別可用。
+     要問的就是「攤出來的值欄會不會是金額或數字」，那就直接問那個函式。 */
+  chk('值欄七成數字三成文字不攤平', U([['項目'].concat(MON)].concat(
+    Array.from({ length: 10 }, (_, i) => ['項目' + (i + 1)].concat(
+      MON.map((_, m) => (i * 12 + m) % 10 < 7 ? String(100 + i * 7 + m) : '待確認'))))), '');
+  chk('值欄全是數字照攤', U([['項目'].concat(MON)].concat(
+    Array.from({ length: 10 }, (_, i) => ['項目' + (i + 1)].concat(
+      MON.map((_, m) => String(100 + i * 7 + m)))))), 'period');
+
+  /* 會計格式的零是「$-」。v79 把它當成有值，於是
+     expense_68cc5838 › Actual expenses 的七月到十二月（整欄 $-）拿到
+     28% 填充率跟兩種值、剛好符合分類欄的條件，被挑去當分組軸；
+     而 Expense variances 的 192 格差異有一半以上是 $-，金額欄被判成
+     text、排不了名。兩張都因此不再攤平。
+     現在 $- 跟空白同一件事：不算填充、也不攤成卡片。 */
+  const half = S.analyseSheet([['EXPENSE'].concat(MON).concat(['TOTAL'])].concat(
+    Array.from({ length: 10 }, (_, i) => ['項目' + (i + 1)]
+      .concat(MON.map((_, m) => m < 6 ? '$' + (500 + i * 120 + m * 7) + '.00' : '$-'))
+      .concat(['$' + (3000 + i * 720) + '.00'])))).tables[0];
+  chk('半年沒發生的表照攤',   half.unpivoted, 'period');
+  chk('$- 不攤成卡片',       half.rows.length, 60);
+  chk('月份軸只留有值的月份', half.cols.filter(c => c.name === 'Month')[0].distinct, 6);
+  chk('金額欄是金額',        half.roles.lead && half.roles.lead.type, 'money');
+
+  // 差異表：$- 之外是會計式負數，整欄仍然是金額
+  const vari = S.analyseSheet([['EXPENSE'].concat(MON).concat(['TOTAL'])].concat(
+    Array.from({ length: 10 }, (_, i) => ['項目' + (i + 1)]
+      .concat(MON.map((_, m) => m % 3 === 0 ? '$(' + (100 + i * 7 + m) + '.00)' : '$-'))
+      .concat(['$(' + (1900 + i * 13) + '.00)'])))).tables[0];
+  chk('差異表照攤',     vari.unpivoted, 'period');
+  chk('差異欄是金額',   vari.roles.lead && vari.roles.lead.type, 'money');
+  chk('只留真的有差異', vari.rows.length, 40);
+}
+
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 判型 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const ty = vs => S.detectColumn('數值', vs).type;
+  chk('$- 當空白',      ty(['$-', '$-', '$-']), 'empty');
+  chk('$ - 當空白',     ty(['$ -', '$ -', '$ -']), 'empty');
+  chk('NT$- 當空白',    ty(['NT$-', 'NT$-', 'NT$-']), 'empty');
+  chk('- 還是空白',     ty(['-', '—', '-']), 'empty');
+  chk('$ 不是空白',     ty(['$', '$', '$']) === 'empty', false);
+  chk('會計式負數是金額', ty(['$(635.00)', '$(120.00)', '$1,905.00']), 'money');
+  chk('一半 $- 仍是金額', ty(['$-', '$-', '$1,905.00', '$(635.00)']), 'money');
+  // 理由要跟真正成立的那一條一致：原本一律寫「欄名含金額字樣，且 0% 是數字」
+  chk('金額理由講符號',   /金額符號/.test(S.detectColumn('Amount', ['$(1.00)', '$(2.00)', '$3.00']).reason), true);
+  chk('金額理由講數字',   /是數字/.test(S.detectColumn('Amount', ['1', '2', '3']).reason), true);
 }
 
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};
+let skipped=0;
 for(const [n,[want,id]] of Object.entries(urls)){
-  const r=await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=csv`);
-  const a=S.analyseSheet(csv(await r.text())).tables[0];
+  let a=null, why='';
+  try{
+    const r=await fetch(`https://docs.google.com/spreadsheets/d/${id}/export?format=csv`);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    a=S.analyseSheet(csv(await r.text())).tables[0];
+    if(!a||!a.shape) throw new Error('沒有解析出表');
+  }catch(e){ why=e.message; }
+  if(!a){ console.log(`- ${n.padEnd(6)} 跳過（連不到來源：${why}）`); skipped++; continue; }
   const pass=a.shape.shape===want;
   console.log(`${pass?'✓':'✗'} ${n.padEnd(6)} 期望=${want.padEnd(10)} 實際=${a.shape.shape}`);
   pass?ok++:bad++;
 }
+if(skipped) console.log(`\n（${skipped} 筆線上案例跳過，要連得到 docs.google.com 才跑得到）`);
 console.log(`\n${ok} 通過 · ${bad} 失敗`);
 process.exit(bad?1:0);
