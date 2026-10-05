@@ -102,17 +102,22 @@
      PERSONNEL EXPENSES×2。（「name」本來就是每一種東西都有的欄名）
      誤判的代價不小：person 在篩選排序裡是最高優先（v61），又排在排名
      之前（v68），所以一欄品名會擠掉真正的狀態欄或排名看法。
-     兩道關：欄名指名了「非人的主體」就不算人員；只憑一個 name 中的，
-     還要求值有重複——「只看某個人」要成立，同一個人至少得出現兩次，
-     每列都不同的 Name 是品名。
-     明確的人字樣不受這兩條影響：「專案負責人」要留著。 */
+     判法是「欄名指名了非人的主體就不算人員」，而明確的人字樣
+     不受影響：「專案負責人」要留著。
+
+     這裡曾經多一道「只憑一個 name 中的還要求值有重複」（一人一列
+     的 Name 就不算人），跑完 163 份拆掉了：它把 Team roster、Guests、
+     Candidates、Interviewers、Share list、Contact name、Lead name 共 9 欄真的
+     人員也降成文字——名冊本來就是一人一列。而它一開始想擋的事
+     其實不存在：全相異的欄本來就過不了 filterOptions 的 avg≥1.5
+     跟 groupOptions 的 avg≥2，沒有篩選卡可以被它擠掉。
+     代價卻是真的：person 降成 text 之後會被 codeLike 扣分，
+     inventory_cf2db84f 的 25 张卡片標題從品名「Name」變成「Inventory ID」。 */
   var PERSON_SURE = /人員|負責|姓名|名字|承辦|窗口|聯絡人|主辦|owner|assignee|staff|member|salesperson|\bperson\b|\bpeople\b/i;
   var NOT_PERSON  = /產品|商品|品名|品項|專案|課程|公司|廠商|供應商|品牌|資產|團隊|組織|機構|檔案|活動|帳戶|科目|product|project|course|compan|vendor|merchant|supplier|brand|asset|team|organi[sz]|institut|\bitem|\bfile|event|account|personnel/i;
 
-  function personish(name, repeats) {
-    if (PERSON_SURE.test(name)) return true;
-    if (NOT_PERSON.test(name)) return false;
-    return repeats;
+  function personish(name) {
+    return PERSON_SURE.test(name) || !NOT_PERSON.test(name);
   }
 
   function detectColumn(name, values) {
@@ -186,7 +191,7 @@
       col.reason = col.multilineRatio >= 0.15
         ? Math.round(col.multilineRatio * 100) + '% 的值有換行，屬長文字'
         : '平均長度 ' + Math.round(col.avgLen) + ' 字，屬長文字';
-    } else if (hint('person') && personish(name, repeats)) {
+    } else if (hint('person') && personish(name)) {
       col.type = 'person'; col.confidence = 0.8;
       col.reason = '欄名含人員／負責人字樣';
     } else if (repeats && !hint('note') && col.distinct <= 8 && col.avgLen <= 10) {

@@ -46,8 +46,12 @@ const personCases = [
   ['專案負責人',      'person', 'person'],   // 「專案」不能覆蓋「負責」
   ['Salesperson',     'person', 'person'],
   ['ADMIN STAFF',     'person', 'person'],
-  ['Name',            'person', 'text'],     // 光一個 name：要有人重複出現才算
-  ['Contact name',    'person', 'text'],
+  // 一人一列的名冊（Team roster、Guests、Candidates）也要算人員：
+  // 曾經多一道「值要有重複」的關，163 份跑出來誤殺 9 欄，已拆掉
+  ['Name',            'person', 'person'],
+  ['NAME',            'person', 'person'],
+  ['Contact name',    'person', 'person'],
+  ['Lead name',       'person', 'person'],
   ['PRODUCT NAME',    null,     null],       // 欄名指名了非人的主體 → 一律不算
   ['PROJECT NAME',    null,     null],
   ['Course name',     null,     null],
