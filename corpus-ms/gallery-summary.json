@@ -5,7 +5,7 @@
  "skipped": 109,
  "warned": 11,
  "generic": 60,
- "noTitle": 10,
+ "noTitle": 9,
  "oneRow": 0,
  "withTime": 24,
  "withFilter": 31,
@@ -118,7 +118,7 @@
    "timesheet",
    {
     "n": 10,
-    "ok": 5
+    "ok": 6
    }
   ],
   [
@@ -136,5 +136,5 @@
    }
   ]
  ],
- "clean": 214
+ "clean": 215
 }

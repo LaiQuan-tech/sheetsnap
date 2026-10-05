@@ -1,13 +1,13 @@
 {
  "fingerprint": {
-  "engine": "8376561d9fdc",
+  "engine": "a77846b2d2b2",
   "audit": "3327044e93ad"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 203,
-  "flagged": 124,
+  "clean": 204,
+  "flagged": 123,
   "skipped": 109,
   "broken": 0,
   "shapes": {
@@ -25,14 +25,13 @@
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "13/25 列沒有標題，會被整列略過": 1,
    "2/4 列沒有標題，會被整列略過": 3,
-   "2/5 列沒有標題，會被整列略過": 1,
    "2/6 列沒有標題，會被整列略過": 1,
-   "3/6 列沒有標題，會被整列略過": 2,
+   "3/6 列沒有標題，會被整列略過": 1,
    "4/12 列沒有標題，會被整列略過": 1,
+   "4/8 列沒有標題，會被整列略過": 1,
    "5/14 列沒有標題，會被整列略過": 1,
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
-   "8/20 列沒有標題，會被整列略過": 1,
    "9/18 列沒有標題，會被整列略過": 1,
    "分組欄「2.5」只有一種值，等於沒分組": 1,
    "分組欄「Approved by」只有一種值，等於沒分組": 1,
@@ -107,7 +106,7 @@
    "原始工作表有 99 列，只抽出 6 列，結構可能判壞": 1,
    "只有一列資料，判斷幾乎沒有依據": 8,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
-   "找不到主標題欄，卡片會沒有名字": 19,
+   "找不到主標題欄，卡片會沒有名字": 18,
    "標題列可能判錯": 8,
    "落到一般表格": 48
   }
@@ -452,7 +451,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Withdrawal」，以「Check/Code」為品項名稱",
+   "reason": "偵測到金額欄「Withdrawal」，以「Transaction」為品項名稱",
    "srcRows": 18,
    "rows": 6,
    "cols": 7,
@@ -461,7 +460,7 @@
    "title": "Check register · Legend · Current Balance · DC - Debit card · AP - Automatic payment · AD - Automatic deposit · $3,311.00 · ATM - Automated teller withdrawal · BP - Online bill pay · TR - Online or phone transfer",
    "notes": [],
    "roles": {
-    "title": "Check/Code",
+    "title": "Transaction",
     "group": "Date",
     "lead": "Withdrawal",
     "person": null
@@ -639,7 +638,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「WITHDRAWAL」，以「CHECK/CODE」為品項名稱",
+   "reason": "偵測到金額欄「WITHDRAWAL」，以「TRANSACTION」為品項名稱",
    "srcRows": 16,
    "rows": 6,
    "cols": 7,
@@ -648,7 +647,7 @@
    "title": "CHECK REGISTER · LEGEND · CURRENT BALANCE · DC = Debit card · AP = Automatic payment · ATM = Automated teller withdrawal · BP = Online bill pay · $3,311.00 · AD = Automatic deposit · TR = Online or phone transfer",
    "notes": [],
    "roles": {
-    "title": "CHECK/CODE",
+    "title": "TRANSACTION",
     "group": "DATE",
     "lead": "WITHDRAWAL",
     "person": null
@@ -7117,7 +7116,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「PURCHASE AMOUNT」，以「ROOM」為品項名稱",
+   "reason": "偵測到金額欄「PURCHASE AMOUNT」，以「ITEM DESCRIPTION」為品項名稱",
    "srcRows": 25,
    "rows": 3,
    "cols": 10,
@@ -7126,7 +7125,7 @@
    "title": "HOME CONTENTS INVENTORY LIST · NAME · Miho Kojima · ADDRESS · 987 6th Ave, Santa Fe, NM 54321 · PHONE · (123) 456-7890 · INSURANCE POLICY NO. · 10002589 · INSURANCE AGENT NAME · Shir Rosenstein · INSURANCE AGENT PHONE · (000) 123-4567 · INSURANCE COMPANY NAME · Caneiro Group · INSURANCE COMPANY PHONE · (000) 123-4567 · TOTAL ESTIMATED VALUE · $575.00",
    "notes": [],
    "roles": {
-    "title": "ROOM",
+    "title": "ITEM DESCRIPTION",
     "group": "SN AND/OR ID NUMBER",
     "lead": "PURCHASE AMOUNT",
     "person": null
@@ -7155,7 +7154,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Initial value」，以「Location」為品項名稱",
+   "reason": "偵測到金額欄「Initial value」，以「Item description \r\n(make and model)」為品項名稱",
    "srcRows": 99,
    "rows": 6,
    "cols": 18,
@@ -7166,7 +7165,7 @@
     "向下填補合併儲存格：Item description \r\n(make and model)"
    ],
    "roles": {
-    "title": "Location",
+    "title": "Item description \r\n(make and model)",
     "group": "Vendor",
     "lead": "Initial value",
     "person": null
@@ -7192,7 +7191,6 @@
     "Current value:money"
    ],
    "flags": [
-    "3/6 列沒有標題，會被整列略過",
     "分組欄「Vendor」只有一種值，等於沒分組",
     "原始工作表有 99 列，只抽出 6 列，結構可能判壞"
    ]
@@ -7240,7 +7238,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「欄 8」，以「欄 5」為品項名稱",
+   "reason": "偵測到金額欄「欄 8」，以「Name」為品項名稱",
    "srcRows": 65,
    "rows": 20,
    "cols": 12,
@@ -7251,7 +7249,7 @@
     "剔除 30 個排版用的空白欄"
    ],
    "roles": {
-    "title": "欄 5",
+    "title": "Name",
     "group": "Dependent",
     "lead": "欄 8",
     "person": null
@@ -7271,8 +7269,7 @@
     "欄 12:money"
    ],
    "flags": [
-    "標題列可能判錯：5/12 欄沒有欄名",
-    "8/20 列沒有標題，會被整列略過"
+    "標題列可能判錯：5/12 欄沒有欄名"
    ]
   },
   {
@@ -7331,7 +7328,7 @@
     "向下填補合併儲存格：Address"
    ],
    "roles": {
-    "title": "Financial institution",
+    "title": "Title held by",
     "group": "Phone",
     "lead": null,
     "person": null
@@ -7346,6 +7343,7 @@
     "Notes:text"
    ],
    "flags": [
+    "4/8 列沒有標題，會被整列略過",
     "落到一般表格：沒有辨識出任何主軸",
     "分組欄「Phone」只有一種值，等於沒分組",
     "原始工作表有 58 列，只抽出 8 列，結構可能判壞"
@@ -7405,7 +7403,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Initial value」，以「Condition」為品項名稱",
+   "reason": "偵測到金額欄「Initial value」，以「Item description」為品項名稱",
    "srcRows": 23,
    "rows": 5,
    "cols": 18,
@@ -7416,7 +7414,7 @@
     "向下填補合併儲存格：Item description "
    ],
    "roles": {
-    "title": "Condition",
+    "title": "Item description",
     "group": "Vendor",
     "lead": "Initial value",
     "person": null
@@ -7442,7 +7440,6 @@
     "Current value:money"
    ],
    "flags": [
-    "2/5 列沒有標題，會被整列略過",
     "分組欄「Vendor」只有一種值，等於沒分組"
    ]
   },
@@ -7532,7 +7529,7 @@
    "title": "Home Inventory Contents List · House icon is in this cell · TOTAL ESTIMATED VALUE OF ALL ITEMS: · $4,040.00 · INVENTORY DATE: · 1/4/24 · Person icon is in this cell · NAME: · Enter your name here · Insurance company: · Enter Insurance company name here · Insurance company phone: · Enter Insurance company phone number here · Envelope is in this cell · ADDRESS: · Enter your address here · Insurance company policy number: · Enter Insurance policy number here · Insurance agent: · Enter Insurance agent name here · Phone icon is in this cell · PHONE: · Enter your phone number here · Insurance agent phone: · Enter Insurance agent phone number here · Insurance agent address: · Enter Insurance agent address here · A slicer is in cells B9 through J9. To filter inventory list, select a room from the slicer in this cell. Press and hold CTRL to select multiple rooms.",
    "notes": [],
    "roles": {
-    "title": "Room/area",
+    "title": "Item/description",
     "group": null,
     "lead": "Estimated\r\ncurrent value",
     "person": null
@@ -7652,7 +7649,7 @@
    "title": "INVENTORY PICK LIST",
    "notes": [],
    "roles": {
-    "title": "BIN #",
+    "title": "ITEM DESCRIPTION",
     "group": "ORDER #",
     "lead": null,
     "person": null
@@ -7806,7 +7803,7 @@
    "title": "Inventory pick list",
    "notes": [],
    "roles": {
-    "title": "BIN #",
+    "title": "ITEM DESCRIPTION",
     "group": "ORDER #",
     "lead": null,
     "person": null
@@ -8790,7 +8787,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Invoice #」，以「Payment due」為品項名稱",
+   "reason": "偵測到金額欄「Invoice #」，以「Customer name」為品項名稱",
    "srcRows": 9,
    "rows": 6,
    "cols": 9,
@@ -8799,7 +8796,7 @@
    "title": "INVOICE TRACKER",
    "notes": [],
    "roles": {
-    "title": "Payment due",
+    "title": "Customer name",
     "group": "Late fee",
     "lead": "Invoice #",
     "person": null
@@ -9002,7 +8999,7 @@
    "title": "Credit Card Name · Enter payments as negative amounts in table, below.",
    "notes": [],
    "roles": {
-    "title": "Description",
+    "title": "Merchant name",
     "group": null,
     "lead": "Balance*",
     "person": null
@@ -10539,7 +10536,7 @@
     "剔除 5 個排版用的空白欄"
    ],
    "roles": {
-    "title": "INSTRUCTOR",
+    "title": "NAME",
     "group": null,
     "lead": "TIME START",
     "person": null
@@ -10566,7 +10563,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「ITEM DESCRIPTION」，以「COURSE ID」為品項名稱",
+   "reason": "偵測到金額欄「ITEM DESCRIPTION」，以「NAME」為品項名稱",
    "srcRows": 11,
    "rows": 7,
    "cols": 7,
@@ -10577,7 +10574,7 @@
     "剔除 5 個排版用的空白欄"
    ],
    "roles": {
-    "title": "COURSE ID",
+    "title": "NAME",
     "group": "SEMESTER",
     "lead": "ITEM DESCRIPTION",
     "person": null
@@ -10728,7 +10725,7 @@
    "title": "CLASS LIST",
    "notes": [],
    "roles": {
-    "title": "Day",
+    "title": "Course name",
     "group": null,
     "lead": "Time start",
     "person": null
@@ -10754,7 +10751,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Item description」，以「Due date」為品項名稱",
+   "reason": "偵測到金額欄「Item description」，以「Course name」為品項名稱",
    "srcRows": 21,
    "rows": 7,
    "cols": 6,
@@ -10763,7 +10760,7 @@
    "title": "DEADLINES",
    "notes": [],
    "roles": {
-    "title": "Due date",
+    "title": "Course name",
     "group": "Semester",
     "lead": "Item description",
     "person": null
@@ -10797,7 +10794,7 @@
    "title": "WEEKLY SCHEDULE",
    "notes": [],
    "roles": {
-    "title": "Day",
+    "title": "Course Name",
     "group": null,
     "lead": "Time Start",
     "person": null
@@ -12053,7 +12050,7 @@
   {
    "src": "timesheet_8fd087b1.xlsx",
    "sheet": "timesheet_8fd087b1.xlsx › Biweekly time sheet",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -12067,7 +12064,7 @@
    "title": "Dream Pipes Plumbing · 333 3rd Avenue, Seattle, WA 89101 · Employee: · Luca Richter · Employee phone: · 640-555-0164 · Employee e-mail: · luca@example.com · Pay period start date: · 10/9/23 · Manager: · Elizabeth Moore · Pay period end date: · 10/22/23",
    "notes": [],
    "roles": {
-    "title": null,
+    "title": "Date",
     "group": "Day",
     "lead": "Total",
     "person": null
@@ -12081,9 +12078,7 @@
     "Vacation:category",
     "Total:money"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字"
-   ]
+   "flags": []
   },
   {
    "src": "timesheet_914ad28e.xlsx",
