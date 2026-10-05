@@ -4,31 +4,31 @@
  "shown": 287,
  "skipped": 109,
  "warned": 10,
- "generic": 41,
+ "generic": 45,
  "noTitle": 9,
  "oneRow": 0,
- "withTime": 40,
- "withFilter": 21,
- "withFacts": 130,
- "withGroup": 44,
+ "withTime": 41,
+ "withFilter": 23,
+ "withFacts": 120,
+ "withGroup": 57,
  "withRank": 121,
  "onlySearch": 48,
  "shapes": [
   [
    "矩陣／報表",
-   82
+   76
   ],
   [
    "品項／價目表",
-   73
+   74
   ],
   [
    "排程／時程表",
-   56
+   57
   ],
   [
    "一般表格",
-   41
+   45
   ],
   [
    "帳務／明細表",
@@ -48,7 +48,7 @@
    "budget",
    {
     "n": 60,
-    "ok": 55
+    "ok": 52
    }
   ],
   [
@@ -97,7 +97,7 @@
    "expense",
    {
     "n": 12,
-    "ok": 11
+    "ok": 10
    }
   ],
   [
@@ -136,7 +136,7 @@
    }
   ]
  ],
- "clean": 235,
+ "clean": 231,
  "rows": [
   {
    "src": "accounting_0447d9de.xlsx",
@@ -301,8 +301,8 @@
    "table": 1,
    "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
-    "facts",
     "all"
    ]
   },
@@ -312,7 +312,7 @@
    "table": 2,
    "shape": "品項／價目表",
    "views": [
-    "group:IND %",
+    "group:Month",
     "rank",
     "all"
    ]
@@ -323,8 +323,8 @@
    "table": 0,
    "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
-    "facts",
     "all"
    ]
   },
@@ -403,9 +403,9 @@
    "src": "accounting_b55730e7.xlsx",
    "sheet": "Monthly cash flow",
    "table": 2,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
-    "group:Type",
+    "group:Month",
     "rank",
     "all"
    ]
@@ -486,10 +486,10 @@
    "src": "budget_1cbd5c5c.xlsx",
    "sheet": "Monthly college budget",
    "table": 1,
-   "shape": "矩陣／報表",
+   "shape": "一般表格",
    "views": [
-    "filter:% INC",
-    "facts",
+    "group:Month",
+    "rank",
     "all"
    ]
   },
@@ -718,7 +718,7 @@
    "src": "budget_60c5b272.xlsx",
    "sheet": "Budget by month",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "rank",
     "facts",
@@ -729,10 +729,10 @@
    "src": "budget_6667de34.xlsx",
    "sheet": "Channel marketing budget",
    "table": 1,
-   "shape": "品項／價目表",
+   "shape": "一般表格",
    "views": [
-    "rank",
-    "filter:Jan",
+    "group:Month",
+    "filter:Value",
     "all"
    ]
   },
@@ -953,7 +953,8 @@
    "table": 0,
    "shape": "矩陣／報表",
    "views": [
-    "facts",
+    "group:欄 1",
+    "rank",
     "all"
    ]
   },
@@ -980,10 +981,10 @@
    "src": "budget_b6c07597.xlsx",
    "sheet": "PERSONAL BUDGET",
    "table": 0,
-   "shape": "品項／價目表",
+   "shape": "一般表格",
    "views": [
-    "rank",
-    "facts",
+    "group:Month",
+    "filter:YEAR",
     "all"
    ]
   },
@@ -1125,7 +1126,7 @@
    "src": "cashflow_281b542f.xlsx",
    "sheet": "Monthly cash flow",
    "table": 2,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Type",
     "rank",
@@ -1179,9 +1180,9 @@
    "src": "cashflow_f7200e29.xlsx",
    "sheet": "Cash flow forecast",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "排程／時程表",
    "views": [
-    "group:Total",
+    "time:Month",
     "facts",
     "all"
    ]
@@ -1258,10 +1259,10 @@
    "src": "chart_1ed52567.xlsx",
    "sheet": "Regional sales",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
-    "facts",
     "all"
    ]
   },
@@ -1485,8 +1486,8 @@
    "table": 1,
    "shape": "矩陣／報表",
    "views": [
-    "rank",
-    "facts",
+    "group:Month",
+    "filter:Expenses",
     "all"
    ]
   },
@@ -1662,6 +1663,7 @@
    "table": 1,
    "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
     "all"
    ]
@@ -1670,9 +1672,10 @@
    "src": "expense_68cc5838.xlsx",
    "sheet": "Expense variances",
    "table": 2,
-   "shape": "品項／價目表",
+   "shape": "一般表格",
    "views": [
-    "rank",
+    "group:Month",
+    "filter:Amount",
     "all"
    ]
   },
@@ -1689,8 +1692,9 @@
    "src": "expense_68cc5838.xlsx",
    "sheet": "Planned expenses",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
     "all"
    ]
@@ -1731,10 +1735,10 @@
    "src": "expense_d14f83e2.xlsx",
    "sheet": "ACTUAL EXPENSES",
    "table": 2,
-   "shape": "品項／價目表",
+   "shape": "矩陣／報表",
    "views": [
+    "group:Month",
     "rank",
-    "facts",
     "all"
    ]
   },
@@ -1754,7 +1758,8 @@
    "table": 3,
    "shape": "矩陣／報表",
    "views": [
-    "facts",
+    "group:Month",
+    "rank",
     "all"
    ]
   },
@@ -1764,7 +1769,8 @@
    "table": 1,
    "shape": "矩陣／報表",
    "views": [
-    "facts",
+    "group:Month",
+    "rank",
     "all"
    ]
   },
@@ -2936,7 +2942,7 @@
    "table": 0,
    "shape": "排程／時程表",
    "views": [
-    "time",
+    "time:Period",
     "all"
    ]
   },
