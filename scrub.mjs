@@ -78,18 +78,19 @@ const rnd = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff
    相異值數就塌掉了（原檔 8 種品名變成 1 種）。 */
 const POOL_ZH = '甲乙丙丁戊己庚辛壬癸子丑寅卯辰巳午未申酉戌亥天地玄黃宇宙洪荒日月盈昃';
 const POOL_EN = 'abcdefghijklmnopqrstuvwxyz';
+/* idx 用字庫當底數編碼，所以不同的 idx 永遠得到不同的字串——沒有截斷。
+   第一版是「值N 截斷到原值長度」，三個字的原值因此只生得出 99 種
+   （值10、值11…值99 之後全部撞在 "值10"），撞完就落到
+   take() 的最後一手「生不出來就留原值」，於是第 100 個之後的人名原樣留下。
+   寧可長度偏掉也不可以留原值：長度只影響 avgLen 與 longtext 的判定，
+   那是可以接受的誤差；留原值不是誤差，是洩漏。 */
 function filler(orig, idx) {
-  const zh = cjk(orig), pool = zh ? POOL_ZH : POOL_EN, n = orig.length;
-  let out;
-  if (n <= 2) {
-    out = pool[idx % pool.length];
-    if (n === 2) out += pool[Math.floor(idx / pool.length) % pool.length];
-  } else {
-    const head = (zh ? '值' : 'v') + (idx + 1);
-    out = head.length >= n ? head.slice(0, n) : head + (zh ? '〇' : 'x').repeat(n - head.length);
-  }
+  const zh = cjk(orig), pool = zh ? POOL_ZH : POOL_EN, n = Math.max(orig.length, 1);
+  let out = '', x = idx;
+  do { out = pool[x % pool.length] + out; x = Math.floor(x / pool.length); } while (x > 0);
+  if (out.length < n) out += (zh ? '〇' : 'x').repeat(n - out.length);
   // 換行會決定 multiline／longtext，位置要留著
-  for (let i = 0; i < n && i < out.length; i++)
+  for (let i = 0; i < orig.length && i < out.length; i++)
     if (orig[i] === '\n') out = out.slice(0, i) + '\n' + out.slice(i + 1);
   return out;
 }
@@ -97,11 +98,20 @@ function filler(orig, idx) {
    開頭不會冒出 0（NT$0275 這種看起來就是壞的，而且 numOf 讀出來的量級也變了）、
    電話的開頭 0 留得住、整數的「整」留得住（NT$5000 洗完還是 x000，
    而金額欄常常就是整數，相異值數與格式都靠它）。 */
-const digitSwap = s => s.replace(/\d/g, d =>
-  d === '0' ? '0' : String(1 + Math.floor(rnd() * 9)));
+/* 數字照 idx 以 9 為底編碼（0 留 0），同樣是單射的——
+   原本用隨機數，兩個不同的原值有機會生出同一個假值，
+   撞上就落到「留原值」那一手。 */
+const digitSwap = (s, idx) => {
+  let x = idx;
+  return s.replace(/\d/g, d => {
+    if (d === '0') return '0';
+    const r = x % 9; x = Math.floor(x / 9);
+    return String(1 + r);
+  });
+};
 
 function gen(v, type, idx) {
-  if (type === 'money' || type === 'number' || type === 'phone') return digitSwap(v);
+  if (type === 'money' || type === 'number' || type === 'phone') return digitSwap(v, idx);
   if (type === 'email') return 'v' + (idx + 1) + '@example.com';
   if (type === 'url') return 'https://example.com/' + (idx + 1);
   return filler(v, idx);
@@ -144,8 +154,14 @@ function scrubGrid(grid) {
     if (/^\d{1,2}$/.test(t)) return v;
     if (map.has(v)) return map.get(v);
     let o = gen(v, type, map.size);
-    for (let k = 1; used.has(o) && k <= 24; k++) o = gen(v, type, map.size + k * 101);
-    if (used.has(o)) o = v;                              // 真的生不出不同的就留原值
+    /* 生不出不同的就停住，絕對不可以退回原值。
+       原本寫 o = v，那一行讓 1000 列的檔案從第 100 個不同的短字串開始
+       整串原樣留下。洗不出來就該拒絕寫檔，不是悄悄留著。 */
+    for (let k = 1; used.has(o) && k <= 64; k++) o = gen(v, type, map.size + k * 7919);
+    if (used.has(o) || o === v) {
+      throw new Error('生不出跟原值不同又沒撞過的替代值：' + JSON.stringify(v.slice(0, 20)) +
+        '（型別 ' + type + '，已用 ' + used.size + ' 個）');
+    }
     map.set(v, o); used.add(o);
     return o;
   };
@@ -213,13 +229,24 @@ function fixtures(dir) {
       m < 6 ? (i % 4 === 0 ? '$(' + (1000 + i * 37 + m) + ')' : 'NT$' + (5000 + i * 310 + m * 17)) : '$-'),
       ['NT$' + (60000 + i * 2100)]))) });
 
+  /* 出事的那張形狀：很多列、短人名。1000 列的真實檔案從第 100 個不同的
+     三字人名開始，第一版的 filler 就撞光了，然後退回原值。 */
+  const surname = '陳林黃張李王吳劉蔡楊許鄭謝郭洪曾廖賴徐周';
+  const given = '怡志淑家佩宗美雅建文玉秀明慧俊';
+  W('roster.xlsx', { 名冊: [['活動人員名冊'].concat(['', '', '']), ['姓名', '職稱', '手機', '組別']]
+    .concat(Array.from({ length: 300 }, (_, i) => [
+      surname[i % 20] + given[(i * 7) % 15] + given[(i * 13) % 15],
+      ['攝影師', '造型師', '司儀', '燈光', '音控'][i % 5],
+      '+886' + (900000000 + i * 137),
+      'A組BCD'[i % 4]])) });
+
   W('tracker.xlsx', {
     Tasks: [['Project tracker', '', '', ''], ['Task', 'Owner', 'Due', 'Cost']]
       .concat(Array.from({ length: 10 }, (_, i) => ['Task ' + (i + 1),
         ['Alice Chen', 'Bob Wu', 'Cara Lin'][i % 3], (10 + i) + '/03/2024', '£' + (250 + i * 35) + '.00'])),
     Notes: [['About this sheet'], ['Fill in the task name, owner and due date. Costs are in pounds.']],
   });
-  return 5;
+  return 6;
 }
 
 if (SELFTEST) {
@@ -229,6 +256,27 @@ if (SELFTEST) {
   fixtures(src);
   inputs = [src];
   OUTDIR = path.join(tmp, 'out');
+}
+
+/* ── 驗：原始內容真的沒留下來 ──
+   「判定一致」只證明結構保住了，不證明內容換掉了——一支什麼都不做的
+   scrub 也會通過那一項。這個檢查原本只在 --selftest 跑，正式跑 --out
+   時完全沒做，所以 filler 撞號退回原值時沒有任何東西擋得住：
+   20 個真實檔案推上公開 repo，407 格人名電話原樣留著。
+   測試要跑在會出事的那條路上，不是只跑在我想得到的那條。 */
+const KEEPABLE = (v, type) =>
+  !v.trim() || NULLISH.test(v.trim()) || /^\d{1,2}$/.test(v.trim()) ||
+  type === 'date' || type === 'time';
+
+function leaks(before, after, colType, headerEnd) {
+  const out = [];
+  for (let i = headerEnd + 1; i < before.length; i++)
+    for (let c = 0; c < (before[i] || []).length; c++) {
+      const a = String((before[i] || [])[c] ?? ''), b = String((after[i] || [])[c] ?? '');
+      if (KEEPABLE(a, colType[c])) continue;
+      if (a === b) out.push({ i, c, v: a });
+    }
+  return out;
 }
 
 const files = [];
@@ -241,25 +289,44 @@ for (const inp of inputs) {
 fs.mkdirSync(OUTDIR, { recursive: true });
 
 let bad = 0, done = 0;
-const allKept = [], pairs = [];
+const allKept = [];
 for (const fp of files) {
   seed = parseInt(crypto.createHash('sha1').update(path.basename(fp)).digest('hex').slice(0, 8), 16) || 1;
   let grids;
   try { grids = readGrids(fp); }
   catch (e) { console.error(`✗ ${fp}：讀不進來 ${e.message}`); bad++; continue; }
 
-  const wb = XLSX.utils.book_new();
-  const checks = [];
-  grids.forEach((sh, i) => {
-    const { grid, kept, ...rest } = scrubGrid(sh.grid);
-    allKept.push({ f: path.basename(fp), sheet: sh.name, kept });
-    if (SELFTEST) pairs.push({ f: path.basename(fp), sheet: sh.name, before: sh.grid, after: grid, ...rest });
-    checks.push({ i, before: sig(sh.grid), after: sig(grid) });
-    // 工作表名可能帶人名、客戶、專案，換成序號
-    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(grid), 'S' + (i + 1));
-  });
-
   const name = 'real_' + crypto.createHash('sha1').update(path.basename(fp)).digest('hex').slice(0, 8) + '.xlsx';
+  const checks = [];
+  const sheets = [];
+  let failed = null;
+  for (const [i, sh] of grids.entries()) {
+    let r;
+    try { r = scrubGrid(sh.grid); }
+    catch (e) { failed = `#${i}：${e.message}`; break; }
+    checks.push({ i, before: sig(sh.grid), after: sig(r.grid) });
+    const lk = leaks(sh.grid, r.grid, r.colType, r.headerEnd);
+    if (lk.length) {
+      failed = `#${i}：${lk.length} 個資料格原樣留著，例如 ` +
+        lk.slice(0, 3).map(x => `[${x.i},${x.c}] ${JSON.stringify(x.v.slice(0, 20))}`).join('、');
+      break;
+    }
+    sheets.push({ i, grid: r.grid, kept: r.kept, sheet: sh.name });
+  }
+
+  /* 洩漏就整個檔不寫。寫一半的檔更糟——你會以為它洗過。 */
+  if (failed) {
+    bad++;
+    console.error(`✗ ${path.basename(fp)}：沒有寫出來。${failed}`);
+    continue;
+  }
+
+  const wb = XLSX.utils.book_new();
+  for (const s2 of sheets) {
+    allKept.push({ f: path.basename(fp), sheet: s2.sheet, kept: s2.kept });
+    // 工作表名可能帶人名、客戶、專案，換成序號
+    XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(s2.grid), 'S' + (s2.i + 1));
+  }
   XLSX.writeFile(wb, path.join(OUTDIR, name));
   done++;
 
@@ -287,31 +354,11 @@ for (const k of allKept) {
 }
 if (bad) { console.error(`\n${bad} 個檔洗完判定不一致——別推這幾個，先回報給我。`); process.exit(1); }
 
-/* 自我測試的第二件事：原始內容真的沒留下來。
-   「判定一致」只證明結構保住了，不證明內容換掉了——
-   一支什麼都不做的 scrub 也會通過第一項。
-   刻意留著的三類不算洩漏：空白與「沒有值」、日期時間、一兩位的純數字。
-   標題列與前言是明講要留的，所以只掃資料格。 */
+/* 自我測試：洩漏檢查現在是每一次跑都做（在寫檔之前），所以這裡不用再驗一遍，
+   要驗的是「那個檢查真的會擋」。
+   仿真檔裡刻意放一張 300 列、短人名的工作表——那正是出事的形狀：
+   filler 撞號之後第一版會退回原值，現在會拋錯、整個檔不寫。 */
 if (SELFTEST) {
-  let leak = 0, checked = 0;
-  /* 斷言要跟 take() 的規則對齊，不能自己另寫一套。
-     第一版用 parseDateish 單看一格判「這是不是日期」，結果 tracker 的
-     13/03/2024 全被當成洩漏——日月順序是整欄推的（inferDayFirst），
-     單獨一格的 13/03 在 month-first 下是無效月份，解不出來。
-     該問的是「這一欄判成什麼型別」，那正是 take() 問的。 */
-  const KEEPABLE = (v, type) =>
-    !v.trim() || NULLISH.test(v.trim()) || /^\d{1,2}$/.test(v.trim()) ||
-    type === 'date' || type === 'time';
-  for (const p of pairs) {
-    for (let i = p.headerEnd + 1; i < p.before.length; i++)   // 標題列與前言是明講要留的
-      for (let c = 0; c < (p.before[i] || []).length; c++) {
-        const a = String((p.before[i] || [])[c] ?? ''), b = String((p.after[i] || [])[c] ?? '');
-        if (KEEPABLE(a, p.colType[c])) continue;
-        checked++;
-        if (a === b) { leak++; console.error(`  ✗ 洩漏 ${p.f} › ${p.sheet} [${i},${c}]：${JSON.stringify(a)}`); }
-      }
-  }
-  console.error(`\n自我測試：${checked} 個資料格該換掉，${leak} 個沒換`);
-  if (leak) { console.error('scrub 沒有真的洗掉內容——不要拿它處理真實檔案。'); process.exit(1); }
-  console.error('✓ 判定一致，且沒有原始內容留在資料格裡');
+  if (bad) { console.error('自我測試失敗：仿真檔應該全部洗得過。'); process.exit(1); }
+  console.error('\n自我測試：' + done + ' 個仿真檔都通過了結構比對與洩漏檢查');
 }
