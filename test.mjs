@@ -604,6 +604,30 @@ for (const [head, want, why] of titleCases) {
     chk('分組軸仍是期間',     cf.roles.group && cf.roles.group.name, 'Month');
   }
 
+  /* 攤平過又有數值前導的表不是「一般表格」——一般表格的理由是「沒有主軸」，
+     但這裡軸是釘好的。chart_8be76302 › summary 跟 budget_1cbd5c5c ›
+     Monthly college budget 的值欄是 number 而不是 money，
+     所以進不了 pricelist 那一條，卻掛著「沒有主軸」的標籤。 */
+  {
+    const num = S.analyseSheet([['Expenses'].concat(MON)].concat(
+      Array.from({ length: 5 }, (_, i) => ['類別 ' + (i + 1)]
+        .concat(MON.map((_, m) => String(100 + i * 7 + m)))))).tables[0];
+    chk('數值值欄不落一般表格', num.shape.shape, 'pricelist');
+    chk('前導還是那欄數值',    num.roles.lead && num.roles.lead.name, 'Value');
+  }
+
+  /* 欄名裡的換行要收掉：accounting_1a6c8d9a 的「Prior/period」、
+     inventory_472442ad 的「Asset or /serial number」都是手動折行的欄名，
+     原樣留著篩選標籤跟分段標題都會跟著斷在原檔欄寬決定的位置。 */
+  {
+    const wrapped = S.analyseSheet([['Revenue type', 'Description', 'Prior\nperiod',
+      'Current period\nas % of sales']].concat(
+      Array.from({ length: 8 }, (_, i) => ['類型' + (i % 3), '說明 ' + i,
+        '$' + (100 + i) + '.00', (10 + i) + '%']))).tables[0];
+    chk('欄名的換行收掉', wrapped.cols.map(c => c.name).join('|'),
+        'Revenue type|Description|Prior period|Current period as % of sales');
+  }
+
   /* 矩陣的前提是沒有別的軸可以分組。後面還有一欄分得出組的分類時，
      那是一張可以照它篩選的清單，判成矩陣會連前導一起失去。
      budget_2d4c31d3 › Monthly expenses：Description｜Category（12 種）｜

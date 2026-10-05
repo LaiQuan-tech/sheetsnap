@@ -1066,7 +1066,15 @@
       body.push(r);
     });
 
-    var header = rows[best].slice();
+    /* 欄名裡的換行要收掉。Excel 的欄名常常是手動折行的——
+       accounting_1a6c8d9a 的「Prior\n period」「Current period\n as % of sales」、
+       inventory_472442ad 的「Asset or \n serial number」都是這樣。
+       原樣留著的話，篩選標籤、分段標題、「照 X 由大到小」按鈕全都會跟著斷行，
+       而斷的位置是原檔的欄寬決定的，跟手機的欄寬無關。
+       期間攤平那邊本來就收了（periodGrid／unpivotPeriods），這裡補上。 */
+    var header = rows[best].map(function (v) {
+      return String(v == null ? '' : v).replace(/\s+/g, ' ').trim();
+    });
     var notes = [];
 
     var col = collapsePeriods(header, body);
@@ -1800,6 +1808,16 @@
               a.shape.reason = '把期間攤平成「' + periodC.name + '」欄之後，以「' +
                 a.shape.title.name + '」為列名、照「' + periodC.name + '」分段、「' +
                 a.shape.lead.name + '」當前導';
+              /* 攤平過又有數值前導的表不是「一般表格」。
+                 一般表格的理由是「沒有時間或人員這類主軸」，但這裡軸是釘好的
+                 ——chart_8be76302 › summary 跟 budget_1cbd5c5c ›
+                 Monthly college budget 都拿得到「照 Month 分段」跟「照 Value
+                 由大到小」，卻掛著「沒有主軸」的標籤。
+                 它們的值欄是 number 而不是 money，所以進不了 pricelist 那一條。
+                 攤出來的既然是「項目 × 期間 × 值」，就照品項表處理。 */
+              if (a.shape.shape === 'cards' && /^(money|number)$/.test(a.shape.lead.type)) {
+                a.shape.shape = 'pricelist'; a.shape.label = '品項／價目表';
+              }
               a.roles = S.assignRoles(a.cols.filter(function (c) { return c.type !== 'empty' }), a.shape);
             }
           }
