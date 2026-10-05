@@ -225,24 +225,76 @@ for (const [head, want, why] of titleCases) {
   };
   const T = g => { const a = S.analyse(g); return a.roles.title && a.roles.title.name; };
 
-  // 對帳單：DATE 8 種全相異、DESCRIPTION 只有 3 種——分數輸，但它才是名字
+  /* 日期跟名稱欄誰當標題，看那一欄有沒有真的在區分列。
+     v72 我把「日期一律輸給名稱欄」當成規則，用 accounting_7b54c8ed › STATEMENT
+     驗證就收工了，沒看那一欄的相異值：它 8 列只有 4 種說明，當標題會有一半的
+     卡片同名，而 8 個日期全相異。手機上「3/18/2026 · Payment · $107」比三張
+     都叫「Payment」好讀。所以扣 0.6 的意思不是「日期永遠輸」，是
+     「日期輸給真的在區分列的名稱欄，贏過一直重複的那種」。 */
   const DS = ['3/1/2026','3/5/2026','3/12/2026','3/18/2026','11/2/2026','11/15/2026','12/3/2026','12/22/2026'];
-  const DE = ['Payment','Payment','Service fee','Payment','Service fee','Interest','Payment','Interest'];
   const CR = ['', '退款 A', '', '退款 B', '', '退款 C', '', ''];
-  chk('日期輸給說明欄', T([['DATE','DESCRIPTION','CHARGES','CREDITS','ACCOUNT BALANCE']].concat(
-    DS.map((d, i) => [d, DE[i], i % 2 ? '$' + (100 + i) : '', CR[i], i < 6 ? '$' + (1000 - i * 30) : '']))),
-    'DESCRIPTION');
+  const statement = DE => T([['DATE','DESCRIPTION','CHARGES','CREDITS','ACCOUNT BALANCE']].concat(
+    DS.map((d, i) => [d, DE[i], i % 2 ? '$' + (100 + i) : '', CR[i], i < 6 ? '$' + (1000 - i * 30) : ''])));
+  chk('日期輸給會區分列的說明欄', statement(
+    ['房租','水電','網路','保險','稅金','維修','清潔','停車']), 'DESCRIPTION');
+  chk('日期贏過一直重複的說明欄', statement(
+    ['Payment','Payment','Service fee','Payment','Service fee','Interest','Payment','Interest']), 'DATE');
 
   // 球賽表：兩欄都全相異，日期靠在左邊也不該贏
   chk('日期輸給隊名', T([['Date','Home team','Away team','Time','Location'],
     ['3/1/2026','紅隊','藍隊','14:00','北場'],
     ['3/8/2026','綠隊','黃隊','16:00','北場']]), 'Home team');
 
-  // 是扣分不是禁止：整張表只剩日期可用時要留住
-  const DOW = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  /* 是扣分不是禁止：整張表只剩日期可用時要留住。
+     date／time 型別原本完全不在 pickTitle 的候選名單裡（日期是軸不是名字），
+     但帳表這種 group 是 null、其他欄全是金額的表，日期就是那一列唯一的身分，
+     不收的話整疊卡片一個名字都沒有。 */
   chk('沒有別的名稱欄就留住', T([['Date','Regular hours','Overtime hours','Total']].concat(
     Array.from({ length: 14 }, (_, i) =>
       ['3/' + (i + 1) + '/2026', '8', String(i % 3), String(8 + i % 3)]))), 'Date');
+}
+
+/* 日期格式：歐美跟台灣寫法不同，而且同一串數字會是不同的日子。
+   「3/1/2026」美國是 3 月 1 日、歐洲是 1 月 3 日；台灣寫「3/1」是 3 月 1 日。
+   單看一個值分不出來，看一整欄就分得出來（第一個數字出現過 >12 就只能是日）。
+   163 份微軟範本裡 97 個欄名像日期的欄，只有 6 個判成 date——美式 M/D/YYYY
+   原本整個解析不出來，而「03/01/2026」更糟：被讀成民國 3 年，吐出 1914-01-20。 */
+{
+  const f = d => d ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}` : null;
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 日期 ${why.padEnd(24)} 期望=${String(want).padEnd(11)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  // 原本吐出 1914-01-20——解析成錯的日期比解析不出來更糟
+  chk('03/01/2026 不是民國 3 年', f(S.parseDateish('03/01/2026')), '2026-03-01');
+  chk('美式 M/D/YYYY',        f(S.parseDateish('3/1/2026')),    '2026-03-01');
+  chk('美式兩位數年份',           f(S.parseDateish('12/31/26')),    '2026-12-31');
+  chk('民國三位數年份',           f(S.parseDateish('115/3/1')),     '2026-03-01');
+  chk('民國兩位數（>31 只能是年）',   f(S.parseDateish('99/3/1')),      '2010-03-01');
+  chk('台灣 Y/M/D',           f(S.parseDateish('2026/3/1')),    '2026-03-01');
+  chk('月在前讀不出歐式',          f(S.parseDateish('25/12/2026')),  null);
+  chk('日在前讀得出歐式',          f(S.parseDateish('25/12/2026', true)), '2026-12-25');
+  chk('日在前時 3/1/2026 是 1 月 3 日', f(S.parseDateish('3/1/2026', true)), '2026-01-03');
+
+  // 整欄推順序
+  const order = v => S.inferDayFirst(v) ? '日在前' : '月在前';
+  chk('整欄：美式', order(['3/1/2026', '12/22/2026']), '月在前');
+  chk('整欄：歐式', order(['25/12/2026', '1/1/2026']), '日在前');
+  chk('整欄：沒證據就月在前', order(['3/1/2026', '5/6/2026']), '月在前');
+
+  // 整表：美式日期欄要被判成 date（原本整欄落到 text）
+  const US = ['1/5/2026','2/12/2026','3/18/2026','5/2/2026','7/22/2026','9/30/2026',
+              '10/14/2026','12/1/2026','12/22/2026','11/3/2026','8/8/2026','6/15/2026'];
+  const EU = ['5/1/2026','12/2/2026','18/3/2026','2/5/2026','22/7/2026','30/9/2026',
+              '14/10/2026','1/12/2026','22/12/2026','3/11/2026','8/8/2026','15/6/2026'];
+  const typeOfFirst = ds => {
+    const a = S.analyse([['DATE', 'ITEM', 'AMOUNT']].concat(
+      ds.map((d, i) => [d, '項目' + (i + 1), String(100 + i * 13)])));
+    return a.cols[0].type;
+  };
+  chk('整表：美式欄判成 date', typeOfFirst(US), 'date');
+  chk('整表：歐式欄判成 date', typeOfFirst(EU), 'date');
 }
 
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],

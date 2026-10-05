@@ -19,20 +19,66 @@
   }
 
   // 認得：2026年8月14日 / 2026-08-14 / 2026/8/14 / 民國114/8/14 / 8/14
-  function parseDateish(v) {
+  /* 「3/1/2026」是哪一天，看寫的人在哪裡：美國是 3 月 1 日、歐洲是 1 月 3 日，
+     台灣寫「3/1」也是 3 月 1 日。單看一個值分不出來，但看一整欄就分得出來——
+     只要出現過第一個數字 > 12，那個位置就只能是日；第二個數字 > 12 就只能是日。
+     兩種都出現（資料本身不一致）或兩種都沒出現（整欄都在 1–12），就用月在前，
+     因為那同時符合台灣與美國的寫法；歐式會判錯，但那是沒有證據時的取捨，
+     有證據的時候一律照證據走。 */
+  var RE_MDY = /^(\d{1,2})\s*[\-\/.]\s*(\d{1,2})(?:\s*[\-\/.]\s*(\d{2,4}))?\s*$/;
+
+  function inferDayFirst(values) {
+    var aBig = false, bBig = false;
+    for (var i = 0; i < values.length; i++) {
+      var m = String(values[i] == null ? '' : values[i]).trim().match(RE_MDY);
+      if (!m) continue;
+      if (+m[1] > 12) aBig = true;
+      if (+m[2] > 12) bBig = true;
+      if (aBig && bBig) return false;   // 兩種都出現 = 資料不一致，再掃也不會變
+    }
+    return aBig && !bBig;
+  }
+
+  function parseDateish(v, dayFirst) {
     var s = String(v == null ? '' : v).trim();
     if (!s || s.length > 40) return null;
     var m;
+
+    // 年在前：2026-03-01、2026/3/1、2026年3月1日
     if ((m = s.match(/(\d{4})\s*[年\-\/.]\s*(\d{1,2})\s*[月\-\/.]\s*(\d{1,2})/)))
       return ymd(+m[1], +m[2], +m[3]);
-    if ((m = s.match(/^(?:民國\s*)?(\d{2,3})\s*[年\-\/.]\s*(\d{1,2})\s*[月\-\/.]\s*(\d{1,2})/))) {
+
+    /* 民國。原本只要開頭是 2–3 位數就算，沒有收尾——「03/01/2026」因此被讀成
+       民國 3 年 1 月 20 日，吐出 1914-01-20。不是解析失敗，是解析成一個錯的
+       日期，比解析不出來更糟。現在要有明確的依據才算民國：寫明「民國」、
+       用「年月日」當分隔、三位數年份（民國 100 年之後），或兩位數但大於 31
+       （當不了月也當不了日，只能是年）。 */
+    if ((m = s.match(/^民國\s*(\d{1,3})\s*[年\-\/.]\s*(\d{1,2})\s*[月\-\/.]\s*(\d{1,2})\s*日?\s*$/)) ||
+        (m = s.match(/^(\d{2,3})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日?\s*$/)) ||
+        ((m = s.match(/^(\d{2,3})\s*[\-\/.]\s*(\d{1,2})\s*[\-\/.]\s*(\d{1,2})\s*$/)) &&
+         (m[1].length === 3 || +m[1] > 31))) {
       var y = +m[1];
       return ymd(y < 200 ? y + 1911 : y, +m[2], +m[3]);
     }
-    if ((m = s.match(/^(\d{1,2})\s*[\-\/.月]\s*(\d{1,2})\s*日?\s*(前|後|底|初|中|左右|以前|之前|以後)?$/)))
-      return ymd(new Date().getFullYear(), +m[1], +m[2]);
+
+    // 西式三段：3/1/2026、12/22/2026、1.3.26。日月順序由整欄決定（見 inferDayFirst）
+    if ((m = s.match(/^(\d{1,2})\s*[\-\/.]\s*(\d{1,2})\s*[\-\/.]\s*(\d{2,4})\s*$/))) {
+      var y2 = +m[3];
+      if (m[3].length <= 2) y2 += y2 < 70 ? 2000 : 1900;
+      return dayFirst ? ymd(y2, +m[2], +m[1]) : ymd(y2, +m[1], +m[2]);
+    }
+
+    // 只有月日：3/1、3月1日。寫了「月」就不必猜順序
+    if ((m = s.match(/^(\d{1,2})\s*[\-\/.月]\s*(\d{1,2})\s*日?\s*(前|後|底|初|中|左右|以前|之前|以後)?$/))) {
+      var swap = dayFirst && !/月/.test(s);
+      return ymd(new Date().getFullYear(), swap ? +m[2] : +m[1], swap ? +m[1] : +m[2]);
+    }
     return null;
   }
+
+  // 「這格看起來像不像日期」：結構前處理用的，沒有整欄的脈絡可以推順序，
+  // 所以兩種順序任一個解得出來就算。25/12/2026 在月在前的讀法下是無效月份。
+  function dateish(v) { return !!parseDateish(v) || !!parseDateish(v, true); }
 
   // 認得：上午 10:30 / 下午 7:00 / 14:05 / 2:30 PM，以及 09:00-10:00 這種區間。
   // 節目表、議程、流程表幾乎都用區間寫時間，只認單一時刻會讓整條時間軸消失。
@@ -155,7 +201,9 @@
     var hint = function (k) { return NAME_HINTS[k].test(name); };
     var pct = function (r) { return Math.round(r * 100) + '%'; };
 
-    var rDate  = ratio(function (v) { return !!parseDateish(v); });
+    // 日月順序整欄推一次就好，推完存在欄上——畫面要照同一個順序把日期印回來
+    col.dayFirst = inferDayFirst(filled);
+    var rDate  = ratio(function (v) { return !!parseDateish(v, col.dayFirst); });
     var rTime  = ratio(function (v) { return !!parseTimeish(v); });
     var rNum   = ratio(function (v) { return reNumber.test(v); });
     var rMoney = ratio(function (v) { return reMoney.test(v) && /\d/.test(v); });
@@ -288,14 +336,20 @@
   function pickTitleRanked(cols) {
     var cand = cols.filter(function (c) {
       // 幾乎空白、或整欄同一個值的欄位當不了標題（試算表尾端常有這種殘欄）
-      return ['text', 'longtext', 'person', 'category'].indexOf(c.type) >= 0
+      /* date／time 也要收進候選，但排在很後面（下面扣 0.6）。
+         它們本來完全不在名單裡，因為日期是軸不是名字——可是帳表這種
+         group 是 null、其他欄全是金額的表，日期就是那一列唯一的身分，
+         不收的話整疊卡片一個名字都沒有。 */
+      return ['text', 'longtext', 'person', 'category', 'date', 'time'].indexOf(c.type) >= 0
              && c.fillRate >= 0.5 && c.distinct > 1;
     });
     cand.forEach(function (c) {
       c._score = c.distinct / Math.max(c.filled, 1)          // 越獨特越像標題
                + (TITLE_NAME.test(c.name) ? 0.5 : 0)         // 欄名就說了它是名稱
                - (ID_NAME.test(c.name) ? 0.5 : 0)            // 欄名就說了它是編號
-               - (DATE_NAME.test(c.name) ? 0.6 : 0)          // 日期是軸，不是名字
+               // 日期是軸不是名字：型別判對的（date／time）跟判錯但欄名寫著的
+               // 一起扣，而且只扣一次——兩邊疊起來會讓它連爛分類欄都輸
+               - ((c.type === 'date' || c.type === 'time' || DATE_NAME.test(c.name)) ? 0.6 : 0)
                - (c.type === 'longtext' ? 0.35 : 0)          // 長文字比較像內容
                - (codeLike(c) ? 0.6 : 0)                     // 單號、編號不是給人讀的名稱
                - (1 - c.fillRate) * 0.2                      // 越滿越優先（說明見上）
@@ -713,6 +767,8 @@
     analyse: analyse,
     detectColumn: detectColumn,
     parseDateish: parseDateish,
+    inferDayFirst: inferDayFirst,
+    dateish: dateish,
     parseTimeish: parseTimeish,
     RE_DOW: RE_DOW              // 第二段（切表、週表攤平）也要用
   };
@@ -765,7 +821,7 @@
     var t = String(v == null ? '' : v).trim();
     if (!t) return false;
     return /^[$€£¥＄]?\s*-?[\d,]+(\.\d+)?\s*%?$/.test(t) ||
-           !!S.parseDateish(t) || !!S.parseTimeish(t);
+           S.dateish(t) || !!S.parseTimeish(t);
   }
 
   /* 標題列的格子，型別應該跟它底下那一欄不一樣。
@@ -799,7 +855,7 @@
     var uniq = {}; filled.forEach(function (v) { uniq[v] = 1; });
     var avgLen = filled.reduce(function (a, v) { return a + v.length; }, 0) / filled.length;
     var numish = filled.filter(function (v) {
-      return /^[\d.]/.test(v) || !!S.parseDateish(v) || !!S.parseTimeish(v);
+      return /^[\d.]/.test(v) || S.dateish(v) || !!S.parseTimeish(v);
     }).length / filled.length;
 
     var below = rows.slice(i + 1, i + 6);
@@ -911,7 +967,7 @@
       var vals = rows.map(function (r) { return String(r[c] == null ? '' : r[c]).trim(); })
                      .filter(Boolean);
       if (!vals.length) continue;
-      var ok = vals.filter(function (v) { return !!S.parseDateish(v); }).length / vals.length;
+      var ok = vals.filter(function (v) { return S.dateish(v); }).length / vals.length;
       if (ok >= 0.8) dateish.push(c);
     }
     if (dateish.length < 3) return null;
@@ -1302,7 +1358,7 @@
     var named = main.header.filter(function (h) {
       var t = String(h == null ? '' : h).trim();
       return t && !/^欄 \d+$/.test(t) &&
-             !/^[$€£¥＄]?\s*-?[\d,]+(\.\d+)?\s*%?$/.test(t) && !S.parseDateish(t);
+             !/^[$€£¥＄]?\s*-?[\d,]+(\.\d+)?\s*%?$/.test(t) && !S.dateish(t);
     }).length;
     if (!named) return { show: false, why: '沒有任何文字欄名，像圖表資料區或控制列' };
 

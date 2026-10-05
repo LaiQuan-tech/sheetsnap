@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v72<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v73<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=72"></script>
+<script src="detect.js?v=73"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -1344,7 +1344,8 @@ function renderPage(shape, roles){
     if(roles.group){
       var v = cell(rec.r, roles.group);
       if(isDate){
-        var d = v ? SheetShape.parseDateish(v) : null;
+        // 順序要跟型別偵測時推出來的一致，否則 25/12 會印成另一天
+        var d = v ? SheetShape.parseDateish(v, roles.group.dayFirst) : null;
         if(d){ last = d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
                rec.label = fmtMD.format(d); rec.dow = fmtDow.format(d); }
         key = last || TX('unscheduled');
