@@ -81,6 +81,8 @@ const titleCases = [
   [['員工編號', '姓名', '時薪'],                '姓名',          '中文的編號／姓名'],
   [['SKU', 'Item names', 'Price'],          'Item names',  '複數的 names 也要算'],
   [['Order #', 'Product', 'Amount'],        'Product',     '單號欄不該當標題'],
+  // Check # 不是靠 codeLike 擋掉的（1001 這種四碼不算 codeLike），要靠 # 本身
+  [['Check #', 'Payee', 'Amount'],          'Payee',       '# 也算單號'],
   // 英文的 title 一詞兩義：COURSE TITLE 是名稱，Title held by 是產權登記在誰名下。
   // 163 份跑出來這條誤中過一次，把全滿的欄換成只填一半的欄，半數卡片沒名字。
   [['Financial institution', 'Title held by', 'Balance'], 'Financial institution', 'Title held by 不是名稱'],
@@ -143,6 +145,38 @@ for (const [head, want, why] of titleCases) {
 
   // index.html 不該再自己抄一份
   chk('assignRoles 有對外', typeof S.assignRoles === 'function', typeof S.assignRoles);
+}
+
+/* 矩陣的標題固定用第一欄，但第一欄半空時整排卡片就沒名字。
+   163 份裡最糟的是 chart_6860aa13 › Profit & loss chart：第一欄只填 1/11，
+   11 張卡有 10 張沒名字；inventory_c16e6fb0 的第一欄填 48%，25 張有 13 張。
+   條件是「另一欄明顯更滿（多 20 個百分點）」，不是「第一欄低於某門檻」——
+   後者在 48% / 50% 的邊緣會亂跳。 */
+{
+  const mk = (head, rows) => S.analyse([head].concat(rows));
+  const ITEMS = ['Desk','Chair','Monitor','Lamp','Board','Tray','Printer','Cable','Mouse','Keyboard','Shelf','Mat'];
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 矩陣 ${why.padEnd(26)} 期望=${want} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+
+  // 第一欄半空、表上有更完整的名稱欄 → 換過去
+  const half = mk(['', 'Name', '一月', '二月', '三月'],
+    Array.from({ length: 12 }, (_, i) => [i < 6 ? '區' + (i % 3) : '', ITEMS[i],
+      String(100 + i), String(120 + i), String(140 + i)]));
+  chk('第一欄半空就換掉', half.roles.title && half.roles.title.name, 'Name');
+
+  // 第一欄全滿 → 永遠不動（矩陣的第一欄本來就是標籤序列）
+  const full = mk(['項目', '一月', '二月', '三月'],
+    Array.from({ length: 8 }, (_, i) => ['項目' + (i + 1), String(100 + i), String(120 + i), String(140 + i)]));
+  chk('第一欄全滿不該動', full.roles.title && full.roles.title.name, '項目');
+
+  // 第一欄 85%（小計列空著）→ 沒有明顯更滿的替代，不動
+  const gap = mk(['科目', '一月', '二月', '三月'],
+    Array.from({ length: 13 }, (_, i) => [i === 6 || i === 12 ? '' : '科目' + (i + 1),
+      String(100 + i), String(120 + i), String(140 + i)]));
+  chk('第一欄 85% 也不該動', gap.roles.title && gap.roles.title.name, '科目');
 }
 
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],

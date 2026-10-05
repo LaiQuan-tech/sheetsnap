@@ -256,7 +256,7 @@
      「Financial institution」換成只填一半的「Title held by」，八張卡有
      四張沒有名字。中文的「標題」「主旨」沒有這個歧義，不加限制。 */
   var TITLE_NAME = /品名|品項|名稱|姓名|項目|標題|主旨|\bnames?\b|\bitems?\b|\btitles?\b(?!\s+\w)|\bsubject\b/i;
-  var ID_NAME    = /編號|代碼|序號|單號|代號|\bid\b|\bno\.?\b|\bcode\b|\bsku\b/i;
+  var ID_NAME    = /編號|代碼|序號|單號|代號|\bid\b|\bno\.?\b|\bcode\b|\bsku\b|#/i;
 
   // 主標題欄：相異度高、不太長、不是日期或數字的那一欄，越靠左越優先
   // 回傳排好序的整串候選，而不是只回第一名——assignRoles 要拿後面的退
@@ -272,6 +272,7 @@
                - (ID_NAME.test(c.name) ? 0.5 : 0)            // 欄名就說了它是編號
                - (c.type === 'longtext' ? 0.35 : 0)          // 長文字比較像內容
                - (codeLike(c) ? 0.6 : 0)                     // 單號、編號不是給人讀的名稱
+               - (1 - c.fillRate) * 0.2                      // 越滿越優先（說明見上）
                - cols.indexOf(c) * 0.04;                     // 越左邊越優先
     });
     return cand.sort(function (a, b) { return b._score - a._score; });
@@ -371,11 +372,31 @@
                     (nums.length >= 1 || numOrEmpty.length === others.length);
     if (first && others.length >= 2 && matrixish &&
         ['text', 'category', 'person'].indexOf(first.type) >= 0) {
+      /* 標題固定用第一欄是對的——矩陣的第一欄就是標籤序列。但第一欄不見得
+         堪用，而且「半空」跟「整欄空白」是兩件事：整欄空白已經被
+         type==='empty' 擋在 cols 之外，這裡擋的是半空。
+         inventory_c16e6fb0 › Inventory list 的第一欄是沒有欄名、只填 48% 的
+         排版欄，25 張卡有 13 張沒名字，而同一張表明明有「Name」。
+         chart_6860aa13 › Profit & loss chart 更誇張：第一欄「Monthly budget」
+         只填 1/11，是段落標題誤入資料區，11 張卡有 10 張沒名字。
+
+         條件寫成「另一欄要明顯更滿」（多 20 個百分點），不寫成第一欄
+         低於某個門檻：後者會在門檻邊緣亂跳——那張表剛好是 48%，差 2%
+         就變成不處理，而 50% 的卡片沒名字並不會因此比較能接受。
+         有這個條件，正常矩陣（第一欄全滿）永遠不會被換掉，
+         而且只在真的有更完整的欄可用時才換。
+         欄名是不是「欄 N」不重要——標籤是那一欄的值，不是欄名；
+         同一個檔的 Balance chart 就是靠「欄 2」當列名而且一列都沒漏。 */
+      var alt = pickTitle(cols);
+      var label = (alt && alt !== first && alt.fillRate > first.fillRate + 0.2) ? alt : first;
       return {
         shape: 'matrix', label: '矩陣／報表', matrix: true,
         reason: '第一欄「' + first.name + '」是標籤，後面 ' + others.length + ' 欄是數值（' +
-                others.map(function (c) { return c.name + (c.type === 'empty' ? '：整欄空白' : ''); }).join('、') + '）',
-        group: null, lead: null, title: first, person: null, values: nums, allValues: others
+                others.map(function (c) { return c.name + (c.type === 'empty' ? '：整欄空白' : ''); }).join('、') + '）' +
+                (label === first ? ''
+                  : '；但第一欄只填了 ' + Math.round(first.fillRate * 100) + '%，改用比較完整的「' +
+                    label.name + '」（' + Math.round(label.fillRate * 100) + '%）當列名'),
+        group: null, lead: null, title: label, person: null, values: nums, allValues: others
       };
     }
     if (money && title) return {
@@ -426,7 +447,10 @@
                   moneys[moneys.length - 1] || null;
     } else if (name === 'matrix') {
       base.matrix = true;
-      base.title = (allCols || cols)[0] || title;
+      // 跟自動判定同一條規則：有明顯更滿的欄才換掉第一欄（見上面矩陣那段）
+      var m0 = (allCols || cols)[0];
+      base.title = (m0 && title && title !== m0 && title.fillRate > m0.fillRate + 0.2)
+                 ? title : (m0 || title || null);
     } else {
       base.group = cat;                             // cards
     }
