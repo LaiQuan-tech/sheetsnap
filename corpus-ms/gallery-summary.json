@@ -4,7 +4,7 @@
  "shown": 287,
  "skipped": 109,
  "warned": 10,
- "generic": 43,
+ "generic": 41,
  "noTitle": 9,
  "oneRow": 0,
  "withTime": 48,
@@ -16,7 +16,7 @@
  "shapes": [
   [
    "品項／價目表",
-   78
+   80
   ],
   [
    "矩陣／報表",
@@ -28,7 +28,7 @@
   ],
   [
    "一般表格",
-   43
+   41
   ],
   [
    "帳務／明細表",
@@ -48,14 +48,14 @@
    "budget",
    {
     "n": 60,
-    "ok": 54
+    "ok": 55
    }
   ],
   [
    "chart",
    {
     "n": 45,
-    "ok": 36
+    "ok": 37
    }
   ],
   [
@@ -136,7 +136,7 @@
    }
   ]
  ],
- "clean": 233,
+ "clean": 235,
  "rows": [
   {
    "src": "accounting_0447d9de.xlsx",
@@ -184,7 +184,7 @@
    "table": 3,
    "shape": "品項／價目表",
    "views": [
-    "group:Current period\r\nas % of sales",
+    "group:Current period as % of sales",
     "rank",
     "all"
    ]
@@ -486,7 +486,7 @@
    "src": "budget_1cbd5c5c.xlsx",
    "sheet": "Monthly college budget",
    "table": 1,
-   "shape": "一般表格",
+   "shape": "品項／價目表",
    "views": [
     "group:Month",
     "rank",
@@ -1485,7 +1485,7 @@
    "src": "chart_8be76302.xlsx",
    "sheet": "summary",
    "table": 1,
-   "shape": "一般表格",
+   "shape": "品項／價目表",
    "views": [
     "group:Month",
     "rank",

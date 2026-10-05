@@ -1,6 +1,6 @@
 {
  "fingerprint": {
-  "engine": "d3e1c0e7e28a",
+  "engine": "0b45b32e9323",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
@@ -11,9 +11,9 @@
   "skipped": 109,
   "broken": 0,
   "shapes": {
-   "一般表格": 58,
+   "一般表格": 56,
    "名冊／通訊錄": 5,
-   "品項／價目表": 93,
+   "品項／價目表": 95,
    "帳務／明細表": 30,
    "排程／時程表": 65,
    "狀態清單": 1,
@@ -294,7 +294,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Prior\r\nperiod」，以「Description」為品項名稱",
+   "reason": "偵測到金額欄「Prior period」，以「Description」為品項名稱",
    "srcRows": 50,
    "rows": 8,
    "cols": 8,
@@ -305,19 +305,19 @@
    "roles": {
     "title": "Description",
     "group": "Revenue type",
-    "lead": "Prior\r\nperiod",
+    "lead": "Prior period",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Revenue type:category:100%:2",
     "Description:text:100%:4",
-    "Prior\r\nperiod:money:38%:2",
+    "Prior period:money:38%:2",
     "Budget:money:38%:3",
-    "Current\r\nperiod:money:38%:3",
-    "Current period\r\nas % of sales:category:100%:4",
-    "% Change from\r\nprior period:category:100%:4",
-    "% Change\r\nfrom budget:category:100%:4"
+    "Current period:money:38%:3",
+    "Current period as % of sales:category:100%:4",
+    "% Change from prior period:category:100%:4",
+    "% Change from budget:category:100%:4"
    ],
    "flags": [
     "原始工作表有 50 列，只抽出 8 列，結構可能判壞"
@@ -331,7 +331,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Prior\r\nperiod」，以「Current period\r\nas % of sales」為品項名稱",
+   "reason": "偵測到金額欄「Prior period」，以「Current period as % of sales」為品項名稱",
    "srcRows": 50,
    "rows": 2,
    "cols": 8,
@@ -340,24 +340,24 @@
    "title": "PROFIT AND LOSS STATEMENT · Income · SATCOM CELLULAR · Stated in 000s · $62.00",
    "notes": [],
    "roles": {
-    "title": "Current period\r\nas % of sales",
+    "title": "Current period as % of sales",
     "group": null,
-    "lead": "Prior\r\nperiod",
+    "lead": "Prior period",
     "person": null
    },
    "hidden": [
-    "% Change from\r\nprior period",
-    "% Change\r\nfrom budget"
+    "% Change from prior period",
+    "% Change from budget"
    ],
    "colTypes": [
     "Income type:text:50%:1",
     "Description:text:50%:1",
-    "Prior\r\nperiod:money:50%:1",
+    "Prior period:money:50%:1",
     "Budget:money:50%:1",
-    "Current\r\nperiod:money:50%:1",
-    "Current period\r\nas % of sales:text:100%:2",
-    "% Change from\r\nprior period:text:100%:2",
-    "% Change\r\nfrom budget:text:100%:2"
+    "Current period:money:50%:1",
+    "Current period as % of sales:text:100%:2",
+    "% Change from prior period:text:100%:2",
+    "% Change from budget:text:100%:2"
    ],
    "flags": [
     "原始工作表有 50 列，只抽出 2 列，結構可能判壞"
@@ -371,7 +371,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Prior\r\nperiod」，以「Description」為品項名稱",
+   "reason": "偵測到金額欄「Prior period」，以「Description」為品項名稱",
    "srcRows": 49,
    "rows": 20,
    "cols": 8,
@@ -381,20 +381,20 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": "Current period\r\nas % of sales",
-    "lead": "Prior\r\nperiod",
+    "group": "Current period as % of sales",
+    "lead": "Prior period",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Expense type:text:100%:3",
     "Description:text:100%:15",
-    "Prior\r\nperiod:money:5%:1",
+    "Prior period:money:5%:1",
     "Budget:money:5%:1",
-    "Current\r\nperiod:money:5%:1",
-    "Current period\r\nas % of sales:category:100%:2",
-    "% Change from\r\nprior period:category:100%:2",
-    "% Change\r\nfrom budget:category:100%:2"
+    "Current period:money:5%:1",
+    "Current period as % of sales:category:100%:2",
+    "% Change from prior period:category:100%:2",
+    "% Change from budget:category:100%:2"
    ],
    "flags": []
   },
@@ -406,7 +406,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Prior\r\nperiod」，以「Description」為品項名稱",
+   "reason": "偵測到金額欄「Prior period」，以「Description」為品項名稱",
    "srcRows": 50,
    "rows": 5,
    "cols": 8,
@@ -417,19 +417,19 @@
    "roles": {
     "title": "Description",
     "group": "Type",
-    "lead": "Prior\r\nperiod",
+    "lead": "Prior period",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Type:category:100%:1",
     "Description:text:100%:4",
-    "Prior\r\nperiod:money:20%:1",
+    "Prior period:money:20%:1",
     "Budget:money:20%:1",
-    "Current\r\nperiod:money:20%:1",
-    "Current period\r\nas % of sales:category:100%:2",
+    "Current period:money:20%:1",
+    "Current period as % of sales:category:100%:2",
     "% Change from prior period:category:100%:2",
-    "% Change\r\nfrom budget:category:100%:1"
+    "% Change from budget:category:100%:1"
    ],
    "flags": [
     "分組欄「Type」只有一種值，等於沒分組",
@@ -904,7 +904,7 @@
     "Date:date:100%:4",
     "Description of transaction:text:100%:4",
     "Clear:text:25%:1",
-    "Debit   (-):money:50%:2",
+    "Debit (-):money:50%:2",
     "Credit (+):money:50%:2",
     "Balance:money:100%:4"
    ],
@@ -1449,7 +1449,7 @@
    "of": 2,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Category」是標籤，後面 3 欄是數值（Projected\r\ncost、Actual \r\ncost、Difference）",
+   "reason": "第一欄「Category」是標籤，後面 3 欄是數值（Projected cost、Actual cost、Difference）",
    "srcRows": 81,
    "rows": 46,
    "cols": 4,
@@ -1466,8 +1466,8 @@
    "hidden": [],
    "colTypes": [
     "Category:text:100%:34",
-    "Projected\r\ncost:money:33%:11",
-    "Actual \r\ncost:money:33%:9",
+    "Projected cost:money:33%:11",
+    "Actual cost:money:33%:9",
     "Difference:money:89%:6"
    ],
    "flags": []
@@ -1497,8 +1497,8 @@
    "hidden": [],
    "colTypes": [
     "Category:text:100%:27",
-    "Projected \r\ncost:longtext:13%:1",
-    "Actual \r\ncost:longtext:13%:1",
+    "Projected cost:longtext:13%:1",
+    "Actual cost:longtext:13%:1",
     "Difference:money:87%:2"
    ],
    "flags": []
@@ -1557,8 +1557,8 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
+   "shape": "pricelist",
+   "label": "品項／價目表",
    "reason": "把期間攤平成「Month」欄之後，以「MONTHLY INCOME」為列名、照「Month」分段、「Value」當前導",
    "srcRows": 72,
    "rows": 313,
@@ -5123,8 +5123,8 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
+   "shape": "pricelist",
+   "label": "品項／價目表",
    "reason": "把期間攤平成「Month」欄之後，以「Expenses」為列名、照「Month」分段、「Value」當前導",
    "srcRows": 10,
    "rows": 60,
@@ -7114,7 +7114,7 @@
    "of": 1,
    "shape": "ledger",
    "label": "帳務／明細表",
-   "reason": "有日期欄「Date purchased \r\nor leased」但幾乎每列都不同（3/3），且有 9 欄金額，判定為明細帳而非排程",
+   "reason": "有日期欄「Date purchased or leased」但幾乎每列都不同（3/3），且有 9 欄金額，判定為明細帳而非排程",
    "srcRows": 99,
    "rows": 6,
    "cols": 18,
@@ -7122,10 +7122,10 @@
    "headerRow": 2,
    "title": "EQUIPMENT INVENTORY LIST · Physical condition · Financial status",
    "notes": [
-    "向下填補合併儲存格：Item description \r\n(make and model)"
+    "向下填補合併儲存格：Item description (make and model)"
    ],
    "roles": {
-    "title": "Item description \r\n(make and model)",
+    "title": "Item description (make and model)",
     "group": null,
     "lead": "Current value",
     "person": null
@@ -7134,21 +7134,21 @@
     "Loan rate"
    ],
    "colTypes": [
-    "Asset or \r\nserial number:number:50%:3",
-    "Item description \r\n(make and model):text:100%:3",
+    "Asset or serial number:number:50%:3",
+    "Item description (make and model):text:100%:3",
     "Location:category:50%:2",
     "Condition:category:50%:2",
     "Vendor:category:50%:1",
-    "Years of \r\nservice left:number:50%:3",
+    "Years of service left:number:50%:3",
     "Initial value:money:50%:3",
     "Down payment:money:50%:3",
-    "Date purchased \r\nor leased:date:50%:3",
-    "Loan term \r\nin years:number:50%:3",
+    "Date purchased or leased:date:50%:3",
+    "Loan term in years:number:50%:3",
     "Loan rate:text:50%:3",
     "Monthly payment:money:100%:4",
-    "Monthly operating \r\ncosts:money:33%:2",
-    "Total monthly \r\ncost:money:100%:4",
-    "Expected value at end \r\nof loan term:money:50%:3",
+    "Monthly operating costs:money:33%:2",
+    "Total monthly cost:money:100%:4",
+    "Expected value at end of loan term:money:50%:3",
     "Annual straight line depreciation:money:100%:4",
     "Monthly straight line depreciation:money:100%:4",
     "Current value:money:100%:4"
@@ -7165,7 +7165,7 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Inventory ID」是標籤，後面 8 欄是數值（Name、Description、Unit \r\nprice、Quantity \r\nin stock、Reorder \r\nlevel、Reorder time\r\nin days、Quantity in reorder、Discontinued?）",
+   "reason": "第一欄「Inventory ID」是標籤，後面 8 欄是數值（Name、Description、Unit price、Quantity in stock、Reorder level、Reorder time in days、Quantity in reorder、Discontinued?）",
    "srcRows": 15,
    "rows": 3,
    "cols": 9,
@@ -7184,10 +7184,10 @@
     "Inventory ID:text:100%:3",
     "Name:person:100%:3",
     "Description:text:100%:3",
-    "Unit \r\nprice:money:100%:3",
-    "Quantity \r\nin stock:number:100%:3",
-    "Reorder \r\nlevel:number:100%:3",
-    "Reorder time\r\nin days:number:100%:2",
+    "Unit price:money:100%:3",
+    "Quantity in stock:number:100%:3",
+    "Reorder level:number:100%:3",
+    "Reorder time in days:number:100%:2",
     "Quantity in reorder:number:100%:3",
     "Discontinued?:category:100%:1"
    ],
@@ -7377,7 +7377,7 @@
    "headerRow": 3,
    "title": "EQUIPMENT INVENTORY LIST · PHYSICAL CONDITION · FINANCIAL STATUS",
    "notes": [
-    "向下填補合併儲存格：Item description "
+    "向下填補合併儲存格：Item description"
    ],
    "roles": {
     "title": "Item description",
@@ -7489,7 +7489,7 @@
    "of": 1,
    "shape": "ledger",
    "label": "帳務／明細表",
-   "reason": "有日期欄「Date\r\npurchased」但幾乎每列都不同（5/5），且有 2 欄金額，判定為明細帳而非排程",
+   "reason": "有日期欄「Date purchased」但幾乎每列都不同（5/5），且有 2 欄金額，判定為明細帳而非排程",
    "srcRows": 16,
    "rows": 5,
    "cols": 11,
@@ -7500,7 +7500,7 @@
    "roles": {
     "title": "Item/description",
     "group": null,
-    "lead": "Estimated\r\ncurrent value",
+    "lead": "Estimated current value",
     "person": null
    },
    "hidden": [
@@ -7511,11 +7511,11 @@
     "Room/area:text:100%:4",
     "Item/description:text:100%:5",
     "Make/model:text:100%:5",
-    "Serial number/\r\nID number:text:100%:5",
-    "Date\r\npurchased:date:100%:5",
+    "Serial number/ ID number:text:100%:5",
+    "Date purchased:date:100%:5",
     "Where purchased:category:100%:3",
-    "Purchase\r\n price:money:100%:5",
-    "Estimated\r\ncurrent value:money:100%:5",
+    "Purchase price:money:100%:5",
+    "Estimated current value:money:100%:5",
     "Notes:empty:0%:0",
     "Photo?:category:100%:2"
    ],
@@ -7906,11 +7906,11 @@
     "Name:person:100%:25",
     "Description:text:100%:25",
     "Unit price:money:100%:22",
-    "Quantity \r\nin stock:number:100%:24",
+    "Quantity in stock:number:100%:24",
     "Inventory value:money:100%:25",
     "Reorder level:number:100%:25",
     "Reorder time in days:number:100%:13",
-    "Quantity \r\nin reorder:number:100%:3",
+    "Quantity in reorder:number:100%:3",
     "Discontinued?:category:12%:1"
    ],
    "flags": [
@@ -8645,8 +8645,8 @@
     "Purpose:text:13%:2",
     "From:text:13%:2",
     "To:text:13%:2",
-    "Odometer\r\nstart:number:13%:2",
-    "Odometer\r\nfinish:number:13%:2",
+    "Odometer start:number:13%:2",
+    "Odometer finish:number:13%:2",
     "Mileage:number:100%:3"
    ],
    "flags": [
@@ -8719,13 +8719,13 @@
     "NAME:person:100%:5",
     "APPLYING FOR:text:100%:2",
     "STATUS:text:100%:3",
-    "CANDIDATE \r\nTYPE:category:100%:3",
+    "CANDIDATE TYPE:category:100%:3",
     "EMAIL ADDRESS:email:100%:5",
     "PHONE:phone:100%:5",
     "PHONE SCREEN DATE:date:100%:5",
     "INTERVIEW DATE:date:40%:2",
-    "ASSIGNED \r\nINTERVIEWER:category:100%:3",
-    "INTERVIEW \r\nSCORE:text:20%:1",
+    "ASSIGNED INTERVIEWER:category:100%:3",
+    "INTERVIEW SCORE:text:20%:1",
     "INTERVIEWER FEEDBACK:longtext:20%:1"
    ],
    "flags": []
@@ -8928,10 +8928,10 @@
     "Estimated start:date:100%:8",
     "Estimated finish:date:100%:8",
     "Estimated work (in hours):number:100%:7",
-    "Estimated duration\r\n(in days):number:100%:6",
+    "Estimated duration (in days):number:100%:6",
     "Actual start:date:100%:7",
     "Actual finish:date:100%:9",
-    "Actual work \r\n(in hours):number:100%:9",
+    "Actual work (in hours):number:100%:9",
     "Actual duration (in days):number:100%:9",
     "Notes:empty:0%:0"
    ],
@@ -9288,7 +9288,7 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Lead name」是標籤，後面 8 欄是數值（Lead contact：整欄空白、Lead \r\nsource：整欄空白、Lead \r\nregion：整欄空白、Lead \r\ntype、Potential opportunity、Chance \r\nof sale、Forecast \r\nclose、Weighted \r\nforecast）",
+   "reason": "第一欄「Lead name」是標籤，後面 8 欄是數值（Lead contact：整欄空白、Lead source：整欄空白、Lead region：整欄空白、Lead type、Potential opportunity、Chance of sale、Forecast close、Weighted forecast）",
    "srcRows": 9,
    "rows": 3,
    "cols": 9,
@@ -9306,13 +9306,13 @@
    "colTypes": [
     "Lead name:person:100%:3",
     "Lead contact:empty:0%:0",
-    "Lead \r\nsource:empty:0%:0",
-    "Lead \r\nregion:empty:0%:0",
-    "Lead \r\ntype:category:100%:2",
+    "Lead source:empty:0%:0",
+    "Lead region:empty:0%:0",
+    "Lead type:category:100%:2",
     "Potential opportunity:money:100%:3",
-    "Chance \r\nof sale:text:100%:3",
-    "Forecast \r\nclose:text:100%:3",
-    "Weighted \r\nforecast:money:100%:2"
+    "Chance of sale:text:100%:3",
+    "Forecast close:text:100%:3",
+    "Weighted forecast:money:100%:2"
    ],
    "flags": []
   },
@@ -9324,7 +9324,7 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Lead name」是標籤，後面 12 欄是數值（January \r\nforecast、February \r\nforecast、March \r\nforecast、April \r\nforecast、May \r\nforecast、June \r\nforecast、July forecast、August \r\nforecast、September \r\nforecast、October \r\nforecast、November \r\nforecast、December \r\nforecast）",
+   "reason": "第一欄「Lead name」是標籤，後面 12 欄是數值（January forecast、February forecast、March forecast、April forecast、May forecast、June forecast、July forecast、August forecast、September forecast、October forecast、November forecast、December forecast）",
    "srcRows": 22,
    "rows": 4,
    "cols": 13,
@@ -9341,18 +9341,18 @@
    "hidden": [],
    "colTypes": [
     "Lead name:person:100%:4",
-    "January \r\nforecast:money:100%:2",
-    "February \r\nforecast:money:100%:3",
-    "March \r\nforecast:money:100%:3",
-    "April \r\nforecast:money:100%:2",
-    "May \r\nforecast:money:100%:2",
-    "June \r\nforecast:money:100%:2",
+    "January forecast:money:100%:2",
+    "February forecast:money:100%:3",
+    "March forecast:money:100%:3",
+    "April forecast:money:100%:2",
+    "May forecast:money:100%:2",
+    "June forecast:money:100%:2",
     "July forecast:money:100%:2",
-    "August \r\nforecast:money:100%:2",
-    "September \r\nforecast:money:100%:2",
-    "October \r\nforecast:money:100%:2",
-    "November \r\nforecast:money:100%:2",
-    "December \r\nforecast:money:100%:2"
+    "August forecast:money:100%:2",
+    "September forecast:money:100%:2",
+    "October forecast:money:100%:2",
+    "November forecast:money:100%:2",
+    "December forecast:money:100%:2"
    ],
    "flags": [
     "原始工作表有 22 列，只抽出 4 列，結構可能判壞"
@@ -10598,7 +10598,7 @@
     "TIME START:time:100%:3",
     "TIME END:time:100%:4",
     "DURATION:time:100%:2",
-    "CLASS \r\nLIST TIP::longtext:14%:1"
+    "CLASS LIST TIP::longtext:14%:1"
    ],
    "flags": []
   },
@@ -10667,7 +10667,7 @@
     "DAY:text:71%:5",
     "TIME START:time:100%:3",
     "CLASS:text:100%:4",
-    "WEEKLY \r\nSCHEDULE  TIP::longtext:14%:1"
+    "WEEKLY SCHEDULE TIP::longtext:14%:1"
    ],
    "flags": []
   },
@@ -12029,7 +12029,7 @@
    "headerRow": 13,
    "title": "Title of this worksheet is in cell B1. · Dynamic Chart data, Do NOT edit or delete this worksheet! · Table title is in cells B2 and C2. · Today · highlight · Table heading is in cells B3 and C3. These coordinates create the Today highlight in the chart. The first column marks the day, the second indicates to draw the line that highlights today. The first column date may change so the chart date range stays readable as the dates progress, however, a y co-ord of 0 indicates no line is drawn. Do not modify or delete this content or the charting may break. To no longer highlight Today's date, simply select \"no\" in the Chart Data worksheet in cell D2. The next instruction is in cell A7. · today highlight x co-ord · y co-ord · 1/10/24 · 9 · 1/10/24 · 9 · Table heading is in cell B7. The scrolling increment in cell B8 represents the data graphed and visually appearing in the Gantt Chart at any one time. Scrolling with the scroll bar at the top of the chart in row 1 of the Gantt Chart worksheet, will increment this number. The charting works best with single increments. The next instructin is in cell A10. · scroll increment · 0 · Table heading is in cell B10 and D10. The Charting Range helps select the appropriate range of tasks and milestones. Do not modify these fields. The ageoff number, keeps the chart readable by aging tasks from the range and only plotting those that are within the range. Do not modify this number. The next instruction is in cell A14. · Charting range · ageoff · 1/9/24 · 45 · 1/24/24",
    "notes": [
-    "向下填補合併儲存格：Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14.\r\nThis table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time.\r\nThe data in this chart is auto generated based on the content in the table above. \r\nDo not edit or delete this table or its contents.\r\nThe next instruction is in cell A17.、Tasks"
+    "向下填補合併儲存格：Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14. This table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time. The data in this chart is auto generated based on the content in the table above. Do not edit or delete this table or its contents. The next instruction is in cell A17.、Tasks"
    ],
    "roles": {
     "title": "Tasks",
@@ -12041,7 +12041,7 @@
     "position"
    ],
    "colTypes": [
-    "Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14.\r\nThis table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time.\r\nThe data in this chart is auto generated based on the content in the table above. \r\nDo not edit or delete this table or its contents.\r\nThe next instruction is in cell A17.:money:89%:2",
+    "Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14. This table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time. The data in this chart is auto generated based on the content in the table above. Do not edit or delete this table or its contents. The next instruction is in cell A17.:money:89%:2",
     "Tasks:category:100%:7",
     "Start date:date:39%:6",
     "Task duration in days:number:39%:6",
@@ -12270,7 +12270,7 @@
    "colTypes": [
     "Day of week:text:100%:17",
     "Time in:time:100%:3",
-    "Breaks\r\n(minutes):number:29%:4",
+    "Breaks (minutes):number:29%:4",
     "Time out:time:41%:5"
    ],
    "flags": []
@@ -12443,7 +12443,7 @@
    "colTypes": [
     "Day:text:100%:9",
     "欄 2:date:78%:7",
-    "Regular \r\nhours:category:100%:5",
+    "Regular hours:category:100%:5",
     "Overtime hours:number:11%:1",
     "Sick:text:22%:2",
     "Vacation:empty:0%:0",
