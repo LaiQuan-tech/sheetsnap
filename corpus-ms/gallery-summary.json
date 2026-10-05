@@ -1,18 +1,18 @@
 {
  "files": 163,
  "sheets": 396,
- "shown": 287,
- "skipped": 109,
- "warned": 11,
+ "shown": 286,
+ "skipped": 110,
+ "warned": 10,
  "generic": 41,
  "noTitle": 9,
  "oneRow": 0,
- "withTime": 37,
+ "withTime": 38,
  "withFilter": 21,
  "withFacts": 130,
  "withGroup": 44,
  "withRank": 121,
- "onlySearch": 49,
+ "onlySearch": 48,
  "shapes": [
   [
    "矩陣／報表",
@@ -20,11 +20,11 @@
   ],
   [
    "品項／價目表",
-   73
+   74
   ],
   [
    "排程／時程表",
-   56
+   55
   ],
   [
    "一般表格",
@@ -32,7 +32,7 @@
   ],
   [
    "帳務／明細表",
-   29
+   28
   ],
   [
    "名冊／通訊錄",
@@ -61,8 +61,8 @@
   [
    "planner",
    {
-    "n": 40,
-    "ok": 28
+    "n": 39,
+    "ok": 27
    }
   ],
   [
@@ -111,7 +111,7 @@
    "cashflow",
    {
     "n": 11,
-    "ok": 10
+    "ok": 11
    }
   ],
   [
@@ -1168,9 +1168,8 @@
    "src": "cashflow_f7200e29.xlsx",
    "sheet": "Cash flow chart",
    "table": 1,
-   "shape": "帳務／明細表",
+   "shape": "品項／價目表",
    "views": [
-    "time:Month",
     "rank",
     "all"
    ]
@@ -1181,7 +1180,7 @@
    "table": 0,
    "shape": "矩陣／報表",
    "views": [
-    "group:$53,400.00",
+    "group:Total",
     "facts",
     "all"
    ]
@@ -2273,16 +2272,6 @@
   },
   {
    "src": "planner_97739ac3.xlsx",
-   "sheet": "Lists",
-   "table": 1,
-   "shape": "排程／時程表",
-   "views": [
-    "time:September 2022",
-    "all"
-   ]
-  },
-  {
-   "src": "planner_97739ac3.xlsx",
    "sheet": "Monthly planner",
    "table": 0,
    "shape": "一般表格",
@@ -2654,6 +2643,7 @@
    "table": 1,
    "shape": "排程／時程表",
    "views": [
+    "time",
     "all"
    ]
   },
@@ -2974,6 +2964,7 @@
    "table": 0,
    "shape": "排程／時程表",
    "views": [
+    "time",
     "rank",
     "all"
    ]
@@ -3015,6 +3006,7 @@
    "table": 0,
    "shape": "排程／時程表",
    "views": [
+    "time",
     "rank",
     "all"
    ]
