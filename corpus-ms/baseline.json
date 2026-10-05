@@ -1,13 +1,13 @@
 {
  "fingerprint": {
-  "engine": "a77846b2d2b2",
+  "engine": "41625a3be7d8",
   "audit": "3327044e93ad"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 204,
-  "flagged": 123,
+  "clean": 208,
+  "flagged": 119,
   "skipped": 109,
   "broken": 0,
   "shapes": {
@@ -20,19 +20,14 @@
    "矩陣／報表": 94
   },
   "flags": {
-   "10/11 列沒有標題，會被整列略過": 1,
-   "10/19 列沒有標題，會被整列略過": 1,
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
-   "13/25 列沒有標題，會被整列略過": 1,
    "2/4 列沒有標題，會被整列略過": 3,
    "2/6 列沒有標題，會被整列略過": 1,
    "3/6 列沒有標題，會被整列略過": 1,
-   "4/12 列沒有標題，會被整列略過": 1,
-   "4/8 列沒有標題，會被整列略過": 1,
    "5/14 列沒有標題，會被整列略過": 1,
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
+   "6/18 列沒有標題，會被整列略過": 1,
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
-   "9/18 列沒有標題，會被整列略過": 1,
    "分組欄「2.5」只有一種值，等於沒分組": 1,
    "分組欄「Approved by」只有一種值，等於沒分組": 1,
    "分組欄「DATE」只有一種值，等於沒分組": 1,
@@ -2431,12 +2426,12 @@
   {
    "src": "budget_5d8083f9.xlsx",
    "sheet": "budget_5d8083f9.xlsx › Income",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Estimated no.」是標籤，後面 5 欄是數值（Actual no.、Type、Price、Estimated income、Actual income）",
+   "reason": "第一欄「Estimated no.」是標籤，後面 5 欄是數值（Actual no.、Type、Price、Estimated income、Actual income）；但第一欄只填了 47%，改用比較完整的「Type」（84%）當列名",
    "srcRows": 35,
    "rows": 19,
    "cols": 6,
@@ -2445,7 +2440,7 @@
    "title": "Event budget · INCOME · TOTAL INCOME · Estimated · Actual · $1,936.00 · $1,831.00 · ADMISSIONS",
    "notes": [],
    "roles": {
-    "title": "Estimated no.",
+    "title": "Type",
     "group": null,
     "lead": null,
     "person": null
@@ -2458,9 +2453,7 @@
     "Estimated income:money",
     "Actual income:money"
    ],
-   "flags": [
-    "10/19 列沒有標題，會被整列略過"
-   ]
+   "flags": []
   },
   {
    "src": "budget_5d8083f9.xlsx",
@@ -4966,12 +4959,12 @@
   {
    "src": "chart_6860aa13.xlsx",
    "sheet": "chart_6860aa13.xlsx › Profit & loss chart",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Monthly budget」是標籤，後面 3 欄是數值（欄 2、Actual、Target）",
+   "reason": "第一欄「Monthly budget」是標籤，後面 3 欄是數值（欄 2、Actual、Target）；但第一欄只填了 9%，改用比較完整的「欄 2」（91%）當列名",
    "srcRows": 19,
    "rows": 11,
    "cols": 4,
@@ -4982,7 +4975,7 @@
     "剔除 8 個排版用的空白欄"
    ],
    "roles": {
-    "title": "Monthly budget",
+    "title": "欄 2",
     "group": null,
     "lead": null,
     "person": null
@@ -4993,9 +4986,7 @@
     "Actual:money",
     "Target:money"
    ],
-   "flags": [
-    "10/11 列沒有標題，會被整列略過"
-   ]
+   "flags": []
   },
   {
    "src": "chart_6860aa13.xlsx",
@@ -5032,12 +5023,12 @@
   {
    "src": "chart_86466670.xlsx",
    "sheet": "chart_86466670.xlsx › Check register",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 3,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Withdrawal」，以「Check #」為品項名稱",
+   "reason": "偵測到金額欄「Withdrawal」，以「Description」為品項名稱",
    "srcRows": 45,
    "rows": 12,
    "cols": 7,
@@ -5046,7 +5037,7 @@
    "title": "CHECK REGISTER · Bank account number: · 987654321 · Current balance: · $ 613.89",
    "notes": [],
    "roles": {
-    "title": "Check #",
+    "title": "Description",
     "group": "Category",
     "lead": "Withdrawal",
     "person": null
@@ -5060,9 +5051,7 @@
     "Deposit:money",
     "Balance:money"
    ],
-   "flags": [
-    "4/12 列沒有標題，會被整列略過"
-   ]
+   "flags": []
   },
   {
    "src": "chart_86466670.xlsx",
@@ -7328,7 +7317,7 @@
     "向下填補合併儲存格：Address"
    ],
    "roles": {
-    "title": "Title held by",
+    "title": "Financial institution",
     "group": "Phone",
     "lead": null,
     "person": null
@@ -7343,7 +7332,6 @@
     "Notes:text"
    ],
    "flags": [
-    "4/8 列沒有標題，會被整列略過",
     "落到一般表格：沒有辨識出任何主軸",
     "分組欄「Phone」只有一種值，等於沒分組",
     "原始工作表有 58 列，只抽出 8 列，結構可能判壞"
@@ -7604,7 +7592,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「COST」，以「BIN #」為品項名稱",
+   "reason": "偵測到金額欄「COST」，以「LOCATION」為品項名稱",
    "srcRows": 35,
    "rows": 11,
    "cols": 10,
@@ -7613,7 +7601,7 @@
    "title": "INVENTORY LIST · TOTAL INVENTORY VALUE: · $4,649.00 · INVENTORY ITEMS: · 11 · BIN COUNT: · 6",
    "notes": [],
    "roles": {
-    "title": "BIN #",
+    "title": "LOCATION",
     "group": "UNIT",
     "lead": "COST",
     "person": null
@@ -7704,12 +7692,12 @@
   {
    "src": "inventory_c16e6fb0.xlsx",
    "sheet": "inventory_c16e6fb0.xlsx › Inventory list",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「欄 1」是標籤，後面 10 欄是數值（Inventory ID、Name、Description、Unit price、Quantity in stock、Inventory value、Reorder level、Reorder time in days、Quantity in reorder、Discontinued?）",
+   "reason": "第一欄「欄 1」是標籤，後面 10 欄是數值（Inventory ID、Name、Description、Unit price、Quantity in stock、Inventory value、Reorder level、Reorder time in days、Quantity in reorder、Discontinued?）；但第一欄只填了 48%，改用比較完整的「Name」（100%）當列名",
    "srcRows": 31,
    "rows": 25,
    "cols": 11,
@@ -7718,7 +7706,7 @@
    "title": "Inventory list · Highlight items to reorder? · Yes",
    "notes": [],
    "roles": {
-    "title": "欄 1",
+    "title": "Name",
     "group": null,
     "lead": null,
     "person": null
@@ -7736,9 +7724,7 @@
     "Quantity in reorder:number",
     "Discontinued?:category"
    ],
-   "flags": [
-    "13/25 列沒有標題，會被整列略過"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_c70363c0.xlsx",
@@ -7756,7 +7742,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「COST」，以「BIN #」為品項名稱",
+   "reason": "偵測到金額欄「COST」，以「LOCATION」為品項名稱",
    "srcRows": 99,
    "rows": 11,
    "cols": 10,
@@ -7765,7 +7751,7 @@
    "title": "Inventory List · TOTAL INVENTORY VALUE: · INVENTORY ITEMS: · BIN COUNT: · $4,649.00 · 11 · 6",
    "notes": [],
    "roles": {
-    "title": "BIN #",
+    "title": "LOCATION",
     "group": "UNIT",
     "lead": "COST",
     "person": null
@@ -9161,7 +9147,7 @@
    "of": 2,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「欄 4」，以「ESTIMATED」為品項名稱",
+   "reason": "偵測到金額欄「欄 4」，以「欄 3」為品項名稱",
    "srcRows": 38,
    "rows": 18,
    "cols": 4,
@@ -9172,7 +9158,7 @@
     "依重複的欄名切成並排的表格"
    ],
    "roles": {
-    "title": "ESTIMATED",
+    "title": "欄 3",
     "group": "ACTUAL",
     "lead": "欄 4",
     "person": null
@@ -9185,7 +9171,7 @@
    ],
    "flags": [
     "標題列可能判錯：2/4 欄沒有欄名",
-    "9/18 列沒有標題，會被整列略過"
+    "6/18 列沒有標題，會被整列略過"
    ]
   },
   {
