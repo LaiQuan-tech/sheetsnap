@@ -1529,12 +1529,94 @@
     };
   }
 
+  /* 月份橫排：項目直著排、期間橫著排（預算表、現金流、月報）。
+     語料裡 18 張是這個樣子，而且全部都沒有時間軸——12 個月就擺在欄名上，
+     看法系統卻完全看不到，只能從剩下的欄硬挑，挑出來的是
+     「只看某個 Jan」（拿一月的金額當篩選）、「依 Total 分組」這種沒意義的軸。
+
+     攤平成「項目 | 月份 | 金額」之後就是一張普通的三欄表：
+     依月份分段、每張卡是一個項目、金額當前導，三個軸都回來了。
+     跟週表不同的是這裡不用手動指派角色——攤平後的形狀本來就判得對。
+
+     期間外層、列內層：輸出順序就是一月全部、二月全部……
+     分組是照出現順序建的，所以月份段落自然會照時序排。 */
+  var RE_PERIOD = new RegExp(
+    '^(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\\.?\\s*(\\d{2,4})?$' +
+    '|^\\d{1,2}\\s*月$|^(第)?[一二三四1-4]\\s*季(度)?$|^q[1-4]$' +
+    '|^\\d{4}\\s*[-/.年]\\s*\\d{1,2}\\s*月?$' +
+    '|^\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(\\s*[-/.]\\s*\\d{2,4})?$', 'i');
+  var RE_SUMCOL = /合計|總計|小計|累計|平均|total|sum|average|avg|ytd|variance|差異/i;
+
+  function periodGrid(header) {
+    var idx = [];
+    header.forEach(function (h, i) {
+      var t = String(h == null ? '' : h).replace(/\s+/g, ' ').trim();
+      if (!t || RE_SUMCOL.test(t)) return;        // 合計欄不是期間
+      if (RE_PERIOD.test(t)) idx.push(i);
+    });
+    return idx.length >= 3 ? idx : null;
+  }
+
+  function unpivotPeriods(t, idx) {
+    var header = t.grid[0], body = t.grid.slice(1);
+    if (body.length < 2) return null;
+    /* 合計欄一起丟掉：它是那幾個期間欄的橫向加總，攤平之後每一列都會掛著
+       同一個年度總額，看起來像那一列自己的值。期間沒了，它的意義也沒了。 */
+    var rest = [];
+    header.forEach(function (h, i) {
+      if (idx.indexOf(i) >= 0) return;
+      if (RE_SUMCOL.test(String(h == null ? '' : h).trim())) return;
+      rest.push(i);
+    });
+
+    /* 要有一欄能當列名，不然攤出來是一疊沒有名字的卡片。
+       條件跟 pickTitle 的候選一樣：過半有值、至少兩種不同的值。 */
+    var hasLabel = rest.some(function (i) {
+      var vals = body.map(function (r) { return String(r[i] == null ? '' : r[i]).trim(); }).filter(Boolean);
+      if (vals.length / body.length < 0.5) return false;
+      var u = {}; vals.forEach(function (v) { u[v] = 1; });
+      return Object.keys(u).length >= 2 &&
+             vals.filter(function (v) { return !RE_NUMLIKE.test(v); }).length / vals.length > 0.5;
+    });
+    if (!hasLabel) return null;
+
+    var out = [], money = 0, filled = 0;
+    idx.forEach(function (ci) {
+      var label = String(header[ci]).replace(/\s+/g, ' ').trim();
+      body.forEach(function (r) {
+        var v = String(r[ci] == null ? '' : r[ci]).trim();
+        if (!v) return;
+        filled++;
+        if (/[$€£¥＄]/.test(v)) money++;
+        out.push(rest.map(function (i) { return r[i]; }).concat([label, v]));
+      });
+    });
+    if (out.length < 4 || out.length > 3000) return null;
+
+    var zh = /[㐀-鿿]/.test(header.join(''));
+    var allMonth = idx.every(function (i) { return /^[a-z一-鿿]/i.test(String(header[i]).trim()); });
+    var pName = zh ? (allMonth ? '月份' : '期間') : (allMonth ? 'Month' : 'Period');
+    var vName = money / Math.max(filled, 1) > 0.3 ? (zh ? '金額' : 'Amount') : (zh ? '數值' : 'Value');
+    return {
+      name: t.name, title: t.title, preambleRows: t.preambleRows, headerRow: t.headerRow,
+      grid: [rest.map(function (i) { return header[i]; }).concat([pName, vName])].concat(out),
+      totals: [], skipped: t.skipped, range: t.range,
+      notes: (t.notes || []).concat(['把 ' + idx.length + ' 個期間欄位攤平成「' + pName +
+        '」欄，一次看一個' + (allMonth ? '月' : '期間')]),
+      unpivoted: 'period'
+    };
+  }
+
   S.analyseSheet = function (grid) {
     var tables = findTables(grid).map(function (t) {
       var idx = weekGrid(t.grid[0] || []);
-      if (!idx) return t;
-      if (isCalendarGrid(t, idx)) { t.calendar = true; return t; }
-      return unpivotWeek(t, idx) || t;
+      if (idx) {
+        if (isCalendarGrid(t, idx)) { t.calendar = true; return t; }
+        return unpivotWeek(t, idx) || t;
+      }
+      var pid = periodGrid(t.grid[0] || []);
+      if (pid) return unpivotPeriods(t, pid) || t;
+      return t;
     });
     if (!tables.length) return { tables: [] };
     return {
@@ -1549,6 +1631,19 @@
           a.range = t.range;
           a.calendar = !!t.calendar;    // 月曆格子：交給 sheetVerdict 拒絕
           a.unpivoted = t.unpivoted || '';
+          if (t.unpivoted === 'period') {
+            /* 攤平出來的欄序是固定的：[列標籤…] | 期間 | 值。
+               角色也釘死，不交給一般規則：一般規則是用「相異值少的當分組」挑的，
+               所以 8 個項目 × 12 個月會分成 8 段、每張卡叫「JAN」；
+               76 個項目 × 12 個月又會反過來。同一種表因為列數不同給出兩種版面，
+               而攤平本來就是為了讓期間變成可以瀏覽的軸——釘住才是一致的。 */
+            var hp = t.grid[0], byP = {}; a.cols.forEach(function (c) { byP[c.name] = c; });
+            var periodC = byP[hp[hp.length - 2]], valueC = byP[hp[hp.length - 1]], labelC = byP[hp[0]];
+            if (periodC && valueC && labelC && hp.length >= 3) {
+              a.shape.group = periodC; a.shape.title = labelC; a.shape.lead = valueC;
+              a.roles = S.assignRoles(a.cols.filter(function (c) { return c.type !== 'empty' }), a.shape);
+            }
+          }
           if (t.unpivoted === 'week') {
             // 攤平出來的三欄角色是固定的：星期＝標籤（拿來切天）、時間＝前導、內容＝標題。
             // 交給一般規則會把短短的「THU」挑成標題，內容反而被塞進內文區。

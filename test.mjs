@@ -397,6 +397,47 @@ for (const [head, want, why] of titleCases) {
     ['Marketing 1','Marketing 2','Item 3','Row 12','Phase 4','Step 5']), 'text');
 }
 
+/* 月份橫排：項目直著排、期間橫著排（預算表、現金流、月報）。
+   163 份裡 18 張是這樣，而且一張都沒有時間軸——12 個月就擺在欄名上，
+   看法系統卻看不到，只能從剩下的欄硬挑，挑出「只看某個 Jan」（拿一月的
+   金額當篩選）、「依 Total 分組」這種沒意義的軸。
+   攤平成「項目 | 月份 | 金額」之後就是一張普通的三欄表。 */
+{
+  const MON = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  const budget = n => {
+    const g = [['EXPENSE'].concat(MON).concat(['TOTAL'])];
+    for (let i = 0; i < n; i++)
+      g.push(['項目' + (i + 1)].concat(MON.map((_, m) => '$' + (500 + i * 120 + m * 7)))
+        .concat(['$' + (6000 + i * 1440)]));
+    return S.analyseSheet(g).tables[0];
+  };
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 攤平 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const a = budget(8);
+  chk('認出期間欄並攤平',   a.unpivoted, 'period');
+  chk('列數 = 項目 × 月份', a.rows.length, 96);
+  chk('合計欄丟掉',        a.cols.some(c => /TOTAL/i.test(c.name)), false);
+  chk('分組是期間',        a.roles.group && a.roles.group.name, 'Month');
+  chk('列名是項目',        a.roles.title && a.roles.title.name, 'EXPENSE');
+  chk('前導是金額',        a.roles.lead && a.roles.lead.name, 'Amount');
+  // 角色要釘住：一般規則會因為項目數多寡而翻轉分組與標題
+  const big = budget(40);
+  chk('40 個項目也一樣',   big.roles.group && big.roles.group.name, 'Month');
+  chk('40 個項目列名不變', big.roles.title && big.roles.title.name, 'EXPENSE');
+
+  // 不該攤平的
+  const U = g => { const t = S.analyseSheet(g).tables[0]; return t ? (t.unpivoted || '') : '(無表)'; };
+  chk('一般價目表不攤平', U([['品名','分類','單價'],['筆','文具','30'],['紙','文具','50'],
+    ['墨','耗材','200'],['夾','文具','45'],['尺','文具','25']]), '');
+  chk('只有兩個月欄不攤平', U([['項目','Jan','Feb'],['A','1','2'],['B','3','4'],['C','5','6']]), '');
+  chk('沒有列標籤不攤平',  U([['Jan','Feb','Mar','Apr'],['1','2','3','4'],['5','6','7','8'],['9','10','11','12']]), '');
+  chk('星期橫排仍走週表',  U([['時間','週一','週二','週三','週四'],['09:00','數學','國文','英文','數學'],
+    ['10:00','理化','歷史','地理','體育'],['11:00','美術','音樂','數學','國文']]), 'week');
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};

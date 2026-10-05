@@ -67,7 +67,13 @@ function views(a, raw) {
     timeView = { id: 'time', k: `照時間看（依「${String(time.name).replace(/\s+/g, ' ')}」排序）`, col: null };
   }
 
-  const g0 = go.filter(x => x.type !== 'date')[0];
+  // v78：攤平過的期間表，分組軸釘在期間欄（index.html 才是正本）
+  let go2 = go.filter(x => x.type !== 'date');
+  if (a.unpivoted === 'period' && a.roles && a.roles.group) {
+    const pg = go2.find(x => x.name === a.roles.group.name);
+    if (pg) go2 = [pg].concat(go2.filter(x => x !== pg));
+  }
+  const g0 = go2[0];
   const groupView = g0 ? { id: 'group', k: `照${g0.name}分類（${g0.groups}）`, col: g0.name } : null;
 
   const fopts = S.filterOptions(a).slice(0, 2);

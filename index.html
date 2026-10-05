@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v77<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v78<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=77"></script>
+<script src="detect.js?v=78"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -843,7 +843,18 @@ function buildViews(){
       d:TX('v_time_d2', { name:String(time.name).replace(/\s+/g,' ') }), group:'__none__' };
   }
 
-  var g0 = gopts.filter(function(x){ return x.type !== 'date' })[0];
+  /* 攤平過的期間表，分組軸就用那個期間欄。
+     一般規則是「第一個可分組的欄」，12 個項目 × 12 個月會挑到項目欄——
+     而卡片只有三張，排名再佔一張，月份就完全不會出現。
+     那是這張表被攤平的唯一理由，不能讓它落選。
+     （60 個項目的版本反而會挑中月份，因為項目欄超過 12 組被 groupOptions
+     擋掉了——同一種表因為列數不同給出兩種版面，這裡一併釘住。） */
+  var gopts2 = gopts.filter(function(x){ return x.type !== 'date' });
+  if(A.unpivoted === 'period' && A.roles.group){
+    var pg = gopts2.filter(function(x){ return x.name === A.roles.group.name })[0];
+    if(pg) gopts2 = [pg].concat(gopts2.filter(function(x){ return x !== pg }));
+  }
+  var g0 = gopts2[0];
   var groupView = g0 ? { id:'group:' + g0.name, k:TX('v_group', { name:g0.name }),
     d:TX('v_group_d', { n:g0.groups, avg:g0.avg }), group:g0.name } : null;
 
