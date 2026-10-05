@@ -583,6 +583,25 @@ for (const [head, want, why] of titleCases) {
     chk('沒有欄名的標籤欄照攤',  a.unpivoted, 'period');
     chk('沒有欄名也當得了列名', a.roles.title && a.roles.title.name, '欄 1');
     chk('分組軸還是期間',      a.roles.group && a.roles.group.name, 'Month');
+    chk('理由照釘住的角色寫',   /以「欄 1」為列名/.test(a.shape.reason), true);
+  }
+
+  /* 期間前面可能不只一欄，而第一欄不見得最適合當列名。
+     cashflow_281b542f › Monthly cash flow 攤完是
+     Type（4 種）｜Description（36 種）｜Month｜Amount——拿 Type 當列名，
+     258 張卡只有四種名字。同一個範本的 accounting_b55730e7 在 v80
+     還因為釘角色那段時成時不成，兩張一樣的表給出兩種版面。 */
+  {
+    const ty = ['Income','Fixed','Variable','Other'];
+    const g = [['Type','Description'].concat(MON)];
+    for (let i = 0; i < 36; i++) {
+      const r = [ty[i % 4], '項目 ' + (i + 1)];
+      for (let m = 0; m < 12; m++) r.push(m < 6 ? '$' + (100 + i * 7 + m) + '.00' : '');
+      g.push(r);
+    }
+    const cf = S.analyseSheet(g).tables[0];
+    chk('兩欄列標籤挑相異多的', cf.roles.title && cf.roles.title.name, 'Description');
+    chk('分組軸仍是期間',     cf.roles.group && cf.roles.group.name, 'Month');
   }
 
   /* 矩陣的前提是沒有別的軸可以分組。後面還有一欄分得出組的分類時，
@@ -634,6 +653,12 @@ for (const [head, want, why] of titleCases) {
     const grid = [['Expense','Category','Budget','Actual','Difference ($)','Difference (%)']].concat(rows);
     const v = S.sheetVerdict(grid, S.analyseSheet(grid).tables);
     chk('還沒填的範本要顯示', v.show, true);
+    /* 但只有一欄有值、其餘整欄空白的就沒東西可讀了——
+       student_b6316bb6 › Applications 是五列比較項目加三所學校的空欄，
+       timeline_c7bfc3e8 那三張內容日曆是 60 列只有 MONTH 有值。 */
+    const empty1 = [['Key information','Bellows College','Jasper University','Glenwood University']]
+      .concat(['學費','地點','科系','宿舍','獎學金'].map(k => [k, '', '', '']));
+    chk('只有一欄有值要藏起來', S.sheetVerdict(empty1, S.analyseSheet(empty1).tables).show, 'weak');
     // 真的下拉來源清單本來就只宣告一兩欄（單欄的連表格區塊都切不出來）
     const src = [['縣市','區'], ['台北','中正'], ['台中','西屯'], ['台南','東區'],
                  ['高雄','左營'], ['新竹','東區']];

@@ -1499,6 +1499,10 @@
     }).length;
     if (!named) return { show: false, why: '沒有任何文字欄名，像圖表資料區或控制列' };
 
+    // 有金額、數字、日期或時間就是真資料（例如 品項 | 金額 的支出清單）
+    var hasValue = live.some(function (c) {
+      return ['money', 'number', 'date', 'time'].indexOf(c.type) >= 0;
+    });
     var avgLen = live.reduce(function (a, c) { return a + c.avgLen; }, 0) / live.length;
     var headLen = main.header.filter(function (h) { return !blank(h); })
       .reduce(function (a, h, i, arr) { return a + String(h).trim().length / arr.length; }, 0);
@@ -1511,11 +1515,17 @@
     if (live.length <= 1 && avgLen > 25)
       return { show: false, why: '只有一欄長文字，像說明頁' };
 
+    /* 宣告了好幾欄、卻只有一欄有值，而那一欄又沒有任何數值——這是整張沒填的
+       範本，列名以外什麼都沒有，渲染出來是一疊只有標籤的卡片。
+       v81 把下面那條改成看宣告的欄數之後，這六張跟著跑出來：
+       student_b6316bb6 的 Applications／Comparisons（五列比較項目、三所學校欄全空）、
+       timeline_c7bfc3e8 的三張內容日曆（60 列只有 MONTH 有值）、
+       timeline_7ec3f486 › Social Overview。
+       「藏掉真的資料表比多顯示垃圾更糟」講的是資料；這裡沒有資料。 */
+    if (live.length <= 1 && !hasValue && main.cols.length > live.length)
+      return { show: 'weak', why: '只有一欄有值、其餘整欄空白，像還沒填的範本' };
+
     // 下拉選單的來源清單：一兩欄「短文字」，沒有任何數值欄。
-    // 有金額或數字就是真資料（例如 品項 | 金額 的支出清單）。
-    var hasValue = live.some(function (c) {
-      return ['money', 'number', 'date', 'time'].indexOf(c.type) >= 0;
-    });
     /* 這裡要看「宣告了幾欄」而不是「幾欄有值」，跟矩陣那條同一個道理：
        整欄空白代表這次沒填，不代表這個欄位不存在。
        expense_d75b85c4 › Expenses 是一張還沒填的預算範本——
@@ -1766,7 +1776,14 @@
                byP[''] 當然找不到，整段釘角色就被跳過：月份變成列名、
                只有兩種值的標籤欄變成分組軸，剛好反過來。 */
             var hp = t.grid[0];
-            var labelC = a.cols[0], periodC = a.cols[a.cols.length - 2], valueC = a.cols[a.cols.length - 1];
+            var periodC = a.cols[a.cols.length - 2], valueC = a.cols[a.cols.length - 1];
+            /* 期間前面可能不只一欄，而第一欄不見得是最適合當列名的那一欄。
+               cashflow_281b542f › Monthly cash flow 攤完是
+               Type（4 種）｜Description（36 種）｜Month｜Amount，
+               拿 Type 當列名的話 258 張卡只有四種名字。
+               所以在「期間前面那幾欄」裡用 pickTitle 挑，挑不出來才退回第一欄。 */
+            var restC = a.cols.slice(0, -2);
+            var labelC = S.pickTitle(restC.filter(function (c) { return c.type !== 'empty' })) || restC[0];
             if (periodC && valueC && labelC && hp.length >= 3 && a.cols.length === hp.length) {
               a.shape.group = periodC;
               /* 排程格（時間直排、日期橫排）的角色跟值矩陣剛好相反：
@@ -1777,6 +1794,12 @@
               } else {
                 a.shape.title = labelC; a.shape.lead = valueC;
               }
+              /* 理由也要照釘住的角色重寫。原本留著 detectShape 的說法，
+                 chart_8be76302 › summary 因此寫著「改以 Expenses 分組」，
+                 而實際上是照 Month 分段——解釋跟畫面對不起來。 */
+              a.shape.reason = '把期間攤平成「' + periodC.name + '」欄之後，以「' +
+                a.shape.title.name + '」為列名、照「' + periodC.name + '」分段、「' +
+                a.shape.lead.name + '」當前導';
               a.roles = S.assignRoles(a.cols.filter(function (c) { return c.type !== 'empty' }), a.shape);
             }
           }
