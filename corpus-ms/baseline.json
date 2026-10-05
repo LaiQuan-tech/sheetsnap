@@ -1,7 +1,7 @@
 {
  "fingerprint": {
   "engine": "41625a3be7d8",
-  "audit": "3327044e93ad"
+  "audit": "cad54545439c"
  },
  "summary": {
   "inputs": 163,
@@ -130,8 +130,8 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Total:money"
+    "Category:text:100%:6",
+    "Total:money:100%:6"
    ],
    "flags": []
   },
@@ -158,13 +158,13 @@
     "person": null
    },
    "colTypes": [
-    "Check #:category",
-    "Date:text",
-    "Description:text",
-    "Category:category",
-    "Withdrawal (-):money",
-    "Deposit (+):money",
-    "Balance:money"
+    "Check #:category:86%:4",
+    "Date:text:86%:6",
+    "Description:text:86%:6",
+    "Category:category:86%:5",
+    "Withdrawal (-):money:71%:5",
+    "Deposit (+):money:14%:1",
+    "Balance:money:100%:6"
    ],
    "flags": []
   },
@@ -199,9 +199,9 @@
     "person": null
    },
    "colTypes": [
-    "Current assets::text",
-    "Previous Year:number",
-    "Current Year:number"
+    "Current assets::text:100%:26",
+    "Previous Year:number:96%:21",
+    "Current Year:number:96%:22"
    ],
    "flags": []
   },
@@ -244,9 +244,9 @@
     "person": null
    },
    "colTypes": [
-    "Current assets:text",
-    "Year 1:money",
-    "Year 2:money"
+    "Current assets:text:100%:13",
+    "Year 1:money:100%:11",
+    "Year 2:money:100%:12"
    ],
    "flags": []
   },
@@ -273,9 +273,9 @@
     "person": null
    },
    "colTypes": [
-    "Current liabilities:text",
-    "Year 1:money",
-    "Year 2:money"
+    "Current liabilities:text:100%:11",
+    "Year 1:money:100%:9",
+    "Year 2:money:100%:10"
    ],
    "flags": []
   },
@@ -310,14 +310,14 @@
     "person": null
    },
    "colTypes": [
-    "Revenue type:category",
-    "Description:text",
-    "Prior\r\nperiod:money",
-    "Budget:money",
-    "Current\r\nperiod:money",
-    "Current period\r\nas % of sales:category",
-    "% Change from\r\nprior period:category",
-    "% Change\r\nfrom budget:category"
+    "Revenue type:category:100%:2",
+    "Description:text:100%:4",
+    "Prior\r\nperiod:money:38%:2",
+    "Budget:money:38%:3",
+    "Current\r\nperiod:money:38%:3",
+    "Current period\r\nas % of sales:category:100%:4",
+    "% Change from\r\nprior period:category:100%:4",
+    "% Change\r\nfrom budget:category:100%:4"
    ],
    "flags": [
     "原始工作表有 50 列，只抽出 8 列，結構可能判壞"
@@ -346,14 +346,14 @@
     "person": null
    },
    "colTypes": [
-    "Income type:text",
-    "Description:text",
-    "Prior\r\nperiod:money",
-    "Budget:money",
-    "Current\r\nperiod:money",
-    "Current period\r\nas % of sales:text",
-    "% Change from\r\nprior period:text",
-    "% Change\r\nfrom budget:text"
+    "Income type:text:50%:1",
+    "Description:text:50%:1",
+    "Prior\r\nperiod:money:50%:1",
+    "Budget:money:50%:1",
+    "Current\r\nperiod:money:50%:1",
+    "Current period\r\nas % of sales:text:100%:2",
+    "% Change from\r\nprior period:text:100%:2",
+    "% Change\r\nfrom budget:text:100%:2"
    ],
    "flags": [
     "原始工作表有 50 列，只抽出 2 列，結構可能判壞"
@@ -382,14 +382,14 @@
     "person": null
    },
    "colTypes": [
-    "Expense type:text",
-    "Description:text",
-    "Prior\r\nperiod:money",
-    "Budget:money",
-    "Current\r\nperiod:money",
-    "Current period\r\nas % of sales:category",
-    "% Change from\r\nprior period:category",
-    "% Change\r\nfrom budget:category"
+    "Expense type:text:100%:3",
+    "Description:text:100%:15",
+    "Prior\r\nperiod:money:5%:1",
+    "Budget:money:5%:1",
+    "Current\r\nperiod:money:5%:1",
+    "Current period\r\nas % of sales:category:100%:2",
+    "% Change from\r\nprior period:category:100%:2",
+    "% Change\r\nfrom budget:category:100%:2"
    ],
    "flags": []
   },
@@ -416,14 +416,14 @@
     "person": null
    },
    "colTypes": [
-    "Type:category",
-    "Description:text",
-    "Prior\r\nperiod:money",
-    "Budget:money",
-    "Current\r\nperiod:money",
-    "Current period\r\nas % of sales:category",
-    "% Change from prior period:category",
-    "% Change\r\nfrom budget:category"
+    "Type:category:100%:1",
+    "Description:text:100%:4",
+    "Prior\r\nperiod:money:20%:1",
+    "Budget:money:20%:1",
+    "Current\r\nperiod:money:20%:1",
+    "Current period\r\nas % of sales:category:100%:2",
+    "% Change from prior period:category:100%:2",
+    "% Change\r\nfrom budget:category:100%:1"
    ],
    "flags": [
     "分組欄「Type」只有一種值，等於沒分組",
@@ -461,13 +461,13 @@
     "person": null
    },
    "colTypes": [
-    "Check/Code:text",
-    "Date:category",
-    "Transaction:text",
-    "Description:text",
-    "Withdrawal:money",
-    "Deposit:money",
-    "Balance:money"
+    "Check/Code:text:83%:5",
+    "Date:category:100%:5",
+    "Transaction:text:83%:5",
+    "Description:text:67%:4",
+    "Withdrawal:money:67%:4",
+    "Deposit:money:33%:2",
+    "Balance:money:100%:6"
    ],
    "flags": []
   },
@@ -496,9 +496,9 @@
     "person": null
    },
    "colTypes": [
-    "Quinn Campbell:text",
-    "欄 2:number",
-    "FYXX Q2:money"
+    "Quinn Campbell:text:100%:47",
+    "欄 2:number:77%:32",
+    "FYXX Q2:money:11%:5"
    ],
    "flags": []
   },
@@ -581,16 +581,16 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Auto insurance:money",
-    "Office supplies:money",
-    "Electricity:money",
-    "Mortgage:money",
-    "Phone:money",
-    "Column1:empty",
-    "Column2:empty",
-    "Column3:empty",
-    "Column4:empty"
+    "Date:text:94%:15",
+    "Auto insurance:money:25%:2",
+    "Office supplies:money:25%:4",
+    "Electricity:money:19%:3",
+    "Mortgage:money:38%:3",
+    "Phone:money:19%:3",
+    "Column1:empty:0%:0",
+    "Column2:empty:0%:0",
+    "Column3:empty:0%:0",
+    "Column4:empty:0%:0"
    ],
    "flags": []
   },
@@ -617,11 +617,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Number:number",
-    "Description:text",
-    "Category:category",
-    "Amount:money"
+    "Date:text:100%:15",
+    "Number:number:100%:15",
+    "Description:text:100%:5",
+    "Category:category:100%:5",
+    "Amount:money:100%:9"
    ],
    "flags": []
   },
@@ -648,13 +648,13 @@
     "person": null
    },
    "colTypes": [
-    "CHECK/CODE:text",
-    "DATE:category",
-    "TRANSACTION:text",
-    "DESCRIPTION:text",
-    "WITHDRAWAL:money",
-    "DEPOSIT:money",
-    "BALANCE:money"
+    "CHECK/CODE:text:83%:5",
+    "DATE:category:100%:5",
+    "TRANSACTION:text:83%:5",
+    "DESCRIPTION:text:67%:4",
+    "WITHDRAWAL:money:67%:4",
+    "DEPOSIT:money:33%:2",
+    "BALANCE:money:100%:6"
    ],
    "flags": []
   },
@@ -683,10 +683,10 @@
     "person": null
    },
    "colTypes": [
-    "DESCRIPTION:money",
-    "QUANTITY:number",
-    "AMOUNT:money",
-    "TOTAL:money"
+    "DESCRIPTION:money:100%:4",
+    "QUANTITY:number:18%:1",
+    "AMOUNT:money:18%:2",
+    "TOTAL:money:82%:3"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -718,11 +718,11 @@
     "person": null
    },
    "colTypes": [
-    "DATE:text",
-    "DESCRIPTION:text",
-    "CHARGES:money",
-    "CREDITS:text",
-    "ACCOUNT BALANCE:money"
+    "DATE:text:100%:8",
+    "DESCRIPTION:text:100%:4",
+    "CHARGES:money:38%:3",
+    "CREDITS:text:38%:3",
+    "ACCOUNT BALANCE:money:75%:6"
    ],
    "flags": []
   },
@@ -749,35 +749,35 @@
     "person": null
    },
    "colTypes": [
-    "REVENUES (SALES):text",
-    "TREND:empty",
-    "JAN:money",
-    "FEB:money",
-    "MAR:money",
-    "APR:money",
-    "MAY:money",
-    "JUN:money",
-    "JUL:money",
-    "AUG:money",
-    "SEP:money",
-    "OCT:money",
-    "NOV:money",
-    "DEC:money",
-    "YEARLY:money",
-    "IND %:category",
-    "JAN %:text",
-    "FEB %:category",
-    "MAR %:category",
-    "APR %:text",
-    "MAY %:category",
-    "JUN %:category",
-    "JUL %:text",
-    "AUG %:category",
-    "SEP %:category",
-    "OCT %:category",
-    "NOV %:category",
-    "DEC %:category",
-    "YEAR %:category"
+    "REVENUES (SALES):text:100%:7",
+    "TREND:empty:0%:0",
+    "JAN:money:100%:7",
+    "FEB:money:100%:7",
+    "MAR:money:100%:7",
+    "APR:money:100%:7",
+    "MAY:money:100%:7",
+    "JUN:money:100%:7",
+    "JUL:money:100%:7",
+    "AUG:money:100%:7",
+    "SEP:money:100%:7",
+    "OCT:money:100%:6",
+    "NOV:money:100%:7",
+    "DEC:money:100%:7",
+    "YEARLY:money:100%:7",
+    "IND %:category:100%:6",
+    "JAN %:text:100%:7",
+    "FEB %:category:100%:6",
+    "MAR %:category:100%:6",
+    "APR %:text:100%:7",
+    "MAY %:category:100%:5",
+    "JUN %:category:100%:5",
+    "JUL %:text:100%:7",
+    "AUG %:category:100%:5",
+    "SEP %:category:100%:6",
+    "OCT %:category:100%:6",
+    "NOV %:category:100%:6",
+    "DEC %:category:100%:6",
+    "YEAR %:category:100%:5"
    ],
    "flags": []
   },
@@ -804,35 +804,35 @@
     "person": null
    },
    "colTypes": [
-    "COST OF SALES:text",
-    "TREND:empty",
-    "JAN:money",
-    "FEB:money",
-    "MAR:money",
-    "APR:money",
-    "MAY:money",
-    "JUN:money",
-    "JUL:money",
-    "AUG:money",
-    "SEP:money",
-    "OCT:money",
-    "NOV:money",
-    "DEC:money",
-    "YEARLY:money",
-    "IND %:category",
-    "JAN %:text",
-    "FEB %:category",
-    "MAR %:text",
-    "APR %:category",
-    "MAY %:category",
-    "JUN %:text",
-    "JUL %:category",
-    "AUG %:text",
-    "SEP %:text",
-    "OCT %:text",
-    "NOV %:category",
-    "DEC %:category",
-    "YEAR %:category"
+    "COST OF SALES:text:100%:8",
+    "TREND:empty:0%:0",
+    "JAN:money:100%:8",
+    "FEB:money:100%:7",
+    "MAR:money:100%:8",
+    "APR:money:100%:8",
+    "MAY:money:100%:8",
+    "JUN:money:100%:8",
+    "JUL:money:100%:8",
+    "AUG:money:100%:8",
+    "SEP:money:100%:8",
+    "OCT:money:100%:8",
+    "NOV:money:100%:7",
+    "DEC:money:100%:8",
+    "YEARLY:money:100%:8",
+    "IND %:category:88%:6",
+    "JAN %:text:88%:7",
+    "FEB %:category:88%:6",
+    "MAR %:text:88%:7",
+    "APR %:category:88%:6",
+    "MAY %:category:88%:6",
+    "JUN %:text:88%:7",
+    "JUL %:category:88%:6",
+    "AUG %:text:88%:7",
+    "SEP %:text:88%:7",
+    "OCT %:text:88%:7",
+    "NOV %:category:88%:6",
+    "DEC %:category:88%:5",
+    "YEAR %:category:88%:5"
    ],
    "flags": []
   },
@@ -859,35 +859,35 @@
     "person": null
    },
    "colTypes": [
-    "EXPENSES:text",
-    "TREND:empty",
-    "JAN:money",
-    "FEB:money",
-    "MAR:money",
-    "APR:money",
-    "MAY:money",
-    "JUN:money",
-    "JUL:money",
-    "AUG:money",
-    "SEP:money",
-    "OCT:money",
-    "NOV:money",
-    "DEC:money",
-    "YEARLY:money",
-    "IND %:category",
-    "JAN %:category",
-    "FEB %:category",
-    "MAR %:category",
-    "APR %:category",
-    "MAY %:category",
-    "JUN %:category",
-    "JUL %:category",
-    "AUG %:category",
-    "SEP %:category",
-    "OCT %:category",
-    "NOV %:category",
-    "DEC %:category",
-    "YEAR %:category"
+    "EXPENSES:text:100%:18",
+    "TREND:empty:0%:0",
+    "JAN:money:100%:13",
+    "FEB:money:100%:13",
+    "MAR:money:100%:15",
+    "APR:money:100%:14",
+    "MAY:money:100%:13",
+    "JUN:money:100%:14",
+    "JUL:money:100%:13",
+    "AUG:money:100%:15",
+    "SEP:money:100%:15",
+    "OCT:money:100%:15",
+    "NOV:money:100%:18",
+    "DEC:money:100%:14",
+    "YEARLY:money:100%:18",
+    "IND %:category:95%:9",
+    "JAN %:category:95%:10",
+    "FEB %:category:95%:9",
+    "MAR %:category:95%:10",
+    "APR %:category:95%:8",
+    "MAY %:category:95%:8",
+    "JUN %:category:95%:9",
+    "JUL %:category:95%:7",
+    "AUG %:category:95%:9",
+    "SEP %:category:95%:10",
+    "OCT %:category:95%:9",
+    "NOV %:category:95%:8",
+    "DEC %:category:95%:9",
+    "YEAR %:category:95%:3"
    ],
    "flags": []
   },
@@ -916,10 +916,10 @@
     "person": null
    },
    "colTypes": [
-    "DESCRIPTION:money",
-    "QUANTITY:number",
-    "AMOUNT:money",
-    "TOTAL:money"
+    "DESCRIPTION:money:100%:4",
+    "QUANTITY:number:18%:1",
+    "AMOUNT:money:18%:2",
+    "TOTAL:money:82%:3"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -951,13 +951,13 @@
     "person": null
    },
    "colTypes": [
-    "Number:number",
-    "Date:text",
-    "Description of transaction:text",
-    "Clear:text",
-    "Debit   (-):money",
-    "Credit (+):money",
-    "Balance:money"
+    "Number:number:50%:2",
+    "Date:text:100%:4",
+    "Description of transaction:text:100%:4",
+    "Clear:text:25%:1",
+    "Debit   (-):money:50%:2",
+    "Credit (+):money:50%:2",
+    "Balance:money:100%:4"
    ],
    "flags": []
   },
@@ -992,10 +992,10 @@
     "person": null
    },
    "colTypes": [
-    "Discretionary:text",
-    "$36.29:money",
-    "$1,103.82:money",
-    "$13,245.85:money"
+    "Discretionary:text:100%:1",
+    "$36.29:money:100%:1",
+    "$1,103.82:money:100%:1",
+    "$13,245.85:money:100%:1"
    ],
    "flags": [
     "只有一列資料，判斷幾乎沒有依據",
@@ -1025,11 +1025,11 @@
     "person": null
    },
    "colTypes": [
-    "Type:category",
-    "Description:text",
-    "Daily:money",
-    "Monthly:money",
-    "Annual:money"
+    "Type:category:100%:4",
+    "Description:text:100%:36",
+    "Daily:money:100%:20",
+    "Monthly:money:100%:20",
+    "Annual:money:100%:20"
    ],
    "flags": []
   },
@@ -1056,21 +1056,21 @@
     "person": null
    },
    "colTypes": [
-    "Type:category",
-    "Descriptions:text",
-    "Jan:money",
-    "Feb:money",
-    "Mar:money",
-    "Apr:money",
-    "May:money",
-    "Jun:money",
-    "Jul:empty",
-    "Aug:empty",
-    "Sep:empty",
-    "Oct:empty",
-    "Nov:empty",
-    "Dec:empty",
-    "Total:money"
+    "Type:category:100%:4",
+    "Descriptions:text:100%:36",
+    "Jan:money:100%:18",
+    "Feb:money:100%:21",
+    "Mar:money:100%:20",
+    "Apr:money:100%:21",
+    "May:money:100%:21",
+    "Jun:money:100%:23",
+    "Jul:empty:0%:0",
+    "Aug:empty:0%:0",
+    "Sep:empty:0%:0",
+    "Oct:empty:0%:0",
+    "Nov:empty:0%:0",
+    "Dec:empty:0%:0",
+    "Total:money:100%:22"
    ],
    "flags": []
   },
@@ -1097,8 +1097,8 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "欄 2:longtext"
+    "欄 1:text:50%:1",
+    "欄 2:longtext:50%:1"
    ],
    "flags": [
     "標題列可能判錯：2/2 欄沒有欄名",
@@ -1129,8 +1129,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Annual Income:money"
+    "Row Labels:text:100%:7",
+    "Annual Income:money:100%:5"
    ],
    "flags": []
   },
@@ -1157,8 +1157,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Sum of Annual:money"
+    "Row Labels:text:100%:19",
+    "Sum of Annual:money:100%:13"
    ],
    "flags": []
   },
@@ -1185,8 +1185,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Sum of Annual:money"
+    "Row Labels:text:100%:12",
+    "Sum of Annual:money:100%:8"
    ],
    "flags": []
   },
@@ -1213,8 +1213,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Sum of Annual:money"
+    "Row Labels:text:100%:6",
+    "Sum of Annual:money:100%:5"
    ],
    "flags": []
   },
@@ -1243,9 +1243,9 @@
     "person": null
    },
    "colTypes": [
-    "Income:text",
-    "Annual:money",
-    "Monthly:money"
+    "Income:text:100%:6",
+    "Annual:money:100%:4",
+    "Monthly:money:100%:4"
    ],
    "flags": []
   },
@@ -1274,9 +1274,9 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Annual:money",
-    "Monthly:money"
+    "Expenses:text:100%:18",
+    "Annual:money:100%:12",
+    "Monthly:money:100%:12"
    ],
    "flags": []
   },
@@ -1305,9 +1305,9 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Annual:money",
-    "Monthly:money"
+    "Expenses:text:100%:11",
+    "Annual:money:100%:7",
+    "Monthly:money:100%:7"
    ],
    "flags": []
   },
@@ -1336,9 +1336,9 @@
     "person": null
    },
    "colTypes": [
-    "Savings:text",
-    "Annual:money",
-    "Monthly:money"
+    "Savings:text:100%:5",
+    "Annual:money:100%:4",
+    "Monthly:money:100%:4"
    ],
    "flags": []
   },
@@ -1365,9 +1365,9 @@
     "person": null
    },
    "colTypes": [
-    "ASSET TYPE:text",
-    "PRIOR YEAR:number",
-    "CURRENT YEAR:category"
+    "ASSET TYPE:text:100%:7",
+    "PRIOR YEAR:number:100%:4",
+    "CURRENT YEAR:category:100%:5"
    ],
    "flags": []
   },
@@ -1394,10 +1394,10 @@
     "person": null
    },
    "colTypes": [
-    "ASSET TYPE:category",
-    "DESCRIPTION:text",
-    "PRIOR YEAR:text",
-    "CURRENT YEAR:text"
+    "ASSET TYPE:category:100%:3",
+    "DESCRIPTION:text:100%:10",
+    "PRIOR YEAR:text:20%:2",
+    "CURRENT YEAR:text:20%:2"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -1426,10 +1426,10 @@
     "person": null
    },
    "colTypes": [
-    "LIABILITY TYPE:text",
-    "DESCRIPTION:text",
-    "PRIOR YEAR:number",
-    "CURRENT YEAR:number"
+    "LIABILITY TYPE:text:100%:3",
+    "DESCRIPTION:text:100%:8",
+    "PRIOR YEAR:number:13%:1",
+    "CURRENT YEAR:number:25%:1"
    ],
    "flags": []
   },
@@ -1464,14 +1464,14 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Receipt no.:number",
-    "Description:text",
-    "Amount deposited:money",
-    "Amount withdrawn:money",
-    "Charged to:text",
-    "Received by:text",
-    "Approved by:category"
+    "Date:text:100%:2",
+    "Receipt no.:number:100%:2",
+    "Description:text:100%:2",
+    "Amount deposited:money:100%:2",
+    "Amount withdrawn:money:100%:2",
+    "Charged to:text:100%:2",
+    "Received by:text:50%:1",
+    "Approved by:category:100%:1"
    ],
    "flags": [
     "分組欄「Approved by」只有一種值，等於沒分組",
@@ -1509,10 +1509,10 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Projected\r\ncost:money",
-    "Actual \r\ncost:money",
-    "Difference:money"
+    "Category:text:100%:34",
+    "Projected\r\ncost:money:33%:11",
+    "Actual \r\ncost:money:33%:9",
+    "Difference:money:89%:6"
    ],
    "flags": []
   },
@@ -1539,10 +1539,10 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Projected \r\ncost:longtext",
-    "Actual \r\ncost:longtext",
-    "Difference:money"
+    "Category:text:100%:27",
+    "Projected \r\ncost:longtext:13%:1",
+    "Actual \r\ncost:longtext:13%:1",
+    "Difference:money:87%:2"
    ],
    "flags": []
   },
@@ -1577,11 +1577,11 @@
     "person": null
    },
    "colTypes": [
-    "Benefits from website:longtext",
-    "Year 1:money",
-    "Year 2:money",
-    "Year 3:money",
-    "欄 5:money"
+    "Benefits from website:longtext:100%:21",
+    "Year 1:money:81%:13",
+    "Year 2:money:81%:12",
+    "Year 3:money:81%:14",
+    "欄 5:money:29%:6"
    ],
    "flags": []
   },
@@ -1618,21 +1618,21 @@
     "person": null
    },
    "colTypes": [
-    "MONTHLY INCOME:text",
-    "JAN:number",
-    "FEB:number",
-    "MAR:number",
-    "APR:number",
-    "MAY:number",
-    "JUN:number",
-    "JUL:number",
-    "AUG:number",
-    "SEP:number",
-    "OCT:number",
-    "NOV:number",
-    "DEC:number",
-    "YEAR:number",
-    "% INC:category"
+    "MONTHLY INCOME:text:100%:12",
+    "JAN:number:66%:16",
+    "FEB:number:63%:16",
+    "MAR:number:84%:23",
+    "APR:number:81%:20",
+    "MAY:number:81%:21",
+    "JUN:number:94%:25",
+    "JUL:number:84%:21",
+    "AUG:number:81%:20",
+    "SEP:number:91%:24",
+    "OCT:number:81%:19",
+    "NOV:number:84%:19",
+    "DEC:number:88%:18",
+    "YEAR:number:100%:29",
+    "% INC:category:100%:18"
    ],
    "flags": []
   },
@@ -1661,20 +1661,20 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:longtext",
-    "jan:text",
-    "feb:empty",
-    "mar:empty",
-    "apr:empty",
-    "may:empty",
-    "jun:empty",
-    "jul:empty",
-    "aug:empty",
-    "sep:empty",
-    "oct:empty",
-    "nov:empty",
-    "dec:empty",
-    "year:empty"
+    "欄 1:longtext:100%:9",
+    "jan:text:78%:7",
+    "feb:empty:0%:0",
+    "mar:empty:0%:0",
+    "apr:empty:0%:0",
+    "may:empty:0%:0",
+    "jun:empty:0%:0",
+    "jul:empty:0%:0",
+    "aug:empty:0%:0",
+    "sep:empty:0%:0",
+    "oct:empty:0%:0",
+    "nov:empty:0%:0",
+    "dec:empty:0%:0",
+    "year:empty:0%:0"
    ],
    "flags": [
     "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本"
@@ -1703,8 +1703,8 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money"
+    "Item:text:100%:4",
+    "Amount:money:100%:3"
    ],
    "flags": [
     "原始工作表有 40 列，只抽出 4 列，結構可能判壞"
@@ -1733,8 +1733,8 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money"
+    "Item:text:100%:11",
+    "Amount:money:100%:8"
    ],
    "flags": []
   },
@@ -1761,9 +1761,9 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money",
-    "Per month:money"
+    "Item:text:100%:6",
+    "Amount:money:100%:4",
+    "Per month:money:100%:4"
    ],
    "flags": [
     "原始工作表有 40 列，只抽出 6 列，結構可能判壞"
@@ -1808,10 +1808,10 @@
     "person": null
    },
    "colTypes": [
-    "Monthry income:text",
-    "Projected:money",
-    "Actual:money",
-    "Variance:money"
+    "Monthry income:text:100%:3",
+    "Projected:money:100%:3",
+    "Actual:money:100%:3",
+    "Variance:money:100%:3"
    ],
    "flags": []
   },
@@ -1838,10 +1838,10 @@
     "person": null
    },
    "colTypes": [
-    "Monthry expenses:text",
-    "Projected:money",
-    "Actual:money",
-    "Variance:money"
+    "Monthry expenses:text:100%:20",
+    "Projected:money:100%:14",
+    "Actual:money:100%:16",
+    "Variance:money:100%:10"
    ],
    "flags": []
   },
@@ -1868,9 +1868,9 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Projected:number",
-    "Actual:number"
+    "欄 1:text:100%:3",
+    "Projected:number:100%:3",
+    "Actual:number:100%:3"
    ],
    "flags": []
   },
@@ -1899,10 +1899,10 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Projected:money",
-    "Actual:money",
-    "Difference:money"
+    "欄 1:text:86%:6",
+    "Projected:money:86%:6",
+    "Actual:money:86%:6",
+    "Difference:money:86%:6"
    ],
    "flags": []
   },
@@ -1929,11 +1929,11 @@
     "person": null
    },
    "colTypes": [
-    "Description:text",
-    "Category:category",
-    "Projected cost:money",
-    "Actual cost:money",
-    "Difference:category"
+    "Description:text:100%:56",
+    "Category:category:100%:12",
+    "Projected cost:money:68%:18",
+    "Actual cost:money:66%:22",
+    "Difference:category:100%:19"
    ],
    "flags": []
   },
@@ -1968,10 +1968,10 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Projected Cost:money",
-    "Actual Cost:money",
-    "Difference:money"
+    "Expenses:text:100%:36",
+    "Projected Cost:money:95%:20",
+    "Actual Cost:money:92%:24",
+    "Difference:money:100%:19"
    ],
    "flags": []
   },
@@ -1998,10 +1998,10 @@
     "person": null
    },
    "colTypes": [
-    "EXPENSE:text",
-    "AMOUNT:money",
-    "% OF EXPENSES:number",
-    "15% REDUCTION:number"
+    "EXPENSE:text:100%:5",
+    "AMOUNT:money:100%:4",
+    "% OF EXPENSES:number:100%:3",
+    "15% REDUCTION:number:100%:4"
    ],
    "flags": [
     "原始工作表有 475 列，只抽出 5 列，結構可能判壞"
@@ -2030,11 +2030,11 @@
     "person": null
    },
    "colTypes": [
-    "INCOME:text",
-    "ESTIMATED:number",
-    "ACTUAL:number",
-    "TOP 5 AMOUNT:money",
-    "DIFFERENCE:text"
+    "INCOME:text:100%:3",
+    "ESTIMATED:number:100%:3",
+    "ACTUAL:number:100%:3",
+    "TOP 5 AMOUNT:money:100%:3",
+    "DIFFERENCE:text:100%:3"
    ],
    "flags": []
   },
@@ -2061,11 +2061,11 @@
     "person": null
    },
    "colTypes": [
-    "PERSONNEL EXPENSES:text",
-    "ESTIMATED:number",
-    "ACTUAL:number",
-    "TOP 5 AMOUNT:money",
-    "DIFFERENCE:text"
+    "PERSONNEL EXPENSES:text:100%:3",
+    "ESTIMATED:number:100%:3",
+    "ACTUAL:number:100%:3",
+    "TOP 5 AMOUNT:money:100%:3",
+    "DIFFERENCE:text:100%:3"
    ],
    "flags": []
   },
@@ -2092,11 +2092,11 @@
     "person": null
    },
    "colTypes": [
-    "OPERATING EXPENSES:text",
-    "ESTIMATED:number",
-    "ACTUAL:number",
-    "TOP 5 AMOUNT:money",
-    "DIFFERENCE:text"
+    "OPERATING EXPENSES:text:100%:20",
+    "ESTIMATED:number:100%:15",
+    "ACTUAL:number:100%:18",
+    "TOP 5 AMOUNT:money:100%:18",
+    "DIFFERENCE:text:100%:15"
    ],
    "flags": []
   },
@@ -2123,8 +2123,8 @@
     "person": null
    },
    "colTypes": [
-    "Balance:longtext",
-    "Amount:money"
+    "Balance:longtext:100%:3",
+    "Amount:money:100%:3"
    ],
    "flags": [
     "原始工作表有 1265 列，只抽出 3 列，結構可能判壞"
@@ -2161,10 +2161,10 @@
     "person": null
    },
    "colTypes": [
-    "Projected income:text",
-    "Projected:money",
-    "Actual:money",
-    "Difference:money"
+    "Projected income:text:100%:3",
+    "Projected:money:100%:3",
+    "Actual:money:100%:3",
+    "Difference:money:100%:1"
    ],
    "flags": []
   },
@@ -2191,11 +2191,11 @@
     "person": null
    },
    "colTypes": [
-    "Category:category",
-    "Sub-category:text",
-    "Projected:money",
-    "Actual:money",
-    "Difference:money"
+    "Category:category:100%:13",
+    "Sub-category:text:100%:58",
+    "Projected:money:100%:55",
+    "Actual:money:100%:56",
+    "Difference:money:100%:52"
    ],
    "flags": []
   },
@@ -2222,10 +2222,10 @@
     "person": null
    },
    "colTypes": [
-    "EXPENSE:text",
-    "AMOUNT:money",
-    "WHO PAYS?:category",
-    "NOTES:empty"
+    "EXPENSE:text:100%:9",
+    "AMOUNT:money:100%:9",
+    "WHO PAYS?:category:100%:4",
+    "NOTES:empty:0%:0"
    ],
    "flags": []
   },
@@ -2252,8 +2252,8 @@
     "person": null
    },
    "colTypes": [
-    "Percentage of income spent:empty",
-    "Summary:money"
+    "Percentage of income spent:empty:0%:0",
+    "Summary:money:100%:5"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字"
@@ -2282,8 +2282,8 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "AMOUNT:money"
+    "ITEM:text:100%:3",
+    "AMOUNT:money:100%:3"
    ],
    "flags": []
   },
@@ -2310,9 +2310,9 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "DUE DATE:category",
-    "AMOUNT:money"
+    "ITEM:text:100%:13",
+    "DUE DATE:category:100%:1",
+    "AMOUNT:money:100%:8"
    ],
    "flags": [
     "分組欄「DUE DATE」只有一種值，等於沒分組"
@@ -2341,8 +2341,8 @@
     "person": null
    },
    "colTypes": [
-    "DATE:category",
-    "AMOUNT:money"
+    "DATE:category:100%:1",
+    "AMOUNT:money:100%:3"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -2388,9 +2388,9 @@
     "person": null
    },
    "colTypes": [
-    "Decorations:text",
-    "Estimated:money",
-    "Actual:money"
+    "Decorations:text:100%:14",
+    "Estimated:money:36%:4",
+    "Actual:money:29%:3"
    ],
    "flags": []
   },
@@ -2417,9 +2417,9 @@
     "person": null
    },
    "colTypes": [
-    "Refreshments:text",
-    "Estimated:money",
-    "Actual:category"
+    "Refreshments:text:100%:13",
+    "Estimated:money:38%:4",
+    "Actual:category:23%:2"
    ],
    "flags": []
   },
@@ -2446,12 +2446,12 @@
     "person": null
    },
    "colTypes": [
-    "Estimated no.:text",
-    "Actual no.:category",
-    "Type:text",
-    "Price:money",
-    "Estimated income:money",
-    "Actual income:money"
+    "Estimated no.:text:47%:7",
+    "Actual no.:category:32%:4",
+    "Type:text:84%:11",
+    "Price:money:32%:4",
+    "Estimated income:money:84%:5",
+    "Actual income:money:84%:5"
    ],
    "flags": []
   },
@@ -2486,21 +2486,21 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Jan:money",
-    "Feb:empty",
-    "Mar:empty",
-    "Apr:empty",
-    "May:empty",
-    "Jun:empty",
-    "Jul:empty",
-    "Aug:empty",
-    "Sep:empty",
-    "Oct:empty",
-    "Nov:empty",
-    "Dec:empty",
-    "Total:money",
-    "Average:money"
+    "Item:text:100%:17",
+    "Jan:money:100%:11",
+    "Feb:empty:0%:0",
+    "Mar:empty:0%:0",
+    "Apr:empty:0%:0",
+    "May:empty:0%:0",
+    "Jun:empty:0%:0",
+    "Jul:empty:0%:0",
+    "Aug:empty:0%:0",
+    "Sep:empty:0%:0",
+    "Oct:empty:0%:0",
+    "Nov:empty:0%:0",
+    "Dec:empty:0%:0",
+    "Total:money:100%:11",
+    "Average:money:100%:11"
    ],
    "flags": []
   },
@@ -2537,22 +2537,22 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:money",
-    "欄 2:text",
-    "Rate:category",
-    "Jan:text",
-    "Feb:text",
-    "Mar:text",
-    "Apr:text",
-    "May:text",
-    "Jun:text",
-    "Jul:text",
-    "Aug:text",
-    "Sep:text",
-    "Oct:text",
-    "Nov:text",
-    "Dec:text",
-    "Total:money"
+    "欄 1:money:2%:1",
+    "欄 2:text:98%:54",
+    "Rate:category:26%:7",
+    "Jan:text:89%:31",
+    "Feb:text:88%:31",
+    "Mar:text:86%:34",
+    "Apr:text:88%:34",
+    "May:text:88%:35",
+    "Jun:text:86%:34",
+    "Jul:text:86%:35",
+    "Aug:text:86%:33",
+    "Sep:text:88%:36",
+    "Oct:text:88%:35",
+    "Nov:text:88%:36",
+    "Dec:text:88%:35",
+    "Total:money:68%:27"
    ],
    "flags": []
   },
@@ -2579,9 +2579,9 @@
     "person": null
    },
    "colTypes": [
-    "Site:text",
-    "Estimated:money",
-    "Actual:money"
+    "Site:text:100%:15",
+    "Estimated:money:40%:5",
+    "Actual:money:40%:5"
    ],
    "flags": []
   },
@@ -2608,9 +2608,9 @@
     "person": null
    },
    "colTypes": [
-    "Program:text",
-    "Estimated:money",
-    "Actual:money"
+    "Program:text:100%:17",
+    "Estimated:money:53%:6",
+    "Actual:money:53%:6"
    ],
    "flags": []
   },
@@ -2637,12 +2637,12 @@
     "person": null
    },
    "colTypes": [
-    "Type:text",
-    "Estimated:number",
-    "Actual:number",
-    "Price:money",
-    "Estimated income:money",
-    "Actual income:money"
+    "Type:text:100%:17",
+    "Estimated:number:84%:7",
+    "Actual:number:84%:8",
+    "Price:money:84%:9",
+    "Estimated income:money:84%:10",
+    "Actual income:money:84%:12"
    ],
    "flags": []
   },
@@ -2669,11 +2669,11 @@
     "person": null
    },
    "colTypes": [
-    "Expenses summary:text",
-    "Estimated:money",
-    "Actual:money",
-    "欄 4:text",
-    "Actual expenses:text"
+    "Expenses summary:text:100%:15",
+    "Estimated:money:93%:11",
+    "Actual:money:93%:12",
+    "欄 4:text:7%:1",
+    "Actual expenses:text:7%:1"
    ],
    "flags": []
   },
@@ -2700,11 +2700,11 @@
     "person": null
    },
    "colTypes": [
-    "Ranking:number",
-    "Expenses:text",
-    "Estimated:money",
-    "Actual:money",
-    "Ranking Value:number"
+    "Ranking:number:100%:8",
+    "Expenses:text:100%:12",
+    "Estimated:money:100%:10",
+    "Actual:money:100%:11",
+    "Ranking Value:number:100%:12"
    ],
    "flags": []
   },
@@ -2733,9 +2733,9 @@
     "person": null
    },
    "colTypes": [
-    "Solve Order:category",
-    "Field:longtext",
-    "Formula:text"
+    "Solve Order:category:100%:3",
+    "Field:longtext:83%:5",
+    "Formula:text:17%:1"
    ],
    "flags": []
   },
@@ -2762,9 +2762,9 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Projected:money",
-    "Actual:money"
+    "欄 1:text:100%:4",
+    "Projected:money:75%:3",
+    "Actual:money:75%:3"
    ],
    "flags": [
     "原始工作表有 30 列，只抽出 4 列，結構可能判壞"
@@ -2793,8 +2793,8 @@
     "person": null
    },
    "colTypes": [
-    "Projected:money",
-    "Actual:money"
+    "Projected:money:100%:1",
+    "Actual:money:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -2825,10 +2825,10 @@
     "person": null
    },
    "colTypes": [
-    "Categories:text",
-    "Projected Cost:money",
-    "Actual Cost:money",
-    "Difference:money"
+    "Categories:text:100%:30",
+    "Projected Cost:money:83%:19",
+    "Actual Cost:money:83%:18",
+    "Difference:money:100%:13"
    ],
    "flags": []
   },
@@ -2855,12 +2855,12 @@
     "person": null
    },
    "colTypes": [
-    "Description:text",
-    "Category:category",
-    "Projected cost:money",
-    "Actual cost:money",
-    "Difference:money",
-    "Actual cost overview:money"
+    "Description:text:100%:56",
+    "Category:category:100%:12",
+    "Projected cost:money:68%:18",
+    "Actual cost:money:66%:22",
+    "Difference:money:66%:18",
+    "Actual cost overview:money:100%:23"
    ],
    "flags": []
   },
@@ -2889,10 +2889,10 @@
     "person": null
    },
    "colTypes": [
-    "Categories:text",
-    "Cost:money",
-    "To add a category, type below:text",
-    "`:empty"
+    "Categories:text:100%:13",
+    "Cost:money:100%:11",
+    "To add a category, type below:text:92%:12",
+    "`:empty:0%:0"
    ],
    "flags": []
   },
@@ -2919,10 +2919,10 @@
     "person": null
    },
    "colTypes": [
-    "Items:text",
-    "Budget:money",
-    "Actual spent:money",
-    "Notes:text"
+    "Items:text:100%:18",
+    "Budget:money:89%:13",
+    "Actual spent:money:47%:7",
+    "Notes:text:11%:1"
    ],
    "flags": []
   },
@@ -2949,9 +2949,9 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Amount:money",
-    "Description:text"
+    "Date:text:100%:3",
+    "Amount:money:100%:3",
+    "Description:text:100%:3"
    ],
    "flags": [
     "原始工作表有 254 列，只抽出 3 列，結構可能判壞"
@@ -2980,9 +2980,9 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Amount:money",
-    "Description:text"
+    "Date:text:100%:3",
+    "Amount:money:100%:3",
+    "Description:text:100%:3"
    ],
    "flags": [
     "原始工作表有 254 列，只抽出 3 列，結構可能判壞"
@@ -3013,8 +3013,8 @@
     "person": null
    },
    "colTypes": [
-    "About this template:longtext",
-    "欄 2:longtext"
+    "About this template:longtext:100%:3",
+    "欄 2:longtext:50%:3"
    ],
    "flags": [
     "標題列可能判錯：1/2 欄沒有欄名",
@@ -3044,12 +3044,12 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Category:category",
-    "Amount:money",
-    "Frequency:category",
-    "Monthly Amount:money",
-    "% of Total:category"
+    "Expenses:text:100%:17",
+    "Category:category:100%:5",
+    "Amount:money:100%:10",
+    "Frequency:category:100%:4",
+    "Monthly Amount:money:100%:12",
+    "% of Total:category:100%:6"
    ],
    "flags": []
   },
@@ -3076,11 +3076,11 @@
     "person": null
    },
    "colTypes": [
-    "Categories:text",
-    "Amount per Category:money",
-    "Percentage of Total:category",
-    "Frequency:text",
-    "Savings:money"
+    "Categories:text:86%:6",
+    "Amount per Category:money:86%:6",
+    "Percentage of Total:category:86%:5",
+    "Frequency:text:100%:7",
+    "Savings:money:14%:1"
    ],
    "flags": []
   },
@@ -3115,8 +3115,8 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "AMOUNT:money"
+    "ITEM:text:100%:4",
+    "AMOUNT:money:100%:3"
    ],
    "flags": []
   },
@@ -3143,8 +3143,8 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "AMOUNT:money"
+    "ITEM:text:100%:11",
+    "AMOUNT:money:100%:8"
    ],
    "flags": []
   },
@@ -3171,9 +3171,9 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "AMOUNT:money",
-    "PER MONTH:money"
+    "ITEM:text:100%:7",
+    "AMOUNT:money:86%:4",
+    "PER MONTH:money:86%:4"
    ],
    "flags": []
   },
@@ -3208,8 +3208,8 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money"
+    "Item:text:100%:4",
+    "Amount:money:100%:3"
    ],
    "flags": []
   },
@@ -3236,8 +3236,8 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money"
+    "Item:text:100%:13",
+    "Amount:money:100%:8"
    ],
    "flags": []
   },
@@ -3266,8 +3266,8 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Total:money"
+    "Category:text:100%:11",
+    "Total:money:100%:11"
    ],
    "flags": []
   },
@@ -3294,10 +3294,10 @@
     "person": null
    },
    "colTypes": [
-    "Category:category",
-    "Description:text",
-    "Amount:money",
-    "Notes:text"
+    "Category:category:100%:10",
+    "Description:text:100%:14",
+    "Amount:money:100%:17",
+    "Notes:text:45%:9"
    ],
    "flags": []
   },
@@ -3324,20 +3324,20 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Jan:money",
-    "Feb:money",
-    "March:money",
-    "April:money",
-    "May:money",
-    "June:money",
-    "July:money",
-    "Aug:money",
-    "Sept:money",
-    "Oct:money",
-    "Nov:money",
-    "Dec:money",
-    "Year:money"
+    "欄 1:text:100%:6",
+    "Jan:money:33%:2",
+    "Feb:money:33%:2",
+    "March:money:33%:2",
+    "April:money:33%:2",
+    "May:money:33%:2",
+    "June:money:33%:2",
+    "July:money:33%:2",
+    "Aug:money:33%:2",
+    "Sept:money:33%:2",
+    "Oct:money:33%:2",
+    "Nov:money:33%:2",
+    "Dec:money:33%:2",
+    "Year:money:83%:2"
    ],
    "flags": []
   },
@@ -3364,21 +3364,21 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Sub category:text",
-    "Jan:empty",
-    "Feb:empty",
-    "March:empty",
-    "April:empty",
-    "May:empty",
-    "June:empty",
-    "July:empty",
-    "Aug:empty",
-    "Sept:empty",
-    "Oct:empty",
-    "Nov:empty",
-    "Dec:empty",
-    "Year:money"
+    "Category:text:100%:8",
+    "Sub category:text:100%:8",
+    "Jan:empty:0%:0",
+    "Feb:empty:0%:0",
+    "March:empty:0%:0",
+    "April:empty:0%:0",
+    "May:empty:0%:0",
+    "June:empty:0%:0",
+    "July:empty:0%:0",
+    "Aug:empty:0%:0",
+    "Sept:empty:0%:0",
+    "Oct:empty:0%:0",
+    "Nov:empty:0%:0",
+    "Dec:empty:0%:0",
+    "Year:money:100%:1"
    ],
    "flags": []
   },
@@ -3413,8 +3413,8 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "AMOUNT:money"
+    "ITEM:text:100%:3",
+    "AMOUNT:money:100%:3"
    ],
    "flags": [
     "原始工作表有 16 列，只抽出 3 列，結構可能判壞"
@@ -3443,8 +3443,8 @@
     "person": null
    },
    "colTypes": [
-    "ITEM:text",
-    "AMOUNT:money"
+    "ITEM:text:100%:13",
+    "AMOUNT:money:100%:8"
    ],
    "flags": [
     "原始工作表有 81 列，只抽出 13 列，結構可能判壞"
@@ -3473,21 +3473,21 @@
     "person": null
    },
    "colTypes": [
-    "INCOME:text",
-    "JAN:money",
-    "FEB:money",
-    "MAR:money",
-    "APR:category",
-    "MAY:category",
-    "JUN:category",
-    "JUL:category",
-    "AUG:category",
-    "SEP:category",
-    "OCT:category",
-    "NOV:category",
-    "DEC:category",
-    "YEAR:money",
-    "SPARKLINE:empty"
+    "INCOME:text:100%:69",
+    "JAN:money:62%:29",
+    "FEB:money:62%:30",
+    "MAR:money:63%:29",
+    "APR:category:16%:2",
+    "MAY:category:16%:2",
+    "JUN:category:16%:2",
+    "JUL:category:16%:2",
+    "AUG:category:16%:2",
+    "SEP:category:16%:2",
+    "OCT:category:16%:2",
+    "NOV:category:16%:2",
+    "DEC:category:16%:2",
+    "YEAR:money:99%:40",
+    "SPARKLINE:empty:0%:0"
    ],
    "flags": []
   },
@@ -3516,10 +3516,10 @@
     "person": null
    },
    "colTypes": [
-    "ACTUAL EXPENSES:text",
-    "AMOUNT:money",
-    "% OF EXPENSES:category",
-    "15% REDUCTION:number"
+    "ACTUAL EXPENSES:text:100%:5",
+    "AMOUNT:money:100%:4",
+    "% OF EXPENSES:category:100%:4",
+    "15% REDUCTION:number:100%:4"
    ],
    "flags": [
     "原始工作表有 42 列，只抽出 5 列，結構可能判壞"
@@ -3548,11 +3548,11 @@
     "person": null
    },
    "colTypes": [
-    "INCOME:text",
-    "ESTIMATED:number",
-    "ACTUAL:number",
-    "TOP 5 AMOUNT:money",
-    "DIFFERENCE:number"
+    "INCOME:text:100%:3",
+    "ESTIMATED:number:100%:3",
+    "ACTUAL:number:100%:3",
+    "TOP 5 AMOUNT:money:100%:3",
+    "DIFFERENCE:number:100%:3"
    ],
    "flags": [
     "原始工作表有 128 列，只抽出 3 列，結構可能判壞"
@@ -3581,11 +3581,11 @@
     "person": null
    },
    "colTypes": [
-    "PERSONNEL EXPENSES:text",
-    "ESTIMATED:number",
-    "ACTUAL:number",
-    "TOP 5 AMOUNT:money",
-    "DIFFERENCE:number"
+    "PERSONNEL EXPENSES:text:100%:3",
+    "ESTIMATED:number:100%:3",
+    "ACTUAL:number:100%:3",
+    "TOP 5 AMOUNT:money:100%:3",
+    "DIFFERENCE:number:100%:3"
    ],
    "flags": [
     "原始工作表有 20 列，只抽出 3 列，結構可能判壞"
@@ -3614,11 +3614,11 @@
     "person": null
    },
    "colTypes": [
-    "OPERATING EXPENSES:text",
-    "ESTIMATED:number",
-    "ACTUAL:number",
-    "TOP 5 AMOUNT:money",
-    "DIFFERENCE:number"
+    "OPERATING EXPENSES:text:100%:20",
+    "ESTIMATED:number:100%:18",
+    "ACTUAL:number:100%:18",
+    "TOP 5 AMOUNT:money:100%:20",
+    "DIFFERENCE:number:100%:17"
    ],
    "flags": []
   },
@@ -3645,8 +3645,8 @@
     "person": null
    },
    "colTypes": [
-    "Account:text",
-    "Amount:money"
+    "Account:text:100%:4",
+    "Amount:money:100%:4"
    ],
    "flags": []
   },
@@ -3673,9 +3673,9 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Category:category",
-    "Amount:money"
+    "Item:text:100%:19",
+    "Category:category:100%:2",
+    "Amount:money:100%:12"
    ],
    "flags": []
   },
@@ -3710,10 +3710,10 @@
     "person": null
    },
    "colTypes": [
-    "HOUSING:text",
-    "Projected cost:money",
-    "Actual cost:money",
-    "Difference:money"
+    "HOUSING:text:100%:35",
+    "Projected cost:money:24%:6",
+    "Actual cost:money:24%:6",
+    "Difference:money:100%:6"
    ],
    "flags": []
   },
@@ -3742,10 +3742,10 @@
     "person": null
    },
    "colTypes": [
-    "ENTERTAINMENT:text",
-    "Projected cost:category",
-    "Actual cost:category",
-    "Difference:money"
+    "ENTERTAINMENT:text:100%:26",
+    "Projected cost:category:100%:2",
+    "Actual cost:category:18%:2",
+    "Difference:money:100%:3"
    ],
    "flags": []
   },
@@ -3772,8 +3772,8 @@
     "person": null
    },
    "colTypes": [
-    "Revenue:text",
-    "Amount:money"
+    "Revenue:text:100%:4",
+    "Amount:money:100%:4"
    ],
    "flags": [
     "原始工作表有 21 列，只抽出 4 列，結構可能判壞"
@@ -3802,8 +3802,8 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Amount:money"
+    "Expenses:text:100%:4",
+    "Amount:money:100%:4"
    ],
    "flags": [
     "原始工作表有 21 列，只抽出 4 列，結構可能判壞"
@@ -3840,11 +3840,11 @@
     "person": null
    },
    "colTypes": [
-    "Type:category",
-    "Description:text",
-    "Daily:money",
-    "Monthly:money",
-    "Annual:money"
+    "Type:category:100%:4",
+    "Description:text:100%:36",
+    "Daily:money:100%:20",
+    "Monthly:money:100%:20",
+    "Annual:money:100%:20"
    ],
    "flags": []
   },
@@ -3871,21 +3871,21 @@
     "person": null
    },
    "colTypes": [
-    "Type:category",
-    "Description:text",
-    "Jan:money",
-    "Feb:money",
-    "Mar:money",
-    "Apr:money",
-    "May:money",
-    "Jun:money",
-    "Jul:empty",
-    "Aug:empty",
-    "Sep:empty",
-    "Oct:empty",
-    "Nov:empty",
-    "Dec:empty",
-    "Total:money"
+    "Type:category:100%:4",
+    "Description:text:100%:36",
+    "Jan:money:100%:18",
+    "Feb:money:100%:21",
+    "Mar:money:100%:20",
+    "Apr:money:100%:21",
+    "May:money:100%:21",
+    "Jun:money:100%:23",
+    "Jul:empty:0%:0",
+    "Aug:empty:0%:0",
+    "Sep:empty:0%:0",
+    "Oct:empty:0%:0",
+    "Nov:empty:0%:0",
+    "Dec:empty:0%:0",
+    "Total:money:100%:22"
    ],
    "flags": []
   },
@@ -3912,8 +3912,8 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "欄 2:longtext"
+    "欄 1:text:50%:1",
+    "欄 2:longtext:50%:1"
    ],
    "flags": [
     "標題列可能判錯：2/2 欄沒有欄名",
@@ -3944,8 +3944,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Annual Income:money"
+    "Row Labels:text:100%:7",
+    "Annual Income:money:100%:5"
    ],
    "flags": []
   },
@@ -3972,8 +3972,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Sum of Annual:money"
+    "Row Labels:text:100%:19",
+    "Sum of Annual:money:100%:13"
    ],
    "flags": []
   },
@@ -4000,8 +4000,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Sum of Annual:money"
+    "Row Labels:text:100%:12",
+    "Sum of Annual:money:100%:8"
    ],
    "flags": []
   },
@@ -4028,8 +4028,8 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Sum of Annual:money"
+    "Row Labels:text:100%:6",
+    "Sum of Annual:money:100%:5"
    ],
    "flags": []
   },
@@ -4058,9 +4058,9 @@
     "person": null
    },
    "colTypes": [
-    "Income:text",
-    "Annual:money",
-    "Monthly:money"
+    "Income:text:100%:6",
+    "Annual:money:100%:4",
+    "Monthly:money:100%:4"
    ],
    "flags": []
   },
@@ -4089,9 +4089,9 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Annual:money",
-    "Monthly:money"
+    "Expenses:text:100%:18",
+    "Annual:money:100%:12",
+    "Monthly:money:100%:12"
    ],
    "flags": []
   },
@@ -4120,9 +4120,9 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Annual:money",
-    "Monthly:money"
+    "Expenses:text:100%:11",
+    "Annual:money:100%:7",
+    "Monthly:money:100%:7"
    ],
    "flags": []
   },
@@ -4151,9 +4151,9 @@
     "person": null
    },
    "colTypes": [
-    "Savings:text",
-    "Annual:money",
-    "Monthly:money"
+    "Savings:text:100%:5",
+    "Annual:money:100%:4",
+    "Monthly:money:100%:4"
    ],
    "flags": []
   },
@@ -4182,13 +4182,13 @@
     "person": null
    },
    "colTypes": [
-    "Month:number",
-    "Balance:number",
-    "Interest earned:number",
-    "Interest + balance:number",
-    "Amount paid to investor:money",
-    "New balance:number",
-    "欄 7:money"
+    "Month:number:100%:240",
+    "Balance:number:100%:240",
+    "Interest earned:number:100%:240",
+    "Interest + balance:number:100%:240",
+    "Amount paid to investor:money:100%:1",
+    "New balance:number:100%:240",
+    "欄 7:money:2%:4"
    ],
    "flags": []
   },
@@ -4215,21 +4215,21 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Beginning:number",
-    "Jan-xx:category",
-    "Feb-xx:category",
-    "Mar-xx:category",
-    "Apr-xx:category",
-    "May-xx:category",
-    "Jun-xx:category",
-    "Jul-xx:category",
-    "Aug-xx:category",
-    "Sep-xx:category",
-    "Oct-xx:category",
-    "Nov-xx:category",
-    "Dec-xx:category",
-    "Total:money"
+    "欄 1:text:100%:45",
+    "Beginning:number:2%:1",
+    "Jan-xx:category:13%:2",
+    "Feb-xx:category:13%:2",
+    "Mar-xx:category:13%:2",
+    "Apr-xx:category:13%:2",
+    "May-xx:category:13%:2",
+    "Jun-xx:category:13%:2",
+    "Jul-xx:category:13%:2",
+    "Aug-xx:category:13%:2",
+    "Sep-xx:category:13%:2",
+    "Oct-xx:category:13%:2",
+    "Nov-xx:category:13%:2",
+    "Dec-xx:category:13%:2",
+    "Total:money:96%:2"
    ],
    "flags": []
   },
@@ -4264,20 +4264,20 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Feb 2023:money",
-    "Mar 2023:money",
-    "Apr 2023:money",
-    "May 2023:money",
-    "Jun 2023:money",
-    "Jul 2023:money",
-    "Aug 2023:money",
-    "Sep 2023:money",
-    "Oct 2023:money",
-    "Nov 2023:money",
-    "Dec 2023:money",
-    "Jan 2024:money",
-    "Total:category"
+    "欄 1:text:100%:46",
+    "Feb 2023:money:13%:6",
+    "Mar 2023:money:13%:6",
+    "Apr 2023:money:15%:7",
+    "May 2023:money:13%:6",
+    "Jun 2023:money:10%:5",
+    "Jul 2023:money:15%:7",
+    "Aug 2023:money:10%:5",
+    "Sep 2023:money:13%:6",
+    "Oct 2023:money:13%:6",
+    "Nov 2023:money:13%:6",
+    "Dec 2023:money:10%:5",
+    "Jan 2024:money:15%:7",
+    "Total:category:77%:8"
    ],
    "flags": []
   },
@@ -4304,8 +4304,8 @@
     "person": null
    },
    "colTypes": [
-    "Month:text",
-    "Cash on hand:money"
+    "Month:text:100%:12",
+    "Cash on hand:money:100%:12"
    ],
    "flags": []
   },
@@ -4332,9 +4332,9 @@
     "person": null
    },
    "colTypes": [
-    "Month:text",
-    "Not Below Minimum:money",
-    "Below Minimum:category"
+    "Month:text:100%:12",
+    "Not Below Minimum:money:100%:12",
+    "Below Minimum:category:100%:2"
    ],
    "flags": []
   },
@@ -4369,14 +4369,14 @@
     "person": null
    },
    "colTypes": [
-    "PROJECT TYPE:text",
-    "GENERAL PARTNER:category",
-    "BUSINESS LAWYER:text",
-    "DEFENSE LITIGATOR:category",
-    "INTELLECTUAL PROPERTY LAWYER:category",
-    "BANKRUPTCY LAWYER:category",
-    "ADMIN STAFF:person",
-    "TOTAL:category"
+    "PROJECT TYPE:text:100%:11",
+    "GENERAL PARTNER:category:100%:7",
+    "BUSINESS LAWYER:text:100%:9",
+    "DEFENSE LITIGATOR:category:100%:8",
+    "INTELLECTUAL PROPERTY LAWYER:category:100%:8",
+    "BANKRUPTCY LAWYER:category:100%:5",
+    "ADMIN STAFF:person:100%:8",
+    "TOTAL:category:55%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -4408,28 +4408,28 @@
     "person": null
    },
    "colTypes": [
-    "PROJECT NAME:text",
-    "PROJECT TYPE:text",
-    "ESTIMATED START:text",
-    "ESTIMATED FINISH:text",
-    "ACTUAL START:category",
-    "ACTUAL FINISH:text",
-    "ESTIMATED WORK:number",
-    "ACTUAL WORK:number",
-    "ESTIMATED DURATION:number",
-    "ACTUAL DURATION:number",
-    "GENERAL PARTNER:money",
-    "BUSINESS LAWYER:money",
-    "DEFENSE LITIGATOR:money",
-    "INTELLECTUAL PROPERTY LAWYER:money",
-    "BANKRUPTCY LAWYER:money",
-    "ADMIN STAFF:money",
-    "GENERAL PARTNER 2:money",
-    "BUSINESS LAWYER 2:money",
-    "DEFENSE LITIGATOR 2:money",
-    "INTELLECTUAL PROPERTY LAWYER 2:money",
-    "BANKRUPTCY LAWYER 2:money",
-    "ADMIN STAFF 2:money"
+    "PROJECT NAME:text:100%:5",
+    "PROJECT TYPE:text:100%:5",
+    "ESTIMATED START:text:100%:5",
+    "ESTIMATED FINISH:text:100%:5",
+    "ACTUAL START:category:100%:4",
+    "ACTUAL FINISH:text:100%:5",
+    "ESTIMATED WORK:number:100%:5",
+    "ACTUAL WORK:number:100%:5",
+    "ESTIMATED DURATION:number:100%:5",
+    "ACTUAL DURATION:number:100%:5",
+    "GENERAL PARTNER:money:100%:5",
+    "BUSINESS LAWYER:money:100%:4",
+    "DEFENSE LITIGATOR:money:100%:3",
+    "INTELLECTUAL PROPERTY LAWYER:money:100%:3",
+    "BANKRUPTCY LAWYER:money:100%:1",
+    "ADMIN STAFF:money:100%:5",
+    "GENERAL PARTNER 2:money:100%:5",
+    "BUSINESS LAWYER 2:money:100%:4",
+    "DEFENSE LITIGATOR 2:money:100%:3",
+    "INTELLECTUAL PROPERTY LAWYER 2:money:100%:3",
+    "BANKRUPTCY LAWYER 2:money:100%:1",
+    "ADMIN STAFF 2:money:100%:5"
    ],
    "flags": []
   },
@@ -4456,19 +4456,19 @@
     "person": null
    },
    "colTypes": [
-    "PROJECT NAME:text",
-    "GENERAL PARTNER:money",
-    "BUSINESS:money",
-    "DEFENSE LITIGATOR:money",
-    "INTELLECTUAL PROPERTY:money",
-    "BANKRUPTCY:money",
-    "ADMIN STAFF:money",
-    "GENERAL PARTNER:money",
-    "BUSINESS:money",
-    "DEFENSE LITIGATOR:money",
-    "BANKRUPTCY:money",
-    "INTELLECTUAL PROPERTY:money",
-    "ADMIN STAFF:money"
+    "PROJECT NAME:text:100%:6",
+    "GENERAL PARTNER:money:100%:6",
+    "BUSINESS:money:100%:5",
+    "DEFENSE LITIGATOR:money:100%:4",
+    "INTELLECTUAL PROPERTY:money:100%:4",
+    "BANKRUPTCY:money:100%:1",
+    "ADMIN STAFF:money:100%:6",
+    "GENERAL PARTNER:money:100%:6",
+    "BUSINESS:money:100%:5",
+    "DEFENSE LITIGATOR:money:100%:4",
+    "BANKRUPTCY:money:100%:1",
+    "INTELLECTUAL PROPERTY:money:100%:4",
+    "ADMIN STAFF:money:100%:6"
    ],
    "flags": []
   },
@@ -4495,14 +4495,14 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Sample 1:number",
-    "Sample 2:number",
-    "Sample 3:number",
-    "Sample 4:number",
-    "Sample 5:number",
-    "Mean:date",
-    "Sample mean (average of all means):date"
+    "Date:text:100%:18",
+    "Sample 1:number:100%:6",
+    "Sample 2:number:100%:5",
+    "Sample 3:number:100%:5",
+    "Sample 4:number:100%:6",
+    "Sample 5:number:100%:6",
+    "Mean:date:100%:11",
+    "Sample mean (average of all means):date:100%:1"
    ],
    "flags": [
     "分組欄「Sample mean (average of all means)」只有一種值，等於沒分組"
@@ -4531,10 +4531,10 @@
     "person": null
    },
    "colTypes": [
-    "1/24/2023:text",
-    "2.8:date",
-    "1/24/2023:text",
-    "2.5:date"
+    "1/24/2023:text:100%:17",
+    "2.8:date:100%:11",
+    "1/24/2023:text:100%:17",
+    "2.5:date:100%:1"
    ],
    "flags": [
     "分組欄「2.5」只有一種值，等於沒分組"
@@ -4563,8 +4563,8 @@
     "person": null
    },
    "colTypes": [
-    "DATE:text",
-    "COMPONENTS COMPLETED:number"
+    "DATE:text:100%:24",
+    "COMPONENTS COMPLETED:number:100%:19"
    ],
    "flags": []
   },
@@ -4591,10 +4591,10 @@
     "person": null
    },
    "colTypes": [
-    "STAGE:text",
-    "PROSPECTS:number",
-    "LOST:number",
-    "UNQUALIFIED:number"
+    "STAGE:text:100%:4",
+    "PROSPECTS:number:100%:4",
+    "LOST:number:75%:3",
+    "UNQUALIFIED:number:25%:1"
    ],
    "flags": []
   },
@@ -4623,33 +4623,33 @@
     "person": null
    },
    "colTypes": [
-    "Rim:text",
-    "欄 2:number",
-    "Label:text",
-    "Value:text",
-    "x:number",
-    "y:number",
-    "Label:money",
-    "Value:number",
-    "x:number",
-    "y:number",
-    "Label:text",
-    "Value:number",
-    "x:number",
-    "y:number",
-    "Label:text",
-    "Value:number",
-    "x:number",
-    "y:number",
-    "2:number",
-    "250:empty",
-    "Identified:text",
-    "58:number",
-    "308:number",
-    "308:number",
-    "0:number",
-    "0:number",
-    "0:number"
+    "Rim:text:100%:5",
+    "欄 2:number:100%:5",
+    "Label:text:80%:4",
+    "Value:text:80%:4",
+    "x:number:80%:4",
+    "y:number:80%:1",
+    "Label:money:80%:4",
+    "Value:number:100%:4",
+    "x:number:100%:5",
+    "y:number:100%:2",
+    "Label:text:60%:3",
+    "Value:number:60%:3",
+    "x:number:60%:3",
+    "y:number:60%:1",
+    "Label:text:20%:1",
+    "Value:number:20%:1",
+    "x:number:20%:1",
+    "y:number:20%:1",
+    "2:number:80%:4",
+    "250:empty:0%:0",
+    "Identified:text:80%:4",
+    "58:number:80%:4",
+    "308:number:80%:4",
+    "308:number:20%:1",
+    "0:number:40%:2",
+    "0:number:60%:3",
+    "0:number:80%:3"
    ],
    "flags": []
   },
@@ -4678,22 +4678,22 @@
     "person": null
    },
    "colTypes": [
-    "REGION:category",
-    "JAN:money",
-    "FEB:money",
-    "MAR:money",
-    "APR:money",
-    "MAY:money",
-    "JUN:money",
-    "JUL:money",
-    "AUG:empty",
-    "SEP:empty",
-    "OCT:empty",
-    "NOV:empty",
-    "DEC:empty",
-    "TOTAL:money",
-    "%:category",
-    "Label:category"
+    "REGION:category:100%:3",
+    "JAN:money:38%:3",
+    "FEB:money:38%:3",
+    "MAR:money:38%:3",
+    "APR:money:38%:3",
+    "MAY:money:38%:3",
+    "JUN:money:38%:3",
+    "JUL:money:38%:3",
+    "AUG:empty:0%:0",
+    "SEP:empty:0%:0",
+    "OCT:empty:0%:0",
+    "NOV:empty:0%:0",
+    "DEC:empty:0%:0",
+    "TOTAL:money:100%:4",
+    "%:category:100%:4",
+    "Label:category:100%:4"
    ],
    "flags": []
   },
@@ -4728,9 +4728,9 @@
     "person": null
    },
    "colTypes": [
-    "Category:category",
-    "Item:text",
-    "Value:money"
+    "Category:category:100%:5",
+    "Item:text:100%:19",
+    "Value:money:100%:19"
    ],
    "flags": []
   },
@@ -4757,8 +4757,8 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Value:money"
+    "Category:text:100%:10",
+    "Value:money:100%:8"
    ],
    "flags": []
   },
@@ -4785,12 +4785,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:longtext",
-    "TASK:text",
-    "ASSIGNED TO:category",
-    "PROGRESS:category",
-    "START:text",
-    "END:text"
+    "欄 1:longtext:4%:1",
+    "TASK:text:96%:24",
+    "ASSIGNED TO:category:77%:5",
+    "PROGRESS:category:62%:3",
+    "START:text:77%:16",
+    "END:text:77%:15"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -4819,63 +4819,63 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:number",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "29:text",
-    "30:text",
-    "31:text",
-    "1:text",
-    "2:text",
-    "3:text",
-    "4:text",
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "29:text",
-    "30:text",
-    "1:text",
-    "2:text",
-    "3:text",
-    "4:text",
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text"
+    "欄 1:number:95%:4",
+    "21:text:5%:1",
+    "22:text:5%:1",
+    "23:text:5%:1",
+    "24:text:5%:1",
+    "25:text:5%:1",
+    "26:text:5%:1",
+    "27:text:5%:1",
+    "28:text:5%:1",
+    "29:text:5%:1",
+    "30:text:5%:1",
+    "31:text:5%:1",
+    "1:text:5%:1",
+    "2:text:5%:1",
+    "3:text:5%:1",
+    "4:text:5%:1",
+    "5:text:5%:1",
+    "6:text:5%:1",
+    "7:text:5%:1",
+    "8:text:5%:1",
+    "9:text:5%:1",
+    "10:text:5%:1",
+    "11:text:5%:1",
+    "12:text:5%:1",
+    "13:text:5%:1",
+    "14:text:5%:1",
+    "15:text:5%:1",
+    "16:text:5%:1",
+    "17:text:5%:1",
+    "18:text:5%:1",
+    "19:text:5%:1",
+    "20:text:5%:1",
+    "21:text:5%:1",
+    "22:text:5%:1",
+    "23:text:5%:1",
+    "24:text:5%:1",
+    "25:text:5%:1",
+    "26:text:5%:1",
+    "27:text:5%:1",
+    "28:text:5%:1",
+    "29:text:5%:1",
+    "30:text:5%:1",
+    "1:text:5%:1",
+    "2:text:5%:1",
+    "3:text:5%:1",
+    "4:text:5%:1",
+    "5:text:5%:1",
+    "6:text:5%:1",
+    "7:text:5%:1",
+    "8:text:5%:1",
+    "9:text:5%:1",
+    "10:text:5%:1",
+    "11:text:5%:1",
+    "12:text:5%:1",
+    "13:text:5%:1",
+    "14:text:5%:1",
+    "15:text:5%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -4913,10 +4913,10 @@
     "person": null
    },
    "colTypes": [
-    "PROBLEM AREA:text",
-    "OCCURRENCES:number",
-    "PERCENT OF TOTAL:text",
-    "CUMULATIVE PERCENT:text"
+    "PROBLEM AREA:text:100%:11",
+    "OCCURRENCES:number:100%:11",
+    "PERCENT OF TOTAL:text:100%:11",
+    "CUMULATIVE PERCENT:text:100%:11"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -4945,14 +4945,14 @@
     "person": null
    },
    "colTypes": [
-    "Profit and loss summary:text",
-    "May actuals:money",
-    "May targets:money",
-    "Monthly variance:money",
-    "YTD actuals:money",
-    "YTD targets:money",
-    "YTD variance:money",
-    "Notes:longtext"
+    "Profit and loss summary:text:100%:33",
+    "May actuals:money:91%:25",
+    "May targets:money:91%:28",
+    "Monthly variance:money:91%:23",
+    "YTD actuals:money:91%:28",
+    "YTD targets:money:91%:26",
+    "YTD variance:money:88%:24",
+    "Notes:longtext:24%:6"
    ],
    "flags": []
   },
@@ -4981,10 +4981,10 @@
     "person": null
    },
    "colTypes": [
-    "Monthly budget:text",
-    "欄 2:text",
-    "Actual:money",
-    "Target:money"
+    "Monthly budget:text:9%:1",
+    "欄 2:text:91%:5",
+    "Actual:money:100%:11",
+    "Target:money:100%:9"
    ],
    "flags": []
   },
@@ -5013,10 +5013,10 @@
     "person": null
    },
    "colTypes": [
-    "Monthly budget:empty",
-    "欄 2:text",
-    "Actual:money",
-    "Target:money"
+    "Monthly budget:empty:0%:0",
+    "欄 2:text:100%:6",
+    "Actual:money:100%:6",
+    "Target:money:100%:6"
    ],
    "flags": []
   },
@@ -5043,13 +5043,13 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Check #:text",
-    "Description:text",
-    "Category:category",
-    "Withdrawal:money",
-    "Deposit:money",
-    "Balance:money"
+    "Date:text:100%:11",
+    "Check #:text:67%:8",
+    "Description:text:92%:11",
+    "Category:category:92%:8",
+    "Withdrawal:money:75%:9",
+    "Deposit:money:17%:2",
+    "Balance:money:92%:11"
    ],
    "flags": []
   },
@@ -5078,8 +5078,8 @@
     "person": null
    },
    "colTypes": [
-    "Other:text",
-    "$ 53.65:money"
+    "Other:text:100%:1",
+    "$ 53.65:money:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -5110,9 +5110,9 @@
     "person": null
    },
    "colTypes": [
-    "4:number",
-    "Investment:text",
-    "200.0006:number"
+    "4:number:100%:1",
+    "Investment:text:100%:1",
+    "200.0006:number:100%:1"
    ],
    "flags": [
     "只有一列資料，判斷幾乎沒有依據",
@@ -5150,21 +5150,21 @@
     "person": null
    },
    "colTypes": [
-    "Expenses:text",
-    "Jan:number",
-    "Feb:number",
-    "Mar:number",
-    "Apr:number",
-    "May:number",
-    "Jun:number",
-    "Jul:number",
-    "Aug:number",
-    "Sep:number",
-    "Oct:number",
-    "Nov:number",
-    "Dec:number",
-    "Total:money",
-    "Trend:empty"
+    "Expenses:text:100%:5",
+    "Jan:number:100%:5",
+    "Feb:number:100%:5",
+    "Mar:number:100%:5",
+    "Apr:number:100%:5",
+    "May:number:100%:5",
+    "Jun:number:100%:5",
+    "Jul:number:100%:1",
+    "Aug:number:100%:1",
+    "Sep:number:100%:1",
+    "Oct:number:100%:1",
+    "Nov:number:100%:1",
+    "Dec:number:100%:5",
+    "Total:money:100%:5",
+    "Trend:empty:0%:0"
    ],
    "flags": []
   },
@@ -5193,11 +5193,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:6",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5226,11 +5226,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:6",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5259,11 +5259,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:6",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5292,11 +5292,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:6",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5325,11 +5325,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:5",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5358,11 +5358,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:6",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5391,11 +5391,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:empty",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:empty:0%:0",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5426,11 +5426,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:empty",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:empty:0%:0",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5461,11 +5461,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:empty",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:empty:0%:0",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5496,11 +5496,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:empty",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:empty:0%:0",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5531,11 +5531,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:empty",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:empty:0%:0",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5566,11 +5566,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "PO#:category",
-    "Amount:money",
-    "Category:category",
-    "Description:text"
+    "Date:category:100%:2",
+    "PO#:category:100%:2",
+    "Amount:money:100%:6",
+    "Category:category:100%:5",
+    "Description:text:17%:1"
    ],
    "flags": []
   },
@@ -5597,8 +5597,8 @@
     "person": null
    },
    "colTypes": [
-    "DATE:text",
-    "DAILY IMPRESSIONS:number"
+    "DATE:text:100%:24",
+    "DAILY IMPRESSIONS:number:100%:19"
    ],
    "flags": []
   },
@@ -5635,10 +5635,10 @@
     "person": null
    },
    "colTypes": [
-    "Column1:text",
-    "Column2:text",
-    "Column3:text",
-    "Column4:category"
+    "Column1:text:71%:3",
+    "Column2:text:86%:12",
+    "Column3:text:79%:11",
+    "Column4:category:50%:6"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5669,10 +5669,10 @@
     "person": null
    },
    "colTypes": [
-    "Column1:category",
-    "Activity:text",
-    "Cost:money",
-    "Terms:category"
+    "Column1:category:71%:4",
+    "Activity:text:89%:23",
+    "Cost:money:79%:20",
+    "Terms:category:46%:6"
    ],
    "flags": []
   },
@@ -5701,10 +5701,10 @@
     "person": null
    },
    "colTypes": [
-    "Column1:category",
-    "Activity:text",
-    "Costs/Percent:money",
-    "Terms:text"
+    "Column1:category:46%:2",
+    "Activity:text:92%:12",
+    "Costs/Percent:money:77%:10",
+    "Terms:text:38%:5"
    ],
    "flags": []
   },
@@ -5731,12 +5731,12 @@
     "person": null
    },
    "colTypes": [
-    "PRODUCT NAME:text",
-    "QTR 1:money",
-    "QTR 2:category",
-    "QTR 3:category",
-    "QTR 4:category",
-    "TOTAL:money"
+    "PRODUCT NAME:text:100%:15",
+    "QTR 1:money:100%:14",
+    "QTR 2:category:100%:6",
+    "QTR 3:category:100%:2",
+    "QTR 4:category:100%:2",
+    "TOTAL:money:100%:15"
    ],
    "flags": []
   },
@@ -5763,10 +5763,10 @@
     "person": null
    },
    "colTypes": [
-    "PROBLEM AREA:text",
-    "OCCURRENCES:number",
-    "PERCENT OF TOTAL:text",
-    "CUMULATIVE PERCENT:text"
+    "PROBLEM AREA:text:100%:11",
+    "OCCURRENCES:number:100%:11",
+    "PERCENT OF TOTAL:text:100%:11",
+    "CUMULATIVE PERCENT:text:100%:11"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -5846,16 +5846,16 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:longtext",
-    "PILAR ACKERMAN:text",
-    "欄 3:text",
-    "HAZEN ABOIROUS:text",
-    "欄 5:longtext",
-    "GUDMUNDUR ADALSTEINSSON:text",
-    "欄 7:longtext",
-    "ANTONIO ALWAN:text",
-    "欄 9:text",
-    "BRIAN SMITH:text"
+    "欄 1:longtext:100%:5",
+    "PILAR ACKERMAN:text:64%:9",
+    "欄 3:text:36%:5",
+    "HAZEN ABOIROUS:text:64%:9",
+    "欄 5:longtext:36%:5",
+    "GUDMUNDUR ADALSTEINSSON:text:64%:9",
+    "欄 7:longtext:36%:5",
+    "ANTONIO ALWAN:text:64%:9",
+    "欄 9:text:36%:5",
+    "BRIAN SMITH:text:64%:9"
    ],
    "flags": [
     "標題列可能判錯：5/10 欄沒有欄名",
@@ -5886,14 +5886,14 @@
     "person": null
    },
    "colTypes": [
-    "Age:text",
-    "Pounds:number",
-    "Ounces:number",
-    "Weight (lb.):number",
-    "Weight percentile:number",
-    "Length (in.):number",
-    "Length percentile:number",
-    "2:number"
+    "Age:text:100%:20",
+    "Pounds:number:35%:3",
+    "Ounces:number:35%:5",
+    "Weight (lb.):number:35%:6",
+    "Weight percentile:number:35%:7",
+    "Length (in.):number:35%:3",
+    "Length percentile:number:35%:3",
+    "2:number:20%:4"
    ],
    "flags": []
   },
@@ -5930,10 +5930,10 @@
     "person": null
    },
    "colTypes": [
-    "GOAL WEIGHT:text",
-    "CHART VIEW:number",
-    "Madison Butler:text",
-    "WEIGHT LOSS:empty"
+    "GOAL WEIGHT:text:94%:15",
+    "CHART VIEW:number:94%:11",
+    "Madison Butler:text:6%:1",
+    "WEIGHT LOSS:empty:0%:0"
    ],
    "flags": [
     "原始工作表有 330 列，只抽出 16 列，結構可能判壞"
@@ -5964,13 +5964,13 @@
     "person": null
    },
    "colTypes": [
-    "12:category",
-    "Periods:category",
-    "Values:number",
-    "欄 4:category",
-    "欄 5:text",
-    "Values:number",
-    "日期:date"
+    "12:category:99%:2",
+    "Periods:category:100%:14",
+    "Values:number:99%:9",
+    "欄 4:category:3%:2",
+    "欄 5:text:5%:5",
+    "Values:number:4%:4",
+    "日期:date:6%:5"
    ],
    "flags": []
   },
@@ -6007,12 +6007,12 @@
     "person": null
    },
    "colTypes": [
-    "Milestone description:text",
-    "Category:category",
-    "Assigned to:text",
-    "Progress:category",
-    "Start:text",
-    "Days:number"
+    "Milestone description:text:100%:25",
+    "Category:category:96%:6",
+    "Assigned to:text:4%:1",
+    "Progress:category:24%:5",
+    "Start:text:72%:15",
+    "Days:number:72%:13"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -6043,34 +6043,34 @@
     "person": null
    },
    "colTypes": [
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "1:text",
-    "2:text",
-    "3:text",
-    "4:text"
+    "5:text:50%:2",
+    "6:text:25%:1",
+    "7:text:25%:1",
+    "8:text:25%:1",
+    "9:text:25%:1",
+    "10:text:25%:1",
+    "11:text:25%:1",
+    "12:text:25%:1",
+    "13:text:25%:1",
+    "14:text:25%:1",
+    "15:text:50%:2",
+    "16:text:25%:1",
+    "17:text:25%:1",
+    "18:text:25%:1",
+    "19:text:25%:1",
+    "20:text:50%:2",
+    "21:text:25%:1",
+    "22:text:25%:1",
+    "23:text:25%:1",
+    "24:text:25%:1",
+    "25:text:25%:1",
+    "26:text:25%:1",
+    "27:text:25%:1",
+    "28:text:25%:1",
+    "1:text:25%:1",
+    "2:text:25%:1",
+    "3:text:25%:1",
+    "4:text:25%:1"
    ],
    "flags": [
     "2/4 列沒有標題，會被整列略過",
@@ -6104,34 +6104,34 @@
     "person": null
    },
    "colTypes": [
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "29:text",
-    "30:text",
-    "31:text",
-    "1:text"
+    "5:text:100%:1",
+    "6:text:100%:1",
+    "7:text:100%:1",
+    "8:text:100%:1",
+    "9:text:100%:1",
+    "10:text:100%:1",
+    "11:text:100%:1",
+    "12:text:100%:1",
+    "13:text:100%:1",
+    "14:text:100%:1",
+    "15:text:100%:1",
+    "16:text:100%:1",
+    "17:text:100%:1",
+    "18:text:100%:1",
+    "19:text:100%:1",
+    "20:text:100%:1",
+    "21:text:100%:1",
+    "22:text:100%:1",
+    "23:text:100%:1",
+    "24:text:100%:1",
+    "25:text:100%:1",
+    "26:text:100%:1",
+    "27:text:100%:1",
+    "28:text:100%:1",
+    "29:text:100%:1",
+    "30:text:100%:1",
+    "31:text:100%:1",
+    "1:text:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -6166,12 +6166,12 @@
     "person": null
    },
    "colTypes": [
-    "Milestone description:text",
-    "Category:category",
-    "Assigned to:text",
-    "Progress:category",
-    "Start:text",
-    "Days:number"
+    "Milestone description:text:100%:10",
+    "Category:category:96%:6",
+    "Assigned to:text:4%:1",
+    "Progress:category:24%:5",
+    "Start:text:72%:15",
+    "Days:number:72%:13"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -6202,34 +6202,34 @@
     "person": null
    },
    "colTypes": [
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "1:text",
-    "2:text",
-    "3:text",
-    "4:text"
+    "5:text:50%:2",
+    "6:text:25%:1",
+    "7:text:25%:1",
+    "8:text:25%:1",
+    "9:text:25%:1",
+    "10:text:25%:1",
+    "11:text:25%:1",
+    "12:text:25%:1",
+    "13:text:25%:1",
+    "14:text:25%:1",
+    "15:text:50%:2",
+    "16:text:25%:1",
+    "17:text:25%:1",
+    "18:text:25%:1",
+    "19:text:25%:1",
+    "20:text:50%:2",
+    "21:text:25%:1",
+    "22:text:25%:1",
+    "23:text:25%:1",
+    "24:text:25%:1",
+    "25:text:25%:1",
+    "26:text:25%:1",
+    "27:text:25%:1",
+    "28:text:25%:1",
+    "1:text:25%:1",
+    "2:text:25%:1",
+    "3:text:25%:1",
+    "4:text:25%:1"
    ],
    "flags": [
     "2/4 列沒有標題，會被整列略過",
@@ -6263,34 +6263,34 @@
     "person": null
    },
    "colTypes": [
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "29:text",
-    "30:text",
-    "31:text",
-    "1:text"
+    "5:text:100%:1",
+    "6:text:100%:1",
+    "7:text:100%:1",
+    "8:text:100%:1",
+    "9:text:100%:1",
+    "10:text:100%:1",
+    "11:text:100%:1",
+    "12:text:100%:1",
+    "13:text:100%:1",
+    "14:text:100%:1",
+    "15:text:100%:1",
+    "16:text:100%:1",
+    "17:text:100%:1",
+    "18:text:100%:1",
+    "19:text:100%:1",
+    "20:text:100%:1",
+    "21:text:100%:1",
+    "22:text:100%:1",
+    "23:text:100%:1",
+    "24:text:100%:1",
+    "25:text:100%:1",
+    "26:text:100%:1",
+    "27:text:100%:1",
+    "28:text:100%:1",
+    "29:text:100%:1",
+    "30:text:100%:1",
+    "31:text:100%:1",
+    "1:text:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -6325,12 +6325,12 @@
     "person": null
    },
    "colTypes": [
-    "Milestone description:text",
-    "Category:category",
-    "Assigned to:text",
-    "Progress:category",
-    "Start:text",
-    "Days:number"
+    "Milestone description:text:100%:10",
+    "Category:category:96%:6",
+    "Assigned to:text:4%:1",
+    "Progress:category:24%:5",
+    "Start:text:72%:15",
+    "Days:number:72%:13"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -6361,34 +6361,34 @@
     "person": null
    },
    "colTypes": [
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "1:text",
-    "2:text",
-    "3:text",
-    "4:text"
+    "5:text:50%:2",
+    "6:text:25%:1",
+    "7:text:25%:1",
+    "8:text:25%:1",
+    "9:text:25%:1",
+    "10:text:25%:1",
+    "11:text:25%:1",
+    "12:text:25%:1",
+    "13:text:25%:1",
+    "14:text:25%:1",
+    "15:text:50%:2",
+    "16:text:25%:1",
+    "17:text:25%:1",
+    "18:text:25%:1",
+    "19:text:25%:1",
+    "20:text:50%:2",
+    "21:text:25%:1",
+    "22:text:25%:1",
+    "23:text:25%:1",
+    "24:text:25%:1",
+    "25:text:25%:1",
+    "26:text:25%:1",
+    "27:text:25%:1",
+    "28:text:25%:1",
+    "1:text:25%:1",
+    "2:text:25%:1",
+    "3:text:25%:1",
+    "4:text:25%:1"
    ],
    "flags": [
     "2/4 列沒有標題，會被整列略過",
@@ -6422,34 +6422,34 @@
     "person": null
    },
    "colTypes": [
-    "5:text",
-    "6:text",
-    "7:text",
-    "8:text",
-    "9:text",
-    "10:text",
-    "11:text",
-    "12:text",
-    "13:text",
-    "14:text",
-    "15:text",
-    "16:text",
-    "17:text",
-    "18:text",
-    "19:text",
-    "20:text",
-    "21:text",
-    "22:text",
-    "23:text",
-    "24:text",
-    "25:text",
-    "26:text",
-    "27:text",
-    "28:text",
-    "29:text",
-    "30:text",
-    "31:text",
-    "1:text"
+    "5:text:100%:1",
+    "6:text:100%:1",
+    "7:text:100%:1",
+    "8:text:100%:1",
+    "9:text:100%:1",
+    "10:text:100%:1",
+    "11:text:100%:1",
+    "12:text:100%:1",
+    "13:text:100%:1",
+    "14:text:100%:1",
+    "15:text:100%:1",
+    "16:text:100%:1",
+    "17:text:100%:1",
+    "18:text:100%:1",
+    "19:text:100%:1",
+    "20:text:100%:1",
+    "21:text:100%:1",
+    "22:text:100%:1",
+    "23:text:100%:1",
+    "24:text:100%:1",
+    "25:text:100%:1",
+    "26:text:100%:1",
+    "27:text:100%:1",
+    "28:text:100%:1",
+    "29:text:100%:1",
+    "30:text:100%:1",
+    "31:text:100%:1",
+    "1:text:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -6482,14 +6482,14 @@
     "person": null
    },
    "colTypes": [
-    "Age:text",
-    "Pounds:number",
-    "Ounces:number",
-    "Weight (lb.):number",
-    "Weight percentile:number",
-    "Length (in.):number",
-    "Length percentile:number",
-    "2:number"
+    "Age:text:100%:20",
+    "Pounds:number:35%:3",
+    "Ounces:number:35%:5",
+    "Weight (lb.):number:35%:6",
+    "Weight percentile:number:35%:7",
+    "Length (in.):number:35%:3",
+    "Length percentile:number:35%:3",
+    "2:number:20%:4"
    ],
    "flags": []
   },
@@ -6524,13 +6524,13 @@
     "person": null
    },
    "colTypes": [
-    "TIME:time",
-    "DATE:date",
-    "AM/PM:category",
-    "SYSTOLIC:number",
-    "DIASTOLIC:number",
-    "HEART RATE:number",
-    "NOTES:empty"
+    "TIME:time:100%:7",
+    "DATE:date:89%:4",
+    "AM/PM:category:89%:2",
+    "SYSTOLIC:number:100%:8",
+    "DIASTOLIC:number:100%:6",
+    "HEART RATE:number:100%:6",
+    "NOTES:empty:0%:0"
    ],
    "flags": []
   },
@@ -6559,10 +6559,10 @@
     "person": null
    },
    "colTypes": [
-    "Cost center:text",
-    "Annual cost:money",
-    "Percent of total:text",
-    "Cumulative percent:text"
+    "Cost center:text:100%:10",
+    "Annual cost:money:100%:10",
+    "Percent of total:text:100%:10",
+    "Cumulative percent:text:100%:10"
    ],
    "flags": []
   },
@@ -6589,20 +6589,20 @@
     "person": null
    },
    "colTypes": [
-    "EMPLOYEE COSTS:text",
-    "JANUARY:money",
-    "FEBRUARY:money",
-    "MARCH:money",
-    "APRIL:money",
-    "MAY:money",
-    "JUNE:money",
-    "JULY:money",
-    "AUGUST:money",
-    "SEPTEMBER:money",
-    "OCTOBER:money",
-    "NOVEMBER:money",
-    "DECEMBER:money",
-    "TOTAL:money"
+    "EMPLOYEE COSTS:text:100%:23",
+    "JANUARY:money:100%:18",
+    "FEBRUARY:money:100%:18",
+    "MARCH:money:100%:18",
+    "APRIL:money:100%:18",
+    "MAY:money:100%:18",
+    "JUNE:money:100%:19",
+    "JULY:money:100%:18",
+    "AUGUST:money:100%:19",
+    "SEPTEMBER:money:100%:18",
+    "OCTOBER:money:100%:18",
+    "NOVEMBER:money:100%:18",
+    "DECEMBER:money:100%:20",
+    "TOTAL:money:100%:20"
    ],
    "flags": []
   },
@@ -6629,20 +6629,20 @@
     "person": null
    },
    "colTypes": [
-    "EMPLOYEE COSTS:text",
-    "JANUARY:money",
-    "FEBRUARY:money",
-    "MARCH:money",
-    "APRIL:money",
-    "MAY:money",
-    "JUNE:money",
-    "JULY:category",
-    "AUGUST:category",
-    "SEPTEMBER:category",
-    "OCTOBER:category",
-    "NOVEMBER:category",
-    "DECEMBER:category",
-    "TOTAL:money"
+    "EMPLOYEE COSTS:text:100%:23",
+    "JANUARY:money:100%:23",
+    "FEBRUARY:money:100%:21",
+    "MARCH:money:100%:22",
+    "APRIL:money:100%:23",
+    "MAY:money:100%:22",
+    "JUNE:money:100%:22",
+    "JULY:category:28%:2",
+    "AUGUST:category:28%:2",
+    "SEPTEMBER:category:28%:2",
+    "OCTOBER:category:28%:2",
+    "NOVEMBER:category:28%:2",
+    "DECEMBER:category:28%:2",
+    "TOTAL:money:100%:22"
    ],
    "flags": []
   },
@@ -6669,20 +6669,20 @@
     "person": null
    },
    "colTypes": [
-    "EMPLOYEE COSTS:text",
-    "JANUARY:money",
-    "FEBRUARY:money",
-    "MARCH:money",
-    "APRIL:money",
-    "MAY:money",
-    "JUNE:money",
-    "JULY:category",
-    "AUGUST:category",
-    "SEPTEMBER:category",
-    "OCTOBER:category",
-    "NOVEMBER:category",
-    "DECEMBER:category",
-    "TOTAL:money"
+    "EMPLOYEE COSTS:text:100%:23",
+    "JANUARY:money:100%:16",
+    "FEBRUARY:money:100%:15",
+    "MARCH:money:100%:15",
+    "APRIL:money:100%:18",
+    "MAY:money:100%:17",
+    "JUNE:money:100%:18",
+    "JULY:category:28%:2",
+    "AUGUST:category:28%:2",
+    "SEPTEMBER:category:28%:2",
+    "OCTOBER:category:28%:2",
+    "NOVEMBER:category:28%:2",
+    "DECEMBER:category:28%:2",
+    "TOTAL:money:100%:20"
    ],
    "flags": []
   },
@@ -6711,11 +6711,11 @@
     "person": null
    },
    "colTypes": [
-    "CATEGORY:text",
-    "PLANNED EXPENSES:money",
-    "ACTUAL EXPENSES:money",
-    "VARIANCE:money",
-    "VARIANCE %:text"
+    "CATEGORY:text:100%:4",
+    "PLANNED EXPENSES:money:100%:4",
+    "ACTUAL EXPENSES:money:100%:4",
+    "VARIANCE:money:100%:4",
+    "VARIANCE %:text:100%:4"
    ],
    "flags": []
   },
@@ -6750,11 +6750,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "Category:category",
-    "Sub-category:category",
-    "Amount:money",
-    "Note:text"
+    "Date:category:100%:10",
+    "Category:category:100%:4",
+    "Sub-category:category:100%:12",
+    "Amount:money:100%:9",
+    "Note:text:14%:3"
    ],
    "flags": []
   },
@@ -6781,12 +6781,12 @@
     "person": null
    },
    "colTypes": [
-    "Row Labels:text",
-    "Fun:number",
-    "Transport:number",
-    "Daily:number",
-    "Housing:number",
-    "Grand Total:money"
+    "Row Labels:text:100%:7",
+    "Fun:number:43%:3",
+    "Transport:number:71%:5",
+    "Daily:number:71%:5",
+    "Housing:number:43%:2",
+    "Grand Total:money:100%:7"
    ],
    "flags": []
   },
@@ -6821,9 +6821,9 @@
     "person": null
    },
    "colTypes": [
-    "STARTUP EXPENSES:text",
-    "欄 2:text",
-    "First Up Consultants:money"
+    "STARTUP EXPENSES:text:100%:75",
+    "欄 2:text:1%:1",
+    "First Up Consultants:money:87%:4"
    ],
    "flags": []
   },
@@ -6858,20 +6858,20 @@
     "person": null
    },
    "colTypes": [
-    "Employee costs:text",
-    "Jan:money",
-    "Feb:money",
-    "Mar:money",
-    "Apr:money",
-    "May:money",
-    "Jun:money",
-    "Jul:money",
-    "Aug:money",
-    "Sep:money",
-    "Oct:money",
-    "Nov:money",
-    "Dec:money",
-    "YEAR:money"
+    "Employee costs:text:100%:22",
+    "Jan:money:100%:14",
+    "Feb:money:100%:15",
+    "Mar:money:100%:15",
+    "Apr:money:100%:15",
+    "May:money:100%:15",
+    "Jun:money:100%:16",
+    "Jul:money:100%:15",
+    "Aug:money:100%:16",
+    "Sep:money:100%:15",
+    "Oct:money:100%:15",
+    "Nov:money:100%:15",
+    "Dec:money:100%:17",
+    "YEAR:money:100%:17"
    ],
    "flags": []
   },
@@ -6898,20 +6898,20 @@
     "person": null
    },
    "colTypes": [
-    "Employee costs:text",
-    "Jan:money",
-    "Feb:money",
-    "Mar:money",
-    "Apr:money",
-    "May:money",
-    "Jun:money",
-    "Jul:category",
-    "Aug:category",
-    "Sep:category",
-    "Oct:category",
-    "Nov:category",
-    "Dec:category",
-    "YEAR:money"
+    "Employee costs:text:100%:22",
+    "Jan:money:100%:20",
+    "Feb:money:100%:18",
+    "Mar:money:100%:19",
+    "Apr:money:100%:20",
+    "May:money:100%:19",
+    "Jun:money:100%:19",
+    "Jul:category:23%:2",
+    "Aug:category:23%:2",
+    "Sep:category:23%:2",
+    "Oct:category:23%:2",
+    "Nov:category:23%:2",
+    "Dec:category:23%:2",
+    "YEAR:money:100%:19"
    ],
    "flags": []
   },
@@ -6938,20 +6938,20 @@
     "person": null
    },
    "colTypes": [
-    "Office costs:text",
-    "Jan:money",
-    "Feb:money",
-    "Mar:money",
-    "Apr:money",
-    "May:money",
-    "Jun:money",
-    "Jul:money",
-    "Aug:money",
-    "Sep:money",
-    "Oct:money",
-    "Nov:money",
-    "Dec:money",
-    "YEAR:money"
+    "Office costs:text:100%:19",
+    "Jan:money:100%:13",
+    "Feb:money:100%:12",
+    "Mar:money:100%:12",
+    "Apr:money:100%:14",
+    "May:money:100%:12",
+    "Jun:money:100%:14",
+    "Jul:money:100%:13",
+    "Aug:money:100%:14",
+    "Sep:money:100%:13",
+    "Oct:money:100%:13",
+    "Nov:money:100%:13",
+    "Dec:money:100%:15",
+    "YEAR:money:100%:18"
    ],
    "flags": []
   },
@@ -6978,11 +6978,11 @@
     "person": null
    },
    "colTypes": [
-    "Expense category:text",
-    "Planned expenses:money",
-    "Actual expenses:money",
-    "Expense variances:money",
-    "Variance percentage:category"
+    "Expense category:text:100%:4",
+    "Planned expenses:money:100%:4",
+    "Actual expenses:money:100%:4",
+    "Expense variances:money:100%:4",
+    "Variance percentage:category:100%:3"
    ],
    "flags": [
     "原始工作表有 37 列，只抽出 4 列，結構可能判壞"
@@ -7011,12 +7011,12 @@
     "person": null
    },
    "colTypes": [
-    "Expense:text",
-    "Category:category",
-    "Budget:empty",
-    "Actual:empty",
-    "Difference ($):category",
-    "Difference (%):empty"
+    "Expense:text:100%:20",
+    "Category:category:100%:2",
+    "Budget:empty:0%:0",
+    "Actual:empty:0%:0",
+    "Difference ($):category:100%:1",
+    "Difference (%):empty:0%:0"
    ],
    "flags": [
     "分組欄「Difference ($)」只有一種值，等於沒分組"
@@ -7053,11 +7053,11 @@
     "person": null
    },
    "colTypes": [
-    "Product number:number",
-    "Name:person",
-    "Description:text",
-    "Retail price/unit:money",
-    "Bulk price/unit:money"
+    "Product number:number:100%:2",
+    "Name:person:100%:2",
+    "Description:text:100%:2",
+    "Retail price/unit:money:100%:2",
+    "Bulk price/unit:money:100%:2"
    ],
    "flags": [
     "原始工作表有 174 列，只抽出 4 列，結構可能判壞"
@@ -7089,11 +7089,11 @@
     "person": null
    },
    "colTypes": [
-    "Asset:category",
-    "Amount:money",
-    "My assets:empty",
-    "欄 4:text",
-    "欄 5:money"
+    "Asset:category:100%:6",
+    "Amount:money:43%:6",
+    "My assets:empty:0%:0",
+    "欄 4:text:57%:8",
+    "欄 5:money:57%:8"
    ],
    "flags": []
   },
@@ -7120,16 +7120,16 @@
     "person": null
    },
    "colTypes": [
-    "ROOM:text",
-    "ITEM DESCRIPTION:text",
-    "MAKE OR/AND MODEL:text",
-    "SN AND/OR ID NUMBER:category",
-    "DATE PURCHASED:text",
-    "LOCATION OF PURCHASE:text",
-    "PURCHASE AMOUNT:money",
-    "ESTIMATED VALUE:money",
-    "PHOTO AVAILABLE?:category",
-    "NOTES:text"
+    "ROOM:text:100%:3",
+    "ITEM DESCRIPTION:text:100%:3",
+    "MAKE OR/AND MODEL:text:67%:2",
+    "SN AND/OR ID NUMBER:category:100%:2",
+    "DATE PURCHASED:text:100%:3",
+    "LOCATION OF PURCHASE:text:100%:3",
+    "PURCHASE AMOUNT:money:100%:3",
+    "ESTIMATED VALUE:money:100%:3",
+    "PHOTO AVAILABLE?:category:100%:2",
+    "NOTES:text:33%:1"
    ],
    "flags": [
     "原始工作表有 25 列，只抽出 3 列，結構可能判壞"
@@ -7160,24 +7160,24 @@
     "person": null
    },
    "colTypes": [
-    "Asset or \r\nserial number:number",
-    "Item description \r\n(make and model):text",
-    "Location:category",
-    "Condition:category",
-    "Vendor:category",
-    "Years of \r\nservice left:number",
-    "Initial value:money",
-    "Down payment:money",
-    "Date purchased \r\nor leased:text",
-    "Loan term \r\nin years:number",
-    "Loan rate:text",
-    "Monthly payment:money",
-    "Monthly operating \r\ncosts:money",
-    "Total monthly \r\ncost:money",
-    "Expected value at end \r\nof loan term:money",
-    "Annual straight line depreciation:money",
-    "Monthly straight line depreciation:money",
-    "Current value:money"
+    "Asset or \r\nserial number:number:50%:3",
+    "Item description \r\n(make and model):text:100%:3",
+    "Location:category:50%:2",
+    "Condition:category:50%:2",
+    "Vendor:category:50%:1",
+    "Years of \r\nservice left:number:50%:3",
+    "Initial value:money:50%:3",
+    "Down payment:money:50%:3",
+    "Date purchased \r\nor leased:text:50%:3",
+    "Loan term \r\nin years:number:50%:3",
+    "Loan rate:text:50%:3",
+    "Monthly payment:money:100%:4",
+    "Monthly operating \r\ncosts:money:33%:2",
+    "Total monthly \r\ncost:money:100%:4",
+    "Expected value at end \r\nof loan term:money:50%:3",
+    "Annual straight line depreciation:money:100%:4",
+    "Monthly straight line depreciation:money:100%:4",
+    "Current value:money:100%:4"
    ],
    "flags": [
     "分組欄「Vendor」只有一種值，等於沒分組",
@@ -7207,15 +7207,15 @@
     "person": null
    },
    "colTypes": [
-    "Inventory ID:text",
-    "Name:person",
-    "Description:text",
-    "Unit \r\nprice:date",
-    "Quantity \r\nin stock:number",
-    "Reorder \r\nlevel:number",
-    "Reorder time\r\nin days:number",
-    "Quantity in reorder:number",
-    "Discontinued?:category"
+    "Inventory ID:text:100%:3",
+    "Name:person:100%:3",
+    "Description:text:100%:3",
+    "Unit \r\nprice:date:100%:3",
+    "Quantity \r\nin stock:number:100%:3",
+    "Reorder \r\nlevel:number:100%:3",
+    "Reorder time\r\nin days:number:100%:2",
+    "Quantity in reorder:number:100%:3",
+    "Discontinued?:category:100%:1"
    ],
    "flags": []
   },
@@ -7244,18 +7244,18 @@
     "person": null
    },
    "colTypes": [
-    "Name:person",
-    "欄 2:longtext",
-    "Relationship:text",
-    "Dependent:category",
-    "欄 5:text",
-    "Age:number",
-    "Address:text",
-    "欄 8:money",
-    "欄 9:text",
-    "Phone number:text",
-    "Email:text",
-    "欄 12:money"
+    "Name:person:100%:13",
+    "欄 2:longtext:50%:10",
+    "Relationship:text:20%:4",
+    "Dependent:category:20%:3",
+    "欄 5:text:60%:12",
+    "Age:number:15%:3",
+    "Address:text:5%:1",
+    "欄 8:money:55%:2",
+    "欄 9:text:35%:7",
+    "Phone number:text:5%:1",
+    "Email:text:5%:1",
+    "欄 12:money:35%:2"
    ],
    "flags": [
     "標題列可能判錯：5/12 欄沒有欄名"
@@ -7286,13 +7286,13 @@
     "person": null
    },
    "colTypes": [
-    "Financial institution:longtext",
-    "Address:category",
-    "Phone:category",
-    "Account number:category",
-    "Account type:category",
-    "Balance:text",
-    "Notes:text"
+    "Financial institution:longtext:100%:23",
+    "Address:category:92%:6",
+    "Phone:category:33%:2",
+    "Account number:category:33%:5",
+    "Account type:category:33%:6",
+    "Balance:text:33%:6",
+    "Notes:text:33%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -7323,13 +7323,13 @@
     "person": null
    },
    "colTypes": [
-    "Financial institution:text",
-    "Address:category",
-    "Phone:category",
-    "Title held by:text",
-    "Account number:category",
-    "Balance:category",
-    "Notes:text"
+    "Financial institution:text:100%:8",
+    "Address:category:88%:3",
+    "Phone:category:50%:1",
+    "Title held by:text:50%:3",
+    "Account number:category:50%:3",
+    "Balance:category:50%:2",
+    "Notes:text:50%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -7362,16 +7362,16 @@
     "person": null
    },
    "colTypes": [
-    "DONE:category",
-    "ITEM:text",
-    "STORE:category",
-    "CATEGORY:category",
-    "QTY:number",
-    "UNIT:category",
-    "UNIT PRICE:money",
-    "TOTAL:money",
-    "COMMENT:text",
-    "SEAFOOD TOTAL:money"
+    "DONE:category:11%:1",
+    "ITEM:text:100%:18",
+    "STORE:category:100%:5",
+    "CATEGORY:category:100%:4",
+    "QTY:number:100%:8",
+    "UNIT:category:100%:8",
+    "UNIT PRICE:money:100%:14",
+    "TOTAL:money:100%:18",
+    "COMMENT:text:28%:5",
+    "SEAFOOD TOTAL:money:61%:11"
    ],
    "flags": []
   },
@@ -7408,24 +7408,24 @@
     "person": null
    },
    "colTypes": [
-    "Asset or serial number:number",
-    "Item description:text",
-    "Location:text",
-    "Condition:text",
-    "Vendor:category",
-    "Years of service left:number",
-    "Initial value:money",
-    "Down payment:money",
-    "Date purchased or leased:text",
-    "Loan term in years:number",
-    "Loan rate:text",
-    "Monthly payment:money",
-    "Monthly operating costs:money",
-    "Total monthly cost:money",
-    "Expected value at end of loan term:money",
-    "Annual straight line depreciation:money",
-    "Monthly straight line depreciation:money",
-    "Current value:money"
+    "Asset or serial number:number:60%:3",
+    "Item description:text:100%:3",
+    "Location:text:60%:2",
+    "Condition:text:60%:3",
+    "Vendor:category:60%:1",
+    "Years of service left:number:60%:3",
+    "Initial value:money:60%:3",
+    "Down payment:money:60%:2",
+    "Date purchased or leased:text:60%:3",
+    "Loan term in years:number:40%:2",
+    "Loan rate:text:40%:2",
+    "Monthly payment:money:100%:3",
+    "Monthly operating costs:money:60%:3",
+    "Total monthly cost:money:100%:4",
+    "Expected value at end of loan term:money:40%:2",
+    "Annual straight line depreciation:money:100%:4",
+    "Monthly straight line depreciation:money:100%:4",
+    "Current value:money:100%:4"
    ],
    "flags": [
     "分組欄「Vendor」只有一種值，等於沒分組"
@@ -7454,20 +7454,20 @@
     "person": null
    },
    "colTypes": [
-    "ASSET NAME:text",
-    "ASSET CLASS:text",
-    "DESCRIPTION:text",
-    "PHYSICAL LOCATION:text",
-    "ASSET #:number",
-    "SERIAL #:number",
-    "ACQISITION DATE:text",
-    "ACQUISITION COST:money",
-    "DEPRECTION METHOD:category",
-    "USEFUL LIFE (YEARS):number",
-    "SALVAGE VALUE:money",
-    "PREVIOUS DEPRECIATION:money",
-    "FIRST YEAR %:text",
-    "DEPRECIATION THIS PERIOD:money"
+    "ASSET NAME:text:100%:3",
+    "ASSET CLASS:text:100%:3",
+    "DESCRIPTION:text:100%:3",
+    "PHYSICAL LOCATION:text:100%:3",
+    "ASSET #:number:100%:3",
+    "SERIAL #:number:100%:3",
+    "ACQISITION DATE:text:100%:3",
+    "ACQUISITION COST:money:100%:3",
+    "DEPRECTION METHOD:category:100%:2",
+    "USEFUL LIFE (YEARS):number:100%:3",
+    "SALVAGE VALUE:money:100%:3",
+    "PREVIOUS DEPRECIATION:money:100%:2",
+    "FIRST YEAR %:text:100%:3",
+    "DEPRECIATION THIS PERIOD:money:100%:3"
    ],
    "flags": []
   },
@@ -7494,9 +7494,9 @@
     "person": null
    },
    "colTypes": [
-    "ABBREVIATION:text",
-    "DEPRECIATION METHOD:longtext",
-    "DESCRIPTION:money"
+    "ABBREVIATION:text:100%:3",
+    "DEPRECIATION METHOD:longtext:100%:3",
+    "DESCRIPTION:money:100%:3"
    ],
    "flags": []
   },
@@ -7523,17 +7523,17 @@
     "person": null
    },
    "colTypes": [
-    "Item #:number",
-    "Room/area:text",
-    "Item/description:text",
-    "Make/model:text",
-    "Serial number/\r\nID number:text",
-    "Date\r\npurchased:date",
-    "Where purchased:category",
-    "Purchase\r\n price:money",
-    "Estimated\r\ncurrent value:money",
-    "Notes:empty",
-    "Photo?:category"
+    "Item #:number:100%:5",
+    "Room/area:text:100%:4",
+    "Item/description:text:100%:5",
+    "Make/model:text:100%:5",
+    "Serial number/\r\nID number:text:100%:5",
+    "Date\r\npurchased:date:100%:5",
+    "Where purchased:category:100%:3",
+    "Purchase\r\n price:money:100%:5",
+    "Estimated\r\ncurrent value:money:100%:5",
+    "Notes:empty:0%:0",
+    "Photo?:category:100%:2"
    ],
    "flags": []
   },
@@ -7568,16 +7568,16 @@
     "person": null
    },
    "colTypes": [
-    "Living room:text",
-    "Piano:text",
-    "Baby grand:text",
-    "100123:text",
-    "N/A:text",
-    "N/A:text",
-    "N/A:money",
-    "$3,000.00:money",
-    "Family heirloom:text",
-    "Yes:category"
+    "Living room:text:100%:2",
+    "Piano:text:100%:2",
+    "Baby grand:text:100%:2",
+    "100123:text:50%:1",
+    "N/A:text:100%:2",
+    "N/A:text:100%:2",
+    "N/A:money:100%:2",
+    "$3,000.00:money:100%:2",
+    "Family heirloom:text:50%:1",
+    "Yes:category:100%:1"
    ],
    "flags": [
     "分組欄「Yes」只有一種值，等於沒分組",
@@ -7607,16 +7607,16 @@
     "person": null
    },
    "colTypes": [
-    "SKU:text",
-    "DESCRIPTION:text",
-    "BIN #:category",
-    "LOCATION:category",
-    "UNIT:category",
-    "QTY:number",
-    "REORDER QTY:number",
-    "COST:money",
-    "INVENTORY VALUE:money",
-    "REORDER:category"
+    "SKU:text:100%:11",
+    "DESCRIPTION:text:100%:11",
+    "BIN #:category:100%:6",
+    "LOCATION:category:100%:6",
+    "UNIT:category:100%:3",
+    "QTY:number:100%:9",
+    "REORDER QTY:number:100%:5",
+    "COST:money:100%:11",
+    "INVENTORY VALUE:money:100%:10",
+    "REORDER:category:18%:1"
    ],
    "flags": []
   },
@@ -7643,14 +7643,14 @@
     "person": null
    },
    "colTypes": [
-    "ORDER #:category",
-    "SKU:text",
-    "PICK QTY:number",
-    "QTY AVAILABLE:number",
-    "ITEM DESCRIPTION:text",
-    "UNIT:category",
-    "BIN #:category",
-    "LOCATION:text"
+    "ORDER #:category:100%:1",
+    "SKU:text:100%:5",
+    "PICK QTY:number:100%:4",
+    "QTY AVAILABLE:number:100%:4",
+    "ITEM DESCRIPTION:text:100%:5",
+    "UNIT:category:100%:2",
+    "BIN #:category:100%:4",
+    "LOCATION:text:100%:4"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -7680,12 +7680,12 @@
     "person": null
    },
    "colTypes": [
-    "BIN #:category",
-    "DESCRIPTION:text",
-    "LOCATION:text",
-    "WIDTH:number",
-    "HEIGHT:number",
-    "LENGTH:number"
+    "BIN #:category:100%:6",
+    "DESCRIPTION:text:100%:3",
+    "LOCATION:text:100%:7",
+    "WIDTH:number:100%:3",
+    "HEIGHT:number:100%:3",
+    "LENGTH:number:100%:2"
    ],
    "flags": []
   },
@@ -7712,17 +7712,17 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:category",
-    "Inventory ID:text",
-    "Name:person",
-    "Description:text",
-    "Unit price:money",
-    "Quantity in stock:number",
-    "Inventory value:money",
-    "Reorder level:number",
-    "Reorder time in days:number",
-    "Quantity in reorder:number",
-    "Discontinued?:category"
+    "欄 1:category:48%:1",
+    "Inventory ID:text:100%:25",
+    "Name:person:100%:25",
+    "Description:text:100%:25",
+    "Unit price:money:100%:22",
+    "Quantity in stock:number:100%:24",
+    "Inventory value:money:100%:25",
+    "Reorder level:number:100%:25",
+    "Reorder time in days:number:100%:13",
+    "Quantity in reorder:number:100%:3",
+    "Discontinued?:category:12%:1"
    ],
    "flags": []
   },
@@ -7757,16 +7757,16 @@
     "person": null
    },
    "colTypes": [
-    "SKU:text",
-    "DESCRIPTION:text",
-    "BIN #:category",
-    "LOCATION:category",
-    "UNIT:category",
-    "QTY:number",
-    "REORDER QTY:number",
-    "COST:money",
-    "INVENTORY VALUE:money",
-    "REORDER:category"
+    "SKU:text:100%:11",
+    "DESCRIPTION:text:100%:11",
+    "BIN #:category:100%:6",
+    "LOCATION:category:100%:6",
+    "UNIT:category:100%:3",
+    "QTY:number:100%:9",
+    "REORDER QTY:number:100%:5",
+    "COST:money:100%:11",
+    "INVENTORY VALUE:money:100%:10",
+    "REORDER:category:18%:1"
    ],
    "flags": [
     "原始工作表有 99 列，只抽出 11 列，結構可能判壞"
@@ -7795,14 +7795,14 @@
     "person": null
    },
    "colTypes": [
-    "ORDER #:category",
-    "SKU:text",
-    "PICK QTY:number",
-    "QTY AVAILABLE:number",
-    "ITEM DESCRIPTION:text",
-    "UNIT:category",
-    "BIN #:category",
-    "LOCATION:text"
+    "ORDER #:category:100%:1",
+    "SKU:text:100%:5",
+    "PICK QTY:number:100%:4",
+    "QTY AVAILABLE:number:100%:4",
+    "ITEM DESCRIPTION:text:100%:5",
+    "UNIT:category:100%:2",
+    "BIN #:category:100%:4",
+    "LOCATION:text:100%:4"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -7833,12 +7833,12 @@
     "person": null
    },
    "colTypes": [
-    "BIN #:category",
-    "DESCRIPTION:text",
-    "LOCATION:text",
-    "WIDTH:number",
-    "HEIGHT:number",
-    "LENGTH:number"
+    "BIN #:category:100%:6",
+    "DESCRIPTION:text:100%:3",
+    "LOCATION:text:100%:7",
+    "WIDTH:number:100%:3",
+    "HEIGHT:number:100%:3",
+    "LENGTH:number:100%:2"
    ],
    "flags": []
   },
@@ -7897,17 +7897,17 @@
     "person": null
    },
    "colTypes": [
-    "For reorder:number",
-    "Inventory ID:text",
-    "Name:person",
-    "Description:text",
-    "Unit price:money",
-    "Quantity \r\nin stock:number",
-    "Inventory value:money",
-    "Reorder level:number",
-    "Reorder time in days:number",
-    "Quantity \r\nin reorder:number",
-    "Discontinued?:category"
+    "For reorder:number:100%:2",
+    "Inventory ID:text:100%:25",
+    "Name:person:100%:25",
+    "Description:text:100%:25",
+    "Unit price:money:100%:22",
+    "Quantity \r\nin stock:number:100%:24",
+    "Inventory value:money:100%:25",
+    "Reorder level:number:100%:25",
+    "Reorder time in days:number:100%:13",
+    "Quantity \r\nin reorder:number:100%:3",
+    "Discontinued?:category:12%:1"
    ],
    "flags": [
     "分組欄「Discontinued?」只有一種值，等於沒分組",
@@ -7939,12 +7939,12 @@
     "person": null
    },
    "colTypes": [
-    "Salesperson:person",
-    "Description:text",
-    "Quantity:category",
-    "Unit Price:money",
-    "Line Total:money",
-    "欄 6:text"
+    "Salesperson:person:88%:7",
+    "Description:text:38%:3",
+    "Quantity:category:50%:3",
+    "Unit Price:money:63%:5",
+    "Line Total:money:63%:5",
+    "欄 6:text:13%:1"
    ],
    "flags": []
   },
@@ -7973,12 +7973,12 @@
     "person": null
    },
    "colTypes": [
-    "Item #:text",
-    "Description:text",
-    "Qty:number",
-    "Unit price:money",
-    "Discount:text",
-    "Price:money"
+    "Item #:text:100%:5",
+    "Description:text:100%:3",
+    "Qty:number:33%:3",
+    "Unit price:money:33%:3",
+    "Discount:text:44%:4",
+    "Price:money:78%:6"
    ],
    "flags": []
   },
@@ -8007,9 +8007,9 @@
     "person": null
    },
    "colTypes": [
-    "123 45th Street:longtext",
-    "DATE::category",
-    "November 6, 2023:text"
+    "123 45th Street:longtext:76%:13",
+    "DATE::category:100%:6",
+    "November 6, 2023:text:94%:15"
    ],
    "flags": []
   },
@@ -8038,11 +8038,11 @@
     "person": null
    },
    "colTypes": [
-    "QUANTITY:longtext",
-    "DESCRIPTION:text",
-    "UNIT PRICE:money",
-    "AMOUNT:money",
-    "DISCOUNT APPLIED:category"
+    "QUANTITY:longtext:46%:6",
+    "DESCRIPTION:text:100%:4",
+    "UNIT PRICE:money:31%:2",
+    "AMOUNT:money:92%:8",
+    "DISCOUNT APPLIED:category:92%:5"
    ],
    "flags": []
   },
@@ -8071,10 +8071,10 @@
     "person": null
    },
    "colTypes": [
-    "QTY:text",
-    "DESCRIPTION:text",
-    "UNIT PRICE:money",
-    "LINE TOTAL:money"
+    "QTY:text:89%:6",
+    "DESCRIPTION:text:100%:5",
+    "UNIT PRICE:money:78%:7",
+    "LINE TOTAL:money:67%:6"
    ],
    "flags": []
   },
@@ -8101,12 +8101,12 @@
     "person": null
    },
    "colTypes": [
-    "QTY:number",
-    "ITEM #:number",
-    "DESCRIPTION:text",
-    "UNIT PRICE:money",
-    "DISCOUNT:money",
-    "LINE TOTAL:money"
+    "QTY:number:83%:5",
+    "ITEM #:number:67%:4",
+    "DESCRIPTION:text:67%:4",
+    "UNIT PRICE:money:67%:4",
+    "DISCOUNT:money:83%:4",
+    "LINE TOTAL:money:83%:5"
    ],
    "flags": [
     "2/6 列沒有標題，會被整列略過",
@@ -8136,15 +8136,15 @@
     "person": null
    },
    "colTypes": [
-    "Age:number",
-    "Salary:money",
-    "Balance:money",
-    "Interest:money",
-    "Yearly savings:money",
-    "Desired retirement income:money",
-    "Pension income:money",
-    "Year ending balance:money",
-    "Notes:empty"
+    "Age:number:100%:45",
+    "Salary:money:100%:26",
+    "Balance:money:100%:45",
+    "Interest:money:100%:45",
+    "Yearly savings:money:100%:2",
+    "Desired retirement income:money:100%:21",
+    "Pension income:money:100%:1",
+    "Year ending balance:money:100%:45",
+    "Notes:empty:0%:0"
    ],
    "flags": []
   },
@@ -8173,29 +8173,29 @@
     "person": null
    },
    "colTypes": [
-    "Age:number",
-    "Salary:money",
-    "Balance:number",
-    "Interest:number",
-    "Yearly savings:number",
-    "Desired retirement income:number",
-    "Pension income:number",
-    "End balance:number",
-    "Balance:number",
-    "Interest:number",
-    "Yearly savings:number",
-    "Desired retirement income:number",
-    "Pension income:number",
-    "End balance:number",
-    "Balance:number",
-    "Interest:number",
-    "Yearly Savings:number",
-    "Desired Retirement Income:number",
-    "Pension Income:number",
-    "End Balance:number",
-    "Saving:number",
-    "Retired:number",
-    "Uncertainty:number"
+    "Age:number:100%:45",
+    "Salary:money:100%:26",
+    "Balance:number:100%:45",
+    "Interest:number:100%:45",
+    "Yearly savings:number:100%:2",
+    "Desired retirement income:number:100%:21",
+    "Pension income:number:100%:1",
+    "End balance:number:100%:45",
+    "Balance:number:100%:45",
+    "Interest:number:100%:45",
+    "Yearly savings:number:100%:2",
+    "Desired retirement income:number:100%:21",
+    "Pension income:number:100%:1",
+    "End balance:number:100%:45",
+    "Balance:number:100%:45",
+    "Interest:number:100%:45",
+    "Yearly Savings:number:100%:2",
+    "Desired Retirement Income:number:100%:21",
+    "Pension Income:number:100%:1",
+    "End Balance:number:100%:45",
+    "Saving:number:56%:25",
+    "Retired:number:47%:21",
+    "Uncertainty:number:100%:45"
    ],
    "flags": []
   },
@@ -8230,12 +8230,12 @@
     "person": null
    },
    "colTypes": [
-    "Item #:text",
-    "Description:longtext",
-    "Qty:number",
-    "Unit Price:money",
-    "Discount:text",
-    "Price:money"
+    "Item #:text:73%:11",
+    "Description:longtext:67%:10",
+    "Qty:number:67%:9",
+    "Unit Price:money:67%:6",
+    "Discount:text:47%:7",
+    "Price:money:87%:12"
    ],
    "flags": []
   },
@@ -8262,17 +8262,17 @@
     "person": null
    },
    "colTypes": [
-    "Lookup:money",
-    "Company #:number",
-    "Company name:text",
-    "Contact name:person",
-    "Address:text",
-    "City:text",
-    "State:text",
-    "ZIP Code:number",
-    "Phone:phone",
-    "Email:email",
-    "Fax:phone"
+    "Lookup:money:100%:2",
+    "Company #:number:100%:2",
+    "Company name:text:100%:2",
+    "Contact name:person:100%:2",
+    "Address:text:100%:2",
+    "City:text:100%:2",
+    "State:text:100%:2",
+    "ZIP Code:number:100%:2",
+    "Phone:phone:100%:2",
+    "Email:email:100%:2",
+    "Fax:phone:100%:2"
    ],
    "flags": []
   },
@@ -8299,16 +8299,16 @@
     "person": null
    },
    "colTypes": [
-    "Invoice #:text",
-    "Company:money",
-    "Invoice date:text",
-    "Project description:text",
-    "Tax rate:category",
-    "Other:money",
-    "Deposit:money",
-    "Detail total:money",
-    "Invoice total:money",
-    "Notes:empty"
+    "Invoice #:text:100%:2",
+    "Company:money:100%:2",
+    "Invoice date:text:100%:2",
+    "Project description:text:100%:2",
+    "Tax rate:category:100%:1",
+    "Other:money:50%:1",
+    "Deposit:money:50%:1",
+    "Detail total:money:100%:2",
+    "Invoice total:money:100%:2",
+    "Notes:empty:0%:0"
    ],
    "flags": []
   },
@@ -8335,13 +8335,13 @@
     "person": null
    },
    "colTypes": [
-    "Description:text",
-    "Invoice #:category",
-    "Item #:text",
-    "Qty:number",
-    "Unit price:money",
-    "Discount:money",
-    "Total:money"
+    "Description:text:100%:37",
+    "Invoice #:category:100%:2",
+    "Item #:text:100%:37",
+    "Qty:number:100%:32",
+    "Unit price:money:100%:25",
+    "Discount:money:76%:25",
+    "Total:money:100%:35"
    ],
    "flags": []
   },
@@ -8368,8 +8368,8 @@
     "person": null
    },
    "colTypes": [
-    "MONTH VIEW:money",
-    "WEEK VIEW:text"
+    "MONTH VIEW:money:100%:14",
+    "WEEK VIEW:text:93%:13"
    ],
    "flags": []
   },
@@ -8412,13 +8412,13 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Destination:text",
-    "Days (stay):number",
-    "Nights (stay):number",
-    "Lodging:text",
-    "Reservation:category",
-    "Notes:empty"
+    "Date:text:100%:2",
+    "Destination:text:100%:2",
+    "Days (stay):number:100%:2",
+    "Nights (stay):number:100%:2",
+    "Lodging:text:100%:2",
+    "Reservation:category:100%:1",
+    "Notes:empty:0%:0"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -8465,13 +8465,13 @@
     "person": null
    },
    "colTypes": [
-    "Order:number",
-    "Name:empty",
-    "Home Phone:empty",
-    "Cell Phone:empty",
-    "Address:empty",
-    "Relationship:empty",
-    "Notes:empty"
+    "Order:number:100%:5",
+    "Name:empty:0%:0",
+    "Home Phone:empty:0%:0",
+    "Cell Phone:empty:0%:0",
+    "Address:empty:0%:0",
+    "Relationship:empty:0%:0",
+    "Notes:empty:0%:0"
    ],
    "flags": [
     "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本"
@@ -8502,13 +8502,13 @@
     "person": null
    },
    "colTypes": [
-    "MON:text",
-    "Nov 07:category",
-    "Reading:category",
-    "English:category",
-    "Spelling:category",
-    "Math:category",
-    "Science:category"
+    "MON:text:17%:4",
+    "Nov 07:category:100%:8",
+    "Reading:category:17%:1",
+    "English:category:17%:1",
+    "Spelling:category:17%:1",
+    "Math:category:17%:1",
+    "Science:category:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -8540,13 +8540,13 @@
     "person": null
    },
    "colTypes": [
-    "MON:text",
-    "Nov 07:category",
-    "Reading:category",
-    "English:category",
-    "Spelling:category",
-    "Math:category",
-    "Science:category"
+    "MON:text:17%:4",
+    "Nov 07:category:100%:8",
+    "Reading:category:17%:1",
+    "English:category:17%:1",
+    "Spelling:category:17%:1",
+    "Math:category:17%:1",
+    "Science:category:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -8578,13 +8578,13 @@
     "person": null
    },
    "colTypes": [
-    "MON:text",
-    "Nov 07:category",
-    "Reading:category",
-    "English:category",
-    "Spelling:category",
-    "Math:category",
-    "Science:category"
+    "MON:text:17%:4",
+    "Nov 07:category:100%:8",
+    "Reading:category:17%:1",
+    "English:category:17%:1",
+    "Spelling:category:17%:1",
+    "Math:category:17%:1",
+    "Science:category:17%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -8616,15 +8616,15 @@
     "person": null
    },
    "colTypes": [
-    "Date:category",
-    "Time:time",
-    "Description:text",
-    "Purpose:text",
-    "From:text",
-    "To:text",
-    "Odometer\r\nstart:number",
-    "Odometer\r\nfinish:number",
-    "Mileage:number"
+    "Date:category:100%:2",
+    "Time:time:100%:2",
+    "Description:text:13%:2",
+    "Purpose:text:13%:2",
+    "From:text:13%:2",
+    "To:text:13%:2",
+    "Odometer\r\nstart:number:13%:2",
+    "Odometer\r\nfinish:number:13%:2",
+    "Mileage:number:100%:3"
    ],
    "flags": []
   },
@@ -8653,12 +8653,12 @@
     "person": null
    },
    "colTypes": [
-    "Steps:number",
-    "Description:text",
-    "Tasks:text",
-    "Assigned to:text",
-    "Status:text",
-    "Resource list:longtext"
+    "Steps:number:100%:5",
+    "Description:text:100%:5",
+    "Tasks:text:80%:4",
+    "Assigned to:text:80%:3",
+    "Status:text:80%:3",
+    "Resource list:longtext:40%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -8687,17 +8687,17 @@
     "person": null
    },
    "colTypes": [
-    "NAME:person",
-    "APPLYING FOR:text",
-    "STATUS:text",
-    "CANDIDATE \r\nTYPE:category",
-    "EMAIL ADDRESS:email",
-    "PHONE:phone",
-    "PHONE SCREEN DATE:text",
-    "INTERVIEW DATE:text",
-    "ASSIGNED \r\nINTERVIEWER:category",
-    "INTERVIEW \r\nSCORE:text",
-    "INTERVIEWER FEEDBACK:longtext"
+    "NAME:person:100%:5",
+    "APPLYING FOR:text:100%:2",
+    "STATUS:text:100%:3",
+    "CANDIDATE \r\nTYPE:category:100%:3",
+    "EMAIL ADDRESS:email:100%:5",
+    "PHONE:phone:100%:5",
+    "PHONE SCREEN DATE:text:100%:5",
+    "INTERVIEW DATE:text:40%:2",
+    "ASSIGNED \r\nINTERVIEWER:category:100%:3",
+    "INTERVIEW \r\nSCORE:text:20%:1",
+    "INTERVIEWER FEEDBACK:longtext:20%:1"
    ],
    "flags": []
   },
@@ -8724,11 +8724,11 @@
     "person": null
    },
    "colTypes": [
-    "JOB OPENING:text",
-    "DESCRIPTION:longtext",
-    "REQUIRED EXPERIENCE:longtext",
-    "SALARY LEVEL:money",
-    "NOTES:empty"
+    "JOB OPENING:text:100%:2",
+    "DESCRIPTION:longtext:100%:2",
+    "REQUIRED EXPERIENCE:longtext:50%:1",
+    "SALARY LEVEL:money:100%:2",
+    "NOTES:empty:0%:0"
    ],
    "flags": [
     "原始工作表有 12 列，只抽出 2 列，結構可能判壞"
@@ -8757,11 +8757,11 @@
     "person": null
    },
    "colTypes": [
-    "NAME:person",
-    "DEPARTMENT:money",
-    "POSITION:text",
-    "AVAILABILITY:time",
-    "NOTES:empty"
+    "NAME:person:100%:3",
+    "DEPARTMENT:money:100%:2",
+    "POSITION:text:100%:2",
+    "AVAILABILITY:time:100%:3",
+    "NOTES:empty:0%:0"
    ],
    "flags": []
   },
@@ -8788,15 +8788,15 @@
     "person": null
    },
    "colTypes": [
-    "Invoice #:money",
-    "Date:text",
-    "Payment due:category",
-    "Customer name:person",
-    "Amount:money",
-    "Late fee:category",
-    "Total paid:money",
-    "Date paid:text",
-    "Outstanding:money"
+    "Invoice #:money:100%:6",
+    "Date:text:100%:6",
+    "Payment due:category:100%:5",
+    "Customer name:person:100%:4",
+    "Amount:money:100%:6",
+    "Late fee:category:100%:2",
+    "Total paid:money:100%:5",
+    "Date paid:text:100%:6",
+    "Outstanding:money:100%:6"
    ],
    "flags": []
   },
@@ -8823,12 +8823,12 @@
     "person": null
    },
    "colTypes": [
-    "Task Status Indicator:text",
-    "Tasks:text",
-    "Due Date:text",
-    "Done?:category",
-    "Status Icon:text",
-    "Notes:longtext"
+    "Task Status Indicator:text:100%:3",
+    "Tasks:text:100%:4",
+    "Due Date:text:100%:4",
+    "Done?:category:100%:3",
+    "Status Icon:text:100%:3",
+    "Notes:longtext:25%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -8857,10 +8857,10 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Amount:money",
-    "Category:text",
-    "Description:text"
+    "Date:text:100%:12",
+    "Amount:money:100%:11",
+    "Category:text:100%:11",
+    "Description:text:100%:11"
    ],
    "flags": [
     "原始工作表有 260 列，只抽出 12 列，結構可能判壞"
@@ -8889,18 +8889,18 @@
     "person": null
    },
    "colTypes": [
-    "Project:text",
-    "Category:category",
-    "Assigned to:category",
-    "Estimated start:category",
-    "Estimated finish:category",
-    "Estimated work (in hours):number",
-    "Estimated duration\r\n(in days):number",
-    "Actual start:category",
-    "Actual finish:text",
-    "Actual work \r\n(in hours):number",
-    "Actual duration (in days):number",
-    "Notes:empty"
+    "Project:text:100%:9",
+    "Category:category:100%:5",
+    "Assigned to:category:100%:4",
+    "Estimated start:category:100%:8",
+    "Estimated finish:category:100%:8",
+    "Estimated work (in hours):number:100%:7",
+    "Estimated duration\r\n(in days):number:100%:6",
+    "Actual start:category:100%:7",
+    "Actual finish:text:100%:9",
+    "Actual work \r\n(in hours):number:100%:9",
+    "Actual duration (in days):number:100%:9",
+    "Notes:empty:0%:0"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -8939,20 +8939,20 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:number",
-    "欄 2:number",
-    "欄 3:number",
-    "欄 4:number",
-    "欄 5:number",
-    "欄 6:number",
-    "欄 7:number",
-    "S:text",
-    "M:text",
-    "T:text",
-    "W:text",
-    "T:text",
-    "F:text",
-    "S:text"
+    "欄 1:number:50%:2",
+    "欄 2:number:50%:2",
+    "欄 3:number:25%:1",
+    "欄 4:number:25%:1",
+    "欄 5:number:25%:1",
+    "欄 6:number:25%:1",
+    "欄 7:number:25%:1",
+    "S:text:75%:3",
+    "M:text:50%:2",
+    "T:text:75%:3",
+    "W:text:75%:3",
+    "T:text:75%:3",
+    "F:text:75%:3",
+    "S:text:75%:3"
    ],
    "flags": [
     "標題列可能判錯：7/14 欄沒有欄名",
@@ -8991,12 +8991,12 @@
     "person": null
    },
    "colTypes": [
-    "Date:date",
-    "Description:text",
-    "Amount:money",
-    "Merchant name:text",
-    "Transaction fees:money",
-    "Balance*:money"
+    "Date:date:86%:6",
+    "Description:text:86%:6",
+    "Amount:money:86%:5",
+    "Merchant name:text:86%:4",
+    "Transaction fees:money:29%:2",
+    "Balance*:money:100%:7"
    ],
    "flags": []
   },
@@ -9023,14 +9023,14 @@
     "person": null
    },
    "colTypes": [
-    "NAME OF ORGANIZATION:text",
-    "DATE PAID:date",
-    "AMOUNT:money",
-    "LENGTH:text",
-    "EXPIRATION:category",
-    "RENEWAL METHOD:text",
-    "RENEWAL DATE:category",
-    "NOTES:empty"
+    "NAME OF ORGANIZATION:text:100%:3",
+    "DATE PAID:date:100%:3",
+    "AMOUNT:money:100%:3",
+    "LENGTH:text:100%:3",
+    "EXPIRATION:category:100%:2",
+    "RENEWAL METHOD:text:100%:3",
+    "RENEWAL DATE:category:100%:2",
+    "NOTES:empty:0%:0"
    ],
    "flags": []
   },
@@ -9059,20 +9059,20 @@
     "person": null
    },
    "colTypes": [
-    "TIME:text",
-    "欄 2:text",
-    "欄 3:text",
-    "TOPIC:text",
-    "欄 5:email",
-    "欄 6:text",
-    "欄 7:category",
-    "欄 8:category",
-    "欄 9:category",
-    "欄 10:text",
-    "PRESENTER:category",
-    "欄 12:email",
-    "欄 13:money",
-    "欄 14:category"
+    "TIME:text:92%:16",
+    "欄 2:text:27%:7",
+    "欄 3:text:19%:5",
+    "TOPIC:text:27%:7",
+    "欄 5:email:19%:5",
+    "欄 6:text:46%:12",
+    "欄 7:category:27%:4",
+    "欄 8:category:65%:8",
+    "欄 9:category:46%:5",
+    "欄 10:text:19%:5",
+    "PRESENTER:category:12%:1",
+    "欄 12:email:19%:5",
+    "欄 13:money:46%:6",
+    "欄 14:category:19%:2"
    ],
    "flags": [
     "標題列可能判錯：11/14 欄沒有欄名",
@@ -9102,9 +9102,9 @@
     "person": null
    },
    "colTypes": [
-    "SITE:text",
-    "ESTIMATED:money",
-    "ACTUAL:money"
+    "SITE:text:100%:19",
+    "ESTIMATED:money:37%:5",
+    "ACTUAL:money:37%:4"
    ],
    "flags": []
   },
@@ -9131,9 +9131,9 @@
     "person": null
    },
    "colTypes": [
-    "REFRESHMENTS:text",
-    "ESTIMATED:category",
-    "ACTUAL:category"
+    "REFRESHMENTS:text:100%:13",
+    "ESTIMATED:category:15%:1",
+    "ACTUAL:category:15%:1"
    ],
    "flags": [
     "分組欄「ESTIMATED」只有一種值，等於沒分組"
@@ -9164,10 +9164,10 @@
     "person": null
    },
    "colTypes": [
-    "ESTIMATED:category",
-    "ACTUAL:category",
-    "欄 3:text",
-    "欄 4:money"
+    "ESTIMATED:category:50%:7",
+    "ACTUAL:category:33%:4",
+    "欄 3:text:67%:10",
+    "欄 4:money:17%:3"
    ],
    "flags": [
     "標題列可能判錯：2/4 欄沒有欄名",
@@ -9199,8 +9199,8 @@
     "person": null
    },
    "colTypes": [
-    "ESTIMATED:money",
-    "ACTUAL:money"
+    "ESTIMATED:money:100%:6",
+    "ACTUAL:money:100%:6"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字"
@@ -9237,15 +9237,15 @@
     "person": null
    },
    "colTypes": [
-    "Lead name:person",
-    "Lead contact:empty",
-    "Lead \r\nsource:empty",
-    "Lead \r\nregion:empty",
-    "Lead \r\ntype:category",
-    "Potential opportunity:money",
-    "Chance \r\nof sale:text",
-    "Forecast \r\nclose:text",
-    "Weighted \r\nforecast:money"
+    "Lead name:person:100%:3",
+    "Lead contact:empty:0%:0",
+    "Lead \r\nsource:empty:0%:0",
+    "Lead \r\nregion:empty:0%:0",
+    "Lead \r\ntype:category:100%:2",
+    "Potential opportunity:money:100%:3",
+    "Chance \r\nof sale:text:100%:3",
+    "Forecast \r\nclose:text:100%:3",
+    "Weighted \r\nforecast:money:100%:2"
    ],
    "flags": []
   },
@@ -9272,19 +9272,19 @@
     "person": null
    },
    "colTypes": [
-    "Lead name:person",
-    "January \r\nforecast:money",
-    "February \r\nforecast:money",
-    "March \r\nforecast:money",
-    "April \r\nforecast:money",
-    "May \r\nforecast:money",
-    "June \r\nforecast:money",
-    "July forecast:money",
-    "August \r\nforecast:money",
-    "September \r\nforecast:money",
-    "October \r\nforecast:money",
-    "November \r\nforecast:money",
-    "December \r\nforecast:money"
+    "Lead name:person:100%:4",
+    "January \r\nforecast:money:100%:2",
+    "February \r\nforecast:money:100%:3",
+    "March \r\nforecast:money:100%:3",
+    "April \r\nforecast:money:100%:2",
+    "May \r\nforecast:money:100%:2",
+    "June \r\nforecast:money:100%:2",
+    "July forecast:money:100%:2",
+    "August \r\nforecast:money:100%:2",
+    "September \r\nforecast:money:100%:2",
+    "October \r\nforecast:money:100%:2",
+    "November \r\nforecast:money:100%:2",
+    "December \r\nforecast:money:100%:2"
    ],
    "flags": [
     "原始工作表有 22 列，只抽出 4 列，結構可能判壞"
@@ -9321,13 +9321,13 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Category:category",
-    "Qty:number",
-    "To buy:number",
-    "Cost:money",
-    "Bought:number",
-    "Total cost:category"
+    "Item:text:100%:16",
+    "Category:category:100%:3",
+    "Qty:number:100%:6",
+    "To buy:number:38%:1",
+    "Cost:money:25%:4",
+    "Bought:number:6%:1",
+    "Total cost:category:100%:5"
    ],
    "flags": []
   },
@@ -9354,8 +9354,8 @@
     "person": null
    },
    "colTypes": [
-    "Category:text",
-    "Total cost:money"
+    "Category:text:100%:3",
+    "Total cost:money:100%:3"
    ],
    "flags": []
   },
@@ -9382,8 +9382,8 @@
     "person": null
    },
    "colTypes": [
-    "Done:text",
-    "Task:longtext"
+    "Done:text:5%:1",
+    "Task:longtext:100%:19"
    ],
    "flags": []
   },
@@ -9412,9 +9412,9 @@
     "person": null
    },
    "colTypes": [
-    "Name:person",
-    "Email:email",
-    "Shared?:text"
+    "Name:person:100%:2",
+    "Email:email:100%:2",
+    "Shared?:text:100%:2"
    ],
    "flags": []
   },
@@ -9441,15 +9441,15 @@
     "person": null
    },
    "colTypes": [
-    "#:number",
-    "ISSUE:text",
-    "TYPE:category",
-    "PRIORITY:category",
-    "OPENED ON:text",
-    "OPENED BY:category",
-    "CLOSED ON:text",
-    "CLOSED BY:category",
-    "NOTES:empty"
+    "#:number:100%:91",
+    "ISSUE:text:100%:91",
+    "TYPE:category:100%:4",
+    "PRIORITY:category:100%:3",
+    "OPENED ON:text:100%:61",
+    "OPENED BY:category:100%:4",
+    "CLOSED ON:text:100%:73",
+    "CLOSED BY:category:100%:4",
+    "NOTES:empty:0%:0"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -9488,9 +9488,9 @@
     "person": null
    },
    "colTypes": [
-    "THEME:text",
-    "Famous couples:category",
-    "欄 3:money"
+    "THEME:text:100%:14",
+    "Famous couples:category:100%:3",
+    "欄 3:money:64%:9"
    ],
    "flags": [
     "原始工作表有 112 列，只抽出 14 列，結構可能判壞"
@@ -9519,8 +9519,8 @@
     "person": null
    },
    "colTypes": [
-    "DONE:category",
-    "2-3 months before:longtext"
+    "DONE:category:14%:1",
+    "2-3 months before:longtext:100%:28"
    ],
    "flags": [
     "分組欄「DONE」只有一種值，等於沒分組"
@@ -9549,8 +9549,8 @@
     "person": null
    },
    "colTypes": [
-    "FOOD:text",
-    "BUDGET:money"
+    "FOOD:text:100%:21",
+    "BUDGET:money:100%:2"
    ],
    "flags": [
     "原始工作表有 169 列，只抽出 21 列，結構可能判壞"
@@ -9579,9 +9579,9 @@
     "person": null
    },
    "colTypes": [
-    "NAME:person",
-    "INVITED:category",
-    "RSVP:category"
+    "NAME:person:100%:13",
+    "INVITED:category:100%:1",
+    "RSVP:category:92%:2"
    ],
    "flags": [
     "分組欄「INVITED」只有一種值，等於沒分組",
@@ -9611,9 +9611,9 @@
     "person": null
    },
    "colTypes": [
-    "ACTIVITY:text",
-    "TIME START:time",
-    "NOTES:text"
+    "ACTIVITY:text:100%:4",
+    "TIME START:time:100%:4",
+    "NOTES:text:75%:3"
    ],
    "flags": []
   },
@@ -9640,13 +9640,13 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Prior period:money",
-    "Budget:money",
-    "Current period:money",
-    "Current period as % of sales:text",
-    "% Change from prior period:text",
-    "% Change from budget:text"
+    "欄 1:text:96%:33",
+    "Prior period:money:93%:35",
+    "Budget:money:93%:36",
+    "Current period:money:93%:34",
+    "Current period as % of sales:text:84%:23",
+    "% Change from prior period:text:91%:31",
+    "% Change from budget:text:93%:23"
    ],
    "flags": []
   },
@@ -9673,35 +9673,35 @@
     "person": null
    },
    "colTypes": [
-    "TWELVE MONTH:text",
-    "欄 2:text",
-    "JAN-23:money",
-    "FEB-23:money",
-    "MAR-23:money",
-    "APR-23:money",
-    "MAY-23:money",
-    "JUN-23:money",
-    "JUL-23:money",
-    "AUG-23:money",
-    "SEP-23:money",
-    "OCT-23:money",
-    "NOV-23:money",
-    "DEC-23:money",
-    "YEARLY:money",
-    "IND %:category",
-    "JAN %:text",
-    "FEB %:category",
-    "MAR %:category",
-    "APR %:text",
-    "MAY %:category",
-    "JUN %:category",
-    "JUL %:text",
-    "AUG %:category",
-    "SEP %:category",
-    "OCT %:category",
-    "NOV %:category",
-    "DEC %:category",
-    "YEAR %:category"
+    "TWELVE MONTH:text:100%:10",
+    "欄 2:text:20%:2",
+    "JAN-23:money:70%:7",
+    "FEB-23:money:70%:7",
+    "MAR-23:money:70%:7",
+    "APR-23:money:70%:7",
+    "MAY-23:money:70%:7",
+    "JUN-23:money:70%:7",
+    "JUL-23:money:70%:7",
+    "AUG-23:money:70%:7",
+    "SEP-23:money:70%:7",
+    "OCT-23:money:70%:6",
+    "NOV-23:money:70%:7",
+    "DEC-23:money:70%:7",
+    "YEARLY:money:70%:7",
+    "IND %:category:70%:6",
+    "JAN %:text:70%:7",
+    "FEB %:category:70%:6",
+    "MAR %:category:70%:6",
+    "APR %:text:70%:7",
+    "MAY %:category:70%:5",
+    "JUN %:category:70%:5",
+    "JUL %:text:70%:7",
+    "AUG %:category:70%:5",
+    "SEP %:category:70%:6",
+    "OCT %:category:70%:6",
+    "NOV %:category:70%:6",
+    "DEC %:category:70%:6",
+    "YEAR %:category:70%:5"
    ],
    "flags": []
   },
@@ -9728,35 +9728,35 @@
     "person": null
    },
    "colTypes": [
-    "TWELVE MONTH:text",
-    "欄 2:text",
-    "JAN-23:money",
-    "FEB-23:money",
-    "MAR-23:money",
-    "APR-23:money",
-    "MAY-23:money",
-    "JUN-23:money",
-    "JUL-23:money",
-    "AUG-23:money",
-    "SEP-23:money",
-    "OCT-23:money",
-    "NOV-23:money",
-    "DEC-23:money",
-    "YEARLY:money",
-    "IND %:category",
-    "JAN %:category",
-    "FEB %:category",
-    "MAR %:category",
-    "APR %:category",
-    "MAY %:category",
-    "JUN %:text",
-    "JUL %:category",
-    "AUG %:text",
-    "SEP %:text",
-    "OCT %:text",
-    "NOV %:category",
-    "DEC %:category",
-    "YEAR %:category"
+    "TWELVE MONTH:text:100%:11",
+    "欄 2:text:18%:2",
+    "JAN-23:money:73%:8",
+    "FEB-23:money:73%:7",
+    "MAR-23:money:73%:8",
+    "APR-23:money:73%:8",
+    "MAY-23:money:73%:8",
+    "JUN-23:money:73%:8",
+    "JUL-23:money:73%:8",
+    "AUG-23:money:73%:8",
+    "SEP-23:money:73%:8",
+    "OCT-23:money:73%:8",
+    "NOV-23:money:73%:7",
+    "DEC-23:money:73%:8",
+    "YEARLY:money:73%:8",
+    "IND %:category:64%:6",
+    "JAN %:category:73%:7",
+    "FEB %:category:73%:6",
+    "MAR %:category:73%:7",
+    "APR %:category:73%:7",
+    "MAY %:category:73%:7",
+    "JUN %:text:73%:8",
+    "JUL %:category:73%:7",
+    "AUG %:text:73%:8",
+    "SEP %:text:73%:8",
+    "OCT %:text:73%:8",
+    "NOV %:category:73%:7",
+    "DEC %:category:73%:6",
+    "YEAR %:category:73%:6"
    ],
    "flags": []
   },
@@ -9783,35 +9783,35 @@
     "person": null
    },
    "colTypes": [
-    "TWELVE MONTH:text",
-    "欄 2:text",
-    "JAN-23:money",
-    "FEB-23:money",
-    "MAR-23:money",
-    "APR-23:money",
-    "MAY-23:money",
-    "JUN-23:money",
-    "JUL-23:money",
-    "AUG-23:money",
-    "SEP-23:money",
-    "OCT-23:money",
-    "NOV-23:money",
-    "DEC-23:money",
-    "YEARLY:money",
-    "IND %:category",
-    "JAN %:category",
-    "FEB %:category",
-    "MAR %:category",
-    "APR %:category",
-    "MAY %:category",
-    "JUN %:category",
-    "JUL %:category",
-    "AUG %:category",
-    "SEP %:category",
-    "OCT %:category",
-    "NOV %:category",
-    "DEC %:category",
-    "YEAR %:category"
+    "TWELVE MONTH:text:96%:21",
+    "欄 2:text:8%:2",
+    "JAN-23:money:83%:13",
+    "FEB-23:money:83%:13",
+    "MAR-23:money:83%:15",
+    "APR-23:money:83%:14",
+    "MAY-23:money:83%:13",
+    "JUN-23:money:83%:14",
+    "JUL-23:money:83%:13",
+    "AUG-23:money:83%:15",
+    "SEP-23:money:83%:15",
+    "OCT-23:money:83%:15",
+    "NOV-23:money:83%:18",
+    "DEC-23:money:83%:14",
+    "YEARLY:money:83%:18",
+    "IND %:category:79%:9",
+    "JAN %:category:83%:10",
+    "FEB %:category:83%:9",
+    "MAR %:category:83%:11",
+    "APR %:category:88%:9",
+    "MAY %:category:83%:8",
+    "JUN %:category:83%:10",
+    "JUL %:category:83%:7",
+    "AUG %:category:83%:10",
+    "SEP %:category:83%:10",
+    "OCT %:category:83%:9",
+    "NOV %:category:83%:9",
+    "DEC %:category:83%:10",
+    "YEAR %:category:83%:4"
    ],
    "flags": []
   },
@@ -9840,9 +9840,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "TIME:time",
-    "Item:longtext"
+    "Day:category:100%:7",
+    "TIME:time:100%:4",
+    "Item:longtext:100%:4"
    ],
    "flags": []
   },
@@ -9871,9 +9871,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "TIME:time",
-    "Item:category"
+    "Day:category:100%:5",
+    "TIME:time:100%:20",
+    "Item:category:100%:4"
    ],
    "flags": []
   },
@@ -9900,13 +9900,13 @@
     "person": null
    },
    "colTypes": [
-    "CLASS:category",
-    "ID:category",
-    "DAY:category",
-    "LOCATION:category",
-    "START TIME:time",
-    "END TIME:time",
-    "UNIQUE:number"
+    "CLASS:category:100%:4",
+    "ID:category:100%:4",
+    "DAY:category:100%:5",
+    "LOCATION:category:100%:3",
+    "START TIME:time:100%:4",
+    "END TIME:time:100%:4",
+    "UNIQUE:number:100%:8"
    ],
    "flags": []
   },
@@ -9933,18 +9933,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -9971,18 +9971,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -10009,18 +10009,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -10047,18 +10047,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -10085,18 +10085,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -10123,18 +10123,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -10161,18 +10161,18 @@
     "person": null
    },
    "colTypes": [
-    "Employee:text",
-    "7:00 AM:text",
-    "8:00 AM:category",
-    "9:00 AM:category",
-    "10:00 AM:category",
-    "11:00 AM:category",
-    "12:00 PM:category",
-    "1:00 PM:category",
-    "2:00 PM:category",
-    "3:00 PM:text",
-    "Sick?:text",
-    "Total:money"
+    "Employee:text:100%:5",
+    "7:00 AM:text:20%:1",
+    "8:00 AM:category:80%:3",
+    "9:00 AM:category:80%:3",
+    "10:00 AM:category:80%:3",
+    "11:00 AM:category:80%:3",
+    "12:00 PM:category:60%:2",
+    "1:00 PM:category:60%:2",
+    "2:00 PM:category:60%:2",
+    "3:00 PM:text:20%:1",
+    "Sick?:text:20%:1",
+    "Total:money:100%:4"
    ],
    "flags": []
   },
@@ -10201,9 +10201,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "TIME:time",
-    "Item:category"
+    "Day:category:100%:6",
+    "TIME:time:100%:12",
+    "Item:category:100%:8"
    ],
    "flags": []
   },
@@ -10232,9 +10232,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "TIME:time",
-    "Item:text"
+    "Day:category:100%:5",
+    "TIME:time:100%:4",
+    "Item:text:100%:5"
    ],
    "flags": []
   },
@@ -10263,9 +10263,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "Winter:category",
-    "Item:text"
+    "Day:category:100%:6",
+    "Winter:category:100%:7",
+    "Item:text:100%:8"
    ],
    "flags": []
   },
@@ -10292,10 +10292,10 @@
     "person": null
    },
    "colTypes": [
-    "5/25/23:category",
-    "ART 101:category",
-    "Prep for lab:text",
-    "45071ART 101:text"
+    "5/25/23:category:100%:4",
+    "ART 101:category:100%:4",
+    "Prep for lab:text:100%:6",
+    "45071ART 101:text:100%:5"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -10324,11 +10324,11 @@
     "person": null
    },
    "colTypes": [
-    "#:number",
-    "Name:person",
-    "Position:text",
-    "Email:email",
-    "Phone:phone"
+    "#:number:100%:2",
+    "Name:person:100%:2",
+    "Position:text:100%:2",
+    "Email:email:100%:2",
+    "Phone:phone:100%:2"
    ],
    "flags": [
     "原始工作表有 21 列，只抽出 2 列，結構可能判壞"
@@ -10357,11 +10357,11 @@
     "person": null
    },
    "colTypes": [
-    "Date:text",
-    "Home team:text",
-    "Away team:text",
-    "Time:time",
-    "Location:category"
+    "Date:text:100%:2",
+    "Home team:text:100%:2",
+    "Away team:text:100%:2",
+    "Time:time:100%:2",
+    "Location:category:100%:1"
    ],
    "flags": [
     "原始工作表有 21 列，只抽出 2 列，結構可能判壞"
@@ -10390,11 +10390,11 @@
     "person": null
    },
    "colTypes": [
-    "Team name:text",
-    "Contact name:person",
-    "Email:email",
-    "Phone:phone",
-    "Wins:number"
+    "Team name:text:100%:2",
+    "Contact name:person:100%:2",
+    "Email:email:100%:2",
+    "Phone:phone:100%:2",
+    "Wins:number:100%:2"
    ],
    "flags": [
     "原始工作表有 21 列，只抽出 2 列，結構可能判壞"
@@ -10431,8 +10431,8 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money"
+    "Item:text:100%:4",
+    "Amount:money:100%:3"
    ],
    "flags": [
     "原始工作表有 23 列，只抽出 4 列，結構可能判壞"
@@ -10461,8 +10461,8 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money"
+    "Item:text:100%:11",
+    "Amount:money:100%:8"
    ],
    "flags": []
   },
@@ -10489,9 +10489,9 @@
     "person": null
    },
    "colTypes": [
-    "Item:text",
-    "Amount:money",
-    "Per month:money"
+    "Item:text:100%:7",
+    "Amount:money:86%:4",
+    "Per month:money:100%:5"
    ],
    "flags": []
   },
@@ -10528,16 +10528,16 @@
     "person": null
    },
    "colTypes": [
-    "COURSE ID:category",
-    "NAME:person",
-    "INSTRUCTOR:text",
-    "DAY:category",
-    "YEAR:number",
-    "SEMESTER:category",
-    "TIME START:time",
-    "TIME END:time",
-    "DURATION:time",
-    "CLASS \r\nLIST TIP::longtext"
+    "COURSE ID:category:100%:4",
+    "NAME:person:100%:4",
+    "INSTRUCTOR:text:100%:7",
+    "DAY:category:100%:5",
+    "YEAR:number:100%:1",
+    "SEMESTER:category:100%:1",
+    "TIME START:time:100%:3",
+    "TIME END:time:100%:4",
+    "DURATION:time:100%:2",
+    "CLASS \r\nLIST TIP::longtext:14%:1"
    ],
    "flags": []
   },
@@ -10566,13 +10566,13 @@
     "person": null
    },
    "colTypes": [
-    "COURSE ID:category",
-    "NAME:person",
-    "YEAR:number",
-    "SEMESTER:category",
-    "ITEM DESCRIPTION:money",
-    "DUE DATE:text",
-    "WORK DATA ENTRY TIP::longtext"
+    "COURSE ID:category:100%:2",
+    "NAME:person:100%:2",
+    "YEAR:number:100%:1",
+    "SEMESTER:category:100%:1",
+    "ITEM DESCRIPTION:money:100%:5",
+    "DUE DATE:text:100%:7",
+    "WORK DATA ENTRY TIP::longtext:14%:1"
    ],
    "flags": [
     "分組欄「SEMESTER」只有一種值，等於沒分組"
@@ -10603,10 +10603,10 @@
     "person": null
    },
    "colTypes": [
-    "DAY:text",
-    "TIME START:time",
-    "CLASS:text",
-    "WEEKLY \r\nSCHEDULE  TIP::longtext"
+    "DAY:text:71%:5",
+    "TIME START:time:100%:3",
+    "CLASS:text:100%:4",
+    "WEEKLY \r\nSCHEDULE  TIP::longtext:14%:1"
    ],
    "flags": []
   },
@@ -10641,8 +10641,8 @@
     "person": null
    },
    "colTypes": [
-    "DONE:category",
-    "DESCRIPTION:longtext"
+    "DONE:category:11%:1",
+    "DESCRIPTION:longtext:100%:19"
    ],
    "flags": [
     "分組欄「DONE」只有一種值，等於沒分組"
@@ -10671,8 +10671,8 @@
     "person": null
    },
    "colTypes": [
-    "DONE:category",
-    "DESCRIPTION:text"
+    "DONE:category:14%:1",
+    "DESCRIPTION:text:100%:14"
    ],
    "flags": [
     "分組欄「DONE」只有一種值，等於沒分組"
@@ -10717,15 +10717,15 @@
     "person": null
    },
    "colTypes": [
-    "Course ID:category",
-    "Course name:text",
-    "Instructor:text",
-    "Day:category",
-    "Year:number",
-    "Semester:category",
-    "Time start:time",
-    "Time end:time",
-    "Duration:time"
+    "Course ID:category:100%:4",
+    "Course name:text:100%:4",
+    "Instructor:text:100%:4",
+    "Day:category:100%:5",
+    "Year:number:100%:1",
+    "Semester:category:100%:1",
+    "Time start:time:100%:3",
+    "Time end:time:100%:4",
+    "Duration:time:100%:2"
    ],
    "flags": []
   },
@@ -10752,12 +10752,12 @@
     "person": null
    },
    "colTypes": [
-    "Course ID:category",
-    "Course name:text",
-    "Year:number",
-    "Semester:category",
-    "Item description:money",
-    "Due date:category"
+    "Course ID:category:100%:2",
+    "Course name:text:100%:2",
+    "Year:number:100%:1",
+    "Semester:category:100%:1",
+    "Item description:money:100%:5",
+    "Due date:category:100%:6"
    ],
    "flags": [
     "分組欄「Semester」只有一種值，等於沒分組"
@@ -10786,9 +10786,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:text",
-    "Time Start:time",
-    "Course Name:text"
+    "Day:text:83%:5",
+    "Time Start:time:100%:3",
+    "Course Name:text:100%:4"
    ],
    "flags": [
     "原始工作表有 42 列，只抽出 6 列，結構可能判壞"
@@ -10828,11 +10828,11 @@
     "person": null
    },
    "colTypes": [
-    "SEMESTER SUMMARY:longtext",
-    "CREDIT REQUIREMENTS:text",
-    "TOTAL:text",
-    "EARNED:number",
-    "NEEDED:text"
+    "SEMESTER SUMMARY:longtext:100%:2",
+    "CREDIT REQUIREMENTS:text:75%:3",
+    "TOTAL:text:75%:3",
+    "EARNED:number:50%:2",
+    "NEEDED:text:50%:2"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -10861,12 +10861,12 @@
     "person": null
    },
    "colTypes": [
-    "COURSE TITLE:text",
-    "COURSE #:text",
-    "DEGREE REQUIREMENT:category",
-    "CREDITS:number",
-    "COMPLETED?:category",
-    "SEMESTER:category"
+    "COURSE TITLE:text:100%:25",
+    "COURSE #:text:100%:26",
+    "DEGREE REQUIREMENT:category:100%:3",
+    "CREDITS:number:100%:3",
+    "COMPLETED?:category:81%:2",
+    "SEMESTER:category:100%:5"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -10895,9 +10895,9 @@
     "person": null
    },
    "colTypes": [
-    "CLASSES:text",
-    "CREDITS:number",
-    "CLASSES:number"
+    "CLASSES:text:100%:5",
+    "CREDITS:number:100%:5",
+    "CLASSES:number:100%:5"
    ],
    "flags": []
   },
@@ -10927,9 +10927,9 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "JAN:category",
-    "Item:category"
+    "Day:category:100%:4",
+    "JAN:category:67%:7",
+    "Item:category:100%:14"
    ],
    "flags": []
   },
@@ -11047,13 +11047,13 @@
     "person": null
    },
    "colTypes": [
-    "S:category",
-    "M:number",
-    "T:number",
-    "W:number",
-    "T:number",
-    "F:number",
-    "S:number"
+    "S:category:88%:12",
+    "M:number:88%:10",
+    "T:number:88%:10",
+    "W:number:84%:10",
+    "T:number:76%:9",
+    "F:number:72%:8",
+    "S:number:72%:8"
    ],
    "flags": []
   },
@@ -11083,13 +11083,13 @@
     "person": null
    },
    "colTypes": [
-    "S:text",
-    "M:number",
-    "T:number",
-    "W:number",
-    "T:number",
-    "F:number",
-    "S:number"
+    "S:text:88%:16",
+    "M:number:76%:13",
+    "T:number:76%:13",
+    "W:number:80%:14",
+    "T:number:88%:15",
+    "F:number:84%:15",
+    "S:number:80%:14"
    ],
    "flags": []
   },
@@ -11119,13 +11119,13 @@
     "person": null
    },
    "colTypes": [
-    "S:text",
-    "M:number",
-    "T:number",
-    "W:number",
-    "T:number",
-    "F:number",
-    "S:number"
+    "S:text:93%:19",
+    "M:number:74%:14",
+    "T:number:70%:14",
+    "W:number:67%:13",
+    "T:number:67%:13",
+    "F:number:70%:14",
+    "S:number:74%:15"
    ],
    "flags": []
   },
@@ -11162,12 +11162,12 @@
     "person": null
    },
    "colTypes": [
-    "TIME:time",
-    "Room A623:category",
-    "Room C256:category",
-    "Room A620:category",
-    "Room A6202:category",
-    "Room B345:category"
+    "TIME:time:100%:15",
+    "Room A623:category:27%:2",
+    "Room C256:category:27%:2",
+    "Room A620:category:27%:2",
+    "Room A6202:category:27%:2",
+    "Room B345:category:27%:2"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字"
@@ -11230,12 +11230,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:category",
-    "Column1:text",
-    "Identify a need:text",
-    "Develop a solution:text",
-    "Create a suitable product:text",
-    "Market product to fill need:text"
+    "欄 1:category:100%:2",
+    "Column1:text:11%:1",
+    "Identify a need:text:100%:9",
+    "Develop a solution:text:78%:7",
+    "Create a suitable product:text:67%:6",
+    "Market product to fill need:text:89%:8"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -11266,30 +11266,30 @@
     "person": null
    },
    "colTypes": [
-    "DATE:category",
-    "DAY:category",
-    "TIME:time",
-    "NOTES:text",
-    "Blank:empty",
-    "MESSAGE:text",
-    "LINK:longtext",
-    "VISUAL:longtext",
-    "Blank3:empty",
-    "MESSAGE2:text",
-    "LINK2:longtext",
-    "VISUAL2:longtext",
-    "Blank4:empty",
-    "MESSAGE3:text",
-    "LINK3:longtext",
-    "VISUAL3:longtext",
-    "blank5:empty",
-    "MESSAGE4:empty",
-    "LINK4:empty",
-    "VISUAL4:empty",
-    "Blank2:empty",
-    "MESSAGE5:empty",
-    "LINK5:empty",
-    "VISUAL5:empty"
+    "DATE:category:100%:2",
+    "DAY:category:100%:2",
+    "TIME:time:100%:3",
+    "NOTES:text:100%:1",
+    "Blank:empty:0%:0",
+    "MESSAGE:text:50%:1",
+    "LINK:longtext:50%:1",
+    "VISUAL:longtext:50%:1",
+    "Blank3:empty:0%:0",
+    "MESSAGE2:text:33%:1",
+    "LINK2:longtext:33%:1",
+    "VISUAL2:longtext:33%:1",
+    "Blank4:empty:0%:0",
+    "MESSAGE3:text:33%:1",
+    "LINK3:longtext:33%:1",
+    "VISUAL3:longtext:33%:1",
+    "blank5:empty:0%:0",
+    "MESSAGE4:empty:0%:0",
+    "LINK4:empty:0%:0",
+    "VISUAL4:empty:0%:0",
+    "Blank2:empty:0%:0",
+    "MESSAGE5:empty:0%:0",
+    "LINK5:empty:0%:0",
+    "VISUAL5:empty:0%:0"
    ],
    "flags": []
   },
@@ -11316,12 +11316,12 @@
     "person": null
    },
    "colTypes": [
-    "DATE:text",
-    "MILESTONE:text",
-    "POSITION 1:number",
-    "POSITION 2:number",
-    "POSITION 3:number",
-    "NOTES:empty"
+    "DATE:text:100%:11",
+    "MILESTONE:text:100%:9",
+    "POSITION 1:number:100%:7",
+    "POSITION 2:number:100%:1",
+    "POSITION 3:number:100%:7",
+    "NOTES:empty:0%:0"
    ],
    "flags": []
   },
@@ -11350,8 +11350,8 @@
     "person": null
    },
    "colTypes": [
-    "start row:text",
-    "5:number"
+    "start row:text:100%:1",
+    "5:number:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -11382,12 +11382,12 @@
     "person": null
    },
    "colTypes": [
-    "TIE BREAK:number",
-    "RANK:number",
-    "DATE:text",
-    "MILESTONE:text",
-    "POSITION:number",
-    "NUM:number"
+    "TIE BREAK:number:100%:12",
+    "RANK:number:100%:11",
+    "DATE:text:100%:11",
+    "MILESTONE:text:100%:9",
+    "POSITION:number:100%:7",
+    "NUM:number:100%:12"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -11417,10 +11417,10 @@
     "person": null
    },
    "colTypes": [
-    "RANK Sorted:number",
-    "DATE:text",
-    "MILESTONE:text",
-    "POSITION:number"
+    "RANK Sorted:number:100%:12",
+    "DATE:text:100%:11",
+    "MILESTONE:text:100%:9",
+    "POSITION:number:100%:7"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -11453,12 +11453,12 @@
     "person": null
    },
    "colTypes": [
-    "Start:text",
-    "End:category",
-    "Duration:number",
-    "Label:longtext",
-    "Vert. Position:number",
-    "Vert. Line:number"
+    "Start:text:88%:15",
+    "End:category:100%:9",
+    "Duration:number:53%:8",
+    "Label:longtext:94%:15",
+    "Vert. Position:number:82%:14",
+    "Vert. Line:number:53%:6"
    ],
    "flags": []
   },
@@ -11501,16 +11501,16 @@
     "person": null
    },
    "colTypes": [
-    "Deadline:text",
-    "Publish date:category",
-    "Theme:category",
-    "Working title:text",
-    "Channel:category",
-    "Status:status",
-    "Author:category",
-    "Key elements:text",
-    "Keywords:category",
-    "Notes:text"
+    "Deadline:text:100%:24",
+    "Publish date:category:68%:13",
+    "Theme:category:68%:2",
+    "Working title:text:68%:2",
+    "Channel:category:68%:2",
+    "Status:status:68%:2",
+    "Author:category:68%:2",
+    "Key elements:text:68%:2",
+    "Keywords:category:68%:2",
+    "Notes:text:68%:2"
    ],
    "flags": []
   },
@@ -11540,9 +11540,9 @@
     "person": null
    },
    "colTypes": [
-    "9 - 12:category",
-    "☐:category",
-    "Arrange a gathering for you and your parents.:longtext"
+    "9 - 12:category:99%:11",
+    "☐:category:93%:1",
+    "Arrange a gathering for you and your parents.:longtext:100%:70"
    ],
    "flags": [
     "分組欄「☐」只有一種值，等於沒分組"
@@ -11667,11 +11667,11 @@
     "person": null
    },
    "colTypes": [
-    "Start:time",
-    "End:time",
-    "Time:time",
-    "Item:text",
-    "Contact:person"
+    "Start:time:100%:6",
+    "End:time:83%:5",
+    "Time:time:83%:5",
+    "Item:text:100%:6",
+    "Contact:person:83%:4"
    ],
    "flags": []
   },
@@ -11708,11 +11708,11 @@
     "person": null
    },
    "colTypes": [
-    "MONTH:category",
-    "PUBLISH DATE:category",
-    "THEME/SUBJECT:text",
-    "TITLE:text",
-    "STATUS:category"
+    "MONTH:category:100%:16",
+    "PUBLISH DATE:category:98%:7",
+    "THEME/SUBJECT:text:27%:14",
+    "TITLE:text:27%:14",
+    "STATUS:category:27%:3"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -11751,11 +11751,11 @@
     "person": null
    },
    "colTypes": [
-    "MONTH:category",
-    "PUBLISH DATE:category",
-    "THEME/SUBJECT:text",
-    "TITLE:category",
-    "STATUS:text"
+    "MONTH:category:100%:16",
+    "PUBLISH DATE:category:98%:5",
+    "THEME/SUBJECT:text:5%:3",
+    "TITLE:category:3%:1",
+    "STATUS:text:3%:2"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -11800,12 +11800,12 @@
     "person": null
    },
    "colTypes": [
-    "Time:time",
-    "Conference room A:longtext",
-    "Conference room B:text",
-    "Conference room C:category",
-    "Conference room D:text",
-    "Conference room E:longtext"
+    "Time:time:100%:15",
+    "Conference room A:longtext:27%:1",
+    "Conference room B:text:40%:1",
+    "Conference room C:category:40%:2",
+    "Conference room D:text:13%:1",
+    "Conference room E:longtext:40%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字"
@@ -11836,12 +11836,12 @@
     "person": null
    },
    "colTypes": [
-    "Date:time",
-    "10/22/23:longtext",
-    "10/23/23:longtext",
-    "10/24/23:longtext",
-    "10/25/23:longtext",
-    "10/26/23:longtext"
+    "Date:time:100%:16",
+    "10/22/23:longtext:100%:3",
+    "10/23/23:longtext:31%:3",
+    "10/24/23:longtext:31%:3",
+    "10/25/23:longtext:31%:3",
+    "10/26/23:longtext:31%:3"
    ],
    "flags": []
   },
@@ -11876,10 +11876,10 @@
     "person": null
    },
    "colTypes": [
-    "No.:number",
-    "Position:number",
-    "Date:text",
-    "Milestone:text"
+    "No.:number:100%:7",
+    "Position:number:86%:1",
+    "Date:text:86%:6",
+    "Milestone:text:86%:6"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -11908,11 +11908,11 @@
     "person": null
    },
    "colTypes": [
-    "No.:number",
-    "Start Date:text",
-    "End Date:text",
-    "Task:text",
-    "Duration in days:number"
+    "No.:number:100%:13",
+    "Start Date:text:92%:11",
+    "End Date:text:92%:11",
+    "Task:text:92%:12",
+    "Duration in days:number:92%:8"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸"
@@ -11951,16 +11951,16 @@
     "person": null
    },
    "colTypes": [
-    "Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14.\r\nThis table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time.\r\nThe data in this chart is auto generated based on the content in the table above. \r\nDo not edit or delete this table or its contents.\r\nThe next instruction is in cell A17.:money",
-    "Tasks:category",
-    "Start date:category",
-    "Task duration in days:number",
-    "position:number",
-    "<-- this table creates the gantt chart, plotting 7 milestones at a time:empty",
-    "欄 7:text",
-    "欄 8:category",
-    "欄 9:text",
-    "欄 10:money"
+    "Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14.\r\nThis table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time.\r\nThe data in this chart is auto generated based on the content in the table above. \r\nDo not edit or delete this table or its contents.\r\nThe next instruction is in cell A17.:money:89%:2",
+    "Tasks:category:100%:7",
+    "Start date:category:39%:6",
+    "Task duration in days:number:39%:6",
+    "position:number:39%:7",
+    "<-- this table creates the gantt chart, plotting 7 milestones at a time:empty:0%:0",
+    "欄 7:text:17%:3",
+    "欄 8:category:89%:3",
+    "欄 9:text:11%:2",
+    "欄 10:money:11%:2"
    ],
    "flags": []
   },
@@ -11987,12 +11987,12 @@
     "person": null
    },
    "colTypes": [
-    "Dates(s):date",
-    "Time In:time",
-    "Lunch Start:time",
-    "Lunch End:time",
-    "Time Out:time",
-    "Hours Worked:number"
+    "Dates(s):date:100%:5",
+    "Time In:time:100%:1",
+    "Lunch Start:time:100%:1",
+    "Lunch End:time:100%:1",
+    "Time Out:time:100%:1",
+    "Hours Worked:number:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字"
@@ -12021,12 +12021,12 @@
     "person": null
    },
    "colTypes": [
-    "Date:empty",
-    "Time In:empty",
-    "Lunch Start:empty",
-    "Lunch End:empty",
-    "Time Out:empty",
-    "Hours Worked:number"
+    "Date:empty:0%:0",
+    "Time In:empty:0%:0",
+    "Lunch Start:empty:0%:0",
+    "Lunch End:empty:0%:0",
+    "Time Out:empty:0%:0",
+    "Hours Worked:number:100%:1"
    ],
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
@@ -12056,13 +12056,13 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "Date:text",
-    "Regular hours:category",
-    "Overtime hours:money",
-    "Sick:money",
-    "Vacation:category",
-    "Total:money"
+    "Day:category:94%:9",
+    "Date:text:88%:15",
+    "Regular hours:category:18%:2",
+    "Overtime hours:money:12%:2",
+    "Sick:money:12%:2",
+    "Vacation:category:24%:3",
+    "Total:money:82%:3"
    ],
    "flags": []
   },
@@ -12099,17 +12099,17 @@
     "person": null
    },
    "colTypes": [
-    "January:text",
-    "Week 1:category",
-    "Overtime:category",
-    "Week 2:category",
-    "Overtime:category",
-    "Week 3:category",
-    "Overtime:category",
-    "Week 4:category",
-    "Overtime:category",
-    "Week 5:category",
-    "Overtime:category"
+    "January:text:100%:21",
+    "Week 1:category:13%:1",
+    "Overtime:category:13%:1",
+    "Week 2:category:13%:1",
+    "Overtime:category:13%:1",
+    "Week 3:category:13%:1",
+    "Overtime:category:13%:1",
+    "Week 4:category:13%:1",
+    "Overtime:category:13%:1",
+    "Week 5:category:13%:1",
+    "Overtime:category:13%:1"
    ],
    "flags": [
     "落到一般表格：沒有辨識出任何主軸",
@@ -12140,12 +12140,12 @@
     "person": null
    },
    "colTypes": [
-    "DATE(S):text",
-    "TIME IN:time",
-    "LUNCH START:time",
-    "LUNCH END:time",
-    "TIME OUT:time",
-    "HOURS WORKED:number"
+    "DATE(S):text:100%:5",
+    "TIME IN:time:100%:1",
+    "LUNCH START:time:100%:1",
+    "LUNCH END:time:100%:1",
+    "TIME OUT:time:100%:1",
+    "HOURS WORKED:number:100%:1"
    ],
    "flags": []
   },
@@ -12174,10 +12174,10 @@
     "person": null
    },
    "colTypes": [
-    "Day of week:text",
-    "Time in:time",
-    "Breaks\r\n(minutes):number",
-    "Time out:time"
+    "Day of week:text:100%:17",
+    "Time in:time:100%:3",
+    "Breaks\r\n(minutes):number:29%:4",
+    "Time out:time:41%:5"
    ],
    "flags": []
   },
@@ -12204,12 +12204,12 @@
     "person": null
    },
    "colTypes": [
-    "欄 1:text",
-    "Regular:number",
-    "Overtime:number",
-    "Sick:number",
-    "Holiday:number",
-    "Vacation:number"
+    "欄 1:text:100%:2",
+    "Regular:number:50%:1",
+    "Overtime:number:50%:1",
+    "Sick:number:50%:1",
+    "Holiday:number:100%:2",
+    "Vacation:number:50%:1"
    ],
    "flags": [
     "原始工作表有 34 列，只抽出 2 列，結構可能判壞"
@@ -12238,13 +12238,13 @@
     "person": null
    },
    "colTypes": [
-    "Day:category",
-    "Date:text",
-    "Regular hours:category",
-    "Overtime hours:number",
-    "Sick:money",
-    "Vacation:money",
-    "Total:money"
+    "Day:category:82%:7",
+    "Date:text:6%:1",
+    "Regular hours:category:65%:4",
+    "Overtime hours:number:35%:4",
+    "Sick:money:12%:2",
+    "Vacation:money:12%:2",
+    "Total:money:82%:5"
    ],
    "flags": []
   },
@@ -12271,16 +12271,16 @@
     "person": null
    },
    "colTypes": [
-    "Day:text",
-    "In:time",
-    "Out:time",
-    "In:time",
-    "Out:text",
-    "Regular hrs.:category",
-    "Overtime hrs.:number",
-    "Sick hrs.:empty",
-    "Vacation hrs.:empty",
-    "Total:money"
+    "Day:text:70%:7",
+    "In:time:10%:1",
+    "Out:time:10%:1",
+    "In:time:10%:1",
+    "Out:text:40%:4",
+    "Regular hrs.:category:40%:3",
+    "Overtime hrs.:number:80%:3",
+    "Sick hrs.:empty:0%:0",
+    "Vacation hrs.:empty:0%:0",
+    "Total:money:90%:3"
    ],
    "flags": []
   },
@@ -12309,13 +12309,13 @@
     "person": null
    },
    "colTypes": [
-    "DAY:text",
-    "DATE:text",
-    "REGULAR HOURS:empty",
-    "OVERTIME HOURS:empty",
-    "SICK:empty",
-    "VACATION:category",
-    "TOTAL:money"
+    "DAY:text:90%:9",
+    "DATE:text:80%:8",
+    "REGULAR HOURS:empty:0%:0",
+    "OVERTIME HOURS:empty:0%:0",
+    "SICK:empty:0%:0",
+    "VACATION:category:20%:1",
+    "TOTAL:money:70%:1"
    ],
    "flags": []
   },
@@ -12342,13 +12342,13 @@
     "person": null
    },
    "colTypes": [
-    "Day:text",
-    "欄 2:date",
-    "Regular \r\nhours:category",
-    "Overtime hours:number",
-    "Sick:text",
-    "Vacation:empty",
-    "Total:money"
+    "Day:text:100%:9",
+    "欄 2:date:78%:7",
+    "Regular \r\nhours:category:100%:5",
+    "Overtime hours:number:11%:1",
+    "Sick:text:22%:2",
+    "Vacation:empty:0%:0",
+    "Total:money:89%:4"
    ],
    "flags": []
   }
