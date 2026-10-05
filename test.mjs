@@ -334,6 +334,52 @@ for (const [head, want, why] of titleCases) {
   chk('名稱欄沒在命名就打折', cal.title && cal.title.name, 'Deadline');
 }
 
+/* 英文月份與小數。
+
+   「12.5」沒有年份時幾乎都是小數而不是 12 月 5 日，而型別偵測是先問日期
+   再問金額，所以一整欄 12.5／3.5／7.25 的單價會被判成 date——
+   inventory_53587d4d › Inventory List 的「Unit price」就是這樣變成日期欄的
+   （v72 的 baseline 就已經這樣，是加了每欄的相異值數才看見）。
+   三段式的「1.3.2026」跟年在前的「2026.3.1」照收，那些有年份、不會混。
+
+   英文月份只收三字母縮寫與完整月名，不收任意前綴，否則「Marketing 1」
+   會被讀成 3 月 1 日。 */
+{
+  const f = d => d ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}` : null;
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 月名 ${why.padEnd(22)} 期望=${String(want).padEnd(11)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  chk('Jan 5, 2026',    f(S.parseDateish('Jan 5, 2026')),     '2026-01-05');
+  chk('January 5, 2026', f(S.parseDateish('January 5, 2026')), '2026-01-05');
+  chk('Sept 3, 2026',   f(S.parseDateish('Sept 3, 2026')),    '2026-09-03');
+  chk('Sep 30th',       f(S.parseDateish('Sep 30th')),        `${new Date().getFullYear()}-09-30`);
+  chk('5-Jan-26',       f(S.parseDateish('5-Jan-26')),        '2026-01-05');
+  chk('5 January 2026', f(S.parseDateish('5 January 2026')),  '2026-01-05');
+  chk('1st Mar 26',     f(S.parseDateish('1st Mar 26')),      '2026-03-01');
+  // 不是月份的字不能中
+  chk('Marketing 1 不是日期', f(S.parseDateish('Marketing 1')), null);
+  chk('Monday 5 不是日期',   f(S.parseDateish('Monday 5')),    null);
+  chk('Item 3 不是日期',     f(S.parseDateish('Item 3')),      null);
+  // 小數不是日期
+  chk('12.5 是小數',   f(S.parseDateish('12.5')), null);
+  chk('3.5 是小數',    f(S.parseDateish('3.5')),  null);
+  // 點分隔是德奧瑞那一帶的日.月.年；沒有欄位脈絡時照這個讀
+  chk('1.3.2026 點分隔是日在前', f(S.parseDateish('1.3.2026')), '2026-03-01');
+  chk('1-3-2026 其他分隔是月在前', f(S.parseDateish('1-3-2026')), '2026-01-03');
+  chk('明確指定時聽指定的',       f(S.parseDateish('1.3.2026', false)), '2026-01-03');
+  chk('整欄：點分隔沒證據→日在前', S.inferDayFirst(['1.3.2026','5.6.2026']) ? '日在前' : '月在前', '日在前');
+  chk('整欄：點分隔有月證據→月在前', S.inferDayFirst(['1.25.2026','5.6.2026']) ? '日在前' : '月在前', '月在前');
+
+  const T = (name, vals) => S.detectColumn(name, vals).type;
+  chk('整欄：英文月份判成 date', T('Date',
+    ['Jan 5, 2026','Feb 12, 2026','Mar 18, 2026','Apr 2, 2026','May 22, 2026','Jun 30, 2026']), 'date');
+  chk('整欄：單價判成 money', T('Unit price', ['12.5','3.5','7.25','1.5']), 'money');
+  chk('整欄：任務名稱不是 date', T('Task',
+    ['Marketing 1','Marketing 2','Item 3','Row 12','Phase 4','Step 5']), 'text');
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};

@@ -27,15 +27,38 @@
      有證據的時候一律照證據走。 */
   var RE_MDY = /^(\d{1,2})\s*[\-\/.]\s*(\d{1,2})(?:\s*[\-\/.]\s*(\d{2,4}))?\s*$/;
 
+  /* 英文月份。微軟範本大量用「Jan 5, 2026」「5-Jan」「March 1」這幾種寫法，
+     原本一個都讀不出來。
+     只收「三字母縮寫」與「完整月名」（可帶句點），不收任意前綴——
+     否則「Marketing 1」會被讀成 3 月 1 日。Sept 另外收，那是常見的例外。 */
+  var MONTHS_EN = ['january', 'february', 'march', 'april', 'may', 'june',
+                   'july', 'august', 'september', 'october', 'november', 'december'];
+
+  function monthFromWord(w) {
+    var t = String(w).toLowerCase().replace(/\.$/, '');
+    for (var i = 0; i < 12; i++) {
+      if (t === MONTHS_EN[i] || t === MONTHS_EN[i].slice(0, 3)) return i + 1;
+    }
+    return t === 'sept' ? 9 : 0;
+  }
+
+  function fullYear(y, has) {
+    if (!has) return new Date().getFullYear();
+    return y < 100 ? y + (y < 70 ? 2000 : 1900) : y;
+  }
+
   function inferDayFirst(values) {
-    var aBig = false, bBig = false;
+    var aBig = false, bBig = false, dot = false;
     for (var i = 0; i < values.length; i++) {
       var m = String(values[i] == null ? '' : values[i]).trim().match(RE_MDY);
       if (!m) continue;
       if (+m[1] > 12) aBig = true;
       if (+m[2] > 12) bBig = true;
       if (aBig && bBig) return false;   // 兩種都出現 = 資料不一致，再掃也不會變
+      if (m[0].indexOf('.') >= 0) dot = true;
     }
+    // 數字沒給證據時才看寫法：點分隔是歐陸的日.月.年
+    if (!aBig && !bBig) return dot;
     return aBig && !bBig;
   }
 
@@ -61,15 +84,38 @@
       return ymd(y < 200 ? y + 1911 : y, +m[2], +m[3]);
     }
 
-    // 西式三段：3/1/2026、12/22/2026、1.3.26。日月順序由整欄決定（見 inferDayFirst）
-    if ((m = s.match(/^(\d{1,2})\s*[\-\/.]\s*(\d{1,2})\s*[\-\/.]\s*(\d{2,4})\s*$/))) {
-      var y2 = +m[3];
-      if (m[3].length <= 2) y2 += y2 < 70 ? 2000 : 1900;
-      return dayFirst ? ymd(y2, +m[2], +m[1]) : ymd(y2, +m[1], +m[2]);
+    /* 西式三段：3/1/2026、12/22/2026、1.3.26。日月順序由整欄決定（見 inferDayFirst）。
+       沒有欄位脈絡時（dayFirst 沒給）才看分隔符：點分隔的「1.3.2026」是德奧瑞
+       那一帶的寫法，幾乎都是日在前；斜線的是美式，月在前。
+       有欄位脈絡時一律聽欄位的——整欄出現過 >12 的證據比寫法習慣可靠。 */
+    if ((m = s.match(/^(\d{1,2})\s*([\-\/.])\s*(\d{1,2})\s*[\-\/.]\s*(\d{2,4})\s*$/))) {
+      var y2 = +m[4];
+      if (m[4].length <= 2) y2 += y2 < 70 ? 2000 : 1900;
+      var df = dayFirst === undefined ? m[2] === '.' : dayFirst;
+      return df ? ymd(y2, +m[3], +m[1]) : ymd(y2, +m[1], +m[3]);
     }
 
-    // 只有月日：3/1、3月1日。寫了「月」就不必猜順序
-    if ((m = s.match(/^(\d{1,2})\s*[\-\/.月]\s*(\d{1,2})\s*日?\s*(前|後|底|初|中|左右|以前|之前|以後)?$/))) {
+    // 英文月份在前：Jan 5, 2026／January 5／Mar-1／Sep 30th
+    if ((m = s.match(/^([A-Za-z]{3,9}\.?)\s*[-\s]\s*(\d{1,2})(?:st|nd|rd|th)?\s*[-,]?\s*(\d{2,4})?\s*$/))) {
+      var mo = monthFromWord(m[1]);
+      if (mo) return ymd(fullYear(+m[3], !!m[3]), mo, +m[2]);
+    }
+    // 英文月份在後：5-Jan／5 January 2026／1st Mar 26
+    if ((m = s.match(/^(\d{1,2})(?:st|nd|rd|th)?\s*[-\s]\s*([A-Za-z]{3,9}\.?)\s*[-,]?\s*(\d{2,4})?\s*$/))) {
+      var mo2 = monthFromWord(m[2]);
+      if (mo2) return ymd(fullYear(+m[3], !!m[3]), mo2, +m[1]);
+    }
+
+    /* 只有月日：3/1、3月1日。寫了「月」就不必猜順序。
+
+       這裡不收「.」當分隔。沒有年份的「12.5」幾乎都是小數而不是 12 月 5 日，
+       而型別偵測是先問日期再問金額，所以一整欄 12.5／3.5／7.25 的單價會被
+       判成 date——inventory_53587d4d › Inventory List 的「Unit price」就是
+       這樣變成日期欄的（v72 的 baseline 就已經這樣了，是這一版加了
+       每欄的填充率與相異值數才看見）。
+       三段式的「1.3.2026」跟年在前的「2026.3.1」照收，那些有年份、不會跟
+       小數搞混。 */
+    if ((m = s.match(/^(\d{1,2})\s*[\-\/月]\s*(\d{1,2})\s*日?\s*(前|後|底|初|中|左右|以前|之前|以後)?$/))) {
       var swap = dayFirst && !/月/.test(s);
       return ymd(new Date().getFullYear(), swap ? +m[2] : +m[1], swap ? +m[1] : +m[2]);
     }
