@@ -71,6 +71,76 @@ for (const [name, wRep, wUni] of personCases) {
   }
 }
 
+/* 卡片標題：欄名本身就是最強的訊號。
+   pickTitle 原本只看「相異度 − 欄位位置」，所以 163 份範本裡
+   inventory_cf2db84f 的 25 張卡片叫「Inventory ID」而不是品名「Name」。
+   這類錯不會觸發任何警示——有標題，只是挑錯了。 */
+const titleCases = [
+  // [欄名列, 期望的標題欄, 說明]
+  [['Inventory ID', 'Name', 'Unit price'],  'Name',        '品名贏過編號'],
+  [['員工編號', '姓名', '時薪'],                '姓名',          '中文的編號／姓名'],
+  [['SKU', 'Item names', 'Price'],          'Item names',  '複數的 names 也要算'],
+  [['Order #', 'Product', 'Amount'],        'Product',     '單號欄不該當標題'],
+  [['分類', '工作項目', '金額'],                 '工作項目',       '分組軸不會被標題搶走'],
+];
+const WORDS = ['筆記本','原子筆','膠水','剪刀','尺規','釘書機','便利貼','資料夾','文件袋','計算機','橡皮擦','立可白'];
+const CATS  = ['行銷','研發','客服'];
+for (const [head, want, why] of titleCases) {
+  const grid = [head].concat(Array.from({ length: 12 }, (_, i) => head.map(h => {
+    if (/編號|SKU|ID|#/.test(h)) return 'XX-' + (1010 + i);            // 單號：長度整齊、含數字
+    if (/金額|時薪|price|amount/i.test(h)) return String(100 + i * 7);
+    if (h === '分類') return CATS[i % 3];
+    return WORDS[i];
+  })));
+  const a = S.analyse(grid);
+  const got = a.roles.title && a.roles.title.name;
+  const pass = got === want;
+  console.log(`${pass ? '✓' : '✗'} 標題 ${why.padEnd(16)} 期望=${String(want).padEnd(11)} 實際=${got}`);
+  pass ? ok++ : bad++;
+}
+// 分組軸是一整張看法，不該為了一個名字讓它變成 null
+{
+  const grid = [['分類', '工作項目', '金額']].concat(Array.from({ length: 15 }, (_, i) =>
+    [CATS[i % 3], '工作項目' + (i + 1), String(1000 + i * 37)]));
+  const a = S.analyse(grid);
+  const pass = a.roles.group && a.roles.group.name === '分類';
+  console.log(`${pass ? '✓' : '✗'} 標題 ${'分組軸仍然在'.padEnd(16)} group=${a.roles.group && a.roles.group.name}`);
+  pass ? ok++ : bad++;
+}
+
+/* 標題排在 group、lead 之後分配，撞到就讓 roles.title 變成 null——
+   卡片整張沒有名字，而表上明明還有別的名稱欄。改成往下一個候選退。
+   另外：使用者手動指定標題時（pinTitle），那一欄不該被分組軸搶走。 */
+{
+  const NAMES = ['年度計畫','網站改版','客服訓練','展場佈置','新品試作','通路拓展','包材更新',
+                 '物流調整','品牌調研','會員活動','教育訓練','系統升級','庫存盤點','文件歸檔','供應商評估'];
+  const grid = [['分類', '工作項目', '金額']].concat(
+    Array.from({ length: 15 }, (_, i) => [CATS[i % 3], NAMES[i], String(1000 + i * 37)]));
+  const a = S.analyse(grid);
+  const live = a.cols.filter(c => c.type !== 'empty');
+  const byName = n => a.cols.filter(c => c.name === n)[0];
+
+  const chk = (why, cond, got) => {
+    console.log(`${cond ? '✓' : '✗'} 角色 ${why.padEnd(22)} ${got}`);
+    cond ? ok++ : bad++;
+  };
+  chk('自動：分組與標題各一欄', a.roles.group?.name === '分類' && a.roles.title?.name === '工作項目',
+      `group=${a.roles.group?.name} title=${a.roles.title?.name}`);
+
+  // 撞到：把分組欄當成 pickTitle 的首選，標題要退到下一個候選而不是 null
+  const hit = S.assignRoles(live, { ...a.shape, title: byName('分類') });
+  chk('撞到分組軸就往下退', hit.group?.name === '分類' && hit.title?.name === '工作項目',
+      `group=${hit.group?.name} title=${hit.title?.name}`);
+
+  // pinTitle：使用者指定了就要生效
+  const pin = S.assignRoles(live, { ...a.shape, title: byName('分類'), pinTitle: true });
+  chk('手動指定的標題會生效', pin.title?.name === '分類',
+      `group=${pin.group?.name} title=${pin.title?.name}`);
+
+  // index.html 不該再自己抄一份
+  chk('assignRoles 有對外', typeof S.assignRoles === 'function', typeof S.assignRoles);
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};

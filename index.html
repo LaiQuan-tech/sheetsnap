@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v68<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v69<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=68"></script>
+<script src="detect.js?v=69"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -771,25 +771,10 @@ function effective(){
   // 只換名字沒有用：渲染是看角色決定的，換版面必須連角色一起重算
   if(os) shape = SheetShape.shapeAs(live0, A.cols, os);
   if(og === '__none__') shape.group = null; else if(og) shape.group = byName(og);
-  if(ot) shape.title = byName(ot);
+  // 手動指定的標題要真的生效，不能被分組軸搶走
+  if(ot){ shape.title = byName(ot); shape.pinTitle = true }
   var live = A.cols.filter(function(c){ return c.type !== 'empty' });
-  return { shape: shape, roles: SheetShape_assign(live, shape) };
-}
-// assignRoles 沒對外，用同樣規則重算一份
-function SheetShape_assign(cols, shape){
-  var used = {}, take = function(c, r){ if(!c || used[c.name]) return null; used[c.name] = r; return c };
-  var roles = { group: take(shape.group,'group'), lead: take(shape.lead,'lead'),
-                title: take(shape.title,'title'), meta:[], body:[], rest:[] };
-  cols.forEach(function(c){ if(!used[c.name] && ['person','status','category','phone','email','url'].indexOf(c.type)>=0){ used[c.name]='meta'; roles.meta.push(c) } });
-  cols.forEach(function(c){ if(!used[c.name] && c.type==='longtext'){ used[c.name]='body'; roles.body.push(c) } });
-  roles.hidden = [];
-  cols.forEach(function(c){
-    if(used[c.name]) return;
-    if(SheetShape.isNoise && SheetShape.isNoise(c)){ used[c.name]='hidden'; roles.hidden.push(c); return; }
-    used[c.name]='rest'; roles.rest.push(c);
-  });
-  roles.assigned = used;
-  return roles;
+  return { shape: shape, roles: SheetShape.assignRoles(live, shape) };
 }
 
 function paint(){

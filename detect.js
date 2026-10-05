@@ -244,22 +244,35 @@
     return nums.every(function (v) { return v === Math.round(v) && v >= 0 && v <= c.filled + 2; });
   }
 
+  /* 欄名本身就是最強的訊號，而原本的評分完全不看欄名，
+     只看「相異度 − 欄位位置」。庫存表的「Inventory ID」因此越過
+     「Name」當上卡片標題，手機上看到的是 INV-1001 而不是品名。
+     加分給「這一列叫什麼」的欄名，扣分給單號、編號、代碼。
+     兩者都中（「Item ID」）就抵消，回到原本的評分。 */
+  var TITLE_NAME = /品名|品項|名稱|姓名|項目|標題|主旨|\bnames?\b|\bitems?\b|\btitles?\b|\bsubject\b/i;
+  var ID_NAME    = /編號|代碼|序號|單號|代號|\bid\b|\bno\.?\b|\bcode\b|\bsku\b/i;
+
   // 主標題欄：相異度高、不太長、不是日期或數字的那一欄，越靠左越優先
-  function pickTitle(cols) {
+  // 回傳排好序的整串候選，而不是只回第一名——assignRoles 要拿後面的退
+  function pickTitleRanked(cols) {
     var cand = cols.filter(function (c) {
       // 幾乎空白、或整欄同一個值的欄位當不了標題（試算表尾端常有這種殘欄）
       return ['text', 'longtext', 'person', 'category'].indexOf(c.type) >= 0
              && c.fillRate >= 0.5 && c.distinct > 1;
     });
-    if (!cand.length) return null;
-    cand.forEach(function (c, i) {
+    cand.forEach(function (c) {
       c._score = c.distinct / Math.max(c.filled, 1)          // 越獨特越像標題
+               + (TITLE_NAME.test(c.name) ? 0.5 : 0)         // 欄名就說了它是名稱
+               - (ID_NAME.test(c.name) ? 0.5 : 0)            // 欄名就說了它是編號
                - (c.type === 'longtext' ? 0.35 : 0)          // 長文字比較像內容
                - (codeLike(c) ? 0.6 : 0)                     // 單號、編號不是給人讀的名稱
                - cols.indexOf(c) * 0.04;                     // 越左邊越優先
     });
-    cand.sort(function (a, b) { return b._score - a._score; });
-    return cand[0];
+    return cand.sort(function (a, b) { return b._score - a._score; });
+  }
+
+  function pickTitle(cols) {
+    return pickTitleRanked(cols)[0] || null;
   }
 
   /* 整張表都是數字的時候（年金試算、退休試算、計價表），沒有任何名稱欄，
@@ -422,12 +435,37 @@
       if (!c || used[c.name]) return null;
       used[c.name] = role; return c;
     };
-    var roles = {
-      group: take(shape.group, 'group'),
-      lead:  take(shape.lead,  'lead'),
-      title: take(shape.title, 'title'),
-      meta:  [], body: [], rest: []
+    /* 標題排在 group、lead 之後拿，所以 pickTitle 挑中的那一欄很可能
+       已經被當成分組軸或主要數值用掉了。原本撞到就讓 roles.title 變成
+       null——整張卡片沒有名字，而表上明明還有別的名稱欄可用。
+       改成往下一個候選退。分組軸不讓：分組是一整張看法，
+       拿它來換一個名字不劃算。 */
+    var takeTitle = function () {
+      var t = take(shape.title, 'title');
+      if (t) return t;
+      /* 不另外排除單號欄。pickTitle 的評分已經扣了 0.6，所以單號只有在
+         比它好的欄全被用掉時才會輪到——那正是「有個代號總比卡片沒名字好」
+         的情況，而且主路徑本來就允許單號當標題（扣分不是禁止）。
+         這裡若多一道排除，自動判定與退讓的規則就不一致了。 */
+      var ranked = pickTitleRanked(cols);
+      for (var i = 0; i < ranked.length; i++) {
+        t = take(ranked[i], 'title');
+        if (t) return t;
+      }
+      return null;
     };
+    /* pinTitle：使用者在面板上手動指定了主標題欄，那一欄就不該被分組軸
+       或主要數值搶走——指定了卻沒生效比沒有指定更難理解。
+       自動判定時維持原順序（分組優先），只有手動指定才插到最前面。 */
+    var roles = shape.pinTitle
+      ? { title: take(shape.title, 'title') || takeTitle(),
+          group: take(shape.group, 'group'),
+          lead:  take(shape.lead,  'lead'),
+          meta:  [], body: [], rest: [] }
+      : { group: take(shape.group, 'group'),
+          lead:  take(shape.lead,  'lead'),
+          title: takeTitle(),
+          meta:  [], body: [], rest: [] };
     // 人員、狀態、分類當次要資訊；長文字當內文；其餘列成欄位對
     cols.forEach(function (c) {
       if (used[c.name] || c.type === 'empty') return;
@@ -606,6 +644,11 @@
 
   root.SheetShape = {
     isNoise: function (c) { return serialLike(c) || codeLike(c); },
+    /* 對外：index.html 原本自己抄了一份 assignRoles（註解寫「沒對外」），
+       於是這裡改角色分配，真正的頁面完全不會跟著改——gallery.mjs 的
+       views() 已經因為同一種抄寫漂移過一次。這次改成單一來源。 */
+    assignRoles: assignRoles,
+    pickTitle: pickTitle,
     shapeAs: shapeAs,
     groupOptions: groupOptions,
     filterOptions: filterOptions,
