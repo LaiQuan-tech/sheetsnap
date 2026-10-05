@@ -95,13 +95,19 @@
       return df ? ymd(y2, +m[3], +m[1]) : ymd(y2, +m[1], +m[3]);
     }
 
-    // 英文月份在前：Jan 5, 2026／January 5／Mar-1／Sep 30th
-    if ((m = s.match(/^([A-Za-z]{3,9}\.?)\s*[-\s]\s*(\d{1,2})(?:st|nd|rd|th)?\s*[-,]?\s*(\d{2,4})?\s*$/))) {
+    /* 英文月份在前：Jan 5, 2026／January 5／Mar-1／Sep 30th。
+       日的後面不能再接數字（(?!\d)）：沒有這一條，「Feb 2023」會被讀成
+       2 月 20 日 2023 年——那是月份標籤不是日期，而 cashflow_f7200e29 ›
+       Cash flow forecast 的欄名就是一整排「Feb 2023、Mar 2023…」，
+       一旦被當成日期，找標題列的那段就認為那一列是資料、把標題列往下挪到
+       第 10 列，欄名全變成「$2,500.00」這種金額。
+       月份＋年份（沒有日）刻意不收：收了就會再踩到同一個坑。 */
+    if ((m = s.match(/^([A-Za-z]{3,9}\.?)\s*[-\s]\s*(\d{1,2})(?!\d)(?:st|nd|rd|th)?\s*[-,]?\s*(\d{2,4})?\s*$/))) {
       var mo = monthFromWord(m[1]);
       if (mo) return ymd(fullYear(+m[3], !!m[3]), mo, +m[2]);
     }
     // 英文月份在後：5-Jan／5 January 2026／1st Mar 26
-    if ((m = s.match(/^(\d{1,2})(?:st|nd|rd|th)?\s*[-\s]\s*([A-Za-z]{3,9}\.?)\s*[-,]?\s*(\d{2,4})?\s*$/))) {
+    if ((m = s.match(/^(\d{1,2})(?!\d)(?:st|nd|rd|th)?\s*[-\s]\s*([A-Za-z]{3,9}\.?)\s*[-,]?\s*(\d{2,4})?\s*$/))) {
       var mo2 = monthFromWord(m[2]);
       if (mo2) return ymd(fullYear(+m[3], !!m[3]), mo2, +m[1]);
     }

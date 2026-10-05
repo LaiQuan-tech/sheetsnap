@@ -57,11 +57,13 @@ function views(a, raw) {
   const date = live.find(c => c.type === 'date'), time = live.find(c => c.type === 'time');
   const go = S.groupOptions(a);
 
+  // v76：日期欄過不了分組門檻時要退到時間欄（index.html 才是正本）
   let timeView = null;
   if (date) {
     const gd = go.find(x => x.name === date.name);
     if (gd) timeView = { id: 'time', k: `照時間看（${gd.groups} 段）`, col: date.name };
-  } else if (time) {
+  }
+  if (!timeView && time) {
     timeView = { id: 'time', k: `照時間看（依「${String(time.name).replace(/\s+/g, ' ')}」排序）`, col: null };
   }
 

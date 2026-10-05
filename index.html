@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v75<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v76<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=75"></script>
+<script src="detect.js?v=76"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -827,12 +827,18 @@ function buildViews(){
   var time = live.filter(function(c){ return c.type === 'time' })[0];
   var gopts = SheetShape.groupOptions(A);
 
+  /* 有日期欄、但那一欄幾乎每列都不同（過不了 groupOptions 的門檻）時，
+     不能就這樣放棄時間軸——表上可能還有一個時間欄可以用。
+     原本寫成 if(date){...} else if(time){...}，日期欄一出現就把時間欄那條路
+     堵死了：schedule_f4999261 › League schedule 的 Date 從 text 變成 date
+     之後，反而把本來有的「照時間看」弄丟了。 */
   var timeView = null;
   if(date){
     var gd = gopts.filter(function(x){ return x.name === date.name })[0];
     if(gd) timeView = { id:'time', k:TX('v_time'),
       d:TX('v_time_d', { name:date.name, n:gd.groups }), group:date.name };
-  } else if(time){
+  }
+  if(!timeView && time){
     timeView = { id:'time', k:TX('v_time'),
       d:TX('v_time_d2', { name:String(time.name).replace(/\s+/g,' ') }), group:'__none__' };
   }

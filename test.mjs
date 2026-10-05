@@ -362,6 +362,13 @@ for (const [head, want, why] of titleCases) {
   chk('Marketing 1 不是日期', f(S.parseDateish('Marketing 1')), null);
   chk('Monday 5 不是日期',   f(S.parseDateish('Monday 5')),    null);
   chk('Item 3 不是日期',     f(S.parseDateish('Item 3')),      null);
+  /* 月份＋年份不是日期。沒有「日的後面不能再接數字」這一條，「Feb 2023」會被
+     讀成 2 月 20 日——而 cashflow_f7200e29 › Cash flow forecast 的欄名就是
+     一整排「Feb 2023、Mar 2023…」，一旦被當成日期，找標題列那段就認為那一列
+     是資料、把標題列往下挪，欄名全變成「$2,500.00」這種金額。 */
+  chk('Feb 2023 不是日期',   f(S.parseDateish('Feb 2023')),    null);
+  chk('Jan 2026 不是日期',   f(S.parseDateish('Jan 2026')),    null);
+  chk('Feb 5 還是日期',      f(S.parseDateish('Feb 5')),       `${new Date().getFullYear()}-02-05`);
   // 小數不是日期
   chk('12.5 是小數',   f(S.parseDateish('12.5')), null);
   chk('3.5 是小數',    f(S.parseDateish('3.5')),  null);
