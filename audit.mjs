@@ -238,7 +238,15 @@ for (const src of args) {
         notes: a.notes || [],                  // 做過哪些結構轉換
         roles: { title: roleName(a.roles.title), group: roleName(a.roles.group),
                  lead: roleName(a.roles.lead), person: roleName(a.roles.person) },
-        colTypes: a.header.map((h, j) => `${h}:${a.cols[j].type}`),
+        /* 型別後面補上「填充率%／相異值數」。
+           這一欄原本只有 name:type，結果每次想回答「為什麼這一欄沒當上標題」
+           都卡住——pickTitle 看的是 fillRate 與 distinct，baseline 兩個都沒記，
+           在沒有原始檔的機器上就只能猜。filterOptions 的 avg 門檻也一樣。
+           多這兩個數字，baseline 才真的能獨立回答判定問題。 */
+        colTypes: a.header.map((h, j) => {
+          const c = a.cols[j];
+          return `${h}:${c.type}:${Math.round(c.fillRate * 100)}%:${c.distinct}`;
+        }),
         flags
       });
 

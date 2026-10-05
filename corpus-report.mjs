@@ -81,7 +81,13 @@ if (Object.keys(flags).length) {
 
 /* ── 型別偵測有沒有抓到東西：通用化的真正瓶頸 ── */
 console.log(C.b('\n─── 型別與角色（會渲染的表）───'));
-const allText = shown.filter(r => (r.colTypes || []).filter(t => !/:empty$/.test(t)).every(t => /:text$/.test(t)));
+/* colTypes 的格式是 name:type:fill%:distinct（型別後面還有兩個欄位），
+   所以不能用 /:text$/ 這種「結尾」的寫法去比型別。 */
+const typeOf = t => t.split(':')[1] ?? '';
+const allText = shown.filter(r => {
+  const ts = (r.colTypes || []).map(typeOf).filter(ty => ty !== 'empty');
+  return ts.length > 0 && ts.every(ty => ty === 'text');
+});
 const noTitle = shown.filter(r => r.roles && !r.roles.title);
 const noGroup = shown.filter(r => r.roles && !r.roles.group);
 console.log(`  所有欄都只判成一般文字：${allText.length}（${pct(allText.length, shown.length)}）` +
@@ -90,7 +96,7 @@ console.log(`  找不到主標題欄：      ${noTitle.length}（${pct(noTitle.l
             C.d('  ← 卡片會沒有名字'));
 console.log(`  沒有分組軸：          ${noGroup.length}（${pct(noGroup.length, shown.length)}）`);
 const types = {};
-shown.forEach(r => (r.colTypes || []).forEach(t => { const ty = t.slice(t.lastIndexOf(':') + 1); types[ty] = (types[ty] || 0) + 1; }));
+shown.forEach(r => (r.colTypes || []).forEach(t => { const ty = typeOf(t); types[ty] = (types[ty] || 0) + 1; }));
 console.log(C.d('  欄位型別總計：' + top(types, 12).map(([k, v]) => `${k} ${v}`).join('、')));
 
 /* ── 結構轉換：前處理做了多少事 ── */
