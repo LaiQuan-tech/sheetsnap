@@ -1,23 +1,23 @@
 {
  "fingerprint": {
-  "engine": "62e062dbe839",
+  "engine": "415cab215f74",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 226,
-  "flagged": 101,
-  "skipped": 109,
+  "clean": 227,
+  "flagged": 99,
+  "skipped": 110,
   "broken": 0,
   "shapes": {
-   "一般表格": 58,
+   "一般表格": 56,
    "名冊／通訊錄": 5,
-   "品項／價目表": 84,
+   "品項／價目表": 83,
    "帳務／明細表": 30,
    "排程／時程表": 65,
    "狀態清單": 1,
-   "矩陣／報表": 84
+   "矩陣／報表": 86
   },
   "flags": {
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
@@ -33,7 +33,6 @@
    "分組欄「DATE」只有一種值，等於沒分組": 1,
    "分組欄「DONE」只有一種值，等於沒分組": 3,
    "分組欄「DUE DATE」只有一種值，等於沒分組": 1,
-   "分組欄「Difference ($)」只有一種值，等於沒分組": 1,
    "分組欄「Discontinued?」只有一種值，等於沒分組": 1,
    "分組欄「ESTIMATED」只有一種值，等於沒分組": 1,
    "分組欄「INVITED」只有一種值，等於沒分組": 1,
@@ -97,7 +96,7 @@
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
    "找不到主標題欄，卡片會沒有名字": 18,
    "標題列可能判錯": 8,
-   "落到一般表格": 31
+   "落到一般表格": 30
   }
  },
  "records": [
@@ -1561,7 +1560,7 @@
    "label": "一般表格",
    "reason": "沒有時間或人員這類主軸，改以「Month」分組後逐列呈現",
    "srcRows": 72,
-   "rows": 384,
+   "rows": 313,
    "cols": 3,
    "live": 3,
    "headerRow": 11,
@@ -1580,7 +1579,7 @@
    "colTypes": [
     "MONTHLY INCOME:text:100%:12",
     "Month:category:100%:12",
-    "Value:number:82%:67"
+    "Value:number:100%:67"
    ],
    "flags": []
   },
@@ -1868,9 +1867,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Actual cost」，以「Description」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Description」是標籤，後面 4 欄是數值（Category、Projected cost、Actual cost、Difference）",
    "srcRows": 69,
    "rows": 59,
    "cols": 5,
@@ -1880,17 +1879,17 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": "Category",
-    "lead": "Actual cost",
+    "group": null,
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Description:text:100%:56",
     "Category:category:100%:12",
-    "Projected cost:money:68%:18",
+    "Projected cost:money:66%:17",
     "Actual cost:money:66%:22",
-    "Difference:category:100%:19"
+    "Difference:money:41%:18"
    ],
    "flags": []
   },
@@ -1929,7 +1928,7 @@
     "Expenses:text:100%:36",
     "Projected Cost:money:95%:20",
     "Actual Cost:money:92%:24",
-    "Difference:money:100%:19"
+    "Difference:money:55%:18"
    ],
    "flags": []
   },
@@ -2491,39 +2490,47 @@
   {
    "src": "budget_6667de34.xlsx",
    "sheet": "budget_6667de34.xlsx › Channel marketing budget",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Month」分組後逐列呈現",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「欄 1」，以「欄 2」為品項名稱",
    "srcRows": 71,
-   "rows": 693,
-   "cols": 5,
-   "live": 4,
+   "rows": 66,
+   "cols": 16,
+   "live": 16,
    "headerRow": 2,
    "title": "CHANNEL MARKETING BUDGET",
    "notes": [
-    "剔除 4 個排版用的空白欄",
-    "把 12 個期間欄位攤平成「Month」欄，一次看一個月"
+    "剔除 4 個排版用的空白欄"
    ],
    "roles": {
     "title": "欄 2",
-    "group": "Month",
-    "lead": null,
+    "group": "Rate",
+    "lead": "欄 1",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "欄 1:empty:0%:0",
-    "欄 2:text:100%:51",
-    "Rate:category:29%:7",
-    "Month:category:100%:12",
-    "Value:text:100%:125"
+    "欄 1:money:2%:1",
+    "欄 2:text:98%:54",
+    "Rate:category:26%:7",
+    "Jan:text:89%:31",
+    "Feb:text:88%:31",
+    "Mar:text:86%:34",
+    "Apr:text:88%:34",
+    "May:text:88%:35",
+    "Jun:text:86%:34",
+    "Jul:text:86%:35",
+    "Aug:text:86%:33",
+    "Sep:text:88%:36",
+    "Oct:text:88%:35",
+    "Nov:text:88%:36",
+    "Dec:text:88%:35",
+    "Total:money:68%:27"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "budget_7890eac9.xlsx",
@@ -2901,7 +2908,7 @@
    "hidden": [],
    "colTypes": [
     "Items:text:100%:18",
-    "Budget:money:89%:13",
+    "Budget:money:84%:12",
     "Actual spent:money:47%:7",
     "Notes:text:11%:1"
    ],
@@ -3300,38 +3307,29 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「欄 1」是標籤，後面 13 欄是數值（Jan、Feb、March、April、May、June、July、Aug、Sept、Oct、Nov、Dec、Year）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Amount」，以「Month」為品項名稱",
    "srcRows": 10,
-   "rows": 6,
-   "cols": 14,
-   "live": 14,
+   "rows": 24,
+   "cols": 3,
+   "live": 3,
    "headerRow": 1,
    "title": "Personal budget",
-   "notes": [],
+   "notes": [
+    "把 12 個期間欄位攤平成「Month」欄，一次看一個月"
+   ],
    "roles": {
-    "title": "欄 1",
-    "group": null,
-    "lead": null,
+    "title": "Month",
+    "group": "欄 1",
+    "lead": "Amount",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "欄 1:text:100%:6",
-    "Jan:money:33%:2",
-    "Feb:money:33%:2",
-    "March:money:33%:2",
-    "April:money:33%:2",
-    "May:money:33%:2",
-    "June:money:33%:2",
-    "July:money:33%:2",
-    "Aug:money:33%:2",
-    "Sept:money:33%:2",
-    "Oct:money:33%:2",
-    "Nov:money:33%:2",
-    "Dec:money:33%:2",
-    "Year:money:83%:2"
+    "欄 1:category:100%:2",
+    "Month:category:100%:12",
+    "Amount:money:100%:13"
    ],
    "flags": []
   },
@@ -4320,9 +4318,9 @@
    "status": "clean",
    "table": 2,
    "of": 2,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Not Below Minimum」，以「Month」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Month」是標籤，後面 2 欄是數值（Not Below Minimum、Below Minimum）",
    "srcRows": 16,
    "rows": 12,
    "cols": 3,
@@ -4332,15 +4330,15 @@
    "notes": [],
    "roles": {
     "title": "Month",
-    "group": "Below Minimum",
-    "lead": "Not Below Minimum",
+    "group": null,
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Month:text:100%:12",
-    "Not Below Minimum:money:100%:12",
-    "Below Minimum:category:100%:2"
+    "Not Below Minimum:money:92%:11",
+    "Below Minimum:money:8%:1"
    ],
    "flags": []
   },
@@ -5703,9 +5701,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「QTR 1」，以「PRODUCT NAME」為品項名稱",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「PRODUCT NAME」是標籤，後面 5 欄是數值（QTR 1、QTR 2、QTR 3、QTR 4、TOTAL）",
    "srcRows": 25,
    "rows": 15,
    "cols": 6,
@@ -5715,17 +5713,17 @@
    "notes": [],
    "roles": {
     "title": "PRODUCT NAME",
-    "group": "QTR 3",
-    "lead": "QTR 1",
+    "group": null,
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "PRODUCT NAME:text:100%:15",
     "QTR 1:money:100%:14",
-    "QTR 2:category:100%:6",
-    "QTR 3:category:100%:2",
-    "QTR 4:category:100%:2",
+    "QTR 2:money:33%:5",
+    "QTR 3:money:7%:1",
+    "QTR 4:money:7%:1",
     "TOTAL:money:100%:15"
    ],
    "flags": []
@@ -6586,7 +6584,7 @@
    "label": "品項／價目表",
    "reason": "偵測到金額欄「Amount」，以「EMPLOYEE COSTS」為品項名稱",
    "srcRows": 39,
-   "rows": 300,
+   "rows": 291,
    "cols": 3,
    "live": 3,
    "headerRow": 5,
@@ -6604,7 +6602,7 @@
    "colTypes": [
     "EMPLOYEE COSTS:text:100%:23",
     "Month:category:100%:12",
-    "Amount:money:100%:53"
+    "Amount:money:100%:52"
    ],
    "flags": []
   },
@@ -6616,36 +6614,27 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「JANUARY」，以「EMPLOYEE COSTS」為品項名稱",
+   "reason": "偵測到金額欄「Amount」，以「EMPLOYEE COSTS」為品項名稱",
    "srcRows": 38,
-   "rows": 25,
-   "cols": 14,
-   "live": 14,
+   "rows": 164,
+   "cols": 3,
+   "live": 3,
    "headerRow": 5,
    "title": "Market Financial Consulting · ACTUAL EXPENSES · January · February · March · April · May · June · July · August · September · October · November · December · Total · EMPLOYEE COSTS · $107,950.00 · $107,950.00 · $107,950.00 · $111,760.00 · $111,760.00 · $111,760.00 · $- · $- · $- · $- · $- · $- · $659,130.00",
-   "notes": [],
+   "notes": [
+    "把 12 個期間欄位攤平成「Month」欄，一次看一個月"
+   ],
    "roles": {
     "title": "EMPLOYEE COSTS",
-    "group": "JULY",
-    "lead": "JANUARY",
+    "group": "Month",
+    "lead": "Amount",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "EMPLOYEE COSTS:text:100%:23",
-    "JANUARY:money:100%:23",
-    "FEBRUARY:money:100%:21",
-    "MARCH:money:100%:22",
-    "APRIL:money:100%:23",
-    "MAY:money:100%:22",
-    "JUNE:money:100%:22",
-    "JULY:category:28%:2",
-    "AUGUST:category:28%:2",
-    "SEPTEMBER:category:28%:2",
-    "OCTOBER:category:28%:2",
-    "NOVEMBER:category:28%:2",
-    "DECEMBER:category:28%:2",
-    "TOTAL:money:100%:22"
+    "Month:category:100%:12",
+    "Amount:money:100%:88"
    ],
    "flags": []
   },
@@ -6657,36 +6646,27 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「TOTAL」，以「EMPLOYEE COSTS」為品項名稱",
+   "reason": "偵測到金額欄「Amount」，以「EMPLOYEE COSTS」為品項名稱",
    "srcRows": 38,
-   "rows": 25,
-   "cols": 14,
-   "live": 14,
+   "rows": 129,
+   "cols": 3,
+   "live": 3,
    "headerRow": 6,
    "title": "Market Financial Consulting · EXPENSE VARIANCES · Note: negative values mean actual expense is higher than planned expense · January · February · March · April · May · June · July · August · September · October · November · December · Total · EMPLOYEE COSTS · $- · $- · $- · $(635.00) · $(635.00) · $(635.00) · $- · $- · $- · $- · $- · $- · $(1,905.00)",
-   "notes": [],
+   "notes": [
+    "把 12 個期間欄位攤平成「Month」欄，一次看一個月"
+   ],
    "roles": {
     "title": "EMPLOYEE COSTS",
-    "group": "JULY",
-    "lead": "TOTAL",
+    "group": "Month",
+    "lead": "Amount",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "EMPLOYEE COSTS:text:100%:23",
-    "JANUARY:money:100%:16",
-    "FEBRUARY:money:100%:15",
-    "MARCH:money:100%:15",
-    "APRIL:money:100%:18",
-    "MAY:money:100%:17",
-    "JUNE:money:100%:18",
-    "JULY:category:28%:2",
-    "AUGUST:category:28%:2",
-    "SEPTEMBER:category:28%:2",
-    "OCTOBER:category:28%:2",
-    "NOVEMBER:category:28%:2",
-    "DECEMBER:category:28%:2",
-    "TOTAL:money:100%:20"
+    "EMPLOYEE COSTS:category:100%:19",
+    "Month:category:100%:12",
+    "Amount:money:100%:76"
    ],
    "flags": []
   },
@@ -6978,37 +6958,10 @@
   {
    "src": "expense_d75b85c4.xlsx",
    "sheet": "expense_d75b85c4.xlsx › Expenses",
-   "status": "flagged",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Difference ($)」分組後逐列呈現",
-   "srcRows": 25,
-   "rows": 21,
-   "cols": 6,
-   "live": 3,
-   "headerRow": 2,
-   "title": "EXPENSE BUDGET · 11/10/22 · Southridge Video",
-   "notes": [],
-   "roles": {
-    "title": "Expense",
-    "group": "Difference ($)",
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "Expense:text:100%:20",
-    "Category:category:100%:2",
-    "Budget:empty:0%:0",
-    "Actual:empty:0%:0",
-    "Difference ($):category:100%:1",
-    "Difference (%):empty:0%:0"
-   ],
-   "flags": [
-    "分組欄「Difference ($)」只有一種值，等於沒分組"
-   ]
+   "status": "not-shown",
+   "show": "weak",
+   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
+   "srcRows": 25
   },
   {
    "src": "expense_d75b85c4.xlsx",
@@ -8036,7 +7989,7 @@
    "colTypes": [
     "123 45th Street:longtext:76%:13",
     "DATE::category:100%:6",
-    "November 6, 2023:text:94%:15"
+    "November 6, 2023:text:82%:14"
    ],
    "flags": []
   },
@@ -8267,7 +8220,7 @@
     "Description:longtext:67%:10",
     "Qty:number:67%:9",
     "Unit Price:money:67%:6",
-    "Discount:text:47%:7",
+    "Discount:text:40%:6",
     "Price:money:87%:12"
    ],
    "flags": []
@@ -8824,7 +8777,7 @@
    "of": 1,
    "shape": "ledger",
    "label": "帳務／明細表",
-   "reason": "有日期欄「Date」但幾乎每列都不同（6/6），且有 4 欄金額，判定為明細帳而非排程",
+   "reason": "有日期欄「Date」但幾乎每列都不同（6/6），且有 5 欄金額，判定為明細帳而非排程",
    "srcRows": 9,
    "rows": 6,
    "cols": 9,
@@ -8845,10 +8798,10 @@
     "Payment due:date:100%:5",
     "Customer name:person:100%:4",
     "Amount:money:100%:6",
-    "Late fee:category:100%:2",
+    "Late fee:money:33%:1",
     "Total paid:money:100%:5",
     "Date paid:date:100%:6",
-    "Outstanding:money:100%:6"
+    "Outstanding:money:83%:5"
    ],
    "flags": []
   },
@@ -9416,7 +9369,7 @@
     "To buy:number:38%:1",
     "Cost:money:25%:4",
     "Bought:number:6%:1",
-    "Total cost:category:100%:5"
+    "Total cost:money:25%:4"
    ],
    "flags": []
   },

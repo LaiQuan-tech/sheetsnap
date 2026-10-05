@@ -1,22 +1,22 @@
 {
  "files": 163,
  "sheets": 396,
- "shown": 287,
- "skipped": 109,
+ "shown": 286,
+ "skipped": 110,
  "warned": 10,
- "generic": 43,
+ "generic": 41,
  "noTitle": 9,
  "oneRow": 0,
  "withTime": 48,
- "withFilter": 28,
- "withFacts": 122,
+ "withFilter": 27,
+ "withFacts": 121,
  "withGroup": 53,
- "withRank": 115,
+ "withRank": 117,
  "onlySearch": 48,
  "shapes": [
   [
    "矩陣／報表",
-   77
+   78
   ],
   [
    "品項／價目表",
@@ -28,7 +28,7 @@
   ],
   [
    "一般表格",
-   43
+   41
   ],
   [
    "帳務／明細表",
@@ -48,7 +48,7 @@
    "budget",
    {
     "n": 60,
-    "ok": 53
+    "ok": 54
    }
   ],
   [
@@ -94,13 +94,6 @@
    }
   ],
   [
-   "expense",
-   {
-    "n": 12,
-    "ok": 11
-   }
-  ],
-  [
    "student",
    {
     "n": 12,
@@ -109,6 +102,13 @@
   ],
   [
    "cashflow",
+   {
+    "n": 11,
+    "ok": 11
+   }
+  ],
+  [
+   "expense",
    {
     "n": 11,
     "ok": 11
@@ -136,7 +136,7 @@
    }
   ]
  ],
- "clean": 233,
+ "clean": 234,
  "rows": [
   {
    "src": "accounting_0447d9de.xlsx",
@@ -566,10 +566,9 @@
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "Monthly expenses",
    "table": 1,
-   "shape": "品項／價目表",
+   "shape": "矩陣／報表",
    "views": [
     "group:Category",
-    "rank",
     "all"
    ]
   },
@@ -729,10 +728,10 @@
    "src": "budget_6667de34.xlsx",
    "sheet": "Channel marketing budget",
    "table": 1,
-   "shape": "一般表格",
+   "shape": "品項／價目表",
    "views": [
-    "group:Month",
-    "filter:Value",
+    "rank",
+    "filter:Jan",
     "all"
    ]
   },
@@ -951,9 +950,10 @@
    "src": "budget_b0a247ff.xlsx",
    "sheet": "Summary",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
-    "facts",
+    "group:欄 1",
+    "rank",
     "all"
    ]
   },
@@ -1536,9 +1536,8 @@
    "src": "chart_94c0fff6.xlsx",
    "sheet": "Sales data",
    "table": 0,
-   "shape": "品項／價目表",
+   "shape": "矩陣／報表",
    "views": [
-    "group:QTR 2",
     "rank",
     "all"
    ]
@@ -1662,6 +1661,7 @@
    "table": 1,
    "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
     "all"
    ]
@@ -1672,6 +1672,7 @@
    "table": 2,
    "shape": "品項／價目表",
    "views": [
+    "group:Month",
     "rank",
     "all"
    ]
@@ -1768,16 +1769,6 @@
    "views": [
     "group:Month",
     "rank",
-    "all"
-   ]
-  },
-  {
-   "src": "expense_d75b85c4.xlsx",
-   "sheet": "Expenses",
-   "table": 0,
-   "shape": "一般表格",
-   "views": [
-    "group:Category",
     "all"
    ]
   },
@@ -2390,7 +2381,7 @@
    "shape": "矩陣／報表",
    "views": [
     "group:Category",
-    "filter:Total cost",
+    "rank",
     "all"
    ]
   },
