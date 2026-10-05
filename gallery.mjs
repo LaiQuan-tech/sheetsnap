@@ -161,6 +161,16 @@ const summary = {
 };
 const okAll = cnt(r => !r.warns.length && !r.generic && !r.noTitle && !r.oneRow);
 summary.clean = okAll;
+
+/* 每張表實際給了哪三張卡，逐列記下來。
+   只有加總的話，「withTime +11、withFilter −10」這種數字沒辦法回答
+   「是哪幾張表拿時間軸換掉了篩選，那筆交易划不划算」——卡片上限是三張，
+   一張進來就有一張要走，而加總看不出誰換了誰。
+   一列一行，排序固定（檔名、工作表、第幾張表），diff 才讀得出來。 */
+summary.rows = shownRows.map(r => ({
+  src: r.f, sheet: r.sheet, table: r.si, shape: r.shape,
+  views: r.views.map(v => v.id + (v.col ? ':' + v.col : '')),
+})).sort((a, b) => (a.src + '|' + a.sheet + '|' + a.table) < (b.src + '|' + b.sheet + '|' + b.table) ? -1 : 1);
 const summaryJSON = JSON.stringify(summary, null, 1) + '\n';
 if (OUT) {
   if (!n) {

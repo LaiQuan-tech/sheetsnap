@@ -345,7 +345,11 @@
     });
     cand.forEach(function (c) {
       c._score = c.distinct / Math.max(c.filled, 1)          // 越獨特越像標題
-               + (TITLE_NAME.test(c.name) ? 0.5 : 0)         // 欄名就說了它是名稱
+               /* 欄名說它是名稱就加分，但要按「實際上有沒有在區分列」打折。
+                  timeline_93059754 › Calendar 的「Working title」34 列只有 2 種值，
+                  靠欄名的 0.5 贏過 24 種值的「Deadline」，結果 32 張卡片同名、
+                  11 張沒名字。欄名寫著名稱卻沒在命名，那個加分就該打折。 */
+               + (TITLE_NAME.test(c.name) ? 0.5 * (c.distinct / Math.max(c.filled, 1)) : 0)
                - (ID_NAME.test(c.name) ? 0.5 : 0)            // 欄名就說了它是編號
                // 日期是軸不是名字：型別判對的（date／time）跟判錯但欄名寫著的
                // 一起扣，而且只扣一次——兩邊疊起來會讓它連爛分類欄都輸
@@ -411,12 +415,24 @@
         group: null, lead: main, title: t2, person: null
       };
     }
-    if (date) return {
-      shape: 'schedule', label: '排程／時程表',
-      reason: '偵測到日期欄「' + date.name + '」（' + date.reason + '）' +
-              (time ? '，並有時間欄「' + time.name + '」' : ''),
-      group: date, lead: time, title: title, person: person
-    };
+    if (date) {
+      /* 日期幾乎每列都不同時，不拿它當分組軸。上面那條「帳表不是排程」的
+         規則要求有金額欄，所以 DATE＋COMPONENTS COMPLETED 這種「日期＋計數」
+         的表漏掉了：24 列 24 個不同的日期，分成 24 段、每段一筆，
+         而日期被 group 吃掉之後連標題都沒了，整疊卡片沒有名字。
+         分組軸留空，日期就會回到 pickTitle 的候選裡當列名——
+         「3/18 · 完成 19 件」比「3/18」底下掛一張沒名字的卡片好讀。
+         真正的排程（同一天好幾件事）uniqDate 低，不受影響。 */
+      var spread = uniqDate > 0.8;
+      return {
+        shape: 'schedule', label: '排程／時程表',
+        reason: '偵測到日期欄「' + date.name + '」（' + date.reason + '）' +
+                (time ? '，並有時間欄「' + time.name + '」' : '') +
+                (spread ? '；但日期幾乎每列都不同（' + date.distinct + '/' + date.filled +
+                          '），不拿它分組，改當列名' : ''),
+        group: spread ? null : date, lead: time, title: title, person: person
+      };
+    }
     if ((phone || mail) && title) return {
       shape: 'directory', label: '名冊／通訊錄',
       reason: '偵測到' + (phone ? '電話欄「' + phone.name + '」' : '') +

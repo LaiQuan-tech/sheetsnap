@@ -297,6 +297,43 @@ for (const [head, want, why] of titleCases) {
   chk('整表：歐式欄判成 date', typeOfFirst(EU), 'date');
 }
 
+/* v73 把 73 個欄判成了 date，連帶冒出兩種新的壞狀況。
+
+   一、日期幾乎每列都不同時，不該拿它當分組軸。「帳表不是排程」那條規則
+   要求有金額欄，所以「日期＋計數」的表漏掉了：chart_09eef93c ›
+   MANUFACTURING OUTPUT 24 列 24 個不同日期，分成 24 段每段一筆，
+   而日期被 group 吃掉之後連標題都沒了，整疊卡片沒有名字。
+
+   二、欄名說它是名稱、實際上卻沒在區分列時，那個 +0.5 要打折。
+   timeline_93059754 › Calendar 的「Working title」34 列只有 2 種值，
+   靠欄名贏過 24 種值的「Deadline」，結果 32 張卡片同名、11 張沒名字。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 軸向 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const R = g => { const a = S.analyse(g); return a.roles; };
+
+  // 日期全不同＋計數欄：不分組，日期改當列名
+  const spread = R([['DATE', 'COMPONENTS COMPLETED']].concat(
+    Array.from({ length: 24 }, (_, i) => [(i % 12 + 1) + '/' + (i + 1) + '/2026', String(100 + i * 7)])));
+  chk('日期全不同就不分組', spread.group ? spread.group.name : null, null);
+  chk('日期改當列名',      spread.title && spread.title.name, 'DATE');
+
+  // 真排程：同一天好幾件事，照舊依日期分組
+  const sched = R([['日期', '活動', '預算']].concat(
+    Array.from({ length: 16 }, (_, i) => ['2026/3/' + (i % 4 + 1), '活動' + (i + 1), String(1000 + i * 50)])));
+  chk('真排程仍依日期分組', sched.group && sched.group.name, '日期');
+  chk('真排程的列名是活動',  sched.title && sched.title.name, '活動');
+
+  // 欄名寫著 title 但只有 2 種值，不該贏過 24 種值的日期欄
+  const cal = R([['Deadline', 'Theme', 'Working title', 'Channel']].concat(
+    Array.from({ length: 34 }, (_, i) =>
+      [(i % 12 + 1) + '/' + (i % 28 + 1) + '/2026', i % 2 ? 'A' : 'B', i % 2 ? '稿一' : '稿二', i % 2 ? 'IG' : 'FB'])));
+  chk('名稱欄沒在命名就打折', cal.title && cal.title.name, 'Deadline');
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};
