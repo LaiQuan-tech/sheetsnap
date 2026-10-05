@@ -5,6 +5,7 @@
  * 並且每列都能一鍵在本機的 SheetSnap 打開看真實畫面（?f=）。
  *
  *   node gallery.mjs corpus-ms/files > corpus-ms/gallery.html
+ *   node gallery.mjs corpus-ms/files --out corpus-ms/gallery-summary.json > corpus-ms/gallery.html
  *
  * 用途只有一個：回答「通用做不做得到」——不是看數字，是看畫面。
  */
@@ -19,7 +20,19 @@ new Function('window', fs.readFileSync(path.join(here, 'detect.js'), 'utf8'))(g)
 const S = g.SheetShape;
 /* zsh 預設沒開 interactive_comments，行尾的 # 註解不是註解而是參數，
    所以「node gallery.mjs  # 看卡片供給」會拿 # 當資料夾，丟出一堆 node:fs 堆疊。 */
-const arg = process.argv[2];
+const argv = process.argv.slice(2);
+/* --out：把摘要寫成一個跟 baseline.json 同等地位的檔。
+   看法供給（幾張表拿到排名、幾張只剩搜尋）跟形狀判定一樣會回歸，
+   而原本只寫 stderr——跑完捲走就沒了，比不了上一版。
+   HTML 仍然走 stdout；寫檔是先 .tmp 再 rename，跑失敗不動舊檔。 */
+const outIdx = argv.indexOf('--out');
+const OUT = outIdx >= 0 ? argv[outIdx + 1] : null;
+if (outIdx >= 0 && !OUT) {
+  console.error('--out 後面要接檔名，例如 --out corpus-ms/gallery-summary.json');
+  process.exit(1);
+}
+const arg = argv.filter((a, i) =>
+  a !== '--out' && !(outIdx >= 0 && i === outIdx + 1))[0];
 if (arg && arg.startsWith('#')) {
   console.error(`停下來：資料夾參數是「${arg}」。`);
   console.error('zsh 不把行尾的 # 當註解。把註解刪掉再跑一次。');
@@ -148,7 +161,18 @@ const summary = {
 };
 const okAll = cnt(r => !r.warns.length && !r.generic && !r.noTitle && !r.oneRow);
 summary.clean = okAll;
-process.stderr.write(JSON.stringify(summary, null, 1) + '\n');
+const summaryJSON = JSON.stringify(summary, null, 1) + '\n';
+if (OUT) {
+  if (!n) {
+    console.error(`停下來：${files.length} 個檔沒有任何一張表渲染出來。不寫摘要——先確認路徑。`);
+    process.exit(3);
+  }
+  fs.writeFileSync(OUT + '.tmp', summaryJSON);
+  fs.renameSync(OUT + '.tmp', OUT);
+  console.error(`摘要寫入 ${OUT}`);
+} else {
+  process.stderr.write(summaryJSON);
+}
 
 // ── HTML ──
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
