@@ -268,6 +268,21 @@
   var TITLE_NAME = /品名|品項|名稱|姓名|項目|標題|主旨|\bnames?\b|\bitems?\b|\btitles?\b(?!\s+\w)|\bsubject\b/i;
   var ID_NAME    = /編號|代碼|序號|單號|代號|\bid\b|\bno\.?\b|\bcode\b|\bsku\b|#/i;
 
+  /* 日期、時間欄不該當卡片標題：卡片叫「03/15/2026」跟叫「INV-1001」是同一種
+     錯——那是軸，不是名字。扣分跟 codeLike 一樣 0.6，因為是同一類問題。
+
+     v71 之前這件事是 codeLike 誤打誤撞擋住的：解析不出來、留在 text 的日期欄
+     （「03/01/2026」長度整齊、帶數字、沒空白）剛好符合代碼的特徵。
+     v71 把樣本從 3 筆拉到 8 筆之後，長短不一的日期（3/1 跟 12/15）就不再算
+     代碼，accounting_7b54c8ed › STATEMENT 的標題因此從「DESCRIPTION」掉成
+     「DATE」。靠一條本來在管別件事的規則順便擋住，遲早會這樣散掉，
+     所以改成直接寫出來。
+
+     是扣分不是禁止：整張表只剩日期欄可用時，有日期總比卡片沒名字好——
+     timesheet_8fd087b1 的每一列就是一天，扣完 0.6 它還是贏得了那些
+     只有三四種值的分類欄。 */
+  var DATE_NAME  = /日期|時間|時刻|年月|到期|起訖|date|time|\bday\b|\bhour|deadline|due\b/i;
+
   // 主標題欄：相異度高、不太長、不是日期或數字的那一欄，越靠左越優先
   // 回傳排好序的整串候選，而不是只回第一名——assignRoles 要拿後面的退
   function pickTitleRanked(cols) {
@@ -280,6 +295,7 @@
       c._score = c.distinct / Math.max(c.filled, 1)          // 越獨特越像標題
                + (TITLE_NAME.test(c.name) ? 0.5 : 0)         // 欄名就說了它是名稱
                - (ID_NAME.test(c.name) ? 0.5 : 0)            // 欄名就說了它是編號
+               - (DATE_NAME.test(c.name) ? 0.6 : 0)          // 日期是軸，不是名字
                - (c.type === 'longtext' ? 0.35 : 0)          // 長文字比較像內容
                - (codeLike(c) ? 0.6 : 0)                     // 單號、編號不是給人讀的名稱
                - (1 - c.fillRate) * 0.2                      // 越滿越優先（說明見上）

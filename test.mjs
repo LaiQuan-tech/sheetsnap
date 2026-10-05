@@ -212,6 +212,39 @@ for (const [head, want, why] of titleCases) {
   chk('品名欄當標題', a.roles.title && a.roles.title.name, 'DESCRIPTION');
 }
 
+/* 日期欄不該當卡片標題——那是軸，不是名字。
+   v71 之前這件事是 codeLike 誤打誤撞擋住的（解析不出來、留在 text 的日期
+   剛好長度整齊又帶數字）；v71 把樣本拉到 8 筆之後長短不一的日期就不算代碼，
+   accounting_7b54c8ed › STATEMENT 的標題因此從 DESCRIPTION 掉成 DATE。
+   改成直接寫出來，不再靠別的規則順便擋。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 日期 ${why.padEnd(26)} 期望=${want} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const T = g => { const a = S.analyse(g); return a.roles.title && a.roles.title.name; };
+
+  // 對帳單：DATE 8 種全相異、DESCRIPTION 只有 3 種——分數輸，但它才是名字
+  const DS = ['3/1/2026','3/5/2026','3/12/2026','3/18/2026','11/2/2026','11/15/2026','12/3/2026','12/22/2026'];
+  const DE = ['Payment','Payment','Service fee','Payment','Service fee','Interest','Payment','Interest'];
+  const CR = ['', '退款 A', '', '退款 B', '', '退款 C', '', ''];
+  chk('日期輸給說明欄', T([['DATE','DESCRIPTION','CHARGES','CREDITS','ACCOUNT BALANCE']].concat(
+    DS.map((d, i) => [d, DE[i], i % 2 ? '$' + (100 + i) : '', CR[i], i < 6 ? '$' + (1000 - i * 30) : '']))),
+    'DESCRIPTION');
+
+  // 球賽表：兩欄都全相異，日期靠在左邊也不該贏
+  chk('日期輸給隊名', T([['Date','Home team','Away team','Time','Location'],
+    ['3/1/2026','紅隊','藍隊','14:00','北場'],
+    ['3/8/2026','綠隊','黃隊','16:00','北場']]), 'Home team');
+
+  // 是扣分不是禁止：整張表只剩日期可用時要留住
+  const DOW = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  chk('沒有別的名稱欄就留住', T([['Date','Regular hours','Overtime hours','Total']].concat(
+    Array.from({ length: 14 }, (_, i) =>
+      ['3/' + (i + 1) + '/2026', '8', String(i % 3), String(8 + i % 3)]))), 'Date');
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};
