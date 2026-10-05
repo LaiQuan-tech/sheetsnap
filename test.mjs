@@ -362,13 +362,23 @@ for (const [head, want, why] of titleCases) {
   chk('Marketing 1 不是日期', f(S.parseDateish('Marketing 1')), null);
   chk('Monday 5 不是日期',   f(S.parseDateish('Monday 5')),    null);
   chk('Item 3 不是日期',     f(S.parseDateish('Item 3')),      null);
-  /* 月份＋年份不是日期。沒有「日的後面不能再接數字」這一條，「Feb 2023」會被
-     讀成 2 月 20 日——而 cashflow_f7200e29 › Cash flow forecast 的欄名就是
-     一整排「Feb 2023、Mar 2023…」，一旦被當成日期，找標題列那段就認為那一列
-     是資料、把標題列往下挪，欄名全變成「$2,500.00」這種金額。 */
-  chk('Feb 2023 不是日期',   f(S.parseDateish('Feb 2023')),    null);
-  chk('Jan 2026 不是日期',   f(S.parseDateish('Jan 2026')),    null);
+  /* 「Feb 2023」不能被讀成 2 月 20 日。沒有「日的後面不能再接數字」這一條，
+     日那一組會貪心地吃掉「20」當日、「23」當年——它是整個月，不是 20 號。 */
+  chk('Feb 2023 不是 20 號', f(S.parseDateish('Feb 2023')),    '2023-02-01');
+  chk('Jan 2026 不是 20 號', f(S.parseDateish('Jan 2026')),    '2026-01-01');
   chk('Feb 5 還是日期',      f(S.parseDateish('Feb 5')),       `${new Date().getFullYear()}-02-05`);
+
+  /* 月份＋年份是真的時間軸（現金流預測一列一個月），但不能算進
+     「這一格像不像某一天」——那正是大家拿來當欄名的東西。
+     所以型別偵測收它（parseDateish），結構前處理不收（dateish）。 */
+  chk('月份＋年份當成 1 號',  f(S.parseDateish('Feb 2023')),      '2023-02-01');
+  chk('September 2022',    f(S.parseDateish('September 2022')), '2022-09-01');
+  chk('2023年2月',          f(S.parseDateish('2023年2月')),       '2023-02-01');
+  chk('Feb 20 仍是 20 號',   f(S.parseDateish('Feb 20')),        `${new Date().getFullYear()}-02-20`);
+  chk('Feb 2023 不像某一天',  S.dateish('Feb 2023'),              false);
+  chk('Feb 5, 2026 像某一天', S.dateish('Feb 5, 2026'),           true);
+  chk('整欄：月份欄判成 date', S.detectColumn('Month',
+    ['Jan 2023','Feb 2023','Mar 2023','Apr 2023','May 2023','Jun 2023']).type, 'date');
   // 小數不是日期
   chk('12.5 是小數',   f(S.parseDateish('12.5')), null);
   chk('3.5 是小數',    f(S.parseDateish('3.5')),  null);

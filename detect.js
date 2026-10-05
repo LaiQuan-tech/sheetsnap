@@ -62,7 +62,7 @@
     return aBig && !bBig;
   }
 
-  function parseDateish(v, dayFirst) {
+  function parseDay(v, dayFirst) {
     var s = String(v == null ? '' : v).trim();
     if (!s || s.length > 40) return null;
     var m;
@@ -128,9 +128,33 @@
     return null;
   }
 
-  // 「這格看起來像不像日期」：結構前處理用的，沒有整欄的脈絡可以推順序，
-  // 所以兩種順序任一個解得出來就算。25/12/2026 在月在前的讀法下是無效月份。
-  function dateish(v) { return !!parseDateish(v) || !!parseDateish(v, true); }
+  /* 月份＋年份：「Feb 2023」「September 2022」「2023年2月」。
+     當成那個月的 1 號。現金流預測、月報這類表就是一列一個月，那是真的時間軸——
+     cashflow_f7200e29 › Cash flow chart 的 Month 欄 12 列全是這種寫法。
+
+     但它不能算進「這一格像不像某一天」：月份＋年份正是大家拿來當欄名的東西
+     （「Feb 2023 | Mar 2023 | Apr 2023…」），找標題列的那段一旦把整列欄名
+     看成資料，就會把標題列往下挪，欄名全變成資料值。
+     所以分成兩個函式：parseDateish 給型別偵測用（收月份），
+     dateish 給結構前處理用（只認某一天）。 */
+  function parseMonth(v) {
+    var s2 = String(v == null ? '' : v).trim(), m;
+    if (!s2 || s2.length > 40) return null;
+    if ((m = s2.match(/^([A-Za-z]{3,9}\.?)\s*[-\s]?\s*(\d{4})$/))) {
+      var mo = monthFromWord(m[1]);
+      if (mo) return ymd(+m[2], mo, 1);
+    }
+    if ((m = s2.match(/^(\d{4})\s*年\s*(\d{1,2})\s*月$/))) return ymd(+m[1], +m[2], 1);
+    return null;
+  }
+
+  function parseDateish(v, dayFirst) { return parseDay(v, dayFirst) || parseMonth(v); }
+
+  /* 「這格看起來像不像某一天」：結構前處理（找標題列、切表、判斷是不是
+     圖表資料區）用的。沒有整欄的脈絡可以推順序，所以兩種順序任一個解得出來
+     就算；25/12/2026 在月在前的讀法下是無效月份。
+     刻意不收月份＋年份，理由見上面 parseMonth。 */
+  function dateish(v) { return !!parseDay(v) || !!parseDay(v, true); }
 
   // 認得：上午 10:30 / 下午 7:00 / 14:05 / 2:30 PM，以及 09:00-10:00 這種區間。
   // 節目表、議程、流程表幾乎都用區間寫時間，只認單一時刻會讓整條時間軸消失。
@@ -836,6 +860,7 @@
     detectColumn: detectColumn,
     parseDateish: parseDateish,
     inferDayFirst: inferDayFirst,
+    parseMonth: parseMonth,
     dateish: dateish,
     parseTimeish: parseTimeish,
     RE_DOW: RE_DOW              // 第二段（切表、週表攤平）也要用
