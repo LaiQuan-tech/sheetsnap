@@ -7,9 +7,10 @@
  *   node gallery.mjs corpus-ms/files > corpus-ms/gallery.html
  *   node gallery.mjs corpus-ms/files --out corpus-ms/gallery-summary.json > corpus-ms/gallery.html
  *
- * 跑真實檔案時加 --private：寫出去的 JSON 會把檔名與工作表名換成雜湊。
+ * 跑真實檔案時加 --private：寫出去的 JSON 裡一個原文都沒有——
+ * 檔名與工作表名換成雜湊，看法標籤只留 group／rank／filter 這些 id、不留欄名，
+ * byCat（鍵是檔名前綴）不進 JSON。
  * HTML 照原樣產——那是給你在自己機器上看畫面的，不該遮。
- * 看法標籤裡的欄名留著（「照 Category 分類」），那是判定本身。
  *
  * 用途只有一個：回答「通用做不做得到」——不是看數字，是看畫面。
  */
@@ -188,11 +189,15 @@ summary.rows = shownRows.map(r => ({
   // 工作表名可能帶人名、客戶、專案；同一個活頁簿裡的表要看得出是同一個檔
   sheet: PRIVATE ? hid(r.f) + ' › #' + r.si : r.sheet,
   table: r.si, shape: r.shape,
-  views: r.views.map(v => v.id + (v.col ? ':' + v.col : '')),
+  /* 看法標籤裡的 col 是欄名。第一版留著它，理由是「那是判定本身」——
+     但欄名來自引擎判定的標題列，而標題列會判錯，判錯時那就是一格真實資料。 */
+  views: r.views.map(v => (PRIVATE ? v.id : v.id + (v.col ? ':' + v.col : ''))),
 })).sort((a, b) => (a.src + '|' + a.sheet + '|' + a.table) < (b.src + '|' + b.sheet + '|' + b.table) ? -1 : 1);
-// byCat 的鍵是檔名前綴（語料是 timesheet_／budget_ 這種分類），真實檔案就是檔名
-if (PRIVATE) { summary.byCat = summary.byCat.map(([k, v]) => [hid(k), v]); summary.private = true; }
-const summaryJSON = JSON.stringify(summary, null, 1) + '\n';
+
+/* byCat 的鍵是檔名前綴（語料是 timesheet_／budget_ 這種分類），
+   真實檔案就是檔名，所以不進 JSON。HTML 還是要用它，所以只在輸出時拿掉。 */
+const summaryJSON = JSON.stringify(
+  PRIVATE ? { ...summary, byCat: undefined, private: true } : summary, null, 1) + '\n';
 if (OUT) {
   if (!n) {
     console.error(`停下來：${files.length} 個檔沒有任何一張表渲染出來。不寫摘要——先確認路徑。`);

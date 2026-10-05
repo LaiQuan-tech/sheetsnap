@@ -11,14 +11,15 @@
  *
  * 跑真實檔案時加 --private：
  *   node audit.mjs ~/我的檔案 --out corpus-real/baseline.json --private
- * 寫出去的 JSON 會把檔名與工作表名換成雜湊、整段前言（title）丟掉——
- * 前言是表格上方那幾列的原始文字，真實檔案裡那就是客戶名、統編、金額。
+ * 寫出去的 JSON 裡一個原文都沒有：檔名與工作表名換成雜湊，前言丟掉，
+ * 欄名丟掉，角色只留「有沒有」，理由與結構轉換與警示裡的名字清空。
  * 終端機上照原樣印，那是在你自己的機器上。
  *
- * 留著的是：形狀、列數欄數、標題列位置、每一欄的「欄名:型別:填充率:相異值數」、
- * 角色、做過哪些結構轉換、警示。判定問題幾乎都能用這些回答。
- * 欄名有留著——引擎的規則大半是看欄名的（NAME_HINTS、合計欄、人員欄），
- * 洗掉就等於看不見。JSON 不大也讀得懂，推之前自己掃一遍。
+ * 第一版保留欄名，理由是「引擎的規則大半看欄名」。那個理由錯在一個前提上：
+ * colTypes 記的是「引擎判定的標題列」，而標題列會判錯——
+ * 一份 Google 表單匯出的真正標題列在第 0 列、引擎判在第 4 列，
+ * 於是那一行變成「劉若芊:text / 0915373201:number / x@gmail.com:email」。
+ * 規則改成：任何離開這台機器的東西，都不原樣複製任何一格。
  *
  * 不需要 API 金鑰。重點不是「跑得完」，是把可疑的結果標出來——
  * 今天最痛的問題是「修 A 弄壞 B」，有一組固定的表每次跑過就有解。
@@ -303,6 +304,24 @@ if (JSONOUT) {
   /* --private：在寫出去的那一刻遮，不在每個 records.push 那邊遮。
      理由是會漏——記錄有四個產生點（讀不進來、引擎爆掉、不渲染、正常），
      而以後加欄位時不會有人記得去補第五個地方。這裡是唯一的出口。 */
+  /* 把內插進訊息裡的名字清掉。只清「」是不夠的——查過 detect.js 每一處內插，
+     欄名會出現在三種位置：
+
+       「」裡面      大部分的 reason 與 notes
+       （）裡面      矩陣那條會列出所有數值欄：「後面 13 欄是數值（一月、二月…）」
+       ：後面        「向下填補合併儲存格：Category、Region」
+
+     所以三種都清。代價是連帶清掉（12/12）、（100% 的值可解析為日期）
+     這類有用但無害的細節——判斷分支還在，那是聚合要用的部分。 */
+  const seenText = new Set();
+  const dename = t => {
+    if (typeof t !== 'string') return t;
+    const o = t.replace(/「[^」]*」/g, '「」')
+               .replace(/（[^）]*）/g, '（）').replace(/\([^)]*\)/g, '()')
+               .replace(/[：:][^，。；]*/g, '：');
+    seenText.add(o);
+    return o;
+  };
   const mask = r => {
     if (!PRIVATE) return r;
     const o = { ...r };
@@ -312,6 +331,15 @@ if (JSONOUT) {
     o.sheet = r.sheet == null ? null : o.src + ' › #' + (r.sheetIndex ?? 0);
     delete o.sheetIndex;
     delete o.title;        // 表格上方的前言，整段都是原始內容
+    if (o.why) o.why = dename(String(o.why).replace(/\/[^\s]+/g, '<路徑>'));
+    if (o.reason) o.reason = dename(o.reason);
+    if (o.notes) o.notes = o.notes.map(dename);
+    if (o.flags) o.flags = o.flags.map(dename);
+    // 欄名整個丟掉，只留「型別:填充率:相異值數」
+    if (o.colTypes) o.colTypes = o.colTypes.map(t => t.split(':').slice(-3).join(':'));
+    if (o.hidden) o.hidden = o.hidden.length;        // 藏了幾欄，不是哪幾欄
+    // 角色有沒有，不是叫什麼
+    if (o.roles) o.roles = Object.fromEntries(Object.entries(o.roles).map(([k, v]) => [k, !!v]));
     return o;
   };
   const body = JSON.stringify({
@@ -324,6 +352,12 @@ if (JSONOUT) {
     console.error(`停下來：${args.length} 個輸入沒有任何一張表跑出結果（${broken} 讀不進來）。`);
     console.error('不寫 baseline——先確認路徑。');
     process.exit(3);
+  }
+
+  if (PRIVATE) {
+    console.error('\n--private：離開這台機器的散文就是下面這些（名字已清空）。');
+    console.error('推之前掃一遍——如果有哪一句還看得出你的資料，那是 bug，回報給我。');
+    [...seenText].sort().forEach(t => console.error('    ' + t));
   }
 
   if (OUT) {
