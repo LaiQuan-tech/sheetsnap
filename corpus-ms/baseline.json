@@ -1,7 +1,7 @@
 {
  "fingerprint": {
-  "engine": "32901f4f30a4",
-  "audit": "75043020497a"
+  "engine": "ed2df831a318",
+  "audit": "3327044e93ad"
  },
  "summary": {
   "inputs": 163,
@@ -2067,7 +2067,7 @@
     "person": null
    },
    "colTypes": [
-    "PERSONNEL EXPENSES:person",
+    "PERSONNEL EXPENSES:text",
     "ESTIMATED:number",
     "ACTUAL:number",
     "TOP 5 AMOUNT:money",
@@ -3589,7 +3589,7 @@
     "person": null
    },
    "colTypes": [
-    "PERSONNEL EXPENSES:person",
+    "PERSONNEL EXPENSES:text",
     "ESTIMATED:number",
     "ACTUAL:number",
     "TOP 5 AMOUNT:money",
@@ -4416,7 +4416,7 @@
     "person": null
    },
    "colTypes": [
-    "PROJECT NAME:person",
+    "PROJECT NAME:text",
     "PROJECT TYPE:text",
     "ESTIMATED START:text",
     "ESTIMATED FINISH:text",
@@ -4464,7 +4464,7 @@
     "person": null
    },
    "colTypes": [
-    "PROJECT NAME:person",
+    "PROJECT NAME:text",
     "GENERAL PARTNER:money",
     "BUSINESS:money",
     "DEFENSE LITIGATOR:money",
@@ -5743,7 +5743,7 @@
     "person": null
    },
    "colTypes": [
-    "PRODUCT NAME:person",
+    "PRODUCT NAME:text",
     "QTR 1:money",
     "QTR 2:category",
     "QTR 3:category",
@@ -7221,7 +7221,7 @@
    },
    "colTypes": [
     "Inventory ID:text",
-    "Name:person",
+    "Name:text",
     "Description:text",
     "Unit \r\nprice:date",
     "Quantity \r\nin stock:number",
@@ -7469,7 +7469,7 @@
     "person": null
    },
    "colTypes": [
-    "ASSET NAME:person",
+    "ASSET NAME:text",
     "ASSET CLASS:text",
     "DESCRIPTION:text",
     "PHYSICAL LOCATION:text",
@@ -7729,7 +7729,7 @@
    "colTypes": [
     "欄 1:category",
     "Inventory ID:text",
-    "Name:person",
+    "Name:text",
     "Description:text",
     "Unit price:money",
     "Quantity in stock:number",
@@ -7899,7 +7899,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「Unit price」，以「Name」為品項名稱",
+   "reason": "偵測到金額欄「Unit price」，以「Inventory ID」為品項名稱",
    "srcRows": 749,
    "rows": 25,
    "cols": 11,
@@ -7908,7 +7908,7 @@
    "title": "Inventory list · Patheros Labs · Highlight items to reorder? · Yes",
    "notes": [],
    "roles": {
-    "title": "Name",
+    "title": "Inventory ID",
     "group": "Discontinued?",
     "lead": "Unit price",
     "person": null
@@ -7916,7 +7916,7 @@
    "colTypes": [
     "For reorder:number",
     "Inventory ID:text",
-    "Name:person",
+    "Name:text",
     "Description:text",
     "Unit price:money",
     "Quantity \r\nin stock:number",
@@ -8281,8 +8281,8 @@
    "colTypes": [
     "Lookup:money",
     "Company #:number",
-    "Company name:person",
-    "Contact name:person",
+    "Company name:text",
+    "Contact name:text",
     "Address:text",
     "City:text",
     "State:text",
@@ -8704,7 +8704,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME:person",
+    "NAME:text",
     "APPLYING FOR:text",
     "STATUS:text",
     "CANDIDATE \r\nTYPE:category",
@@ -8774,7 +8774,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME:person",
+    "NAME:text",
     "DEPARTMENT:money",
     "POSITION:text",
     "AVAILABILITY:time",
@@ -9011,7 +9011,7 @@
     "Date:date",
     "Description:text",
     "Amount:money",
-    "Merchant name:person",
+    "Merchant name:text",
     "Transaction fees:money",
     "Balance*:money"
    ],
@@ -9040,7 +9040,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME OF ORGANIZATION:person",
+    "NAME OF ORGANIZATION:text",
     "DATE PAID:date",
     "AMOUNT:money",
     "LENGTH:text",
@@ -9254,7 +9254,7 @@
     "person": null
    },
    "colTypes": [
-    "Lead name:person",
+    "Lead name:text",
     "Lead contact:empty",
     "Lead \r\nsource:empty",
     "Lead \r\nregion:empty",
@@ -9289,7 +9289,7 @@
     "person": null
    },
    "colTypes": [
-    "Lead name:person",
+    "Lead name:text",
     "January \r\nforecast:money",
     "February \r\nforecast:money",
     "March \r\nforecast:money",
@@ -9429,7 +9429,7 @@
     "person": null
    },
    "colTypes": [
-    "Name:person",
+    "Name:text",
     "Email:email",
     "Shared?:text"
    ],
@@ -9596,7 +9596,7 @@
     "person": null
    },
    "colTypes": [
-    "NAME:person",
+    "NAME:text",
     "INVITED:category",
     "RSVP:category"
    ],
@@ -10342,7 +10342,7 @@
    },
    "colTypes": [
     "#:number",
-    "Name:person",
+    "Name:text",
     "Position:text",
     "Email:email",
     "Phone:phone"
@@ -10407,8 +10407,8 @@
     "person": null
    },
    "colTypes": [
-    "Team name:person",
-    "Contact name:person",
+    "Team name:text",
+    "Contact name:text",
     "Email:email",
     "Phone:phone",
     "Wins:number"
@@ -10735,7 +10735,7 @@
    },
    "colTypes": [
     "Course ID:category",
-    "Course name:person",
+    "Course name:text",
     "Instructor:text",
     "Day:category",
     "Year:number",
@@ -10770,7 +10770,7 @@
    },
    "colTypes": [
     "Course ID:category",
-    "Course name:person",
+    "Course name:text",
     "Year:number",
     "Semester:category",
     "Item description:money",
@@ -10805,7 +10805,7 @@
    "colTypes": [
     "Day:text",
     "Time Start:time",
-    "Course Name:person"
+    "Course Name:text"
    ],
    "flags": [
     "原始工作表有 42 列，只抽出 6 列，結構可能判壞"
