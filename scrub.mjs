@@ -32,6 +32,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 import XLSX from 'xlsx';
 
@@ -42,13 +43,15 @@ const S = g.SheetShape;
 
 const argv = process.argv.slice(2);
 const outIdx = argv.indexOf('--out');
-const OUTDIR = outIdx >= 0 ? argv[outIdx + 1] : 'corpus-real/scrubbed';
+let OUTDIR = outIdx >= 0 ? argv[outIdx + 1] : 'corpus-real/scrubbed';
 if (outIdx >= 0 && !OUTDIR) { console.error('--out 後面要接資料夾'); process.exit(1); }
 const NOVERIFY = argv.includes('--no-verify');
-const inputs = argv.filter((a, i) =>
+const SELFTEST = argv.includes('--selftest');
+let inputs = argv.filter((a, i) =>
   !a.startsWith('--') && !(outIdx >= 0 && i === outIdx + 1));
-if (!inputs.length) {
+if (!inputs.length && !SELFTEST) {
   console.error('用法：node scrub.mjs <檔案或資料夾> [--out <資料夾>] [--no-verify]');
+  console.error('      node scrub.mjs --selftest   拿內建的仿真檔驗一遍這支程式自己');
   process.exit(1);
 }
 
@@ -155,7 +158,7 @@ function scrubGrid(grid) {
       out[i][c] = take(String(raw), colType[c]);
     }
   }
-  return { grid: out, kept };
+  return { grid: out, kept, colType, headerEnd };
 }
 
 /* ── 驗：引擎眼裡是不是同一回事 ── */
@@ -177,6 +180,57 @@ const sig = grid => {
   });
 };
 
+/* --selftest：拿內建的仿真檔跑一遍，驗的是這支程式自己。
+   引擎的回歸測試在 test.mjs，這裡測的是另一件事——
+   「洗完在引擎眼裡一樣」而且「原始內容真的沒留下來」。
+   五個檔各對一種真實世界的寫法：台灣報價單（民國單號、NT$）、
+   工時表（日期橫排、會計式零）、客戶名冊（電話信箱長備註）、
+   月份橫排預算（括號負數、下半年全是 $-）、歐美 day-first 的 tracker。 */
+function fixtures(dir) {
+  const W = (n, sheets) => {
+    const wb = XLSX.utils.book_new();
+    for (const [k, grid] of Object.entries(sheets))
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(grid), k);
+    XLSX.writeFile(wb, path.join(dir, n));
+  };
+  const items = ['辦公桌 L型', '人體工學椅', '檔案櫃三層', '白板 120x90', '投影機支架', '碎紙機', '飲水機濾心', 'LED 檯燈'];
+  W('quote.xlsx', { 報價: [['永豐實業股份有限公司', '', '', ''], ['報價單　單號 Q-11203-001', '', '', ''], ['品項', '數量', '單價', '小計']]
+    .concat(items.map((it, i) => [it, String(i + 1), 'NT$' + (1200 + i * 430), 'NT$' + ((i + 1) * (1200 + i * 430))])) });
+
+  const who = ['陳怡君', '林志明', '王淑芬', '張家豪', '李佩玲'];
+  W('timesheet.xlsx', { 工時: [['專案工時彙總　112 年 3 月', '', '', '', '', '', ''], ['負責人', '3/1', '3/4', '3/5', '3/6', '3/7', '合計']]
+    .concat(who.map((w, i) => [w, '8', i % 2 ? '8' : '$-', '8', i % 3 ? '4' : '$-', '8', String(28 + i)])) });
+
+  W('customers.xlsx', { 名冊: [['客戶名單', '', '', ''], ['客戶名稱', '聯絡電話', '電子郵件', '備註']]
+    .concat(Array.from({ length: 12 }, (_, i) => ['客戶 ' + String.fromCharCode(65 + i) + ' 有限公司',
+      '02-2345-' + (1000 + i), 'contact' + i + '@customer' + i + '.com.tw',
+      i % 3 ? '' : '這位客戶的付款條件是月結六十天，出貨前需要先確認採購單號'])) });
+
+  const M = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+  const acct = ['人事費', '租金', '水電', '差旅', '行銷', '雜支'];
+  W('budget.xlsx', { 預算: [['年度預算執行表'].concat(M.map(() => '')), ['科目'].concat(M, ['年度合計'])]
+    .concat(acct.map((a, i) => [a].concat(M.map((_, m) =>
+      m < 6 ? (i % 4 === 0 ? '$(' + (1000 + i * 37 + m) + ')' : 'NT$' + (5000 + i * 310 + m * 17)) : '$-'),
+      ['NT$' + (60000 + i * 2100)]))) });
+
+  W('tracker.xlsx', {
+    Tasks: [['Project tracker', '', '', ''], ['Task', 'Owner', 'Due', 'Cost']]
+      .concat(Array.from({ length: 10 }, (_, i) => ['Task ' + (i + 1),
+        ['Alice Chen', 'Bob Wu', 'Cara Lin'][i % 3], (10 + i) + '/03/2024', '£' + (250 + i * 35) + '.00'])),
+    Notes: [['About this sheet'], ['Fill in the task name, owner and due date. Costs are in pounds.']],
+  });
+  return 5;
+}
+
+if (SELFTEST) {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'scrub-selftest-'));
+  const src = path.join(tmp, 'in');
+  fs.mkdirSync(src, { recursive: true });
+  fixtures(src);
+  inputs = [src];
+  OUTDIR = path.join(tmp, 'out');
+}
+
 const files = [];
 for (const inp of inputs) {
   if (fs.existsSync(inp) && fs.statSync(inp).isDirectory())
@@ -187,7 +241,7 @@ for (const inp of inputs) {
 fs.mkdirSync(OUTDIR, { recursive: true });
 
 let bad = 0, done = 0;
-const allKept = [];
+const allKept = [], pairs = [];
 for (const fp of files) {
   seed = parseInt(crypto.createHash('sha1').update(path.basename(fp)).digest('hex').slice(0, 8), 16) || 1;
   let grids;
@@ -197,8 +251,9 @@ for (const fp of files) {
   const wb = XLSX.utils.book_new();
   const checks = [];
   grids.forEach((sh, i) => {
-    const { grid, kept } = scrubGrid(sh.grid);
+    const { grid, kept, ...rest } = scrubGrid(sh.grid);
     allKept.push({ f: path.basename(fp), sheet: sh.name, kept });
+    if (SELFTEST) pairs.push({ f: path.basename(fp), sheet: sh.name, before: sh.grid, after: grid, ...rest });
     checks.push({ i, before: sig(sh.grid), after: sig(grid) });
     // 工作表名可能帶人名、客戶、專案，換成序號
     XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(grid), 'S' + (i + 1));
@@ -231,3 +286,32 @@ for (const k of allKept) {
   console.error(`  ${k.f} › ${k.sheet}\n      ${line.length > 400 ? line.slice(0, 400) + '…' : line}`);
 }
 if (bad) { console.error(`\n${bad} 個檔洗完判定不一致——別推這幾個，先回報給我。`); process.exit(1); }
+
+/* 自我測試的第二件事：原始內容真的沒留下來。
+   「判定一致」只證明結構保住了，不證明內容換掉了——
+   一支什麼都不做的 scrub 也會通過第一項。
+   刻意留著的三類不算洩漏：空白與「沒有值」、日期時間、一兩位的純數字。
+   標題列與前言是明講要留的，所以只掃資料格。 */
+if (SELFTEST) {
+  let leak = 0, checked = 0;
+  /* 斷言要跟 take() 的規則對齊，不能自己另寫一套。
+     第一版用 parseDateish 單看一格判「這是不是日期」，結果 tracker 的
+     13/03/2024 全被當成洩漏——日月順序是整欄推的（inferDayFirst），
+     單獨一格的 13/03 在 month-first 下是無效月份，解不出來。
+     該問的是「這一欄判成什麼型別」，那正是 take() 問的。 */
+  const KEEPABLE = (v, type) =>
+    !v.trim() || NULLISH.test(v.trim()) || /^\d{1,2}$/.test(v.trim()) ||
+    type === 'date' || type === 'time';
+  for (const p of pairs) {
+    for (let i = p.headerEnd + 1; i < p.before.length; i++)   // 標題列與前言是明講要留的
+      for (let c = 0; c < (p.before[i] || []).length; c++) {
+        const a = String((p.before[i] || [])[c] ?? ''), b = String((p.after[i] || [])[c] ?? '');
+        if (KEEPABLE(a, p.colType[c])) continue;
+        checked++;
+        if (a === b) { leak++; console.error(`  ✗ 洩漏 ${p.f} › ${p.sheet} [${i},${c}]：${JSON.stringify(a)}`); }
+      }
+  }
+  console.error(`\n自我測試：${checked} 個資料格該換掉，${leak} 個沒換`);
+  if (leak) { console.error('scrub 沒有真的洗掉內容——不要拿它處理真實檔案。'); process.exit(1); }
+  console.error('✓ 判定一致，且沒有原始內容留在資料格裡');
+}
