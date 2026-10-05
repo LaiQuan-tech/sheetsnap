@@ -248,8 +248,14 @@
      只看「相異度 − 欄位位置」。庫存表的「Inventory ID」因此越過
      「Name」當上卡片標題，手機上看到的是 INV-1001 而不是品名。
      加分給「這一列叫什麼」的欄名，扣分給單號、編號、代碼。
-     兩者都中（「Item ID」）就抵消，回到原本的評分。 */
-  var TITLE_NAME = /品名|品項|名稱|姓名|項目|標題|主旨|\bnames?\b|\bitems?\b|\btitles?\b|\bsubject\b/i;
+     兩者都中（「Item ID」）就抵消，回到原本的評分。
+
+     title 後面不接字才算（\btitles?\b(?!\s+\w)）：英文的 title 一詞兩義。
+     「COURSE TITLE」「Working title」「TITLE」是名稱，但「Title held by」
+     是產權登記在誰名下——Probate Liabilities 那張表因此把標題從全滿的
+     「Financial institution」換成只填一半的「Title held by」，八張卡有
+     四張沒有名字。中文的「標題」「主旨」沒有這個歧義，不加限制。 */
+  var TITLE_NAME = /品名|品項|名稱|姓名|項目|標題|主旨|\bnames?\b|\bitems?\b|\btitles?\b(?!\s+\w)|\bsubject\b/i;
   var ID_NAME    = /編號|代碼|序號|單號|代號|\bid\b|\bno\.?\b|\bcode\b|\bsku\b/i;
 
   // 主標題欄：相異度高、不太長、不是日期或數字的那一欄，越靠左越優先

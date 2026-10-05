@@ -81,6 +81,10 @@ const titleCases = [
   [['員工編號', '姓名', '時薪'],                '姓名',          '中文的編號／姓名'],
   [['SKU', 'Item names', 'Price'],          'Item names',  '複數的 names 也要算'],
   [['Order #', 'Product', 'Amount'],        'Product',     '單號欄不該當標題'],
+  // 英文的 title 一詞兩義：COURSE TITLE 是名稱，Title held by 是產權登記在誰名下。
+  // 163 份跑出來這條誤中過一次，把全滿的欄換成只填一半的欄，半數卡片沒名字。
+  [['Financial institution', 'Title held by', 'Balance'], 'Financial institution', 'Title held by 不是名稱'],
+  [['Course ID', 'COURSE TITLE', 'Credits'], 'COURSE TITLE', 'COURSE TITLE 是名稱'],
   [['分類', '工作項目', '金額'],                 '工作項目',       '分組軸不會被標題搶走'],
 ];
 const WORDS = ['筆記本','原子筆','膠水','剪刀','尺規','釘書機','便利貼','資料夾','文件袋','計算機','橡皮擦','立可白'];
@@ -88,7 +92,7 @@ const CATS  = ['行銷','研發','客服'];
 for (const [head, want, why] of titleCases) {
   const grid = [head].concat(Array.from({ length: 12 }, (_, i) => head.map(h => {
     if (/編號|SKU|ID|#/.test(h)) return 'XX-' + (1010 + i);            // 單號：長度整齊、含數字
-    if (/金額|時薪|price|amount/i.test(h)) return String(100 + i * 7);
+    if (/金額|時薪|price|amount|balance|credits/i.test(h)) return String(100 + i * 7);
     if (h === '分類') return CATS[i % 3];
     return WORDS[i];
   })));
