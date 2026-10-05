@@ -1,18 +1,18 @@
 {
  "files": 163,
  "sheets": 396,
- "shown": 293,
- "skipped": 103,
+ "shown": 287,
+ "skipped": 109,
  "warned": 10,
  "generic": 43,
  "noTitle": 9,
  "oneRow": 0,
  "withTime": 48,
- "withFilter": 29,
+ "withFilter": 26,
  "withFacts": 121,
  "withGroup": 55,
  "withRank": 120,
- "onlySearch": 51,
+ "onlySearch": 48,
  "shapes": [
   [
    "品項／價目表",
@@ -20,7 +20,7 @@
   ],
   [
    "矩陣／報表",
-   73
+   67
   ],
   [
    "排程／時程表",
@@ -80,13 +80,6 @@
    }
   ],
   [
-   "timeline",
-   {
-    "n": 21,
-    "ok": 14
-   }
-  ],
-  [
    "schedule",
    {
     "n": 17,
@@ -94,10 +87,10 @@
    }
   ],
   [
-   "student",
+   "timeline",
    {
-    "n": 14,
-    "ok": 9
+    "n": 17,
+    "ok": 10
    }
   ],
   [
@@ -105,6 +98,13 @@
    {
     "n": 12,
     "ok": 11
+   }
+  ],
+  [
+   "student",
+   {
+    "n": 12,
+    "ok": 7
    }
   ],
   [
@@ -136,7 +136,7 @@
    }
   ]
  ],
- "clean": 239,
+ "clean": 233,
  "rows": [
   {
    "src": "accounting_0447d9de.xlsx",
@@ -2742,24 +2742,6 @@
    ]
   },
   {
-   "src": "student_b6316bb6.xlsx",
-   "sheet": "Applications",
-   "table": 0,
-   "shape": "矩陣／報表",
-   "views": [
-    "all"
-   ]
-  },
-  {
-   "src": "student_b6316bb6.xlsx",
-   "sheet": "Comparisons",
-   "table": 1,
-   "shape": "矩陣／報表",
-   "views": [
-    "all"
-   ]
-  },
-  {
    "src": "student_beeb91bb.xlsx",
    "sheet": "Class list",
    "table": 0,
@@ -2900,15 +2882,6 @@
    ]
   },
   {
-   "src": "timeline_7ec3f486.xlsx",
-   "sheet": "Social Overview",
-   "table": 0,
-   "shape": "矩陣／報表",
-   "views": [
-    "all"
-   ]
-  },
-  {
    "src": "timeline_93059754.xlsx",
    "sheet": "Calendar",
    "table": 0,
@@ -2941,41 +2914,11 @@
   },
   {
    "src": "timeline_c7bfc3e8.xlsx",
-   "sheet": "Cheeple",
-   "table": 1,
-   "shape": "矩陣／報表",
-   "views": [
-    "filter:MONTH",
-    "all"
-   ]
-  },
-  {
-   "src": "timeline_c7bfc3e8.xlsx",
-   "sheet": "ConnectAbove",
-   "table": 4,
-   "shape": "矩陣／報表",
-   "views": [
-    "filter:MONTH",
-    "all"
-   ]
-  },
-  {
-   "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "Ideaphoria",
    "table": 2,
    "shape": "一般表格",
    "views": [
     "group:PUBLISH DATE",
-    "filter:MONTH",
-    "all"
-   ]
-  },
-  {
-   "src": "timeline_c7bfc3e8.xlsx",
-   "sheet": "Immepic",
-   "table": 3,
-   "shape": "矩陣／報表",
-   "views": [
     "filter:MONTH",
     "all"
    ]
