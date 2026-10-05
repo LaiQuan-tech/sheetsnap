@@ -1,25 +1,26 @@
 {
  "fingerprint": {
-  "engine": "00053784dfc8",
+  "engine": "96919442f0d7",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 208,
-  "flagged": 119,
-  "skipped": 109,
+  "clean": 219,
+  "flagged": 107,
+  "skipped": 110,
   "broken": 0,
   "shapes": {
-   "一般表格": 76,
-   "名冊／通訊錄": 6,
-   "品項／價目表": 119,
-   "帳務／明細表": 4,
-   "排程／時程表": 27,
+   "一般表格": 56,
+   "名冊／通訊錄": 5,
+   "品項／價目表": 90,
+   "帳務／明細表": 29,
+   "排程／時程表": 56,
    "狀態清單": 1,
-   "矩陣／報表": 94
+   "矩陣／報表": 89
   },
   "flags": {
+   "11/34 列沒有標題，會被整列略過": 1,
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "2/4 列沒有標題，會被整列略過": 3,
    "2/6 列沒有標題，會被整列略過": 1,
@@ -28,28 +29,25 @@
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "6/18 列沒有標題，會被整列略過": 1,
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
-   "分組欄「2.5」只有一種值，等於沒分組": 1,
-   "分組欄「Approved by」只有一種值，等於沒分組": 1,
+   "9/26 列沒有標題，會被整列略過": 1,
    "分組欄「DATE」只有一種值，等於沒分組": 1,
+   "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落": 4,
    "分組欄「DONE」只有一種值，等於沒分組": 3,
    "分組欄「DUE DATE」只有一種值，等於沒分組": 1,
+   "分組欄「Date」幾乎每列都不同，會碎成一堆單筆段落": 1,
    "分組欄「Difference ($)」只有一種值，等於沒分組": 1,
    "分組欄「Discontinued?」只有一種值，等於沒分組": 1,
    "分組欄「ESTIMATED」只有一種值，等於沒分組": 1,
+   "分組欄「Estimated start」幾乎每列都不同，會碎成一堆單筆段落": 1,
    "分組欄「INVITED」只有一種值，等於沒分組": 1,
    "分組欄「ORDER #」只有一種值，等於沒分組": 2,
    "分組欄「PRESENTER」只有一種值，等於沒分組": 1,
    "分組欄「Phone」只有一種值，等於沒分組": 1,
    "分組欄「Reading」只有一種值，等於沒分組": 3,
-   "分組欄「Reservation」只有一種值，等於沒分組": 1,
-   "分組欄「SEMESTER」只有一種值，等於沒分組": 1,
-   "分組欄「Sample mean (average of all means)」只有一種值，等於沒分組": 1,
-   "分組欄「Semester」只有一種值，等於沒分組": 1,
+   "分組欄「Start Date」幾乎每列都不同，會碎成一堆單筆段落": 1,
    "分組欄「TOTAL」只有一種值，等於沒分組": 1,
    "分組欄「Type」只有一種值，等於沒分組": 1,
-   "分組欄「Vendor」只有一種值，等於沒分組": 2,
    "分組欄「Week 1」只有一種值，等於沒分組": 1,
-   "分組欄「Yes」只有一種值，等於沒分組": 1,
    "分組欄「☐」只有一種值，等於沒分組": 1,
    "原始工作表有 112 列，只抽出 14 列，結構可能判壞": 1,
    "原始工作表有 12 列，只抽出 2 列，結構可能判壞": 2,
@@ -101,9 +99,9 @@
    "原始工作表有 99 列，只抽出 6 列，結構可能判壞": 1,
    "只有一列資料，判斷幾乎沒有依據": 8,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
-   "找不到主標題欄，卡片會沒有名字": 18,
+   "找不到主標題欄，卡片會沒有名字": 22,
    "標題列可能判錯": 8,
-   "落到一般表格": 48
+   "落到一般表格": 30
   }
  },
  "records": [
@@ -142,9 +140,9 @@
    "status": "clean",
    "table": 2,
    "of": 2,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Withdrawal (-)」，以「Description」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（6/6），且有 3 欄金額，判定為明細帳而非排程",
    "srcRows": 11,
    "rows": 7,
    "cols": 7,
@@ -154,16 +152,14 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": "Check #",
-    "lead": "Withdrawal (-)",
+    "group": null,
+    "lead": "Balance",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
     "Check #:category:86%:4",
-    "Date:text:86%:6",
+    "Date:date:86%:6",
     "Description:text:86%:6",
     "Category:category:86%:5",
     "Withdrawal (-):money:71%:5",
@@ -458,9 +454,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Withdrawal」，以「Transaction」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（5/6），且有 3 欄金額，判定為明細帳而非排程",
    "srcRows": 18,
    "rows": 6,
    "cols": 7,
@@ -470,14 +466,14 @@
    "notes": [],
    "roles": {
     "title": "Transaction",
-    "group": "Date",
-    "lead": "Withdrawal",
+    "group": null,
+    "lead": "Balance",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Check/Code:text:83%:5",
-    "Date:category:100%:5",
+    "Date:date:100%:5",
     "Transaction:text:83%:5",
     "Description:text:67%:4",
     "Withdrawal:money:67%:4",
@@ -580,9 +576,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Date」是標籤，後面 9 欄是數值（Auto insurance、Office supplies、Electricity、Mortgage、Phone、Column1：整欄空白、Column2：整欄空白、Column3：整欄空白、Column4：整欄空白）",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（15/15），且有 5 欄金額，判定為明細帳而非排程",
    "srcRows": 18,
    "rows": 16,
    "cols": 10,
@@ -593,12 +589,12 @@
    "roles": {
     "title": "Date",
     "group": null,
-    "lead": null,
+    "lead": "Phone",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:text:94%:15",
+    "Date:date:94%:15",
     "Auto insurance:money:25%:2",
     "Office supplies:money:25%:4",
     "Electricity:money:19%:3",
@@ -617,9 +613,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Date」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（15/15），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 18,
    "rows": 15,
    "cols": 5,
@@ -629,13 +625,13 @@
    "notes": [],
    "roles": {
     "title": "Date",
-    "group": "Category",
+    "group": null,
     "lead": "Amount",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:text:100%:15",
+    "Date:date:100%:15",
     "Number:number:100%:15",
     "Description:text:100%:5",
     "Category:category:100%:5",
@@ -649,9 +645,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「WITHDRAWAL」，以「TRANSACTION」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「DATE」但幾乎每列都不同（5/6），且有 3 欄金額，判定為明細帳而非排程",
    "srcRows": 16,
    "rows": 6,
    "cols": 7,
@@ -661,14 +657,14 @@
    "notes": [],
    "roles": {
     "title": "TRANSACTION",
-    "group": "DATE",
-    "lead": "WITHDRAWAL",
+    "group": null,
+    "lead": "BALANCE",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "CHECK/CODE:text:83%:5",
-    "DATE:category:100%:5",
+    "DATE:date:100%:5",
     "TRANSACTION:text:83%:5",
     "DESCRIPTION:text:67%:4",
     "WITHDRAWAL:money:67%:4",
@@ -721,7 +717,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「CHARGES」，以「DATE」為品項名稱",
+   "reason": "偵測到金額欄「CHARGES」，以「DESCRIPTION」為品項名稱",
    "srcRows": 16,
    "rows": 8,
    "cols": 5,
@@ -732,7 +728,7 @@
     "向下填補合併儲存格：DESCRIPTION"
    ],
    "roles": {
-    "title": "DATE",
+    "title": "DESCRIPTION",
     "group": null,
     "lead": "CHARGES",
     "person": null
@@ -957,9 +953,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Debit   (-)」，以「Description of transaction」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（4/4），且有 3 欄金額，判定為明細帳而非排程",
    "srcRows": 15,
    "rows": 4,
    "cols": 7,
@@ -972,15 +968,13 @@
    "roles": {
     "title": "Description of transaction",
     "group": null,
-    "lead": "Debit   (-)",
+    "lead": "Balance",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
     "Number:number:50%:2",
-    "Date:text:100%:4",
+    "Date:date:100%:4",
     "Description of transaction:text:100%:4",
     "Clear:text:25%:1",
     "Debit   (-):money:50%:2",
@@ -1490,9 +1484,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount deposited」，以「Description」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（2/2），且有 2 欄金額，判定為明細帳而非排程",
    "srcRows": 12,
    "rows": 2,
    "cols": 8,
@@ -1502,15 +1496,13 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": "Approved by",
-    "lead": "Amount deposited",
+    "group": null,
+    "lead": "Amount withdrawn",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
-    "Date:text:100%:2",
+    "Date:date:100%:2",
     "Receipt no.:number:100%:2",
     "Description:text:100%:2",
     "Amount deposited:money:100%:2",
@@ -1520,7 +1512,6 @@
     "Approved by:category:100%:1"
    ],
    "flags": [
-    "分組欄「Approved by」只有一種值，等於沒分組",
     "原始工作表有 12 列，只抽出 2 列，結構可能判壞"
    ]
   },
@@ -3023,9 +3014,9 @@
    "status": "flagged",
    "table": 1,
    "of": 2,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Description」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（3/3），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 254,
    "rows": 3,
    "cols": 3,
@@ -3039,11 +3030,9 @@
     "lead": "Amount",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
-    "Date:text:100%:3",
+    "Date:date:100%:3",
     "Amount:money:100%:3",
     "Description:text:100%:3"
    ],
@@ -3057,9 +3046,9 @@
    "status": "flagged",
    "table": 2,
    "of": 2,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Description」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（3/3），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 254,
    "rows": 3,
    "cols": 3,
@@ -3073,11 +3062,9 @@
     "lead": "Amount",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
-    "Date:text:100%:3",
+    "Date:date:100%:3",
     "Amount:money:100%:3",
     "Description:text:100%:3"
    ],
@@ -4528,9 +4515,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「PROJECT NAME」是標籤，後面 21 欄是數值（PROJECT TYPE、ESTIMATED START、ESTIMATED FINISH、ACTUAL START、ACTUAL FINISH、ESTIMATED WORK、ACTUAL WORK、ESTIMATED DURATION、ACTUAL DURATION、GENERAL PARTNER、BUSINESS LAWYER、DEFENSE LITIGATOR、INTELLECTUAL PROPERTY LAWYER、BANKRUPTCY LAWYER、ADMIN STAFF、GENERAL PARTNER 2、BUSINESS LAWYER 2、DEFENSE LITIGATOR 2、INTELLECTUAL PROPERTY LAWYER 2、BANKRUPTCY LAWYER 2、ADMIN STAFF 2）",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「ESTIMATED START」但幾乎每列都不同（5/5），且有 12 欄金額，判定為明細帳而非排程",
    "srcRows": 10,
    "rows": 5,
    "cols": 22,
@@ -4543,21 +4530,17 @@
    "roles": {
     "title": "PROJECT NAME",
     "group": null,
-    "lead": null,
+    "lead": "ADMIN STAFF 2",
     "person": null
    },
-   "hidden": [
-    "ESTIMATED START",
-    "ESTIMATED FINISH",
-    "ACTUAL FINISH"
-   ],
+   "hidden": [],
    "colTypes": [
     "PROJECT NAME:text:100%:5",
     "PROJECT TYPE:text:100%:5",
-    "ESTIMATED START:text:100%:5",
-    "ESTIMATED FINISH:text:100%:5",
-    "ACTUAL START:category:100%:4",
-    "ACTUAL FINISH:text:100%:5",
+    "ESTIMATED START:date:100%:5",
+    "ESTIMATED FINISH:date:100%:5",
+    "ACTUAL START:date:100%:4",
+    "ACTUAL FINISH:date:100%:5",
     "ESTIMATED WORK:number:100%:5",
     "ACTUAL WORK:number:100%:5",
     "ESTIMATED DURATION:number:100%:5",
@@ -4625,7 +4608,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Sample mean (average of all means)」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 31,
    "rows": 18,
    "cols": 8,
@@ -4634,14 +4617,14 @@
    "title": "Control chart for printing books · Plant name: · Nod Publishers · Report date: · 2/23/23 · QC Tech: · Nicole Wagner · Dept: · Quality assurance · Equipment ID: · 78910 · Start date: · 1/24/23 · End date: · 2/23/23 · # of imperfections",
    "notes": [],
    "roles": {
-    "title": "Date",
-    "group": "Sample mean (average of all means)",
+    "title": "Mean",
+    "group": "Date",
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:text:100%:18",
+    "Date:date:100%:18",
     "Sample 1:number:100%:6",
     "Sample 2:number:100%:5",
     "Sample 3:number:100%:5",
@@ -4651,51 +4634,26 @@
     "Sample mean (average of all means):date:100%:1"
    ],
    "flags": [
-    "分組欄「Sample mean (average of all means)」只有一種值，等於沒分組"
+    "分組欄「Date」幾乎每列都不同，會碎成一堆單筆段落"
    ]
   },
   {
    "src": "chart_098a0353.xlsx",
    "sheet": "chart_098a0353.xlsx › Run chart with sample mean",
+   "status": "not-shown",
+   "show": false,
+   "why": "只有 1 列資料",
+   "srcRows": 18
+  },
+  {
+   "src": "chart_09eef93c.xlsx",
+   "sheet": "chart_09eef93c.xlsx › MANUFACTURING OUTPUT",
    "status": "flagged",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「2.5」（100% 的值可解析為日期）",
-   "srcRows": 18,
-   "rows": 17,
-   "cols": 4,
-   "live": 4,
-   "headerRow": 0,
-   "title": null,
-   "notes": [],
-   "roles": {
-    "title": "1/24/2023",
-    "group": "2.5",
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "1/24/2023:text:100%:17",
-    "2.8:date:100%:11",
-    "1/24/2023:text:100%:17",
-    "2.5:date:100%:1"
-   ],
-   "flags": [
-    "分組欄「2.5」只有一種值，等於沒分組"
-   ]
-  },
-  {
-   "src": "chart_09eef93c.xlsx",
-   "sheet": "chart_09eef93c.xlsx › MANUFACTURING OUTPUT",
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「DATE」為標題逐列呈現",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
    "srcRows": 28,
    "rows": 24,
    "cols": 2,
@@ -4704,17 +4662,20 @@
    "title": "MANUFACTURING OUTPUT DATA",
    "notes": [],
    "roles": {
-    "title": "DATE",
-    "group": null,
+    "title": null,
+    "group": "DATE",
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "DATE:text:100%:24",
+    "DATE:date:100%:24",
     "COMPONENTS COMPLETED:number:100%:19"
    ],
-   "flags": []
+   "flags": [
+    "找不到主標題欄，卡片會沒有名字",
+    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落"
+   ]
   },
   {
    "src": "chart_1c4bd473.xlsx",
@@ -4921,12 +4882,12 @@
   {
    "src": "chart_4bf6b793.xlsx",
    "sheet": "chart_4bf6b793.xlsx › Project schedule",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 2,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「PROGRESS」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「START」（100% 的值可解析為日期）",
    "srcRows": 36,
    "rows": 26,
    "cols": 6,
@@ -4936,7 +4897,7 @@
    "notes": [],
    "roles": {
     "title": "TASK",
-    "group": "PROGRESS",
+    "group": "START",
     "lead": null,
     "person": null
    },
@@ -4946,12 +4907,10 @@
     "TASK:text:96%:24",
     "ASSIGNED TO:category:77%:5",
     "PROGRESS:category:62%:3",
-    "START:text:77%:16",
-    "END:text:77%:15"
+    "START:date:77%:16",
+    "END:date:77%:15"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_4bf6b793.xlsx",
@@ -5191,9 +5150,9 @@
    "status": "clean",
    "table": 1,
    "of": 3,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Withdrawal」，以「Description」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（11/12），且有 3 欄金額，判定為明細帳而非排程",
    "srcRows": 45,
    "rows": 12,
    "cols": 7,
@@ -5203,15 +5162,13 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": "Category",
-    "lead": "Withdrawal",
+    "group": null,
+    "lead": "Balance",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
-    "Date:text:100%:11",
+    "Date:date:100%:11",
     "Check #:text:67%:8",
     "Description:text:92%:11",
     "Category:category:92%:8",
@@ -5345,9 +5302,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5360,12 +5317,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:6",
     "Category:category:100%:5",
@@ -5379,9 +5336,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5394,12 +5351,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:6",
     "Category:category:100%:5",
@@ -5413,9 +5370,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5428,12 +5385,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:6",
     "Category:category:100%:5",
@@ -5447,9 +5404,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5462,12 +5419,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:6",
     "Category:category:100%:5",
@@ -5481,9 +5438,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5496,12 +5453,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:5",
     "Category:category:100%:5",
@@ -5515,9 +5472,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5530,12 +5487,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:6",
     "Category:category:100%:5",
@@ -5546,12 +5503,12 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › jul",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5569,25 +5526,23 @@
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:empty:0%:0",
     "Category:category:100%:5",
     "Description:text:17%:1"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › aug",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5605,25 +5560,23 @@
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:empty:0%:0",
     "Category:category:100%:5",
     "Description:text:17%:1"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › sep",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5641,25 +5594,23 @@
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:empty:0%:0",
     "Category:category:100%:5",
     "Description:text:17%:1"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › oct",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5677,25 +5628,23 @@
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:empty:0%:0",
     "Category:category:100%:5",
     "Description:text:17%:1"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › nov",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Date」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5713,15 +5662,13 @@
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:empty:0%:0",
     "Category:category:100%:5",
     "Description:text:17%:1"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_8be76302.xlsx",
@@ -5729,9 +5676,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 6,
    "cols": 5,
@@ -5744,12 +5691,12 @@
    "roles": {
     "title": "Category",
     "group": "Date",
-    "lead": "Amount",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "PO#:category:100%:2",
     "Amount:money:100%:6",
     "Category:category:100%:5",
@@ -5760,12 +5707,12 @@
   {
    "src": "chart_8c4be8ed.xlsx",
    "sheet": "chart_8c4be8ed.xlsx › Social media engagement data",
-   "status": "clean",
+   "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「DATE」為標題逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
    "srcRows": 28,
    "rows": 24,
    "cols": 2,
@@ -5774,17 +5721,20 @@
    "title": "SOCIAL MEDIA ENGAGEMENT DATA",
    "notes": [],
    "roles": {
-    "title": "DATE",
-    "group": null,
+    "title": null,
+    "group": "DATE",
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "DATE:text:100%:24",
+    "DATE:date:100%:24",
     "DAILY IMPRESSIONS:number:100%:19"
    ],
-   "flags": []
+   "flags": [
+    "找不到主標題欄，卡片會沒有名字",
+    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落"
+   ]
   },
   {
    "src": "chart_8eab671c.xlsx",
@@ -6147,12 +6097,12 @@
    "reason": "偵測到日期欄「日期」（83% 的值可解析為日期）",
    "srcRows": 107,
    "rows": 104,
-   "cols": 7,
-   "live": 7,
+   "cols": 6,
+   "live": 6,
    "headerRow": 2,
    "title": "*** Sheet to remain hidden ***",
    "notes": [
-    "把散在 3 欄時間軸上的日期收合成單一「日期」欄"
+    "把散在 4 欄時間軸上的日期收合成單一「日期」欄"
    ],
    "roles": {
     "title": "Periods",
@@ -6166,7 +6116,6 @@
     "Periods:category:100%:14",
     "Values:number:99%:9",
     "欄 4:category:3%:2",
-    "欄 5:text:5%:5",
     "Values:number:4%:4",
     "日期:date:6%:5"
    ],
@@ -6183,12 +6132,12 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Light",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 3,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6200,7 +6149,7 @@
    ],
    "roles": {
     "title": "Milestone description",
-    "group": "Category",
+    "group": "Start",
     "lead": null,
     "person": null
    },
@@ -6210,12 +6159,10 @@
     "Category:category:96%:6",
     "Assigned to:text:4%:1",
     "Progress:category:24%:5",
-    "Start:text:72%:15",
+    "Start:date:72%:15",
     "Days:number:72%:13"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_c29ed7ae.xlsx",
@@ -6345,12 +6292,12 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Dark",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 3,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6361,8 +6308,8 @@
     "向下填補合併儲存格：Category"
    ],
    "roles": {
-    "title": "Start",
-    "group": "Category",
+    "title": "Milestone description",
+    "group": "Start",
     "lead": null,
     "person": null
    },
@@ -6372,12 +6319,10 @@
     "Category:category:96%:6",
     "Assigned to:text:4%:1",
     "Progress:category:24%:5",
-    "Start:text:72%:15",
+    "Start:date:72%:15",
     "Days:number:72%:13"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_c29ed7ae.xlsx",
@@ -6507,12 +6452,12 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Color",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 3,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6523,8 +6468,8 @@
     "向下填補合併儲存格：Category"
    ],
    "roles": {
-    "title": "Start",
-    "group": "Category",
+    "title": "Milestone description",
+    "group": "Start",
     "lead": null,
     "person": null
    },
@@ -6534,12 +6479,10 @@
     "Category:category:96%:6",
     "Assigned to:text:4%:1",
     "Progress:category:24%:5",
-    "Start:text:72%:15",
+    "Start:date:72%:15",
     "Days:number:72%:13"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "chart_c29ed7ae.xlsx",
@@ -6954,9 +6897,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Sub-category」為品項名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 30,
    "rows": 21,
    "cols": 5,
@@ -6966,13 +6909,13 @@
    "notes": [],
    "roles": {
     "title": "Sub-category",
-    "group": "Category",
-    "lead": "Amount",
+    "group": "Date",
+    "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:10",
+    "Date:date:100%:10",
     "Category:category:100%:4",
     "Sub-category:category:100%:12",
     "Amount:money:100%:9",
@@ -7334,9 +7277,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「PURCHASE AMOUNT」，以「ITEM DESCRIPTION」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「DATE PURCHASED」但幾乎每列都不同（3/3），且有 2 欄金額，判定為明細帳而非排程",
    "srcRows": 25,
    "rows": 3,
    "cols": 10,
@@ -7346,19 +7289,17 @@
    "notes": [],
    "roles": {
     "title": "ITEM DESCRIPTION",
-    "group": "SN AND/OR ID NUMBER",
-    "lead": "PURCHASE AMOUNT",
+    "group": null,
+    "lead": "ESTIMATED VALUE",
     "person": null
    },
-   "hidden": [
-    "DATE PURCHASED"
-   ],
+   "hidden": [],
    "colTypes": [
     "ROOM:text:100%:3",
     "ITEM DESCRIPTION:text:100%:3",
     "MAKE OR/AND MODEL:text:67%:2",
     "SN AND/OR ID NUMBER:category:100%:2",
-    "DATE PURCHASED:text:100%:3",
+    "DATE PURCHASED:date:100%:3",
     "LOCATION OF PURCHASE:text:100%:3",
     "PURCHASE AMOUNT:money:100%:3",
     "ESTIMATED VALUE:money:100%:3",
@@ -7375,9 +7316,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Initial value」，以「Item description \r\n(make and model)」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date purchased \r\nor leased」但幾乎每列都不同（3/3），且有 9 欄金額，判定為明細帳而非排程",
    "srcRows": 99,
    "rows": 6,
    "cols": 18,
@@ -7389,12 +7330,11 @@
    ],
    "roles": {
     "title": "Item description \r\n(make and model)",
-    "group": "Vendor",
-    "lead": "Initial value",
+    "group": null,
+    "lead": "Current value",
     "person": null
    },
    "hidden": [
-    "Date purchased \r\nor leased",
     "Loan rate"
    ],
    "colTypes": [
@@ -7406,7 +7346,7 @@
     "Years of \r\nservice left:number:50%:3",
     "Initial value:money:50%:3",
     "Down payment:money:50%:3",
-    "Date purchased \r\nor leased:text:50%:3",
+    "Date purchased \r\nor leased:date:50%:3",
     "Loan term \r\nin years:number:50%:3",
     "Loan rate:text:50%:3",
     "Monthly payment:money:100%:4",
@@ -7418,7 +7358,6 @@
     "Current value:money:100%:4"
    ],
    "flags": [
-    "分組欄「Vendor」只有一種值，等於沒分組",
     "原始工作表有 99 列，只抽出 6 列，結構可能判壞"
    ]
   },
@@ -7631,12 +7570,12 @@
   {
    "src": "inventory_7a077a69.xlsx",
    "sheet": "inventory_7a077a69.xlsx › Equipment inventory list",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Initial value」，以「Item description」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date purchased or leased」但幾乎每列都不同（3/3），且有 9 欄金額，判定為明細帳而非排程",
    "srcRows": 23,
    "rows": 5,
    "cols": 18,
@@ -7648,12 +7587,11 @@
    ],
    "roles": {
     "title": "Item description",
-    "group": "Vendor",
-    "lead": "Initial value",
+    "group": null,
+    "lead": "Current value",
     "person": null
    },
    "hidden": [
-    "Date purchased or leased",
     "Loan rate"
    ],
    "colTypes": [
@@ -7665,7 +7603,7 @@
     "Years of service left:number:60%:3",
     "Initial value:money:60%:3",
     "Down payment:money:60%:2",
-    "Date purchased or leased:text:60%:3",
+    "Date purchased or leased:date:60%:3",
     "Loan term in years:number:40%:2",
     "Loan rate:text:40%:2",
     "Monthly payment:money:100%:3",
@@ -7676,9 +7614,7 @@
     "Monthly straight line depreciation:money:100%:4",
     "Current value:money:100%:4"
    ],
-   "flags": [
-    "分組欄「Vendor」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_90d892c6.xlsx",
@@ -7686,9 +7622,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「ACQUISITION COST」，以「ASSET NAME」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「ACQISITION DATE」但幾乎每列都不同（3/3），且有 4 欄金額，判定為明細帳而非排程",
    "srcRows": 10,
    "rows": 3,
    "cols": 14,
@@ -7698,13 +7634,11 @@
    "notes": [],
    "roles": {
     "title": "ASSET NAME",
-    "group": "DEPRECTION METHOD",
-    "lead": "ACQUISITION COST",
+    "group": null,
+    "lead": "DEPRECIATION THIS PERIOD",
     "person": null
    },
-   "hidden": [
-    "ACQISITION DATE"
-   ],
+   "hidden": [],
    "colTypes": [
     "ASSET NAME:text:100%:3",
     "ASSET CLASS:text:100%:3",
@@ -7712,7 +7646,7 @@
     "PHYSICAL LOCATION:text:100%:3",
     "ASSET #:number:100%:3",
     "SERIAL #:number:100%:3",
-    "ACQISITION DATE:text:100%:3",
+    "ACQISITION DATE:date:100%:3",
     "ACQUISITION COST:money:100%:3",
     "DEPRECTION METHOD:category:100%:2",
     "USEFUL LIFE (YEARS):number:100%:3",
@@ -7807,9 +7741,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「N/A」，以「Living room」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「N/A」但幾乎每列都不同（2/2），且有 2 欄金額，判定為明細帳而非排程",
    "srcRows": 16,
    "rows": 2,
    "cols": 10,
@@ -7819,8 +7753,8 @@
    "notes": [],
    "roles": {
     "title": "Living room",
-    "group": "Yes",
-    "lead": "N/A",
+    "group": null,
+    "lead": "$3,000.00",
     "person": null
    },
    "hidden": [],
@@ -7829,7 +7763,7 @@
     "Piano:text:100%:2",
     "Baby grand:text:100%:2",
     "100123:text:50%:1",
-    "N/A:text:100%:2",
+    "N/A:date:100%:2",
     "N/A:text:100%:2",
     "N/A:money:100%:2",
     "$3,000.00:money:100%:2",
@@ -7837,7 +7771,6 @@
     "Yes:category:100%:1"
    ],
    "flags": [
-    "分組欄「Yes」只有一種值，等於沒分組",
     "原始工作表有 16 列，只抽出 2 列，結構可能判壞"
    ]
   },
@@ -8569,9 +8502,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Invoice #」是標籤，後面 9 欄是數值（Company、Invoice date、Project description、Tax rate、Other、Deposit、Detail total、Invoice total、Notes：整欄空白）",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Invoice date」但幾乎每列都不同（2/2），且有 5 欄金額，判定為明細帳而非排程",
    "srcRows": 6,
    "rows": 2,
    "cols": 10,
@@ -8580,18 +8513,18 @@
    "title": "Invoices",
    "notes": [],
    "roles": {
-    "title": "Invoice #",
+    "title": "Project description",
     "group": null,
-    "lead": null,
+    "lead": "Invoice total",
     "person": null
    },
    "hidden": [
-    "Invoice date"
+    "Invoice #"
    ],
    "colTypes": [
     "Invoice #:text:100%:2",
     "Company:money:100%:2",
-    "Invoice date:text:100%:2",
+    "Invoice date:date:100%:2",
     "Project description:text:100%:2",
     "Tax rate:category:100%:1",
     "Other:money:50%:1",
@@ -8642,9 +8575,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「MONTH VIEW」，以「WEEK VIEW」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「WEEK VIEW」但幾乎每列都不同（13/13），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 15,
    "rows": 14,
    "cols": 2,
@@ -8661,7 +8594,7 @@
    "hidden": [],
    "colTypes": [
     "MONTH VIEW:money:100%:14",
-    "WEEK VIEW:text:93%:13"
+    "WEEK VIEW:date:93%:13"
    ],
    "flags": []
   },
@@ -8687,9 +8620,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Reservation」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 17,
    "rows": 2,
    "cols": 7,
@@ -8699,15 +8632,13 @@
    "notes": [],
    "roles": {
     "title": "Destination",
-    "group": "Reservation",
+    "group": "Date",
     "lead": null,
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
-    "Date:text:100%:2",
+    "Date:date:100%:2",
     "Destination:text:100%:2",
     "Days (stay):number:100%:2",
     "Nights (stay):number:100%:2",
@@ -8716,8 +8647,6 @@
     "Notes:empty:0%:0"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「Reservation」只有一種值，等於沒分組",
     "原始工作表有 17 列，只抽出 2 列，結構可能判壞"
    ]
   },
@@ -8893,12 +8822,12 @@
   {
    "src": "planner_502c3712.xlsx",
    "sheet": "planner_502c3712.xlsx › Mileage log",
-   "status": "clean",
+   "status": "flagged",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到時間欄「Time」但沒有日期欄，視為單日流程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期），並有時間欄「Time」",
    "srcRows": 22,
    "rows": 16,
    "cols": 9,
@@ -8909,14 +8838,14 @@
     "向下填補合併儲存格：Date、Time"
    ],
    "roles": {
-    "title": "Date",
-    "group": null,
+    "title": null,
+    "group": "Date",
     "lead": "Time",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Date:category:100%:2",
+    "Date:date:100%:2",
     "Time:time:100%:2",
     "Description:text:13%:2",
     "Purpose:text:13%:2",
@@ -8926,7 +8855,9 @@
     "Odometer\r\nfinish:number:13%:2",
     "Mileage:number:100%:3"
    ],
-   "flags": []
+   "flags": [
+    "找不到主標題欄，卡片會沒有名字"
+   ]
   },
   {
    "src": "planner_5673dfc3.xlsx",
@@ -8973,9 +8904,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "directory",
-   "label": "名冊／通訊錄",
-   "reason": "偵測到電話欄「PHONE」與信箱欄「EMAIL ADDRESS」，以「NAME」為主要名稱",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「PHONE SCREEN DATE」（100% 的值可解析為日期）",
    "srcRows": 9,
    "rows": 5,
    "cols": 11,
@@ -8985,14 +8916,11 @@
    "notes": [],
    "roles": {
     "title": "NAME",
-    "group": "CANDIDATE \r\nTYPE",
+    "group": "PHONE SCREEN DATE",
     "lead": null,
     "person": null
    },
-   "hidden": [
-    "PHONE SCREEN DATE",
-    "INTERVIEW DATE"
-   ],
+   "hidden": [],
    "colTypes": [
     "NAME:person:100%:5",
     "APPLYING FOR:text:100%:2",
@@ -9000,8 +8928,8 @@
     "CANDIDATE \r\nTYPE:category:100%:3",
     "EMAIL ADDRESS:email:100%:5",
     "PHONE:phone:100%:5",
-    "PHONE SCREEN DATE:text:100%:5",
-    "INTERVIEW DATE:text:40%:2",
+    "PHONE SCREEN DATE:date:100%:5",
+    "INTERVIEW DATE:date:40%:2",
     "ASSIGNED \r\nINTERVIEWER:category:100%:3",
     "INTERVIEW \r\nSCORE:text:20%:1",
     "INTERVIEWER FEEDBACK:longtext:20%:1"
@@ -9080,9 +9008,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Invoice #」，以「Customer name」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（6/6），且有 4 欄金額，判定為明細帳而非排程",
    "srcRows": 9,
    "rows": 6,
    "cols": 9,
@@ -9092,23 +9020,20 @@
    "notes": [],
    "roles": {
     "title": "Customer name",
-    "group": "Late fee",
-    "lead": "Invoice #",
+    "group": null,
+    "lead": "Outstanding",
     "person": null
    },
-   "hidden": [
-    "Date",
-    "Date paid"
-   ],
+   "hidden": [],
    "colTypes": [
     "Invoice #:money:100%:6",
-    "Date:text:100%:6",
-    "Payment due:category:100%:5",
+    "Date:date:100%:6",
+    "Payment due:date:100%:5",
     "Customer name:person:100%:4",
     "Amount:money:100%:6",
     "Late fee:category:100%:2",
     "Total paid:money:100%:5",
-    "Date paid:text:100%:6",
+    "Date paid:date:100%:6",
     "Outstanding:money:100%:6"
    ],
    "flags": []
@@ -9116,12 +9041,12 @@
   {
    "src": "planner_684d3472.xlsx",
    "sheet": "planner_684d3472.xlsx › Idea Planner",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Done?」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Due Date」（100% 的值可解析為日期）",
    "srcRows": 10,
    "rows": 4,
    "cols": 6,
@@ -9131,24 +9056,20 @@
    "notes": [],
    "roles": {
     "title": "Tasks",
-    "group": "Done?",
+    "group": "Due Date",
     "lead": null,
     "person": null
    },
-   "hidden": [
-    "Due Date"
-   ],
+   "hidden": [],
    "colTypes": [
     "Task Status Indicator:text:100%:3",
     "Tasks:text:100%:4",
-    "Due Date:text:100%:4",
+    "Due Date:date:100%:4",
     "Done?:category:100%:3",
     "Status Icon:text:100%:3",
     "Notes:longtext:25%:1"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "planner_6aab7182.xlsx",
@@ -9156,9 +9077,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount」，以「Category」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（12/12），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 260,
    "rows": 12,
    "cols": 4,
@@ -9172,11 +9093,9 @@
     "lead": "Amount",
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
-    "Date:text:100%:12",
+    "Date:date:100%:12",
     "Amount:money:100%:11",
     "Category:text:100%:11",
     "Description:text:100%:11"
@@ -9191,9 +9110,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Assigned to」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Estimated start」（100% 的值可解析為日期）",
    "srcRows": 14,
    "rows": 9,
    "cols": 12,
@@ -9203,29 +9122,27 @@
    "notes": [],
    "roles": {
     "title": "Project",
-    "group": "Assigned to",
+    "group": "Estimated start",
     "lead": null,
     "person": null
    },
-   "hidden": [
-    "Actual finish"
-   ],
+   "hidden": [],
    "colTypes": [
     "Project:text:100%:9",
     "Category:category:100%:5",
     "Assigned to:category:100%:4",
-    "Estimated start:category:100%:8",
-    "Estimated finish:category:100%:8",
+    "Estimated start:date:100%:8",
+    "Estimated finish:date:100%:8",
     "Estimated work (in hours):number:100%:7",
     "Estimated duration\r\n(in days):number:100%:6",
-    "Actual start:category:100%:7",
-    "Actual finish:text:100%:9",
+    "Actual start:date:100%:7",
+    "Actual finish:date:100%:9",
     "Actual work \r\n(in hours):number:100%:9",
     "Actual duration (in days):number:100%:9",
     "Notes:empty:0%:0"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
+    "分組欄「Estimated start」幾乎每列都不同，會碎成一堆單筆段落"
    ]
   },
   {
@@ -9352,9 +9269,9 @@
     "DATE PAID:date:100%:3",
     "AMOUNT:money:100%:3",
     "LENGTH:text:100%:3",
-    "EXPIRATION:category:100%:2",
+    "EXPIRATION:date:100%:2",
     "RENEWAL METHOD:text:100%:3",
-    "RENEWAL DATE:category:100%:2",
+    "RENEWAL DATE:date:100%:2",
     "NOTES:empty:0%:0"
    ],
    "flags": []
@@ -9367,7 +9284,7 @@
    "of": 1,
    "shape": "directory",
    "label": "名冊／通訊錄",
-   "reason": "偵測到信箱欄「欄 5」，以「TIME」為主要名稱",
+   "reason": "偵測到信箱欄「欄 5」，以「欄 8」為主要名稱",
    "srcRows": 56,
    "rows": 26,
    "cols": 14,
@@ -9378,7 +9295,7 @@
     "剔除 27 個排版用的空白欄"
    ],
    "roles": {
-    "title": "TIME",
+    "title": "欄 8",
     "group": "PRESENTER",
     "lead": null,
     "person": null
@@ -9402,6 +9319,7 @@
    ],
    "flags": [
     "標題列可能判錯：11/14 欄沒有欄名",
+    "9/26 列沒有標題，會被整列略過",
     "分組欄「PRESENTER」只有一種值，等於沒分組"
    ]
   },
@@ -9757,12 +9675,12 @@
   {
    "src": "planner_e9a761b1.xlsx",
    "sheet": "planner_e9a761b1.xlsx › Issue Tracker",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「PRIORITY」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「OPENED ON」（100% 的值可解析為日期）",
    "srcRows": 96,
    "rows": 91,
    "cols": 9,
@@ -9772,7 +9690,7 @@
    "notes": [],
    "roles": {
     "title": "ISSUE",
-    "group": "PRIORITY",
+    "group": "OPENED ON",
     "lead": null,
     "person": null
    },
@@ -9784,15 +9702,13 @@
     "ISSUE:text:100%:91",
     "TYPE:category:100%:4",
     "PRIORITY:category:100%:3",
-    "OPENED ON:text:100%:61",
+    "OPENED ON:date:100%:61",
     "OPENED BY:category:100%:4",
-    "CLOSED ON:text:100%:73",
+    "CLOSED ON:date:100%:73",
     "CLOSED BY:category:100%:4",
     "NOTES:empty:0%:0"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "planner_e9a761b1.xlsx",
@@ -10244,7 +10160,7 @@
    "title": "Class List · CLASS SCHEDULE",
    "notes": [],
    "roles": {
-    "title": "DAY",
+    "title": "CLASS",
     "group": null,
     "lead": "START TIME",
     "person": null
@@ -10635,35 +10551,33 @@
   {
    "src": "schedule_de27afd1.xlsx",
    "sheet": "schedule_de27afd1.xlsx › Task list",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「5/25/23」分組後逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 15,
-   "rows": 6,
+   "rows": 9,
    "cols": 4,
    "live": 4,
-   "headerRow": 5,
-   "title": "TASK LIST · Go to weekly task schedule · Date · Class · Assignment/Task · 5/23/23 · HIS 101 · Page 90 & review chapter 5 for test on Friday · 45069HIS 101 · 5/24/23 · MTH 101 · Worksheet 56 (odd only) and study for test on Thursday · 45070MTH 101",
+   "headerRow": 2,
+   "title": "TASK LIST · Go to weekly task schedule",
    "notes": [],
    "roles": {
-    "title": "Prep for lab",
-    "group": "5/25/23",
+    "title": "欄 4",
+    "group": "Date",
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "5/25/23:category:100%:4",
-    "ART 101:category:100%:4",
-    "Prep for lab:text:100%:6",
-    "45071ART 101:text:100%:5"
+    "Date:date:100%:7",
+    "Class:category:100%:6",
+    "Assignment/Task:longtext:100%:9",
+    "欄 4:text:100%:8"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "schedule_f4999261.xlsx",
@@ -10716,7 +10630,7 @@
    "title": "The Rain City Rats · Team roster · League schedule · League team list",
    "notes": [],
    "roles": {
-    "title": "Date",
+    "title": "Home team",
     "group": null,
     "lead": "Time",
     "person": null
@@ -10915,12 +10829,12 @@
   {
    "src": "student_786cd45b.xlsx",
    "sheet": "student_786cd45b.xlsx › Deadlines",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「ITEM DESCRIPTION」，以「NAME」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「DUE DATE」但幾乎每列都不同（7/7），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 11,
    "rows": 7,
    "cols": 7,
@@ -10932,25 +10846,21 @@
    ],
    "roles": {
     "title": "NAME",
-    "group": "SEMESTER",
+    "group": null,
     "lead": "ITEM DESCRIPTION",
     "person": null
    },
-   "hidden": [
-    "DUE DATE"
-   ],
+   "hidden": [],
    "colTypes": [
     "COURSE ID:category:100%:2",
     "NAME:person:100%:2",
     "YEAR:number:100%:1",
     "SEMESTER:category:100%:1",
     "ITEM DESCRIPTION:money:100%:5",
-    "DUE DATE:text:100%:7",
+    "DUE DATE:date:100%:7",
     "WORK DATA ENTRY TIP::longtext:14%:1"
    ],
-   "flags": [
-    "分組欄「SEMESTER」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "student_786cd45b.xlsx",
@@ -10971,7 +10881,7 @@
     "剔除 5 個排版用的空白欄"
    ],
    "roles": {
-    "title": "DAY",
+    "title": "CLASS",
     "group": null,
     "lead": "TIME START",
     "person": null
@@ -11110,12 +11020,12 @@
   {
    "src": "student_beeb91bb.xlsx",
    "sheet": "student_beeb91bb.xlsx › Deadlines",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Item description」，以「Course name」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Due date」但幾乎每列都不同（6/7），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 21,
    "rows": 7,
    "cols": 6,
@@ -11125,7 +11035,7 @@
    "notes": [],
    "roles": {
     "title": "Course name",
-    "group": "Semester",
+    "group": null,
     "lead": "Item description",
     "person": null
    },
@@ -11136,11 +11046,9 @@
     "Year:number:100%:1",
     "Semester:category:100%:1",
     "Item description:money:100%:5",
-    "Due date:category:100%:6"
+    "Due date:date:100%:6"
    ],
-   "flags": [
-    "分組欄「Semester」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "student_beeb91bb.xlsx",
@@ -11757,9 +11665,9 @@
    "status": "flagged",
    "table": 2,
    "of": 3,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「MILESTONE」為標題逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
    "srcRows": 349,
    "rows": 12,
    "cols": 6,
@@ -11769,25 +11677,24 @@
    "notes": [],
    "roles": {
     "title": "MILESTONE",
-    "group": null,
+    "group": "DATE",
     "lead": null,
     "person": null
    },
    "hidden": [
     "TIE BREAK",
-    "DATE",
     "NUM"
    ],
    "colTypes": [
     "TIE BREAK:number:100%:12",
     "RANK:number:100%:11",
-    "DATE:text:100%:11",
+    "DATE:date:100%:11",
     "MILESTONE:text:100%:9",
     "POSITION:number:100%:7",
     "NUM:number:100%:12"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
+    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落",
     "原始工作表有 349 列，只抽出 12 列，結構可能判壞"
    ]
   },
@@ -11797,9 +11704,9 @@
    "status": "flagged",
    "table": 3,
    "of": 3,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「MILESTONE」為標題逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
    "srcRows": 349,
    "rows": 12,
    "cols": 4,
@@ -11809,22 +11716,21 @@
    "notes": [],
    "roles": {
     "title": "MILESTONE",
-    "group": null,
+    "group": "DATE",
     "lead": null,
     "person": null
    },
    "hidden": [
-    "RANK Sorted",
-    "DATE"
+    "RANK Sorted"
    ],
    "colTypes": [
     "RANK Sorted:number:100%:12",
-    "DATE:text:100%:11",
+    "DATE:date:100%:11",
     "MILESTONE:text:100%:9",
     "POSITION:number:100%:7"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
+    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落",
     "原始工作表有 349 列，只抽出 12 列，結構可能判壞"
    ]
   },
@@ -11834,9 +11740,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Start」是標籤，後面 5 欄是數值（End、Duration、Label、Vert. Position、Vert. Line）",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「End」（100% 的值可解析為日期）",
    "srcRows": 46,
    "rows": 17,
    "cols": 6,
@@ -11848,15 +11754,15 @@
     "剔除 4 個排版用的空白欄"
    ],
    "roles": {
-    "title": "Start",
-    "group": null,
+    "title": "Label",
+    "group": "End",
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "Start:text:88%:15",
-    "End:category:100%:9",
+    "Start:date:88%:15",
+    "End:date:100%:9",
     "Duration:number:53%:8",
     "Label:longtext:94%:15",
     "Vert. Position:number:82%:14",
@@ -11883,7 +11789,7 @@
   {
    "src": "timeline_93059754.xlsx",
    "sheet": "timeline_93059754.xlsx › Calendar",
-   "status": "clean",
+   "status": "flagged",
    "table": 1,
    "of": 1,
    "shape": "board",
@@ -11897,7 +11803,7 @@
    "title": "SOCIAL MEDIA EDITORIAL THEME CALENDAR · January",
    "notes": [],
    "roles": {
-    "title": "Deadline",
+    "title": "Working title",
     "group": "Status",
     "lead": null,
     "person": null
@@ -11915,7 +11821,9 @@
     "Keywords:category:68%:2",
     "Notes:text:68%:2"
    ],
-   "flags": []
+   "flags": [
+    "11/34 列沒有標題，會被整列略過"
+   ]
   },
   {
    "src": "timeline_93faf979.xlsx",
@@ -12265,12 +12173,12 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Milestones",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Milestone」為標題逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
    "srcRows": 26,
    "rows": 7,
    "cols": 4,
@@ -12280,22 +12188,18 @@
    "notes": [],
    "roles": {
     "title": "Milestone",
-    "group": null,
+    "group": "Date",
     "lead": null,
     "person": null
    },
-   "hidden": [
-    "Date"
-   ],
+   "hidden": [],
    "colTypes": [
     "No.:number:100%:7",
     "Position:number:86%:1",
-    "Date:text:86%:6",
+    "Date:date:86%:6",
     "Milestone:text:86%:6"
    ],
-   "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
-   ]
+   "flags": []
   },
   {
    "src": "timeline_ff21fe25.xlsx",
@@ -12303,9 +12207,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「Task」為標題逐列呈現",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「Start Date」（100% 的值可解析為日期）",
    "srcRows": 26,
    "rows": 13,
    "cols": 5,
@@ -12315,24 +12219,22 @@
    "notes": [],
    "roles": {
     "title": "Task",
-    "group": null,
+    "group": "Start Date",
     "lead": null,
     "person": null
    },
    "hidden": [
-    "No.",
-    "Start Date",
-    "End Date"
+    "No."
    ],
    "colTypes": [
     "No.:number:100%:13",
-    "Start Date:text:92%:11",
-    "End Date:text:92%:11",
+    "Start Date:date:92%:11",
+    "End Date:date:92%:11",
     "Task:text:92%:12",
     "Duration in days:number:92%:8"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸"
+    "分組欄「Start Date」幾乎每列都不同，會碎成一堆單筆段落"
    ]
   },
   {
@@ -12349,9 +12251,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「欄 10」，以「Tasks」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Start date」但幾乎每列都不同（6/7），且有 2 欄金額，判定為明細帳而非排程",
    "srcRows": 32,
    "rows": 18,
    "cols": 10,
@@ -12363,7 +12265,7 @@
    ],
    "roles": {
     "title": "Tasks",
-    "group": "欄 8",
+    "group": null,
     "lead": "欄 10",
     "person": null
    },
@@ -12373,12 +12275,12 @@
    "colTypes": [
     "Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14.\r\nThis table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time.\r\nThe data in this chart is auto generated based on the content in the table above. \r\nDo not edit or delete this table or its contents.\r\nThe next instruction is in cell A17.:money:89%:2",
     "Tasks:category:100%:7",
-    "Start date:category:39%:6",
+    "Start date:date:39%:6",
     "Task duration in days:number:39%:6",
     "position:number:39%:7",
     "<-- this table creates the gantt chart, plotting 7 milestones at a time:empty:0%:0",
     "欄 7:text:17%:3",
-    "欄 8:category:89%:3",
+    "欄 8:date:89%:3",
     "欄 9:text:11%:2",
     "欄 10:money:11%:2"
    ],
@@ -12461,9 +12363,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Total」，以「Day」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Date」但幾乎每列都不同（15/15），且有 3 欄金額，判定為明細帳而非排程",
    "srcRows": 33,
    "rows": 17,
    "cols": 7,
@@ -12473,14 +12375,14 @@
    "notes": [],
    "roles": {
     "title": "Date",
-    "group": "Day",
+    "group": null,
     "lead": "Total",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "Day:category:94%:9",
-    "Date:text:88%:15",
+    "Date:date:88%:15",
     "Regular hours:category:18%:2",
     "Overtime hours:money:12%:2",
     "Sick:money:12%:2",
@@ -12544,12 +12446,12 @@
   {
    "src": "timesheet_923969b2.xlsx",
    "sheet": "timesheet_923969b2.xlsx › Timesheet",
-   "status": "clean",
+   "status": "flagged",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到時間欄「TIME IN」但沒有日期欄，視為單日流程表",
+   "reason": "偵測到日期欄「DATE(S)」（100% 的值可解析為日期），並有時間欄「TIME IN」",
    "srcRows": 15,
    "rows": 5,
    "cols": 6,
@@ -12558,21 +12460,23 @@
    "title": "Timesheet · EMPLOYEE DETAILS: · Takuma Hayashi · takuma@contoso.com · (415) 555-0123 · TOTAL WORK WEEK HOURS · TOTAL HOURS WORKED · REGULAR HOURS · OVERTIME HOURS · MANAGER: · Smiriti Sisodiya · 40.00 · 35.00 · 35.00 · 0.00 · 1/1/23 · 1/15/23",
    "notes": [],
    "roles": {
-    "title": "DATE(S)",
-    "group": null,
+    "title": null,
+    "group": "DATE(S)",
     "lead": "TIME IN",
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "DATE(S):text:100%:5",
+    "DATE(S):date:100%:5",
     "TIME IN:time:100%:1",
     "LUNCH START:time:100%:1",
     "LUNCH END:time:100%:1",
     "TIME OUT:time:100%:1",
     "HOURS WORKED:number:100%:1"
    ],
-   "flags": []
+   "flags": [
+    "找不到主標題欄，卡片會沒有名字"
+   ]
   },
   {
    "src": "timesheet_bf992aaa.xlsx",
@@ -12719,9 +12623,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「DAY」是標籤，後面 6 欄是數值（DATE、REGULAR HOURS：整欄空白、OVERTIME HOURS：整欄空白、SICK：整欄空白、VACATION、TOTAL）",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「DATE」但幾乎每列都不同（8/8），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 26,
    "rows": 10,
    "cols": 7,
@@ -12734,13 +12638,13 @@
    "roles": {
     "title": "DAY",
     "group": null,
-    "lead": null,
+    "lead": "TOTAL",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "DAY:text:90%:9",
-    "DATE:text:80%:8",
+    "DATE:date:80%:8",
     "REGULAR HOURS:empty:0%:0",
     "OVERTIME HOURS:empty:0%:0",
     "SICK:empty:0%:0",

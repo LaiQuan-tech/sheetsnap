@@ -1,42 +1,42 @@
 {
  "files": 163,
  "sheets": 396,
- "shown": 287,
- "skipped": 109,
- "warned": 11,
- "generic": 60,
- "noTitle": 9,
+ "shown": 286,
+ "skipped": 110,
+ "warned": 10,
+ "generic": 41,
+ "noTitle": 13,
  "oneRow": 0,
- "withTime": 24,
- "withFilter": 31,
- "withFacts": 127,
- "withGroup": 46,
- "withRank": 128,
- "onlySearch": 46,
+ "withTime": 35,
+ "withFilter": 21,
+ "withFacts": 130,
+ "withGroup": 44,
+ "withRank": 121,
+ "onlySearch": 49,
  "shapes": [
   [
-   "品項／價目表",
-   102
-  ],
-  [
    "矩陣／報表",
-   87
+   82
   ],
   [
-   "一般表格",
-   60
+   "品項／價目表",
+   74
   ],
   [
    "排程／時程表",
-   27
+   55
   ],
   [
-   "名冊／通訊錄",
-   6
+   "一般表格",
+   41
   ],
   [
    "帳務／明細表",
-   4
+   28
+  ],
+  [
+   "名冊／通訊錄",
+   5
   ],
   [
    "狀態清單",
@@ -54,15 +54,15 @@
   [
    "chart",
    {
-    "n": 46,
-    "ok": 26
+    "n": 45,
+    "ok": 35
    }
   ],
   [
    "planner",
    {
     "n": 39,
-    "ok": 24
+    "ok": 27
    }
   ],
   [
@@ -83,14 +83,14 @@
    "schedule",
    {
     "n": 17,
-    "ok": 15
+    "ok": 16
    }
   ],
   [
    "timeline",
    {
     "n": 17,
-    "ok": 7
+    "ok": 10
    }
   ],
   [
@@ -118,7 +118,7 @@
    "timesheet",
    {
     "n": 10,
-    "ok": 6
+    "ok": 5
    }
   ],
   [
@@ -136,5 +136,5 @@
    }
   ]
  ],
- "clean": 215
+ "clean": 230
 }
