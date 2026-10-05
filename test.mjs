@@ -525,6 +525,28 @@ for (const [head, want, why] of titleCases) {
   chk('月份軸只留有值的月份', half.cols.filter(c => c.name === 'Month')[0].distinct, 6);
   chk('金額欄是金額',        half.roles.lead && half.roles.lead.type, 'money');
 
+  /* 季別本來只認得「Q1」，chart_94c0fff6 › Sales data 的欄名是「QTR 1」，
+     同一種東西只是寫法不同，整張 15×6 的產品季報因此留在寬表。
+     攤平後那一欄該叫什麼也要分清楚：原本是用「開頭是不是字母」判斷是不是
+     月份，所以 QTR 1…QTR 4 攤完會叫「Month」。 */
+  {
+    const q = S.analyseSheet([['PRODUCT NAME','QTR 1','QTR 2','QTR 3','QTR 4','TOTAL']].concat(
+      Array.from({ length: 15 }, (_, i) => ['產品 ' + (i + 1),
+        '$' + (1000 + i * 37) + '.00', i < 5 ? '$' + (500 + i * 11) + '.00' : '',
+        i < 1 ? '$300.00' : '', i < 1 ? '$200.00' : '', '$' + (2000 + i * 48) + '.00']))).tables[0];
+    chk('QTR 1 也是季別',   q.unpivoted, 'period');
+    chk('季別欄叫 Quarter', q.cols.some(c => c.name === 'Quarter'), true);
+    chk('季報列名是產品',    q.roles.title && q.roles.title.name, 'PRODUCT NAME');
+    const ym = S.analyseSheet([['項目','2023年1月','2023年2月','2023年3月','2023年4月']].concat(
+      Array.from({ length: 10 }, (_, i) => ['項目' + (i + 1)]
+        .concat([0,1,2,3].map(m => '$' + (100 + i * 7 + m)))))).tables[0];
+    chk('年月欄叫月份', ym.cols.some(c => c.name === '月份'), true);
+    const dt = S.analyseSheet([['Date','10/22/23','10/23/23','10/24/23','10/25/23']].concat(
+      Array.from({ length: 8 }, (_, i) => [String(9 + i).padStart(2, '0') + ':00']
+        .concat([0,1,2,3].map(d => '活動 ' + ((i + d) % 8)))))).tables[0];
+    chk('日期欄仍叫 Period', dt.cols.some(c => c.name === 'Period'), true);
+  }
+
   // 差異表：$- 之外是會計式負數，整欄仍然是金額
   const vari = S.analyseSheet([['EXPENSE'].concat(MON).concat(['TOTAL'])].concat(
     Array.from({ length: 10 }, (_, i) => ['項目' + (i + 1)]
@@ -533,6 +555,90 @@ for (const [head, want, why] of titleCases) {
   chk('差異表照攤',     vari.unpivoted, 'period');
   chk('差異欄是金額',   vari.roles.lead && vari.roles.lead.type, 'money');
   chk('只留真的有差異', vari.rows.length, 40);
+}
+
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 形狀 ${why.padEnd(26)} 期望=${String(want).padEnd(12)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const MON = ['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+
+  /* 攤平後釘角色是用位置找的，不能用欄名找：第一欄不見得有欄名。
+     budget_b0a247ff › Summary 的列標籤欄在原檔裡沒有標題，
+     a.cols 給它合成的「欄 1」跟 t.grid[0][0] 的空字串對不起來，
+     整段釘角色被跳過，月份變列名、只有兩種值的標籤欄變分組軸。 */
+  {
+    const head = [''].concat(MON, ['Year']);
+    const rows = [];
+    const labels = ['Income','Expenses','Balance','Savings','Notes','Summary'];
+    for (let i = 0; i < 6; i++) {
+      const r = [labels[i]];
+      for (let m = 0; m < 12; m++) r.push(i < 2 ? '$' + (2000 + i * 500 + m * 17) + '.00' : '');
+      r.push(i < 5 ? '$' + (24000 + i * 900) + '.00' : '');
+      rows.push(r);
+    }
+    const a = S.analyseSheet([head].concat(rows)).tables[0];
+    chk('沒有欄名的標籤欄照攤',  a.unpivoted, 'period');
+    chk('沒有欄名也當得了列名', a.roles.title && a.roles.title.name, '欄 1');
+    chk('分組軸還是期間',      a.roles.group && a.roles.group.name, 'Month');
+  }
+
+  /* 矩陣的前提是沒有別的軸可以分組。後面還有一欄分得出組的分類時，
+     那是一張可以照它篩選的清單，判成矩陣會連前導一起失去。
+     budget_2d4c31d3 › Monthly expenses：Description｜Category（12 種）｜
+     預算｜實際｜差異——差異欄從分類變回金額之後矩陣就成立了，
+     59 列的支出清單因此沒了「照金額由大到小」。 */
+  {
+    const cat = ['住','食','行','育','樂','醫','保','稅','寵','車','水電','其他'];
+    const rows = [];
+    for (let i = 0; i < 59; i++) rows.push(['支出項目 ' + (i + 1), cat[i % 12],
+      i % 3 ? '$' + (100 + i * 7) + '.00' : '', i % 3 ? '$' + (90 + i * 8) + '.00' : '',
+      i % 5 ? '$' + (10 - i % 7) + '.00' : '']);
+    const a = S.analyseSheet([['Description','Category','Projected cost','Actual cost','Difference']]
+      .concat(rows)).tables[0];
+    chk('有分類軸就不是矩陣', a.shape.shape, 'pricelist');
+    chk('分類當分組軸',     a.roles.group && a.roles.group.name, 'Category');
+    chk('金額當前導',       a.roles.lead && a.roles.lead.type, 'money');
+    // 備註那種文字欄不該擋矩陣（0.6 那條門檻本來就是為了放過它）
+    // 欄名不要用 Q1/Q2/Q3——那會先被季別攤平接走，就測不到矩陣這條
+    const m = S.analyseSheet([['Item','Note','Score A','Score B','Score C']].concat(
+      Array.from({ length: 10 }, (_, i) => ['品項' + (i + 1), '註記 ' + i,
+        '$' + (100 + i), '$' + (200 + i), '$' + (300 + i)]))).tables[0];
+    chk('多一欄備註仍是矩陣', m.shape.shape, 'matrix');
+  }
+
+  /* 金額欄要挑真的有值的。confidence 是在有值的格子裡算的，所以一欄 66 列
+     只填 1 格的 money 照樣拿 1.0——budget_6667de34 › Channel marketing budget
+     的「欄 1」就是這樣當上前導的，旁邊明明有填了 68% 的「Total」。 */
+  {
+    const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const rows = [];
+    for (let i = 0; i < 66; i++) {
+      const r = [i === 0 ? '$1,000.00' : '', '行銷通路 ' + (i + 1), i % 4 === 0 ? ('費率 ' + (i % 7)) : ''];
+      for (let m = 0; m < 12; m++) r.push(i % 9 === 0 ? '' : '方案 ' + ((i * 12 + m) % 54));
+      r.push(i % 3 === 0 ? '' : '$' + (1000 + i * 37) + '.00');
+      rows.push(r);
+    }
+    const a = S.analyseSheet([[''].concat(['Channel','Rate'], M, ['Total'])].concat(rows)).tables[0];
+    chk('稀疏的金額欄不當前導', a.roles.lead && a.roles.lead.name, 'Total');
+  }
+
+  /* 下拉選單那條要看「宣告了幾欄」。expense_d75b85c4 › Expenses 是一張還沒填的
+     預算範本，宣告六欄、金額欄全空；$- 當空白之後 live 剩兩欄，
+     整張表就被當成選單來源藏起來了。 */
+  {
+    const rows = [];
+    for (let i = 0; i < 21; i++) rows.push(['支出 ' + (i + 1), i % 2 ? '固定' : '變動', '', '', '', '']);
+    const grid = [['Expense','Category','Budget','Actual','Difference ($)','Difference (%)']].concat(rows);
+    const v = S.sheetVerdict(grid, S.analyseSheet(grid).tables);
+    chk('還沒填的範本要顯示', v.show, true);
+    // 真的下拉來源清單本來就只宣告一兩欄（單欄的連表格區塊都切不出來）
+    const src = [['縣市','區'], ['台北','中正'], ['台中','西屯'], ['台南','東區'],
+                 ['高雄','左營'], ['新竹','東區']];
+    chk('真的選單來源仍擋掉', S.sheetVerdict(src, S.analyseSheet(src).tables).show, 'weak');
+  }
 }
 
 {

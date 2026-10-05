@@ -358,6 +358,19 @@
     return hit[0] || null;
   }
 
+  /* 挑金額欄要先問「這一欄真的有值嗎」。confidence 是在有值的格子裡算的，
+     所以一欄 66 列只填 1 格的 money 照樣拿到 1.0，排在前面。
+     budget_6667de34 › Channel marketing budget 的「欄 1」就是這樣當上前導的，
+     旁邊明明有填了 68% 的「Total」，排名卻照一個只有一個值的欄排。
+     有填得夠滿的就只在那些裡面挑；全都稀疏時維持原樣，不要因此沒有前導。 */
+  function pickFilled(cols, type) {
+    var hit = cols.filter(function (c) { return c.type === type; });
+    var good = hit.filter(function (c) { return c.fillRate >= 0.3; });
+    if (good.length) hit = good;
+    hit.sort(function (a, b) { return b.confidence - a.confidence; });
+    return hit[0] || null;
+  }
+
   /* 代碼欄：長度整齊、都含數字、沒有空白、幾乎全相異，例如 AT-114-001。
 
      「沒有空白」是後來補的。inventory_b9cbb715 › Inventory list 的
@@ -476,7 +489,7 @@
     allCols = allCols || cols;
     var date  = pick(cols, 'date');
     var time  = pick(cols, 'time');
-    var money = pick(cols, 'money');
+    var money = pickFilled(cols, 'money');
     var phone = pick(cols, 'phone');
     var mail  = pick(cols, 'email');
     var status = pick(cols, 'status');
@@ -554,7 +567,24 @@
     var matrixish = numOrEmpty.length >= 2 &&
                     numOrEmpty.length / others.length >= 0.6 &&
                     (nums.length >= 1 || numOrEmpty.length === others.length);
-    if (first && others.length >= 2 && matrixish &&
+    /* 矩陣的前提是「一欄標籤 + 一排數值」，沒有別的軸可以分組。後面要是還有
+       一欄分類、而且真的分得出組，那它就不是矩陣，是一張可以照那一欄篩選的
+       清單——判成矩陣會連帶失去前導（矩陣的 lead 固定是 null），
+       排名也只剩「欄名含合計字樣」那一條能救。
+       budget_2d4c31d3 › Monthly expenses 就是這樣掉的：
+       Description｜Category（12 種）｜預算｜實際｜差異。差異欄原本整欄 $-
+       被判成分類，numOrEmpty 只有 2/4 進不了矩陣；$- 當空白之後它變回金額，
+       矩陣就成立了，59 列的支出清單因此失去「照 Actual cost 由大到小」。
+       上面 0.6 那條門檻本來是為了放過「多一欄備註」——備註是文字、分不了組，
+       所以這裡只擋分類欄，不擋文字欄。
+       「分得出組」用的是跟 groupOptions 同一組數字（2～12 種、每組平均
+       至少兩列、過半有值），免得兩邊各說各話。 */
+    var groupable = others.filter(function (c) {
+      return (c.type === 'category' || c.type === 'status') &&
+             c.distinct >= 2 && c.distinct <= 12 &&
+             c.filled / c.distinct >= 2 && c.fillRate >= 0.5;
+    });
+    if (first && others.length >= 2 && matrixish && !groupable.length &&
         ['text', 'category', 'person'].indexOf(first.type) >= 0) {
       /* 標題固定用第一欄是對的——矩陣的第一欄就是標籤序列。但第一欄不見得
          堪用，而且「半空」跟「整欄空白」是兩件事：整欄空白已經被
@@ -1486,7 +1516,15 @@
     var hasValue = live.some(function (c) {
       return ['money', 'number', 'date', 'time'].indexOf(c.type) >= 0;
     });
-    if (live.length <= 2 && !hasValue && main.rows.length >= 3 && avgLen <= 12)
+    /* 這裡要看「宣告了幾欄」而不是「幾欄有值」，跟矩陣那條同一個道理：
+       整欄空白代表這次沒填，不代表這個欄位不存在。
+       expense_d75b85c4 › Expenses 是一張還沒填的預算範本——
+       Expense｜Category｜Budget｜Actual｜Difference ($)｜Difference (%)，
+       金額欄全空。原本「Difference ($)」整欄 $- 還算有值，live 是 3 欄所以躲過；
+       $- 當空白之後 live 剩 2 欄，整張表就被當成下拉選單的來源清單藏起來了。
+       真正的下拉來源清單本來就只宣告一兩欄。 */
+    if (main.cols.length <= 2 && live.length <= 2 && !hasValue &&
+        main.rows.length >= 3 && avgLen <= 12)
       return { show: 'weak', why: '只有一兩欄短文字且無數值，像下拉選單的來源清單' };
 
     return { show: true, why: '' };
@@ -1554,11 +1592,19 @@
 
      期間外層、列內層：輸出順序就是一月全部、二月全部……
      分組是照出現順序建的，所以月份段落自然會照時序排。 */
-  var RE_PERIOD = new RegExp(
-    '^(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\\.?\\s*(\\d{2,4})?$' +
-    '|^\\d{1,2}\\s*月$|^(第)?[一二三四1-4]\\s*季(度)?$|^q[1-4]$' +
-    '|^\\d{4}\\s*[-/.年]\\s*\\d{1,2}\\s*月?$' +
-    '|^\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(\\s*[-/.]\\s*\\d{2,4})?$', 'i');
+  /* 拆成三塊，攤平完要用它們決定那一欄該叫什麼。
+     本來只有一個 RE_PERIOD，欄名則是用「開頭是不是字母」當作「是不是月份」，
+     所以 chart_94c0fff6 › Sales data 的 QTR 1…QTR 4 攤完會叫「Month」。 */
+  var P_MONTH   = '^(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\\.?\\s*(\\d{2,4})?$' +
+                  '|^\\d{1,2}\\s*月$|^\\d{4}\\s*[-/.年]\\s*\\d{1,2}\\s*月?$';
+  // 季別本來只認得「Q1」。同一種東西寫成「QTR 1」「Quarter 1」「1st Quarter」
+  // 的也要認得——Sales data 整張 15×6 的產品季報就是卡在這裡留在寬表。
+  var P_QUARTER = '^(第)?[一二三四1-4]\\s*季(度)?$|^q(tr|uarter)?\\s*[1-4](\\s*\\d{2,4})?$' +
+                  '|^[1-4](st|nd|rd|th)\\s*(qtr|quarter)$';
+  var P_DAYCOL  = '^\\d{1,2}\\s*[-/.]\\s*\\d{1,2}(\\s*[-/.]\\s*\\d{2,4})?$';
+  var RE_MONTHCOL = new RegExp(P_MONTH, 'i');
+  var RE_QTRCOL   = new RegExp(P_QUARTER, 'i');
+  var RE_PERIOD   = new RegExp(P_MONTH + '|' + P_QUARTER + '|' + P_DAYCOL, 'i');
   var RE_SUMCOL = /合計|總計|小計|累計|平均|total|sum|average|avg|ytd|variance|差異/i;
 
   /* 時段也算期間。schedule_54d4fddf 那七張排班表是
@@ -1663,16 +1709,23 @@
     if (Object.keys(seen).length < 2) return null;
 
     var zh = /[㐀-鿿]/.test(header.join(''));
-    var allMonth = !allTime && idx.every(function (i) { return /^[a-z一-鿿]/i.test(String(header[i]).trim()); });
+    var every = function (re) {
+      return idx.every(function (i) { return re.test(String(header[i]).replace(/\s+/g, ' ').trim()); });
+    };
+    var allMonth = !allTime && every(RE_MONTHCOL);
+    var allQtr   = !allTime && !allMonth && every(RE_QTRCOL);
+    var unit = allTime ? '時段' : allMonth ? '月' : allQtr ? '季' : '期間';
     var pName = allTime ? (zh ? '時段' : 'Time')
-              : zh ? (allMonth ? '月份' : '期間') : (allMonth ? 'Month' : 'Period');
+              : allMonth ? (zh ? '月份' : 'Month')
+              : allQtr ? (zh ? '季別' : 'Quarter')
+              : (zh ? '期間' : 'Period');
     var vName = money / Math.max(filled, 1) > 0.3 ? (zh ? '金額' : 'Amount') : (zh ? '數值' : 'Value');
     return {
       name: t.name, title: t.title, preambleRows: t.preambleRows, headerRow: t.headerRow,
       grid: [rest.map(function (i) { return header[i]; }).concat([pName, vName])].concat(out),
       totals: [], skipped: t.skipped, range: t.range,
       notes: (t.notes || []).concat(['把 ' + idx.length + ' 個期間欄位攤平成「' + pName +
-        '」欄，一次看一個' + (allTime ? '時段' : allMonth ? '月' : '期間')]),
+        '」欄，一次看一個' + unit]),
       unpivoted: 'period'
     };
   }
@@ -1707,9 +1760,14 @@
                所以 8 個項目 × 12 個月會分成 8 段、每張卡叫「JAN」；
                76 個項目 × 12 個月又會反過來。同一種表因為列數不同給出兩種版面，
                而攤平本來就是為了讓期間變成可以瀏覽的軸——釘住才是一致的。 */
-            var hp = t.grid[0], byP = {}; a.cols.forEach(function (c) { byP[c.name] = c; });
-            var periodC = byP[hp[hp.length - 2]], valueC = byP[hp[hp.length - 1]], labelC = byP[hp[0]];
-            if (periodC && valueC && labelC && hp.length >= 3) {
+            /* 用位置找，不要用欄名找。欄序是固定的，但第一欄不見得有欄名——
+               budget_b0a247ff › Summary 的列標籤欄在原檔裡沒有標題，
+               a.cols 給它合成的名字是「欄 1」，而 t.grid[0][0] 是空字串，
+               byP[''] 當然找不到，整段釘角色就被跳過：月份變成列名、
+               只有兩種值的標籤欄變成分組軸，剛好反過來。 */
+            var hp = t.grid[0];
+            var labelC = a.cols[0], periodC = a.cols[a.cols.length - 2], valueC = a.cols[a.cols.length - 1];
+            if (periodC && valueC && labelC && hp.length >= 3 && a.cols.length === hp.length) {
               a.shape.group = periodC;
               /* 排程格（時間直排、日期橫排）的角色跟值矩陣剛好相反：
                  格子裡是活動名稱，那才是列名；左邊那欄是時間，當前導。
