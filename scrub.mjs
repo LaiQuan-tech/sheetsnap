@@ -110,8 +110,25 @@ const digitSwap = (s, idx) => {
   });
 };
 
+/* 全是零的金額（NT$0、$0.00）跟 $- 一樣不帶資訊，原樣留著。
+   而數值欄裡夾著的文字要當文字洗——detectColumn 的 rNum 門檻是 0.8，
+   所以一個 number 欄裡混著兩成文字是正常的：
+   「分鐘」「待定」「暫時不用」「アカウント管理」都是這樣來的，
+   digitSwap 對它們完全換不動，於是一路撞到拋錯。 */
+const allZero = v => /\d/.test(v) && !/[1-9]/.test(v);
+
+/* 「整格只有數字骨架」才用換數字的方式洗。
+   數值欄裡夾著文字時，只換數字會把文字留下來——
+   「建坪10土地66」洗成「建坪70土地22」、「NT$400000以上」的「以上」原封不動。
+   電話是例外：它的形狀（ext.、#、分隔）要留著 isPhoneish 才判得出來，
+   而形狀不帶身分，數字才帶。 */
+const pureNumeric = v => !v.replace(/NT/gi, '').replace(/[\s\d,.\-+()%$＄¥￥€£]/g, '');
+
 function gen(v, type, idx) {
-  if (type === 'money' || type === 'number' || type === 'phone') return digitSwap(v, idx);
+  // 電話欄裡也會夾文字（「已留電話」「待補」），沒有數字可換就當文字洗
+  if (type === 'phone') return /[1-9]/.test(v) ? digitSwap(v, idx) : filler(v, idx);
+  if (type === 'money' || type === 'number')
+    return (/[1-9]/.test(v) && pureNumeric(v)) ? digitSwap(v, idx) : filler(v, idx);
   if (type === 'email') return 'v' + (idx + 1) + '@example.com';
   if (type === 'url') return 'https://example.com/' + (idx + 1);
   return filler(v, idx);
@@ -152,12 +169,18 @@ function scrubGrid(grid) {
        既不敏感，又只有九個一位數可用——硬換會撞成一團，相異值數就塌了
        （報價單的數量 1…8 洗完只剩 5 種）。 */
     if (/^\d{1,2}$/.test(t)) return v;
+    if (allZero(t)) return v;                            // 全是零的金額不帶資訊
     if (map.has(v)) return map.get(v);
     let o = gen(v, type, map.size);
     /* 生不出不同的就停住，絕對不可以退回原值。
        原本寫 o = v，那一行讓 1000 列的檔案從第 100 個不同的短字串開始
        整串原樣留下。洗不出來就該拒絕寫檔，不是悄悄留著。 */
-    for (let k = 1; used.has(o) && k <= 64; k++) o = gen(v, type, map.size + k * 7919);
+    /* 重試的條件有兩個：撞過，或者「剛好生出跟原值一樣的東西」。
+       後者原本漏掉了。生成器是確定性的，所以把洗過的檔案再洗一遍時，
+       email 的樣板 v9@example.com 在 idx 8 會原封不動生成同一個字串、
+       字庫的第 12 個字就是「寅」、idx 編碼的數字也可能生出同樣的位數——
+       那不是真的生不出來，換個 idx 就有了。 */
+    for (let k = 1; (used.has(o) || o === v) && k <= 64; k++) o = gen(v, type, map.size + k * 7919);
     if (used.has(o) || o === v) {
       throw new Error('生不出跟原值不同又沒撞過的替代值：' + JSON.stringify(v.slice(0, 20)) +
         '（型別 ' + type + '，已用 ' + used.size + ' 個）');
@@ -266,7 +289,7 @@ if (SELFTEST) {
    測試要跑在會出事的那條路上，不是只跑在我想得到的那條。 */
 const KEEPABLE = (v, type) =>
   !v.trim() || NULLISH.test(v.trim()) || /^\d{1,2}$/.test(v.trim()) ||
-  type === 'date' || type === 'time';
+  allZero(v.trim()) || type === 'date' || type === 'time';
 
 function leaks(before, after, colType, headerEnd) {
   const out = [];
