@@ -1,10 +1,10 @@
 {
  "files": 163,
  "sheets": 396,
- "shown": 287,
- "skipped": 109,
+ "shown": 286,
+ "skipped": 110,
  "warned": 10,
- "generic": 41,
+ "generic": 40,
  "noTitle": 9,
  "oneRow": 0,
  "withTime": 48,
@@ -12,11 +12,11 @@
  "withFacts": 121,
  "withGroup": 55,
  "withRank": 120,
- "onlySearch": 48,
+ "onlySearch": 47,
  "shapes": [
   [
    "品項／價目表",
-   80
+   81
   ],
   [
    "矩陣／報表",
@@ -28,7 +28,7 @@
   ],
   [
    "一般表格",
-   41
+   40
   ],
   [
    "帳務／明細表",
@@ -36,7 +36,7 @@
   ],
   [
    "名冊／通訊錄",
-   5
+   4
   ],
   [
    "狀態清單",
@@ -47,7 +47,7 @@
   [
    "budget",
    {
-    "n": 60,
+    "n": 59,
     "ok": 55
    }
   ],
@@ -854,15 +854,6 @@
    "views": [
     "rank",
     "facts",
-    "all"
-   ]
-  },
-  {
-   "src": "budget_926cf263.xlsx",
-   "sheet": "Start",
-   "table": 0,
-   "shape": "一般表格",
-   "views": [
     "all"
    ]
   },
@@ -2322,7 +2313,7 @@
    "src": "planner_c2b640a6.xlsx",
    "sheet": "Event planner",
    "table": 0,
-   "shape": "名冊／通訊錄",
+   "shape": "品項／價目表",
    "views": [
     "group:欄 8",
     "rank",

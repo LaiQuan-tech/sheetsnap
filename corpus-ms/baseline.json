@@ -1,19 +1,19 @@
 {
  "fingerprint": {
-  "engine": "0b45b32e9323",
+  "engine": "b564c9d1699b",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
   "clean": 227,
-  "flagged": 100,
-  "skipped": 109,
+  "flagged": 99,
+  "skipped": 110,
   "broken": 0,
   "shapes": {
-   "一般表格": 56,
-   "名冊／通訊錄": 5,
-   "品項／價目表": 95,
+   "一般表格": 55,
+   "名冊／通訊錄": 4,
+   "品項／價目表": 96,
    "帳務／明細表": 30,
    "排程／時程表": 65,
    "狀態清單": 1,
@@ -23,7 +23,6 @@
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "2/4 列沒有標題，會被整列略過": 3,
    "2/6 列沒有標題，會被整列略過": 1,
-   "3/6 列沒有標題，會被整列略過": 1,
    "3/7 列沒有標題，會被整列略過": 1,
    "4/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "5/14 列沒有標題，會被整列略過": 1,
@@ -96,7 +95,7 @@
    "只有一列資料，判斷幾乎沒有依據": 8,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
    "找不到主標題欄，卡片會沒有名字": 18,
-   "標題列可能判錯": 8,
+   "標題列可能判錯": 7,
    "落到一般表格": 30
   }
  },
@@ -2982,36 +2981,10 @@
   {
    "src": "budget_926cf263.xlsx",
    "sheet": "budget_926cf263.xlsx › Start",
-   "status": "flagged",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「欄 2」為標題逐列呈現",
-   "srcRows": 10,
-   "rows": 6,
-   "cols": 2,
-   "live": 2,
-   "headerRow": 0,
-   "title": null,
-   "notes": [
-    "向下填補合併儲存格：About this template、欄 2"
-   ],
-   "roles": {
-    "title": "欄 2",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "About this template:longtext:100%:3",
-    "欄 2:longtext:50%:3"
-   ],
-   "flags": [
-    "標題列可能判錯：1/2 欄沒有欄名",
-    "3/6 列沒有標題，會被整列略過"
-   ]
+   "status": "not-shown",
+   "show": false,
+   "why": "每一欄都是長文字，像說明頁",
+   "srcRows": 10
   },
   {
    "src": "budget_926cf263.xlsx",
@@ -9100,9 +9073,9 @@
    "status": "flagged",
    "table": 1,
    "of": 1,
-   "shape": "directory",
-   "label": "名冊／通訊錄",
-   "reason": "偵測到信箱欄「欄 5」，以「欄 8」為主要名稱",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「欄 13」，以「欄 8」為品項名稱",
    "srcRows": 56,
    "rows": 26,
    "cols": 14,
@@ -9115,7 +9088,7 @@
    "roles": {
     "title": "欄 8",
     "group": "PRESENTER",
-    "lead": null,
+    "lead": "欄 13",
     "person": null
    },
    "hidden": [],
