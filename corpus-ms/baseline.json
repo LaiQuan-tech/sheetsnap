@@ -1,21 +1,21 @@
 {
  "fingerprint": {
-  "engine": "afef4bb977a0",
+  "engine": "5f60163a1694",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
   "clean": 227,
-  "flagged": 99,
-  "skipped": 110,
+  "flagged": 100,
+  "skipped": 109,
   "broken": 0,
   "shapes": {
    "一般表格": 56,
    "名冊／通訊錄": 5,
-   "品項／價目表": 90,
-   "帳務／明細表": 29,
-   "排程／時程表": 56,
+   "品項／價目表": 89,
+   "帳務／明細表": 30,
+   "排程／時程表": 57,
    "狀態清單": 1,
    "矩陣／報表": 89
   },
@@ -24,6 +24,7 @@
    "2/4 列沒有標題，會被整列略過": 3,
    "2/6 列沒有標題，會被整列略過": 1,
    "3/6 列沒有標題，會被整列略過": 1,
+   "3/7 列沒有標題，會被整列略過": 1,
    "5/14 列沒有標題，會被整列略過": 1,
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "6/18 列沒有標題，會被整列略過": 1,
@@ -4366,36 +4367,36 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「欄 1」是標籤，後面 13 欄是數值（Feb 2023、Mar 2023、Apr 2023、May 2023、Jun 2023、Jul 2023、Aug 2023、Sep 2023、Oct 2023、Nov 2023、Dec 2023、Jan 2024、Total）",
+   "reason": "第一欄「Cash sales」是標籤，後面 13 欄是數值（$2,500.00、$3,000.00、$3,600.00、$3,000.00、$14,000.00、$6,000.00、$3,000.00、$2,800.00、$3,500.00、$4,000.00、$3,800.00、$4,200.00、$53,400.00）",
    "srcRows": 66,
-   "rows": 48,
+   "rows": 45,
    "cols": 14,
    "live": 14,
-   "headerRow": 5,
-   "title": "ELBIDE REALTY · Cash flow forecast · Starting cash on hand · $10,000.00 · Starting date · Feb 2023 · Cash minimum balance alert · $2,000.00",
+   "headerRow": 10,
+   "title": "ELBIDE REALTY · Cash flow forecast · Starting cash on hand · $10,000.00 · Starting date · Feb 2023 · Cash minimum balance alert · $2,000.00 · Feb 2023 · Mar 2023 · Apr 2023 · May 2023 · Jun 2023 · Jul 2023 · Aug 2023 · Sep 2023 · Oct 2023 · Nov 2023 · Dec 2023 · Jan 2024 · Total · Cash on hand (beginning of month) · $10,000.00 · $8,050.00 · $9,350.00 · $890.00 · $2,190.00 · $13,590.00 · $13,790.00 · $15,290.00 · $16,410.00 · $14,360.00 · $16,560.00 · $18,780.00 · Cash receipts",
    "notes": [],
    "roles": {
-    "title": "欄 1",
+    "title": "Cash sales",
     "group": null,
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "欄 1:text:100%:46",
-    "Feb 2023:money:13%:6",
-    "Mar 2023:money:13%:6",
-    "Apr 2023:money:15%:7",
-    "May 2023:money:13%:6",
-    "Jun 2023:money:10%:5",
-    "Jul 2023:money:15%:7",
-    "Aug 2023:money:10%:5",
-    "Sep 2023:money:13%:6",
-    "Oct 2023:money:13%:6",
-    "Nov 2023:money:13%:6",
-    "Dec 2023:money:10%:5",
-    "Jan 2024:money:15%:7",
-    "Total:category:77%:8"
+    "Cash sales:text:100%:43",
+    "$2,500.00:money:9%:4",
+    "$3,000.00:money:9%:4",
+    "$3,600.00:money:11%:5",
+    "$3,000.00:money:9%:4",
+    "$14,000.00:money:7%:3",
+    "$6,000.00:money:11%:5",
+    "$3,000.00:money:7%:3",
+    "$2,800.00:money:9%:4",
+    "$3,500.00:money:9%:4",
+    "$4,000.00:money:9%:4",
+    "$3,800.00:money:7%:3",
+    "$4,200.00:money:11%:5",
+    "$53,400.00:category:80%:7"
    ],
    "flags": []
   },
@@ -4405,9 +4406,9 @@
    "status": "clean",
    "table": 1,
    "of": 2,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Cash on hand」，以「Month」為品項名稱",
+   "shape": "ledger",
+   "label": "帳務／明細表",
+   "reason": "有日期欄「Month」但幾乎每列都不同（12/12），且有 1 欄金額，判定為明細帳而非排程",
    "srcRows": 16,
    "rows": 12,
    "cols": 2,
@@ -4423,7 +4424,7 @@
    },
    "hidden": [],
    "colTypes": [
-    "Month:text:100%:12",
+    "Month:date:100%:12",
     "Cash on hand:money:100%:12"
    ],
    "flags": []
@@ -4625,8 +4626,8 @@
     "Sample 3:number:100%:5",
     "Sample 4:number:100%:6",
     "Sample 5:number:100%:6",
-    "Mean:date:100%:11",
-    "Sample mean (average of all means):date:100%:1"
+    "Mean:number:100%:11",
+    "Sample mean (average of all means):number:100%:1"
    ],
    "flags": []
   },
@@ -7354,9 +7355,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "schedule",
-   "label": "排程／時程表",
-   "reason": "偵測到日期欄「Unit \r\nprice」（67% 的值可解析為日期）；但日期幾乎每列都不同（3/3），不拿它分組，改當列名",
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Inventory ID」是標籤，後面 8 欄是數值（Name、Description、Unit \r\nprice、Quantity \r\nin stock、Reorder \r\nlevel、Reorder time\r\nin days、Quantity in reorder、Discontinued?）",
    "srcRows": 15,
    "rows": 3,
    "cols": 9,
@@ -7365,19 +7366,17 @@
    "title": "INVENTORY LIST",
    "notes": [],
    "roles": {
-    "title": "Name",
+    "title": "Inventory ID",
     "group": null,
     "lead": null,
     "person": null
    },
-   "hidden": [
-    "Inventory ID"
-   ],
+   "hidden": [],
    "colTypes": [
     "Inventory ID:text:100%:3",
     "Name:person:100%:3",
     "Description:text:100%:3",
-    "Unit \r\nprice:date:100%:3",
+    "Unit \r\nprice:money:100%:3",
     "Quantity \r\nin stock:number:100%:3",
     "Reorder \r\nlevel:number:100%:3",
     "Reorder time\r\nin days:number:100%:2",
@@ -9188,10 +9187,36 @@
   {
    "src": "planner_97739ac3.xlsx",
    "sheet": "planner_97739ac3.xlsx › Lists",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 16
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「September 2022」（100% 的值可解析為日期）；但日期幾乎每列都不同（7/7），不拿它分組，改當列名",
+   "srcRows": 16,
+   "rows": 7,
+   "cols": 3,
+   "live": 2,
+   "headerRow": 0,
+   "title": null,
+   "notes": [
+    "剔除 3 個排版用的空白欄"
+   ],
+   "roles": {
+    "title": "Work",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "September 2022:date:100%:7",
+    "11/11/22:empty:0%:0",
+    "Work:text:57%:4"
+   ],
+   "flags": [
+    "3/7 列沒有標題，會被整列略過"
+   ]
   },
   {
    "src": "planner_9e1c479f.xlsx",
@@ -10606,7 +10631,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到時間欄「Time」但沒有日期欄，視為單日流程表",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期），並有時間欄「Time」；但日期幾乎每列都不同（2/2），不拿它分組，改當列名",
    "srcRows": 21,
    "rows": 2,
    "cols": 5,
@@ -10622,7 +10647,7 @@
    },
    "hidden": [],
    "colTypes": [
-    "Date:text:100%:2",
+    "Date:date:100%:2",
     "Home team:text:100%:2",
     "Away team:text:100%:2",
     "Time:time:100%:2",
@@ -11582,9 +11607,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「DATE」是標籤，後面 5 欄是數值（MILESTONE、POSITION 1、POSITION 2、POSITION 3、NOTES：整欄空白）",
+   "shape": "schedule",
+   "label": "排程／時程表",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（11/12），不拿它分組，改當列名",
    "srcRows": 17,
    "rows": 12,
    "cols": 6,
@@ -11593,14 +11618,14 @@
    "title": "Project timeline · Project details",
    "notes": [],
    "roles": {
-    "title": "DATE",
+    "title": "MILESTONE",
     "group": null,
     "lead": null,
     "person": null
    },
    "hidden": [],
    "colTypes": [
-    "DATE:text:100%:11",
+    "DATE:date:100%:11",
     "MILESTONE:text:100%:9",
     "POSITION 1:number:100%:7",
     "POSITION 2:number:100%:1",
