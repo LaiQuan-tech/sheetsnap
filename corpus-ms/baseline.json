@@ -1,13 +1,13 @@
 {
  "fingerprint": {
-  "engine": "96919442f0d7",
+  "engine": "afef4bb977a0",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 219,
-  "flagged": 107,
+  "clean": 227,
+  "flagged": 99,
   "skipped": 110,
   "broken": 0,
   "shapes": {
@@ -20,7 +20,6 @@
    "矩陣／報表": 89
   },
   "flags": {
-   "11/34 列沒有標題，會被整列略過": 1,
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "2/4 列沒有標題，會被整列略過": 3,
    "2/6 列沒有標題，會被整列略過": 1,
@@ -31,20 +30,16 @@
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "9/26 列沒有標題，會被整列略過": 1,
    "分組欄「DATE」只有一種值，等於沒分組": 1,
-   "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落": 4,
    "分組欄「DONE」只有一種值，等於沒分組": 3,
    "分組欄「DUE DATE」只有一種值，等於沒分組": 1,
-   "分組欄「Date」幾乎每列都不同，會碎成一堆單筆段落": 1,
    "分組欄「Difference ($)」只有一種值，等於沒分組": 1,
    "分組欄「Discontinued?」只有一種值，等於沒分組": 1,
    "分組欄「ESTIMATED」只有一種值，等於沒分組": 1,
-   "分組欄「Estimated start」幾乎每列都不同，會碎成一堆單筆段落": 1,
    "分組欄「INVITED」只有一種值，等於沒分組": 1,
    "分組欄「ORDER #」只有一種值，等於沒分組": 2,
    "分組欄「PRESENTER」只有一種值，等於沒分組": 1,
    "分組欄「Phone」只有一種值，等於沒分組": 1,
    "分組欄「Reading」只有一種值，等於沒分組": 3,
-   "分組欄「Start Date」幾乎每列都不同，會碎成一堆單筆段落": 1,
    "分組欄「TOTAL」只有一種值，等於沒分組": 1,
    "分組欄「Type」只有一種值，等於沒分組": 1,
    "分組欄「Week 1」只有一種值，等於沒分組": 1,
@@ -99,7 +94,7 @@
    "原始工作表有 99 列，只抽出 6 列，結構可能判壞": 1,
    "只有一列資料，判斷幾乎沒有依據": 8,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
-   "找不到主標題欄，卡片會沒有名字": 22,
+   "找不到主標題欄，卡片會沒有名字": 18,
    "標題列可能判錯": 8,
    "落到一般表格": 30
   }
@@ -4603,12 +4598,12 @@
   {
    "src": "chart_098a0353.xlsx",
    "sheet": "chart_098a0353.xlsx › Manufacturing imperfections",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）；但日期幾乎每列都不同（18/18），不拿它分組，改當列名",
    "srcRows": 31,
    "rows": 18,
    "cols": 8,
@@ -4617,8 +4612,8 @@
    "title": "Control chart for printing books · Plant name: · Nod Publishers · Report date: · 2/23/23 · QC Tech: · Nicole Wagner · Dept: · Quality assurance · Equipment ID: · 78910 · Start date: · 1/24/23 · End date: · 2/23/23 · # of imperfections",
    "notes": [],
    "roles": {
-    "title": "Mean",
-    "group": "Date",
+    "title": "Date",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -4633,9 +4628,7 @@
     "Mean:date:100%:11",
     "Sample mean (average of all means):date:100%:1"
    ],
-   "flags": [
-    "分組欄「Date」幾乎每列都不同，會碎成一堆單筆段落"
-   ]
+   "flags": []
   },
   {
    "src": "chart_098a0353.xlsx",
@@ -4648,12 +4641,12 @@
   {
    "src": "chart_09eef93c.xlsx",
    "sheet": "chart_09eef93c.xlsx › MANUFACTURING OUTPUT",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（24/24），不拿它分組，改當列名",
    "srcRows": 28,
    "rows": 24,
    "cols": 2,
@@ -4662,8 +4655,8 @@
    "title": "MANUFACTURING OUTPUT DATA",
    "notes": [],
    "roles": {
-    "title": null,
-    "group": "DATE",
+    "title": "DATE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -4672,10 +4665,7 @@
     "DATE:date:100%:24",
     "COMPONENTS COMPLETED:number:100%:19"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落"
-   ]
+   "flags": []
   },
   {
    "src": "chart_1c4bd473.xlsx",
@@ -5707,12 +5697,12 @@
   {
    "src": "chart_8c4be8ed.xlsx",
    "sheet": "chart_8c4be8ed.xlsx › Social media engagement data",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（24/24），不拿它分組，改當列名",
    "srcRows": 28,
    "rows": 24,
    "cols": 2,
@@ -5721,8 +5711,8 @@
    "title": "SOCIAL MEDIA ENGAGEMENT DATA",
    "notes": [],
    "roles": {
-    "title": null,
-    "group": "DATE",
+    "title": "DATE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -5731,10 +5721,7 @@
     "DATE:date:100%:24",
     "DAILY IMPRESSIONS:number:100%:19"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落"
-   ]
+   "flags": []
   },
   {
    "src": "chart_8eab671c.xlsx",
@@ -6094,7 +6081,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「日期」（83% 的值可解析為日期）",
+   "reason": "偵測到日期欄「日期」（83% 的值可解析為日期）；但日期幾乎每列都不同（5/6），不拿它分組，改當列名",
    "srcRows": 107,
    "rows": 104,
    "cols": 6,
@@ -6106,7 +6093,7 @@
    ],
    "roles": {
     "title": "Periods",
-    "group": "日期",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -6137,7 +6124,7 @@
    "of": 3,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）；但日期幾乎每列都不同（15/18），不拿它分組，改當列名",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6149,7 +6136,7 @@
    ],
    "roles": {
     "title": "Milestone description",
-    "group": "Start",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -6297,7 +6284,7 @@
    "of": 3,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）；但日期幾乎每列都不同（15/18），不拿它分組，改當列名",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6309,7 +6296,7 @@
    ],
    "roles": {
     "title": "Milestone description",
-    "group": "Start",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -6457,7 +6444,7 @@
    "of": 3,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Start」（100% 的值可解析為日期）；但日期幾乎每列都不同（15/18），不拿它分組，改當列名",
    "srcRows": 38,
    "rows": 25,
    "cols": 6,
@@ -6469,7 +6456,7 @@
    ],
    "roles": {
     "title": "Milestone description",
-    "group": "Start",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -7369,7 +7356,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Unit \r\nprice」（67% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Unit \r\nprice」（67% 的值可解析為日期）；但日期幾乎每列都不同（3/3），不拿它分組，改當列名",
    "srcRows": 15,
    "rows": 3,
    "cols": 9,
@@ -7379,7 +7366,7 @@
    "notes": [],
    "roles": {
     "title": "Name",
-    "group": "Unit \r\nprice",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -8622,7 +8609,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）；但日期幾乎每列都不同（2/2），不拿它分組，改當列名",
    "srcRows": 17,
    "rows": 2,
    "cols": 7,
@@ -8632,7 +8619,7 @@
    "notes": [],
    "roles": {
     "title": "Destination",
-    "group": "Date",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -8906,7 +8893,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「PHONE SCREEN DATE」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「PHONE SCREEN DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（5/5），不拿它分組，改當列名",
    "srcRows": 9,
    "rows": 5,
    "cols": 11,
@@ -8916,7 +8903,7 @@
    "notes": [],
    "roles": {
     "title": "NAME",
-    "group": "PHONE SCREEN DATE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -9046,7 +9033,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Due Date」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Due Date」（100% 的值可解析為日期）；但日期幾乎每列都不同（4/4），不拿它分組，改當列名",
    "srcRows": 10,
    "rows": 4,
    "cols": 6,
@@ -9056,7 +9043,7 @@
    "notes": [],
    "roles": {
     "title": "Tasks",
-    "group": "Due Date",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -9107,12 +9094,12 @@
   {
    "src": "planner_70e92525.xlsx",
    "sheet": "planner_70e92525.xlsx › Project tracker",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Estimated start」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Estimated start」（100% 的值可解析為日期）；但日期幾乎每列都不同（8/9），不拿它分組，改當列名",
    "srcRows": 14,
    "rows": 9,
    "cols": 12,
@@ -9122,7 +9109,7 @@
    "notes": [],
    "roles": {
     "title": "Project",
-    "group": "Estimated start",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -9141,9 +9128,7 @@
     "Actual duration (in days):number:100%:9",
     "Notes:empty:0%:0"
    ],
-   "flags": [
-    "分組欄「Estimated start」幾乎每列都不同，會碎成一堆單筆段落"
-   ]
+   "flags": []
   },
   {
    "src": "planner_70e92525.xlsx",
@@ -9225,7 +9210,7 @@
    "title": "Credit Card Name · Enter payments as negative amounts in table, below.",
    "notes": [],
    "roles": {
-    "title": "Merchant name",
+    "title": "Description",
     "group": null,
     "lead": "Balance*",
     "person": null
@@ -10806,7 +10791,7 @@
     "剔除 5 個排版用的空白欄"
    ],
    "roles": {
-    "title": "NAME",
+    "title": "INSTRUCTOR",
     "group": null,
     "lead": "TIME START",
     "person": null
@@ -11667,7 +11652,7 @@
    "of": 3,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（11/12），不拿它分組，改當列名",
    "srcRows": 349,
    "rows": 12,
    "cols": 6,
@@ -11677,7 +11662,7 @@
    "notes": [],
    "roles": {
     "title": "MILESTONE",
-    "group": "DATE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -11694,7 +11679,6 @@
     "NUM:number:100%:12"
    ],
    "flags": [
-    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落",
     "原始工作表有 349 列，只抽出 12 列，結構可能判壞"
    ]
   },
@@ -11706,7 +11690,7 @@
    "of": 3,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（11/12），不拿它分組，改當列名",
    "srcRows": 349,
    "rows": 12,
    "cols": 4,
@@ -11716,7 +11700,7 @@
    "notes": [],
    "roles": {
     "title": "MILESTONE",
-    "group": "DATE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -11730,7 +11714,6 @@
     "POSITION:number:100%:7"
    ],
    "flags": [
-    "分組欄「DATE」幾乎每列都不同，會碎成一堆單筆段落",
     "原始工作表有 349 列，只抽出 12 列，結構可能判壞"
    ]
   },
@@ -11789,7 +11772,7 @@
   {
    "src": "timeline_93059754.xlsx",
    "sheet": "timeline_93059754.xlsx › Calendar",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "board",
@@ -11803,7 +11786,7 @@
    "title": "SOCIAL MEDIA EDITORIAL THEME CALENDAR · January",
    "notes": [],
    "roles": {
-    "title": "Working title",
+    "title": "Deadline",
     "group": "Status",
     "lead": null,
     "person": null
@@ -11821,9 +11804,7 @@
     "Keywords:category:68%:2",
     "Notes:text:68%:2"
    ],
-   "flags": [
-    "11/34 列沒有標題，會被整列略過"
-   ]
+   "flags": []
   },
   {
    "src": "timeline_93faf979.xlsx",
@@ -12178,7 +12159,7 @@
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Date」（100% 的值可解析為日期）；但日期幾乎每列都不同（6/6），不拿它分組，改當列名",
    "srcRows": 26,
    "rows": 7,
    "cols": 4,
@@ -12188,7 +12169,7 @@
    "notes": [],
    "roles": {
     "title": "Milestone",
-    "group": "Date",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -12204,12 +12185,12 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Tasks",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Start Date」（100% 的值可解析為日期）",
+   "reason": "偵測到日期欄「Start Date」（100% 的值可解析為日期）；但日期幾乎每列都不同（11/12），不拿它分組，改當列名",
    "srcRows": 26,
    "rows": 13,
    "cols": 5,
@@ -12219,7 +12200,7 @@
    "notes": [],
    "roles": {
     "title": "Task",
-    "group": "Start Date",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -12233,9 +12214,7 @@
     "Task:text:92%:12",
     "Duration in days:number:92%:8"
    ],
-   "flags": [
-    "分組欄「Start Date」幾乎每列都不同，會碎成一堆單筆段落"
-   ]
+   "flags": []
   },
   {
    "src": "timeline_ff21fe25.xlsx",
@@ -12289,12 +12268,12 @@
   {
    "src": "timesheet_0951750e.xlsx",
    "sheet": "timesheet_0951750e.xlsx › Time sheet",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「Dates(s)」（100% 的值可解析為日期），並有時間欄「Time In」",
+   "reason": "偵測到日期欄「Dates(s)」（100% 的值可解析為日期），並有時間欄「Time In」；但日期幾乎每列都不同（5/5），不拿它分組，改當列名",
    "srcRows": 14,
    "rows": 5,
    "cols": 6,
@@ -12303,8 +12282,8 @@
    "title": "Time Sheet · Manager Details · Employee Details · Period · Dany Kramer · Archana Kulkari · 12/1/22 · 12/31/22 · archana@example.com · (123) 456-7890 · Total Work Week Hours · Total Hours Worked · Regular Hours · Overtime Hours · 40.00 · 40.00 · 40.00 · 0.00",
    "notes": [],
    "roles": {
-    "title": null,
-    "group": "Dates(s)",
+    "title": "Dates(s)",
+    "group": null,
     "lead": "Time In",
     "person": null
    },
@@ -12317,9 +12296,7 @@
     "Time Out:time:100%:1",
     "Hours Worked:number:100%:1"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字"
-   ]
+   "flags": []
   },
   {
    "src": "timesheet_1224b456.xlsx",
@@ -12446,12 +12423,12 @@
   {
    "src": "timesheet_923969b2.xlsx",
    "sheet": "timesheet_923969b2.xlsx › Timesheet",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
    "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE(S)」（100% 的值可解析為日期），並有時間欄「TIME IN」",
+   "reason": "偵測到日期欄「DATE(S)」（100% 的值可解析為日期），並有時間欄「TIME IN」；但日期幾乎每列都不同（5/5），不拿它分組，改當列名",
    "srcRows": 15,
    "rows": 5,
    "cols": 6,
@@ -12460,8 +12437,8 @@
    "title": "Timesheet · EMPLOYEE DETAILS: · Takuma Hayashi · takuma@contoso.com · (415) 555-0123 · TOTAL WORK WEEK HOURS · TOTAL HOURS WORKED · REGULAR HOURS · OVERTIME HOURS · MANAGER: · Smiriti Sisodiya · 40.00 · 35.00 · 35.00 · 0.00 · 1/1/23 · 1/15/23",
    "notes": [],
    "roles": {
-    "title": null,
-    "group": "DATE(S)",
+    "title": "DATE(S)",
+    "group": null,
     "lead": "TIME IN",
     "person": null
    },
@@ -12474,9 +12451,7 @@
     "TIME OUT:time:100%:1",
     "HOURS WORKED:number:100%:1"
    ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字"
-   ]
+   "flags": []
   },
   {
    "src": "timesheet_bf992aaa.xlsx",

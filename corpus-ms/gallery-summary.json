@@ -5,7 +5,7 @@
  "skipped": 110,
  "warned": 10,
  "generic": 41,
- "noTitle": 13,
+ "noTitle": 9,
  "oneRow": 0,
  "withTime": 35,
  "withFilter": 21,
@@ -55,7 +55,7 @@
    "chart",
    {
     "n": 45,
-    "ok": 35
+    "ok": 37
    }
   ],
   [
@@ -118,7 +118,7 @@
    "timesheet",
    {
     "n": 10,
-    "ok": 5
+    "ok": 7
    }
   ],
   [
@@ -136,5 +136,2932 @@
    }
   ]
  ],
- "clean": 230
+ "clean": 234,
+ "rows": [
+  {
+   "src": "accounting_0447d9de.xlsx",
+   "sheet": "Check register",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_06f742fb.xlsx",
+   "sheet": "Balance sheet",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_151ddd53.xlsx",
+   "sheet": "Assets",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_151ddd53.xlsx",
+   "sheet": "Liabilities and owner's equity",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_1a6c8d9a.xlsx",
+   "sheet": "Expenses",
+   "table": 3,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Current period\r\nas % of sales",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_1a6c8d9a.xlsx",
+   "sheet": "Income",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_1a6c8d9a.xlsx",
+   "sheet": "Sales",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_1a6c8d9a.xlsx",
+   "sheet": "Taxes",
+   "table": 4,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_2604dba6.xlsx",
+   "sheet": "Check register",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_36836876.xlsx",
+   "sheet": "Income statement",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_6f5bf452.xlsx",
+   "sheet": "Disbursement journal",
+   "table": 1,
+   "shape": "帳務／明細表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_6f5bf452.xlsx",
+   "sheet": "Disbursement summary",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_709cb4e8.xlsx",
+   "sheet": "Check register",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_753d155e.xlsx",
+   "sheet": "FINANCE CHARGE",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_7b54c8ed.xlsx",
+   "sheet": "STATEMENT",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_866209af.xlsx",
+   "sheet": "Cost of sales",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_866209af.xlsx",
+   "sheet": "Expenses",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "group:IND %",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_866209af.xlsx",
+   "sheet": "Revenues (sales)",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_a84a5db0.xlsx",
+   "sheet": "FINANCE CHARGE",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_af710e64.xlsx",
+   "sheet": "Check register",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Annual cash flow",
+   "table": 3,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Daily cash flow",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Type",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Discretionary",
+   "table": 6,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Expenses",
+   "table": 5,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Income",
+   "table": 4,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Monthly cash flow",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Type",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_b55730e7.xlsx",
+   "sheet": "Savings",
+   "table": 7,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_efbf4064.xlsx",
+   "sheet": "Assets",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_efbf4064.xlsx",
+   "sheet": "Liabilities",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_efbf4064.xlsx",
+   "sheet": "Summary",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "accounting_f83c7f04.xlsx",
+   "sheet": "Petty cash log",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_011bc58a.xlsx",
+   "sheet": "Personal Monthly Budget",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_142337c5.xlsx",
+   "sheet": "BUDGET TOOL",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_1cbd5c5c.xlsx",
+   "sheet": "Monthly college budget",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "filter:% INC",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_1cbd5c5c.xlsx",
+   "sheet": "chart_calcs",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_22960980.xlsx",
+   "sheet": "Income and expenses",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_2654ec90.xlsx",
+   "sheet": "Chart data",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_2654ec90.xlsx",
+   "sheet": "Monthly expenses",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_2654ec90.xlsx",
+   "sheet": "Monthly income",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_2d4c31d3.xlsx",
+   "sheet": "Expenses summary",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_2d4c31d3.xlsx",
+   "sheet": "Monthly budget report",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_2d4c31d3.xlsx",
+   "sheet": "Monthly expenses",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_354f6f67.xlsx",
+   "sheet": "Income",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_354f6f67.xlsx",
+   "sheet": "Monthly budget summary",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_354f6f67.xlsx",
+   "sheet": "Operating expenses",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_354f6f67.xlsx",
+   "sheet": "Personnel expenses",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_40a2472b.xlsx",
+   "sheet": "Expenditures",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "filter:Category",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_40a2472b.xlsx",
+   "sheet": "Income",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_40a2472b.xlsx",
+   "sheet": "Summary",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_43520fce.xlsx",
+   "sheet": "Roommate budget",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_478a9534.xlsx",
+   "sheet": "Monthly expenses",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_478a9534.xlsx",
+   "sheet": "Monthly income",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_478a9534.xlsx",
+   "sheet": "Monthly savings",
+   "table": 3,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_478a9534.xlsx",
+   "sheet": "Summary",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_5d8083f9.xlsx",
+   "sheet": "Expenses",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_5d8083f9.xlsx",
+   "sheet": "Income",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_60c5b272.xlsx",
+   "sheet": "Budget by month",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_6667de34.xlsx",
+   "sheet": "Channel marketing budget",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "filter:Jan",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_7890eac9.xlsx",
+   "sheet": "Expenses",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_7890eac9.xlsx",
+   "sheet": "Income",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_7890eac9.xlsx",
+   "sheet": "Profit & loss summary",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_8eb8ecb2.xlsx",
+   "sheet": "Additional data",
+   "table": 4,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_8eb8ecb2.xlsx",
+   "sheet": "Budget overview",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_8eb8ecb2.xlsx",
+   "sheet": "Budget summary",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_8eb8ecb2.xlsx",
+   "sheet": "Monthly expenses",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Category",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_8eb8ecb2.xlsx",
+   "sheet": "Sheet1",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_8f6b87a5.xlsx",
+   "sheet": "College monthly budget",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_91b9548b.xlsx",
+   "sheet": "Monthly budget",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_926cf263.xlsx",
+   "sheet": "Budget wheel",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_926cf263.xlsx",
+   "sheet": "Data",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_926cf263.xlsx",
+   "sheet": "Start",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_94d2de40.xlsx",
+   "sheet": "Monthly expenses",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_94d2de40.xlsx",
+   "sheet": "Monthly income",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_94d2de40.xlsx",
+   "sheet": "Semester expenses",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_a146c834.xlsx",
+   "sheet": "Monthly expenses",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_a146c834.xlsx",
+   "sheet": "Monthly income",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_af824d68.xlsx",
+   "sheet": "Income and Expenses",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_af824d68.xlsx",
+   "sheet": "Summary",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_b0a247ff.xlsx",
+   "sheet": "Expense",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_b0a247ff.xlsx",
+   "sheet": "Summary",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_b340cb34.xlsx",
+   "sheet": "Monthly Expenses",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_b340cb34.xlsx",
+   "sheet": "Monthly Income",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "budget_b6c07597.xlsx",
+   "sheet": "PERSONAL BUDGET",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_cc3e248b.xlsx",
+   "sheet": "Income",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_cc3e248b.xlsx",
+   "sheet": "Monthly Budget Summary",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_cc3e248b.xlsx",
+   "sheet": "Operating Expenses",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_cc3e248b.xlsx",
+   "sheet": "Personnel Expenses",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_d030c90f.xlsx",
+   "sheet": "Budget summary",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_d030c90f.xlsx",
+   "sheet": "Itemized expenses",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_d8df692e.xlsx",
+   "sheet": "Personal monthly budget",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "budget_dcb1bbfe.xlsx",
+   "sheet": "Academic Club budget",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Annual cash flow",
+   "table": 3,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Daily cash flow",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Type",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Discretionary",
+   "table": 6,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Expenses",
+   "table": 5,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Income",
+   "table": 4,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Monthly cash flow",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Type",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_281b542f.xlsx",
+   "sheet": "Savings",
+   "table": 7,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_9d4519ee.xlsx",
+   "sheet": "Annuity",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_eb47068d.xlsx",
+   "sheet": "Cash flow",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_f7200e29.xlsx",
+   "sheet": "Cash flow chart",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "cashflow_f7200e29.xlsx",
+   "sheet": "Cash flow forecast",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Total",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_0324ef03.xlsx",
+   "sheet": "PROJECT DETAILS",
+   "table": 2,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_0324ef03.xlsx",
+   "sheet": "PROJECT PARAMETERS",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_0324ef03.xlsx",
+   "sheet": "PROJECT TOTALS",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_098a0353.xlsx",
+   "sheet": "Manufacturing imperfections",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_09eef93c.xlsx",
+   "sheet": "MANUFACTURING OUTPUT",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_1c4bd473.xlsx",
+   "sheet": "Campaign sales funnel",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_1c4bd473.xlsx",
+   "sheet": "scratch",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_1ed52567.xlsx",
+   "sheet": "Regional sales",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_23458125.xlsx",
+   "sheet": "Assets",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_23458125.xlsx",
+   "sheet": "Debt",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_4bf6b793.xlsx",
+   "sheet": "Project schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "group:ASSIGNED TO",
+    "filter:PROGRESS",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_4eec2072.xlsx",
+   "sheet": "PROBLEM DATA AND CHART",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_6860aa13.xlsx",
+   "sheet": "Balance chart",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_6860aa13.xlsx",
+   "sheet": "Budget summary",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_6860aa13.xlsx",
+   "sheet": "Profit & loss chart",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_86466670.xlsx",
+   "sheet": "Check register",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "apr",
+   "table": 5,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "aug",
+   "table": 9,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "dec",
+   "table": 13,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "feb",
+   "table": 3,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "jan",
+   "table": 2,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "jul",
+   "table": 8,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "jun",
+   "table": 7,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "mar",
+   "table": 4,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "may",
+   "table": 6,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "nov",
+   "table": 12,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "oct",
+   "table": 11,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "sep",
+   "table": 10,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8be76302.xlsx",
+   "sheet": "summary",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8c4be8ed.xlsx",
+   "sheet": "Social media engagement data",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8f94d364.xlsx",
+   "sheet": "Buy a car",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Column1",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8f94d364.xlsx",
+   "sheet": "Rideshare",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "filter:Column1",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_8f94d364.xlsx",
+   "sheet": "Summary",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_94c0fff6.xlsx",
+   "sheet": "Sales data",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "group:QTR 2",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_9d91ef48.xlsx",
+   "sheet": "Defect data and chart",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_ab449fed.xlsx",
+   "sheet": "Sub-layered 5 level",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_b795847d.xlsx",
+   "sheet": "Growth data",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_bd08ad3a.xlsx",
+   "sheet": "Weight loss tracker",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "filter:GOAL WEIGHT",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_bd08ad3a.xlsx",
+   "sheet": "calculations",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "group:12",
+    "filter:Periods",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_c29ed7ae.xlsx",
+   "sheet": "Color",
+   "table": 3,
+   "shape": "排程／時程表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_c29ed7ae.xlsx",
+   "sheet": "Dark",
+   "table": 2,
+   "shape": "排程／時程表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_c29ed7ae.xlsx",
+   "sheet": "Light",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "group:Category",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_c4948841.xlsx",
+   "sheet": "Growth data",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "chart_dc387a76.xlsx",
+   "sheet": "BLOOD PRESSURE DATA",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time:DATE",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "chart_f79af0fb.xlsx",
+   "sheet": "Cost data and chart",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_68cc5838.xlsx",
+   "sheet": "Actual expenses",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_68cc5838.xlsx",
+   "sheet": "Expense variances",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_68cc5838.xlsx",
+   "sheet": "Expenses analysis",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "expense_68cc5838.xlsx",
+   "sheet": "Planned expenses",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_b273e96f.xlsx",
+   "sheet": "Expense log",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "filter:Category",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_b273e96f.xlsx",
+   "sheet": "Personal Expenses Data",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_c7acec8e.xlsx",
+   "sheet": "Startup expenses",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_d14f83e2.xlsx",
+   "sheet": "ACTUAL EXPENSES",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_d14f83e2.xlsx",
+   "sheet": "EXPENSE ANALYSIS",
+   "table": 4,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_d14f83e2.xlsx",
+   "sheet": "EXPENSE VARIANCES",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_d14f83e2.xlsx",
+   "sheet": "PLANNED EXPENSES",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_d75b85c4.xlsx",
+   "sheet": "Expenses",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:Category",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_100fccf4.xlsx",
+   "sheet": "Product price list",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_2ebe081e.xlsx",
+   "sheet": "Assets",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Asset",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_4655f40a.xlsx",
+   "sheet": "HOME CONTENTS INVENTORY LIST",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_472442ad.xlsx",
+   "sheet": "Equipment inventory list",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_53587d4d.xlsx",
+   "sheet": "Inventory List",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_5c5a8ea5.xlsx",
+   "sheet": "Probate Assets",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "group:Address",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_5c5a8ea5.xlsx",
+   "sheet": "Probate Inventory",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "filter:Name",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_5c5a8ea5.xlsx",
+   "sheet": "Probate Liabilities",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_6fe15a87.xlsx",
+   "sheet": "Grocery list",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "group:STORE",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_7a077a69.xlsx",
+   "sheet": "Equipment inventory list",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_90d892c6.xlsx",
+   "sheet": "Depreciation methods",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_90d892c6.xlsx",
+   "sheet": "Fixed asset record",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_98f27753.xlsx",
+   "sheet": "Home Contents Inventory List",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_acc912a4.xlsx",
+   "sheet": "Home contents inventory list",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_b9cbb715.xlsx",
+   "sheet": "Bin lookup",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_b9cbb715.xlsx",
+   "sheet": "Inventory list",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_b9cbb715.xlsx",
+   "sheet": "Inventory pick list",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_c16e6fb0.xlsx",
+   "sheet": "Inventory list",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_c70363c0.xlsx",
+   "sheet": "Inventory list",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_c70363c0.xlsx",
+   "sheet": "Inventory pick list",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_c70363c0.xlsx",
+   "sheet": "Lookup",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "inventory_cf2db84f.xlsx",
+   "sheet": "Inventory list",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "invoice_02f1e98d.xlsx",
+   "sheet": "Sheet1",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "invoice_7c5c0318.xlsx",
+   "sheet": "Invoice",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "invoice_94db67f1.xlsx",
+   "sheet": "Invoice",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:DATE:",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "invoice_ba55235e.xlsx",
+   "sheet": "Invoice",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "group:DISCOUNT APPLIED",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "invoice_cc4028ec.xlsx",
+   "sheet": "Service invoice",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "invoice_cc8f8a79.xlsx",
+   "sheet": "Sales invoice",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_0ffdef6d.xlsx",
+   "sheet": "Calculations",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_0ffdef6d.xlsx",
+   "sheet": "Retirement planner",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_11bf9a22.xlsx",
+   "sheet": "Customers",
+   "table": 2,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_11bf9a22.xlsx",
+   "sheet": "Invoice details",
+   "table": 4,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Invoice #",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_11bf9a22.xlsx",
+   "sheet": "Invoices - main",
+   "table": 3,
+   "shape": "帳務／明細表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_11bf9a22.xlsx",
+   "sheet": "Invoice",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "filter:Discount",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_2a72be1c.xlsx",
+   "sheet": "Assignments",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_2f29bdf2.xlsx",
+   "sheet": "Emergency Contacts",
+   "table": 3,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_2f29bdf2.xlsx",
+   "sheet": "Overview",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_4b371a73.xlsx",
+   "sheet": "Weekly lesson planner 1",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:Nov 07",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_4b371a73.xlsx",
+   "sheet": "Weekly lesson planner 2",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "group:Nov 07",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_4b371a73.xlsx",
+   "sheet": "Weekly lesson planner 3",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "group:Nov 07",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_502c3712.xlsx",
+   "sheet": "Mileage log",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time:Date",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_5673dfc3.xlsx",
+   "sheet": "Idea planner",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_5da16261.xlsx",
+   "sheet": "Candidates",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_5da16261.xlsx",
+   "sheet": "Interviewers",
+   "table": 2,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_5da16261.xlsx",
+   "sheet": "Openings",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_64b96609.xlsx",
+   "sheet": "Invoice Tracker",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_684d3472.xlsx",
+   "sheet": "Idea Planner",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_6aab7182.xlsx",
+   "sheet": "Expense tracker",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_70e92525.xlsx",
+   "sheet": "Project tracker",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_97739ac3.xlsx",
+   "sheet": "Monthly planner",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_9e1c479f.xlsx",
+   "sheet": "Credit card log",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_b86f671c.xlsx",
+   "sheet": "Membership tracker",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_c2b640a6.xlsx",
+   "sheet": "Event planner",
+   "table": 0,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "group:欄 8",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_c2b640a6.xlsx",
+   "sheet": "Expenses",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_c2b640a6.xlsx",
+   "sheet": "Income",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e56f1018.xlsx",
+   "sheet": "Forecasted sales ",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e56f1018.xlsx",
+   "sheet": "Lead data",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e6ae6c3f.xlsx",
+   "sheet": "Budget breakdown",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e6ae6c3f.xlsx",
+   "sheet": "Share list",
+   "table": 3,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e6ae6c3f.xlsx",
+   "sheet": "Shopping list",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Category",
+    "filter:Total cost",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e6ae6c3f.xlsx",
+   "sheet": "To-do list",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "planner_e9a761b1.xlsx",
+   "sheet": "Issue Tracker",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time:OPENED ON",
+    "filter:TYPE",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_ebcaa05b.xlsx",
+   "sheet": "Activities",
+   "table": 4,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_ebcaa05b.xlsx",
+   "sheet": "Foods & drinks",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_ebcaa05b.xlsx",
+   "sheet": "Guests",
+   "table": 3,
+   "shape": "一般表格",
+   "views": [
+    "group:RSVP",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_ebcaa05b.xlsx",
+   "sheet": "Overview",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "group:Famous couples",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "planner_ebcaa05b.xlsx",
+   "sheet": "To-do",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "pnl_798cbc44.xlsx",
+   "sheet": "Profit and loss statement",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "filter:% Change from budget",
+    "all"
+   ]
+  },
+  {
+   "src": "pnl_b3a410cc.xlsx",
+   "sheet": "Cost of sales",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "pnl_b3a410cc.xlsx",
+   "sheet": "Expenses",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "group:IND %",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "pnl_b3a410cc.xlsx",
+   "sheet": "Revenues (sales)",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_31cdcf05.xlsx",
+   "sheet": "Class Schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter:Day",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_48f98fd1.xlsx",
+   "sheet": "Class list",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_48f98fd1.xlsx",
+   "sheet": "Class schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter:Day",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Friday",
+   "table": 4,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Monday",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Saturday",
+   "table": 5,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Sunday",
+   "table": 6,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Thursday",
+   "table": 3,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Tuesday",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_54d4fddf.xlsx",
+   "sheet": "Wednesday",
+   "table": 2,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_792c56ff.xlsx",
+   "sheet": "Schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter:Day",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_9ac62cd3.xlsx",
+   "sheet": "Weekly college schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_de27afd1.xlsx",
+   "sheet": "Task list",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_de27afd1.xlsx",
+   "sheet": "Weekly task schedule",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_f4999261.xlsx",
+   "sheet": "League schedule",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_f4999261.xlsx",
+   "sheet": "League team list",
+   "table": 2,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "schedule_f4999261.xlsx",
+   "sheet": "Team roster",
+   "table": 0,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "student_3f9a5c70.xlsx",
+   "sheet": "Income and expenses",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "student_786cd45b.xlsx",
+   "sheet": "Class list",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "student_786cd45b.xlsx",
+   "sheet": "Deadlines",
+   "table": 1,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "student_786cd45b.xlsx",
+   "sheet": "Weekly schedule",
+   "table": 2,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "student_a5bdc654.xlsx",
+   "sheet": "Back-to-school checklist",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "student_beeb91bb.xlsx",
+   "sheet": "Class list",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "student_beeb91bb.xlsx",
+   "sheet": "Deadlines",
+   "table": 1,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "student_beeb91bb.xlsx",
+   "sheet": "Weekly schedule",
+   "table": 2,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "student_d2e23da5.xlsx",
+   "sheet": "College credit planner",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "student_d2e23da5.xlsx",
+   "sheet": "Course",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "group:DEGREE REQUIREMENT",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "student_d2e23da5.xlsx",
+   "sheet": "Semester summary data",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "student_f5e29f68.xlsx",
+   "sheet": "Jan",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:Day",
+    "filter:Item",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_220529be.xlsx",
+   "sheet": "Calendar",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_369564be.xlsx",
+   "sheet": "Schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_588ac285.xlsx",
+   "sheet": "Work plan",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_6521f005.xlsx",
+   "sheet": "Calendar",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_68b6fc0a.xlsx",
+   "sheet": "Project Data Sorted",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_68b6fc0a.xlsx",
+   "sheet": "Project timeline",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_6abb6cbd.xlsx",
+   "sheet": "Timeline",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_93059754.xlsx",
+   "sheet": "Calendar",
+   "table": 0,
+   "shape": "狀態清單",
+   "views": [
+    "group:Theme",
+    "filter:Status",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_93faf979.xlsx",
+   "sheet": "Wedding timeline planner",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:9 - 12",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_b5878e54.xlsx",
+   "sheet": "Meeting agenda",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_c7bfc3e8.xlsx",
+   "sheet": "Ideaphoria",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "group:PUBLISH DATE",
+    "filter:MONTH",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_c7bfc3e8.xlsx",
+   "sheet": "SerRealSocial",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:PUBLISH DATE",
+    "filter:MONTH",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_cc131202.xlsx",
+   "sheet": "Schedule",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_cc8dfa38.xlsx",
+   "sheet": "SCHEDULE",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_ff21fe25.xlsx",
+   "sheet": "Dynamic Chart Data Hidden",
+   "table": 4,
+   "shape": "帳務／明細表",
+   "views": [
+    "group:Tasks",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_ff21fe25.xlsx",
+   "sheet": "Milestones",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_ff21fe25.xlsx",
+   "sheet": "Tasks",
+   "table": 2,
+   "shape": "排程／時程表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_0951750e.xlsx",
+   "sheet": "Time sheet",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_1224b456.xlsx",
+   "sheet": "Timesheet",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_8fd087b1.xlsx",
+   "sheet": "Biweekly time sheet",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "filter:Day",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_914ad28e.xlsx",
+   "sheet": "Yearly timesheet",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_923969b2.xlsx",
+   "sheet": "Timesheet",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_bf992aaa.xlsx",
+   "sheet": "TimeSheet",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_ca8b2e7b.xlsx",
+   "sheet": "Biweekly time sheet",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "group:Day",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_d09ae26d.xlsx",
+   "sheet": "Weekly time sheet",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_d3ccfb24.xlsx",
+   "sheet": "Weekly Time Record",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "timesheet_eafc43ca.xlsx",
+   "sheet": "Weekly Time Record",
+   "table": 0,
+   "shape": "帳務／明細表",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  }
+ ]
 }
