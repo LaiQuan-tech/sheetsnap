@@ -1,23 +1,23 @@
 {
  "fingerprint": {
-  "engine": "415cab215f74",
+  "engine": "32f00d4382aa",
   "audit": "8f0ba63b4c0a"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 227,
-  "flagged": 99,
-  "skipped": 110,
+  "clean": 233,
+  "flagged": 100,
+  "skipped": 103,
   "broken": 0,
   "shapes": {
-   "一般表格": 56,
+   "一般表格": 58,
    "名冊／通訊錄": 5,
-   "品項／價目表": 83,
+   "品項／價目表": 93,
    "帳務／明細表": 30,
    "排程／時程表": 65,
    "狀態清單": 1,
-   "矩陣／報表": 86
+   "矩陣／報表": 81
   },
   "flags": {
    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
@@ -25,6 +25,7 @@
    "2/6 列沒有標題，會被整列略過": 1,
    "3/6 列沒有標題，會被整列略過": 1,
    "3/7 列沒有標題，會被整列略過": 1,
+   "4/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "5/14 列沒有標題，會被整列略過": 1,
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "6/18 列沒有標題，會被整列略過": 1,
@@ -744,9 +745,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「REVENUES (SALES)」是標籤，後面 3 欄是數值（TREND：整欄空白、Month、Amount）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Amount」，以「Month」為品項名稱",
    "srcRows": 14,
    "rows": 84,
    "cols": 4,
@@ -777,9 +778,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「COST OF SALES」是標籤，後面 3 欄是數值（TREND：整欄空白、Month、Amount）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Amount」，以「Month」為品項名稱",
    "srcRows": 17,
    "rows": 96,
    "cols": 4,
@@ -810,9 +811,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「EXPENSES」是標籤，後面 3 欄是數值（TREND：整欄空白、Month、Amount）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Amount」，以「EXPENSES」為品項名稱",
    "srcRows": 32,
    "rows": 240,
    "cols": 4,
@@ -1518,7 +1519,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「欄 5」，以「Benefits from website」為品項名稱",
+   "reason": "偵測到金額欄「Year 2」，以「Benefits from website」為品項名稱",
    "srcRows": 43,
    "rows": 21,
    "cols": 5,
@@ -1529,7 +1530,7 @@
    "roles": {
     "title": "Benefits from website",
     "group": null,
-    "lead": "欄 5",
+    "lead": "Year 2",
     "person": null
    },
    "hidden": [],
@@ -1867,9 +1868,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Description」是標籤，後面 4 欄是數值（Category、Projected cost、Actual cost、Difference）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Projected cost」，以「Description」為品項名稱",
    "srcRows": 69,
    "rows": 59,
    "cols": 5,
@@ -1879,8 +1880,8 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": null,
-    "lead": null,
+    "group": "Category",
+    "lead": "Projected cost",
     "person": null
    },
    "hidden": [],
@@ -2171,9 +2172,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「EXPENSE」是標籤，後面 3 欄是數值（AMOUNT、WHO PAYS?、NOTES：整欄空白）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「AMOUNT」，以「EXPENSE」為品項名稱",
    "srcRows": 22,
    "rows": 10,
    "cols": 4,
@@ -2183,8 +2184,8 @@
    "notes": [],
    "roles": {
     "title": "EXPENSE",
-    "group": null,
-    "lead": null,
+    "group": "WHO PAYS?",
+    "lead": "AMOUNT",
     "person": null
    },
    "hidden": [],
@@ -2495,7 +2496,7 @@
    "of": 1,
    "shape": "pricelist",
    "label": "品項／價目表",
-   "reason": "偵測到金額欄「欄 1」，以「欄 2」為品項名稱",
+   "reason": "偵測到金額欄「Total」，以「欄 2」為品項名稱",
    "srcRows": 71,
    "rows": 66,
    "cols": 16,
@@ -2508,7 +2509,7 @@
    "roles": {
     "title": "欄 2",
     "group": "Rate",
-    "lead": "欄 1",
+    "lead": "Total",
     "person": null
    },
    "hidden": [],
@@ -2823,9 +2824,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Description」是標籤，後面 5 欄是數值（Category、Projected cost、Actual cost、Difference、Actual cost overview）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Projected cost」，以「Description」為品項名稱",
    "srcRows": 65,
    "rows": 59,
    "cols": 6,
@@ -2835,8 +2836,8 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": null,
-    "lead": null,
+    "group": "Category",
+    "lead": "Projected cost",
     "person": null
    },
    "hidden": [],
@@ -3320,8 +3321,8 @@
     "把 12 個期間欄位攤平成「Month」欄，一次看一個月"
    ],
    "roles": {
-    "title": "Month",
-    "group": "欄 1",
+    "title": "欄 1",
+    "group": "Month",
     "lead": "Amount",
     "person": null
    },
@@ -3874,8 +3875,8 @@
     "把 12 個期間欄位攤平成「Month」欄，一次看一個月"
    ],
    "roles": {
-    "title": "Description",
-    "group": "Type",
+    "title": "Type",
+    "group": "Month",
     "lead": "Amount",
     "person": null
    },
@@ -4272,7 +4273,7 @@
    "roles": {
     "title": "欄 1",
     "group": "Month",
-    "lead": null,
+    "lead": "Amount",
     "person": null
    },
    "hidden": [],
@@ -5122,9 +5123,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Expenses」是標籤，後面 3 欄是數值（Trend：整欄空白、Month、Value）",
+   "shape": "cards",
+   "label": "一般表格",
+   "reason": "沒有時間或人員這類主軸，改以「Expenses」分組後逐列呈現",
    "srcRows": 10,
    "rows": 60,
    "cols": 4,
@@ -5701,30 +5702,29 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「PRODUCT NAME」是標籤，後面 5 欄是數值（QTR 1、QTR 2、QTR 3、QTR 4、TOTAL）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Amount」，以「PRODUCT NAME」為品項名稱",
    "srcRows": 25,
-   "rows": 15,
-   "cols": 6,
-   "live": 6,
+   "rows": 22,
+   "cols": 3,
+   "live": 3,
    "headerRow": 3,
    "title": "Quarterly Sales Report · TAILSPIN TOYS",
-   "notes": [],
+   "notes": [
+    "把 4 個期間欄位攤平成「Quarter」欄，一次看一個季"
+   ],
    "roles": {
     "title": "PRODUCT NAME",
-    "group": null,
-    "lead": null,
+    "group": "Quarter",
+    "lead": "Amount",
     "person": null
    },
    "hidden": [],
    "colTypes": [
     "PRODUCT NAME:text:100%:15",
-    "QTR 1:money:100%:14",
-    "QTR 2:money:33%:5",
-    "QTR 3:money:7%:1",
-    "QTR 4:money:7%:1",
-    "TOTAL:money:100%:15"
+    "Quarter:category:100%:4",
+    "Amount:money:100%:20"
    ],
    "flags": []
   },
@@ -6958,10 +6958,37 @@
   {
    "src": "expense_d75b85c4.xlsx",
    "sheet": "expense_d75b85c4.xlsx › Expenses",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 25
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "label": "一般表格",
+   "reason": "沒有時間或人員這類主軸，改以「Category」分組後逐列呈現",
+   "srcRows": 25,
+   "rows": 21,
+   "cols": 6,
+   "live": 2,
+   "headerRow": 2,
+   "title": "EXPENSE BUDGET · 11/10/22 · Southridge Video",
+   "notes": [],
+   "roles": {
+    "title": "Expense",
+    "group": "Category",
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "Expense:text:100%:20",
+    "Category:category:100%:2",
+    "Budget:empty:0%:0",
+    "Actual:empty:0%:0",
+    "Difference ($):empty:0%:0",
+    "Difference (%):empty:0%:0"
+   ],
+   "flags": [
+    "4/6 欄有欄名但整欄沒資料，像還沒填的空白範本"
+   ]
   },
   {
    "src": "expense_d75b85c4.xlsx",
@@ -8308,9 +8335,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Description」是標籤，後面 6 欄是數值（Invoice #、Item #、Qty、Unit price、Discount、Total）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Unit price」，以「Description」為品項名稱",
    "srcRows": 40,
    "rows": 37,
    "cols": 7,
@@ -8320,8 +8347,8 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": null,
-    "lead": null,
+    "group": "Invoice #",
+    "lead": "Unit price",
     "person": null
    },
    "hidden": [],
@@ -9345,9 +9372,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Item」是標籤，後面 6 欄是數值（Category、Qty、To buy、Cost、Bought、Total cost）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Cost」，以「Item」為品項名稱",
    "srcRows": 25,
    "rows": 16,
    "cols": 7,
@@ -9357,8 +9384,8 @@
    "notes": [],
    "roles": {
     "title": "Item",
-    "group": null,
-    "lead": null,
+    "group": "Category",
+    "lead": "Cost",
     "person": null
    },
    "hidden": [],
@@ -10717,18 +10744,64 @@
   {
    "src": "student_b6316bb6.xlsx",
    "sheet": "student_b6316bb6.xlsx › Applications",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 8
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Key information」是標籤，後面 3 欄是數值（Bellows College：整欄空白、Jasper University：整欄空白、Glenwood University：整欄空白）",
+   "srcRows": 8,
+   "rows": 5,
+   "cols": 4,
+   "live": 1,
+   "headerRow": 2,
+   "title": "College Comparison Tracker · Comparisons > · Applications",
+   "notes": [],
+   "roles": {
+    "title": "Key information",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "Key information:text:100%:5",
+    "Bellows College:empty:0%:0",
+    "Jasper University:empty:0%:0",
+    "Glenwood University:empty:0%:0"
+   ],
+   "flags": []
   },
   {
    "src": "student_b6316bb6.xlsx",
    "sheet": "student_b6316bb6.xlsx › Comparisons",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 8
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「Information to Compare」是標籤，後面 3 欄是數值（Bellows College：整欄空白、Jasper University：整欄空白、Glenwood University：整欄空白）",
+   "srcRows": 8,
+   "rows": 5,
+   "cols": 4,
+   "live": 1,
+   "headerRow": 2,
+   "title": "College Comparison Tracker · < Applications · Comparisons",
+   "notes": [],
+   "roles": {
+    "title": "Information to Compare",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "Information to Compare:text:100%:5",
+    "Bellows College:empty:0%:0",
+    "Jasper University:empty:0%:0",
+    "Glenwood University:empty:0%:0"
+   ],
+   "flags": []
   },
   {
    "src": "student_beeb91bb.xlsx",
@@ -11528,10 +11601,36 @@
   {
    "src": "timeline_7ec3f486.xlsx",
    "sheet": "timeline_7ec3f486.xlsx › Social Overview",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 17
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「MONTH」是標籤，後面 6 欄是數值（TITLE：整欄空白、AUTHOR：整欄空白、DESCRIPTION：整欄空白、THEME：整欄空白、DUE DATE：整欄空白、PUBLISH DATE：整欄空白）",
+   "srcRows": 17,
+   "rows": 12,
+   "cols": 7,
+   "live": 1,
+   "headerRow": 2,
+   "title": "Social media overview",
+   "notes": [],
+   "roles": {
+    "title": "MONTH",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "MONTH:text:100%:12",
+    "TITLE:empty:0%:0",
+    "AUTHOR:empty:0%:0",
+    "DESCRIPTION:empty:0%:0",
+    "THEME:empty:0%:0",
+    "DUE DATE:empty:0%:0",
+    "PUBLISH DATE:empty:0%:0"
+   ],
+   "flags": []
   },
   {
    "src": "timeline_93059754.xlsx",
@@ -11780,10 +11879,34 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › Cheeple",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 87
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「MONTH」是標籤，後面 4 欄是數值（PUBLISH DATE：整欄空白、THEME/SUBJECT：整欄空白、TITLE：整欄空白、STATUS：整欄空白）",
+   "srcRows": 87,
+   "rows": 60,
+   "cols": 5,
+   "live": 1,
+   "headerRow": 1,
+   "title": "CHEEPLE",
+   "notes": [],
+   "roles": {
+    "title": "MONTH",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "MONTH:category:100%:16",
+    "PUBLISH DATE:empty:0%:0",
+    "THEME/SUBJECT:empty:0%:0",
+    "TITLE:empty:0%:0",
+    "STATUS:empty:0%:0"
+   ],
+   "flags": []
   },
   {
    "src": "timeline_c7bfc3e8.xlsx",
@@ -11824,18 +11947,66 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › Immepic",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 87
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「MONTH」是標籤，後面 4 欄是數值（PUBLISH DATE：整欄空白、THEME/SUBJECT：整欄空白、TITLE：整欄空白、STATUS：整欄空白）",
+   "srcRows": 87,
+   "rows": 60,
+   "cols": 5,
+   "live": 1,
+   "headerRow": 1,
+   "title": "IMMEPIC",
+   "notes": [],
+   "roles": {
+    "title": "MONTH",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "MONTH:category:100%:16",
+    "PUBLISH DATE:empty:0%:0",
+    "THEME/SUBJECT:empty:0%:0",
+    "TITLE:empty:0%:0",
+    "STATUS:empty:0%:0"
+   ],
+   "flags": []
   },
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › ConnectAbove",
-   "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
-   "srcRows": 87
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "label": "矩陣／報表",
+   "reason": "第一欄「MONTH」是標籤，後面 4 欄是數值（PUBLISH DATE：整欄空白、THEME/SUBJECT：整欄空白、TITLE：整欄空白、STATUS：整欄空白）",
+   "srcRows": 87,
+   "rows": 60,
+   "cols": 5,
+   "live": 1,
+   "headerRow": 1,
+   "title": "CONNECTABOVE",
+   "notes": [],
+   "roles": {
+    "title": "MONTH",
+    "group": null,
+    "lead": null,
+    "person": null
+   },
+   "hidden": [],
+   "colTypes": [
+    "MONTH:category:100%:16",
+    "PUBLISH DATE:empty:0%:0",
+    "THEME/SUBJECT:empty:0%:0",
+    "TITLE:empty:0%:0",
+    "STATUS:empty:0%:0"
+   ],
+   "flags": []
   },
   {
    "src": "timeline_cc131202.xlsx",
@@ -12289,9 +12460,9 @@
    "status": "clean",
    "table": 1,
    "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Day」是標籤，後面 6 欄是數值（Date、Regular hours、Overtime hours、Sick、Vacation、Total）",
+   "shape": "pricelist",
+   "label": "品項／價目表",
+   "reason": "偵測到金額欄「Total」，以「Day」為品項名稱",
    "srcRows": 33,
    "rows": 17,
    "cols": 7,
@@ -12301,8 +12472,8 @@
    "notes": [],
    "roles": {
     "title": "Day",
-    "group": null,
-    "lead": null,
+    "group": "Regular hours",
+    "lead": "Total",
     "person": null
    },
    "hidden": [],

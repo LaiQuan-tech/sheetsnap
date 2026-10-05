@@ -1,26 +1,26 @@
 {
  "files": 163,
  "sheets": 396,
- "shown": 286,
- "skipped": 110,
+ "shown": 293,
+ "skipped": 103,
  "warned": 10,
- "generic": 41,
+ "generic": 43,
  "noTitle": 9,
  "oneRow": 0,
  "withTime": 48,
- "withFilter": 27,
+ "withFilter": 29,
  "withFacts": 121,
- "withGroup": 53,
- "withRank": 117,
- "onlySearch": 48,
+ "withGroup": 55,
+ "withRank": 120,
+ "onlySearch": 51,
  "shapes": [
   [
-   "矩陣／報表",
+   "品項／價目表",
    78
   ],
   [
-   "品項／價目表",
-   68
+   "矩陣／報表",
+   73
   ],
   [
    "排程／時程表",
@@ -28,7 +28,7 @@
   ],
   [
    "一般表格",
-   41
+   43
   ],
   [
    "帳務／明細表",
@@ -55,7 +55,7 @@
    "chart",
    {
     "n": 45,
-    "ok": 37
+    "ok": 36
    }
   ],
   [
@@ -80,6 +80,13 @@
    }
   ],
   [
+   "timeline",
+   {
+    "n": 21,
+    "ok": 14
+   }
+  ],
+  [
    "schedule",
    {
     "n": 17,
@@ -87,28 +94,21 @@
    }
   ],
   [
-   "timeline",
-   {
-    "n": 17,
-    "ok": 10
-   }
-  ],
-  [
    "student",
    {
-    "n": 12,
-    "ok": 7
-   }
-  ],
-  [
-   "cashflow",
-   {
-    "n": 11,
-    "ok": 11
+    "n": 14,
+    "ok": 9
    }
   ],
   [
    "expense",
+   {
+    "n": 12,
+    "ok": 11
+   }
+  ],
+  [
+   "cashflow",
    {
     "n": 11,
     "ok": 11
@@ -136,7 +136,7 @@
    }
   ]
  ],
- "clean": 234,
+ "clean": 239,
  "rows": [
   {
    "src": "accounting_0447d9de.xlsx",
@@ -299,7 +299,7 @@
    "src": "accounting_866209af.xlsx",
    "sheet": "Cost of sales",
    "table": 1,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Month",
     "rank",
@@ -310,7 +310,7 @@
    "src": "accounting_866209af.xlsx",
    "sheet": "Expenses",
    "table": 2,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Month",
     "rank",
@@ -321,7 +321,7 @@
    "src": "accounting_866209af.xlsx",
    "sheet": "Revenues (sales)",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Month",
     "rank",
@@ -566,9 +566,10 @@
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "Monthly expenses",
    "table": 1,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Category",
+    "rank",
     "all"
    ]
   },
@@ -648,7 +649,7 @@
    "src": "budget_43520fce.xlsx",
    "sheet": "Roommate budget",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "rank",
     "facts",
@@ -798,9 +799,10 @@
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "Monthly expenses",
    "table": 3,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Category",
+    "rank",
     "all"
    ]
   },
@@ -952,7 +954,7 @@
    "table": 0,
    "shape": "品項／價目表",
    "views": [
-    "group:欄 1",
+    "group:Month",
     "rank",
     "all"
    ]
@@ -1127,7 +1129,7 @@
    "table": 2,
    "shape": "品項／價目表",
    "views": [
-    "group:Type",
+    "group:Month",
     "rank",
     "all"
    ]
@@ -1483,10 +1485,10 @@
    "src": "chart_8be76302.xlsx",
    "sheet": "summary",
    "table": 1,
-   "shape": "矩陣／報表",
+   "shape": "一般表格",
    "views": [
     "group:Month",
-    "filter:Expenses",
+    "rank",
     "all"
    ]
   },
@@ -1536,8 +1538,9 @@
    "src": "chart_94c0fff6.xlsx",
    "sheet": "Sales data",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
+    "group:Quarter",
     "rank",
     "all"
    ]
@@ -1769,6 +1772,16 @@
    "views": [
     "group:Month",
     "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "expense_d75b85c4.xlsx",
+   "sheet": "Expenses",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group:Category",
     "all"
    ]
   },
@@ -2089,7 +2102,7 @@
    "src": "planner_11bf9a22.xlsx",
    "sheet": "Invoice details",
    "table": 4,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Invoice #",
     "rank",
@@ -2378,7 +2391,7 @@
    "src": "planner_e6ae6c3f.xlsx",
    "sheet": "Shopping list",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Category",
     "rank",
@@ -2729,6 +2742,24 @@
    ]
   },
   {
+   "src": "student_b6316bb6.xlsx",
+   "sheet": "Applications",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "student_b6316bb6.xlsx",
+   "sheet": "Comparisons",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
    "src": "student_beeb91bb.xlsx",
    "sheet": "Class list",
    "table": 0,
@@ -2869,6 +2900,15 @@
    ]
   },
   {
+   "src": "timeline_7ec3f486.xlsx",
+   "sheet": "Social Overview",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
    "src": "timeline_93059754.xlsx",
    "sheet": "Calendar",
    "table": 0,
@@ -2901,11 +2941,41 @@
   },
   {
    "src": "timeline_c7bfc3e8.xlsx",
+   "sheet": "Cheeple",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "filter:MONTH",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_c7bfc3e8.xlsx",
+   "sheet": "ConnectAbove",
+   "table": 4,
+   "shape": "矩陣／報表",
+   "views": [
+    "filter:MONTH",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "Ideaphoria",
    "table": 2,
    "shape": "一般表格",
    "views": [
     "group:PUBLISH DATE",
+    "filter:MONTH",
+    "all"
+   ]
+  },
+  {
+   "src": "timeline_c7bfc3e8.xlsx",
+   "sheet": "Immepic",
+   "table": 3,
+   "shape": "矩陣／報表",
+   "views": [
     "filter:MONTH",
     "all"
    ]
@@ -3038,7 +3108,7 @@
    "src": "timesheet_ca8b2e7b.xlsx",
    "sheet": "Biweekly time sheet",
    "table": 0,
-   "shape": "矩陣／報表",
+   "shape": "品項／價目表",
    "views": [
     "group:Day",
     "rank",
