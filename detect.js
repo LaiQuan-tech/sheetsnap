@@ -133,7 +133,9 @@
       filled: n,
       total: all.length,
       fillRate: all.length ? n / all.length : 0,
-      samples: filled.slice(0, 3),
+      // 8 筆不是為了顯示（畫面只秀前 3 筆），是 codeLike／serialLike 要用：
+      // 「長度整齊」用 3 筆判根本不準，隨便三個差不多長的值就成立。
+      samples: filled.slice(0, 8),
       distinct: 0,
       avgLen: 0,
       type: 'empty',
@@ -220,7 +222,15 @@
     return hit[0] || null;
   }
 
-  // 代碼欄：長度整齊、都含數字、幾乎全相異，例如 AT-114-001
+  /* 代碼欄：長度整齊、都含數字、沒有空白、幾乎全相異，例如 AT-114-001。
+
+     「沒有空白」是後來補的。inventory_b9cbb715 › Inventory list 的
+     「DESCRIPTION」是 100% 填滿、11 列全相異的品名欄，分數 0.96，
+     照理穩拿標題；結果標題給了只有 6 種值的「LOCATION」（0.43）。
+     唯一能翻盤的就是 codeLike 的 −0.6——那一欄的前三個品名剛好長度相近
+     又帶數字，就被當成料號了。
+     代碼不會有空白，品名幾乎都有；這一條比「含數字」準得多。
+     （能查出來是因為 baseline 這一版才開始記每欄的填充率與相異值數。） */
   function codeLike(c) {
     // 只有文字欄才可能是代碼。金額欄同樣「長度整齊、含數字、幾乎全相異」，
     // 這條規則原本只用來扣標題分數（金額本來就不會當標題，誤判無害），
@@ -231,7 +241,7 @@
     var lens = s2.map(function (v) { return v.length; });
     var min = Math.min.apply(null, lens), max = Math.max.apply(null, lens);
     return min >= 5 && max - min <= 2 &&
-           s2.every(function (v) { return /\d/.test(v); }) &&
+           s2.every(function (v) { return /\d/.test(v) && !/\s/.test(v); }) &&
            c.distinct / Math.max(c.filled, 1) > 0.9;
   }
 

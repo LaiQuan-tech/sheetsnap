@@ -179,6 +179,39 @@ for (const [head, want, why] of titleCases) {
   chk('第一欄 85% 也不該動', gap.roles.title && gap.roles.title.name, '科目');
 }
 
+/* codeLike 誤判品名欄 → 標題挑錯。
+   inventory_b9cbb715 › Inventory list 的 DESCRIPTION 是 100% 填滿、
+   11 列全相異的品名欄（分數 0.96），標題卻給了只有 6 種值的 LOCATION（0.43）；
+   唯一能翻盤的是 codeLike 的 −0.6——前三個品名剛好長度相近又帶數字。
+   兩道修法：樣本從 3 筆拉到 8 筆（3 筆判「長度整齊」根本不準），
+   以及「代碼不會有空白」。 */
+{
+  const CODE = Array.from({ length: 11 }, (_, i) => 'AT-114-' + String(i + 1).padStart(3, '0'));
+  const DESC = ['Widget A-1', 'Widget A-2', 'Widget A-3', '4GB RAM module', 'Steel bracket 12',
+                'Hex bolt M8', 'Cable tie 200mm', 'Floor mat XL', 'Paint tin 5L',
+                'Drill bit 6mm', 'Safety goggles'];
+  // 沒有空白、但長度參差——靠 8 筆樣本才看得出來，3 筆看不出來
+  const DESC2 = ['Widget-A1', 'Widget-A2', 'Widget-A3', 'RAM-4GB-module-x2',
+                 'Bracket-12', 'Bolt-M8', 'CableTie-200mm-black', 'Mat-XL',
+                 'Paint-5L', 'Bit-6mm', 'Goggles'];
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 代碼 ${why.padEnd(26)} 期望=${want} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  chk('純料號仍算代碼', S.isNoise(S.detectColumn('SKU', CODE)), true);
+  chk('品名（有空白）不算代碼', S.isNoise(S.detectColumn('DESCRIPTION', DESC)), false);
+  chk('品名（無空白、長度參差）不算', S.isNoise(S.detectColumn('DESCRIPTION', DESC2)), false);
+
+  // 整表：品名欄要拿到標題，不能被料號或地點搶走
+  const BIN = ['A1','A2','B1','B2','C1','C2'], LOC = ['倉東','倉西','倉南','倉北','外倉','暫存'];
+  const grid = [['SKU', 'DESCRIPTION', 'BIN #', 'LOCATION', 'UNIT', 'QTY', 'COST']].concat(
+    Array.from({ length: 11 }, (_, i) =>
+      [CODE[i], DESC[i], BIN[i % 6], LOC[i % 6], '個', String(10 + i), String(100 + i * 7)]));
+  const a = S.analyse(grid);
+  chk('品名欄當標題', a.roles.title && a.roles.title.name, 'DESCRIPTION');
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};

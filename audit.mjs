@@ -238,6 +238,11 @@ for (const src of args) {
         notes: a.notes || [],                  // 做過哪些結構轉換
         roles: { title: roleName(a.roles.title), group: roleName(a.roles.group),
                  lead: roleName(a.roles.lead), person: roleName(a.roles.person) },
+        /* 被藏起來的欄（單號、流水號）。codeLike 同時決定「扣標題分數」與
+           「這一欄要不要藏」，但 baseline 只看得到標題——改 codeLike 時，
+           標題的變化看得見，藏不藏的變化完全看不見。既然這一版就在改它，
+           就得記下來，否則下一輪的 diff 會漏掉一半的影響。 */
+        hidden: (a.roles.hidden || []).map(c => c.name),
         /* 型別後面補上「填充率%／相異值數」。
            這一欄原本只有 name:type，結果每次想回答「為什麼這一欄沒當上標題」
            都卡住——pickTitle 看的是 fillRate 與 distinct，baseline 兩個都沒記，

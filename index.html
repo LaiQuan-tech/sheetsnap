@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v70<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v71<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=70"></script>
+<script src="detect.js?v=71"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -799,7 +799,7 @@ function paint(){
     var role = roles.assigned[c.name];
     return '<tr>' +
       '<td><div class="cname">' + esc(c.name) + '</div>' +
-        (c.samples.length ? '<div class="samp">' + esc(c.samples.join(' · ')) + '</div>' : '') + '</td>' +
+        (c.samples.length ? '<div class="samp">' + esc(c.samples.slice(0, 3).join(' · ')) + '</div>' : '') + '</td>' +
       '<td><span class="ttag' + (c.type==='text'||c.type==='empty'?' dim':'') + '">' +
         (TYPE_ZH[c.type] || c.type) + '</span></td>' +
       '<td><span class="rtag' + (role?'':' none') + '">' + (ROLE_ZH[role] || '—') + '</span></td>' +
