@@ -10,7 +10,15 @@
  * 所以真實語料那半邊貼出來也是安全的（跟 --private 同一個標準）。
  */
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+
+/* 跟 corpus-run.sh 一樣先站到這支程式所在的資料夾：
+   git show 的 HEAD:路徑 一律從 repo 根算，fs 卻是從 cwd 算，
+   兩邊不一致的話從子目錄跑就會一邊讀到、一邊讀不到。 */
+const here = path.dirname(fileURLToPath(import.meta.url));
+process.chdir(here);
 
 const FIELDS = [
   ['sheets', '工作表'], ['shown', '有渲染'], ['skipped', '略過'],
