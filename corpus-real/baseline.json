@@ -1,14 +1,14 @@
 {
  "fingerprint": {
   "engine": "04273345531a",
-  "audit": "34aeffa026e1"
+  "audit": "3d0cc5883989"
  },
  "private": true,
  "summary": {
   "inputs": 22,
   "sheets": 67,
-  "clean": 24,
-  "flagged": 29,
+  "clean": 25,
+  "flagged": 28,
   "skipped": 14,
   "broken": 0,
   "shapes": {
@@ -23,10 +23,7 @@
    "empty-declared-cols 11/18": 1,
    "rows-without-title 12/13": 1,
    "empty-declared-cols 12/18": 2,
-   "rows-without-title 12/24": 1,
    "empty-declared-cols 13/18": 1,
-   "rows-without-title 2/4": 1,
-   "rows-without-title 39/111": 1,
    "empty-declared-cols 9/10": 1,
    "group-single-value": 1,
    "few-rows-extracted 28/4": 1,
@@ -538,7 +535,7 @@
   {
    "src": "fb7afcb28",
    "sheet": "fb7afcb28 › #7",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -569,9 +566,7 @@
     "text:14%:11",
     "number:11%:5"
    ],
-   "flags": [
-    "rows-without-title 39/111"
-   ]
+   "flags": []
   },
   {
    "src": "fb7afcb28",
@@ -1773,7 +1768,6 @@
    ],
    "flags": [
     "bad-header-row 6/12",
-    "rows-without-title 2/4",
     "generic",
     "few-rows-extracted 28/4"
    ]
@@ -2061,7 +2055,6 @@
     "text:58%:14"
    ],
    "flags": [
-    "rows-without-title 12/24",
     "generic"
    ]
   }
