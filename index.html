@@ -225,6 +225,12 @@
   .about .demo{pointer-events:none;user-select:none}
   .about .demo .octl,.about .demo .g-head{position:static}
   .about .demo .out{padding:12px 14px 14px}
+  .about .demo .fakeq{flex:1 1 100%;font-size:13px;color:var(--pink);background:var(--card);
+    border:1px solid var(--prule);border-radius:4px;padding:7px 9px}
+  .about .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .about .chips span{font-size:12.5px;padding:5px 11px;border-radius:99px;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink2)}
+  .about .chips span::before{content:"\2713\00a0";color:var(--accent);font-weight:700}
   .about .linkpill{display:flex;align-items:center;gap:10px;padding:10px 12px 10px 16px;border:1px solid var(--line);
     border-radius:99px;background:var(--surface);font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink)}
   .about .linkpill b{margin-left:auto;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;font-weight:600;
@@ -456,25 +462,9 @@
     </section>
     </details>
   </div>
+  <!-- 版面順序照實測覆蓋率排：篩選、時間、搜尋，然後才講「它會先幫你整理」。
+       字典的 key 是當初加的順序（a4＝搜尋、a5＝整理），不等於這裡的先後。 -->
   <section class="about" id="about">
-    <div class="mo">
-      <h2 data-i18n="a1_h"></h2>
-      <p data-i18n="a1_p"></p>
-      <div class="demo phone" aria-hidden="true">
-        <div class="octl"><div class="orail groups">
-          <button tabindex="-1" class="now on"><span data-i18n="d_today"></span> 3</button><button tabindex="-1"><span data-i18n="d_tomorrow"></span> 2</button><button tabindex="-1"><span data-i18n="d_day2"></span> 5</button><button tabindex="-1"><span data-i18n="d_sat"></span> 1</button><button tabindex="-1"><span data-i18n="d_sun"></span> 2</button>
-        </div></div>
-        <div class="out">
-          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="3"></span></div>
-          <ol>
-            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n2"></span></div></div></li>
-            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div><div class="metas"><span class="m" data-i18n="d_n2"></span></div></div></li>
-            <li class="rec"><div class="lead">18:00</div><div><div class="titleline"><p class="t" data-i18n="d_i3"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n3"></span></div></div></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-
     <div class="mo">
       <h2 data-i18n="a2_h"></h2>
       <p data-i18n="a2_p"></p>
@@ -495,6 +485,49 @@
     </div>
 
     <div class="mo">
+      <h2 data-i18n="a1_h"></h2>
+      <p data-i18n="a1_p"></p>
+      <div class="demo phone" aria-hidden="true">
+        <div class="octl"><div class="orail groups">
+          <button tabindex="-1" class="now on"><span data-i18n="d_today"></span> 3</button><button tabindex="-1"><span data-i18n="d_tomorrow"></span> 2</button><button tabindex="-1"><span data-i18n="d_day2"></span> 5</button><button tabindex="-1"><span data-i18n="d_sat"></span> 1</button><button tabindex="-1"><span data-i18n="d_sun"></span> 2</button>
+        </div></div>
+        <div class="out">
+          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="3"></span></div>
+          <ol>
+            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n2"></span></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div><div class="metas"><span class="m" data-i18n="d_n2"></span></div></div></li>
+            <li class="rec"><div class="lead">18:00</div><div><div class="titleline"><p class="t" data-i18n="d_i3"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n3"></span></div></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <h2 data-i18n="a4_h"></h2>
+      <p data-i18n="a4_p"></p>
+      <div class="demo phone" aria-hidden="true">
+        <div class="octl">
+          <div class="fakeq" data-i18n="d_q"></div>
+          <div class="hits" data-i18n="d_hits"></div>
+        </div>
+        <div class="out">
+          <ol>
+            <li class="rec nolead"><div><div class="titleline"><p class="t" data-i18n="d_s1"></p></div><div class="metas"><span class="m" data-i18n="d_s_m1"></span></div></div></li>
+            <li class="rec nolead"><div><div class="titleline"><p class="t" data-i18n="d_s2"></p></div><div class="metas"><span class="m" data-i18n="d_s_m2"></span></div></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="mo">
+      <h2 data-i18n="a5_h"></h2>
+      <p data-i18n="a5_p"></p>
+      <div class="chips" aria-hidden="true">
+        <span data-i18n="a5_c1"></span><span data-i18n="a5_c2"></span><span data-i18n="a5_c3"></span><span data-i18n="a5_c4"></span><span data-i18n="a5_c5"></span>
+      </div>
+    </div>
+
+    <div class="mo">
       <h2 data-i18n="a3_h"></h2>
       <p data-i18n="a3_p"></p>
       <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b data-i18n="copy"></b></div>
@@ -507,18 +540,19 @@
     <details><summary data-i18n="q3"></summary><p data-i18n="f3"></p></details>
     <details><summary data-i18n="q4"></summary><p data-i18n="f4"></p></details>
     <details><summary data-i18n="q5"></summary><p data-i18n="f5"></p></details>
+    <details><summary data-i18n="q8"></summary><p data-i18n="f8"></p></details>
     <details><summary data-i18n="q6"></summary><p data-i18n="f6"></p></details>
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v88<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v89<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=88"></script>
-<script src="i18n.js?v=88"></script>
+<script src="detect.js?v=89"></script>
+<script src="i18n.js?v=89"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
