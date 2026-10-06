@@ -522,8 +522,12 @@
     <div class="mo">
       <h2 data-i18n="a5_h"></h2>
       <p data-i18n="a5_p"></p>
+      <!-- 標籤順序照真實檔案的出現率排，不是照 key 的編號：
+           標題不在第一列 37%、合併儲存格 27%、排版空白欄 12%、並排小表 6%，
+           而「月份季別橫著排」在 20 個真實檔案的 52 張表裡是 0（範本語料是 18%），
+           所以它排最後。字典的 key 不動，免得 19 個語言跟著搬。 -->
       <div class="chips" aria-hidden="true">
-        <span data-i18n="a5_c1"></span><span data-i18n="a5_c2"></span><span data-i18n="a5_c3"></span><span data-i18n="a5_c4"></span><span data-i18n="a5_c5"></span>
+        <span data-i18n="a5_c1"></span><span data-i18n="a5_c2"></span><span data-i18n="a5_c4"></span><span data-i18n="a5_c5"></span><span data-i18n="a5_c3"></span>
       </div>
     </div>
 
@@ -545,14 +549,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v91<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v92<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=91"></script>
-<script src="i18n.js?v=91"></script>
+<script src="detect.js?v=92"></script>
+<script src="i18n.js?v=92"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
