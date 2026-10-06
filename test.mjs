@@ -700,6 +700,23 @@ for (const [head, want, why] of titleCases) {
     const a2 = S.analyseSheet([h].concat(two)).tables[0];
     chk('一值的分類欄不當分組', a1.roles.group, null);
     chk('兩值的分類欄照當分組', a2.roles.group && a2.roles.group.name, 'Confirmed?');
+
+    /* 只擋一種值還不夠。擋掉之後 pick 會退到下一個 category 欄，
+       accounting_1a6c8d9a › Taxes 就從「照 Type 分類」變成
+       「照 Current period as % of sales 分類」——從大聲地爛變成安靜地爛。
+       分組軸要過 groupworthy，跟「照 X 分類」那張卡同一道門檻。
+       範本語料有 19 張的 roles.group 過不了它。 */
+    const r1 = [], r2 = [], r3 = [];
+    for (let i = 0; i < 5; i++) r1.push(['稅目 ' + (i + 1), '$' + (1000 + i * 37), (i < 4 ? (10 + i) + '%' : '13%')]);
+    for (let i = 0; i < 30; i++) r2.push(['項目 ' + (i + 1), '$' + (100 + i), i % 4 ? '' : (i % 8 ? 'A' : 'B')]);
+    for (let i = 0; i < 30; i++) r3.push(['項目 ' + (i + 1), '$' + (100 + i), ['食', '衣', '住', '行'][i % 4]]);
+    const G = (h, rows) => {
+      const t = S.analyseSheet([h].concat(rows)).tables[0];
+      return (t.roles.group && t.roles.group.name) || null;
+    };
+    chk('每組只有 1.2 列不當分組', G(['Type', 'Amount', '% of sales'], r1), null);
+    chk('填充 23% 不當分組',     G(['Item', 'Amount', 'Actual'], r2), null);
+    chk('少而滿的分類照當分組',    G(['Item', 'Amount', 'Category'], r3), 'Category');
   }
 
   /* 下拉選單那條要看「宣告了幾欄」。expense_d75b85c4 › Expenses 是一張還沒填的

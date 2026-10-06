@@ -12,3 +12,4 @@ corpus-real/files/
 corpus-real/gallery.html
 !corpus-real/scrubbed/
 !corpus-real/scrubbed/*.xlsx
+.DS_Store

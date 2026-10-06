@@ -358,6 +358,18 @@
     return hit[0] || null;
   }
 
+  /* 這一欄配不配當分組軸。判準跟 groupOptions 一樣，因為那是「照 X 分類」
+     那張卡真正用的門檻——角色跟看法用同一把尺，才不會一邊說有分組軸、
+     一邊又給不出分組卡。日期寬鬆一些（每組 1.3 列就夠，因為同一天本來就該收在一起），
+     其餘要「少而滿」：2 到 12 種、每組至少兩列、過半有值。 */
+  function groupworthy(c) {
+    if (['date', 'category', 'status', 'person'].indexOf(c.type) < 0) return false;
+    if (c.distinct < 2) return false;
+    var avg = c.filled / c.distinct;
+    if (c.type === 'date') return avg >= 1.3;
+    return c.distinct <= 12 && avg >= 2 && c.fillRate >= 0.5;
+  }
+
   /* 挑金額／聯絡欄要先問「這一欄真的有值嗎」。confidence 是在有值的格子裡算的，
      所以一欄 66 列只填 1 格的 money 照樣拿到 1.0，排在前面。
      budget_6667de34 › Channel marketing budget 的「欄 1」就是這樣當上前導的，
@@ -503,11 +515,17 @@
     var mail  = pick(contacts, 'email');
     var status = pick(cols, 'status');
     var person = pick(cols, 'person');
-    /* 分組軸至少要有兩種值。pick 只看型別與 confidence，而 detectColumn 判
-       category 的條件是「值有重複」——整欄同一個值也算重複，所以一欄全是
-       「未完成」的 Confirmed? 會被挑去當分組軸，然後 checkup 再報一次
-       「分組欄只有一種值，等於沒分組」。真實檔案的檢查清單撞到三次。 */
-    var cat   = pick(cols.filter(function (c) { return c.distinct >= 2; }), 'category');
+    /* 分組軸要過 groupworthy，跟「照 X 分類」那張卡用同一道門檻。
+       原本 shapeAs 挑 cat 完全沒有品質檢查，而 groupOptions 才有，
+       所以 roles.group 跟實際給不給分組卡從頭到尾不一致——
+       「分組欄只有一種值，等於沒分組」這個警示存在的理由就是這個落差。
+       範本語料有 19 張的 roles.group 過不了那道門檻：
+       Percentage of Total（5 種、每組 1.2 列）、Actual（填充 23%）、
+       APR（填充 16%）、Column4……全是胡說的軸。
+       只擋掉一種值還不夠：擋掉之後 pick 會退到下一個 category 欄，
+       accounting_1a6c8d9a › Taxes 因此從「照 Type 分類」變成
+       「照 Current period as % of sales 分類」——從大聲地爛變成安靜地爛。 */
+    var cat   = pick(cols.filter(groupworthy), 'category');
     var title = pickTitle(cols) || pickIndexTitle(cols);
 
     // 有日期不等於是排程。帳表的日期幾乎每列都不同，按日期分組會變成
@@ -593,9 +611,7 @@
        「分得出組」用的是跟 groupOptions 同一組數字（2～12 種、每組平均
        至少兩列、過半有值），免得兩邊各說各話。 */
     var groupable = others.filter(function (c) {
-      return (c.type === 'category' || c.type === 'status') &&
-             c.distinct >= 2 && c.distinct <= 12 &&
-             c.filled / c.distinct >= 2 && c.fillRate >= 0.5;
+      return (c.type === 'category' || c.type === 'status') && groupworthy(c);
     });
     if (first && others.length >= 2 && matrixish && !groupable.length &&
         ['text', 'category', 'person'].indexOf(first.type) >= 0) {
