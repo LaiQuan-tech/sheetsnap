@@ -511,14 +511,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v87<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v88<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=87"></script>
-<script src="i18n.js?v=68"></script>
+<script src="detect.js?v=88"></script>
+<script src="i18n.js?v=88"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -1087,18 +1087,36 @@ function renderShare(viewId){
   el.hidden = false;
 }
 
-function showPicker(){
+/* 選單一次只給三張——那是開頭的第一個決定，要小。
+   但「⇄ 換個看法」原本給的是同樣那三張，而引擎其實算了更多：
+   ALL_VIEWS 留著完整的候選集，只有分享連結 ?v= 用得到。
+   語料上 40% 的真實表、46% 的範本表正好用滿三張，那些被砍掉的候選
+   在畫面上一個入口都沒有——算出來然後丟掉。
+   所以開頭維持三張，第一次就在最後掛一條「還有 N 種看法」，
+   而「換個看法」直接給全部。PICKED 記住這一次畫的是哪一份清單，
+   否則 data-v 的索引會對到錯的那個陣列。 */
+var PICKED = [];
+function showPicker(showAll){
   buildViews();
   var el = $('pick');
+  var extra = ALL_VIEWS.filter(function(v){
+    return !VIEWS.some(function(w){ return w.id === v.id && w.col === v.col });
+  });
+  PICKED = showAll ? VIEWS.concat(extra) : VIEWS;
   el.innerHTML = '<h3>' + TX('pick_title') + '</h3>' +
     '<p class="sub">' + TX('pick_sub', { n:A.rows.length }) + '</p><ul>' +
-    VIEWS.map(function(v, i){
+    PICKED.map(function(v, i){
       return '<li><button type="button" data-v="' + i + '">' +
              '<span class="ic">' + viewIcon(v.id) + '</span>' +
              '<span class="tx"><span class="k">' + esc(v.k) + '</span>' +
              '<span class="d">' + esc(v.d) + '</span></span>' +
              '<svg class="ch" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></li>';
-    }).join('') + '</ul>';
+    }).join('') +
+    (!showAll && extra.length
+      ? '<li><button type="button" class="more" data-more="1">' +
+        '<span class="tx"><span class="k">' + TX('pick_more', { n:extra.length }) + '</span></span>' +
+        '<svg class="ch" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></li>'
+      : '') + '</ul>';
   el.hidden = false;
   $('split').hidden = true;
   scrollToTop(el);
@@ -1749,7 +1767,8 @@ $('hardReload').addEventListener('click', function(){
 
 $('pick').addEventListener('click', function(e){
   var b = e.target.closest('button'); if(!b) return;
-  applyView(VIEWS[+b.dataset.v], true);
+  if(b.dataset.more){ track('pick_more'); showPicker(true); return; }
+  applyView(PICKED[+b.dataset.v], true);
 });
 $('shortLink').addEventListener('click', function(){
   var b = $('shortLink'), note = $('shortNote');
@@ -1778,7 +1797,7 @@ $('shortLink').addEventListener('click', function(){
 });
 $('reView').addEventListener('click', function(){
   try{ localStorage.removeItem(viewKey()) }catch(e){}
-  showPicker();
+  showPicker(true);        // 第二次就把全部候選都給出來
 });
 
 $('sheets').addEventListener('click', function(e){
