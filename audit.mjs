@@ -411,7 +411,9 @@ if (JSONOUT) {
     const bad = [];
     const walk = (v, p) => {
       if (typeof v === 'string') {
-        if (p.endsWith('.src') || p.endsWith('.sheet') || p === '.fingerprint') return;
+        // fingerprint 是引擎與這支程式的 sha，開頭可能是數字，整個子樹豁免
+        if (p === '.fingerprint' || p.indexOf('.fingerprint.') === 0) return;
+        if (p.endsWith('.src') || p.endsWith('.sheet')) return;
         if (/\.colTypes\[/.test(p)) { if (!/^(empty|text|longtext|number|money|date|time|person|phone|email|url|status|category):\d+%:\d+$/.test(v)) bad.push(p + ' = ' + v); return; }
         if (/\.shape$/.test(p) || /\.status$/.test(p)) return;
         if (!SAFE.test(v)) bad.push(p + ' = ' + v);
