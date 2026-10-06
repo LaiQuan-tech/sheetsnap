@@ -511,13 +511,13 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v86<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v87<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=86"></script>
+<script src="detect.js?v=87"></script>
 <script src="i18n.js?v=68"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
@@ -1298,12 +1298,27 @@ function renderPage(shape, roles){
 
   var recs = A.rows.map(function(r){ return { r:r } });
 
-  // 沒有標題的列不是資料。帳表的模板預先編好 54 個項次，
-  // 實際只填了 33 筆，其餘 21 列只有項次和單號——那會變成 21 張空白卡片。
+  /* 沒有標題的列不是資料——但只有在「其餘也只剩鷹架」的時候。
+     原本無條件丟掉。帳表模板那個案例是對的（預先編好 54 個項次、只填了 33 筆，
+     其餘 21 列只有項次和單號，不丟就是 21 張空白卡片），
+     但真實檔案裡踩得很痛：一張 13 列的表丟掉 12 列、一張 111 列的丟掉 39 列。
+     那些列的標題欄是空的，其他欄卻有資料——一張沒有名字的卡片，
+     比一張都不給差得遠。
+     模板那個案例的特徵是「剩下的那幾格全是項次與單號」，
+     而項次單號正是 codeLike／serialLike 判出來、收在 roles.hidden 裡的那些欄。
+     所以條件改成：標題空白，而且扣掉隱藏欄之後沒有任何內容，才丟。 */
   var skippedBlank = 0;
   if(roles.title){
+    var hiddenName = {};
+    (A.roles.hidden || []).forEach(function(c){ hiddenName[c.name] = 1 });
+    var substantive = A.cols.filter(function(c){
+      return c.type !== 'empty' && !hiddenName[c.name] && c.name !== roles.title.name;
+    });
     var before = recs.length;
-    recs = recs.filter(function(rec){ return cell(rec.r, roles.title) !== '' });
+    recs = recs.filter(function(rec){
+      if(cell(rec.r, roles.title) !== '') return true;
+      return substantive.some(function(c){ return cell(rec.r, c) !== '' });
+    });
     skippedBlank = before - recs.length;
   }
   var beforeFilter = recs.length;

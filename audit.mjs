@@ -101,10 +101,17 @@ function checkup(a, srcRows) {
 
   if (!a.roles.title) flags.push('找不到主標題欄，卡片會沒有名字');
   else {
+    /* 要跟 index.html 的規則一致：標題空白、而且扣掉隱藏欄（項次、單號）之後
+       沒有任何內容，才會被整列略過。只看標題欄空不空會報一堆不存在的事——
+       真實檔案裡有一張報「12/13 列會被略過」，其實那 12 列其他欄都有資料。 */
     const i = a.header.indexOf(a.roles.title.name);
-    const blank = a.rows.filter(r => !String(r[i] ?? '').trim()).length;
+    const hidden = new Set((a.roles.hidden || []).map(c => c.name));
+    const sub = a.cols.filter((c, j) =>
+      c.type !== 'empty' && !hidden.has(c.name) && j !== i).map((c) => a.header.indexOf(c.name));
+    const blank = a.rows.filter(r =>
+      !String(r[i] ?? '').trim() && !sub.some(j => String(r[j] ?? '').trim())).length;
     if (blank > rows * 0.3)
-      flags.push(`${blank}/${rows} 列沒有標題，會被整列略過`);
+      flags.push(`${blank}/${rows} 列沒有標題也沒有內容，會被整列略過`);
   }
 
   const textish = live.filter(c => c.type === 'text').length;
@@ -344,7 +351,7 @@ if (JSONOUT) {
     // 警示
     [/標題列可能判錯/, 'bad-header-row'],
     [/找不到主標題欄/, 'no-title-col'],
-    [/列沒有標題，會被整列略過/, 'rows-without-title'],
+    [/列沒有標題也沒有內容，會被整列略過/, 'rows-without-title'],
     [/型別偵測沒抓到東西/, 'all-text'],
     [/落到一般表格/, 'generic'],
     [/只有一種值，等於沒分組/, 'group-single-value'],
