@@ -277,9 +277,11 @@ for (const src of args) {
            都卡住——pickTitle 看的是 fillRate 與 distinct，baseline 兩個都沒記，
            在沒有原始檔的機器上就只能猜。filterOptions 的 avg 門檻也一樣。
            多這兩個數字，baseline 才真的能獨立回答判定問題。 */
+        /* 平均字數是最後補上的：要回答「這張卡片在手機上多長」就缺它。
+           它是個數字，不是內容，所以私密模式照留。 */
         colTypes: a.header.map((h, j) => {
           const c = a.cols[j];
-          return `${h}:${c.type}:${Math.round(c.fillRate * 100)}%:${c.distinct}`;
+          return `${h}:${c.type}:${Math.round(c.fillRate * 100)}%:${c.distinct}:${Math.round(c.avgLen)}`;
         }),
         flags
       });
@@ -403,10 +405,15 @@ if (JSONOUT) {
     if (o.notes) o.notes = o.notes.map(kindOf);
     if (o.flags) o.flags = o.flags.map(kindOf);
     // 欄名整個丟掉，只留「型別:填充率:相異值數」
-    if (o.colTypes) o.colTypes = o.colTypes.map(t => t.split(':').slice(-3).join(':'));
-    if (o.hidden) o.hidden = o.hidden.length;        // 藏了幾欄，不是哪幾欄
-    // 角色有沒有，不是叫什麼
-    if (o.roles) o.roles = Object.fromEntries(Object.entries(o.roles).map(([k, v]) => [k, !!v]));
+    // 欄名丟掉，留「型別:填充率:相異值數:平均字數」。欄名本身可能含冒號，所以從後面數
+    if (o.colTypes) o.colTypes = o.colTypes.map(t => t.split(':').slice(-4).join(':'));
+    // 藏起來的欄也給索引：要算「卡片上會出現幾欄」就得知道是哪幾欄被藏掉
+    if (o.hidden) o.hidden = o.hidden.map(nm => r.colTypes.findIndex(t => t.indexOf(nm + ':') === 0));
+    /* 角色改成「第幾欄」而不是「有沒有」。索引是數字不是內容，
+       但它讓每個角色對得回 colTypes 的那一欄——要回答「卡片的標題會不會重複」
+       就得知道標題是哪一欄、它的相異值數是多少。只給布林值答不了。 */
+    if (o.roles) o.roles = Object.fromEntries(Object.entries(o.roles)
+      .map(([k, v]) => [k, v == null ? null : r.colTypes.findIndex(t => t.indexOf(v + ':') === 0)]));
     return o;
   };
 
@@ -421,7 +428,7 @@ if (JSONOUT) {
         // fingerprint 是引擎與這支程式的 sha，開頭可能是數字，整個子樹豁免
         if (p === '.fingerprint' || p.indexOf('.fingerprint.') === 0) return;
         if (p.endsWith('.src') || p.endsWith('.sheet')) return;
-        if (/\.colTypes\[/.test(p)) { if (!/^(empty|text|longtext|number|money|date|time|person|phone|email|url|status|category):\d+%:\d+$/.test(v)) bad.push(p + ' = ' + v); return; }
+        if (/\.colTypes\[/.test(p)) { if (!/^(empty|text|longtext|number|money|date|time|person|phone|email|url|status|category):\d+%:\d+:\d+$/.test(v)) bad.push(p + ' = ' + v); return; }
         if (/\.shape$/.test(p) || /\.status$/.test(p)) return;
         if (!SAFE.test(v)) bad.push(p + ' = ' + v);
       } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, p + '[' + i + ']'));

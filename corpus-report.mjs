@@ -83,7 +83,7 @@ if (Object.keys(flags).length) {
 console.log(C.b('\n─── 型別與角色（會渲染的表）───'));
 /* colTypes 的格式是 name:type:fill%:distinct（型別後面還有兩個欄位），
    所以不能用 /:text$/ 這種「結尾」的寫法去比型別。 */
-const typeOf = t => t.split(':')[1] ?? '';
+const typeOf = t => t.split(':').slice(-4)[0] ?? '';
 const allText = shown.filter(r => {
   const ts = (r.colTypes || []).map(typeOf).filter(ty => ty !== 'empty');
   return ts.length > 0 && ts.every(ty => ty === 'text');
