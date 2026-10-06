@@ -1,0 +1,2152 @@
+{
+ "fingerprint": {
+  "engine": "b564c9d1699b",
+  "audit": "a14675b3feab"
+ },
+ "private": true,
+ "summary": {
+  "inputs": 22,
+  "sheets": 67,
+  "clean": 12,
+  "flagged": 41,
+  "skipped": 14,
+  "broken": 0,
+  "shapes": {
+   "一般表格": 29,
+   "名冊／通訊錄": 2,
+   "品項／價目表": 5,
+   "排程／時程表": 12,
+   "狀態清單": 1,
+   "矩陣／報表": 4
+  },
+  "flags": {
+   "empty-declared-cols 11/18": 1,
+   "rows-without-title 12/13": 1,
+   "empty-declared-cols 12/18": 2,
+   "rows-without-title 12/24": 1,
+   "empty-declared-cols 13/18": 1,
+   "rows-without-title 2/4": 1,
+   "rows-without-title 39/111": 1,
+   "empty-declared-cols 9/10": 1,
+   "group-single-value": 6,
+   "few-rows-extracted 1000/10": 2,
+   "few-rows-extracted 1000/11": 1,
+   "few-rows-extracted 1000/12": 3,
+   "few-rows-extracted 1000/13": 1,
+   "few-rows-extracted 1000/14": 1,
+   "few-rows-extracted 1000/140": 1,
+   "few-rows-extracted 1000/15": 1,
+   "few-rows-extracted 1000/151": 1,
+   "few-rows-extracted 1000/17": 1,
+   "few-rows-extracted 1000/174": 1,
+   "few-rows-extracted 1000/18": 1,
+   "few-rows-extracted 1000/26": 1,
+   "few-rows-extracted 1000/31": 1,
+   "few-rows-extracted 1000/4": 1,
+   "few-rows-extracted 1000/42": 1,
+   "few-rows-extracted 1000/5": 1,
+   "few-rows-extracted 1000/6": 1,
+   "few-rows-extracted 1000/7": 1,
+   "few-rows-extracted 1000/9": 1,
+   "few-rows-extracted 1001/4": 1,
+   "few-rows-extracted 1003/21": 1,
+   "few-rows-extracted 1005/36": 1,
+   "few-rows-extracted 1008/111": 1,
+   "few-rows-extracted 1013/23": 1,
+   "few-rows-extracted 1013/36": 1,
+   "few-rows-extracted 1116/130": 5,
+   "few-rows-extracted 964/23": 1,
+   "few-rows-extracted 981/20": 1,
+   "few-rows-extracted 997/53": 1,
+   "few-rows-extracted 998/65": 1,
+   "all-text": 2,
+   "no-title-col": 2,
+   "bad-header-row": 2,
+   "generic": 24
+  }
+ },
+ "records": [
+  {
+   "src": "f8e39e951",
+   "sheet": "f8e39e951 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date",
+   "srcRows": 1000,
+   "rows": 151,
+   "cols": 14,
+   "live": 14,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:11",
+    "number:100%:150",
+    "text:100%:144",
+    "text:100%:25",
+    "person:100%:150",
+    "person:100%:141",
+    "text:100%:66",
+    "phone:88%:132",
+    "phone:58%:86",
+    "phone:98%:147",
+    "number:98%:99",
+    "text:98%:145",
+    "email:98%:147",
+    "date:100%:66"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/151"
+   ]
+  },
+  {
+   "src": "f8e39e951",
+   "sheet": "f8e39e951 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date",
+   "srcRows": 1000,
+   "rows": 174,
+   "cols": 12,
+   "live": 12,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:143",
+    "category:71%:5",
+    "text:100%:66",
+    "person:100%:150",
+    "person:100%:144",
+    "phone:89%:135",
+    "phone:63%:86",
+    "phone:98%:149",
+    "number:98%:102",
+    "text:98%:146",
+    "email:98%:147",
+    "date:100%:65"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/174"
+   ]
+  },
+  {
+   "src": "f39ecdb64",
+   "sheet": "f39ecdb64 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-time-only",
+   "srcRows": 1000,
+   "rows": 17,
+   "cols": 3,
+   "live": 3,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "time:100%:17",
+    "longtext:100%:10",
+    "longtext:59%:8"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/17"
+   ]
+  },
+  {
+   "src": "f39ecdb64",
+   "sheet": "f39ecdb64 › #1",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 0
+  },
+  {
+   "src": "f16b06f78",
+   "sheet": "f16b06f78 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-time-only",
+   "srcRows": 998,
+   "rows": 65,
+   "cols": 10,
+   "live": 10,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "time:75%:46",
+    "category:100%:14",
+    "text:77%:48",
+    "text:37%:24",
+    "longtext:88%:55",
+    "longtext:92%:44",
+    "longtext:82%:38",
+    "text:60%:22",
+    "longtext:6%:3",
+    "text:3%:2"
+   ],
+   "flags": [
+    "few-rows-extracted 998/65"
+   ]
+  },
+  {
+   "src": "f16b06f78",
+   "sheet": "f16b06f78 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-time-only",
+   "srcRows": 17,
+   "rows": 15,
+   "cols": 4,
+   "live": 4,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:15",
+    "time:100%:3",
+    "text:53%:8",
+    "time:47%:3"
+   ],
+   "flags": [
+    "bad-header-row 2/4"
+   ]
+  },
+  {
+   "src": "f16b06f78",
+   "sheet": "f16b06f78 › #2",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 0
+  },
+  {
+   "src": "f16b06f78",
+   "sheet": "f16b06f78 › #3",
+   "status": "not-shown",
+   "show": "weak",
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "f825e57a3",
+   "sheet": "f825e57a3 › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "reason": "matrix-first-col",
+   "srcRows": 8,
+   "rows": 7,
+   "cols": 11,
+   "live": 11,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:7",
+    "number:100%:3",
+    "number:100%:3",
+    "number:100%:3",
+    "number:100%:4",
+    "number:100%:4",
+    "number:100%:3",
+    "number:100%:3",
+    "number:100%:4",
+    "number:100%:5",
+    "text:29%:2"
+   ],
+   "flags": []
+  },
+  {
+   "src": "fc1997c96",
+   "sheet": "fc1997c96 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 981,
+   "rows": 20,
+   "cols": 4,
+   "live": 3,
+   "headerRow": 2,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "number:100%:20",
+    "text:100%:20",
+    "person:100%:20",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "few-rows-extracted 981/20"
+   ]
+  },
+  {
+   "src": "fea7f05fa",
+   "sheet": "fea7f05fa › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1005,
+   "rows": 36,
+   "cols": 8,
+   "live": 8,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:36",
+    "text:100%:27",
+    "text:100%:27",
+    "text:100%:28",
+    "text:100%:28",
+    "text:100%:29",
+    "text:100%:29",
+    "category:17%:1"
+   ],
+   "flags": [
+    "generic",
+    "group-single-value",
+    "few-rows-extracted 1005/36"
+   ]
+  },
+  {
+   "src": "fa50e212d",
+   "sheet": "fa50e212d › #0",
+   "status": "not-shown",
+   "show": "weak",
+   "why": "engine-threw",
+   "srcRows": 1001
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date",
+   "srcRows": 167,
+   "rows": 166,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "date:98%:24",
+    "time:48%:35",
+    "longtext:100%:157",
+    "person:98%:79",
+    "longtext:38%:61"
+   ],
+   "flags": []
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 2,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1013,
+   "rows": 23,
+   "cols": 11,
+   "live": 11,
+   "headerRow": 1,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:12",
+    "category:74%:9",
+    "longtext:57%:12",
+    "text:30%:7",
+    "longtext:26%:6",
+    "text:35%:8",
+    "text:17%:4",
+    "longtext:22%:5",
+    "longtext:13%:3",
+    "text:22%:5",
+    "text:13%:3"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1013/23"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #1",
+   "status": "flagged",
+   "table": 2,
+   "of": 2,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1013,
+   "rows": 36,
+   "cols": 4,
+   "live": 4,
+   "headerRow": 1,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "person:92%:33",
+    "longtext:64%:13",
+    "text:100%:36",
+    "longtext:100%:27"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1013/36"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #2",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #3",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 0
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #4",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #5",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 946,
+   "rows": 205,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:19",
+    "text:100%:146",
+    "number:98%:20",
+    "category:98%:20",
+    "text:8%:14"
+   ],
+   "flags": [
+    "generic"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #6",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "board",
+   "reason": "board-status",
+   "srcRows": 1040,
+   "rows": 303,
+   "cols": 8,
+   "live": 8,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:28",
+    "text:100%:239",
+    "number:99%:38",
+    "text:98%:32",
+    "person:17%:34",
+    "status:100%:2",
+    "category:100%:2",
+    "text:15%:24"
+   ],
+   "flags": []
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #7",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "pricelist",
+   "reason": "pricelist-money",
+   "srcRows": 1008,
+   "rows": 111,
+   "cols": 11,
+   "live": 11,
+   "headerRow": 3,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:65%:38",
+    "text:92%:34",
+    "text:88%:32",
+    "category:87%:20",
+    "category:82%:8",
+    "money:46%:35",
+    "text:61%:34",
+    "category:33%:14",
+    "category:30%:7",
+    "text:14%:11",
+    "number:11%:5"
+   ],
+   "flags": [
+    "rows-without-title 39/111",
+    "few-rows-extracted 1008/111"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #8",
+   "status": "flagged",
+   "table": 1,
+   "of": 3,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 15,
+   "cols": 6,
+   "live": 6,
+   "headerRow": 1,
+   "notes": [
+    "drop-empty-cols 2",
+    "split-dup-headers"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:15",
+    "number:100%:5",
+    "category:100%:5",
+    "text:33%:5",
+    "number:33%:3",
+    "category:33%:1"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/15"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #8",
+   "status": "flagged",
+   "table": 2,
+   "of": 3,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 13,
+   "cols": 6,
+   "live": 6,
+   "headerRow": 1,
+   "notes": [
+    "drop-empty-cols 2",
+    "split-dup-headers"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "longtext:8%:1",
+    "number:8%:1",
+    "text:8%:1",
+    "text:100%:13",
+    "number:100%:6",
+    "category:100%:6"
+   ],
+   "flags": [
+    "rows-without-title 12/13",
+    "generic",
+    "group-single-value",
+    "few-rows-extracted 1000/13"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #8",
+   "status": "flagged",
+   "table": 3,
+   "of": 3,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 7,
+   "cols": 4,
+   "live": 4,
+   "headerRow": 1,
+   "notes": [
+    "drop-empty-cols 2",
+    "split-dup-headers"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:4",
+    "category:71%:4",
+    "category:71%:2",
+    "text:14%:1"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/7"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #9",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "pricelist",
+   "reason": "pricelist-money",
+   "srcRows": 1003,
+   "rows": 21,
+   "cols": 15,
+   "live": 15,
+   "headerRow": 3,
+   "notes": [
+    "drop-empty-cols 2"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:90%:19",
+    "number:90%:7",
+    "category:90%:6",
+    "money:90%:13",
+    "money:95%:15",
+    "category:90%:3",
+    "category:90%:3",
+    "category:90%:6",
+    "text:86%:18",
+    "number:86%:6",
+    "category:86%:4",
+    "money:86%:13",
+    "money:90%:15",
+    "category:71%:2",
+    "text:5%:1"
+   ],
+   "flags": [
+    "few-rows-extracted 1003/21"
+   ]
+  },
+  {
+   "src": "f369ca7bc",
+   "sheet": "f369ca7bc › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date",
+   "srcRows": 38,
+   "rows": 36,
+   "cols": 3,
+   "live": 3,
+   "headerRow": 1,
+   "notes": [
+    "collapse-periods 13",
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:5",
+    "text:100%:36",
+    "date:78%:19"
+   ],
+   "flags": []
+  },
+  {
+   "src": "f369ca7bc",
+   "sheet": "f369ca7bc › #1",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date",
+   "srcRows": 32,
+   "rows": 30,
+   "cols": 22,
+   "live": 20,
+   "headerRow": 1,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "number:100%:30",
+    "date:80%:7",
+    "person:77%:9",
+    "category:77%:9",
+    "category:77%:3",
+    "empty:0%:0",
+    "url:73%:22",
+    "text:57%:12",
+    "longtext:57%:17",
+    "number:80%:22",
+    "category:70%:9",
+    "money:80%:21",
+    "category:70%:8",
+    "text:73%:22",
+    "phone:50%:15",
+    "longtext:53%:16",
+    "text:7%:2",
+    "category:47%:2",
+    "category:50%:1",
+    "category:50%:1",
+    "empty:0%:0",
+    "text:3%:1"
+   ],
+   "flags": []
+  },
+  {
+   "src": "f369ca7bc",
+   "sheet": "f369ca7bc › #2",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "reason": "matrix-first-col",
+   "srcRows": 18,
+   "rows": 13,
+   "cols": 4,
+   "live": 4,
+   "headerRow": 1,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:5",
+    "money:92%:12",
+    "number:92%:3",
+    "money:85%:2"
+   ],
+   "flags": []
+  },
+  {
+   "src": "f858d4015",
+   "sheet": "f858d4015 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 211,
+   "rows": 183,
+   "cols": 10,
+   "live": 9,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:11%:21",
+    "text:100%:182",
+    "category:2%:3",
+    "text:8%:14",
+    "text:100%:24",
+    "empty:0%:0",
+    "category:19%:8",
+    "category:37%:11",
+    "category:76%:15",
+    "category:49%:6"
+   ],
+   "flags": [
+    "generic"
+   ]
+  },
+  {
+   "src": "f858d4015",
+   "sheet": "f858d4015 › #1",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 1
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1116,
+   "rows": 130,
+   "cols": 18,
+   "live": 6,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "number:100%:130",
+    "text:22%:28",
+    "number:19%:4",
+    "person:5%:6",
+    "text:2%:2",
+    "empty:0%:0",
+    "email:1%:1",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1116/130",
+    "empty-declared-cols 12/18"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1116,
+   "rows": 130,
+   "cols": 18,
+   "live": 9,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "number:100%:130",
+    "text:99%:129",
+    "category:2%:1",
+    "person:21%:24",
+    "phone:6%:8",
+    "phone:7%:9",
+    "email:2%:3",
+    "text:5%:7",
+    "url:13%:17",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "group-single-value",
+    "few-rows-extracted 1116/130"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #2",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1116,
+   "rows": 130,
+   "cols": 18,
+   "live": 7,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": false,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "number:100%:130",
+    "category:100%:20",
+    "number:12%:2",
+    "person:8%:10",
+    "category:3%:3",
+    "text:1%:1",
+    "email:4%:5",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "no-title-col",
+    "generic",
+    "few-rows-extracted 1116/130",
+    "empty-declared-cols 11/18"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #3",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1116,
+   "rows": 130,
+   "cols": 18,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "number:100%:130",
+    "text:45%:58",
+    "number:35%:6",
+    "person:18%:24",
+    "text:2%:3",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1116/130",
+    "empty-declared-cols 13/18"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #4",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1116,
+   "rows": 130,
+   "cols": 18,
+   "live": 6,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "number:100%:130",
+    "text:47%:61",
+    "number:38%:2",
+    "number:1%:1",
+    "phone:24%:31",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "url:1%:1",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1116/130",
+    "empty-declared-cols 12/18"
+   ]
+  },
+  {
+   "src": "f5440f1ae",
+   "sheet": "f5440f1ae › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date-spread",
+   "srcRows": 198,
+   "rows": 103,
+   "cols": 29,
+   "live": 29,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:93%:92",
+    "person:94%:97",
+    "person:96%:98",
+    "number:40%:34",
+    "category:40%:7",
+    "date:96%:98",
+    "category:91%:2",
+    "text:90%:93",
+    "text:88%:91",
+    "text:49%:22",
+    "category:86%:2",
+    "phone:88%:91",
+    "email:88%:91",
+    "email:12%:12",
+    "text:88%:91",
+    "number:51%:23",
+    "text:7%:7",
+    "text:1%:1",
+    "text:88%:55",
+    "text:78%:50",
+    "person:2%:2",
+    "date:2%:2",
+    "person:5%:5",
+    "text:87%:90",
+    "text:85%:77",
+    "longtext:82%:84",
+    "longtext:2%:2",
+    "text:72%:71",
+    "number:83%:1"
+   ],
+   "flags": []
+  },
+  {
+   "src": "fe3f6e661",
+   "sheet": "fe3f6e661 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "pricelist",
+   "reason": "pricelist-money",
+   "srcRows": 997,
+   "rows": 53,
+   "cols": 6,
+   "live": 6,
+   "headerRow": 2,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:43%:23",
+    "money:100%:8",
+    "text:19%:10",
+    "text:94%:50",
+    "money:57%:23",
+    "text:57%:28"
+   ],
+   "flags": [
+    "few-rows-extracted 997/53"
+   ]
+  },
+  {
+   "src": "f688e9b6b",
+   "sheet": "f688e9b6b › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "directory",
+   "reason": "directory-contact",
+   "srcRows": 118,
+   "rows": 113,
+   "cols": 19,
+   "live": 19,
+   "headerRow": 4,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:102",
+    "number:100%:1",
+    "text:100%:113",
+    "text:99%:54",
+    "text:75%:81",
+    "phone:100%:112",
+    "email:99%:110",
+    "category:100%:10",
+    "category:27%:9",
+    "category:40%:15",
+    "category:25%:9",
+    "category:31%:9",
+    "text:48%:14",
+    "category:25%:10",
+    "category:23%:9",
+    "category:27%:12",
+    "category:27%:10",
+    "category:24%:10",
+    "text:100%:3"
+   ],
+   "flags": []
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-time-only",
+   "srcRows": 1000,
+   "rows": 31,
+   "cols": 7,
+   "live": 7,
+   "headerRow": 3,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "time:100%:30",
+    "number:100%:10",
+    "text:100%:23",
+    "text:100%:31",
+    "longtext:100%:23",
+    "person:100%:26",
+    "person:100%:21"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/31"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1000,
+   "rows": 26,
+   "cols": 4,
+   "live": 4,
+   "headerRow": 1,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:20",
+    "text:100%:17",
+    "text:46%:12",
+    "person:46%:12"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/26"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #2",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 14,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 1,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "number:100%:14",
+    "category:100%:3",
+    "text:100%:13",
+    "person:100%:14",
+    "text:79%:9"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/14"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #3",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "directory",
+   "reason": "directory-contact",
+   "srcRows": 1000,
+   "rows": 140,
+   "cols": 12,
+   "live": 12,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:140",
+    "person:98%:125",
+    "phone:96%:120",
+    "email:96%:122",
+    "text:92%:109",
+    "text:91%:55",
+    "category:96%:7",
+    "text:61%:52",
+    "text:77%:34",
+    "category:99%:4",
+    "category:99%:2",
+    "longtext:98%:1"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/140"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #4",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1000,
+   "rows": 6,
+   "cols": 3,
+   "live": 3,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:6",
+    "text:67%:4",
+    "text:67%:4"
+   ],
+   "flags": [
+    "all-text",
+    "few-rows-extracted 1000/6"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #5",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 10,
+   "cols": 3,
+   "live": 3,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "number:100%:10",
+    "text:100%:10",
+    "category:100%:2"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/10"
+   ]
+  },
+  {
+   "src": "fcb8d7547",
+   "sheet": "fcb8d7547 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 964,
+   "rows": 23,
+   "cols": 10,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "category:100%:5",
+    "text:70%:14",
+    "text:87%:19",
+    "text:22%:5",
+    "text:17%:4",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 964/23"
+   ]
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 10,
+   "cols": 7,
+   "live": 7,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "category:100%:3",
+    "category:100%:7",
+    "text:100%:10",
+    "category:100%:6",
+    "text:100%:10",
+    "text:100%:9",
+    "text:100%:10"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/10"
+   ]
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-bare",
+   "srcRows": 1000,
+   "rows": 18,
+   "cols": 10,
+   "live": 1,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": false,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "empty:0%:0",
+    "money:100%:1"
+   ],
+   "flags": [
+    "no-title-col",
+    "few-rows-extracted 1000/18",
+    "empty-declared-cols 9/10"
+   ]
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #2",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #3",
+   "status": "not-shown",
+   "show": "weak",
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #4",
+   "status": "not-shown",
+   "show": "weak",
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #5",
+   "status": "not-shown",
+   "show": "weak",
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #6",
+   "status": "not-shown",
+   "show": "weak",
+   "why": "engine-threw",
+   "srcRows": 1000
+  },
+  {
+   "src": "ffe621c3e",
+   "sheet": "ffe621c3e › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date-spread",
+   "srcRows": 263,
+   "rows": 262,
+   "cols": 4,
+   "live": 4,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "date:100%:248",
+    "text:100%:178",
+    "url:100%:257",
+    "text:100%:51"
+   ],
+   "flags": []
+  },
+  {
+   "src": "f455be919",
+   "sheet": "f455be919 › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "reason": "matrix-first-col",
+   "srcRows": 36,
+   "rows": 11,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:11",
+    "money:64%:3",
+    "money:64%:3",
+    "number:55%:4",
+    "money:73%:8"
+   ],
+   "flags": []
+  },
+  {
+   "src": "f455be919",
+   "sheet": "f455be919 › #1",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "matrix",
+   "reason": "matrix-first-col",
+   "srcRows": 36,
+   "rows": 11,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:11",
+    "money:64%:3",
+    "money:64%:3",
+    "number:55%:4",
+    "money:73%:8"
+   ],
+   "flags": []
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1000,
+   "rows": 12,
+   "cols": 3,
+   "live": 3,
+   "headerRow": 8,
+   "notes": [
+    "drop-empty-cols 2"
+   ],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:12",
+    "text:33%:4",
+    "text:8%:1"
+   ],
+   "flags": [
+    "all-text",
+    "few-rows-extracted 1000/12"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #1",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "pricelist",
+   "reason": "pricelist-money",
+   "srcRows": 1000,
+   "rows": 12,
+   "cols": 5,
+   "live": 4,
+   "headerRow": 0,
+   "notes": [
+    "filldown",
+    "drop-empty-cols 1"
+   ],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:3",
+    "longtext:92%:11",
+    "money:100%:12",
+    "longtext:100%:12",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "few-rows-extracted 1000/12"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #2",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 4,
+   "cols": 12,
+   "live": 12,
+   "headerRow": 6,
+   "notes": [
+    "drop-empty-cols 9"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 1,
+   "colTypes": [
+    "text:25%:1",
+    "text:75%:3",
+    "number:25%:1",
+    "text:50%:2",
+    "number:25%:1",
+    "number:25%:1",
+    "text:50%:2",
+    "category:75%:2",
+    "category:75%:2",
+    "category:75%:2",
+    "category:75%:2",
+    "text:50%:2"
+   ],
+   "flags": [
+    "bad-header-row 6/12",
+    "rows-without-title 2/4",
+    "generic",
+    "few-rows-extracted 1000/4"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #3",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1000,
+   "rows": 9,
+   "cols": 5,
+   "live": 4,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:11%:1",
+    "longtext:100%:9",
+    "longtext:100%:9",
+    "longtext:100%:9",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/9"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #4",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-title",
+   "srcRows": 1000,
+   "rows": 12,
+   "cols": 5,
+   "live": 4,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": false,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:8%:1",
+    "longtext:100%:12",
+    "longtext:100%:12",
+    "longtext:100%:12",
+    "empty:0%:0"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1000/12"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #5",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 42,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:5",
+    "longtext:64%:27",
+    "longtext:88%:37",
+    "longtext:79%:26",
+    "category:88%:1"
+   ],
+   "flags": [
+    "generic",
+    "group-single-value",
+    "few-rows-extracted 1000/42"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #6",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "pricelist",
+   "reason": "pricelist-money",
+   "srcRows": 1000,
+   "rows": 11,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": true,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "money:100%:4",
+    "money:100%:11",
+    "longtext:100%:11",
+    "longtext:100%:11",
+    "category:100%:1"
+   ],
+   "flags": [
+    "group-single-value",
+    "few-rows-extracted 1000/11"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #7",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1000,
+   "rows": 5,
+   "cols": 5,
+   "live": 5,
+   "headerRow": 0,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:20%:1",
+    "longtext:100%:5",
+    "longtext:100%:5",
+    "longtext:100%:5",
+    "category:100%:1"
+   ],
+   "flags": [
+    "generic",
+    "group-single-value",
+    "few-rows-extracted 1000/5"
+   ]
+  },
+  {
+   "src": "fce116aed",
+   "sheet": "fce116aed › #0",
+   "status": "clean",
+   "table": 1,
+   "of": 1,
+   "shape": "schedule",
+   "reason": "schedule-date",
+   "srcRows": 1077,
+   "rows": 464,
+   "cols": 17,
+   "live": 17,
+   "headerRow": 5,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "number:89%:334",
+    "category:100%:3",
+    "text:50%:229",
+    "date:59%:143",
+    "date:50%:133",
+    "date:47%:131",
+    "date:45%:119",
+    "date:44%:112",
+    "date:41%:100",
+    "date:38%:84",
+    "date:36%:79",
+    "text:34%:64",
+    "text:32%:54",
+    "text:50%:133",
+    "text:44%:101",
+    "text:42%:45",
+    "category:38%:9"
+   ],
+   "flags": []
+  },
+  {
+   "src": "fce116aed",
+   "sheet": "fce116aed › #1",
+   "status": "not-shown",
+   "show": false,
+   "why": "engine-threw",
+   "srcRows": 0
+  },
+  {
+   "src": "fce116aed",
+   "sheet": "fce116aed › #2",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 1001,
+   "rows": 4,
+   "cols": 10,
+   "live": 10,
+   "headerRow": 1,
+   "notes": [],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:100%:4",
+    "text:25%:1",
+    "text:25%:1",
+    "text:25%:1",
+    "text:25%:1",
+    "text:25%:1",
+    "category:75%:2",
+    "text:100%:4",
+    "text:100%:4",
+    "text:100%:4"
+   ],
+   "flags": [
+    "generic",
+    "few-rows-extracted 1001/4"
+   ]
+  },
+  {
+   "src": "f9e086a29",
+   "sheet": "f9e086a29 › #0",
+   "status": "flagged",
+   "table": 1,
+   "of": 1,
+   "shape": "cards",
+   "reason": "cards-group",
+   "srcRows": 25,
+   "rows": 24,
+   "cols": 6,
+   "live": 6,
+   "headerRow": 0,
+   "notes": [
+    "filldown"
+   ],
+   "roles": {
+    "title": true,
+    "group": true,
+    "lead": false,
+    "person": false
+   },
+   "hidden": 0,
+   "colTypes": [
+    "text:4%:1",
+    "category:100%:3",
+    "text:50%:12",
+    "text:29%:7",
+    "text:17%:4",
+    "text:58%:14"
+   ],
+   "flags": [
+    "rows-without-title 12/24",
+    "generic"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,550 @@
+{
+ "files": 22,
+ "sheets": 64,
+ "shown": 50,
+ "skipped": 14,
+ "warned": 8,
+ "generic": 26,
+ "noTitle": 2,
+ "oneRow": 0,
+ "withTime": 10,
+ "withFilter": 15,
+ "withFacts": 2,
+ "withGroup": 11,
+ "withRank": 14,
+ "onlySearch": 16,
+ "shapes": [
+  [
+   "一般表格",
+   26
+  ],
+  [
+   "排程／時程表",
+   12
+  ],
+  [
+   "品項／價目表",
+   5
+  ],
+  [
+   "矩陣／報表",
+   4
+  ],
+  [
+   "名冊／通訊錄",
+   2
+  ],
+  [
+   "狀態清單",
+   1
+  ]
+ ],
+ "clean": 18,
+ "rows": [
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f0b901b26",
+   "sheet": "f0b901b26 › #1",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "f16b06f78",
+   "sheet": "f16b06f78 › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f16b06f78",
+   "sheet": "f16b06f78 › #1",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "f369ca7bc",
+   "sheet": "f369ca7bc › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f369ca7bc",
+   "sheet": "f369ca7bc › #1",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f369ca7bc",
+   "sheet": "f369ca7bc › #2",
+   "table": 2,
+   "shape": "矩陣／報表",
+   "views": [
+    "group",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "f39ecdb64",
+   "sheet": "f39ecdb64 › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "all"
+   ]
+  },
+  {
+   "src": "f455be919",
+   "sheet": "f455be919 › #0",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f455be919",
+   "sheet": "f455be919 › #1",
+   "table": 1,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f5440f1ae",
+   "sheet": "f5440f1ae › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "group",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f688e9b6b",
+   "sheet": "f688e9b6b › #0",
+   "table": 0,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "group",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "f825e57a3",
+   "sheet": "f825e57a3 › #0",
+   "table": 0,
+   "shape": "矩陣／報表",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f858d4015",
+   "sheet": "f858d4015 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "filter",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f8e39e951",
+   "sheet": "f8e39e951 › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f8e39e951",
+   "sheet": "f8e39e951 › #1",
+   "table": 1,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #1",
+   "table": 1,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #2",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "facts",
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #3",
+   "table": 3,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #4",
+   "table": 4,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #5",
+   "table": 5,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #6",
+   "table": 6,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "f94586ce6",
+   "sheet": "f94586ce6 › #7",
+   "table": 7,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "f9e086a29",
+   "sheet": "f9e086a29 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group",
+    "all"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #1",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "filter",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #2",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "group",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #3",
+   "table": 3,
+   "shape": "名冊／通訊錄",
+   "views": [
+    "group",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #4",
+   "table": 4,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "fadfe5147",
+   "sheet": "fadfe5147 › #5",
+   "table": 5,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #1",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #5",
+   "table": 5,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #6",
+   "table": 6,
+   "shape": "狀態清單",
+   "views": [
+    "group",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #7",
+   "table": 7,
+   "shape": "品項／價目表",
+   "views": [
+    "group",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #8",
+   "table": 8,
+   "shape": "一般表格",
+   "views": [
+    "group",
+    "all"
+   ]
+  },
+  {
+   "src": "fb7afcb28",
+   "sheet": "fb7afcb28 › #9",
+   "table": 9,
+   "shape": "品項／價目表",
+   "views": [
+    "group",
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fc1997c96",
+   "sheet": "fc1997c96 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fcb8d7547",
+   "sheet": "fcb8d7547 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "group",
+    "all"
+   ]
+  },
+  {
+   "src": "fce116aed",
+   "sheet": "fce116aed › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "time",
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "fce116aed",
+   "sheet": "fce116aed › #2",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "fe3f6e661",
+   "sheet": "fe3f6e661 › #0",
+   "table": 0,
+   "shape": "品項／價目表",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "fea7f05fa",
+   "sheet": "fea7f05fa › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #0",
+   "table": 0,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #1",
+   "table": 1,
+   "shape": "一般表格",
+   "views": [
+    "rank",
+    "all"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #2",
+   "table": 2,
+   "shape": "一般表格",
+   "views": [
+    "filter",
+    "all"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #3",
+   "table": 3,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "feb897300",
+   "sheet": "feb897300 › #4",
+   "table": 4,
+   "shape": "一般表格",
+   "views": [
+    "all"
+   ]
+  },
+  {
+   "src": "ffe621c3e",
+   "sheet": "ffe621c3e › #0",
+   "table": 0,
+   "shape": "排程／時程表",
+   "views": [
+    "filter",
+    "all"
+   ]
+  }
+ ],
+ "private": true
+}
