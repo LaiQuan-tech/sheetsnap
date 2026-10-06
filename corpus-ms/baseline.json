@@ -1,13 +1,13 @@
 {
  "fingerprint": {
-  "engine": "b564c9d1699b",
-  "audit": "bcac13e915df"
+  "engine": "cd19bd4a088e",
+  "audit": "0bce5db0b305"
  },
  "summary": {
   "inputs": 163,
   "sheets": 436,
-  "clean": 227,
-  "flagged": 99,
+  "clean": 271,
+  "flagged": 55,
   "skipped": 110,
   "broken": 0,
   "shapes": {
@@ -30,71 +30,20 @@
    "6/18 列沒有標題，會被整列略過": 1,
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "9/26 列沒有標題，會被整列略過": 1,
-   "分組欄「DATE」只有一種值，等於沒分組": 1,
-   "分組欄「DONE」只有一種值，等於沒分組": 3,
-   "分組欄「DUE DATE」只有一種值，等於沒分組": 1,
-   "分組欄「Discontinued?」只有一種值，等於沒分組": 1,
-   "分組欄「ESTIMATED」只有一種值，等於沒分組": 1,
-   "分組欄「INVITED」只有一種值，等於沒分組": 1,
-   "分組欄「ORDER #」只有一種值，等於沒分組": 2,
-   "分組欄「PRESENTER」只有一種值，等於沒分組": 1,
-   "分組欄「Phone」只有一種值，等於沒分組": 1,
-   "分組欄「Reading」只有一種值，等於沒分組": 3,
-   "分組欄「TOTAL」只有一種值，等於沒分組": 1,
-   "分組欄「Type」只有一種值，等於沒分組": 1,
-   "分組欄「Week 1」只有一種值，等於沒分組": 1,
-   "分組欄「☐」只有一種值，等於沒分組": 1,
-   "原始工作表有 112 列，只抽出 14 列，結構可能判壞": 1,
-   "原始工作表有 12 列，只抽出 2 列，結構可能判壞": 2,
-   "原始工作表有 1265 列，只抽出 3 列，結構可能判壞": 1,
-   "原始工作表有 128 列，只抽出 3 列，結構可能判壞": 1,
-   "原始工作表有 131 列，只抽出 13 列，結構可能判壞": 1,
-   "原始工作表有 16 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 16 列，只抽出 3 列，結構可能判壞": 1,
-   "原始工作表有 169 列，只抽出 21 列，結構可能判壞": 1,
-   "原始工作表有 17 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 174 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 20 列，只抽出 3 列，結構可能判壞": 1,
-   "原始工作表有 21 列，只抽出 2 列，結構可能判壞": 3,
-   "原始工作表有 21 列，只抽出 4 列，結構可能判壞": 2,
-   "原始工作表有 22 列，只抽出 4 列，結構可能判壞": 1,
+   "原始工作表有 11 列，只抽出 2 列，結構可能判壞": 1,
+   "原始工作表有 12 列，只抽出 1 列，結構可能判壞": 1,
+   "原始工作表有 13 列，只抽出 2 列，結構可能判壞": 1,
+   "原始工作表有 15 列，只抽出 1 列，結構可能判壞": 1,
+   "原始工作表有 19 列，只抽出 1 列，結構可能判壞": 2,
    "原始工作表有 23 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 25 列，只抽出 3 列，結構可能判壞": 1,
-   "原始工作表有 254 列，只抽出 3 列，結構可能判壞": 2,
-   "原始工作表有 260 列，只抽出 12 列，結構可能判壞": 1,
-   "原始工作表有 28 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 29 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 30 列，只抽出 1 列，結構可能判壞": 1,
-   "原始工作表有 30 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 33 列，只抽出 6 列，結構可能判壞": 1,
-   "原始工作表有 330 列，只抽出 16 列，結構可能判壞": 1,
-   "原始工作表有 34 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 349 列，只抽出 1 列，結構可能判壞": 1,
-   "原始工作表有 349 列，只抽出 12 列，結構可能判壞": 2,
-   "原始工作表有 37 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 38 列，只抽出 1 列，結構可能判壞": 3,
-   "原始工作表有 38 列，只抽出 4 列，結構可能判壞": 3,
-   "原始工作表有 40 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 40 列，只抽出 6 列，結構可能判壞": 1,
-   "原始工作表有 42 列，只抽出 5 列，結構可能判壞": 1,
-   "原始工作表有 42 列，只抽出 6 列，結構可能判壞": 1,
-   "原始工作表有 45 列，只抽出 1 列，結構可能判壞": 2,
-   "原始工作表有 45 列，只抽出 4 列，結構可能判壞": 1,
-   "原始工作表有 475 列，只抽出 5 列，結構可能判壞": 1,
-   "原始工作表有 50 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 50 列，只抽出 5 列，結構可能判壞": 1,
-   "原始工作表有 50 列，只抽出 8 列，結構可能判壞": 1,
-   "原始工作表有 53727 列，只抽出 88 列，結構可能判壞": 1,
-   "原始工作表有 55 列，只抽出 1 列，結構可能判壞": 1,
-   "原始工作表有 58 列，只抽出 8 列，結構可能判壞": 1,
-   "原始工作表有 749 列，只抽出 25 列，結構可能判壞": 1,
-   "原始工作表有 81 列，只抽出 13 列，結構可能判壞": 1,
-   "原始工作表有 947 列，只抽出 5 列，結構可能判壞": 1,
-   "原始工作表有 99 列，只抽出 11 列，結構可能判壞": 1,
-   "原始工作表有 99 列，只抽出 6 列，結構可能判壞": 1,
+   "原始工作表有 25 列，只抽出 2 列，結構可能判壞": 2,
+   "原始工作表有 27 列，只抽出 2 列，結構可能判壞": 1,
+   "原始工作表有 31 列，只抽出 1 列，結構可能判壞": 3,
+   "原始工作表有 31 列，只抽出 4 列，結構可能判壞": 3,
+   "原始工作表有 48 列，只抽出 1 列，結構可能判壞": 1,
    "只有一列資料，判斷幾乎沒有依據": 8,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
-   "找不到主標題欄，卡片會沒有名字": 18,
+   "找不到主標題欄，卡片會沒有名字": 21,
    "標題列可能判錯": 7,
    "落到一般表格": 30
   }
@@ -298,7 +247,7 @@
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Sales",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -328,15 +277,13 @@
     "% Change from prior period:category:100%:4",
     "% Change from budget:category:100%:4"
    ],
-   "flags": [
-    "原始工作表有 50 列，只抽出 8 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Income",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -369,9 +316,7 @@
     "% Change from prior period:text:100%:2",
     "% Change from budget:text:100%:2"
    ],
-   "flags": [
-    "原始工作表有 50 列，只抽出 2 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_1a6c8d9a.xlsx",
@@ -413,7 +358,7 @@
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Taxes",
    "sheetIndex": 4,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -428,7 +373,7 @@
    "notes": [],
    "roles": {
     "title": "Description",
-    "group": "Type",
+    "group": "Current period as % of sales",
     "lead": "Prior period",
     "person": null
    },
@@ -443,10 +388,7 @@
     "% Change from prior period:category:100%:2",
     "% Change from budget:category:100%:1"
    ],
-   "flags": [
-    "分組欄「Type」只有一種值，等於沒分組",
-    "原始工作表有 50 列，只抽出 5 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "accounting_1a6c8d9a.xlsx",
@@ -983,7 +925,7 @@
    ],
    "flags": [
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 55 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 48 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -1084,7 +1026,7 @@
    "flags": [
     "標題列可能判錯：2/2 欄沒有欄名",
     "找不到主標題欄，卡片會沒有名字",
-    "原始工作表有 28 列，只抽出 2 列，結構可能判壞"
+    "原始工作表有 25 列，只抽出 2 列，結構可能判壞"
    ]
   },
   {
@@ -1449,7 +1391,7 @@
    "src": "accounting_f83c7f04.xlsx",
    "sheet": "accounting_f83c7f04.xlsx › Petty cash log",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "ledger",
@@ -1479,9 +1421,7 @@
     "Received by:text:50%:1",
     "Approved by:category:100%:1"
    ],
-   "flags": [
-    "原始工作表有 12 列，只抽出 2 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_011bc58a.xlsx",
@@ -1691,7 +1631,7 @@
    "src": "budget_22960980.xlsx",
    "sheet": "budget_22960980.xlsx › Income and expenses",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 3,
    "shape": "pricelist",
@@ -1715,9 +1655,7 @@
     "Item:text:100%:4",
     "Amount:money:100%:3"
    ],
-   "flags": [
-    "原始工作表有 40 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_22960980.xlsx",
@@ -1753,7 +1691,7 @@
    "src": "budget_22960980.xlsx",
    "sheet": "budget_22960980.xlsx › Income and expenses",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 3,
    "of": 3,
    "shape": "matrix",
@@ -1778,9 +1716,7 @@
     "Amount:money:100%:4",
     "Per month:money:100%:4"
    ],
-   "flags": [
-    "原始工作表有 40 列，只抽出 6 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_22960980.xlsx",
@@ -2007,7 +1943,7 @@
    "src": "budget_354f6f67.xlsx",
    "sheet": "budget_354f6f67.xlsx › Monthly budget summary",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -2033,9 +1969,7 @@
     "% OF EXPENSES:number:100%:3",
     "15% REDUCTION:number:100%:4"
    ],
-   "flags": [
-    "原始工作表有 475 列，只抽出 5 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_354f6f67.xlsx",
@@ -2142,7 +2076,7 @@
    "src": "budget_40a2472b.xlsx",
    "sheet": "budget_40a2472b.xlsx › Summary",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -2166,9 +2100,7 @@
     "Balance:longtext:100%:3",
     "Amount:money:100%:3"
    ],
-   "flags": [
-    "原始工作表有 1265 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_40a2472b.xlsx",
@@ -2342,7 +2274,7 @@
    "src": "budget_478a9534.xlsx",
    "sheet": "budget_478a9534.xlsx › Monthly expenses",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -2357,7 +2289,7 @@
    "notes": [],
    "roles": {
     "title": "ITEM",
-    "group": "DUE DATE",
+    "group": null,
     "lead": "AMOUNT",
     "person": null
    },
@@ -2367,9 +2299,7 @@
     "DUE DATE:category:100%:1",
     "AMOUNT:money:100%:8"
    ],
-   "flags": [
-    "分組欄「DUE DATE」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "budget_478a9534.xlsx",
@@ -2380,7 +2310,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「DATE」分組後逐列呈現",
+   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
    "srcRows": 6,
    "rows": 3,
    "cols": 2,
@@ -2390,7 +2320,7 @@
    "notes": [],
    "roles": {
     "title": null,
-    "group": "DATE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -2400,8 +2330,7 @@
     "AMOUNT:money:100%:3"
    ],
    "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "分組欄「DATE」只有一種值，等於沒分組"
+    "找不到主標題欄，卡片會沒有名字"
    ]
   },
   {
@@ -2824,7 +2753,7 @@
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Budget overview",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 2,
    "shape": "matrix",
@@ -2849,9 +2778,7 @@
     "Projected:money:75%:3",
     "Actual:money:75%:3"
    ],
-   "flags": [
-    "原始工作表有 30 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_8eb8ecb2.xlsx",
@@ -2884,7 +2811,7 @@
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 30 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 12 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -3023,7 +2950,7 @@
    "src": "budget_91b9548b.xlsx",
    "sheet": "budget_91b9548b.xlsx › Monthly budget",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 2,
    "shape": "ledger",
@@ -3048,15 +2975,13 @@
     "Amount:money:100%:3",
     "Description:text:100%:3"
    ],
-   "flags": [
-    "原始工作表有 254 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_91b9548b.xlsx",
    "sheet": "budget_91b9548b.xlsx › Monthly budget",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 2,
    "of": 2,
    "shape": "ledger",
@@ -3081,9 +3006,7 @@
     "Amount:money:100%:3",
     "Description:text:100%:3"
    ],
-   "flags": [
-    "原始工作表有 254 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_926cf263.xlsx",
@@ -3483,7 +3406,7 @@
    "src": "budget_b340cb34.xlsx",
    "sheet": "budget_b340cb34.xlsx › Monthly Income",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -3507,15 +3430,13 @@
     "ITEM:text:100%:3",
     "AMOUNT:money:100%:3"
    ],
-   "flags": [
-    "原始工作表有 16 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_b340cb34.xlsx",
    "sheet": "budget_b340cb34.xlsx › Monthly Expenses",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -3539,9 +3460,7 @@
     "ITEM:text:100%:13",
     "AMOUNT:money:100%:8"
    ],
-   "flags": [
-    "原始工作表有 81 列，只抽出 13 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_b6c07597.xlsx",
@@ -3590,7 +3509,7 @@
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Monthly Budget Summary",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -3618,15 +3537,13 @@
     "% OF EXPENSES:category:100%:4",
     "15% REDUCTION:number:100%:4"
    ],
-   "flags": [
-    "原始工作表有 42 列，只抽出 5 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Income",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -3653,15 +3570,13 @@
     "TOP 5 AMOUNT:money:100%:3",
     "DIFFERENCE:number:100%:3"
    ],
-   "flags": [
-    "原始工作表有 128 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Personnel Expenses",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -3688,9 +3603,7 @@
     "TOP 5 AMOUNT:money:100%:3",
     "DIFFERENCE:number:100%:3"
    ],
-   "flags": [
-    "原始工作表有 20 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_cc3e248b.xlsx",
@@ -3865,7 +3778,7 @@
    "src": "budget_dcb1bbfe.xlsx",
    "sheet": "budget_dcb1bbfe.xlsx › Academic Club budget",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 2,
    "shape": "pricelist",
@@ -3889,15 +3802,13 @@
     "Revenue:text:100%:4",
     "Amount:money:100%:4"
    ],
-   "flags": [
-    "原始工作表有 21 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "budget_dcb1bbfe.xlsx",
    "sheet": "budget_dcb1bbfe.xlsx › Academic Club budget",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 2,
    "of": 2,
    "shape": "pricelist",
@@ -3921,9 +3832,7 @@
     "Expenses:text:100%:4",
     "Amount:money:100%:4"
    ],
-   "flags": [
-    "原始工作表有 21 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "cashflow_281b542f.xlsx",
@@ -4032,7 +3941,7 @@
    "flags": [
     "標題列可能判錯：2/2 欄沒有欄名",
     "找不到主標題欄，卡片會沒有名字",
-    "原始工作表有 29 列，只抽出 2 列，結構可能判壞"
+    "原始工作表有 25 列，只抽出 2 列，結構可能判壞"
    ]
   },
   {
@@ -4488,7 +4397,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「TOTAL」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「BANKRUPTCY LAWYER」分組後逐列呈現",
    "srcRows": 21,
    "rows": 11,
    "cols": 8,
@@ -4498,7 +4407,7 @@
    "notes": [],
    "roles": {
     "title": "PROJECT TYPE",
-    "group": "TOTAL",
+    "group": "BANKRUPTCY LAWYER",
     "lead": null,
     "person": null
    },
@@ -4514,8 +4423,7 @@
     "TOTAL:category:55%:1"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「TOTAL」只有一種值，等於沒分組"
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -5222,7 +5130,7 @@
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 45 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 19 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -5256,7 +5164,7 @@
    ],
    "flags": [
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 45 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 19 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -6085,7 +5993,7 @@
    "src": "chart_bd08ad3a.xlsx",
    "sheet": "chart_bd08ad3a.xlsx › Weight loss tracker",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -6113,9 +6021,7 @@
     "Madison Butler:text:6%:1",
     "WEIGHT LOSS:empty:0%:0"
    ],
-   "flags": [
-    "原始工作表有 330 列，只抽出 16 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "chart_bd08ad3a.xlsx",
@@ -6258,7 +6164,7 @@
     "2/4 列沒有標題，會被整列略過",
     "所有欄位都只判成一般文字，型別偵測沒抓到東西",
     "落到一般表格：沒有辨識出任何主軸",
-    "原始工作表有 38 列，只抽出 4 列，結構可能判壞"
+    "原始工作表有 31 列，只抽出 4 列，結構可能判壞"
    ]
   },
   {
@@ -6322,7 +6228,7 @@
     "所有欄位都只判成一般文字，型別偵測沒抓到東西",
     "落到一般表格：沒有辨識出任何主軸",
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 38 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 31 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -6421,7 +6327,7 @@
     "2/4 列沒有標題，會被整列略過",
     "所有欄位都只判成一般文字，型別偵測沒抓到東西",
     "落到一般表格：沒有辨識出任何主軸",
-    "原始工作表有 38 列，只抽出 4 列，結構可能判壞"
+    "原始工作表有 31 列，只抽出 4 列，結構可能判壞"
    ]
   },
   {
@@ -6485,7 +6391,7 @@
     "所有欄位都只判成一般文字，型別偵測沒抓到東西",
     "落到一般表格：沒有辨識出任何主軸",
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 38 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 31 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -6584,7 +6490,7 @@
     "2/4 列沒有標題，會被整列略過",
     "所有欄位都只判成一般文字，型別偵測沒抓到東西",
     "落到一般表格：沒有辨識出任何主軸",
-    "原始工作表有 38 列，只抽出 4 列，結構可能判壞"
+    "原始工作表有 31 列，只抽出 4 列，結構可能判壞"
    ]
   },
   {
@@ -6648,7 +6554,7 @@
     "所有欄位都只判成一般文字，型別偵測沒抓到東西",
     "落到一般表格：沒有辨識出任何主軸",
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 38 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 31 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
@@ -7134,7 +7040,7 @@
    "src": "expense_d14f83e2.xlsx",
    "sheet": "expense_d14f83e2.xlsx › EXPENSE ANALYSIS",
    "sheetIndex": 4,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -7161,9 +7067,7 @@
     "Expense variances:money:100%:4",
     "Variance percentage:category:100%:3"
    ],
-   "flags": [
-    "原始工作表有 37 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "expense_d75b85c4.xlsx",
@@ -7214,7 +7118,7 @@
    "src": "inventory_100fccf4.xlsx",
    "sheet": "inventory_100fccf4.xlsx › Product price list",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -7241,9 +7145,7 @@
     "Retail price/unit:money:100%:2",
     "Bulk price/unit:money:100%:2"
    ],
-   "flags": [
-    "原始工作表有 174 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_2ebe081e.xlsx",
@@ -7285,7 +7187,7 @@
    "src": "inventory_4655f40a.xlsx",
    "sheet": "inventory_4655f40a.xlsx › HOME CONTENTS INVENTORY LIST",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "ledger",
@@ -7317,15 +7219,13 @@
     "PHOTO AVAILABLE?:category:100%:2",
     "NOTES:text:33%:1"
    ],
-   "flags": [
-    "原始工作表有 25 列，只抽出 3 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_472442ad.xlsx",
    "sheet": "inventory_472442ad.xlsx › Equipment inventory list",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "ledger",
@@ -7369,9 +7269,7 @@
     "Monthly straight line depreciation:money:100%:4",
     "Current value:money:100%:4"
    ],
-   "flags": [
-    "原始工作表有 99 列，只抽出 6 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_53587d4d.xlsx",
@@ -7502,7 +7400,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Phone」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Address」分組後逐列呈現",
    "srcRows": 58,
    "rows": 8,
    "cols": 7,
@@ -7514,7 +7412,7 @@
    ],
    "roles": {
     "title": "Financial institution",
-    "group": "Phone",
+    "group": "Address",
     "lead": null,
     "person": null
    },
@@ -7529,9 +7427,7 @@
     "Notes:text:50%:1"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「Phone」只有一種值，等於沒分組",
-    "原始工作表有 58 列，只抽出 8 列，結構可能判壞"
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -7793,7 +7689,7 @@
     "Yes:category:100%:1"
    ],
    "flags": [
-    "原始工作表有 16 列，只抽出 2 列，結構可能判壞"
+    "原始工作表有 13 列，只抽出 2 列，結構可能判壞"
    ]
   },
   {
@@ -7845,7 +7741,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「ORDER #」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「UNIT」分組後逐列呈現",
    "srcRows": 9,
    "rows": 5,
    "cols": 8,
@@ -7855,7 +7751,7 @@
    "notes": [],
    "roles": {
     "title": "ITEM DESCRIPTION",
-    "group": "ORDER #",
+    "group": "UNIT",
     "lead": null,
     "person": null
    },
@@ -7873,8 +7769,7 @@
     "LOCATION:text:100%:4"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「ORDER #」只有一種值，等於沒分組"
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -7965,7 +7860,7 @@
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Inventory list",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -7999,9 +7894,7 @@
     "INVENTORY VALUE:money:100%:10",
     "REORDER:category:18%:1"
    ],
-   "flags": [
-    "原始工作表有 99 列，只抽出 11 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "inventory_c70363c0.xlsx",
@@ -8012,7 +7905,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「ORDER #」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「UNIT」分組後逐列呈現",
    "srcRows": 947,
    "rows": 5,
    "cols": 8,
@@ -8022,7 +7915,7 @@
    "notes": [],
    "roles": {
     "title": "ITEM DESCRIPTION",
-    "group": "ORDER #",
+    "group": "UNIT",
     "lead": null,
     "person": null
    },
@@ -8040,9 +7933,7 @@
     "LOCATION:text:100%:4"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「ORDER #」只有一種值，等於沒分組",
-    "原始工作表有 947 列，只抽出 5 列，結構可能判壞"
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -8119,7 +8010,7 @@
    "src": "inventory_cf2db84f.xlsx",
    "sheet": "inventory_cf2db84f.xlsx › Inventory list",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -8134,7 +8025,7 @@
    "notes": [],
    "roles": {
     "title": "Name",
-    "group": "Discontinued?",
+    "group": null,
     "lead": "Unit price",
     "person": null
    },
@@ -8154,10 +8045,7 @@
     "Quantity in reorder:number:100%:3",
     "Discontinued?:category:12%:1"
    ],
-   "flags": [
-    "分組欄「Discontinued?」只有一種值，等於沒分組",
-    "原始工作表有 749 列，只抽出 25 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "invoice_02f1e98d.xlsx",
@@ -8366,8 +8254,7 @@
     "LINE TOTAL:money:83%:5"
    ],
    "flags": [
-    "2/6 列沒有標題，會被整列略過",
-    "原始工作表有 33 列，只抽出 6 列，結構可能判壞"
+    "2/6 列沒有標題，會被整列略過"
    ]
   },
   {
@@ -8699,7 +8586,7 @@
     "Notes:empty:0%:0"
    ],
    "flags": [
-    "原始工作表有 17 列，只抽出 2 列，結構可能判壞"
+    "原始工作表有 11 列，只抽出 2 列，結構可能判壞"
    ]
   },
   {
@@ -8766,7 +8653,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Reading」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Nov 07」分組後逐列呈現",
    "srcRows": 31,
    "rows": 24,
    "cols": 7,
@@ -8777,8 +8664,8 @@
     "剔除 1 個排版用的空白欄"
    ],
    "roles": {
-    "title": "Nov 07",
-    "group": "Reading",
+    "title": null,
+    "group": "Nov 07",
     "lead": null,
     "person": null
    },
@@ -8793,8 +8680,8 @@
     "Science:category:17%:1"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「Reading」只有一種值，等於沒分組"
+    "找不到主標題欄，卡片會沒有名字",
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -8806,7 +8693,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Reading」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Nov 07」分組後逐列呈現",
    "srcRows": 30,
    "rows": 24,
    "cols": 7,
@@ -8817,8 +8704,8 @@
     "剔除 1 個排版用的空白欄"
    ],
    "roles": {
-    "title": "Nov 07",
-    "group": "Reading",
+    "title": null,
+    "group": "Nov 07",
     "lead": null,
     "person": null
    },
@@ -8833,8 +8720,8 @@
     "Science:category:17%:1"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「Reading」只有一種值，等於沒分組"
+    "找不到主標題欄，卡片會沒有名字",
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -8846,7 +8733,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Reading」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Nov 07」分組後逐列呈現",
    "srcRows": 30,
    "rows": 24,
    "cols": 7,
@@ -8857,8 +8744,8 @@
     "剔除 1 個排版用的空白欄"
    ],
    "roles": {
-    "title": "Nov 07",
-    "group": "Reading",
+    "title": null,
+    "group": "Nov 07",
     "lead": null,
     "person": null
    },
@@ -8873,8 +8760,8 @@
     "Science:category:17%:1"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「Reading」只有一種值，等於沒分組"
+    "找不到主標題欄，卡片會沒有名字",
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -9001,7 +8888,7 @@
    "src": "planner_5da16261.xlsx",
    "sheet": "planner_5da16261.xlsx › Openings",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -9028,9 +8915,7 @@
     "SALARY LEVEL:money:100%:2",
     "NOTES:empty:0%:0"
    ],
-   "flags": [
-    "原始工作表有 12 列，只抽出 2 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "planner_5da16261.xlsx",
@@ -9140,7 +9025,7 @@
    "src": "planner_6aab7182.xlsx",
    "sheet": "planner_6aab7182.xlsx › Expense tracker",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "ledger",
@@ -9166,9 +9051,7 @@
     "Category:text:100%:11",
     "Description:text:100%:11"
    ],
-   "flags": [
-    "原始工作表有 260 列，只抽出 12 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "planner_70e92525.xlsx",
@@ -9264,7 +9147,7 @@
    "flags": [
     "標題列可能判錯：7/14 欄沒有欄名",
     "落到一般表格：沒有辨識出任何主軸",
-    "原始工作表有 45 列，只抽出 4 列，結構可能判壞"
+    "原始工作表有 23 列，只抽出 4 列，結構可能判壞"
    ]
   },
   {
@@ -9393,7 +9276,7 @@
    ],
    "roles": {
     "title": "欄 8",
-    "group": "PRESENTER",
+    "group": "欄 14",
     "lead": "欄 13",
     "person": null
    },
@@ -9416,8 +9299,7 @@
    ],
    "flags": [
     "標題列可能判錯：11/14 欄沒有欄名",
-    "9/26 列沒有標題，會被整列略過",
-    "分組欄「PRESENTER」只有一種值，等於沒分組"
+    "9/26 列沒有標題，會被整列略過"
    ]
   },
   {
@@ -9455,12 +9337,12 @@
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Expenses",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 2,
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「ESTIMATED」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「REFRESHMENTS」為標題逐列呈現",
    "srcRows": 56,
    "rows": 13,
    "cols": 3,
@@ -9470,7 +9352,7 @@
    "notes": [],
    "roles": {
     "title": "REFRESHMENTS",
-    "group": "ESTIMATED",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -9480,9 +9362,7 @@
     "ESTIMATED:category:15%:1",
     "ACTUAL:category:15%:1"
    ],
-   "flags": [
-    "分組欄「ESTIMATED」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "planner_c2b640a6.xlsx",
@@ -9605,7 +9485,7 @@
    "src": "planner_e56f1018.xlsx",
    "sheet": "planner_e56f1018.xlsx › Forecasted sales ",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "matrix",
@@ -9640,9 +9520,7 @@
     "November forecast:money:100%:2",
     "December forecast:money:100%:2"
    ],
-   "flags": [
-    "原始工作表有 22 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "planner_e56f1018.xlsx",
@@ -9833,7 +9711,7 @@
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Overview",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -9860,20 +9738,18 @@
     "Famous couples:category:100%:3",
     "欄 3:money:64%:9"
    ],
-   "flags": [
-    "原始工作表有 112 列，只抽出 14 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › To-do",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「DONE」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「2-3 months before」為標題逐列呈現",
    "srcRows": 135,
    "rows": 28,
    "cols": 2,
@@ -9883,7 +9759,7 @@
    "notes": [],
    "roles": {
     "title": "2-3 months before",
-    "group": "DONE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -9892,15 +9768,13 @@
     "DONE:category:14%:1",
     "2-3 months before:longtext:100%:28"
    ],
-   "flags": [
-    "分組欄「DONE」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Foods & drinks",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -9924,20 +9798,18 @@
     "FOOD:text:100%:21",
     "BUDGET:money:100%:2"
    ],
-   "flags": [
-    "原始工作表有 169 列，只抽出 21 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Guests",
    "sheetIndex": 3,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「INVITED」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「RSVP」分組後逐列呈現",
    "srcRows": 131,
    "rows": 13,
    "cols": 3,
@@ -9947,7 +9819,7 @@
    "notes": [],
    "roles": {
     "title": "NAME",
-    "group": "INVITED",
+    "group": "RSVP",
     "lead": null,
     "person": null
    },
@@ -9957,10 +9829,7 @@
     "INVITED:category:100%:1",
     "RSVP:category:92%:2"
    ],
-   "flags": [
-    "分組欄「INVITED」只有一種值，等於沒分組",
-    "原始工作表有 131 列，只抽出 13 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "planner_ebcaa05b.xlsx",
@@ -10675,7 +10544,7 @@
    "src": "schedule_f4999261.xlsx",
    "sheet": "schedule_f4999261.xlsx › Team roster",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "directory",
@@ -10702,15 +10571,13 @@
     "Email:email:100%:2",
     "Phone:phone:100%:2"
    ],
-   "flags": [
-    "原始工作表有 21 列，只抽出 2 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "schedule_f4999261.xlsx",
    "sheet": "schedule_f4999261.xlsx › League schedule",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -10737,15 +10604,13 @@
     "Time:time:100%:2",
     "Location:category:100%:1"
    ],
-   "flags": [
-    "原始工作表有 21 列，只抽出 2 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "schedule_f4999261.xlsx",
    "sheet": "schedule_f4999261.xlsx › League team list",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "directory",
@@ -10772,9 +10637,7 @@
     "Phone:phone:100%:2",
     "Wins:number:100%:2"
    ],
-   "flags": [
-    "原始工作表有 21 列，只抽出 2 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "student_3f9a5c70.xlsx",
@@ -10789,7 +10652,7 @@
    "src": "student_3f9a5c70.xlsx",
    "sheet": "student_3f9a5c70.xlsx › Income and expenses",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 3,
    "shape": "pricelist",
@@ -10813,9 +10676,7 @@
     "Item:text:100%:4",
     "Amount:money:100%:3"
    ],
-   "flags": [
-    "原始工作表有 23 列，只抽出 4 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "student_3f9a5c70.xlsx",
@@ -11011,12 +10872,12 @@
    "src": "student_a5bdc654.xlsx",
    "sheet": "student_a5bdc654.xlsx › Back-to-school checklist",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「DONE」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「DESCRIPTION」為標題逐列呈現",
    "srcRows": 28,
    "rows": 19,
    "cols": 2,
@@ -11026,7 +10887,7 @@
    "notes": [],
    "roles": {
     "title": "DESCRIPTION",
-    "group": "DONE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -11035,20 +10896,18 @@
     "DONE:category:11%:1",
     "DESCRIPTION:longtext:100%:19"
    ],
-   "flags": [
-    "分組欄「DONE」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "student_a5bdc654.xlsx",
    "sheet": "student_a5bdc654.xlsx › Back-to-school checklist",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 2,
    "of": 2,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「DONE」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「DESCRIPTION」為標題逐列呈現",
    "srcRows": 28,
    "rows": 14,
    "cols": 2,
@@ -11058,7 +10917,7 @@
    "notes": [],
    "roles": {
     "title": "DESCRIPTION",
-    "group": "DONE",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -11067,9 +10926,7 @@
     "DONE:category:14%:1",
     "DESCRIPTION:text:100%:14"
    ],
-   "flags": [
-    "分組欄「DONE」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "student_b6316bb6.xlsx",
@@ -11164,7 +11021,7 @@
    "src": "student_beeb91bb.xlsx",
    "sheet": "student_beeb91bb.xlsx › Weekly schedule",
    "sheetIndex": 2,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -11189,9 +11046,7 @@
     "Time Start:time:100%:3",
     "Course Name:text:100%:4"
    ],
-   "flags": [
-    "原始工作表有 42 列，只抽出 6 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "student_beeb91bb.xlsx",
@@ -11796,14 +11651,14 @@
    "flags": [
     "找不到主標題欄，卡片會沒有名字",
     "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 349 列，只抽出 1 列，結構可能判壞"
+    "原始工作表有 15 列，只抽出 1 列，結構可能判壞"
    ]
   },
   {
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 2,
    "of": 3,
    "shape": "schedule",
@@ -11834,15 +11689,13 @@
     "POSITION:number:100%:7",
     "NUM:number:100%:12"
    ],
-   "flags": [
-    "原始工作表有 349 列，只抽出 12 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
    "sheetIndex": 1,
-   "status": "flagged",
+   "status": "clean",
    "table": 3,
    "of": 3,
    "shape": "schedule",
@@ -11870,9 +11723,7 @@
     "MILESTONE:text:100%:9",
     "POSITION:number:100%:7"
    ],
-   "flags": [
-    "原始工作表有 349 列，只抽出 12 列，結構可能判壞"
-   ]
+   "flags": []
   },
   {
    "src": "timeline_6abb6cbd.xlsx",
@@ -11971,12 +11822,12 @@
    "src": "timeline_93faf979.xlsx",
    "sheet": "timeline_93faf979.xlsx › Wedding timeline planner",
    "sheetIndex": 0,
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「☐」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「9 - 12」分組後逐列呈現",
    "srcRows": 87,
    "rows": 70,
    "cols": 3,
@@ -11989,7 +11840,7 @@
    ],
    "roles": {
     "title": "Arrange a gathering for you and your parents.",
-    "group": "☐",
+    "group": "9 - 12",
     "lead": null,
     "person": null
    },
@@ -11999,9 +11850,7 @@
     "☐:category:93%:1",
     "Arrange a gathering for you and your parents.:longtext:100%:70"
    ],
-   "flags": [
-    "分組欄「☐」只有一種值，等於沒分組"
-   ]
+   "flags": []
   },
   {
    "src": "timeline_b1eea1e2.xlsx",
@@ -12575,7 +12424,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Week 1」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「January」為標題逐列呈現",
    "srcRows": 53727,
    "rows": 88,
    "cols": 11,
@@ -12587,7 +12436,7 @@
    ],
    "roles": {
     "title": "January",
-    "group": "Week 1",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -12606,9 +12455,7 @@
     "Overtime:category:13%:1"
    ],
    "flags": [
-    "落到一般表格：沒有辨識出任何主軸",
-    "分組欄「Week 1」只有一種值，等於沒分組",
-    "原始工作表有 53727 列，只抽出 88 列，結構可能判壞"
+    "落到一般表格：沒有辨識出任何主軸"
    ]
   },
   {
@@ -12712,7 +12559,7 @@
     "Vacation:number:50%:1"
    ],
    "flags": [
-    "原始工作表有 34 列，只抽出 2 列，結構可能判壞"
+    "原始工作表有 27 列，只抽出 2 列，結構可能判壞"
    ]
   },
   {
