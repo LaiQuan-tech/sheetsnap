@@ -1,22 +1,26 @@
 {
+ "fingerprint": {
+  "engine": "eac3b91e16fa",
+  "gallery": "4a802c1ca536"
+ },
  "files": 22,
  "sheets": 64,
- "shown": 50,
- "skipped": 14,
+ "shown": 49,
+ "skipped": 15,
  "warned": 8,
- "generic": 26,
+ "generic": 25,
  "noTitle": 1,
  "oneRow": 0,
  "withTime": 10,
  "withFilter": 15,
- "withFacts": 2,
+ "withFacts": 1,
  "withGroup": 11,
  "withRank": 14,
  "onlySearch": 16,
  "shapes": [
   [
    "一般表格",
-   26
+   25
   ],
   [
    "排程／時程表",
@@ -223,16 +227,6 @@
    "shape": "品項／價目表",
    "views": [
     "rank",
-    "all"
-   ]
-  },
-  {
-   "src": "f94586ce6",
-   "sheet": "f94586ce6 › #2",
-   "table": 2,
-   "shape": "一般表格",
-   "views": [
-    "facts",
     "all"
    ]
   },
