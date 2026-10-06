@@ -236,8 +236,14 @@ for (const src of args) {
       continue;
     }
 
+    /* srcRows 要算「有資料的列」而不是工作表的總列數。
+       Google Sheets 匯出的 xlsx 一律補到 1000 列，所以真實檔案裡
+       「原始工作表有 1000 列，只抽出 42 列」會在 10 幾張表上誤報——
+       那 958 列是空的，不是被結構判壞吃掉的。 */
+    const srcFilled = sh.grid.filter(r =>
+      (r || []).some(v => String(v == null ? '' : v).trim() !== '')).length;
     tables.forEach((a, i) => {
-      const flags = checkup(a, sh.grid.length);
+      const flags = checkup(a, srcFilled);
       const tag = tables.length > 1 ? ` [表${i + 1}/${tables.length}]` : '';
       shapes[a.shape.label] = (shapes[a.shape.label] || 0) + 1;
       flags.forEach(f => { allFlags[f.split('：')[0]] = (allFlags[f.split('：')[0]] || 0) + 1; });

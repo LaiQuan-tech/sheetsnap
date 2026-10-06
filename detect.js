@@ -503,7 +503,11 @@
     var mail  = pick(contacts, 'email');
     var status = pick(cols, 'status');
     var person = pick(cols, 'person');
-    var cat   = pick(cols, 'category');
+    /* 分組軸至少要有兩種值。pick 只看型別與 confidence，而 detectColumn 判
+       category 的條件是「值有重複」——整欄同一個值也算重複，所以一欄全是
+       「未完成」的 Confirmed? 會被挑去當分組軸，然後 checkup 再報一次
+       「分組欄只有一種值，等於沒分組」。真實檔案的檢查清單撞到三次。 */
+    var cat   = pick(cols.filter(function (c) { return c.distinct >= 2; }), 'category');
     var title = pickTitle(cols) || pickIndexTitle(cols);
 
     // 有日期不等於是排程。帳表的日期幾乎每列都不同，按日期分組會變成

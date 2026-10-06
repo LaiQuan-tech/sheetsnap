@@ -685,6 +685,23 @@ for (const [head, want, why] of titleCases) {
     chk('填滿的通訊錄還是名冊', S.analyseSheet(g4).tables[0].shape.shape, 'directory');
   }
 
+  /* 分組軸至少要有兩種值。pick 只看型別與 confidence，而 detectColumn 判 category
+     的條件是「值有重複」——整欄同一個值也算重複，所以一欄全是「未完成」的
+     Confirmed? 會被挑去當分組軸，然後 checkup 再報一次「只有一種值，等於沒分組」。
+     真實檔案的資安檢查清單撞到三次。 */
+  {
+    const one = [], two = [];
+    for (let i = 0; i < 20; i++) {
+      one.push(['檢查項目 ' + (i + 1), '說明文字 ' + i, '未完成']);
+      two.push(['檢查項目 ' + (i + 1), '說明文字 ' + i, i % 2 ? '完成' : '未完成']);
+    }
+    const h = ['Category', 'Description', 'Confirmed?'];
+    const a1 = S.analyseSheet([h].concat(one)).tables[0];
+    const a2 = S.analyseSheet([h].concat(two)).tables[0];
+    chk('一值的分類欄不當分組', a1.roles.group, null);
+    chk('兩值的分類欄照當分組', a2.roles.group && a2.roles.group.name, 'Confirmed?');
+  }
+
   /* 下拉選單那條要看「宣告了幾欄」。expense_d75b85c4 › Expenses 是一張還沒填的
      預算範本，宣告六欄、金額欄全空；$- 當空白之後 live 剩兩欄，
      整張表就被當成選單來源藏起來了。 */
