@@ -1,33 +1,31 @@
 {
  "fingerprint": {
-  "engine": "04273345531a",
-  "audit": "b5cf3db748b3"
+  "engine": "eac3b91e16fa",
+  "audit": "13a389e4d378"
  },
  "summary": {
   "inputs": 163,
-  "sheets": 436,
-  "clean": 273,
-  "flagged": 53,
-  "skipped": 110,
+  "sheets": 434,
+  "clean": 263,
+  "flagged": 51,
+  "skipped": 120,
   "broken": 0,
   "shapes": {
-   "一般表格": 55,
+   "一般表格": 52,
    "名冊／通訊錄": 4,
-   "品項／價目表": 96,
-   "帳務／明細表": 30,
-   "排程／時程表": 65,
+   "品項／價目表": 94,
+   "帳務／明細表": 29,
+   "排程／時程表": 61,
    "狀態清單": 1,
-   "矩陣／報表": 75
+   "矩陣／報表": 73
   },
   "flags": {
-   "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "4/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "原始工作表有 11 列，只抽出 2 列，結構可能判壞": 1,
    "原始工作表有 12 列，只抽出 1 列，結構可能判壞": 1,
    "原始工作表有 13 列，只抽出 2 列，結構可能判壞": 1,
-   "原始工作表有 15 列，只抽出 1 列，結構可能判壞": 1,
    "原始工作表有 19 列，只抽出 1 列，結構可能判壞": 2,
    "原始工作表有 23 列，只抽出 4 列，結構可能判壞": 1,
    "原始工作表有 25 列，只抽出 2 列，結構可能判壞": 2,
@@ -35,9 +33,9 @@
    "原始工作表有 31 列，只抽出 1 列，結構可能判壞": 3,
    "原始工作表有 31 列，只抽出 4 列，結構可能判壞": 3,
    "原始工作表有 48 列，只抽出 1 列，結構可能判壞": 1,
-   "只有一列資料，判斷幾乎沒有依據": 8,
+   "只有一列資料，判斷幾乎沒有依據": 7,
    "所有欄位都只判成一般文字，型別偵測沒抓到東西": 6,
-   "找不到主標題欄，卡片會沒有名字": 21,
+   "找不到主標題欄，卡片會沒有名字": 20,
    "標題列可能判錯": 7,
    "落到一般表格": 30
   }
@@ -466,8 +464,8 @@
    "sheet": "accounting_36836876.xlsx › Variables",
    "sheetIndex": 1,
    "status": "not-shown",
-   "show": "weak",
-   "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
+   "show": false,
+   "why": "作者把這張工作表深度隱藏了",
    "srcRows": 4
   },
   {
@@ -931,7 +929,7 @@
    "of": 2,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Type」是標籤，後面 4 欄是數值（Description、Daily、Monthly、Annual）",
+   "reason": "第一欄「Type」是標籤，後面 4 欄是數值（Description、Daily、Monthly、Annual）；但第一欄只有 4 種值，分不出 43 列，改用「Description」（36 種）當列名",
    "srcRows": 55,
    "rows": 43,
    "cols": 5,
@@ -940,7 +938,7 @@
    "title": "NOTE: If you wish to add daily items to the table, estimate their monthly amount/value and place value in the appropriate month column.",
    "notes": [],
    "roles": {
-    "title": "Type",
+    "title": "Description",
     "group": null,
     "lead": null,
     "person": null
@@ -1579,47 +1577,10 @@
    "src": "budget_1cbd5c5c.xlsx",
    "sheet": "budget_1cbd5c5c.xlsx › chart_calcs",
    "sheetIndex": 2,
-   "status": "flagged",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的主軸，以「jan」為標題逐列呈現",
-   "srcRows": 24,
-   "rows": 9,
-   "cols": 14,
-   "live": 2,
-   "headerRow": 9,
-   "title": "***This sheet should remain HIDDEN*** · january · Dynamic Chart Titles · january income: · $1,225 · january expenses: · $1,056 · january cash flow: · 169 · $169",
-   "notes": [
-    "剔除 2 個排版用的空白欄"
-   ],
-   "roles": {
-    "title": "jan",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "欄 1:longtext:100%:9:28",
-    "jan:text:78%:7:4",
-    "feb:empty:0%:0:0",
-    "mar:empty:0%:0:0",
-    "apr:empty:0%:0:0",
-    "may:empty:0%:0:0",
-    "jun:empty:0%:0:0",
-    "jul:empty:0%:0:0",
-    "aug:empty:0%:0:0",
-    "sep:empty:0%:0:0",
-    "oct:empty:0%:0:0",
-    "nov:empty:0%:0:0",
-    "dec:empty:0%:0:0",
-    "year:empty:0%:0:0"
-   ],
-   "flags": [
-    "12/14 欄有欄名但整欄沒資料，像還沒填的空白範本"
-   ]
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 24
   },
   {
    "src": "budget_22960980.xlsx",
@@ -1718,7 +1679,7 @@
    "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
-   "why": "只有 1 列資料",
+   "why": "作者在試算表裡把這張工作表隱藏起來",
    "srcRows": 5
   },
   {
@@ -1798,32 +1759,10 @@
    "src": "budget_2654ec90.xlsx",
    "sheet": "budget_2654ec90.xlsx › Chart data",
    "sheetIndex": 3,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「欄 1」是標籤，後面 2 欄是數值（Projected、Actual）",
-   "srcRows": 7,
-   "rows": 3,
-   "cols": 3,
-   "live": 3,
-   "headerRow": 2,
-   "title": "Chart data",
-   "notes": [],
-   "roles": {
-    "title": "欄 1",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "欄 1:text:100%:3:13",
-    "Projected:number:100%:3:4",
-    "Actual:number:100%:3:4"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 7
   },
   {
    "src": "budget_2d4c31d3.xlsx",
@@ -2146,7 +2085,7 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Category」是標籤，後面 4 欄是數值（Sub-category、Projected、Actual、Difference）",
+   "reason": "第一欄「Category」是標籤，後面 4 欄是數值（Sub-category、Projected、Actual、Difference）；但第一欄只有 13 種值，分不出 75 列，改用「Sub-category」（58 種）當列名",
    "srcRows": 80,
    "rows": 75,
    "cols": 5,
@@ -2155,7 +2094,7 @@
    "title": "FAMILY MONTHLY BUDGET · EXPENDITURES",
    "notes": [],
    "roles": {
-    "title": "Category",
+    "title": "Sub-category",
     "group": null,
     "lead": null,
     "person": null
@@ -2333,7 +2272,7 @@
    "sheetIndex": 4,
    "status": "not-shown",
    "show": false,
-   "why": "切不出任何表格區塊",
+   "why": "作者在試算表裡把這張工作表隱藏起來",
    "srcRows": 5
   },
   {
@@ -2714,34 +2653,10 @@
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Sheet1",
    "sheetIndex": 0,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Solve Order」分組後逐列呈現",
-   "srcRows": 12,
-   "rows": 6,
-   "cols": 3,
-   "live": 3,
-   "headerRow": 1,
-   "title": "Calculated Field",
-   "notes": [
-    "向下填補合併儲存格：Solve Order"
-   ],
-   "roles": {
-    "title": "Field",
-    "group": "Solve Order",
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "Solve Order:category:100%:3:8",
-    "Field:longtext:83%:5:56",
-    "Formula:text:17%:1:7"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 12
   },
   {
    "src": "budget_8eb8ecb2.xlsx",
@@ -3049,34 +2964,10 @@
    "src": "budget_926cf263.xlsx",
    "sheet": "budget_926cf263.xlsx › Data",
    "sheetIndex": 2,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Amount per Category」，以「Categories」為品項名稱",
-   "srcRows": 10,
-   "rows": 7,
-   "cols": 5,
-   "live": 5,
-   "headerRow": 1,
-   "title": "This sheet should remain hidden",
-   "notes": [],
-   "roles": {
-    "title": "Categories",
-    "group": null,
-    "lead": "Amount per Category",
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "Categories:text:86%:6:8",
-    "Amount per Category:money:86%:6:5",
-    "Percentage of Total:category:86%:5:2",
-    "Frequency:text:100%:7:11",
-    "Savings:money:14%:1:6"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 10
   },
   {
    "src": "budget_94d2de40.xlsx",
@@ -3699,7 +3590,7 @@
    "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
-   "why": "切不出任何表格區塊",
+   "why": "作者在試算表裡把這張工作表隱藏起來",
    "srcRows": 4
   },
   {
@@ -3846,7 +3737,7 @@
    "of": 1,
    "shape": "matrix",
    "label": "矩陣／報表",
-   "reason": "第一欄「Type」是標籤，後面 4 欄是數值（Description、Daily、Monthly、Annual）",
+   "reason": "第一欄「Type」是標籤，後面 4 欄是數值（Description、Daily、Monthly、Annual）；但第一欄只有 4 種值，分不出 43 列，改用「Description」（36 種）當列名",
    "srcRows": 55,
    "rows": 43,
    "cols": 5,
@@ -3855,7 +3746,7 @@
    "title": "PERSONAL CASH FLOW · Total available cash: · $577.84 · NOTE: If you wish to add daily items to the table, estimate their monthly amount/value and place value in the appropriate month column. · DAILY SUMMARY · Totals · Daily · Monthly · Annual · Income · $342.47 · $10,416.80 · $125,001.55 · Expenses · $136.06 · $4,138.49 · $49,661.90 · Discretionary · $36.29 · $1,103.82 · $13,245.85 · Savings · $63.02 · $1,916.86 · $23,002.30",
    "notes": [],
    "roles": {
-    "title": "Type",
+    "title": "Description",
     "group": null,
     "lead": null,
     "person": null
@@ -4624,61 +4515,10 @@
    "src": "chart_1c4bd473.xlsx",
    "sheet": "chart_1c4bd473.xlsx › scratch",
    "sheetIndex": 1,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "matrix",
-   "label": "矩陣／報表",
-   "reason": "第一欄「Rim」是標籤，後面 26 欄是數值（欄 2、Label、Value、x、y、Label、Value、x、y、Label、Value、x、y、Label、Value、x、y、2、250：整欄空白、Identified、58、308、308、0、0、0）",
-   "srcRows": 17,
-   "rows": 5,
-   "cols": 27,
-   "live": 26,
-   "headerRow": 7,
-   "title": "*** This sheet to remain hidden *** · Average Y: · 183 · 183 · Percentages Series & Labels · Stage Totals & Labels · Lost Totals & Labels · Unqualified Total & Label · Edges · Stage · x · Offsets · 0.45 · 7.0455 · Offsets · 0.45 · -7.0455 · Offsets · 0.45 · -35.136 · Offsets · 0.45 · -47.031 · 1.8 · 50 · 316",
-   "notes": [
-    "剔除 9 個排版用的空白欄"
-   ],
-   "roles": {
-    "title": "Rim",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [
-    "欄 2",
-    "2"
-   ],
-   "colTypes": [
-    "Rim:text:100%:5:8",
-    "欄 2:number:100%:5:1",
-    "Label:text:80%:4:3",
-    "Value:text:80%:4:3",
-    "x:number:80%:4:4",
-    "y:number:80%:1:8",
-    "Label:money:80%:4:11",
-    "Value:number:100%:4:3",
-    "x:number:100%:5:4",
-    "y:number:100%:2:7",
-    "Label:text:60%:3:7",
-    "Value:number:60%:3:2",
-    "x:number:60%:3:4",
-    "y:number:60%:1:7",
-    "Label:text:20%:1:13",
-    "Value:number:20%:1:1",
-    "x:number:20%:1:4",
-    "y:number:20%:1:7",
-    "2:number:80%:4:1",
-    "250:empty:0%:0:0",
-    "Identified:text:80%:4:8",
-    "58:number:80%:4:3",
-    "308:number:80%:4:4",
-    "308:number:20%:1:3",
-    "0:number:40%:2:3",
-    "0:number:60%:3:2",
-    "0:number:80%:3:3"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 17
   },
   {
    "src": "chart_1ed52567.xlsx",
@@ -6020,37 +5860,10 @@
    "src": "chart_bd08ad3a.xlsx",
    "sheet": "chart_bd08ad3a.xlsx › calculations",
    "sheetIndex": 1,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "schedule",
-   "label": "排程／時程表",
-   "reason": "偵測到日期欄「日期」（83% 的值可解析為日期）；但日期幾乎每列都不同（5/6），不拿它分組，改當列名",
-   "srcRows": 107,
-   "rows": 104,
-   "cols": 6,
-   "live": 6,
-   "headerRow": 2,
-   "title": "*** Sheet to remain hidden ***",
-   "notes": [
-    "把散在 4 欄時間軸上的日期收合成單一「日期」欄"
-   ],
-   "roles": {
-    "title": "Periods",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "12:category:99%:2:4",
-    "Periods:category:100%:14:3",
-    "Values:number:99%:9:1",
-    "欄 4:category:3%:2:3",
-    "Values:number:4%:4:4",
-    "日期:date:6%:5:4"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 107
   },
   {
    "src": "chart_c29ed7ae.xlsx",
@@ -7466,7 +7279,7 @@
    "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
-   "why": "切不出任何表格區塊",
+   "why": "作者在試算表裡把這張工作表隱藏起來",
    "srcRows": 21
   },
   {
@@ -8286,54 +8099,10 @@
    "src": "planner_0ffdef6d.xlsx",
    "sheet": "planner_0ffdef6d.xlsx › Calculations",
    "sheetIndex": 1,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "pricelist",
-   "label": "品項／價目表",
-   "reason": "偵測到金額欄「Salary」，以「Age」為品項名稱",
-   "srcRows": 114,
-   "rows": 45,
-   "cols": 23,
-   "live": 23,
-   "headerRow": 13,
-   "title": "Calculations · This sheet should remain hidden. Any modifications may result in errors in the Retirement Planner. · 84 · Failure Template: · Oops. This plan will only provide income to age [AGE]. You'll need to make some modifications. · $25,813 · 84 · Success Template: · Congratulations! Your plan seems to work. At age [AGE], you will still have a savings balance of [BALANCE]. · 84 · Failure display: · 84 · Success display: · Congratulations! Your plan seems to work. At age 84, you will still have a savings balance of $25,813. · Success: · TRUE · Success · Failure · 1 · CONGRATULATIONS! · 2 · At age · 3 · 84, · 4 · you will have a savings balance of · 5 · $25,813.",
-   "notes": [
-    "剔除 10 個排版用的空白欄"
-   ],
-   "roles": {
-    "title": "Age",
-    "group": null,
-    "lead": "Salary",
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "Age:number:100%:45:2",
-    "Salary:money:100%:26:4",
-    "Balance:number:100%:45:7",
-    "Interest:number:100%:45:6",
-    "Yearly savings:number:100%:2:4",
-    "Desired retirement income:number:100%:21:3",
-    "Pension income:number:100%:1:1",
-    "End balance:number:100%:45:7",
-    "Balance:number:100%:45:7",
-    "Interest:number:100%:45:6",
-    "Yearly savings:number:100%:2:4",
-    "Desired retirement income:number:100%:21:3",
-    "Pension income:number:100%:1:1",
-    "End balance:number:100%:45:7",
-    "Balance:number:100%:45:8",
-    "Interest:number:100%:45:6",
-    "Yearly Savings:number:100%:2:4",
-    "Desired Retirement Income:number:100%:21:3",
-    "Pension Income:number:100%:1:1",
-    "End Balance:number:100%:45:8",
-    "Saving:number:56%:25:7",
-    "Retired:number:47%:21:8",
-    "Uncertainty:number:100%:45:7"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 114
   },
   {
    "src": "planner_11bf9a22.xlsx",
@@ -9142,34 +8911,10 @@
    "src": "planner_97739ac3.xlsx",
    "sheet": "planner_97739ac3.xlsx › Lists",
    "sheetIndex": 1,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "schedule",
-   "label": "排程／時程表",
-   "reason": "偵測到日期欄「September 2022」（100% 的值可解析為日期）；但日期幾乎每列都不同（7/7），不拿它分組，改當列名",
-   "srcRows": 16,
-   "rows": 7,
-   "cols": 3,
-   "live": 2,
-   "headerRow": 0,
-   "title": null,
-   "notes": [
-    "剔除 3 個排版用的空白欄"
-   ],
-   "roles": {
-    "title": "Work",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "September 2022:date:100%:7:12",
-    "11/11/22:empty:0%:0:0",
-    "Work:text:57%:4:6"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 16
   },
   {
    "src": "planner_9e1c479f.xlsx",
@@ -9688,7 +9433,7 @@
    "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
-   "why": "只有 1 列資料",
+   "why": "作者在試算表裡把這張工作表隱藏起來",
    "srcRows": 80
   },
   {
@@ -10729,7 +10474,7 @@
    "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
-   "why": "只有 1 列資料",
+   "why": "作者在試算表裡把這張工作表隱藏起來",
    "srcRows": 2
   },
   {
@@ -11606,108 +11351,10 @@
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
    "sheetIndex": 1,
-   "status": "flagged",
-   "table": 1,
-   "of": 3,
-   "shape": "cards",
-   "label": "一般表格",
-   "reason": "沒有可辨識的結構，逐列呈現所有欄位",
-   "srcRows": 349,
-   "rows": 1,
-   "cols": 2,
-   "live": 2,
-   "headerRow": 3,
-   "title": "Sort the dates to populate the timeline in chronological order",
-   "notes": [
-    "剔除 1 個排版用的空白欄"
-   ],
-   "roles": {
-    "title": null,
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [],
-   "colTypes": [
-    "start row:text:100%:1:10",
-    "5:number:100%:1:2"
-   ],
-   "flags": [
-    "找不到主標題欄，卡片會沒有名字",
-    "只有一列資料，判斷幾乎沒有依據",
-    "原始工作表有 15 列，只抽出 1 列，結構可能判壞"
-   ]
-  },
-  {
-   "src": "timeline_68b6fc0a.xlsx",
-   "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
-   "sheetIndex": 1,
-   "status": "clean",
-   "table": 2,
-   "of": 3,
-   "shape": "schedule",
-   "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（11/12），不拿它分組，改當列名",
-   "srcRows": 349,
-   "rows": 12,
-   "cols": 6,
-   "live": 6,
-   "headerRow": 1,
-   "title": "data analysis",
-   "notes": [],
-   "roles": {
-    "title": "MILESTONE",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [
-    "TIE BREAK",
-    "NUM"
-   ],
-   "colTypes": [
-    "TIE BREAK:number:100%:12:1",
-    "RANK:number:100%:11:1",
-    "DATE:date:100%:11:7",
-    "MILESTONE:text:100%:9:12",
-    "POSITION:number:100%:7:2",
-    "NUM:number:100%:12:1"
-   ],
-   "flags": []
-  },
-  {
-   "src": "timeline_68b6fc0a.xlsx",
-   "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
-   "sheetIndex": 1,
-   "status": "clean",
-   "table": 3,
-   "of": 3,
-   "shape": "schedule",
-   "label": "排程／時程表",
-   "reason": "偵測到日期欄「DATE」（100% 的值可解析為日期）；但日期幾乎每列都不同（11/12），不拿它分組，改當列名",
-   "srcRows": 349,
-   "rows": 12,
-   "cols": 4,
-   "live": 4,
-   "headerRow": 1,
-   "title": "Actual data to chart, which is fed into the Project Timeline worksheet via hidden columns F-H.",
-   "notes": [],
-   "roles": {
-    "title": "MILESTONE",
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [
-    "RANK Sorted"
-   ],
-   "colTypes": [
-    "RANK Sorted:number:100%:12:1",
-    "DATE:date:100%:11:7",
-    "MILESTONE:text:100%:9:12",
-    "POSITION:number:100%:7:2"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 349
   },
   {
    "src": "timeline_6abb6cbd.xlsx",
@@ -12246,43 +11893,10 @@
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Dynamic Chart Data Hidden",
    "sheetIndex": 4,
-   "status": "clean",
-   "table": 1,
-   "of": 1,
-   "shape": "ledger",
-   "label": "帳務／明細表",
-   "reason": "有日期欄「Start date」但幾乎每列都不同（6/7），且有 2 欄金額，判定為明細帳而非排程",
-   "srcRows": 32,
-   "rows": 18,
-   "cols": 10,
-   "live": 9,
-   "headerRow": 13,
-   "title": "Title of this worksheet is in cell B1. · Dynamic Chart data, Do NOT edit or delete this worksheet! · Table title is in cells B2 and C2. · Today · highlight · Table heading is in cells B3 and C3. These coordinates create the Today highlight in the chart. The first column marks the day, the second indicates to draw the line that highlights today. The first column date may change so the chart date range stays readable as the dates progress, however, a y co-ord of 0 indicates no line is drawn. Do not modify or delete this content or the charting may break. To no longer highlight Today's date, simply select \"no\" in the Chart Data worksheet in cell D2. The next instruction is in cell A7. · today highlight x co-ord · y co-ord · 1/10/24 · 9 · 1/10/24 · 9 · Table heading is in cell B7. The scrolling increment in cell B8 represents the data graphed and visually appearing in the Gantt Chart at any one time. Scrolling with the scroll bar at the top of the chart in row 1 of the Gantt Chart worksheet, will increment this number. The charting works best with single increments. The next instructin is in cell A10. · scroll increment · 0 · Table heading is in cell B10 and D10. The Charting Range helps select the appropriate range of tasks and milestones. Do not modify these fields. The ageoff number, keeps the chart readable by aging tasks from the range and only plotting those that are within the range. Do not modify this number. The next instruction is in cell A14. · Charting range · ageoff · 1/9/24 · 45 · 1/24/24",
-   "notes": [
-    "向下填補合併儲存格：Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14. This table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time. The data in this chart is auto generated based on the content in the table above. Do not edit or delete this table or its contents. The next instruction is in cell A17.、Tasks"
-   ],
-   "roles": {
-    "title": "Tasks",
-    "group": null,
-    "lead": "欄 10",
-    "person": null
-   },
-   "hidden": [
-    "position"
-   ],
-   "colTypes": [
-    "Table heading for Dynamic Milestone Data is in cells B14 through E14. A note is in cell F14. This table creates the Gantt Chart in the Gantt Chart worksheet, plotting 7 milestones at a time. The data in this chart is auto generated based on the content in the table above. Do not edit or delete this table or its contents. The next instruction is in cell A17.:money:89%:2:539",
-    "Tasks:category:100%:7:10",
-    "Start date:date:39%:6:7",
-    "Task duration in days:number:39%:6:1",
-    "position:number:39%:7:1",
-    "<-- this table creates the gantt chart, plotting 7 milestones at a time:empty:0%:0:0",
-    "欄 7:text:17%:3:13",
-    "欄 8:date:89%:3:7",
-    "欄 9:text:11%:2:5",
-    "欄 10:money:11%:2:145"
-   ],
-   "flags": []
+   "status": "not-shown",
+   "show": false,
+   "why": "作者在試算表裡把這張工作表隱藏起來",
+   "srcRows": 32
   },
   {
    "src": "timesheet_0951750e.xlsx",

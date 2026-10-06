@@ -1,38 +1,42 @@
 {
+ "fingerprint": {
+  "engine": "eac3b91e16fa",
+  "gallery": "4a802c1ca536"
+ },
  "files": 163,
  "sheets": 396,
- "shown": 286,
- "skipped": 110,
- "warned": 10,
- "generic": 40,
+ "shown": 276,
+ "skipped": 120,
+ "warned": 7,
+ "generic": 38,
  "noTitle": 12,
  "oneRow": 0,
- "withTime": 48,
- "withFilter": 26,
- "withFacts": 121,
- "withGroup": 55,
- "withRank": 120,
- "onlySearch": 47,
+ "withTime": 47,
+ "withFilter": 24,
+ "withFacts": 118,
+ "withGroup": 53,
+ "withRank": 117,
+ "onlySearch": 44,
  "shapes": [
   [
    "品項／價目表",
-   81
+   79
   ],
   [
    "矩陣／報表",
-   67
+   65
   ],
   [
    "排程／時程表",
-   64
+   61
   ],
   [
    "一般表格",
-   40
+   38
   ],
   [
    "帳務／明細表",
-   29
+   28
   ],
   [
    "名冊／通訊錄",
@@ -47,22 +51,22 @@
   [
    "budget",
    {
-    "n": 59,
-    "ok": 55
+    "n": 55,
+    "ok": 53
    }
   ],
   [
    "chart",
    {
-    "n": 45,
+    "n": 43,
     "ok": 37
    }
   ],
   [
    "planner",
    {
-    "n": 40,
-    "ok": 28
+    "n": 38,
+    "ok": 27
    }
   ],
   [
@@ -89,8 +93,8 @@
   [
    "timeline",
    {
-    "n": 17,
-    "ok": 10
+    "n": 15,
+    "ok": 8
    }
   ],
   [
@@ -136,7 +140,7 @@
    }
   ]
  ],
- "clean": 235,
+ "clean": 230,
  "rows": [
   {
    "src": "accounting_0447d9de.xlsx",
@@ -494,16 +498,6 @@
    ]
   },
   {
-   "src": "budget_1cbd5c5c.xlsx",
-   "sheet": "chart_calcs",
-   "table": 2,
-   "shape": "一般表格",
-   "views": [
-    "facts",
-    "all"
-   ]
-  },
-  {
    "src": "budget_22960980.xlsx",
    "sheet": "Income and expenses",
    "table": 0,
@@ -511,15 +505,6 @@
    "views": [
     "rank",
     "facts",
-    "all"
-   ]
-  },
-  {
-   "src": "budget_2654ec90.xlsx",
-   "sheet": "Chart data",
-   "table": 3,
-   "shape": "矩陣／報表",
-   "views": [
     "all"
    ]
   },
@@ -807,15 +792,6 @@
    ]
   },
   {
-   "src": "budget_8eb8ecb2.xlsx",
-   "sheet": "Sheet1",
-   "table": 0,
-   "shape": "一般表格",
-   "views": [
-    "all"
-   ]
-  },
-  {
    "src": "budget_8f6b87a5.xlsx",
    "sheet": "College monthly budget",
    "table": 0,
@@ -843,17 +819,6 @@
    "views": [
     "group:Category",
     "rank",
-    "all"
-   ]
-  },
-  {
-   "src": "budget_926cf263.xlsx",
-   "sheet": "Data",
-   "table": 2,
-   "shape": "品項／價目表",
-   "views": [
-    "rank",
-    "facts",
     "all"
    ]
   },
@@ -1238,16 +1203,6 @@
    ]
   },
   {
-   "src": "chart_1c4bd473.xlsx",
-   "sheet": "scratch",
-   "table": 1,
-   "shape": "矩陣／報表",
-   "views": [
-    "facts",
-    "all"
-   ]
-  },
-  {
    "src": "chart_1ed52567.xlsx",
    "sheet": "Regional sales",
    "table": 0,
@@ -1571,17 +1526,6 @@
    "shape": "矩陣／報表",
    "views": [
     "filter:GOAL WEIGHT",
-    "all"
-   ]
-  },
-  {
-   "src": "chart_bd08ad3a.xlsx",
-   "sheet": "calculations",
-   "table": 1,
-   "shape": "排程／時程表",
-   "views": [
-    "group:12",
-    "filter:Periods",
     "all"
    ]
   },
@@ -2061,16 +2005,6 @@
   },
   {
    "src": "planner_0ffdef6d.xlsx",
-   "sheet": "Calculations",
-   "table": 1,
-   "shape": "品項／價目表",
-   "views": [
-    "rank",
-    "all"
-   ]
-  },
-  {
-   "src": "planner_0ffdef6d.xlsx",
    "sheet": "Retirement planner",
    "table": 0,
    "shape": "品項／價目表",
@@ -2266,16 +2200,6 @@
    "shape": "排程／時程表",
    "views": [
     "facts",
-    "all"
-   ]
-  },
-  {
-   "src": "planner_97739ac3.xlsx",
-   "sheet": "Lists",
-   "table": 1,
-   "shape": "排程／時程表",
-   "views": [
-    "time:September 2022",
     "all"
    ]
   },
@@ -2510,8 +2434,8 @@
    "table": 0,
    "shape": "排程／時程表",
    "views": [
+    "group:Day",
     "time",
-    "filter:Day",
     "all"
    ]
   },
@@ -2532,8 +2456,8 @@
    "table": 0,
    "shape": "排程／時程表",
    "views": [
-    "time",
     "filter:Day",
+    "time",
     "all"
    ]
   },
@@ -2620,8 +2544,8 @@
    "table": 0,
    "shape": "排程／時程表",
    "views": [
-    "time",
     "filter:Day",
+    "time",
     "all"
    ]
   },
@@ -2800,7 +2724,7 @@
    "table": 0,
    "shape": "一般表格",
    "views": [
-    "group:Day",
+    "filter:Day",
     "filter:Item",
     "all"
    ]
@@ -2841,15 +2765,6 @@
    "shape": "排程／時程表",
    "views": [
     "time",
-    "all"
-   ]
-  },
-  {
-   "src": "timeline_68b6fc0a.xlsx",
-   "sheet": "Project Data Sorted",
-   "table": 1,
-   "shape": "排程／時程表",
-   "views": [
     "all"
    ]
   },
@@ -2942,17 +2857,6 @@
    "shape": "排程／時程表",
    "views": [
     "time:Period",
-    "all"
-   ]
-  },
-  {
-   "src": "timeline_ff21fe25.xlsx",
-   "sheet": "Dynamic Chart Data Hidden",
-   "table": 4,
-   "shape": "帳務／明細表",
-   "views": [
-    "group:Tasks",
-    "rank",
     "all"
    ]
   },

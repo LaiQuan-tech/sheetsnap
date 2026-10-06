@@ -1,18 +1,18 @@
 {
  "fingerprint": {
-  "engine": "04273345531a",
-  "audit": "b5cf3db748b3"
+  "engine": "eac3b91e16fa",
+  "audit": "13a389e4d378"
  },
  "private": true,
  "summary": {
   "inputs": 22,
   "sheets": 67,
   "clean": 25,
-  "flagged": 28,
-  "skipped": 14,
+  "flagged": 27,
+  "skipped": 15,
   "broken": 0,
   "shapes": {
-   "一般表格": 29,
+   "一般表格": 28,
    "名冊／通訊錄": 2,
    "品項／價目表": 5,
    "排程／時程表": 12,
@@ -26,11 +26,10 @@
    "empty-declared-cols 13/18": 1,
    "empty-declared-cols 9/10": 1,
    "group-single-value": 1,
-   "few-rows-extracted 28/4": 1,
    "all-text": 2,
    "no-title-col": 1,
-   "bad-header-row": 2,
-   "generic": 24
+   "bad-header-row": 1,
+   "generic": 23
   }
  },
  "records": [
@@ -147,7 +146,7 @@
    "sheet": "f39ecdb64 › #1",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "sheet-blank",
    "srcRows": 0
   },
   {
@@ -223,7 +222,7 @@
    "sheet": "f16b06f78 › #2",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "sheet-blank",
    "srcRows": 0
   },
   {
@@ -231,7 +230,7 @@
    "sheet": "f16b06f78 › #3",
    "status": "not-shown",
    "show": "weak",
-   "why": "engine-threw",
+   "why": "dropdown-source",
    "srcRows": 1000
   },
   {
@@ -341,7 +340,7 @@
    "sheet": "fa50e212d › #0",
    "status": "not-shown",
    "show": "weak",
-   "why": "engine-threw",
+   "why": "dropdown-source",
    "srcRows": 1001
   },
   {
@@ -450,7 +449,7 @@
    "sheet": "fb7afcb28 › #2",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "too-few-rows 1",
    "srcRows": 1000
   },
   {
@@ -458,7 +457,7 @@
    "sheet": "fb7afcb28 › #3",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "sheet-blank",
    "srcRows": 0
   },
   {
@@ -466,7 +465,7 @@
    "sheet": "fb7afcb28 › #4",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "no-table",
    "srcRows": 1000
   },
   {
@@ -873,7 +872,7 @@
    "sheet": "f858d4015 › #1",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "no-table",
    "srcRows": 1
   },
   {
@@ -1554,7 +1553,7 @@
    "sheet": "f0b901b26 › #2",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "no-table",
    "srcRows": 1000
   },
   {
@@ -1562,7 +1561,7 @@
    "sheet": "f0b901b26 › #3",
    "status": "not-shown",
    "show": "weak",
-   "why": "engine-threw",
+   "why": "only-one-live-col",
    "srcRows": 1000
   },
   {
@@ -1570,7 +1569,7 @@
    "sheet": "f0b901b26 › #4",
    "status": "not-shown",
    "show": "weak",
-   "why": "engine-threw",
+   "why": "only-one-live-col",
    "srcRows": 1000
   },
   {
@@ -1578,7 +1577,7 @@
    "sheet": "f0b901b26 › #5",
    "status": "not-shown",
    "show": "weak",
-   "why": "engine-threw",
+   "why": "only-one-live-col",
    "srcRows": 1000
   },
   {
@@ -1586,7 +1585,7 @@
    "sheet": "f0b901b26 › #6",
    "status": "not-shown",
    "show": "weak",
-   "why": "engine-threw",
+   "why": "only-one-live-col",
    "srcRows": 1000
   },
   {
@@ -1746,47 +1745,10 @@
   {
    "src": "f94586ce6",
    "sheet": "f94586ce6 › #2",
-   "status": "flagged",
-   "table": 1,
-   "of": 1,
-   "shape": "cards",
-   "reason": "cards-title",
-   "srcRows": 1000,
-   "rows": 4,
-   "cols": 12,
-   "live": 12,
-   "headerRow": 6,
-   "notes": [
-    "drop-empty-cols 9"
-   ],
-   "roles": {
-    "title": 3,
-    "group": null,
-    "lead": null,
-    "person": null
-   },
-   "hidden": [
-    1
-   ],
-   "colTypes": [
-    "text:25%:1:2",
-    "text:75%:3:12",
-    "number:25%:1:5",
-    "text:50%:2:4",
-    "number:25%:1:1",
-    "number:25%:1:1",
-    "text:50%:2:6",
-    "category:75%:2:7",
-    "category:75%:2:2",
-    "category:75%:2:5",
-    "category:75%:2:5",
-    "text:50%:2:4"
-   ],
-   "flags": [
-    "bad-header-row 6/12",
-    "generic",
-    "few-rows-extracted 28/4"
-   ]
+   "status": "not-shown",
+   "show": false,
+   "why": "hidden-sheet",
+   "srcRows": 1000
   },
   {
    "src": "f94586ce6",
@@ -1999,7 +1961,7 @@
    "sheet": "fce116aed › #1",
    "status": "not-shown",
    "show": false,
-   "why": "engine-threw",
+   "why": "sheet-blank",
    "srcRows": 0
   },
   {
