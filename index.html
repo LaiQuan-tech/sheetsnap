@@ -545,14 +545,14 @@
     <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v90<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v91<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=90"></script>
-<script src="i18n.js?v=90"></script>
+<script src="detect.js?v=91"></script>
+<script src="i18n.js?v=91"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
@@ -672,7 +672,10 @@ function openWorkbook(wb, fname){
   // 收集所有有資料的工作表，不只第一張。
   // 五天的節目表就是五張工作表——只顯示第一張，使用者會以為資料不見了。
   SHEETS = []; var skipped = [];
+  // 作者自己藏起來的工作表不用再判一次——藏起來就是答案
+  var hid = SheetShape.hiddenSheets(wb);
   wb.SheetNames.forEach(function(nm){
+    if(hid[nm]){ skipped.push(nm + '（' + hid[nm] + '）'); return; }
     var gr = XLSX.utils.sheet_to_json(wb.Sheets[nm], { header:1, defval:'', raw:false });
     var v = SheetShape.sheetVerdict(gr, SheetShape.analyseSheet(gr).tables);
     if(v.show === true) SHEETS.push({ name:nm, grid:gr, file:fname });
@@ -888,6 +891,12 @@ function buildViews(){
     var pg = gopts2.filter(function(x){ return x.name === A.roles.group.name })[0];
     if(pg) gopts2 = [pg].concat(gopts2.filter(function(x){ return x !== pg }));
   }
+  /* 週表攤平出來的軸是第一欄（星期），但 roles.group 被週表那段釘成 null
+     （星期走的是籤不是分段），所以這裡照欄名釘，不能照 roles.group 釘。 */
+  if(A.unpivoted === 'week' && A.cols.length){
+    var wg = gopts2.filter(function(x){ return x.name === A.cols[0].name })[0];
+    if(wg) gopts2 = [wg].concat(gopts2.filter(function(x){ return x !== wg }));
+  }
   var g0 = gopts2[0];
   var groupView = g0 ? { id:'group:' + g0.name, k:TX('v_group', { name:g0.name }),
     d:TX('v_group_d', { n:g0.groups, avg:g0.avg }), group:g0.name } : null;
@@ -977,12 +986,24 @@ function buildViews(){
      schedule_48f98fd1 › Class schedule 因此變成 40 張卡排成一長串、
      名字只有 4 種（語料裡另一張 schedule_792c56ff › Schedule 是 37 張／
      8 種），而 notes 上明明寫著「一次看一天」——說明跟畫面對不起來。
-     用篩選不用分組：星期的籤會照一週排序、而且一打開就停在今天
-     （見 #octl 裡的 dowOf），分組只有日期欄才跳今天，星期是 category。
-     攤平出來的欄序固定是 [星期｜(時間)｜內容]，所以日欄就是 cols[0]。 */
+     攤平出來的欄序固定是 [星期｜(時間)｜內容]，所以日欄就是 cols[0]。
+
+     篩選還是分組，照「整週是不是已經太長」決定——
+     v90 原本一律給篩選，理由寫的是「星期的籤會停在今天」，那是對的，
+     但它會把每天只有兩列的表也切成一天兩張卡，整週明明一眼就看得完。
+     （而在那之前是「有沒有時間欄」在決定，那只是我手上兩張表的巧合：
+     filterOptions 把星期的分數算成每組平均列數，所以星期進不進得了前兩名，
+     其實是看表上還有幾個別的可篩選欄，跟表大不大無關。）
+     20 列是這份程式已經有的那條線——#octl 的 bigEnough：
+     「十幾列的表不需要搜尋框」——不另外發明一個數字。
+     看得完就整週給（照星期分段），看不完才一次給一天（而且停在今天）。 */
   if(A.unpivoted === 'week' && A.cols.length){
     var dayN = A.cols[0].name;
-    var dayV = filterViews.filter(function(v){ return v.filter === dayN })[0];
+    var dayFilter = filterViews.filter(function(v){ return v.filter === dayN })[0];
+    var dayGroup  = groupView && groupView.group === dayN ? groupView : null;
+    // 想用籤卻沒有籤可用就退回分段（filterOptions 只留前兩名，星期不一定排得進去），
+    // 反過來也一樣。兩個都沒有才什麼都不做。
+    var dayV = (A.rows.length >= 20 ? (dayFilter || dayGroup) : (dayGroup || dayFilter));
     if(dayV) cand = [dayV].concat(cand.filter(function(v){ return v !== dayV }));
   }
 

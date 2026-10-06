@@ -82,6 +82,11 @@ function views(a, raw) {
     const pg = go2.find(x => x.name === a.roles.group.name);
     if (pg) go2 = [pg].concat(go2.filter(x => x !== pg));
   }
+  // v91：週表的軸照欄名釘（roles.group 是 null）（index.html 才是正本）
+  if (a.unpivoted === 'week' && a.cols.length) {
+    const wg = go2.find(x => x.name === a.cols[0].name);
+    if (wg) go2 = [wg].concat(go2.filter(x => x !== wg));
+  }
   const g0 = go2[0];
   const groupView = g0 ? { id: 'group', k: `照${g0.name}分類（${g0.groups}）`, col: g0.name } : null;
 
@@ -118,10 +123,12 @@ function views(a, raw) {
         rankView ? [rankView] : [], otherFilters,
         factsView ? [factsView] : []);
 
-  // v90：週表攤平出來的星期欄要排第一（index.html 才是正本）
+  // v91：週表的星期軸排第一；>=20 列用籤（停在今天），否則整週分段（index.html 才是正本）
   if (a.unpivoted === 'week' && a.cols.length) {
     const dayN = a.cols[0].name;
-    const dayV = filterViews.find(v => v.col === dayN);
+    const dayF = filterViews.find(v => v.col === dayN);
+    const dayG = groupView && groupView.col === dayN ? groupView : null;
+    const dayV = a.rows.length >= 20 ? (dayF || dayG) : (dayG || dayF);
     if (dayV) cand = [dayV].concat(cand.filter(v => v !== dayV));
   }
 
@@ -146,7 +153,9 @@ for (const f of files) {
       : XLSX.readFile(fp);
   } catch (e) { rows.push({ f, cat, err: e.message }); continue; }
   let shown = 0;
+  const hid = S.hiddenSheets(wb);
   wb.SheetNames.forEach((nm, si) => {
+    if (hid[nm]) { rows.push({ f, cat, sheet: nm, si, skipped: hid[nm] }); return; }
     const grid = XLSX.utils.sheet_to_json(wb.Sheets[nm], { header: 1, defval: '', raw: false });
     const tables = S.analyseSheet(grid).tables;
     const v = S.sheetVerdict(grid, tables);

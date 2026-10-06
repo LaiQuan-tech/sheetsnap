@@ -630,15 +630,39 @@
          而且只在真的有更完整的欄可用時才換。
          欄名是不是「欄 N」不重要——標籤是那一欄的值，不是欄名；
          同一個檔的 Balance chart 就是靠「欄 2」當列名而且一列都沒漏。 */
+      /* 換掉第一欄有兩個理由，兩個都寫成「另一欄明顯更好」而不是絕對門檻：
+
+         一、另一欄明顯更滿（上面那段講的，為半空的排版欄寫的）。
+
+         二、另一欄明顯更能區分列。「矩陣第一欄就是標籤」對
+             品名｜單價｜數量｜合計 是對的，對兩層標籤（大類 › 細項）就不對：
+             budget_40a2472b › Expenditures 的第一欄「Category」100% 滿
+             但只有 13 種值，75 張卡會擠成 13 個名字，而旁邊的「Sub-category」
+             有 58 種——那才是每一列的身分。
+             accounting_b55730e7 和 cashflow_281b542f 的 Daily cash flow
+             是同一回事：Type（4 種）當列名，43 張卡只有四種名字，
+             而 Description 有 36 種。
+             這兩張表的 Monthly cash flow 版本早就在攤平那條路上修好了
+             （「期間前面可能不只一欄，而第一欄不見得是最適合當列名的那一欄」），
+             矩陣這條路漏了同一個修法。
+
+         倍數要兩倍、而且自己也要夠滿：差一點點不值得推翻第一欄的規則。 */
       var alt = pickTitle(cols);
-      var label = (alt && alt !== first && alt.fillRate > first.fillRate + 0.2) ? alt : first;
+      var fuller  = alt && alt !== first && alt.fillRate > first.fillRate + 0.2;
+      var sharper = alt && alt !== first && alt.fillRate >= 0.8 &&
+                    alt.distinct >= first.distinct * 2 &&
+                    first.distinct / Math.max(first.filled, 1) < 0.35;
+      var label = (fuller || sharper) ? alt : first;
       return {
         shape: 'matrix', label: '矩陣／報表', matrix: true,
         reason: '第一欄「' + first.name + '」是標籤，後面 ' + others.length + ' 欄是數值（' +
                 others.map(function (c) { return c.name + (c.type === 'empty' ? '：整欄空白' : ''); }).join('、') + '）' +
                 (label === first ? ''
-                  : '；但第一欄只填了 ' + Math.round(first.fillRate * 100) + '%，改用比較完整的「' +
-                    label.name + '」（' + Math.round(label.fillRate * 100) + '%）當列名'),
+                  : fuller
+                    ? '；但第一欄只填了 ' + Math.round(first.fillRate * 100) + '%，改用比較完整的「' +
+                      label.name + '」（' + Math.round(label.fillRate * 100) + '%）當列名'
+                    : '；但第一欄只有 ' + first.distinct + ' 種值，分不出 ' + first.filled +
+                      ' 列，改用「' + label.name + '」（' + label.distinct + ' 種）當列名'),
         group: null, lead: null, title: label, person: null, values: nums, allValues: others
       };
     }
@@ -1585,6 +1609,31 @@
     return { show: true, why: '' };
   }
 
+  /* 作者在試算表裡把一張工作表隱藏起來，就是明說「這不是給人看的」——
+     圖表的計算區、公式用的對照表多半是這樣藏的。
+     這比任何啟發法都可靠：那是作者自己的宣告，不分語言，也不會誤判。
+
+     chart_bd08ad3a › calculations 的前言就寫著「*** Sheet to remain hidden ***」，
+     引擎卻把它渲染成 104 張卡、列名是只有 14 種值的「Periods」。
+     上面「沒有任何文字欄名，像圖表資料區」那條擋不住它——它確實有
+     Periods、Values 這些欄名，六欄裡還有三欄填充率低於 6%。
+     與其再疊一條猜填充率的規則，不如直接讀作者講好的那件事。
+
+     xlsx 把可見性放在 wb.Workbook.Sheets[i].Hidden，跟 SheetNames 同序：
+     0 看得到、1 隱藏、2 深度隱藏（只有 VBA 改得回來）。
+     舊檔或 CSV 沒有這段 metadata，拿不到就當全部可見。 */
+  function hiddenSheets(wb) {
+    var out = {};
+    var meta = wb && wb.Workbook && wb.Workbook.Sheets;
+    if (!meta || !wb.SheetNames) return out;
+    wb.SheetNames.forEach(function (nm, i) {
+      var h = meta[i] && +meta[i].Hidden;
+      if (h > 0) out[nm] = h === 2 ? '作者把這張工作表深度隱藏了' : '作者在試算表裡把這張工作表隱藏起來';
+    });
+    return out;
+  }
+
+  S.hiddenSheets = hiddenSheets;
   S.sheetVerdict = sheetVerdict;
 
   /* 包一層：先切表，再對每一塊做原本的判型 */

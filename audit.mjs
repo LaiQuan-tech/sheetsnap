@@ -68,9 +68,11 @@ async function load(src) {
   if (ext === '.xlsx' || ext === '.xls' || ext === '.xlsm') {
     if (!XLSX) throw new Error('要讀 Excel 請先 npm install xlsx');
     const wb = XLSX.read(fs.readFileSync(src), { type: 'buffer' });
-    // 一個活頁簿的每張工作表都各自體檢
+    // 一個活頁簿的每張工作表都各自體檢；作者藏起來的那幾張標記出來
+    const hid = SheetShape.hiddenSheets(wb);
     return wb.SheetNames.map(n => ({
       name: `${path.basename(src)} › ${n}`,
+      hiddenSheet: hid[n] || null,
       grid: XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '', raw: false })
     }));
   }
@@ -224,6 +226,15 @@ for (const src of args) {
   }
 
   for (const [shIdx, sh] of sheets.entries()) {
+    // 作者自己藏起來的工作表不用判——藏起來就是答案（見 detect.js 的 hiddenSheets）
+    if (sh.hiddenSheet) {
+      skipped++;
+      records.push({ src: base, sheet: sh.name, sheetIndex: shIdx, status: 'not-shown',
+                     show: false, why: sh.hiddenSheet, srcRows: sh.grid.length });
+      say(`${C.d('–')} ${C.d(sh.name)} ${C.d(sh.hiddenSheet)}`);
+      continue;
+    }
+
     let tables;
     try { tables = SheetShape.analyseSheet(sh.grid).tables; }
     catch (e) {
@@ -374,6 +385,8 @@ if (JSONOUT) {
     [/只有一欄長文字/, 'single-longtext'],
     [/只有一欄有值/, 'only-one-live-col'],
     [/只有一兩欄短文字/, 'dropdown-source'],
+    [/深度隱藏/, 'hidden-sheet-very'],
+    [/把這張工作表隱藏起來/, 'hidden-sheet'],
   ];
   /* 只有這幾個代號可以帶數字：它們的訊息裡唯一的變數就是計數。
      其餘一律不帶——「分組欄「0915373201」只有一種值」這種訊息裡的數字

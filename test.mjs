@@ -835,6 +835,103 @@ for (const [head, want, why] of titleCases) {
   chk('gallery.mjs 有週表釘軸', /a\.unpivoted === 'week'/.test(gsrc), true);
 }
 
+/* 矩陣的列名：第一欄不見得是名字。
+   「矩陣第一欄就是標籤」對 品名｜單價｜數量｜合計 是對的，
+   對兩層標籤（大類 › 細項）就不對：
+     budget_40a2472b › Expenditures      Category(13) 當列名，75 張卡 13 個名字
+     accounting_b55730e7 › Daily cash flow  Type(4) 當列名，43 張卡 4 個名字
+     cashflow_281b542f › Daily cash flow    同上
+   這三張旁邊都有一個相異度高好幾倍的欄（Sub-category 58、Description 36）。
+   同一個修法在攤平那條路上早就有了，矩陣這條路漏掉。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 矩陣 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const TY = ['Income', 'Discretionary', 'Essential', 'Debt'];
+  const cf = [['Type', 'Description', 'Daily', 'Monthly', 'Annual']];
+  for (let i = 0; i < 43; i++) cf.push([TY[i % 4], 'Item ' + i, String(10 + i), String(300 + i * 7), String(3600 + i * 83)]);
+  const a = S.analyseSheet(cf).tables[0];
+  chk('兩層標籤改用細項當列名', a.roles.title.name, 'Description');
+  chk('大類降成 chip',       a.roles.meta.some(c => c.name === 'Type'), true);
+  chk('理由講得出為什麼',     /只有 4 種值/.test(a.shape.reason), true);
+
+  // 正常矩陣：第一欄既滿又最能區分列，不該被換掉
+  const inv = [['品名', '單價', '數量', '合計']];
+  for (let i = 0; i < 20; i++) inv.push(['品項 ' + i, String(50 + i), String(1 + i % 5), String((50 + i) * (1 + i % 5))]);
+  chk('正常矩陣不換列名', S.analyseSheet(inv).tables[0].roles.title.name, '品名');
+
+  /* 只差一點點不該推翻第一欄（倍數門檻是 2）。
+     第二欄要是 text／longtext——短又重複的字串會被判成 category，
+     那整張表就有分組軸、根本走不到矩陣這條路（第一版的測資就是這樣寫錯的）。 */
+  const near = [['Type', 'Description', 'Daily', 'Monthly', 'Annual']];
+  for (let i = 0; i < 30; i++)
+    near.push(['Type ' + (i % 10), 'Long description text number ' + (i % 15),
+               String(10 + i), String(300 + i * 7), String(3600 + i * 83)]);
+  const na = S.analyseSheet(near).tables[0];
+  chk('近似案例確實是矩陣', !!na.shape.matrix, true);
+  chk('只差一點點不換',     na.roles.title.name, 'Type');
+}
+
+/* 作者在試算表裡藏起來的工作表不該被渲染。
+   chart_bd08ad3a › calculations 的前言寫著「*** Sheet to remain hidden ***」，
+   引擎卻把它渲染成 104 張卡——「沒有文字欄名」那條擋不住它，
+   因為它確實有 Periods、Values 這些欄名。
+   hiddenSheets 只讀 wb.Workbook.Sheets[i].Hidden，不碰 xlsx 套件，
+   所以這裡直接餵一個活頁簿形狀的物件就能測。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 隱藏 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const wb = { SheetNames: ['Data', 'calc', 'secret'],
+               Workbook: { Sheets: [{ Hidden: 0 }, { Hidden: 1 }, { Hidden: 2 }] } };
+  const h = S.hiddenSheets(wb);
+  chk('看得見的不標記',   h.Data === undefined, true);
+  chk('隱藏的標記出來',   /隱藏起來/.test(h.calc || ''), true);
+  chk('深度隱藏講清楚',   /深度隱藏/.test(h.secret || ''), true);
+  // 舊檔、CSV 沒有這段 metadata，拿不到就當全部可見，不能爆
+  chk('沒有 metadata 不爆', Object.keys(S.hiddenSheets({ SheetNames: ['A'] })).length, 0);
+  chk('整個 wb 是空的也不爆', Object.keys(S.hiddenSheets(null)).length, 0);
+}
+
+/* 週表用籤還是用分段，照「整週是不是已經太長」決定，不是照「有沒有時間欄」。
+   v90 一律給籤，於是每天只有兩列的表也被切成一天兩張卡；
+   在那之前是時間欄在決定，而那只是手上兩張表的巧合——
+   filterOptions 把星期的分數算成每組平均列數，所以星期進不進得了前兩名，
+   其實是看表上還有幾個別的可篩選欄。
+   20 列是 #octl 的 bigEnough 本來就有的那條線。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 週表 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const gsrc = fs.readFileSync('gallery.mjs', 'utf8');
+  const views = new Function('S',
+    gsrc.slice(gsrc.indexOf('function views(a, raw) {'), gsrc.indexOf('\nconst files =')) + '; return views;')(S);
+  const wk = (first, slots, pool) => {
+    const G = [[first, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']];
+    slots.forEach((t, i) => { const r = [t]; for (let d = 0; d < 7; d++) r.push(pool[(i + d) % pool.length]); G.push(r); });
+    return G;
+  };
+  const lead = grid => views(S.analyseSheet(grid).tables[0], grid)[0].k;
+
+  // 有時間欄但整週只有 14 列 → 整週看得完，給分段
+  chk('有時間欄但表很短給分段',
+      /^照.*分類/.test(lead(wk('TIME', ['09:00', '14:00'], ['Gym', 'Yoga', 'Swim', 'Run']))), true);
+  // 有時間欄且 70 列 → 看不完，給籤（停在今天）
+  chk('有時間欄又很長給籤',
+      /^只看某個/.test(lead(wk('TIME', ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00','17:00','18:00'],
+                               ['Math', 'English', 'History', 'Science']))), true);
+  // 沒有時間欄但 84 列 → 一樣給籤，證明決定的不是時間欄
+  const many = [['Slot', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']];
+  for (let i = 0; i < 12; i++) { const r = ['Slot ' + i]; for (let d = 0; d < 7; d++) r.push('Task ' + ((i * 7 + d) % 40)); many.push(r); }
+  chk('沒有時間欄但很長也給籤', /^只看某個Day/.test(lead(many)), true);
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};
