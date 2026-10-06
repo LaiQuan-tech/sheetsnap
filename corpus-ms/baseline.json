@@ -1,7 +1,7 @@
 {
  "fingerprint": {
   "engine": "b564c9d1699b",
-  "audit": "8f0ba63b4c0a"
+  "audit": "bcac13e915df"
  },
  "summary": {
   "inputs": 163,
@@ -103,6 +103,7 @@
   {
    "src": "accounting_0447d9de.xlsx",
    "sheet": "accounting_0447d9de.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -132,6 +133,7 @@
   {
    "src": "accounting_0447d9de.xlsx",
    "sheet": "accounting_0447d9de.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -166,6 +168,7 @@
   {
    "src": "accounting_06f742fb.xlsx",
    "sheet": "accounting_06f742fb.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -174,6 +177,7 @@
   {
    "src": "accounting_06f742fb.xlsx",
    "sheet": "accounting_06f742fb.xlsx › Balance sheet",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -204,6 +208,7 @@
   {
    "src": "accounting_06f742fb.xlsx",
    "sheet": "accounting_06f742fb.xlsx › Year-over-year chart",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -212,6 +217,7 @@
   {
    "src": "accounting_151ddd53.xlsx",
    "sheet": "accounting_151ddd53.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -220,6 +226,7 @@
   {
    "src": "accounting_151ddd53.xlsx",
    "sheet": "accounting_151ddd53.xlsx › Assets",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -250,6 +257,7 @@
   {
    "src": "accounting_151ddd53.xlsx",
    "sheet": "accounting_151ddd53.xlsx › Liabilities and owner's equity",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -280,6 +288,7 @@
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Dashboard",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -288,6 +297,7 @@
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Sales",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -325,6 +335,7 @@
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Income",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -365,6 +376,7 @@
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Expenses",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -400,6 +412,7 @@
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Taxes",
+   "sheetIndex": 4,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -438,6 +451,7 @@
   {
    "src": "accounting_1a6c8d9a.xlsx",
    "sheet": "accounting_1a6c8d9a.xlsx › Categories",
+   "sheetIndex": 5,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -446,6 +460,7 @@
   {
    "src": "accounting_2604dba6.xlsx",
    "sheet": "accounting_2604dba6.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -480,6 +495,7 @@
   {
    "src": "accounting_36836876.xlsx",
    "sheet": "accounting_36836876.xlsx › Income statement",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -512,6 +528,7 @@
   {
    "src": "accounting_36836876.xlsx",
    "sheet": "accounting_36836876.xlsx › Variables",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
@@ -520,6 +537,7 @@
   {
    "src": "accounting_4d5edb6c.xlsx",
    "sheet": "accounting_4d5edb6c.xlsx › Blue ",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -528,6 +546,7 @@
   {
    "src": "accounting_4d5edb6c.xlsx",
    "sheet": "accounting_4d5edb6c.xlsx › Teal",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -536,6 +555,7 @@
   {
    "src": "accounting_4d5edb6c.xlsx",
    "sheet": "accounting_4d5edb6c.xlsx › Green",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -544,6 +564,7 @@
   {
    "src": "accounting_4d5edb6c.xlsx",
    "sheet": "accounting_4d5edb6c.xlsx › Orange ",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -552,6 +573,7 @@
   {
    "src": "accounting_4d5edb6c.xlsx",
    "sheet": "accounting_4d5edb6c.xlsx › Red",
+   "sheetIndex": 4,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -560,6 +582,7 @@
   {
    "src": "accounting_4d5edb6c.xlsx",
    "sheet": "accounting_4d5edb6c.xlsx › Purple",
+   "sheetIndex": 5,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -568,6 +591,7 @@
   {
    "src": "accounting_6f5bf452.xlsx",
    "sheet": "accounting_6f5bf452.xlsx › Disbursement summary",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -605,6 +629,7 @@
   {
    "src": "accounting_6f5bf452.xlsx",
    "sheet": "accounting_6f5bf452.xlsx › Disbursement journal",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -637,6 +662,7 @@
   {
    "src": "accounting_709cb4e8.xlsx",
    "sheet": "accounting_709cb4e8.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -671,6 +697,7 @@
   {
    "src": "accounting_753d155e.xlsx",
    "sheet": "accounting_753d155e.xlsx › FINANCE CHARGE",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -707,6 +734,7 @@
   {
    "src": "accounting_7b54c8ed.xlsx",
    "sheet": "accounting_7b54c8ed.xlsx › STATEMENT",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -741,6 +769,7 @@
   {
    "src": "accounting_866209af.xlsx",
    "sheet": "accounting_866209af.xlsx › Revenues (sales)",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -774,6 +803,7 @@
   {
    "src": "accounting_866209af.xlsx",
    "sheet": "accounting_866209af.xlsx › Cost of sales",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -807,6 +837,7 @@
   {
    "src": "accounting_866209af.xlsx",
    "sheet": "accounting_866209af.xlsx › Expenses",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -840,6 +871,7 @@
   {
    "src": "accounting_a84a5db0.xlsx",
    "sheet": "accounting_a84a5db0.xlsx › FINANCE CHARGE",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -876,6 +908,7 @@
   {
    "src": "accounting_af710e64.xlsx",
    "sheet": "accounting_af710e64.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -912,6 +945,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Guide",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -920,6 +954,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Daily cash flow",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 2,
@@ -954,6 +989,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Daily cash flow",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -986,6 +1022,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Monthly cash flow",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1019,6 +1056,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 1,
    "of": 5,
@@ -1052,6 +1090,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 2,
    "of": 5,
@@ -1081,6 +1120,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 3,
    "of": 5,
@@ -1110,6 +1150,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 4,
    "of": 5,
@@ -1139,6 +1180,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 5,
    "of": 5,
@@ -1168,6 +1210,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Income",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1200,6 +1243,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Expenses",
+   "sheetIndex": 5,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1232,6 +1276,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Discretionary",
+   "sheetIndex": 6,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1264,6 +1309,7 @@
   {
    "src": "accounting_b55730e7.xlsx",
    "sheet": "accounting_b55730e7.xlsx › Savings",
+   "sheetIndex": 7,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1296,6 +1342,7 @@
   {
    "src": "accounting_efbf4064.xlsx",
    "sheet": "accounting_efbf4064.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1326,6 +1373,7 @@
   {
    "src": "accounting_efbf4064.xlsx",
    "sheet": "accounting_efbf4064.xlsx › Assets",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -1359,6 +1407,7 @@
   {
    "src": "accounting_efbf4064.xlsx",
    "sheet": "accounting_efbf4064.xlsx › Liabilities",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1390,6 +1439,7 @@
   {
    "src": "accounting_efbf4064.xlsx",
    "sheet": "accounting_efbf4064.xlsx › Categories",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -1398,6 +1448,7 @@
   {
    "src": "accounting_f83c7f04.xlsx",
    "sheet": "accounting_f83c7f04.xlsx › Petty cash log",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -1435,6 +1486,7 @@
   {
    "src": "budget_011bc58a.xlsx",
    "sheet": "budget_011bc58a.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -1443,6 +1495,7 @@
   {
    "src": "budget_011bc58a.xlsx",
    "sheet": "budget_011bc58a.xlsx › Personal Monthly Budget",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -1474,6 +1527,7 @@
   {
    "src": "budget_011bc58a.xlsx",
    "sheet": "budget_011bc58a.xlsx › Personal Monthly Budget",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -1505,6 +1559,7 @@
   {
    "src": "budget_142337c5.xlsx",
    "sheet": "budget_142337c5.xlsx › START",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -1513,6 +1568,7 @@
   {
    "src": "budget_142337c5.xlsx",
    "sheet": "budget_142337c5.xlsx › BUDGET TOOL",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1545,6 +1601,7 @@
   {
    "src": "budget_1cbd5c5c.xlsx",
    "sheet": "budget_1cbd5c5c.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -1553,6 +1610,7 @@
   {
    "src": "budget_1cbd5c5c.xlsx",
    "sheet": "budget_1cbd5c5c.xlsx › Monthly college budget",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1586,6 +1644,7 @@
   {
    "src": "budget_1cbd5c5c.xlsx",
    "sheet": "budget_1cbd5c5c.xlsx › chart_calcs",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -1631,6 +1690,7 @@
   {
    "src": "budget_22960980.xlsx",
    "sheet": "budget_22960980.xlsx › Income and expenses",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 3,
@@ -1662,6 +1722,7 @@
   {
    "src": "budget_22960980.xlsx",
    "sheet": "budget_22960980.xlsx › Income and expenses",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 2,
    "of": 3,
@@ -1691,6 +1752,7 @@
   {
    "src": "budget_22960980.xlsx",
    "sheet": "budget_22960980.xlsx › Income and expenses",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 3,
    "of": 3,
@@ -1723,6 +1785,7 @@
   {
    "src": "budget_22960980.xlsx",
    "sheet": "budget_22960980.xlsx › Calculation",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -1731,6 +1794,7 @@
   {
    "src": "budget_2654ec90.xlsx",
    "sheet": "budget_2654ec90.xlsx › Cash flow",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -1739,6 +1803,7 @@
   {
    "src": "budget_2654ec90.xlsx",
    "sheet": "budget_2654ec90.xlsx › Monthly income",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1770,6 +1835,7 @@
   {
    "src": "budget_2654ec90.xlsx",
    "sheet": "budget_2654ec90.xlsx › Monthly expenses",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1801,6 +1867,7 @@
   {
    "src": "budget_2654ec90.xlsx",
    "sheet": "budget_2654ec90.xlsx › Chart data",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1831,6 +1898,7 @@
   {
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "budget_2d4c31d3.xlsx › Monthly budget report",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1864,6 +1932,7 @@
   {
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "budget_2d4c31d3.xlsx › Monthly expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1896,6 +1965,7 @@
   {
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "budget_2d4c31d3.xlsx › Expenses categories",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -1904,6 +1974,7 @@
   {
    "src": "budget_2d4c31d3.xlsx",
    "sheet": "budget_2d4c31d3.xlsx › Expenses summary",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -1935,6 +2006,7 @@
   {
    "src": "budget_354f6f67.xlsx",
    "sheet": "budget_354f6f67.xlsx › Monthly budget summary",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -1968,6 +2040,7 @@
   {
    "src": "budget_354f6f67.xlsx",
    "sheet": "budget_354f6f67.xlsx › Income",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2000,6 +2073,7 @@
   {
    "src": "budget_354f6f67.xlsx",
    "sheet": "budget_354f6f67.xlsx › Personnel expenses",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2034,6 +2108,7 @@
   {
    "src": "budget_354f6f67.xlsx",
    "sheet": "budget_354f6f67.xlsx › Operating expenses",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2066,6 +2141,7 @@
   {
    "src": "budget_40a2472b.xlsx",
    "sheet": "budget_40a2472b.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -2097,6 +2173,7 @@
   {
    "src": "budget_40a2472b.xlsx",
    "sheet": "budget_40a2472b.xlsx › Totals",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -2105,6 +2182,7 @@
   {
    "src": "budget_40a2472b.xlsx",
    "sheet": "budget_40a2472b.xlsx › Income",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2136,6 +2214,7 @@
   {
    "src": "budget_40a2472b.xlsx",
    "sheet": "budget_40a2472b.xlsx › Expenditures",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2168,6 +2247,7 @@
   {
    "src": "budget_43520fce.xlsx",
    "sheet": "budget_43520fce.xlsx › Roommate budget",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2199,6 +2279,7 @@
   {
    "src": "budget_478a9534.xlsx",
    "sheet": "budget_478a9534.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -2230,6 +2311,7 @@
   {
    "src": "budget_478a9534.xlsx",
    "sheet": "budget_478a9534.xlsx › Monthly income",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2259,6 +2341,7 @@
   {
    "src": "budget_478a9534.xlsx",
    "sheet": "budget_478a9534.xlsx › Monthly expenses",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -2291,6 +2374,7 @@
   {
    "src": "budget_478a9534.xlsx",
    "sheet": "budget_478a9534.xlsx › Monthly savings",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -2323,6 +2407,7 @@
   {
    "src": "budget_478a9534.xlsx",
    "sheet": "budget_478a9534.xlsx › Chart Data",
+   "sheetIndex": 4,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -2331,6 +2416,7 @@
   {
    "src": "budget_5d8083f9.xlsx",
    "sheet": "budget_5d8083f9.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -2339,6 +2425,7 @@
   {
    "src": "budget_5d8083f9.xlsx",
    "sheet": "budget_5d8083f9.xlsx › Expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -2369,6 +2456,7 @@
   {
    "src": "budget_5d8083f9.xlsx",
    "sheet": "budget_5d8083f9.xlsx › Expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -2399,6 +2487,7 @@
   {
    "src": "budget_5d8083f9.xlsx",
    "sheet": "budget_5d8083f9.xlsx › Income",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2432,6 +2521,7 @@
   {
    "src": "budget_5d8083f9.xlsx",
    "sheet": "budget_5d8083f9.xlsx › Profit-loss Summary",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -2440,6 +2530,7 @@
   {
    "src": "budget_60c5b272.xlsx",
    "sheet": "budget_60c5b272.xlsx › Budget by month",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2482,6 +2573,7 @@
   {
    "src": "budget_6667de34.xlsx",
    "sheet": "budget_6667de34.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -2490,6 +2582,7 @@
   {
    "src": "budget_6667de34.xlsx",
    "sheet": "budget_6667de34.xlsx › Channel marketing budget",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2535,6 +2628,7 @@
   {
    "src": "budget_7890eac9.xlsx",
    "sheet": "budget_7890eac9.xlsx › Expenses",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -2565,6 +2659,7 @@
   {
    "src": "budget_7890eac9.xlsx",
    "sheet": "budget_7890eac9.xlsx › Expenses",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -2595,6 +2690,7 @@
   {
    "src": "budget_7890eac9.xlsx",
    "sheet": "budget_7890eac9.xlsx › Income",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2628,6 +2724,7 @@
   {
    "src": "budget_7890eac9.xlsx",
    "sheet": "budget_7890eac9.xlsx › Profit & loss summary",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -2660,6 +2757,7 @@
   {
    "src": "budget_7890eac9.xlsx",
    "sheet": "budget_7890eac9.xlsx › Profit & loss summary",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -2692,6 +2790,7 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Sheet1",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2724,6 +2823,7 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Budget overview",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 2,
@@ -2756,6 +2856,7 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Budget overview",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -2789,6 +2890,7 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Budget summary",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2820,6 +2922,7 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Monthly expenses",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2853,6 +2956,7 @@
   {
    "src": "budget_8eb8ecb2.xlsx",
    "sheet": "budget_8eb8ecb2.xlsx › Additional data",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2886,6 +2990,7 @@
   {
    "src": "budget_8f6b87a5.xlsx",
    "sheet": "budget_8f6b87a5.xlsx › College monthly budget",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -2917,6 +3022,7 @@
   {
    "src": "budget_91b9548b.xlsx",
    "sheet": "budget_91b9548b.xlsx › Monthly budget",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 2,
@@ -2949,6 +3055,7 @@
   {
    "src": "budget_91b9548b.xlsx",
    "sheet": "budget_91b9548b.xlsx › Monthly budget",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -2981,6 +3088,7 @@
   {
    "src": "budget_926cf263.xlsx",
    "sheet": "budget_926cf263.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "每一欄都是長文字，像說明頁",
@@ -2989,6 +3097,7 @@
   {
    "src": "budget_926cf263.xlsx",
    "sheet": "budget_926cf263.xlsx › Budget wheel",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3022,6 +3131,7 @@
   {
    "src": "budget_926cf263.xlsx",
    "sheet": "budget_926cf263.xlsx › Data",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3054,6 +3164,7 @@
   {
    "src": "budget_94d2de40.xlsx",
    "sheet": "budget_94d2de40.xlsx › Budget summary",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "沒有任何文字欄名，像圖表資料區或控制列",
@@ -3062,6 +3173,7 @@
   {
    "src": "budget_94d2de40.xlsx",
    "sheet": "budget_94d2de40.xlsx › Monthly income",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3091,6 +3203,7 @@
   {
    "src": "budget_94d2de40.xlsx",
    "sheet": "budget_94d2de40.xlsx › Monthly expenses",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3120,6 +3233,7 @@
   {
    "src": "budget_94d2de40.xlsx",
    "sheet": "budget_94d2de40.xlsx › Semester expenses",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3150,6 +3264,7 @@
   {
    "src": "budget_a146c834.xlsx",
    "sheet": "budget_a146c834.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -3158,6 +3273,7 @@
   {
    "src": "budget_a146c834.xlsx",
    "sheet": "budget_a146c834.xlsx › Monthly income",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3187,6 +3303,7 @@
   {
    "src": "budget_a146c834.xlsx",
    "sheet": "budget_a146c834.xlsx › Monthly expenses",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3216,6 +3333,7 @@
   {
    "src": "budget_af824d68.xlsx",
    "sheet": "budget_af824d68.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3247,6 +3365,7 @@
   {
    "src": "budget_af824d68.xlsx",
    "sheet": "budget_af824d68.xlsx › Income and Expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3278,6 +3397,7 @@
   {
    "src": "budget_b0a247ff.xlsx",
    "sheet": "budget_b0a247ff.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3310,6 +3430,7 @@
   {
    "src": "budget_b0a247ff.xlsx",
    "sheet": "budget_b0a247ff.xlsx › Expense",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3352,6 +3473,7 @@
   {
    "src": "budget_b340cb34.xlsx",
    "sheet": "budget_b340cb34.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -3360,6 +3482,7 @@
   {
    "src": "budget_b340cb34.xlsx",
    "sheet": "budget_b340cb34.xlsx › Monthly Income",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -3391,6 +3514,7 @@
   {
    "src": "budget_b340cb34.xlsx",
    "sheet": "budget_b340cb34.xlsx › Monthly Expenses",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -3422,6 +3546,7 @@
   {
    "src": "budget_b6c07597.xlsx",
    "sheet": "budget_b6c07597.xlsx › PERSONAL BUDGET",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3464,6 +3589,7 @@
   {
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Monthly Budget Summary",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -3499,6 +3625,7 @@
   {
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Income",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -3533,6 +3660,7 @@
   {
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Personnel Expenses",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -3567,6 +3695,7 @@
   {
    "src": "budget_cc3e248b.xlsx",
    "sheet": "budget_cc3e248b.xlsx › Operating Expenses",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3599,6 +3728,7 @@
   {
    "src": "budget_d030c90f.xlsx",
    "sheet": "budget_d030c90f.xlsx › Budget summary",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3628,6 +3758,7 @@
   {
    "src": "budget_d030c90f.xlsx",
    "sheet": "budget_d030c90f.xlsx › Itemized expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3658,6 +3789,7 @@
   {
    "src": "budget_d030c90f.xlsx",
    "sheet": "budget_d030c90f.xlsx › ChartData",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -3666,6 +3798,7 @@
   {
    "src": "budget_d8df692e.xlsx",
    "sheet": "budget_d8df692e.xlsx › Personal monthly budget",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -3697,6 +3830,7 @@
   {
    "src": "budget_d8df692e.xlsx",
    "sheet": "budget_d8df692e.xlsx › Personal monthly budget",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -3730,6 +3864,7 @@
   {
    "src": "budget_dcb1bbfe.xlsx",
    "sheet": "budget_dcb1bbfe.xlsx › Academic Club budget",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 2,
@@ -3761,6 +3896,7 @@
   {
    "src": "budget_dcb1bbfe.xlsx",
    "sheet": "budget_dcb1bbfe.xlsx › Academic Club budget",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -3792,6 +3928,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Guide",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -3800,6 +3937,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Daily cash flow",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3832,6 +3970,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Monthly cash flow",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -3865,6 +4004,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 1,
    "of": 5,
@@ -3898,6 +4038,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 2,
    "of": 5,
@@ -3927,6 +4068,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 3,
    "of": 5,
@@ -3956,6 +4098,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 4,
    "of": 5,
@@ -3985,6 +4128,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Annual cash flow",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 5,
    "of": 5,
@@ -4014,6 +4158,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Income",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4046,6 +4191,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Expenses",
+   "sheetIndex": 5,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4078,6 +4224,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Discretionary",
+   "sheetIndex": 6,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4110,6 +4257,7 @@
   {
    "src": "cashflow_281b542f.xlsx",
    "sheet": "cashflow_281b542f.xlsx › Savings",
+   "sheetIndex": 7,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4142,6 +4290,7 @@
   {
    "src": "cashflow_9d4519ee.xlsx",
    "sheet": "cashflow_9d4519ee.xlsx › Annuity",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4178,6 +4327,7 @@
   {
    "src": "cashflow_eb47068d.xlsx",
    "sheet": "cashflow_eb47068d.xlsx › Cash flow",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4220,6 +4370,7 @@
   {
    "src": "cashflow_eb47068d.xlsx",
    "sheet": "cashflow_eb47068d.xlsx › Cash flow chart",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -4228,6 +4379,7 @@
   {
    "src": "cashflow_f7200e29.xlsx",
    "sheet": "cashflow_f7200e29.xlsx › Cash flow forecast",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4260,6 +4412,7 @@
   {
    "src": "cashflow_f7200e29.xlsx",
    "sheet": "cashflow_f7200e29.xlsx › Cash flow chart",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -4289,6 +4442,7 @@
   {
    "src": "cashflow_f7200e29.xlsx",
    "sheet": "cashflow_f7200e29.xlsx › Cash flow chart",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 2,
    "of": 2,
@@ -4319,6 +4473,7 @@
   {
    "src": "chart_0324ef03.xlsx",
    "sheet": "chart_0324ef03.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -4327,6 +4482,7 @@
   {
    "src": "chart_0324ef03.xlsx",
    "sheet": "chart_0324ef03.xlsx › PROJECT PARAMETERS",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -4365,6 +4521,7 @@
   {
    "src": "chart_0324ef03.xlsx",
    "sheet": "chart_0324ef03.xlsx › PROJECT DETAILS",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4416,6 +4573,7 @@
   {
    "src": "chart_0324ef03.xlsx",
    "sheet": "chart_0324ef03.xlsx › PROJECT TOTALS",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4456,6 +4614,7 @@
   {
    "src": "chart_098a0353.xlsx",
    "sheet": "chart_098a0353.xlsx › Manufacturing imperfections",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4491,6 +4650,7 @@
   {
    "src": "chart_098a0353.xlsx",
    "sheet": "chart_098a0353.xlsx › Run chart with sample mean",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -4499,6 +4659,7 @@
   {
    "src": "chart_09eef93c.xlsx",
    "sheet": "chart_09eef93c.xlsx › MANUFACTURING OUTPUT",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4528,6 +4689,7 @@
   {
    "src": "chart_1c4bd473.xlsx",
    "sheet": "chart_1c4bd473.xlsx › Campaign sales funnel",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4559,6 +4721,7 @@
   {
    "src": "chart_1c4bd473.xlsx",
    "sheet": "chart_1c4bd473.xlsx › scratch",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4618,6 +4781,7 @@
   {
    "src": "chart_1ed52567.xlsx",
    "sheet": "chart_1ed52567.xlsx › Regional sales",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4651,6 +4815,7 @@
   {
    "src": "chart_23458125.xlsx",
    "sheet": "chart_23458125.xlsx › Personal net worth",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -4659,6 +4824,7 @@
   {
    "src": "chart_23458125.xlsx",
    "sheet": "chart_23458125.xlsx › Assets",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4689,6 +4855,7 @@
   {
    "src": "chart_23458125.xlsx",
    "sheet": "chart_23458125.xlsx › Debt",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4718,6 +4885,7 @@
   {
    "src": "chart_4bf6b793.xlsx",
    "sheet": "chart_4bf6b793.xlsx › Project schedule",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -4751,6 +4919,7 @@
   {
    "src": "chart_4bf6b793.xlsx",
    "sheet": "chart_4bf6b793.xlsx › Project schedule",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -4838,6 +5007,7 @@
   {
    "src": "chart_4bf6b793.xlsx",
    "sheet": "chart_4bf6b793.xlsx › About",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -4846,6 +5016,7 @@
   {
    "src": "chart_4eec2072.xlsx",
    "sheet": "chart_4eec2072.xlsx › PROBLEM DATA AND CHART",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -4882,6 +5053,7 @@
   {
    "src": "chart_6860aa13.xlsx",
    "sheet": "chart_6860aa13.xlsx › Budget summary",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4917,6 +5089,7 @@
   {
    "src": "chart_6860aa13.xlsx",
    "sheet": "chart_6860aa13.xlsx › Profit & loss chart",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4950,6 +5123,7 @@
   {
    "src": "chart_6860aa13.xlsx",
    "sheet": "chart_6860aa13.xlsx › Balance chart",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -4983,6 +5157,7 @@
   {
    "src": "chart_86466670.xlsx",
    "sheet": "chart_86466670.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 3,
@@ -5017,6 +5192,7 @@
   {
    "src": "chart_86466670.xlsx",
    "sheet": "chart_86466670.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 2,
    "of": 3,
@@ -5052,6 +5228,7 @@
   {
    "src": "chart_86466670.xlsx",
    "sheet": "chart_86466670.xlsx › Check register",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 3,
    "of": 3,
@@ -5085,6 +5262,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › tips",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -5093,6 +5271,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › summary",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5126,6 +5305,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › jan",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5160,6 +5340,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › feb",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5194,6 +5375,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › mar",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5228,6 +5410,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › apr",
+   "sheetIndex": 5,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5262,6 +5445,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › may",
+   "sheetIndex": 6,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5296,6 +5480,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › jun",
+   "sheetIndex": 7,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5330,6 +5515,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › jul",
+   "sheetIndex": 8,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5364,6 +5550,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › aug",
+   "sheetIndex": 9,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5398,6 +5585,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › sep",
+   "sheetIndex": 10,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5432,6 +5620,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › oct",
+   "sheetIndex": 11,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5466,6 +5655,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › nov",
+   "sheetIndex": 12,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5500,6 +5690,7 @@
   {
    "src": "chart_8be76302.xlsx",
    "sheet": "chart_8be76302.xlsx › dec",
+   "sheetIndex": 13,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5534,6 +5725,7 @@
   {
    "src": "chart_8c4be8ed.xlsx",
    "sheet": "chart_8c4be8ed.xlsx › Social media engagement data",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5563,6 +5755,7 @@
   {
    "src": "chart_8eab671c.xlsx",
    "sheet": "chart_8eab671c.xlsx › Project Planner",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "沒有任何文字欄名，像圖表資料區或控制列",
@@ -5571,6 +5764,7 @@
   {
    "src": "chart_8f94d364.xlsx",
    "sheet": "chart_8f94d364.xlsx › Summary",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -5606,6 +5800,7 @@
   {
    "src": "chart_8f94d364.xlsx",
    "sheet": "chart_8f94d364.xlsx › Buy a car",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5639,6 +5834,7 @@
   {
    "src": "chart_8f94d364.xlsx",
    "sheet": "chart_8f94d364.xlsx › Rideshare",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5672,6 +5868,7 @@
   {
    "src": "chart_94c0fff6.xlsx",
    "sheet": "chart_94c0fff6.xlsx › Sales data",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5704,6 +5901,7 @@
   {
    "src": "chart_9d91ef48.xlsx",
    "sheet": "chart_9d91ef48.xlsx › Defect data and chart",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -5740,6 +5938,7 @@
   {
    "src": "chart_a3fde570.xlsx",
    "sheet": "chart_a3fde570.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -5748,6 +5947,7 @@
   {
    "src": "chart_a3fde570.xlsx",
    "sheet": "chart_a3fde570.xlsx › Small",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "整張工作表空白",
@@ -5756,6 +5956,7 @@
   {
    "src": "chart_a3fde570.xlsx",
    "sheet": "chart_a3fde570.xlsx › Medium",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "整張工作表空白",
@@ -5764,6 +5965,7 @@
   {
    "src": "chart_a3fde570.xlsx",
    "sheet": "chart_a3fde570.xlsx › Large",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "整張工作表空白",
@@ -5772,6 +5974,7 @@
   {
    "src": "chart_ab449fed.xlsx",
    "sheet": "chart_ab449fed.xlsx › Contents",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -5780,6 +5983,7 @@
   {
    "src": "chart_ab449fed.xlsx",
    "sheet": "chart_ab449fed.xlsx › Layered 5 level",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
@@ -5788,6 +5992,7 @@
   {
    "src": "chart_ab449fed.xlsx",
    "sheet": "chart_ab449fed.xlsx › Sub-layered 5 level",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -5832,6 +6037,7 @@
   {
    "src": "chart_b795847d.xlsx",
    "sheet": "chart_b795847d.xlsx › Growth data",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5869,6 +6075,7 @@
   {
    "src": "chart_b795847d.xlsx",
    "sheet": "chart_b795847d.xlsx › Growth chart",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "整張工作表空白",
@@ -5877,6 +6084,7 @@
   {
    "src": "chart_bd08ad3a.xlsx",
    "sheet": "chart_bd08ad3a.xlsx › Weight loss tracker",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -5912,6 +6120,7 @@
   {
    "src": "chart_bd08ad3a.xlsx",
    "sheet": "chart_bd08ad3a.xlsx › calculations",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -5947,6 +6156,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › About",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -5955,6 +6165,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Light",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 3,
@@ -5990,6 +6201,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Light",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 2,
    "of": 3,
@@ -6052,6 +6264,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Light",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 3,
    "of": 3,
@@ -6115,6 +6328,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Dark",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 3,
@@ -6150,6 +6364,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Dark",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 2,
    "of": 3,
@@ -6212,6 +6427,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Dark",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 3,
    "of": 3,
@@ -6275,6 +6491,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Color",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 3,
@@ -6310,6 +6527,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Color",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 2,
    "of": 3,
@@ -6372,6 +6590,7 @@
   {
    "src": "chart_c29ed7ae.xlsx",
    "sheet": "chart_c29ed7ae.xlsx › Color",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 3,
    "of": 3,
@@ -6435,6 +6654,7 @@
   {
    "src": "chart_c4948841.xlsx",
    "sheet": "chart_c4948841.xlsx › Growth data",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6472,6 +6692,7 @@
   {
    "src": "chart_c4948841.xlsx",
    "sheet": "chart_c4948841.xlsx › Growth chart",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -6480,6 +6701,7 @@
   {
    "src": "chart_dc387a76.xlsx",
    "sheet": "chart_dc387a76.xlsx › BLOOD PRESSURE DATA",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6514,6 +6736,7 @@
   {
    "src": "chart_f79af0fb.xlsx",
    "sheet": "chart_f79af0fb.xlsx › Cost data and chart",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6550,6 +6773,7 @@
   {
    "src": "expense_68cc5838.xlsx",
    "sheet": "expense_68cc5838.xlsx › Planned expenses",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6582,6 +6806,7 @@
   {
    "src": "expense_68cc5838.xlsx",
    "sheet": "expense_68cc5838.xlsx › Actual expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6614,6 +6839,7 @@
   {
    "src": "expense_68cc5838.xlsx",
    "sheet": "expense_68cc5838.xlsx › Expense variances",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6646,6 +6872,7 @@
   {
    "src": "expense_68cc5838.xlsx",
    "sheet": "expense_68cc5838.xlsx › Expenses analysis",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6682,6 +6909,7 @@
   {
    "src": "expense_b273e96f.xlsx",
    "sheet": "expense_b273e96f.xlsx › Dashboard",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -6690,6 +6918,7 @@
   {
    "src": "expense_b273e96f.xlsx",
    "sheet": "expense_b273e96f.xlsx › Expense log",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6722,6 +6951,7 @@
   {
    "src": "expense_b273e96f.xlsx",
    "sheet": "expense_b273e96f.xlsx › Personal Expenses Data",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6755,6 +6985,7 @@
   {
    "src": "expense_c7acec8e.xlsx",
    "sheet": "expense_c7acec8e.xlsx › Template guide",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -6763,6 +6994,7 @@
   {
    "src": "expense_c7acec8e.xlsx",
    "sheet": "expense_c7acec8e.xlsx › Startup expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6793,6 +7025,7 @@
   {
    "src": "expense_d14f83e2.xlsx",
    "sheet": "expense_d14f83e2.xlsx › START",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -6801,6 +7034,7 @@
   {
    "src": "expense_d14f83e2.xlsx",
    "sheet": "expense_d14f83e2.xlsx › PLANNED EXPENSES",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6833,6 +7067,7 @@
   {
    "src": "expense_d14f83e2.xlsx",
    "sheet": "expense_d14f83e2.xlsx › ACTUAL EXPENSES",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6865,6 +7100,7 @@
   {
    "src": "expense_d14f83e2.xlsx",
    "sheet": "expense_d14f83e2.xlsx › EXPENSE VARIANCES",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -6897,6 +7133,7 @@
   {
    "src": "expense_d14f83e2.xlsx",
    "sheet": "expense_d14f83e2.xlsx › EXPENSE ANALYSIS",
+   "sheetIndex": 4,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -6931,6 +7168,7 @@
   {
    "src": "expense_d75b85c4.xlsx",
    "sheet": "expense_d75b85c4.xlsx › Expenses",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -6966,6 +7204,7 @@
   {
    "src": "expense_d75b85c4.xlsx",
    "sheet": "expense_d75b85c4.xlsx › Category",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -6974,6 +7213,7 @@
   {
    "src": "inventory_100fccf4.xlsx",
    "sheet": "inventory_100fccf4.xlsx › Product price list",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7008,6 +7248,7 @@
   {
    "src": "inventory_2ebe081e.xlsx",
    "sheet": "inventory_2ebe081e.xlsx › Assets",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7043,6 +7284,7 @@
   {
    "src": "inventory_4655f40a.xlsx",
    "sheet": "inventory_4655f40a.xlsx › HOME CONTENTS INVENTORY LIST",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7082,6 +7324,7 @@
   {
    "src": "inventory_472442ad.xlsx",
    "sheet": "inventory_472442ad.xlsx › Equipment inventory list",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7133,6 +7376,7 @@
   {
    "src": "inventory_53587d4d.xlsx",
    "sheet": "inventory_53587d4d.xlsx › Inventory List",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7169,6 +7413,7 @@
   {
    "src": "inventory_5c5a8ea5.xlsx",
    "sheet": "inventory_5c5a8ea5.xlsx › Probate Inventory",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7212,6 +7457,7 @@
   {
    "src": "inventory_5c5a8ea5.xlsx",
    "sheet": "inventory_5c5a8ea5.xlsx › Probate Assets",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7250,6 +7496,7 @@
   {
    "src": "inventory_5c5a8ea5.xlsx",
    "sheet": "inventory_5c5a8ea5.xlsx › Probate Liabilities",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7290,6 +7537,7 @@
   {
    "src": "inventory_6fe15a87.xlsx",
    "sheet": "inventory_6fe15a87.xlsx › Grocery list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7329,6 +7577,7 @@
   {
    "src": "inventory_6fe15a87.xlsx",
    "sheet": "inventory_6fe15a87.xlsx › calculations",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -7337,6 +7586,7 @@
   {
    "src": "inventory_7a077a69.xlsx",
    "sheet": "inventory_7a077a69.xlsx › Equipment inventory list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7386,6 +7636,7 @@
   {
    "src": "inventory_90d892c6.xlsx",
    "sheet": "inventory_90d892c6.xlsx › Fixed asset record",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7427,6 +7678,7 @@
   {
    "src": "inventory_90d892c6.xlsx",
    "sheet": "inventory_90d892c6.xlsx › Depreciation methods",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7457,6 +7709,7 @@
   {
    "src": "inventory_98f27753.xlsx",
    "sheet": "inventory_98f27753.xlsx › Home Contents Inventory List",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7497,6 +7750,7 @@
   {
    "src": "inventory_98f27753.xlsx",
    "sheet": "inventory_98f27753.xlsx › Room Lookup",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -7505,6 +7759,7 @@
   {
    "src": "inventory_acc912a4.xlsx",
    "sheet": "inventory_acc912a4.xlsx › Home contents inventory list",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7544,6 +7799,7 @@
   {
    "src": "inventory_b9cbb715.xlsx",
    "sheet": "inventory_b9cbb715.xlsx › Inventory list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7583,6 +7839,7 @@
   {
    "src": "inventory_b9cbb715.xlsx",
    "sheet": "inventory_b9cbb715.xlsx › Inventory pick list",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7623,6 +7880,7 @@
   {
    "src": "inventory_b9cbb715.xlsx",
    "sheet": "inventory_b9cbb715.xlsx › Bin lookup",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7656,6 +7914,7 @@
   {
    "src": "inventory_c16e6fb0.xlsx",
    "sheet": "inventory_c16e6fb0.xlsx › Inventory list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7696,6 +7955,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -7704,6 +7964,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Inventory list",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7745,6 +8006,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Inventory pick list",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7786,6 +8048,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Lookup",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7819,6 +8082,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Navigation links",
+   "sheetIndex": 4,
    "status": "not-shown",
    "show": false,
    "why": "欄名本身就是句子，像說明頁",
@@ -7827,6 +8091,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Conditional formatting",
+   "sheetIndex": 5,
    "status": "not-shown",
    "show": false,
    "why": "欄名本身就是句子，像說明頁",
@@ -7835,6 +8100,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Icon sets",
+   "sheetIndex": 6,
    "status": "not-shown",
    "show": false,
    "why": "欄名本身就是句子，像說明頁",
@@ -7843,6 +8109,7 @@
   {
    "src": "inventory_c70363c0.xlsx",
    "sheet": "inventory_c70363c0.xlsx › Learn more",
+   "sheetIndex": 7,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -7851,6 +8118,7 @@
   {
    "src": "inventory_cf2db84f.xlsx",
    "sheet": "inventory_cf2db84f.xlsx › Inventory list",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -7894,6 +8162,7 @@
   {
    "src": "invoice_02f1e98d.xlsx",
    "sheet": "invoice_02f1e98d.xlsx › Sheet1",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7929,6 +8198,7 @@
   {
    "src": "invoice_7c5c0318.xlsx",
    "sheet": "invoice_7c5c0318.xlsx › Invoice",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7964,6 +8234,7 @@
   {
    "src": "invoice_94db67f1.xlsx",
    "sheet": "invoice_94db67f1.xlsx › Invoice",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -7996,6 +8267,7 @@
   {
    "src": "invoice_ba55235e.xlsx",
    "sheet": "invoice_ba55235e.xlsx › Invoice",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8030,6 +8302,7 @@
   {
    "src": "invoice_cc4028ec.xlsx",
    "sheet": "invoice_cc4028ec.xlsx › Service invoice",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8063,6 +8336,7 @@
   {
    "src": "invoice_cc8f8a79.xlsx",
    "sheet": "invoice_cc8f8a79.xlsx › Sales invoice",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8099,6 +8373,7 @@
   {
    "src": "planner_0ffdef6d.xlsx",
    "sheet": "planner_0ffdef6d.xlsx › Retirement planner",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8135,6 +8410,7 @@
   {
    "src": "planner_0ffdef6d.xlsx",
    "sheet": "planner_0ffdef6d.xlsx › Calculations",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8187,6 +8463,7 @@
   {
    "src": "planner_11bf9a22.xlsx",
    "sheet": "planner_11bf9a22.xlsx › About This Invoice Tracker",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "欄名本身就是句子，像說明頁",
@@ -8195,6 +8472,7 @@
   {
    "src": "planner_11bf9a22.xlsx",
    "sheet": "planner_11bf9a22.xlsx › Invoice",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8228,6 +8506,7 @@
   {
    "src": "planner_11bf9a22.xlsx",
    "sheet": "planner_11bf9a22.xlsx › Customers",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8266,6 +8545,7 @@
   {
    "src": "planner_11bf9a22.xlsx",
    "sheet": "planner_11bf9a22.xlsx › Invoices - main",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8305,6 +8585,7 @@
   {
    "src": "planner_11bf9a22.xlsx",
    "sheet": "planner_11bf9a22.xlsx › Invoice details",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8339,6 +8620,7 @@
   {
    "src": "planner_2a72be1c.xlsx",
    "sheet": "planner_2a72be1c.xlsx › Assignments",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8368,6 +8650,7 @@
   {
    "src": "planner_2a72be1c.xlsx",
    "sheet": "planner_2a72be1c.xlsx › Month View",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -8376,6 +8659,7 @@
   {
    "src": "planner_2a72be1c.xlsx",
    "sheet": "planner_2a72be1c.xlsx › Week View",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -8384,6 +8668,7 @@
   {
    "src": "planner_2f29bdf2.xlsx",
    "sheet": "planner_2f29bdf2.xlsx › Overview",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8420,6 +8705,7 @@
   {
    "src": "planner_2f29bdf2.xlsx",
    "sheet": "planner_2f29bdf2.xlsx › Packing",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -8428,6 +8714,7 @@
   {
    "src": "planner_2f29bdf2.xlsx",
    "sheet": "planner_2f29bdf2.xlsx › Transportation",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -8436,6 +8723,7 @@
   {
    "src": "planner_2f29bdf2.xlsx",
    "sheet": "planner_2f29bdf2.xlsx › Emergency Contacts",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8472,6 +8760,7 @@
   {
    "src": "planner_4b371a73.xlsx",
    "sheet": "planner_4b371a73.xlsx › Weekly lesson planner 1",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8511,6 +8800,7 @@
   {
    "src": "planner_4b371a73.xlsx",
    "sheet": "planner_4b371a73.xlsx › Weekly lesson planner 2",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8550,6 +8840,7 @@
   {
    "src": "planner_4b371a73.xlsx",
    "sheet": "planner_4b371a73.xlsx › Weekly lesson planner 3",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8589,6 +8880,7 @@
   {
    "src": "planner_502c3712.xlsx",
    "sheet": "planner_502c3712.xlsx › Mileage log",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8629,6 +8921,7 @@
   {
    "src": "planner_5673dfc3.xlsx",
    "sheet": "planner_5673dfc3.xlsx › Idea planner",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8668,6 +8961,7 @@
   {
    "src": "planner_5da16261.xlsx",
    "sheet": "planner_5da16261.xlsx › Candidates",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8706,6 +9000,7 @@
   {
    "src": "planner_5da16261.xlsx",
    "sheet": "planner_5da16261.xlsx › Openings",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8740,6 +9035,7 @@
   {
    "src": "planner_5da16261.xlsx",
    "sheet": "planner_5da16261.xlsx › Interviewers",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8772,6 +9068,7 @@
   {
    "src": "planner_64b96609.xlsx",
    "sheet": "planner_64b96609.xlsx › Invoice Tracker",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8808,6 +9105,7 @@
   {
    "src": "planner_684d3472.xlsx",
    "sheet": "planner_684d3472.xlsx › Idea Planner",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8841,6 +9139,7 @@
   {
    "src": "planner_6aab7182.xlsx",
    "sheet": "planner_6aab7182.xlsx › Expense tracker",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8874,6 +9173,7 @@
   {
    "src": "planner_70e92525.xlsx",
    "sheet": "planner_70e92525.xlsx › Project tracker",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -8913,6 +9213,7 @@
   {
    "src": "planner_70e92525.xlsx",
    "sheet": "planner_70e92525.xlsx › Setup",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一兩欄短文字且無數值，像下拉選單的來源清單",
@@ -8921,6 +9222,7 @@
   {
    "src": "planner_97739ac3.xlsx",
    "sheet": "planner_97739ac3.xlsx › Monthly planner",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -8968,6 +9270,7 @@
   {
    "src": "planner_97739ac3.xlsx",
    "sheet": "planner_97739ac3.xlsx › Lists",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9002,6 +9305,7 @@
   {
    "src": "planner_9e1c479f.xlsx",
    "sheet": "planner_9e1c479f.xlsx › Credit card log",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9035,6 +9339,7 @@
   {
    "src": "planner_b86f671c.xlsx",
    "sheet": "planner_b86f671c.xlsx › Membership tracker",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9070,6 +9375,7 @@
   {
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Event planner",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9117,6 +9423,7 @@
   {
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -9147,6 +9454,7 @@
   {
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Expenses",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -9179,6 +9487,7 @@
   {
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Income",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 2,
@@ -9215,6 +9524,7 @@
   {
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Income",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -9248,6 +9558,7 @@
   {
    "src": "planner_c2b640a6.xlsx",
    "sheet": "planner_c2b640a6.xlsx › Summary",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -9256,6 +9567,7 @@
   {
    "src": "planner_e56f1018.xlsx",
    "sheet": "planner_e56f1018.xlsx › Lead data",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9292,6 +9604,7 @@
   {
    "src": "planner_e56f1018.xlsx",
    "sheet": "planner_e56f1018.xlsx › Forecasted sales ",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9334,6 +9647,7 @@
   {
    "src": "planner_e56f1018.xlsx",
    "sheet": "planner_e56f1018.xlsx › Monthly weighted forecast",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -9342,6 +9656,7 @@
   {
    "src": "planner_e6ae6c3f.xlsx",
    "sheet": "planner_e6ae6c3f.xlsx › Shopping list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9376,6 +9691,7 @@
   {
    "src": "planner_e6ae6c3f.xlsx",
    "sheet": "planner_e6ae6c3f.xlsx › Budget breakdown",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9405,6 +9721,7 @@
   {
    "src": "planner_e6ae6c3f.xlsx",
    "sheet": "planner_e6ae6c3f.xlsx › To-do list",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9434,6 +9751,7 @@
   {
    "src": "planner_e6ae6c3f.xlsx",
    "sheet": "planner_e6ae6c3f.xlsx › Share list",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9466,6 +9784,7 @@
   {
    "src": "planner_e9a761b1.xlsx",
    "sheet": "planner_e9a761b1.xlsx › Issue Tracker",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9504,6 +9823,7 @@
   {
    "src": "planner_e9a761b1.xlsx",
    "sheet": "planner_e9a761b1.xlsx › calculations",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -9512,6 +9832,7 @@
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Overview",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9546,6 +9867,7 @@
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › To-do",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9577,6 +9899,7 @@
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Foods & drinks",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9608,6 +9931,7 @@
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Guests",
+   "sheetIndex": 3,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -9641,6 +9965,7 @@
   {
    "src": "planner_ebcaa05b.xlsx",
    "sheet": "planner_ebcaa05b.xlsx › Activities",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9671,6 +9996,7 @@
   {
    "src": "pnl_798cbc44.xlsx",
    "sheet": "pnl_798cbc44.xlsx › Profit and loss statement",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9705,6 +10031,7 @@
   {
    "src": "pnl_b3a410cc.xlsx",
    "sheet": "pnl_b3a410cc.xlsx › Revenues (sales)",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9761,6 +10088,7 @@
   {
    "src": "pnl_b3a410cc.xlsx",
    "sheet": "pnl_b3a410cc.xlsx › Cost of sales",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9817,6 +10145,7 @@
   {
    "src": "pnl_b3a410cc.xlsx",
    "sheet": "pnl_b3a410cc.xlsx › Expenses",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9873,6 +10202,7 @@
   {
    "src": "schedule_31cdcf05.xlsx",
    "sheet": "schedule_31cdcf05.xlsx › Class Schedule",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9905,6 +10235,7 @@
   {
    "src": "schedule_48f98fd1.xlsx",
    "sheet": "schedule_48f98fd1.xlsx › Class schedule",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9937,6 +10268,7 @@
   {
    "src": "schedule_48f98fd1.xlsx",
    "sheet": "schedule_48f98fd1.xlsx › Class list",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -9973,6 +10305,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Monday",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10006,6 +10339,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Tuesday",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10039,6 +10373,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Wednesday",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10072,6 +10407,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Thursday",
+   "sheetIndex": 3,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10105,6 +10441,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Friday",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10138,6 +10475,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Saturday",
+   "sheetIndex": 5,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10171,6 +10509,7 @@
   {
    "src": "schedule_54d4fddf.xlsx",
    "sheet": "schedule_54d4fddf.xlsx › Sunday",
+   "sheetIndex": 6,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10204,6 +10543,7 @@
   {
    "src": "schedule_792c56ff.xlsx",
    "sheet": "schedule_792c56ff.xlsx › Schedule",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10236,6 +10576,7 @@
   {
    "src": "schedule_9ac62cd3.xlsx",
    "sheet": "schedule_9ac62cd3.xlsx › Weekly college schedule",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10268,6 +10609,7 @@
   {
    "src": "schedule_de27afd1.xlsx",
    "sheet": "schedule_de27afd1.xlsx › Weekly task schedule",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10300,6 +10642,7 @@
   {
    "src": "schedule_de27afd1.xlsx",
    "sheet": "schedule_de27afd1.xlsx › Task list",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10331,6 +10674,7 @@
   {
    "src": "schedule_f4999261.xlsx",
    "sheet": "schedule_f4999261.xlsx › Team roster",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -10365,6 +10709,7 @@
   {
    "src": "schedule_f4999261.xlsx",
    "sheet": "schedule_f4999261.xlsx › League schedule",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -10399,6 +10744,7 @@
   {
    "src": "schedule_f4999261.xlsx",
    "sheet": "schedule_f4999261.xlsx › League team list",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -10433,6 +10779,7 @@
   {
    "src": "student_3f9a5c70.xlsx",
    "sheet": "student_3f9a5c70.xlsx › My university budget",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -10441,6 +10788,7 @@
   {
    "src": "student_3f9a5c70.xlsx",
    "sheet": "student_3f9a5c70.xlsx › Income and expenses",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 3,
@@ -10472,6 +10820,7 @@
   {
    "src": "student_3f9a5c70.xlsx",
    "sheet": "student_3f9a5c70.xlsx › Income and expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 2,
    "of": 3,
@@ -10501,6 +10850,7 @@
   {
    "src": "student_3f9a5c70.xlsx",
    "sheet": "student_3f9a5c70.xlsx › Income and expenses",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 3,
    "of": 3,
@@ -10531,6 +10881,7 @@
   {
    "src": "student_3f9a5c70.xlsx",
    "sheet": "student_3f9a5c70.xlsx › Calculation",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -10539,6 +10890,7 @@
   {
    "src": "student_786cd45b.xlsx",
    "sheet": "student_786cd45b.xlsx › Class list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10578,6 +10930,7 @@
   {
    "src": "student_786cd45b.xlsx",
    "sheet": "student_786cd45b.xlsx › Deadlines",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10614,6 +10967,7 @@
   {
    "src": "student_786cd45b.xlsx",
    "sheet": "student_786cd45b.xlsx › Weekly schedule",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10647,6 +11001,7 @@
   {
    "src": "student_786cd45b.xlsx",
    "sheet": "student_786cd45b.xlsx › Semester calendar",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -10655,6 +11010,7 @@
   {
    "src": "student_a5bdc654.xlsx",
    "sheet": "student_a5bdc654.xlsx › Back-to-school checklist",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 2,
@@ -10686,6 +11042,7 @@
   {
    "src": "student_a5bdc654.xlsx",
    "sheet": "student_a5bdc654.xlsx › Back-to-school checklist",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -10717,6 +11074,7 @@
   {
    "src": "student_b6316bb6.xlsx",
    "sheet": "student_b6316bb6.xlsx › Applications",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -10725,6 +11083,7 @@
   {
    "src": "student_b6316bb6.xlsx",
    "sheet": "student_b6316bb6.xlsx › Comparisons",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -10733,6 +11092,7 @@
   {
    "src": "student_beeb91bb.xlsx",
    "sheet": "student_beeb91bb.xlsx › Class list",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10769,6 +11129,7 @@
   {
    "src": "student_beeb91bb.xlsx",
    "sheet": "student_beeb91bb.xlsx › Deadlines",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10802,6 +11163,7 @@
   {
    "src": "student_beeb91bb.xlsx",
    "sheet": "student_beeb91bb.xlsx › Weekly schedule",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -10834,6 +11196,7 @@
   {
    "src": "student_beeb91bb.xlsx",
    "sheet": "student_beeb91bb.xlsx › Semester Calendar",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -10842,6 +11205,7 @@
   {
    "src": "student_d2e23da5.xlsx",
    "sheet": "student_d2e23da5.xlsx › College credit planner",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -10879,6 +11243,7 @@
   {
    "src": "student_d2e23da5.xlsx",
    "sheet": "student_d2e23da5.xlsx › Course",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -10914,6 +11279,7 @@
   {
    "src": "student_d2e23da5.xlsx",
    "sheet": "student_d2e23da5.xlsx › Semester summary data",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10944,6 +11310,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Jan",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -10977,6 +11344,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Feb",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -10985,6 +11353,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Mar",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -10993,6 +11362,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › April",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11001,6 +11371,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › May",
+   "sheetIndex": 4,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11009,6 +11380,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › June",
+   "sheetIndex": 5,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11017,6 +11389,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › July",
+   "sheetIndex": 6,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11025,6 +11398,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Aug",
+   "sheetIndex": 7,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11033,6 +11407,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Sep",
+   "sheetIndex": 8,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11041,6 +11416,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Oct",
+   "sheetIndex": 9,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11049,6 +11425,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Nov",
+   "sheetIndex": 10,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11057,6 +11434,7 @@
   {
    "src": "student_f5e29f68.xlsx",
    "sheet": "student_f5e29f68.xlsx › Dec",
+   "sheetIndex": 11,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11065,6 +11443,7 @@
   {
    "src": "timeline_220529be.xlsx",
    "sheet": "timeline_220529be.xlsx › Calendar",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 3,
@@ -11102,6 +11481,7 @@
   {
    "src": "timeline_220529be.xlsx",
    "sheet": "timeline_220529be.xlsx › Calendar",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 2,
    "of": 3,
@@ -11139,6 +11519,7 @@
   {
    "src": "timeline_220529be.xlsx",
    "sheet": "timeline_220529be.xlsx › Calendar",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 3,
    "of": 3,
@@ -11176,6 +11557,7 @@
   {
    "src": "timeline_25d7e007.xlsx",
    "sheet": "timeline_25d7e007.xlsx › Project timeline",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "沒有任何文字欄名，像圖表資料區或控制列",
@@ -11184,6 +11566,7 @@
   {
    "src": "timeline_369564be.xlsx",
    "sheet": "timeline_369564be.xlsx › Schedule",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -11221,6 +11604,7 @@
   {
    "src": "timeline_3e07a89b.xlsx",
    "sheet": "timeline_3e07a89b.xlsx › Roster",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -11229,6 +11613,7 @@
   {
    "src": "timeline_3e07a89b.xlsx",
    "sheet": "timeline_3e07a89b.xlsx › Schedule",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "只有 1 列資料",
@@ -11237,6 +11622,7 @@
   {
    "src": "timeline_3e07a89b.xlsx",
    "sheet": "timeline_3e07a89b.xlsx › Calendar",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11245,6 +11631,7 @@
   {
    "src": "timeline_588ac285.xlsx",
    "sheet": "timeline_588ac285.xlsx › About",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -11253,6 +11640,7 @@
   {
    "src": "timeline_588ac285.xlsx",
    "sheet": "timeline_588ac285.xlsx › Work plan",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -11290,6 +11678,7 @@
   {
    "src": "timeline_6521f005.xlsx",
    "sheet": "timeline_6521f005.xlsx › Calendar",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11343,6 +11732,7 @@
   {
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project timeline",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11376,6 +11766,7 @@
   {
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 3,
@@ -11411,6 +11802,7 @@
   {
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 2,
    "of": 3,
@@ -11449,6 +11841,7 @@
   {
    "src": "timeline_68b6fc0a.xlsx",
    "sheet": "timeline_68b6fc0a.xlsx › Project Data Sorted",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 3,
    "of": 3,
@@ -11484,6 +11877,7 @@
   {
    "src": "timeline_6abb6cbd.xlsx",
    "sheet": "timeline_6abb6cbd.xlsx › Timeline",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11520,6 +11914,7 @@
   {
    "src": "timeline_6abb6cbd.xlsx",
    "sheet": "timeline_6abb6cbd.xlsx › About",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -11528,6 +11923,7 @@
   {
    "src": "timeline_7ec3f486.xlsx",
    "sheet": "timeline_7ec3f486.xlsx › Social Overview",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -11536,6 +11932,7 @@
   {
    "src": "timeline_93059754.xlsx",
    "sheet": "timeline_93059754.xlsx › Calendar",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11573,6 +11970,7 @@
   {
    "src": "timeline_93faf979.xlsx",
    "sheet": "timeline_93faf979.xlsx › Wedding timeline planner",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -11608,6 +12006,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › January",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11616,6 +12015,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › February",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11624,6 +12024,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › March",
+   "sheetIndex": 2,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11632,6 +12033,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › April",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11640,6 +12042,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › May",
+   "sheetIndex": 4,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11648,6 +12051,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › June",
+   "sheetIndex": 5,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11656,6 +12060,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › July",
+   "sheetIndex": 6,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11664,6 +12069,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › August",
+   "sheetIndex": 7,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11672,6 +12078,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › September",
+   "sheetIndex": 8,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11680,6 +12087,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › October",
+   "sheetIndex": 9,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11688,6 +12096,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › November",
+   "sheetIndex": 10,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11696,6 +12105,7 @@
   {
    "src": "timeline_b1eea1e2.xlsx",
    "sheet": "timeline_b1eea1e2.xlsx › December",
+   "sheetIndex": 11,
    "status": "not-shown",
    "show": false,
    "why": "月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現",
@@ -11704,6 +12114,7 @@
   {
    "src": "timeline_b5878e54.xlsx",
    "sheet": "timeline_b5878e54.xlsx › Meeting agenda",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11736,6 +12147,7 @@
   {
    "src": "timeline_bbfeb33f.xlsx",
    "sheet": "timeline_bbfeb33f.xlsx › Project timeline",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -11744,6 +12156,7 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › SerRealSocial",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -11780,6 +12193,7 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › Cheeple",
+   "sheetIndex": 1,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -11788,6 +12202,7 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › Ideaphoria",
+   "sheetIndex": 2,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -11824,6 +12239,7 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › Immepic",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -11832,6 +12248,7 @@
   {
    "src": "timeline_c7bfc3e8.xlsx",
    "sheet": "timeline_c7bfc3e8.xlsx › ConnectAbove",
+   "sheetIndex": 4,
    "status": "not-shown",
    "show": "weak",
    "why": "只有一欄有值、其餘整欄空白，像還沒填的範本",
@@ -11840,6 +12257,7 @@
   {
    "src": "timeline_cc131202.xlsx",
    "sheet": "timeline_cc131202.xlsx › Schedule",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -11875,6 +12293,7 @@
   {
    "src": "timeline_cc8dfa38.xlsx",
    "sheet": "timeline_cc8dfa38.xlsx › SCHEDULE",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11908,6 +12327,7 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › About",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -11916,6 +12336,7 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Milestones",
+   "sheetIndex": 1,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11947,6 +12368,7 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Tasks",
+   "sheetIndex": 2,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -11981,6 +12403,7 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Gantt Chart",
+   "sheetIndex": 3,
    "status": "not-shown",
    "show": false,
    "why": "整張工作表空白",
@@ -11989,6 +12412,7 @@
   {
    "src": "timeline_ff21fe25.xlsx",
    "sheet": "timeline_ff21fe25.xlsx › Dynamic Chart Data Hidden",
+   "sheetIndex": 4,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12030,6 +12454,7 @@
   {
    "src": "timesheet_0951750e.xlsx",
    "sheet": "timesheet_0951750e.xlsx › Time sheet",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12063,6 +12488,7 @@
   {
    "src": "timesheet_1224b456.xlsx",
    "sheet": "timesheet_1224b456.xlsx › Timesheet",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -12099,6 +12525,7 @@
   {
    "src": "timesheet_8fd087b1.xlsx",
    "sheet": "timesheet_8fd087b1.xlsx › Biweekly time sheet",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12133,6 +12560,7 @@
   {
    "src": "timesheet_914ad28e.xlsx",
    "sheet": "timesheet_914ad28e.xlsx › Start",
+   "sheetIndex": 0,
    "status": "not-shown",
    "show": false,
    "why": "切不出任何表格區塊",
@@ -12141,6 +12569,7 @@
   {
    "src": "timesheet_914ad28e.xlsx",
    "sheet": "timesheet_914ad28e.xlsx › Yearly timesheet",
+   "sheetIndex": 1,
    "status": "flagged",
    "table": 1,
    "of": 1,
@@ -12185,6 +12614,7 @@
   {
    "src": "timesheet_923969b2.xlsx",
    "sheet": "timesheet_923969b2.xlsx › Timesheet",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12218,6 +12648,7 @@
   {
    "src": "timesheet_bf992aaa.xlsx",
    "sheet": "timesheet_bf992aaa.xlsx › TimeSheet",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 2,
@@ -12251,6 +12682,7 @@
   {
    "src": "timesheet_bf992aaa.xlsx",
    "sheet": "timesheet_bf992aaa.xlsx › TimeSheet",
+   "sheetIndex": 0,
    "status": "flagged",
    "table": 2,
    "of": 2,
@@ -12286,6 +12718,7 @@
   {
    "src": "timesheet_ca8b2e7b.xlsx",
    "sheet": "timesheet_ca8b2e7b.xlsx › Biweekly time sheet",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12320,6 +12753,7 @@
   {
    "src": "timesheet_d09ae26d.xlsx",
    "sheet": "timesheet_d09ae26d.xlsx › Weekly time sheet",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12357,6 +12791,7 @@
   {
    "src": "timesheet_d3ccfb24.xlsx",
    "sheet": "timesheet_d3ccfb24.xlsx › Weekly Time Record",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
@@ -12393,6 +12828,7 @@
   {
    "src": "timesheet_eafc43ca.xlsx",
    "sheet": "timesheet_eafc43ca.xlsx › Weekly Time Record",
+   "sheetIndex": 0,
    "status": "clean",
    "table": 1,
    "of": 1,
