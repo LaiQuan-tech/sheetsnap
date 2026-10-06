@@ -304,24 +304,76 @@ if (JSONOUT) {
   /* --private：在寫出去的那一刻遮，不在每個 records.push 那邊遮。
      理由是會漏——記錄有四個產生點（讀不進來、引擎爆掉、不渲染、正常），
      而以後加欄位時不會有人記得去補第五個地方。這裡是唯一的出口。 */
-  /* 把內插進訊息裡的名字清掉。只清「」是不夠的——查過 detect.js 每一處內插，
-     欄名會出現在三種位置：
+  /* 把每一句訊息換成固定的代號。
 
-       「」裡面      大部分的 reason 與 notes
-       （）裡面      矩陣那條會列出所有數值欄：「後面 13 欄是數值（一月、二月…）」
-       ：後面        「向下填補合併儲存格：Category、Region」
+     前兩版都是「把壞東西刮掉」——第一版只清「」，第二版加上（）跟：後面。
+     兩版都漏，而且是同一類錯誤：欄名本身含括號時，
+     「…之後（如果有的話），我會感興趣。」裡的內層括號先被吃掉，
+     外層那串欄名清單整個逃出去。刮除法證不出安全。
 
-     所以三種都清。代價是連帶清掉（12/12）、（100% 的值可解析為日期）
-     這類有用但無害的細節——判斷分支還在，那是聚合要用的部分。 */
-  const seenText = new Set();
-  const dename = t => {
+     白名單相反：對不上任何一條就回 other，引擎的散文一個字都不輸出。
+     就算欄名剛好含有某條的字樣，結果也只是「代號標錯」，不是洩漏。 */
+  const KIND = [
+    // 判型的理由
+    [/判定為明細帳而非排程/, 'ledger-sparse-date'],
+    [/不拿它分組，改當列名/, 'schedule-date-spread'],
+    [/偵測到日期欄/, 'schedule-date'],
+    [/但沒有日期欄，視為單日流程表/, 'schedule-time-only'],
+    [/為主要名稱/, 'directory-contact'],
+    [/改用比較完整的/, 'matrix-alt-label'],
+    [/是標籤，後面/, 'matrix-first-col'],
+    [/為品項名稱/, 'pricelist-money'],
+    [/種狀態/, 'board-status'],
+    [/分組後逐列呈現/, 'cards-group'],
+    [/為標題逐列呈現/, 'cards-title'],
+    [/逐列呈現所有欄位/, 'cards-bare'],
+    [/把期間攤平成.*當前導/, 'unpivot-period-pinned'],
+    // 結構轉換
+    [/個期間欄位攤平成/, 'unpivot-period'],
+    [/個星期欄位攤平成/, 'unpivot-week'],
+    [/向下填補合併儲存格/, 'filldown'],
+    [/個排版用的空白欄/, 'drop-empty-cols'],
+    [/依重複的欄名切成並排的表格/, 'split-dup-headers'],
+    [/收合成單一/, 'collapse-periods'],
+    // 警示
+    [/標題列可能判錯/, 'bad-header-row'],
+    [/找不到主標題欄/, 'no-title-col'],
+    [/列沒有標題，會被整列略過/, 'rows-without-title'],
+    [/型別偵測沒抓到東西/, 'all-text'],
+    [/落到一般表格/, 'generic'],
+    [/只有一種值，等於沒分組/, 'group-single-value'],
+    [/會碎成一堆單筆段落/, 'group-too-many'],
+    [/沒有任何資料列/, 'no-rows'],
+    [/只有一列資料，判斷幾乎沒有依據/, 'one-row'],
+    [/結構可能判壞/, 'few-rows-extracted'],
+    [/欄有欄名但整欄沒資料/, 'empty-declared-cols'],
+    // 不渲染的理由
+    [/整張工作表空白/, 'sheet-blank'],
+    [/切不出任何表格區塊/, 'no-table'],
+    [/月曆格子/, 'calendar-grid'],
+    [/列資料$/, 'too-few-rows'],
+    [/沒有任何有值的欄位/, 'no-live-cols'],
+    [/沒有任何文字欄名/, 'no-text-headers'],
+    [/欄名本身就是句子/, 'headers-are-sentences'],
+    [/每一欄都是長文字/, 'all-longtext'],
+    [/只有一欄長文字/, 'single-longtext'],
+    [/只有一欄有值/, 'only-one-live-col'],
+    [/只有一兩欄短文字/, 'dropdown-source'],
+  ];
+  /* 只有這幾個代號可以帶數字：它們的訊息裡唯一的變數就是計數。
+     其餘一律不帶——「分組欄「0915373201」只有一種值」這種訊息裡的數字
+     有可能是欄名本身（判錯標題列時就是一格電話），抓出來就是洩漏。 */
+  const NUM_OK = new Set(['bad-header-row', 'rows-without-title', 'few-rows-extracted',
+    'empty-declared-cols', 'unpivot-period', 'unpivot-week', 'drop-empty-cols',
+    'collapse-periods', 'too-few-rows']);
+  const kindOf = t => {
     if (typeof t !== 'string') return t;
-    const o = t.replace(/「[^」]*」/g, '「」')
-               .replace(/（[^）]*）/g, '（）').replace(/\([^)]*\)/g, '()')
-               .replace(/[：:][^，。；]*/g, '：');
-    seenText.add(o);
-    return o;
+    const hit = KIND.find(([re]) => re.test(t));
+    if (!hit) return 'other';
+    const nums = NUM_OK.has(hit[1]) ? (t.match(/\d+/g) || []).join('/') : '';
+    return nums ? hit[1] + ' ' + nums : hit[1];
   };
+
   const mask = r => {
     if (!PRIVATE) return r;
     const o = { ...r };
@@ -331,10 +383,12 @@ if (JSONOUT) {
     o.sheet = r.sheet == null ? null : o.src + ' › #' + (r.sheetIndex ?? 0);
     delete o.sheetIndex;
     delete o.title;        // 表格上方的前言，整段都是原始內容
-    if (o.why) o.why = dename(String(o.why).replace(/\/[^\s]+/g, '<路徑>'));
-    if (o.reason) o.reason = dename(o.reason);
-    if (o.notes) o.notes = o.notes.map(dename);
-    if (o.flags) o.flags = o.flags.map(dename);
+    delete o.label;        // 這是我們自己的中文形狀名，shape 已經夠了
+    if (o.why) o.why = r.status === 'clean' || r.status === 'flagged' ? kindOf(o.why)
+                     : (r.status === 'unreadable' ? 'unreadable' : 'engine-threw');
+    if (o.reason) o.reason = kindOf(o.reason);
+    if (o.notes) o.notes = o.notes.map(kindOf);
+    if (o.flags) o.flags = o.flags.map(kindOf);
     // 欄名整個丟掉，只留「型別:填充率:相異值數」
     if (o.colTypes) o.colTypes = o.colTypes.map(t => t.split(':').slice(-3).join(':'));
     if (o.hidden) o.hidden = o.hidden.length;        // 藏了幾欄，不是哪幾欄
@@ -342,9 +396,48 @@ if (JSONOUT) {
     if (o.roles) o.roles = Object.fromEntries(Object.entries(o.roles).map(([k, v]) => [k, !!v]));
     return o;
   };
-  const body = JSON.stringify({
-    fingerprint: fp, private: PRIVATE || undefined, summary, records: records.map(mask)
-  }, null, 1);
+
+  /* 硬斷言：私密模式寫出去的每一個字串，都必須是代號或純數字。
+     這一條把「有沒有散文逃出去」從期望變成測得到的事。
+     前兩版的洩漏都會在這裡被擋下來。 */
+  const SAFE = /^[a-z][a-z0-9-]*( \d+(\/\d+)*)?$/;
+  const auditSafe = (obj, path = '') => {
+    const bad = [];
+    const walk = (v, p) => {
+      if (typeof v === 'string') {
+        if (p.endsWith('.src') || p.endsWith('.sheet') || p === '.fingerprint') return;
+        if (/\.colTypes\[/.test(p)) { if (!/^(empty|text|longtext|number|money|date|time|person|phone|email|url|status|category):\d+%:\d+$/.test(v)) bad.push(p + ' = ' + v); return; }
+        if (/\.shape$/.test(p) || /\.status$/.test(p)) return;
+        if (!SAFE.test(v)) bad.push(p + ' = ' + v);
+      } else if (Array.isArray(v)) v.forEach((x, i) => walk(x, p + '[' + i + ']'));
+      else if (v && typeof v === 'object') Object.entries(v).forEach(([k, x]) => walk(x, p + '.' + k));
+    };
+    walk(obj, path);
+    return bad;
+  };
+
+  const masked = records.map(mask);
+  /* summary.shapes 的鍵是我們自己的中文形狀名（「品項／價目表」），不是資料；
+     summary.flags 的鍵是訊息，要換成代號。 */
+  const sum = PRIVATE
+    ? { ...summary,
+        flags: Object.entries(summary.flags).reduce((m, [k, v]) => {
+          const key = kindOf(k); m[key] = (m[key] || 0) + v; return m; }, {}),
+        shapes: summary.shapes }
+    : summary;
+  const payload = { fingerprint: fp, private: PRIVATE || undefined, summary: sum, records: masked };
+
+  if (PRIVATE) {
+    const bad = auditSafe({ fingerprint: fp, records: masked, flags: Object.keys(sum.flags) });
+    if (bad.length) {
+      console.error(`停下來：私密模式有 ${bad.length} 個字串不是代號或數字——那就是散文漏出去了。`);
+      bad.slice(0, 5).forEach(b => console.error('    ' + b));
+      console.error('不寫 baseline。把上面幾行回報給我。');
+      process.exit(4);
+    }
+    console.error('✓ 私密模式：寫出去的每一個字串都是代號或數字');
+  }
+  const body = JSON.stringify(payload, null, 1);
 
   /* 一張都沒讀進來的 baseline 沒有任何價值，卻足以覆蔓上一份好的。
      路徑打錯、資料夾沒抱下來、參數被 # 吃掉，都會落到這裡。 */
@@ -352,12 +445,6 @@ if (JSONOUT) {
     console.error(`停下來：${args.length} 個輸入沒有任何一張表跑出結果（${broken} 讀不進來）。`);
     console.error('不寫 baseline——先確認路徑。');
     process.exit(3);
-  }
-
-  if (PRIVATE) {
-    console.error('\n--private：離開這台機器的散文就是下面這些（名字已清空）。');
-    console.error('推之前掃一遍——如果有哪一句還看得出你的資料，那是 bug，回報給我。');
-    [...seenText].sort().forEach(t => console.error('    ' + t));
   }
 
   if (OUT) {

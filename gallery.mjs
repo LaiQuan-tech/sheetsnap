@@ -196,8 +196,31 @@ summary.rows = shownRows.map(r => ({
 
 /* byCat 的鍵是檔名前綴（語料是 timesheet_／budget_ 這種分類），
    真實檔案就是檔名，所以不進 JSON。HTML 還是要用它，所以只在輸出時拿掉。 */
-const summaryJSON = JSON.stringify(
-  PRIVATE ? { ...summary, byCat: undefined, private: true } : summary, null, 1) + '\n';
+const out = PRIVATE ? { ...summary, byCat: undefined, private: true } : summary;
+
+/* 硬斷言：私密模式寫出去的字串只有三種——雜湊代號、看法 id、我們自己的形狀名。
+   跟 audit.mjs 的那一條同一個用意：把「有沒有原文逃出去」變成測得到的事，
+   而不是靠我把每個欄位想過一遍。 */
+if (PRIVATE) {
+  // 引擎的七種形狀名，那是我們自己的詞彙，不是資料
+  const SHAPES = new Set(['排程／時程表', '品項／價目表', '名冊／通訊錄', '狀態清單',
+    '矩陣／報表', '帳務／明細表', '一般表格']);
+  const VIEWS = new Set(['time', 'filter', 'facts', 'group', 'rank', 'all']);
+  const bad = [];
+  for (const r of out.rows || []) {
+    if (!/^f[0-9a-f]{8}$/.test(r.src)) bad.push('src = ' + r.src);
+    if (!/^f[0-9a-f]{8} › #\d+$/.test(r.sheet)) bad.push('sheet = ' + r.sheet);
+    if (!SHAPES.has(r.shape)) bad.push('shape = ' + r.shape);
+    for (const v of r.views) if (!VIEWS.has(v)) bad.push('view = ' + v);
+  }
+  if (bad.length) {
+    console.error(`停下來：私密模式有 ${bad.length} 個字串不在允許的集合裡——那就是原文漏出去了。`);
+    bad.slice(0, 5).forEach(b => console.error('    ' + b));
+    process.exit(4);
+  }
+  console.error('✓ 私密模式：寫出去的字串只有雜湊代號、看法 id 與形狀名');
+}
+const summaryJSON = JSON.stringify(out, null, 1) + '\n';
 if (OUT) {
   if (!n) {
     console.error(`停下來：${files.length} 個檔沒有任何一張表渲染出來。不寫摘要——先確認路徑。`);
