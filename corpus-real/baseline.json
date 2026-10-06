@@ -1,14 +1,14 @@
 {
  "fingerprint": {
-  "engine": "b564c9d1699b",
-  "audit": "a14675b3feab"
+  "engine": "04273345531a",
+  "audit": "34aeffa026e1"
  },
  "private": true,
  "summary": {
   "inputs": 22,
   "sheets": 67,
-  "clean": 12,
-  "flagged": 41,
+  "clean": 24,
+  "flagged": 29,
   "skipped": 14,
   "broken": 0,
   "shapes": {
@@ -28,39 +28,10 @@
    "rows-without-title 2/4": 1,
    "rows-without-title 39/111": 1,
    "empty-declared-cols 9/10": 1,
-   "group-single-value": 6,
-   "few-rows-extracted 1000/10": 2,
-   "few-rows-extracted 1000/11": 1,
-   "few-rows-extracted 1000/12": 3,
-   "few-rows-extracted 1000/13": 1,
-   "few-rows-extracted 1000/14": 1,
-   "few-rows-extracted 1000/140": 1,
-   "few-rows-extracted 1000/15": 1,
-   "few-rows-extracted 1000/151": 1,
-   "few-rows-extracted 1000/17": 1,
-   "few-rows-extracted 1000/174": 1,
-   "few-rows-extracted 1000/18": 1,
-   "few-rows-extracted 1000/26": 1,
-   "few-rows-extracted 1000/31": 1,
-   "few-rows-extracted 1000/4": 1,
-   "few-rows-extracted 1000/42": 1,
-   "few-rows-extracted 1000/5": 1,
-   "few-rows-extracted 1000/6": 1,
-   "few-rows-extracted 1000/7": 1,
-   "few-rows-extracted 1000/9": 1,
-   "few-rows-extracted 1001/4": 1,
-   "few-rows-extracted 1003/21": 1,
-   "few-rows-extracted 1005/36": 1,
-   "few-rows-extracted 1008/111": 1,
-   "few-rows-extracted 1013/23": 1,
-   "few-rows-extracted 1013/36": 1,
-   "few-rows-extracted 1116/130": 5,
-   "few-rows-extracted 964/23": 1,
-   "few-rows-extracted 981/20": 1,
-   "few-rows-extracted 997/53": 1,
-   "few-rows-extracted 998/65": 1,
+   "group-single-value": 1,
+   "few-rows-extracted 28/4": 1,
    "all-text": 2,
-   "no-title-col": 2,
+   "no-title-col": 1,
    "bad-header-row": 2,
    "generic": 24
   }
@@ -69,7 +40,7 @@
   {
    "src": "f8e39e951",
    "sheet": "f8e39e951 › #0",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -105,14 +76,12 @@
     "email:98%:147",
     "date:100%:66"
    ],
-   "flags": [
-    "few-rows-extracted 1000/151"
-   ]
+   "flags": []
   },
   {
    "src": "f8e39e951",
    "sheet": "f8e39e951 › #1",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -144,14 +113,12 @@
     "email:98%:147",
     "date:100%:65"
    ],
-   "flags": [
-    "few-rows-extracted 1000/174"
-   ]
+   "flags": []
   },
   {
    "src": "f39ecdb64",
    "sheet": "f39ecdb64 › #0",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -176,9 +143,7 @@
     "longtext:100%:10",
     "longtext:59%:8"
    ],
-   "flags": [
-    "few-rows-extracted 1000/17"
-   ]
+   "flags": []
   },
   {
    "src": "f39ecdb64",
@@ -191,7 +156,7 @@
   {
    "src": "f16b06f78",
    "sheet": "f16b06f78 › #0",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -223,9 +188,7 @@
     "longtext:6%:3",
     "text:3%:2"
    ],
-   "flags": [
-    "few-rows-extracted 998/65"
-   ]
+   "flags": []
   },
   {
    "src": "f16b06f78",
@@ -313,7 +276,7 @@
   {
    "src": "fc1997c96",
    "sheet": "fc1997c96 › #0",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "cards",
@@ -337,9 +300,7 @@
     "person:100%:20",
     "empty:0%:0"
    ],
-   "flags": [
-    "few-rows-extracted 981/20"
-   ]
+   "flags": []
   },
   {
    "src": "fea7f05fa",
@@ -348,7 +309,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1005,
    "rows": 36,
    "cols": 8,
@@ -357,7 +318,7 @@
    "notes": [],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -373,9 +334,7 @@
     "category:17%:1"
    ],
    "flags": [
-    "generic",
-    "group-single-value",
-    "few-rows-extracted 1005/36"
+    "generic"
    ]
   },
   {
@@ -423,7 +382,7 @@
    "table": 1,
    "of": 2,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1013,
    "rows": 23,
    "cols": 11,
@@ -434,7 +393,7 @@
    ],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -453,8 +412,7 @@
     "text:13%:3"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1013/23"
+    "generic"
    ]
   },
   {
@@ -485,8 +443,7 @@
     "longtext:100%:27"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1013/36"
+    "generic"
    ]
   },
   {
@@ -520,7 +477,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 946,
    "rows": 205,
    "cols": 5,
@@ -529,7 +486,7 @@
    "notes": [],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -613,8 +570,7 @@
     "number:11%:5"
    ],
    "flags": [
-    "rows-without-title 39/111",
-    "few-rows-extracted 1008/111"
+    "rows-without-title 39/111"
    ]
   },
   {
@@ -650,8 +606,7 @@
     "category:33%:1"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/15"
+    "generic"
    ]
   },
   {
@@ -689,8 +644,7 @@
    "flags": [
     "rows-without-title 12/13",
     "generic",
-    "group-single-value",
-    "few-rows-extracted 1000/13"
+    "group-single-value"
    ]
   },
   {
@@ -724,14 +678,13 @@
     "text:14%:1"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/7"
+    "generic"
    ]
   },
   {
    "src": "fb7afcb28",
    "sheet": "fb7afcb28 › #9",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -768,9 +721,7 @@
     "category:71%:2",
     "text:5%:1"
    ],
-   "flags": [
-    "few-rows-extracted 1003/21"
-   ]
+   "flags": []
   },
   {
    "src": "f369ca7bc",
@@ -888,7 +839,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 211,
    "rows": 183,
    "cols": 10,
@@ -897,7 +848,7 @@
    "notes": [],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -969,7 +920,6 @@
    ],
    "flags": [
     "generic",
-    "few-rows-extracted 1116/130",
     "empty-declared-cols 12/18"
    ]
   },
@@ -980,7 +930,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1116,
    "rows": 130,
    "cols": 18,
@@ -989,7 +939,7 @@
    "notes": [],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -1015,9 +965,7 @@
     "empty:0%:0"
    ],
    "flags": [
-    "generic",
-    "group-single-value",
-    "few-rows-extracted 1116/130"
+    "generic"
    ]
   },
   {
@@ -1027,7 +975,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1116,
    "rows": 130,
    "cols": 18,
@@ -1037,8 +985,8 @@
     "filldown"
    ],
    "roles": {
-    "title": false,
-    "group": true,
+    "title": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -1064,9 +1012,7 @@
     "empty:0%:0"
    ],
    "flags": [
-    "no-title-col",
     "generic",
-    "few-rows-extracted 1116/130",
     "empty-declared-cols 11/18"
    ]
   },
@@ -1113,7 +1059,6 @@
    ],
    "flags": [
     "generic",
-    "few-rows-extracted 1116/130",
     "empty-declared-cols 13/18"
    ]
   },
@@ -1160,7 +1105,6 @@
    ],
    "flags": [
     "generic",
-    "few-rows-extracted 1116/130",
     "empty-declared-cols 12/18"
    ]
   },
@@ -1221,7 +1165,7 @@
   {
    "src": "fe3f6e661",
    "sheet": "fe3f6e661 › #0",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -1249,9 +1193,7 @@
     "money:57%:23",
     "text:57%:28"
    ],
-   "flags": [
-    "few-rows-extracted 997/53"
-   ]
+   "flags": []
   },
   {
    "src": "f688e9b6b",
@@ -1300,7 +1242,7 @@
   {
    "src": "fadfe5147",
    "sheet": "fadfe5147 › #0",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "schedule",
@@ -1327,9 +1269,7 @@
     "person:100%:26",
     "person:100%:21"
    ],
-   "flags": [
-    "few-rows-extracted 1000/31"
-   ]
+   "flags": []
   },
   {
    "src": "fadfe5147",
@@ -1359,8 +1299,7 @@
     "person:46%:12"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/26"
+    "generic"
    ]
   },
   {
@@ -1392,14 +1331,13 @@
     "text:79%:9"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/14"
+    "generic"
    ]
   },
   {
    "src": "fadfe5147",
    "sheet": "fadfe5147 › #3",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "directory",
@@ -1431,9 +1369,7 @@
     "category:99%:2",
     "longtext:98%:1"
    ],
-   "flags": [
-    "few-rows-extracted 1000/140"
-   ]
+   "flags": []
   },
   {
    "src": "fadfe5147",
@@ -1462,14 +1398,13 @@
     "text:67%:4"
    ],
    "flags": [
-    "all-text",
-    "few-rows-extracted 1000/6"
+    "all-text"
    ]
   },
   {
    "src": "fadfe5147",
    "sheet": "fadfe5147 › #5",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "cards",
@@ -1492,9 +1427,7 @@
     "text:100%:10",
     "category:100%:2"
    ],
-   "flags": [
-    "few-rows-extracted 1000/10"
-   ]
+   "flags": []
   },
   {
    "src": "fcb8d7547",
@@ -1532,8 +1465,7 @@
     "empty:0%:0"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 964/23"
+    "generic"
    ]
   },
   {
@@ -1567,8 +1499,7 @@
     "text:100%:10"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/10"
+    "generic"
    ]
   },
   {
@@ -1606,7 +1537,6 @@
    ],
    "flags": [
     "no-title-col",
-    "few-rows-extracted 1000/18",
     "empty-declared-cols 9/10"
    ]
   },
@@ -1768,14 +1698,13 @@
     "text:8%:1"
    ],
    "flags": [
-    "all-text",
-    "few-rows-extracted 1000/12"
+    "all-text"
    ]
   },
   {
    "src": "f94586ce6",
    "sheet": "f94586ce6 › #1",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -1803,9 +1732,7 @@
     "longtext:100%:12",
     "empty:0%:0"
    ],
-   "flags": [
-    "few-rows-extracted 1000/12"
-   ]
+   "flags": []
   },
   {
    "src": "f94586ce6",
@@ -1814,7 +1741,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1000,
    "rows": 4,
    "cols": 12,
@@ -1825,7 +1752,7 @@
    ],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -1848,7 +1775,7 @@
     "bad-header-row 6/12",
     "rows-without-title 2/4",
     "generic",
-    "few-rows-extracted 1000/4"
+    "few-rows-extracted 28/4"
    ]
   },
   {
@@ -1880,8 +1807,7 @@
     "empty:0%:0"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/9"
+    "generic"
    ]
   },
   {
@@ -1913,8 +1839,7 @@
     "empty:0%:0"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1000/12"
+    "generic"
    ]
   },
   {
@@ -1924,7 +1849,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1000,
    "rows": 42,
    "cols": 5,
@@ -1935,7 +1860,7 @@
    ],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -1948,15 +1873,13 @@
     "category:88%:1"
    ],
    "flags": [
-    "generic",
-    "group-single-value",
-    "few-rows-extracted 1000/42"
+    "generic"
    ]
   },
   {
    "src": "f94586ce6",
    "sheet": "f94586ce6 › #6",
-   "status": "flagged",
+   "status": "clean",
    "table": 1,
    "of": 1,
    "shape": "pricelist",
@@ -1971,7 +1894,7 @@
    ],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": true,
     "person": false
    },
@@ -1983,10 +1906,7 @@
     "longtext:100%:11",
     "category:100%:1"
    ],
-   "flags": [
-    "group-single-value",
-    "few-rows-extracted 1000/11"
-   ]
+   "flags": []
   },
   {
    "src": "f94586ce6",
@@ -1995,7 +1915,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1000,
    "rows": 5,
    "cols": 5,
@@ -2004,7 +1924,7 @@
    "notes": [],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -2017,9 +1937,7 @@
     "category:100%:1"
    ],
    "flags": [
-    "generic",
-    "group-single-value",
-    "few-rows-extracted 1000/5"
+    "generic"
    ]
   },
   {
@@ -2081,7 +1999,7 @@
    "table": 1,
    "of": 1,
    "shape": "cards",
-   "reason": "cards-group",
+   "reason": "cards-title",
    "srcRows": 1001,
    "rows": 4,
    "cols": 10,
@@ -2090,7 +2008,7 @@
    "notes": [],
    "roles": {
     "title": true,
-    "group": true,
+    "group": false,
     "lead": false,
     "person": false
    },
@@ -2108,8 +2026,7 @@
     "text:100%:4"
    ],
    "flags": [
-    "generic",
-    "few-rows-extracted 1001/4"
+    "generic"
    ]
   },
   {
