@@ -1,6 +1,6 @@
 {
  "fingerprint": {
-  "engine": "cd19bd4a088e",
+  "engine": "04273345531a",
   "audit": "0bce5db0b305"
  },
  "summary": {
@@ -29,7 +29,6 @@
    "5/6 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
    "6/18 列沒有標題，會被整列略過": 1,
    "6/7 欄有欄名但整欄沒資料，像還沒填的空白範本": 1,
-   "9/26 列沒有標題，會被整列略過": 1,
    "原始工作表有 11 列，只抽出 2 列，結構可能判壞": 1,
    "原始工作表有 12 列，只抽出 1 列，結構可能判壞": 1,
    "原始工作表有 13 列，只抽出 2 列，結構可能判壞": 1,
@@ -1290,7 +1289,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「CURRENT YEAR」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「ASSET TYPE」為標題逐列呈現",
    "srcRows": 14,
    "rows": 7,
    "cols": 3,
@@ -1300,7 +1299,7 @@
    "notes": [],
    "roles": {
     "title": "ASSET TYPE",
-    "group": "CURRENT YEAR",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -2401,7 +2400,7 @@
    "notes": [],
    "roles": {
     "title": "Refreshments",
-    "group": "Actual",
+    "group": null,
     "lead": "Estimated",
     "person": null
    },
@@ -2529,7 +2528,7 @@
    ],
    "roles": {
     "title": "欄 2",
-    "group": "Rate",
+    "group": null,
     "lead": "Total",
     "person": null
    },
@@ -3070,7 +3069,7 @@
    "notes": [],
    "roles": {
     "title": "Categories",
-    "group": "Percentage of Total",
+    "group": null,
     "lead": "Amount per Category",
     "person": null
    },
@@ -3481,7 +3480,7 @@
    "notes": [],
    "roles": {
     "title": "INCOME",
-    "group": "APR",
+    "group": null,
     "lead": "YEAR",
     "person": null
    },
@@ -4252,7 +4251,7 @@
    "notes": [],
    "roles": {
     "title": "欄 1",
-    "group": "Jan-xx",
+    "group": null,
     "lead": "Total",
     "person": null
    },
@@ -5678,7 +5677,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Column4」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「Column2」為標題逐列呈現",
    "srcRows": 22,
    "rows": 14,
    "cols": 4,
@@ -5690,7 +5689,7 @@
    ],
    "roles": {
     "title": "Column2",
-    "group": "Column4",
+    "group": null,
     "lead": null,
     "person": null
    },
@@ -5760,7 +5759,7 @@
    ],
    "roles": {
     "title": "Activity",
-    "group": "Column1",
+    "group": null,
     "lead": "Costs/Percent",
     "person": null
    },
@@ -7329,7 +7328,7 @@
    ],
    "roles": {
     "title": "Name",
-    "group": "Dependent",
+    "group": null,
     "lead": "欄 8",
     "person": null
    },
@@ -7361,7 +7360,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Phone」分組後逐列呈現",
+   "reason": "沒有時間或人員這類主軸，改以「Address」分組後逐列呈現",
    "srcRows": 101,
    "rows": 24,
    "cols": 7,
@@ -7373,7 +7372,7 @@
    ],
    "roles": {
     "title": "Financial institution",
-    "group": "Phone",
+    "group": "Address",
     "lead": null,
     "person": null
    },
@@ -8068,7 +8067,7 @@
    ],
    "roles": {
     "title": "Salesperson",
-    "group": "Quantity",
+    "group": null,
     "lead": "Unit Price",
     "person": null
    },
@@ -9275,8 +9274,8 @@
     "剔除 27 個排版用的空白欄"
    ],
    "roles": {
-    "title": "欄 8",
-    "group": "欄 14",
+    "title": "TIME",
+    "group": "欄 8",
     "lead": "欄 13",
     "person": null
    },
@@ -9298,8 +9297,7 @@
     "欄 14:category:19%:2"
    ],
    "flags": [
-    "標題列可能判錯：11/14 欄沒有欄名",
-    "9/26 列沒有標題，會被整列略過"
+    "標題列可能判錯：11/14 欄沒有欄名"
    ]
   },
   {
@@ -9385,7 +9383,7 @@
    ],
    "roles": {
     "title": "欄 3",
-    "group": "ACTUAL",
+    "group": null,
     "lead": "欄 4",
     "person": null
    },
@@ -9916,7 +9914,7 @@
    "notes": [],
    "roles": {
     "title": "TWELVE MONTH",
-    "group": "MAY %",
+    "group": null,
     "lead": "JAN-23",
     "person": null
    },
@@ -9973,7 +9971,7 @@
    "notes": [],
    "roles": {
     "title": "TWELVE MONTH",
-    "group": "FEB %",
+    "group": null,
     "lead": "JAN-23",
     "person": null
    },
@@ -10484,7 +10482,7 @@
    "of": 1,
    "shape": "cards",
    "label": "一般表格",
-   "reason": "沒有時間或人員這類主軸，改以「Day」分組後逐列呈現",
+   "reason": "沒有可辨識的主軸，以「Item」為標題逐列呈現",
    "srcRows": 15,
    "rows": 8,
    "cols": 3,
