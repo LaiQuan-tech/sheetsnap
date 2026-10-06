@@ -118,6 +118,13 @@ function views(a, raw) {
         rankView ? [rankView] : [], otherFilters,
         factsView ? [factsView] : []);
 
+  // v90：週表攤平出來的星期欄要排第一（index.html 才是正本）
+  if (a.unpivoted === 'week' && a.cols.length) {
+    const dayN = a.cols[0].name;
+    const dayV = filterViews.find(v => v.col === dayN);
+    if (dayV) cand = [dayV].concat(cand.filter(v => v !== dayV));
+  }
+
   const seen = {};
   cand = cand.filter(v => { if (!v.col) return true; if (seen[v.col]) return false; seen[v.col] = 1; return true; });
 
@@ -196,7 +203,15 @@ summary.rows = shownRows.map(r => ({
 
 /* byCat 的鍵是檔名前綴（語料是 timesheet_／budget_ 這種分類），
    真實檔案就是檔名，所以不進 JSON。HTML 還是要用它，所以只在輸出時拿掉。 */
-const out = PRIVATE ? { ...summary, byCat: undefined, private: true } : summary;
+/* 引擎與這支程式的 sha，跟 audit.mjs 的 baseline 同一個用意：
+   摘要可以悄悄過期。看法的順序是這支程式算的，所以改了 views() 卻拿舊摘要
+   去 diff，會看到「沒有變化」而其實是在比兩個不同版本——v90 把週表的星期軸
+   提到第一順位時就會踩到。audit 那邊早就有這道，gallery 漏了。 */
+const sha = b => crypto.createHash('sha256').update(b).digest('hex').slice(0, 12);
+const FP = { engine: sha(fs.readFileSync(path.join(here, 'detect.js'))),
+             gallery: sha(fs.readFileSync(fileURLToPath(import.meta.url))) };
+const out = PRIVATE ? { fingerprint: FP, ...summary, byCat: undefined, private: true }
+                    : { fingerprint: FP, ...summary };
 
 /* 硬斷言：私密模式寫出去的字串只有三種——雜湊代號、看法 id、我們自己的形狀名。
    跟 audit.mjs 的那一條同一個用意：把「有沒有原文逃出去」變成測得到的事，

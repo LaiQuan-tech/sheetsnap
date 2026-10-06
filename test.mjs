@@ -769,6 +769,72 @@ for (const [head, want, why] of titleCases) {
   chk('金額理由講數字',   /是數字/.test(S.detectColumn('Amount', ['1', '2', '3']).reason), true);
 }
 
+/* 週表攤平出來的「星期」欄要排第一。
+   schedule_48f98fd1 › Class schedule（40 列／4 種名字）跟
+   schedule_792c56ff › Schedule（37 列／8 種）攤平完是「星期｜時間｜內容」，
+   時間欄一存在就生出一張只排序、不分段的「照時間看」並且排第一，
+   於是整週的卡片排成一長串、每張只叫那幾種科目名之一——
+   而 notes 上寫著「一次看一天」。期間版早就釘住了，星期版漏了。
+
+   這裡同時測三件事：
+   一、攤平後的欄序（日欄＝cols[0]、型別是 category）——改法站在這上面；
+   二、「星期」是第一順位的篩選軸（有籤、會停在今天）；
+   三、看法順序本身，用 gallery.mjs 的鏡像跑。
+   最後再確認 index.html 與 gallery.mjs 兩邊都有這段，免得鏡像悄悄走鐘。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '\u2713' : '\u2717'} 看法 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const SUB = ['Math', 'English', 'History', 'Science'];
+  const cls = [['TIME', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']];
+  for (let h = 8; h < 18; h++) {
+    const r = [(h < 10 ? '0' : '') + h + ':00'];
+    for (let d = 0; d < 7; d++) r.push(SUB[(h + d) % 4]);
+    cls.push(r);
+  }
+  const a = S.analyseSheet(cls).tables[0];
+  chk('課表走週表攤平',     a.unpivoted, 'week');
+  chk('攤平後日欄在第一欄', a.cols[0].type, 'category');
+  chk('日欄有七個值',       a.cols[0].distinct, 7);
+  const fo = S.filterOptions(a);
+  chk('星期是第一順位篩選', fo.length ? fo[0].name === a.cols[0].name : false, true);
+  // 標題重複是事實，不是要修的東西——要修的是「沒有軸把它們分開」
+  const ti = a.header.indexOf(a.roles.title.name);
+  chk('標題本來就會重複',   new Set(a.rows.map(r => r[ti])).size, 4);
+
+  // gallery.mjs 的 views() 是 index.html buildViews 的鏡像，抽出來直接跑
+  const gsrc = fs.readFileSync('gallery.mjs', 'utf8');
+  const vbody = gsrc.slice(gsrc.indexOf('function views(a, raw) {'), gsrc.indexOf('\nconst files ='));
+  const views = new Function('S', vbody + '; return views;')(S);
+  const vs = views(a, cls);
+  chk('第一張看法是只看某個星期', /^只看某個/.test(vs[0].k) && vs[0].col === a.cols[0].name, true);
+  chk('照時間看退到第二',   /^照時間看/.test(vs[1].k), true);
+  chk('逃生門還在最後',     vs[vs.length - 1].id, 'all');
+
+  // 沒有時間欄的週表（週菜單）：本來就由「照Day分類」領頭，不該被改壞
+  const meal = [['Meal', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']];
+  ['Breakfast', 'Lunch', 'Dinner'].forEach((m, i) => {
+    const r = [m]; for (let d = 0; d < 7; d++) r.push(['Rice', 'Noodles', 'Soup', 'Salad'][(i + d) % 4]); meal.push(r);
+  });
+  const mv = views(S.analyseSheet(meal).tables[0], meal);
+  chk('無時間欄的週表仍以星期領頭', /Day|星期/.test(mv[0].k), true);
+
+  // 期間版與未攤平的表都不該被碰到
+  const bud = [['Item', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']];
+  ['Rent', 'Food', 'Transport', 'Utilities', 'Books'].forEach((n, i) =>
+    bud.push([n].concat([1, 2, 3, 4, 5, 6].map(m => String(100 * (i + 1) + m * 7)))));
+  chk('月份橫排仍以月份領頭', /^照Month分類/.test(views(S.analyseSheet(bud).tables[0], bud)[0].k), true);
+  const sch = [['日期', '活動', '預算'], ['9/11', '場地佈置', '5000'], ['9/11', '音響租借', '8000'],
+               ['9/12', '餐點', '20000'], ['9/12', '攝影', '6000'], ['9/13', '清運', '3000'], ['9/13', '謝師宴', '15000']];
+  chk('未攤平的排程仍以時間領頭', /^照時間看/.test(views(S.analyseSheet(sch).tables[0], sch)[0].k), true);
+
+  // 鏡像走鐘偵測：正本與鏡像都要有這段
+  chk('index.html 有週表釘軸',  /A\.unpivoted === 'week'/.test(fs.readFileSync('index.html', 'utf8')), true);
+  chk('gallery.mjs 有週表釘軸', /a\.unpivoted === 'week'/.test(gsrc), true);
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};
