@@ -1,7 +1,7 @@
 {
  "fingerprint": {
   "engine": "04273345531a",
-  "audit": "3d0cc5883989"
+  "audit": "b5cf3db748b3"
  },
  "private": true,
  "summary": {
@@ -51,27 +51,27 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 2,
+    "group": 0,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:11",
-    "number:100%:150",
-    "text:100%:144",
-    "text:100%:25",
-    "person:100%:150",
-    "person:100%:141",
-    "text:100%:66",
-    "phone:88%:132",
-    "phone:58%:86",
-    "phone:98%:147",
-    "number:98%:99",
-    "text:98%:145",
-    "email:98%:147",
-    "date:100%:66"
+    "category:100%:11:4",
+    "number:100%:150:2",
+    "text:100%:144:10",
+    "text:100%:25:3",
+    "person:100%:150:3",
+    "person:100%:141:8",
+    "text:100%:66:5",
+    "phone:88%:132:13",
+    "phone:58%:86:12",
+    "phone:98%:147:12",
+    "number:98%:99:4",
+    "text:98%:145:17",
+    "email:98%:147:21",
+    "date:100%:66:4"
    ],
    "flags": []
   },
@@ -90,25 +90,25 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": 11,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:143",
-    "category:71%:5",
-    "text:100%:66",
-    "person:100%:150",
-    "person:100%:144",
-    "phone:89%:135",
-    "phone:63%:86",
-    "phone:98%:149",
-    "number:98%:102",
-    "text:98%:146",
-    "email:98%:147",
-    "date:100%:65"
+    "text:100%:143:9",
+    "category:71%:5:2",
+    "text:100%:66:5",
+    "person:100%:150:3",
+    "person:100%:144:9",
+    "phone:89%:135:13",
+    "phone:63%:86:12",
+    "phone:98%:149:12",
+    "number:98%:102:4",
+    "text:98%:146:17",
+    "email:98%:147:21",
+    "date:100%:65:3"
    ],
    "flags": []
   },
@@ -129,16 +129,16 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": 0,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "time:100%:17",
-    "longtext:100%:10",
-    "longtext:59%:8"
+    "time:100%:17:11",
+    "longtext:100%:10:38",
+    "longtext:59%:8:30"
    ],
    "flags": []
   },
@@ -167,23 +167,23 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 2,
+    "group": null,
+    "lead": 0,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "time:75%:46",
-    "category:100%:14",
-    "text:77%:48",
-    "text:37%:24",
-    "longtext:88%:55",
-    "longtext:92%:44",
-    "longtext:82%:38",
-    "text:60%:22",
-    "longtext:6%:3",
-    "text:3%:2"
+    "time:75%:46:7",
+    "category:100%:14:6",
+    "text:77%:48:8",
+    "text:37%:24:7",
+    "longtext:88%:55:50",
+    "longtext:92%:44:19",
+    "longtext:82%:38:11",
+    "text:60%:22:5",
+    "longtext:6%:3:14",
+    "text:3%:2:8"
    ],
    "flags": []
   },
@@ -202,17 +202,17 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": 1,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:15",
-    "time:100%:3",
-    "text:53%:8",
-    "time:47%:3"
+    "text:100%:15:17",
+    "time:100%:3:5",
+    "text:53%:8:13",
+    "time:47%:3:5"
    ],
    "flags": [
     "bad-header-row 2/4"
@@ -249,24 +249,24 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:7",
-    "number:100%:3",
-    "number:100%:3",
-    "number:100%:3",
-    "number:100%:4",
-    "number:100%:4",
-    "number:100%:3",
-    "number:100%:3",
-    "number:100%:4",
-    "number:100%:5",
-    "text:29%:2"
+    "text:100%:7:17",
+    "number:100%:3:1",
+    "number:100%:3:1",
+    "number:100%:3:1",
+    "number:100%:4:1",
+    "number:100%:4:1",
+    "number:100%:3:1",
+    "number:100%:3:1",
+    "number:100%:4:1",
+    "number:100%:5:1",
+    "text:29%:2:18"
    ],
    "flags": []
   },
@@ -285,17 +285,19 @@
    "headerRow": 2,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 2,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    0
+   ],
    "colTypes": [
-    "number:100%:20",
-    "text:100%:20",
-    "person:100%:20",
-    "empty:0%:0"
+    "number:100%:20:2",
+    "text:100%:20:12",
+    "person:100%:20:12",
+    "empty:0%:0:0"
    ],
    "flags": []
   },
@@ -314,21 +316,21 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:36",
-    "text:100%:27",
-    "text:100%:27",
-    "text:100%:28",
-    "text:100%:28",
-    "text:100%:29",
-    "text:100%:29",
-    "category:17%:1"
+    "text:100%:36:16",
+    "text:100%:27:3",
+    "text:100%:27:3",
+    "text:100%:28:3",
+    "text:100%:28:3",
+    "text:100%:29:3",
+    "text:100%:29:4",
+    "category:17%:1:2"
    ],
    "flags": [
     "generic"
@@ -357,18 +359,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": true,
-    "person": false
+    "title": 2,
+    "group": 0,
+    "lead": 1,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "date:98%:24",
-    "time:48%:35",
-    "longtext:100%:157",
-    "person:98%:79",
-    "longtext:38%:61"
+    "date:98%:24:18",
+    "time:48%:35:7",
+    "longtext:100%:157:17",
+    "person:98%:79:6",
+    "longtext:38%:61:27"
    ],
    "flags": []
   },
@@ -389,24 +391,24 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:12",
-    "category:74%:9",
-    "longtext:57%:12",
-    "text:30%:7",
-    "longtext:26%:6",
-    "text:35%:8",
-    "text:17%:4",
-    "longtext:22%:5",
-    "longtext:13%:3",
-    "text:22%:5",
-    "text:13%:3"
+    "category:100%:12:10",
+    "category:74%:9:3",
+    "longtext:57%:12:30",
+    "text:30%:7:11",
+    "longtext:26%:6:14",
+    "text:35%:8:7",
+    "text:17%:4:3",
+    "longtext:22%:5:9",
+    "longtext:13%:3:17",
+    "text:22%:5:3",
+    "text:13%:3:4"
    ],
    "flags": [
     "generic"
@@ -427,17 +429,17 @@
    "headerRow": 1,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "person:92%:33",
-    "longtext:64%:13",
-    "text:100%:36",
-    "longtext:100%:27"
+    "person:92%:33:3",
+    "longtext:64%:13:7",
+    "text:100%:36:3",
+    "longtext:100%:27:19"
    ],
    "flags": [
     "generic"
@@ -482,18 +484,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:19",
-    "text:100%:146",
-    "number:98%:20",
-    "category:98%:20",
-    "text:8%:14"
+    "category:100%:19:4",
+    "text:100%:146:4",
+    "number:98%:20:1",
+    "category:98%:20:1",
+    "text:8%:14:7"
    ],
    "flags": [
     "generic"
@@ -514,21 +516,21 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": 5,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:28",
-    "text:100%:239",
-    "number:99%:38",
-    "text:98%:32",
-    "person:17%:34",
-    "status:100%:2",
-    "category:100%:2",
-    "text:15%:24"
+    "text:100%:28:4",
+    "text:100%:239:5",
+    "number:99%:38:1",
+    "text:98%:32:1",
+    "person:17%:34:5",
+    "status:100%:2:4",
+    "category:100%:2:5",
+    "text:15%:24:9"
    ],
    "flags": []
   },
@@ -547,24 +549,24 @@
    "headerRow": 3,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": true,
-    "person": false
+    "title": 0,
+    "group": 4,
+    "lead": 5,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:65%:38",
-    "text:92%:34",
-    "text:88%:32",
-    "category:87%:20",
-    "category:82%:8",
-    "money:46%:35",
-    "text:61%:34",
-    "category:33%:14",
-    "category:30%:7",
-    "text:14%:11",
-    "number:11%:5"
+    "text:65%:38:8",
+    "text:92%:34:6",
+    "text:88%:32:2",
+    "category:87%:20:2",
+    "category:82%:8:2",
+    "money:46%:35:3",
+    "text:61%:34:4",
+    "category:33%:14:6",
+    "category:30%:7:4",
+    "text:14%:11:9",
+    "number:11%:5:1"
    ],
    "flags": []
   },
@@ -586,19 +588,19 @@
     "split-dup-headers"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": 2,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:15",
-    "number:100%:5",
-    "category:100%:5",
-    "text:33%:5",
-    "number:33%:3",
-    "category:33%:1"
+    "text:100%:15:7",
+    "number:100%:5:1",
+    "category:100%:5:1",
+    "text:33%:5:4",
+    "number:33%:3:1",
+    "category:33%:1:1"
    ],
    "flags": [
     "generic"
@@ -622,19 +624,19 @@
     "split-dup-headers"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": 2,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "longtext:8%:1",
-    "number:8%:1",
-    "text:8%:1",
-    "text:100%:13",
-    "number:100%:6",
-    "category:100%:6"
+    "longtext:8%:1:32",
+    "number:8%:1:1",
+    "text:8%:1:1",
+    "text:100%:13:8",
+    "number:100%:6:1",
+    "category:100%:6:1"
    ],
    "flags": [
     "rows-without-title 12/13",
@@ -660,17 +662,17 @@
     "split-dup-headers"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": 2,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:4",
-    "category:71%:4",
-    "category:71%:2",
-    "text:14%:1"
+    "category:100%:4:2",
+    "category:71%:4:2",
+    "category:71%:2:1",
+    "text:14%:1:3"
    ],
    "flags": [
     "generic"
@@ -693,28 +695,28 @@
     "drop-empty-cols 2"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": true,
-    "person": false
+    "title": 0,
+    "group": 5,
+    "lead": 3,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:90%:19",
-    "number:90%:7",
-    "category:90%:6",
-    "money:90%:13",
-    "money:95%:15",
-    "category:90%:3",
-    "category:90%:3",
-    "category:90%:6",
-    "text:86%:18",
-    "number:86%:6",
-    "category:86%:4",
-    "money:86%:13",
-    "money:90%:15",
-    "category:71%:2",
-    "text:5%:1"
+    "text:90%:19:9",
+    "number:90%:7:1",
+    "category:90%:6:1",
+    "money:90%:13:3",
+    "money:95%:15:3",
+    "category:90%:3:3",
+    "category:90%:3:3",
+    "category:90%:6:1",
+    "text:86%:18:12",
+    "number:86%:6:1",
+    "category:86%:4:1",
+    "money:86%:13:2",
+    "money:90%:15:3",
+    "category:71%:2:2",
+    "text:5%:1:4"
    ],
    "flags": []
   },
@@ -736,16 +738,16 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": 2,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:5",
-    "text:100%:36",
-    "date:78%:19"
+    "category:100%:5:4",
+    "text:100%:36:7",
+    "date:78%:19:4"
    ],
    "flags": []
   },
@@ -764,35 +766,37 @@
    "headerRow": 1,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 13,
+    "group": 1,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    0
+   ],
    "colTypes": [
-    "number:100%:30",
-    "date:80%:7",
-    "person:77%:9",
-    "category:77%:9",
-    "category:77%:3",
-    "empty:0%:0",
-    "url:73%:22",
-    "text:57%:12",
-    "longtext:57%:17",
-    "number:80%:22",
-    "category:70%:9",
-    "money:80%:21",
-    "category:70%:8",
-    "text:73%:22",
-    "phone:50%:15",
-    "longtext:53%:16",
-    "text:7%:2",
-    "category:47%:2",
-    "category:50%:1",
-    "category:50%:1",
-    "empty:0%:0",
-    "text:3%:1"
+    "number:100%:30:2",
+    "date:80%:7:10",
+    "person:77%:9:3",
+    "category:77%:9:3",
+    "category:77%:3:4",
+    "empty:0%:0:0",
+    "url:73%:22:67",
+    "text:57%:12:3",
+    "longtext:57%:17:14",
+    "number:80%:22:5",
+    "category:70%:9:2",
+    "money:80%:21:5",
+    "category:70%:8:3",
+    "text:73%:22:6",
+    "phone:50%:15:14",
+    "longtext:53%:16:38",
+    "text:7%:2:15",
+    "category:47%:2:2",
+    "category:50%:1:1",
+    "category:50%:1:1",
+    "empty:0%:0:0",
+    "text:3%:1:16"
    ],
    "flags": []
   },
@@ -813,17 +817,17 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:5",
-    "money:92%:12",
-    "number:92%:3",
-    "money:85%:2"
+    "category:100%:5:9",
+    "money:92%:12:8",
+    "number:92%:3:2",
+    "money:85%:2:4"
    ],
    "flags": []
   },
@@ -842,23 +846,23 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:11%:21",
-    "text:100%:182",
-    "category:2%:3",
-    "text:8%:14",
-    "text:100%:24",
-    "empty:0%:0",
-    "category:19%:8",
-    "category:37%:11",
-    "category:76%:15",
-    "category:49%:6"
+    "text:11%:21:5",
+    "text:100%:182:5",
+    "category:2%:3:3",
+    "text:8%:14:10",
+    "text:100%:24:4",
+    "empty:0%:0:0",
+    "category:19%:8:6",
+    "category:37%:11:7",
+    "category:76%:15:11",
+    "category:49%:6:10"
    ],
    "flags": [
     "generic"
@@ -887,31 +891,31 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "number:100%:130",
-    "text:22%:28",
-    "number:19%:4",
-    "person:5%:6",
-    "text:2%:2",
-    "empty:0%:0",
-    "email:1%:1",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0"
+    "number:100%:130:2",
+    "text:22%:28:10",
+    "number:19%:4:2",
+    "person:5%:6:5",
+    "text:2%:2:5",
+    "empty:0%:0:0",
+    "email:1%:1:26",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic",
@@ -933,31 +937,33 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    0
+   ],
    "colTypes": [
-    "number:100%:130",
-    "text:99%:129",
-    "category:2%:1",
-    "person:21%:24",
-    "phone:6%:8",
-    "phone:7%:9",
-    "email:2%:3",
-    "text:5%:7",
-    "url:13%:17",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0"
+    "number:100%:130:2",
+    "text:99%:129:7",
+    "category:2%:1:3",
+    "person:21%:24:4",
+    "phone:6%:8:11",
+    "phone:7%:9:11",
+    "email:2%:3:18",
+    "text:5%:7:13",
+    "url:13%:17:53",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic"
@@ -980,31 +986,33 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    0
+   ],
    "colTypes": [
-    "number:100%:130",
-    "category:100%:20",
-    "number:12%:2",
-    "person:8%:10",
-    "category:3%:3",
-    "text:1%:1",
-    "email:4%:5",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0"
+    "number:100%:130:2",
+    "category:100%:20:5",
+    "number:12%:2:1",
+    "person:8%:10:5",
+    "category:3%:3:6",
+    "text:1%:1:3",
+    "email:4%:5:21",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic",
@@ -1026,31 +1034,31 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "number:100%:130",
-    "text:45%:58",
-    "number:35%:6",
-    "person:18%:24",
-    "text:2%:3",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0"
+    "number:100%:130:2",
+    "text:45%:58:9",
+    "number:35%:6:2",
+    "person:18%:24:7",
+    "text:2%:3:7",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic",
@@ -1072,31 +1080,31 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "number:100%:130",
-    "text:47%:61",
-    "number:38%:2",
-    "number:1%:1",
-    "phone:24%:31",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "url:1%:1",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0"
+    "number:100%:130:2",
+    "text:47%:61:6",
+    "number:38%:2:1",
+    "number:1%:1:4",
+    "phone:24%:31:12",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "url:1%:1:39",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic",
@@ -1118,42 +1126,42 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:93%:92",
-    "person:94%:97",
-    "person:96%:98",
-    "number:40%:34",
-    "category:40%:7",
-    "date:96%:98",
-    "category:91%:2",
-    "text:90%:93",
-    "text:88%:91",
-    "text:49%:22",
-    "category:86%:2",
-    "phone:88%:91",
-    "email:88%:91",
-    "email:12%:12",
-    "text:88%:91",
-    "number:51%:23",
-    "text:7%:7",
-    "text:1%:1",
-    "text:88%:55",
-    "text:78%:50",
-    "person:2%:2",
-    "date:2%:2",
-    "person:5%:5",
-    "text:87%:90",
-    "text:85%:77",
-    "longtext:82%:84",
-    "longtext:2%:2",
-    "text:72%:71",
-    "number:83%:1"
+    "text:93%:92:17",
+    "person:94%:97:3",
+    "person:96%:98:6",
+    "number:40%:34:2",
+    "category:40%:7:1",
+    "date:96%:98:7",
+    "category:91%:2:5",
+    "text:90%:93:10",
+    "text:88%:91:18",
+    "text:49%:22:2",
+    "category:86%:2:5",
+    "phone:88%:91:10",
+    "email:88%:91:20",
+    "email:12%:12:20",
+    "text:88%:91:13",
+    "number:51%:23:2",
+    "text:7%:7:7",
+    "text:1%:1:5",
+    "text:88%:55:5",
+    "text:78%:50:5",
+    "person:2%:2:3",
+    "date:2%:2:8",
+    "person:5%:5:6",
+    "text:87%:90:16",
+    "text:85%:77:5",
+    "longtext:82%:84:34",
+    "longtext:2%:2:33",
+    "text:72%:71:10",
+    "number:83%:1:1"
    ],
    "flags": []
   },
@@ -1174,19 +1182,19 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 3,
+    "group": null,
+    "lead": 1,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:43%:23",
-    "money:100%:8",
-    "text:19%:10",
-    "text:94%:50",
-    "money:57%:23",
-    "text:57%:28"
+    "text:43%:23:6",
+    "money:100%:8:9",
+    "text:19%:10:14",
+    "text:94%:50:8",
+    "money:57%:23:9",
+    "text:57%:28:15"
    ],
    "flags": []
   },
@@ -1205,32 +1213,32 @@
    "headerRow": 4,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 2,
+    "group": 7,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:102",
-    "number:100%:1",
-    "text:100%:113",
-    "text:99%:54",
-    "text:75%:81",
-    "phone:100%:112",
-    "email:99%:110",
-    "category:100%:10",
-    "category:27%:9",
-    "category:40%:15",
-    "category:25%:9",
-    "category:31%:9",
-    "text:48%:14",
-    "category:25%:10",
-    "category:23%:9",
-    "category:27%:12",
-    "category:27%:10",
-    "category:24%:10",
-    "text:100%:3"
+    "text:100%:102:18",
+    "number:100%:1:1",
+    "text:100%:113:4",
+    "text:99%:54:4",
+    "text:75%:81:9",
+    "phone:100%:112:10",
+    "email:99%:110:21",
+    "category:100%:10:10",
+    "category:27%:9:8",
+    "category:40%:15:9",
+    "category:25%:9:9",
+    "category:31%:9:7",
+    "text:48%:14:14",
+    "category:25%:10:9",
+    "category:23%:9:10",
+    "category:27%:12:9",
+    "category:27%:10:11",
+    "category:24%:10:10",
+    "text:100%:3:19"
    ],
    "flags": []
   },
@@ -1249,20 +1257,20 @@
    "headerRow": 3,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 3,
+    "group": null,
+    "lead": 0,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "time:100%:30",
-    "number:100%:10",
-    "text:100%:23",
-    "text:100%:31",
-    "longtext:100%:23",
-    "person:100%:26",
-    "person:100%:21"
+    "time:100%:30:11",
+    "number:100%:10:2",
+    "text:100%:23:5",
+    "text:100%:31:8",
+    "longtext:100%:23:29",
+    "person:100%:26:7",
+    "person:100%:21:9"
    ],
    "flags": []
   },
@@ -1281,17 +1289,17 @@
    "headerRow": 1,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:20",
-    "text:100%:17",
-    "text:46%:12",
-    "person:46%:12"
+    "text:100%:20:4",
+    "text:100%:17:3",
+    "text:46%:12:18",
+    "person:46%:12:11"
    ],
    "flags": [
     "generic"
@@ -1312,18 +1320,20 @@
    "headerRow": 1,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 3,
+    "group": 1,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    0
+   ],
    "colTypes": [
-    "number:100%:14",
-    "category:100%:3",
-    "text:100%:13",
-    "person:100%:14",
-    "text:79%:9"
+    "number:100%:14:1",
+    "category:100%:3:4",
+    "text:100%:13:8",
+    "person:100%:14:4",
+    "text:79%:9:4"
    ],
    "flags": [
     "generic"
@@ -1344,25 +1354,25 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": 10,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:140",
-    "person:98%:125",
-    "phone:96%:120",
-    "email:96%:122",
-    "text:92%:109",
-    "text:91%:55",
-    "category:96%:7",
-    "text:61%:52",
-    "text:77%:34",
-    "category:99%:4",
-    "category:99%:2",
-    "longtext:98%:1"
+    "text:100%:140:18",
+    "person:98%:125:4",
+    "phone:96%:120:10",
+    "email:96%:122:21",
+    "text:92%:109:9",
+    "text:91%:55:4",
+    "category:96%:7:5",
+    "text:61%:52:6",
+    "text:77%:34:4",
+    "category:99%:4:3",
+    "category:99%:2:5",
+    "longtext:98%:1:82"
    ],
    "flags": []
   },
@@ -1381,16 +1391,16 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:6",
-    "text:67%:4",
-    "text:67%:4"
+    "text:100%:6:4",
+    "text:67%:4:2",
+    "text:67%:4:4"
    ],
    "flags": [
     "all-text"
@@ -1411,16 +1421,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": 2,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    0
+   ],
    "colTypes": [
-    "number:100%:10",
-    "text:100%:10",
-    "category:100%:2"
+    "number:100%:10:1",
+    "text:100%:10:5",
+    "category:100%:2:5"
    ],
    "flags": []
   },
@@ -1441,23 +1453,23 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 2,
+    "group": 0,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "category:100%:5",
-    "text:70%:14",
-    "text:87%:19",
-    "text:22%:5",
-    "text:17%:4",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0"
+    "category:100%:5:3",
+    "text:70%:14:4",
+    "text:87%:19:13",
+    "text:22%:5:9",
+    "text:17%:4:15",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic"
@@ -1478,20 +1490,22 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 5,
+    "group": 0,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    4
+   ],
    "colTypes": [
-    "category:100%:3",
-    "category:100%:7",
-    "text:100%:10",
-    "category:100%:6",
-    "text:100%:10",
-    "text:100%:9",
-    "text:100%:10"
+    "category:100%:3:2",
+    "category:100%:7:2",
+    "text:100%:10:4",
+    "category:100%:6:2",
+    "text:100%:10:6",
+    "text:100%:9:4",
+    "text:100%:10:8"
    ],
    "flags": [
     "generic"
@@ -1512,23 +1526,23 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": false,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": null,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "empty:0%:0",
-    "money:100%:1"
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "empty:0%:0:0",
+    "money:100%:1:1"
    ],
    "flags": [
     "no-title-col",
@@ -1590,17 +1604,17 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "date:100%:248",
-    "text:100%:178",
-    "url:100%:257",
-    "text:100%:51"
+    "date:100%:248:10",
+    "text:100%:178:8",
+    "url:100%:257:29",
+    "text:100%:51:4"
    ],
    "flags": []
   },
@@ -1619,18 +1633,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:11",
-    "money:64%:3",
-    "money:64%:3",
-    "number:55%:4",
-    "money:73%:8"
+    "text:100%:11:6",
+    "money:64%:3:9",
+    "money:64%:3:9",
+    "number:55%:4:1",
+    "money:73%:8:8"
    ],
    "flags": []
   },
@@ -1649,18 +1663,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:11",
-    "money:64%:3",
-    "money:64%:3",
-    "number:55%:4",
-    "money:73%:8"
+    "text:100%:11:6",
+    "money:64%:3:9",
+    "money:64%:3:9",
+    "number:55%:4:1",
+    "money:73%:8:7"
    ],
    "flags": []
   },
@@ -1681,16 +1695,16 @@
     "drop-empty-cols 2"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:12",
-    "text:33%:4",
-    "text:8%:1"
+    "text:100%:12:10",
+    "text:33%:4:14",
+    "text:8%:1:4"
    ],
    "flags": [
     "all-text"
@@ -1714,18 +1728,18 @@
     "drop-empty-cols 1"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": 2,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:3",
-    "longtext:92%:11",
-    "money:100%:12",
-    "longtext:100%:12",
-    "empty:0%:0"
+    "text:100%:3:16",
+    "longtext:92%:11:33",
+    "money:100%:12:333",
+    "longtext:100%:12:60",
+    "empty:0%:0:0"
    ],
    "flags": []
   },
@@ -1746,25 +1760,27 @@
     "drop-empty-cols 9"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 3,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 1,
+   "hidden": [
+    1
+   ],
    "colTypes": [
-    "text:25%:1",
-    "text:75%:3",
-    "number:25%:1",
-    "text:50%:2",
-    "number:25%:1",
-    "number:25%:1",
-    "text:50%:2",
-    "category:75%:2",
-    "category:75%:2",
-    "category:75%:2",
-    "category:75%:2",
-    "text:50%:2"
+    "text:25%:1:2",
+    "text:75%:3:12",
+    "number:25%:1:5",
+    "text:50%:2:4",
+    "number:25%:1:1",
+    "number:25%:1:1",
+    "text:50%:2:6",
+    "category:75%:2:7",
+    "category:75%:2:2",
+    "category:75%:2:5",
+    "category:75%:2:5",
+    "text:50%:2:4"
    ],
    "flags": [
     "bad-header-row 6/12",
@@ -1787,18 +1803,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:11%:1",
-    "longtext:100%:9",
-    "longtext:100%:9",
-    "longtext:100%:9",
-    "empty:0%:0"
+    "text:11%:1:6",
+    "longtext:100%:9:34",
+    "longtext:100%:9:148",
+    "longtext:100%:9:137",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic"
@@ -1819,18 +1835,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:8%:1",
-    "longtext:100%:12",
-    "longtext:100%:12",
-    "longtext:100%:12",
-    "empty:0%:0"
+    "text:8%:1:6",
+    "longtext:100%:12:37",
+    "longtext:100%:12:171",
+    "longtext:100%:12:96",
+    "empty:0%:0:0"
    ],
    "flags": [
     "generic"
@@ -1853,18 +1869,18 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 2,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:5",
-    "longtext:64%:27",
-    "longtext:88%:37",
-    "longtext:79%:26",
-    "category:88%:1"
+    "text:100%:5:17",
+    "longtext:64%:27:41",
+    "longtext:88%:37:84",
+    "longtext:79%:26:79",
+    "category:88%:1:7"
    ],
    "flags": [
     "generic"
@@ -1887,18 +1903,18 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": true,
-    "person": false
+    "title": 2,
+    "group": null,
+    "lead": 0,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "money:100%:4",
-    "money:100%:11",
-    "longtext:100%:11",
-    "longtext:100%:11",
-    "category:100%:1"
+    "money:100%:4:19",
+    "money:100%:11:24",
+    "longtext:100%:11:102",
+    "longtext:100%:11:28",
+    "category:100%:1:3"
    ],
    "flags": []
   },
@@ -1917,18 +1933,18 @@
    "headerRow": 0,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:20%:1",
-    "longtext:100%:5",
-    "longtext:100%:5",
-    "longtext:100%:5",
-    "category:100%:1"
+    "text:20%:1:23",
+    "longtext:100%:5:27",
+    "longtext:100%:5:85",
+    "longtext:100%:5:56",
+    "category:100%:1:3"
    ],
    "flags": [
     "generic"
@@ -1951,30 +1967,30 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 1,
+    "group": 4,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "number:89%:334",
-    "category:100%:3",
-    "text:50%:229",
-    "date:59%:143",
-    "date:50%:133",
-    "date:47%:131",
-    "date:45%:119",
-    "date:44%:112",
-    "date:41%:100",
-    "date:38%:84",
-    "date:36%:79",
-    "text:34%:64",
-    "text:32%:54",
-    "text:50%:133",
-    "text:44%:101",
-    "text:42%:45",
-    "category:38%:9"
+    "number:89%:334:3",
+    "category:100%:3:3",
+    "text:50%:229:4",
+    "date:59%:143:4",
+    "date:50%:133:4",
+    "date:47%:131:4",
+    "date:45%:119:4",
+    "date:44%:112:3",
+    "date:41%:100:3",
+    "date:38%:84:3",
+    "date:36%:79:3",
+    "text:34%:64:3",
+    "text:32%:54:3",
+    "text:50%:133:8",
+    "text:44%:101:10",
+    "text:42%:45:5",
+    "category:38%:9:5"
    ],
    "flags": []
   },
@@ -2001,23 +2017,23 @@
    "headerRow": 1,
    "notes": [],
    "roles": {
-    "title": true,
-    "group": false,
-    "lead": false,
-    "person": false
+    "title": 0,
+    "group": null,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:100%:4",
-    "text:25%:1",
-    "text:25%:1",
-    "text:25%:1",
-    "text:25%:1",
-    "text:25%:1",
-    "category:75%:2",
-    "text:100%:4",
-    "text:100%:4",
-    "text:100%:4"
+    "text:100%:4:3",
+    "text:25%:1:2",
+    "text:25%:1:1",
+    "text:25%:1:2",
+    "text:25%:1:2",
+    "text:25%:1:2",
+    "category:75%:2:2",
+    "text:100%:4:3",
+    "text:100%:4:3",
+    "text:100%:4:3"
    ],
    "flags": [
     "generic"
@@ -2040,19 +2056,19 @@
     "filldown"
    ],
    "roles": {
-    "title": true,
-    "group": true,
-    "lead": false,
-    "person": false
+    "title": 2,
+    "group": 1,
+    "lead": null,
+    "person": null
    },
-   "hidden": 0,
+   "hidden": [],
    "colTypes": [
-    "text:4%:1",
-    "category:100%:3",
-    "text:50%:12",
-    "text:29%:7",
-    "text:17%:4",
-    "text:58%:14"
+    "text:4%:1:6",
+    "category:100%:3:7",
+    "text:50%:12:18",
+    "text:29%:7:9",
+    "text:17%:4:14",
+    "text:58%:14:16"
    ],
    "flags": [
     "generic"
