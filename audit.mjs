@@ -399,8 +399,14 @@ if (JSONOUT) {
     delete o.sheetIndex;
     delete o.title;        // 表格上方的前言，整段都是原始內容
     delete o.label;        // 這是我們自己的中文形狀名，shape 已經夠了
-    if (o.why) o.why = r.status === 'clean' || r.status === 'flagged' ? kindOf(o.why)
-                     : (r.status === 'unreadable' ? 'unreadable' : 'engine-threw');
+    /* why 只有兩種狀態帶著「例外訊息」——那種可能含路徑或內容，換成固定字。
+       其餘（not-shown）的 why 是 sheetVerdict 的固定句子，要過 kindOf 保留種類。
+       第一版寫成「不是 clean 也不是 flagged 就一律 engine-threw」，
+       結果真實語料 14 張不渲染的表全被標成引擎爆掉，
+       「為什麼不渲染」這個問題整組看不見。 */
+    if (o.why) o.why = r.status === 'unreadable' ? 'unreadable'
+                     : r.status === 'engine-threw' ? 'engine-threw'
+                     : kindOf(o.why);
     if (o.reason) o.reason = kindOf(o.reason);
     if (o.notes) o.notes = o.notes.map(kindOf);
     if (o.flags) o.flags = o.flags.map(kindOf);
