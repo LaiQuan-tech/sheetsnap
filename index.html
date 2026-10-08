@@ -218,10 +218,10 @@
     padding:12px 20px;min-height:44px}
   #shortNote{margin:7px 0 0;font-size:11.5px;line-height:1.55}
   #shortNote.bad{color:var(--warn,#b3261e)}
-  .about{margin:72px 0 0;color:var(--ink2);font-size:14px;line-height:1.7}
-  .about .mo{margin:0 0 64px}
+  .about{margin:48px 0 0;color:var(--ink2);font-size:14px;line-height:1.7}
+  .about .mo{margin:0 0 44px}
   .about h2{margin:0 0 8px;font-family:"Noto Serif TC",serif;font-size:27px;line-height:1.25;font-weight:900;color:var(--ink);letter-spacing:.01em}
-  .about .mo > p{margin:0 0 20px;font-size:15px}
+  .about .mo > p{margin:0 0 16px;font-size:15px}
   .about .demo{pointer-events:none;user-select:none}
   .about .demo .octl,.about .demo .g-head{position:static}
   .about .demo .out{padding:12px 14px 14px}
@@ -236,7 +236,7 @@
   .about .linkpill b{margin-left:auto;font-family:"Noto Sans TC",sans-serif;font-size:12.5px;font-weight:600;
     padding:6px 13px;border-radius:99px;background:var(--accent);color:var(--on-accent)}
   .about .fine{margin:0 0 6px;text-align:center;font-size:12.5px;color:var(--muted)}
-  .about .fine{margin-bottom:40px}
+  .about .fine{margin-bottom:28px}
   .about details{border-top:1px solid var(--line)}
   .about details:last-child{border-bottom:1px solid var(--line)}
   .about summary{cursor:pointer;padding:11px 0;font-size:14px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:10px}
@@ -462,28 +462,12 @@
     </section>
     </details>
   </div>
-  <!-- 版面順序照實測覆蓋率排：篩選、時間、搜尋，然後才講「它會先幫你整理」。
+  <!-- v93 精簡：原本三個示範手機佔了整頁 40%，而「照時間看」與「只看某個人」
+       兩張圖長得幾乎一樣——都是籤＋時間前導的卡片列。留下日期籤那張
+       （今天用硃砂色標出來，是整頁最有辨識度的一格，列上的名字籤也還在），
+       兩個說法併進同一段文字。
        字典的 key 是當初加的順序（a4＝搜尋、a5＝整理），不等於這裡的先後。 -->
   <section class="about" id="about">
-    <div class="mo">
-      <h2 data-i18n="a2_h"></h2>
-      <p data-i18n="a2_p"></p>
-      <div class="demo phone" aria-hidden="true">
-        <div class="octl"><div class="orail who">
-          <button tabindex="-1"><span data-i18n="d_n1"></span> 12</button><button tabindex="-1" class="on"><span data-i18n="d_n2"></span> 9</button><button tabindex="-1"><span data-i18n="d_n3"></span> 7</button><button tabindex="-1"><span data-i18n="d_n4"></span> 5</button><button tabindex="-1"><span data-i18n="d_n5"></span> 4</button>
-        </div></div>
-        <div class="out">
-          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="2"></span></div>
-          <ol>
-            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1"></p></div></div></li>
-            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div></div></li>
-          </ol>
-          <div class="g-head"><span class="g-name" data-i18n="d_day2"></span><span class="g-cnt" data-i18n="rows" data-n="1"></span></div>
-          <ol><li class="rec"><div class="lead">10:00</div><div><div class="titleline"><p class="t" data-i18n="d_i4"></p></div></div></li></ol>
-        </div>
-      </div>
-    </div>
-
     <div class="mo">
       <h2 data-i18n="a1_h"></h2>
       <p data-i18n="a1_p"></p>
@@ -492,11 +476,10 @@
           <button tabindex="-1" class="now on"><span data-i18n="d_today"></span> 3</button><button tabindex="-1"><span data-i18n="d_tomorrow"></span> 2</button><button tabindex="-1"><span data-i18n="d_day2"></span> 5</button><button tabindex="-1"><span data-i18n="d_sat"></span> 1</button><button tabindex="-1"><span data-i18n="d_sun"></span> 2</button>
         </div></div>
         <div class="out">
-          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="3"></span></div>
+          <div class="g-head"><span class="g-name" data-i18n="d_today"></span><span class="g-cnt" data-i18n="rows" data-n="2"></span></div>
           <ol>
             <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n2"></span></div></div></li>
-            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div><div class="metas"><span class="m" data-i18n="d_n2"></span></div></div></li>
-            <li class="rec"><div class="lead">18:00</div><div><div class="titleline"><p class="t" data-i18n="d_i3"></p></div><div class="metas"><span class="m" data-i18n="d_n1"></span><span class="m" data-i18n="d_n3"></span></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div><div class="metas"><span class="m" data-i18n="d_n2"></span><span class="m" data-i18n="d_n3"></span></div></div></li>
           </ol>
         </div>
       </div>
@@ -546,17 +529,16 @@
     <details><summary data-i18n="q5"></summary><p data-i18n="f5"></p></details>
     <details><summary data-i18n="q8"></summary><p data-i18n="f8"></p></details>
     <details><summary data-i18n="q6"></summary><p data-i18n="f6"></p></details>
-    <details><summary data-i18n="q7"></summary><p data-i18n="f7"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v92<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v93<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=92"></script>
-<script src="i18n.js?v=92"></script>
+<script src="detect.js?v=93"></script>
+<script src="i18n.js?v=93"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
