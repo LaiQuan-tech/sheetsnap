@@ -225,8 +225,6 @@
   .about .demo{pointer-events:none;user-select:none}
   .about .demo .octl,.about .demo .g-head{position:static}
   .about .demo .out{padding:12px 14px 14px}
-  .about .demo .fakeq{flex:1 1 100%;font-size:13px;color:var(--pink);background:var(--card);
-    border:1px solid var(--prule);border-radius:4px;padding:7px 9px}
   .about .chips{display:flex;flex-wrap:wrap;gap:7px}
   .about .chips span{font-size:12.5px;padding:5px 11px;border-radius:99px;
     border:1px solid var(--line);background:var(--surface);color:var(--ink2)}
@@ -462,10 +460,12 @@
     </section>
     </details>
   </div>
-  <!-- v93 精簡：原本三個示範手機佔了整頁 40%，而「照時間看」與「只看某個人」
-       兩張圖長得幾乎一樣——都是籤＋時間前導的卡片列。留下日期籤那張
-       （今天用硃砂色標出來，是整頁最有辨識度的一格，列上的名字籤也還在），
-       兩個說法併進同一段文字。
+  <!-- 精簡過兩輪。原本三個示範手機佔整頁 40%：
+       v93 先砍掉「只看某個人」那張——它跟「照時間看」長得幾乎一樣，
+       都是籤＋時間前導的卡片列，手機上一次只看得到一張。
+       v94 再砍掉「直接搜尋」那張，那一段改成純文字。
+       留下的是日期籤那張：今天用硃砂色標出來，是整頁最有辨識度的一格，
+       列上的名字籤也還在，所以「名字在裡面」沒有消失。
        字典的 key 是當初加的順序（a4＝搜尋、a5＝整理），不等於這裡的先後。 -->
   <section class="about" id="about">
     <div class="mo">
@@ -488,18 +488,6 @@
     <div class="mo">
       <h2 data-i18n="a4_h"></h2>
       <p data-i18n="a4_p"></p>
-      <div class="demo phone" aria-hidden="true">
-        <div class="octl">
-          <div class="fakeq" data-i18n="d_q"></div>
-          <div class="hits" data-i18n="d_hits"></div>
-        </div>
-        <div class="out">
-          <ol>
-            <li class="rec nolead"><div><div class="titleline"><p class="t" data-i18n="d_s1"></p></div><div class="metas"><span class="m" data-i18n="d_s_m1"></span></div></div></li>
-            <li class="rec nolead"><div><div class="titleline"><p class="t" data-i18n="d_s2"></p></div><div class="metas"><span class="m" data-i18n="d_s_m2"></span></div></div></li>
-          </ol>
-        </div>
-      </div>
     </div>
 
     <div class="mo">
@@ -531,14 +519,14 @@
     <details><summary data-i18n="q6"></summary><p data-i18n="f6"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v93<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v94<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=93"></script>
-<script src="i18n.js?v=93"></script>
+<script src="detect.js?v=94"></script>
+<script src="i18n.js?v=94"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
