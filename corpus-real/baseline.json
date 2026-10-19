@@ -1,7 +1,7 @@
 {
  "fingerprint": {
-  "engine": "eac3b91e16fa",
-  "audit": "13a389e4d378"
+  "engine": "4e34a49d9aaa",
+  "audit": "e9a17d29d7e7"
  },
  "private": true,
  "summary": {
@@ -1748,6 +1748,7 @@
    "status": "not-shown",
    "show": false,
    "why": "hidden-sheet",
+   "code": "vd_hidden",
    "srcRows": 1000
   },
   {
