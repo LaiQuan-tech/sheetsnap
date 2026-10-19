@@ -63,7 +63,7 @@ let filled = 0, missing = [];
 /* 只處理「開標籤…閉標籤」成對、而且中間沒有巢狀同名標籤的元素。
    data-i18n 的值會被 innerHTML 覆寫，所以原本裡面有什麼都不重要。 */
 html = html.replace(
-  /<(h1|h2|h3|h4|h5|h6|p|span|button|summary|label|div|td|th|li|a|b)([^>]*\sdata-i18n="([^"]+)"[^>]*)>[\s\S]*?<\/\1>/g,
+  /<(h1|h2|h3|h4|h5|h6|p|span|button|summary|label|div|td|th|li|a|b|option)([^>]*\sdata-i18n="([^"]+)"[^>]*)>[\s\S]*?<\/\1>/g,
   (whole, tag, attrs, key) => {
     /* 巢狀同名標籤就放過（非貪婪會停在第一個閉標籤，換掉會壞掉）。
        原本寫成 /<\s*\1[\s>]/ ——正規表示式字面量裡的 \1 不是回溯參照，

@@ -1508,9 +1508,10 @@
       if (!x) return;
       if (seen[x]) { if (dup.indexOf(x) < 0) dup.push(x); } else seen[x] = 1;
     });
-    if (dup.length)
-      w.push('這張表有重複的欄位名稱（' + dup.slice(0, 3).join('、') +
-             '），可能是兩組並排的表格被併在一起，數字的對應會不正確。');
+    /* 回傳代號而不是句子：這兩句會出現在主畫面的警示框，19 個語言都看得到。
+       引擎沒有字典（它要能單獨跑：audit.mjs、gallery.mjs、test.mjs 都直接 require），
+       所以把翻譯留給呼叫端——index.html 用 TX() 組，CLI 只數長度。 */
+    if (dup.length) w.push({ code: 'warn_dup', names: dup.slice(0, 3) });
 
     var first = h.indexOf(h.filter(Boolean)[0]);
     var last = h.length - 1;
@@ -1521,7 +1522,7 @@
         return String(r[i] == null ? '' : r[i]).trim();
       });
       if (!any) {
-        w.push('欄位中間有一整欄空白，這張表可能其實是兩份表格。');
+        w.push({ code: 'warn_gap' });
         break;
       }
     }

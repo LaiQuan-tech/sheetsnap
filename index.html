@@ -129,13 +129,13 @@
   code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
 
   header{position:relative}
-  header h1{margin:0;line-height:0}
+  header .logo{margin:0;line-height:0}
   #lang{position:absolute;top:2px;inset-inline-end:0;max-width:44%;font:inherit;font-size:12px;padding:5px 26px 5px 9px;border:1px solid var(--line);
     border-radius:99px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b94a0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 8px center/12px;
     color:var(--ink2);-webkit-appearance:none;appearance:none;cursor:pointer;text-overflow:ellipsis}
   [dir=rtl] #lang{background-position:left 8px center;padding:5px 9px 5px 26px}
-  header h1 img{height:36px;width:auto;display:block}
-  header p{margin:8px 0 0;color:var(--ink2);font-size:14.5px;line-height:1.65}
+  header .logo img{height:36px;width:auto;display:block}
+  header h1{margin:8px 0 0;color:var(--ink2);font-size:14.5px;line-height:1.65;font-weight:400}
 
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:18px}
   .row{display:flex;gap:8px;flex-wrap:wrap}
@@ -280,7 +280,7 @@
   .made{margin:22px 0 0;text-align:center;font-size:12px;color:var(--muted)}
   .made a{color:var(--accent)}
   body.viewer .panel.input{display:none}
-  body.viewer header p{display:none}
+  body.viewer header h1{display:none}
   body.viewer .reset{display:none}
   /* 觀看者只能讀：不切分頁、不看引擎判定、不改設定。搜尋與篩選是閱讀，留著。 */
   body.viewer .tabs,body.viewer .whybox,body.viewer .ask{display:none}
@@ -419,12 +419,16 @@
 <body>
 <div class="wrap">
   <header>
-    <h1><a href="./"><picture>
+    <!-- 整頁唯一的 H1 本來是 logo 圖片，文字只有 alt="SheetSnap"，
+         沒有任何說明這一頁在做什麼的字。把定位句升成 H1、logo 降成一般連結：
+         畫面完全沒變（樣式跟著換選擇器），但 H1 現在是看得到的那句話本身，
+         不是藏起來的關鍵字——藏字那種做法搜尋引擎本來就在抓。 -->
+    <p class="logo"><a href="./"><picture>
       <source srcset="logo-dark.png?v=40" media="(prefers-color-scheme: dark)">
       <img src="logo.png?v=40" alt="SheetSnap" width="400" height="74">
-    </picture></a></h1>
+    </picture></a></p>
     <select id="lang" data-i18n-aria="lang"></select>
-    <p data-i18n="tagline">Edit in Excel. Present on the web.</p>
+    <h1 data-i18n="tagline">Edit in Excel. Present on the web.</h1>
   </header>
 
   <div class="panel input">
@@ -454,7 +458,7 @@
       <p id="shortNote" hidden></p>
     </div>
     <section class="phonewrap">
-      <p class="phonelabel">使用者看到的畫面</p>
+      <p class="phonelabel" data-i18n="ui_who">What the viewer sees</p>
       <div class="phone" translate="no"><div class="octl" id="octl" hidden></div><div class="out" id="out"></div></div>
     </section>
 
@@ -472,24 +476,24 @@
       <p class="why" id="why"></p>
       <p class="struct" id="struct"></p>
       <div class="twrap"><table>
-        <thead><tr><th>欄位</th><th>判定型別</th><th>角色</th><th class="conf">信心</th><th>依據</th></tr></thead>
+        <thead><tr><th data-i18n="ui_col">Column</th><th data-i18n="ui_type">Detected type</th><th data-i18n="ui_role">Role</th><th class="conf" data-i18n="ui_conf">Confidence</th><th data-i18n="ui_basis">Why</th></tr></thead>
         <tbody id="cols"></tbody>
       </table></div>
       <div class="overrides">
-        <label>版面
+        <label><span data-i18n="ui_layout">Layout</span>
           <select id="ovShape">
-            <option value="">自動</option>
-            <option value="schedule">排程／時程表</option>
-            <option value="pricelist">品項／價目表</option>
-            <option value="directory">名冊／通訊錄</option>
-            <option value="board">狀態清單</option>
-            <option value="ledger">帳務／明細表</option>
-            <option value="matrix">矩陣／報表</option>
-            <option value="cards">一般表格</option>
+            <option value="" data-i18n="sh_auto">Auto</option>
+            <option value="schedule" data-i18n="sh_schedule">Schedule</option>
+            <option value="pricelist" data-i18n="sh_pricelist">Price list</option>
+            <option value="directory" data-i18n="sh_directory">Contact list</option>
+            <option value="board" data-i18n="sh_board">Status list</option>
+            <option value="ledger" data-i18n="sh_ledger">Ledger</option>
+            <option value="matrix" data-i18n="sh_matrix">Matrix / report</option>
+            <option value="cards" data-i18n="sh_cards">Plain table</option>
           </select>
         </label>
-        <label>分組依據 <select id="ovGroup"></select></label>
-        <label>主標題欄 <select id="ovTitle"></select></label>
+        <label><span data-i18n="ui_groupby">Group by</span> <select id="ovGroup"></select></label>
+        <label><span data-i18n="ui_titlecol">Title column</span> <select id="ovTitle"></select></label>
       </div>
     </section>
     </details>
@@ -579,18 +583,21 @@
     <details><summary data-i18n="q6">Are the numbers calculated?</summary><p data-i18n="f6">No. Every number is quoted from the sheet as-is; nothing is summed or computed.</p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made">Made with <a href='./'>SheetSnap</a> · turn your own spreadsheet into this</p>
-  <p class="ver">SheetSnap v100<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
+  <p class="ver">SheetSnap v101<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=100"></script>
-<script src="i18n.js?v=100"></script>
+<script src="detect.js?v=101"></script>
+<script src="i18n.js?v=101"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
-var TX = I18N.t;   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
+var TX = I18N.t;
+var SHAPE_TX = { schedule:'sh_schedule', pricelist:'sh_pricelist', directory:'sh_directory',
+                 board:'sh_board', ledger:'sh_ledger', matrix:'sh_matrix', cards:'sh_cards' };
+function shapeName(id){ return SHAPE_TX[id] ? TX(SHAPE_TX[id]) : id }   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
 var outQ = '', whoQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
 var VIEWS = [], ALL_VIEWS = [], focusFilter = null, VIEW = null;
@@ -829,10 +836,11 @@ function fillOverrides(){
 function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
   return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
 
-var TYPE_ZH = { date:'日期', time:'時間', money:'金額', number:'數字', phone:'電話',
-  email:'信箱', url:'網址', person:'人員', status:'狀態', category:'分類',
-  longtext:'長文字', text:'文字', empty:'空欄' };
-var ROLE_ZH = { group:'分組', lead:'前導', title:'標題', meta:'標籤', body:'內文', rest:'欄位' };
+/* 型別與角色的顯示名走字典。原本是寫死的中文常數（TYPE_ZH／ROLE_ZH），
+   19 個語言都看到中文；而診斷表的表頭已經翻了，表頭英文、格子中文更難看。
+   不能在載入時就算好——使用者可以中途換語言，所以每次渲染才查。 */
+function typeName(t){ return TX('ty_' + t) !== 'ty_' + t ? TX('ty_' + t) : t }
+function roleName(r){ return TX('ro_' + r) !== 'ro_' + r ? TX('ro_' + r) : r }
 
 function effective(){
   var shape = Object.assign({}, A.shape);
@@ -852,7 +860,12 @@ function paint(){
   var eff = effective();
   var shape = eff.shape, roles = eff.roles;
 
-  $('shape').textContent = shape.shape === A.shape.shape ? A.shape.label : ($('ovShape').selectedOptions[0].textContent);
+  /* 形狀名照 shape.shape 這個 id 查字典，不要用引擎回傳的 shape.label——
+     那是中文，19 個語言都會看到中文。引擎的 label 不動：audit.mjs 與
+     gallery.mjs 的 --private 硬斷言正好靠那七個中文字串當白名單。
+     順便把原本「自動判的用引擎的字、手動選的用選單的字」兩條路併成一條，
+     不然覆寫版面之後名字的語言會跟著跳。 */
+  $('shape').textContent = shapeName(shape.shape);
   $('dims').textContent = A.rows.length + ' 列 · ' + A.cols.filter(function(c){return c.type!=='empty'}).length + ' 欄';
   $('why').textContent = A.shape.reason;
   var st = [];
@@ -872,8 +885,8 @@ function paint(){
       '<td><div class="cname">' + esc(c.name) + '</div>' +
         (c.samples.length ? '<div class="samp">' + esc(c.samples.slice(0, 3).join(' · ')) + '</div>' : '') + '</td>' +
       '<td><span class="ttag' + (c.type==='text'||c.type==='empty'?' dim':'') + '">' +
-        (TYPE_ZH[c.type] || c.type) + '</span></td>' +
-      '<td><span class="rtag' + (role?'':' none') + '">' + (ROLE_ZH[role] || '—') + '</span></td>' +
+        typeName(c.type) + '</span></td>' +
+      '<td><span class="rtag' + (role?'':' none') + '">' + (role ? roleName(role) : '\u2014') + '</span></td>' +
       '<td class="conf">' + Math.round(c.confidence * 100) + '%</td>' +
       '<td class="why-cell">' + esc(c.reason) + '</td></tr>';
   }).join('');
@@ -1544,7 +1557,10 @@ function renderPage(shape, roles){
     if(warns.length && !tracked['warn:' + sheetTag()]){ tracked['warn:' + sheetTag()] = 1; track('warn', { info:String(warns.length) }) }
     if(warns.length)
       head += '<div class="warn"><b>' + TX('warn_title') + '</b>' +
-              warns.map(esc).join(' ') + ' ' + TX('warn_tail') + '</div>';
+              warns.map(function(w){
+        // 引擎回傳 {code, names}，句子在字典裡組（見 detect.js 的 fidelityWarnings）
+        return esc(TX(w.code, w.names ? { names: w.names.join(TX('list_sep')) } : null));
+      }).join(' ') + ' ' + TX('warn_tail') + '</div>';
   }
 
   // 摘要：只引述表上原本就寫著的數字，不自己加總。
@@ -1659,8 +1675,8 @@ function diagnosticText(){
   L.push('');
   L.push('欄位：');
   A.cols.forEach(function(c){
-    L.push('  ' + c.name + ' → ' + (TYPE_ZH[c.type] || c.type) +
-           '（角色 ' + (ROLE_ZH[(A.roles.assigned||{})[c.name]] || '無') +
+    L.push('  ' + c.name + ' \u2192 ' + typeName(c.type) +
+           '\uff08\u89d2\u8272 ' + (roleName((A.roles.assigned||{})[c.name]) || '\u7121') +
            '、有值 ' + c.filled + '/' + c.total +
            '、相異 ' + c.distinct + '）');
   });
