@@ -1028,6 +1028,18 @@ for (const [head, want, why] of titleCases) {
     if (vz !== ve) mism.push(c + '(zh:' + vz + ' en:' + ve + ')');
   }
   chk('中英的內插變數一致', mism.length ? mism.join(' ') : 0, 0);
+
+  /* 代號會原樣寫進 --private 的 baseline，所以必須通得過 audit.mjs 的硬斷言。
+     v102 的代號用底線，而那條規則原本只收連字號——真實語料跑到第 57 筆才爆，
+     而且只有在有隱藏工作表的檔案上才會踩到。改成從 audit.mjs 把規則讀出來比對，
+     兩邊就不會再各走各的。 */
+  const safeSrc = fs.readFileSync('audit.mjs', 'utf8').match(/const SAFE = (\/\^.*?\/);/);
+  chk('讀得到 audit 的 SAFE 規則', !!safeSrc, true);
+  if (safeSrc) {
+    const SAFE = new RegExp(safeSrc[1].slice(1, -1));
+    const unsafe = [...codes].filter(c => !SAFE.test(c));
+    chk('每個代號都過得了私密斷言', unsafe.length ? unsafe.join(',') : 0, 0);
+  }
 }
 
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
