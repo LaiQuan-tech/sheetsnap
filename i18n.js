@@ -29,7 +29,7 @@
 
   T.zh = {
     title: "SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁",
-    tagline: "把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。",
+    tagline: "在 Excel 編輯，在網頁呈現。",
     url_ph: "貼上 Google 試算表網址", open: "開啟", drop: "或點這裡選擇 .xlsx / .csv 檔案",
     hint: "<b>轉換不上傳。</b>讀表、判型、排版都在你的手機裡完成。只有你按「做一個短連結」時，內容才會加密後上傳，30 天自動刪除。",
     loading: "載入中…",
@@ -80,6 +80,7 @@
     a5_c4: "排版用的空白欄", a5_c5: "一頁擱著好幾個小表",
     a3_h: "一個網址，不用登入。", a3_p: "做表的人選一次，看的人打開就是。試算表改了，網址裡的內容跟著改。",
     fine: "內容不上傳 · 只記使用次數 · 測試期間免費",
+    b_ttl: "活動流程表", b_c1: "日期", b_c2: "時間", b_c3: "項目", b_c4: "負責人",
     d_today: "今天", d_tomorrow: "明天", d_day2: "後天", d_sat: "週六", d_sun: "週日",
     d_n1: "小美", d_n2: "阿德", d_n3: "佩珊",
     d_i1: "場地佈置", d_i2: "音響測試",
@@ -94,7 +95,7 @@
 
   T.en = {
     title: "SheetSnap — Turn Excel and Google Sheets into phone-friendly pages",
-    tagline: "Turn a messy spreadsheet into a phone-readable page.",
+    tagline: "Edit in Excel. Present on the web.",
     url_ph: "Paste a Google Sheets link", open: "Open", drop: "or tap here to choose an .xlsx / .csv file",
     hint: "<b>Conversion stays on your device.</b> Reading, detecting and layout all happen in your browser. Only “Make a short link” uploads the sheet — encrypted, deleted after 30 days.",
     loading: "Loading…",
@@ -145,6 +146,7 @@
     a5_c4: "Blank spacer columns", a5_c5: "Several small tables on one sheet",
     a3_h: "One link, no login.", a3_p: "The sheet’s owner picks a view once; viewers just open it. When the sheet changes, the page changes with it.",
     fine: "Nothing uploaded · usage counts only · free while testing",
+    b_ttl: "EVENT SCHEDULE", b_c1: "Date", b_c2: "Time", b_c3: "Item", b_c4: "Who",
     d_today: "Today", d_tomorrow: "Tomorrow", d_day2: "In 2 days", d_sat: "Sat", d_sun: "Sun",
     d_n1: "Mia", d_n2: "Leo", d_n3: "Ann",
     d_i1: "Venue setup", d_i2: "Sound check",
@@ -159,7 +161,7 @@
 
   T['zh-Hans'] = {
     title: "SheetSnap｜把 Excel、Google 表格变成手机好读的网页",
-    tagline: "把复杂 Excel，一键变成最适合手机阅读的流畅网页。",
+    tagline: "在 Excel 编辑，在网页呈现。",
     url_ph: "粘贴 Google 表格网址", open: "打开", drop: "或点这里选择 .xlsx / .csv 文件",
     hint: "<b>转换不上传。</b>读表、判型、排版都在你的手机里完成。只有你按「做一个短链接」时，内容才会加密后上传，30 天自动删除。",
     loading: "加载中…",
@@ -212,6 +214,7 @@
     a5_c4: "排版用的空白列", a5_c5: "一页摆着好几个小表",
     a3_h: "一个网址，不用登录。", a3_p: "做表的人选一次，看的人打开就是。表格改了，网址里的内容跟着改。",
     fine: "内容不上传 · 只记使用次数 · 测试期间免费",
+    b_ttl: "活动流程表", b_c1: "日期", b_c2: "时间", b_c3: "项目", b_c4: "负责人",
     d_today: "今天", d_tomorrow: "明天", d_day2: "后天", d_sat: "周六", d_sun: "周日",
     d_n1: "小美", d_n2: "阿德", d_n3: "佩珊",
     d_i1: "场地布置", d_i2: "音响测试",
@@ -226,7 +229,7 @@
 
   T.ja = {
     title: "SheetSnap｜Excel・Googleスプレッドシートをスマホで読みやすいページに",
-    tagline: "複雑なExcelを、ワンタップでスマホに最適な読みやすいページに。",
+    tagline: "Excel で編集、ウェブで見せる。",
     url_ph: "Googleスプレッドシートのリンクを貼り付け", open: "開く", drop: "またはここをタップして .xlsx / .csv を選択",
     hint: "<b>変換はアップロードしません。</b>読み取り・判定・レイアウトはすべて端末の中で終わります。「短いリンクを作る」を押したときだけ、暗号化してアップロードし、30日で自動的に消えます。",
     loading: "読み込み中…",
@@ -279,6 +282,7 @@
     a5_c4: "レイアウト用の空列", a5_c5: "1枚に小さな表がいくつも",
     a3_h: "リンクひとつ、ログイン不要。", a3_p: "作る人が一度見方を選び、見る人は開くだけ。シートが変われば、ページも変わります。",
     fine: "内容はアップロードしない · 利用回数のみ記録 · テスト期間中は無料",
+    b_ttl: "イベント進行表", b_c1: "日付", b_c2: "時刻", b_c3: "内容", b_c4: "担当",
     d_today: "今日", d_tomorrow: "明日", d_day2: "明後日", d_sat: "土", d_sun: "日",
     d_n1: "美咲", d_n2: "大輝", d_n3: "さくら",
     d_i1: "会場設営", d_i2: "音響チェック",
@@ -293,7 +297,7 @@
 
   T.ko = {
     title: "SheetSnap｜Excel·Google 스프레드시트를 휴대폰에서 읽기 좋은 페이지로",
-    tagline: "복잡한 Excel을 한 번의 탭으로 휴대폰에 딱 맞는 읽기 좋은 페이지로.",
+    tagline: "엑셀에서 편집하고, 웹으로 보여주세요.",
     url_ph: "Google 스프레드시트 링크 붙여넣기", open: "열기", drop: "또는 여기를 눌러 .xlsx / .csv 파일 선택",
     hint: "<b>변환은 업로드하지 않습니다.</b> 시트를 읽고 판별하고 배치하는 일은 모두 기기 안에서 끝납니다. “짧은 링크 만들기”를 누를 때만 암호화해서 업로드하고, 30일 뒤 자동으로 삭제됩니다.",
     loading: "불러오는 중…",
@@ -346,6 +350,7 @@
     a5_c4: "여백용 빈 열", a5_c5: "한 장에 작은 표 여러 개",
     a3_h: "링크 하나, 로그인 없음.", a3_p: "만드는 사람이 한 번 고르고, 보는 사람은 열기만 하면 됩니다. 시트가 바뀌면 페이지도 바뀝니다.",
     fine: "내용은 업로드하지 않음 · 사용 횟수만 기록 · 테스트 기간 무료",
+    b_ttl: "행사 진행표", b_c1: "날짜", b_c2: "시각", b_c3: "항목", b_c4: "담당",
     d_today: "오늘", d_tomorrow: "내일", d_day2: "모레", d_sat: "토", d_sun: "일",
     d_n1: "민지", d_n2: "준호", d_n3: "서연",
     d_i1: "행사장 준비", d_i2: "음향 점검",
@@ -360,7 +365,7 @@
 
   T.es = {
     title: "SheetSnap — Convierte Excel y Google Sheets en páginas fáciles de leer en el móvil",
-    tagline: "Convierte una hoja de cálculo complicada en una página que se lee de maravilla en el móvil. Con un toque.",
+    tagline: "Edita en Excel. Presenta en la web.",
     url_ph: "Pega un enlace de Google Sheets", open: "Abrir", drop: "o toca aquí para elegir un archivo .xlsx / .csv",
     hint: "<b>La conversión no se sube.</b> Leer la hoja, detectar los tipos y maquetarla ocurre todo en tu dispositivo. Solo si pulsas “Crear un enlace corto” se sube la hoja, cifrada, y se borra a los 30 días.",
     loading: "Cargando…",
@@ -413,6 +418,7 @@
     a5_c4: "Columnas vacías de separación", a5_c5: "Varias tablitas en una hoja",
     a3_h: "Un enlace, sin iniciar sesión.", a3_p: "Quien hace la hoja elige una vista una vez; quien la ve solo la abre. Si la hoja cambia, la página cambia con ella.",
     fine: "El contenido nunca se sube · solo se cuentan usos · gratis durante la prueba",
+    b_ttl: "PROGRAMA DEL EVENTO", b_c1: "Fecha", b_c2: "Hora", b_c3: "Tarea", b_c4: "Quién",
     d_today: "Hoy", d_tomorrow: "Mañana", d_day2: "En 2 días", d_sat: "Sáb", d_sun: "Dom",
     d_n1: "Mía", d_n2: "Leo", d_n3: "Ana",
     d_i1: "Montaje del lugar", d_i2: "Prueba de sonido",
@@ -427,7 +433,7 @@
 
   T.pt = {
     title: "SheetSnap — Transforme Excel e Google Sheets em páginas fáceis de ler no celular",
-    tagline: "Transforme uma planilha complicada em uma página que se lê bem no celular. Com um toque.",
+    tagline: "Edite no Excel. Apresente na web.",
     url_ph: "Cole um link do Google Sheets", open: "Abrir", drop: "ou toque aqui para escolher um arquivo .xlsx / .csv",
     hint: "<b>A conversão não é enviada.</b> Ler a planilha, detectar os tipos e diagramar acontece tudo no seu aparelho. Só se você tocar em “Criar um link curto” a planilha é enviada, criptografada, e apagada depois de 30 dias.",
     loading: "Carregando…",
@@ -480,6 +486,7 @@
     a5_c4: "Colunas vazias de espaçamento", a5_c5: "Várias tabelinhas numa só aba",
     a3_h: "Um link, sem login.", a3_p: "Quem faz a planilha escolhe a visualização uma vez; quem vê só abre. Se a planilha mudar, a página muda junto.",
     fine: "O conteúdo nunca é enviado · só contamos usos · grátis durante o teste",
+    b_ttl: "CRONOGRAMA DO EVENTO", b_c1: "Data", b_c2: "Hora", b_c3: "Tarefa", b_c4: "Quem",
     d_today: "Hoje", d_tomorrow: "Amanhã", d_day2: "Em 2 dias", d_sat: "Sáb", d_sun: "Dom",
     d_n1: "Mia", d_n2: "Leo", d_n3: "Ana",
     d_i1: "Montagem do local", d_i2: "Passagem de som",
@@ -494,7 +501,7 @@
 
   T.fr = {
     title: "SheetSnap — Transformez Excel et Google Sheets en pages lisibles sur mobile",
-    tagline: "Transformez un tableur compliqué en une page agréable à lire sur mobile. En un geste.",
+    tagline: "Modifiez dans Excel. Présentez sur le web.",
     url_ph: "Collez un lien Google Sheets", open: "Ouvrir", drop: "ou touchez ici pour choisir un fichier .xlsx / .csv",
     hint: "<b>La conversion n’envoie rien.</b> Lecture, détection et mise en page se font entièrement sur votre appareil. Ce n’est qu’en touchant « Créer un lien court » que la feuille est envoyée, chiffrée, puis supprimée au bout de 30 jours.",
     loading: "Chargement…",
@@ -547,6 +554,7 @@
     a5_c4: "Colonnes vides d’espacement", a5_c5: "Plusieurs petits tableaux sur une feuille",
     a3_h: "Un lien, sans connexion.", a3_p: "L’auteur choisit une vue une fois ; les lecteurs n’ont qu’à ouvrir. Si la feuille change, la page change avec elle.",
     fine: "Le contenu n’est jamais envoyé · seuls les usages sont comptés · gratuit pendant le test",
+    b_ttl: "PLANNING DE L’ÉVÉNEMENT", b_c1: "Date", b_c2: "Heure", b_c3: "Tâche", b_c4: "Qui",
     d_today: "Aujourd’hui", d_tomorrow: "Demain", d_day2: "Dans 2 jours", d_sat: "Sam", d_sun: "Dim",
     d_n1: "Mia", d_n2: "Léo", d_n3: "Anne",
     d_i1: "Installation du lieu", d_i2: "Balance son",
@@ -561,7 +569,7 @@
 
   T.de = {
     title: "SheetSnap — Excel und Google Sheets als handyfreundliche Seiten",
-    tagline: "Verwandle eine unübersichtliche Tabelle mit einem Tipp in eine Seite, die sich auf dem Handy gut lesen lässt.",
+    tagline: "In Excel bearbeiten. Im Web zeigen.",
     url_ph: "Google-Sheets-Link einfügen", open: "Öffnen", drop: "oder hier tippen, um eine .xlsx / .csv-Datei zu wählen",
     hint: "<b>Die Umwandlung lädt nichts hoch.</b> Lesen, Erkennen und Layout passieren vollständig auf Ihrem Gerät. Nur wenn Sie auf „Kurzlink erstellen“ tippen, wird die Tabelle verschlüsselt hochgeladen und nach 30 Tagen gelöscht.",
     loading: "Wird geladen…",
@@ -614,6 +622,7 @@
     a5_c4: "Leere Abstandsspalten", a5_c5: "Mehrere kleine Tabellen auf einem Blatt",
     a3_h: "Ein Link, kein Login.", a3_p: "Wer die Tabelle macht, wählt einmal eine Ansicht; wer sie liest, öffnet sie nur. Ändert sich die Tabelle, ändert sich die Seite mit.",
     fine: "Inhalt wird nie hochgeladen · nur Nutzung wird gezählt · in der Testphase kostenlos",
+    b_ttl: "VERANSTALTUNGSPLAN", b_c1: "Datum", b_c2: "Zeit", b_c3: "Aufgabe", b_c4: "Wer",
     d_today: "Heute", d_tomorrow: "Morgen", d_day2: "Übermorgen", d_sat: "Sa", d_sun: "So",
     d_n1: "Mia", d_n2: "Leo", d_n3: "Anna",
     d_i1: "Aufbau vor Ort", d_i2: "Soundcheck",
@@ -628,7 +637,7 @@
 
   T.it = {
     title: "SheetSnap — Trasforma Excel e Google Sheets in pagine leggibili sul telefono",
-    tagline: "Trasforma un foglio di calcolo complicato in una pagina che si legge bene sul telefono. Con un tocco.",
+    tagline: "Modifica in Excel. Presenta sul web.",
     url_ph: "Incolla un link di Google Sheets", open: "Apri", drop: "oppure tocca qui per scegliere un file .xlsx / .csv",
     hint: "<b>La conversione non carica nulla.</b> Leggere il foglio, riconoscere i tipi e impaginare avviene tutto sul tuo dispositivo. Solo se tocchi “Crea un link breve” il foglio viene caricato, cifrato, e cancellato dopo 30 giorni.",
     loading: "Caricamento…",
@@ -681,6 +690,7 @@
     a5_c4: "Colonne vuote di spaziatura", a5_c5: "Più tabelline su un foglio",
     a3_h: "Un link, nessun accesso.", a3_p: "Chi crea il foglio sceglie una vista una volta; chi legge deve solo aprirlo. Se il foglio cambia, la pagina cambia con lui.",
     fine: "Il contenuto non viene mai caricato · si contano solo gli utilizzi · gratis durante il test",
+    b_ttl: "PROGRAMMA EVENTO", b_c1: "Data", b_c2: "Ora", b_c3: "Voce", b_c4: "Chi",
     d_today: "Oggi", d_tomorrow: "Domani", d_day2: "Dopodomani", d_sat: "Sab", d_sun: "Dom",
     d_n1: "Mia", d_n2: "Leo", d_n3: "Anna",
     d_i1: "Allestimento sede", d_i2: "Prova audio",
@@ -695,7 +705,7 @@
 
   T.ru = {
     title: "SheetSnap — Excel и Google Таблицы в виде удобных для телефона страниц",
-    tagline: "Превратите запутанную таблицу в страницу, которую удобно читать с телефона. Одним касанием.",
+    tagline: "Редактируйте в Excel. Показывайте в вебе.",
     url_ph: "Вставьте ссылку на Google Таблицу", open: "Открыть", drop: "или нажмите здесь, чтобы выбрать файл .xlsx / .csv",
     hint: "<b>Преобразование ничего не загружает.</b> Чтение, распознавание и вёрстка целиком происходят на вашем устройстве. Только если вы нажмёте «Сделать короткую ссылку», таблица загружается в зашифрованном виде и удаляется через 30 дней.",
     loading: "Загрузка…",
@@ -748,6 +758,7 @@
     a5_c4: "Пустые столбцы для отступов", a5_c5: "Несколько табличек на одном листе",
     a3_h: "Одна ссылка, без входа.", a3_p: "Автор таблицы выбирает вид один раз; читатели просто открывают. Меняется таблица — меняется страница.",
     fine: "Содержимое никогда не загружается · считается только использование · бесплатно на время теста",
+    b_ttl: "ПЛАН МЕРОПРИЯТИЯ", b_c1: "Дата", b_c2: "Время", b_c3: "Задача", b_c4: "Кто",
     d_today: "Сегодня", d_tomorrow: "Завтра", d_day2: "Послезавтра", d_sat: "Сб", d_sun: "Вс",
     d_n1: "Аня", d_n2: "Лёва", d_n3: "Оля",
     d_i1: "Подготовка площадки", d_i2: "Проверка звука",
@@ -762,7 +773,7 @@
 
   T.tr = {
     title: "SheetSnap — Excel ve Google E-Tablolar’ı telefonda rahat okunan sayfalara dönüştürün",
-    tagline: "Karmaşık bir tabloyu tek dokunuşla telefonda rahat okunan bir sayfaya dönüştürün.",
+    tagline: "Excel’de düzenleyin. Web’de gösterin.",
     url_ph: "Google E-Tablolar bağlantısını yapıştırın", open: "Aç", drop: "veya .xlsx / .csv dosyası seçmek için buraya dokunun",
     hint: "<b>Dönüştürme hiçbir şey yüklemez.</b> Tabloyu okumak, türleri tanımak ve sayfalamak tamamen cihazınızda olur. Yalnızca “Kısa bağlantı oluştur”a dokunduğunuzda tablo şifrelenerek yüklenir ve 30 gün sonra silinir.",
     loading: "Yükleniyor…",
@@ -815,6 +826,7 @@
     a5_c4: "Boşluk için boş kolonlar", a5_c5: "Bir sayfada birkaç küçük tablo",
     a3_h: "Tek bağlantı, giriş yok.", a3_p: "Tabloyu yapan bir kez görünümü seçer; okuyanlar sadece açar. Tablo değişince sayfa da değişir.",
     fine: "İçerik asla yüklenmez · yalnızca kullanım sayılır · test süresince ücretsiz",
+    b_ttl: "ETKİNLİK PROGRAMI", b_c1: "Tarih", b_c2: "Saat", b_c3: "İş", b_c4: "Kim",
     d_today: "Bugün", d_tomorrow: "Yarın", d_day2: "Öbür gün", d_sat: "Cmt", d_sun: "Paz",
     d_n1: "Mia", d_n2: "Leo", d_n3: "Ayşe",
     d_i1: "Mekân kurulumu", d_i2: "Ses kontrolü",
@@ -829,7 +841,7 @@
 
   T.id = {
     title: "SheetSnap — Ubah Excel dan Google Sheets jadi halaman yang enak dibaca di ponsel",
-    tagline: "Ubah spreadsheet yang rumit menjadi halaman yang nyaman dibaca di ponsel. Sekali ketuk.",
+    tagline: "Edit di Excel. Tampilkan di web.",
     url_ph: "Tempel tautan Google Sheets", open: "Buka", drop: "atau ketuk di sini untuk memilih berkas .xlsx / .csv",
     hint: "<b>Konversi tidak mengunggah apa pun.</b> Membaca sheet, mengenali tipe dan menatanya semua terjadi di perangkat Anda. Hanya kalau Anda menekan “Buat tautan pendek”, sheet diunggah dalam bentuk terenkripsi dan dihapus setelah 30 hari.",
     loading: "Memuat…",
@@ -882,6 +894,7 @@
     a5_c4: "Kolom kosong buat jarak", a5_c5: "Beberapa tabel kecil dalam satu sheet",
     a3_h: "Satu tautan, tanpa login.", a3_p: "Pembuat sheet memilih tampilan sekali; pembaca tinggal membuka. Sheet berubah, halaman ikut berubah.",
     fine: "Isi tidak pernah diunggah · hanya jumlah pemakaian yang dicatat · gratis selama uji coba",
+    b_ttl: "JADWAL ACARA", b_c1: "Tanggal", b_c2: "Jam", b_c3: "Item", b_c4: "Siapa",
     d_today: "Hari ini", d_tomorrow: "Besok", d_day2: "Lusa", d_sat: "Sab", d_sun: "Min",
     d_n1: "Mia", d_n2: "Leo", d_n3: "Ani",
     d_i1: "Penataan lokasi", d_i2: "Cek suara",
@@ -896,7 +909,7 @@
 
   T.vi = {
     title: "SheetSnap — Biến Excel và Google Sheets thành trang dễ đọc trên điện thoại",
-    tagline: "Biến bảng tính rối rắm thành trang đọc mượt trên điện thoại. Chỉ một chạm.",
+    tagline: "Sửa trong Excel. Trình bày trên web.",
     url_ph: "Dán liên kết Google Sheets", open: "Mở", drop: "hoặc chạm vào đây để chọn tệp .xlsx / .csv",
     hint: "<b>Chuyển đổi không tải lên.</b> Việc đọc bảng, nhận dạng kiểu và dàn trang đều xong ngay trên máy bạn. Chỉ khi bạn bấm “Tạo liên kết ngắn” thì bảng mới được mã hoá rồi tải lên, và tự xoá sau 30 ngày.",
     loading: "Đang tải…",
@@ -949,6 +962,7 @@
     a5_c4: "Cột trống để giãn cách", a5_c5: "Một trang có nhiều bảng nhỏ",
     a3_h: "Một liên kết, không cần đăng nhập.", a3_p: "Người làm bảng chọn cách xem một lần; người xem chỉ việc mở. Bảng đổi, trang đổi theo.",
     fine: "Nội dung không bao giờ được tải lên · chỉ đếm số lần dùng · miễn phí trong thời gian thử nghiệm",
+    b_ttl: "LỊCH TRÌNH SỰ KIỆN", b_c1: "Ngày", b_c2: "Giờ", b_c3: "Việc", b_c4: "Ai",
     d_today: "Hôm nay", d_tomorrow: "Ngày mai", d_day2: "Ngày kia", d_sat: "T7", d_sun: "CN",
     d_n1: "Mai", d_n2: "Long", d_n3: "An",
     d_i1: "Dựng địa điểm", d_i2: "Thử âm thanh",
@@ -963,7 +977,7 @@
 
   T.th = {
     title: "SheetSnap — เปลี่ยน Excel และ Google Sheets ให้เป็นหน้าเว็บที่อ่านง่ายบนมือถือ",
-    tagline: "เปลี่ยนสเปรดชีตที่ซับซ้อนให้เป็นหน้าเว็บที่อ่านสบายบนมือถือ แค่แตะครั้งเดียว",
+    tagline: "แก้ใน Excel แสดงบนเว็บ",
     url_ph: "วางลิงก์ Google Sheets", open: "เปิด", drop: "หรือแตะที่นี่เพื่อเลือกไฟล์ .xlsx / .csv",
     hint: "<b>การแปลงไม่อัปโหลด</b> การอ่านชีต เดาชนิดข้อมูล และจัดหน้า ทำเสร็จในเครื่องของคุณทั้งหมด เฉพาะเมื่อคุณกด “สร้างลิงก์สั้น” เท่านั้นที่เนื้อหาจะถูกเข้ารหัสแล้วอัปโหลด และลบทิ้งเองใน 30 วัน",
     loading: "กำลังโหลด…",
@@ -1016,6 +1030,7 @@
     a5_c4: "คอลัมน์ว่างไว้เว้นระยะ", a5_c5: "หนึ่งหน้ามีตารางเล็กหลายตาราง",
     a3_h: "ลิงก์เดียว ไม่ต้องล็อกอิน", a3_p: "คนทำชีตเลือกมุมมองครั้งเดียว คนดูแค่เปิด ชีตเปลี่ยน หน้าก็เปลี่ยนตาม",
     fine: "ไม่อัปโหลดเนื้อหา · นับเฉพาะจำนวนการใช้งาน · ฟรีช่วงทดสอบ",
+    b_ttl: "กำหนดการงาน", b_c1: "วันที่", b_c2: "เวลา", b_c3: "รายการ", b_c4: "ผู้รับผิดชอบ",
     d_today: "วันนี้", d_tomorrow: "พรุ่งนี้", d_day2: "มะรืน", d_sat: "ส.", d_sun: "อา.",
     d_n1: "นิด", d_n2: "ต้น", d_n3: "แอน",
     d_i1: "จัดสถานที่", d_i2: "ทดสอบเสียง",
@@ -1030,7 +1045,7 @@
 
   T.hi = {
     title: "SheetSnap — Excel और Google Sheets को फ़ोन पर आसानी से पढ़े जाने वाले पेज में बदलें",
-    tagline: "उलझी हुई स्प्रेडशीट को एक टैप में फ़ोन पर आराम से पढ़े जाने वाले पेज में बदलें।",
+    tagline: "Excel में बदलें। वेब पर दिखाएँ।",
     url_ph: "Google Sheets का लिंक पेस्ट करें", open: "खोलें", drop: "या .xlsx / .csv फ़ाइल चुनने के लिए यहाँ टैप करें",
     hint: "<b>रूपांतरण कुछ अपलोड नहीं करता।</b> शीट पढ़ना, प्रकार पहचानना और सजाना — सब आपके ही उपकरण पर पूरा होता है। केवल “छोटा लिंक बनाएँ” दबाने पर शीट एन्क्रिप्ट होकर अपलोड होती है और 30 दिन बाद मिट जाती है।",
     loading: "लोड हो रहा है…",
@@ -1083,6 +1098,7 @@
     a5_c4: "जगह भरने वाले खाली स्तंभ", a5_c5: "एक शीट पर कई छोटी तालिकाएँ",
     a3_h: "एक लिंक, कोई लॉगिन नहीं।", a3_p: "शीट बनाने वाला एक बार व्यू चुनता है; देखने वाले बस खोलते हैं। शीट बदले तो पेज भी बदल जाता है।",
     fine: "सामग्री कभी अपलोड नहीं होती · सिर्फ़ उपयोग गिना जाता है · परीक्षण के दौरान मुफ़्त",
+    b_ttl: "कार्यक्रम सूची", b_c1: "तारीख़", b_c2: "समय", b_c3: "काम", b_c4: "कौन",
     d_today: "आज", d_tomorrow: "कल", d_day2: "परसों", d_sat: "शनि", d_sun: "रवि",
     d_n1: "मीरा", d_n2: "अर्जुन", d_n3: "प्रिया",
     d_i1: "स्थल की तैयारी", d_i2: "साउंड चेक",
@@ -1097,7 +1113,7 @@
 
   T.bn = {
     title: "SheetSnap — Excel ও Google Sheets-কে ফোনে সহজে পড়ার মতো পেজে বদলে নিন",
-    tagline: "জটিল স্প্রেডশিটকে এক ট্যাপে ফোনে আরামে পড়ার মতো পেজে বদলে নিন।",
+    tagline: "Excel-এ সম্পাদনা, ওয়েবে উপস্থাপন।",
     url_ph: "Google Sheets-এর লিংক পেস্ট করুন", open: "খুলুন", drop: "অথবা .xlsx / .csv ফাইল বেছে নিতে এখানে ট্যাপ করুন",
     hint: "<b>রূপান্তরে কিছু আপলোড হয় না।</b> শিট পড়া, ধরন চেনা আর সাজানো — সবই আপনার যন্ত্রেই শেষ হয়। শুধু “ছোট লিংক বানান” চাপলে শিটটি এনক্রিপ্ট হয়ে আপলোড হয়, আর ৩০ দিন পরে নিজেই মুছে যায়।",
     loading: "লোড হচ্ছে…",
@@ -1150,6 +1166,7 @@
     a5_c4: "ফাঁক রাখার খালি কলাম", a5_c5: "এক পাতায় কয়েকটা ছোট টেবিল",
     a3_h: "একটি লিংক, লগইন লাগে না।", a3_p: "যিনি শিট বানান তিনি একবার ভিউ বেছে নেন; যাঁরা দেখেন শুধু খোলেন। শিট বদলালে পেজও বদলায়।",
     fine: "বিষয়বস্তু কখনো আপলোড হয় না · শুধু ব্যবহার গোনা হয় · পরীক্ষার সময় বিনামূল্যে",
+    b_ttl: "অনুষ্ঠানসূচি", b_c1: "তারিখ", b_c2: "সময়", b_c3: "কাজ", b_c4: "কে",
     d_today: "আজ", d_tomorrow: "আগামীকাল", d_day2: "পরশু", d_sat: "শনি", d_sun: "রবি",
     d_n1: "মিতা", d_n2: "রাহুল", d_n3: "প্রিয়া",
     d_i1: "স্থান সাজানো", d_i2: "সাউন্ড চেক",
@@ -1164,7 +1181,7 @@
 
   T.ar = {
     title: "SheetSnap — حوّل Excel وجداول Google إلى صفحات سهلة القراءة على الهاتف",
-    tagline: "حوّل جدولًا معقّدًا بلمسة واحدة إلى صفحة مريحة للقراءة على الهاتف.",
+    tagline: "حرِّر في Excel. واعرض على الويب.",
     url_ph: "الصق رابط جداول Google", open: "فتح", drop: "أو انقر هنا لاختيار ملف .xlsx / .csv",
     hint: "<b>التحويل لا يرفع شيئًا.</b> قراءة الجدول وتمييز الأنواع والتنسيق يتم كله على جهازك. ولا يُرفع الجدول — مشفَّرًا — إلا إذا لمست «أنشئ رابطًا قصيرًا»، ويُحذف بعد 30 يومًا.",
     loading: "جارٍ التحميل…",
@@ -1217,6 +1234,7 @@
     a5_c4: "أعمدة فارغة للتباعد", a5_c5: "عدة جداول صغيرة في ورقة واحدة",
     a3_h: "رابط واحد، بلا تسجيل دخول.", a3_p: "صاحب الجدول يختار العرض مرة واحدة؛ والقرّاء يفتحونه فحسب. يتغيّر الجدول فتتغيّر الصفحة معه.",
     fine: "المحتوى لا يُرفع أبدًا · يُحصى الاستخدام فقط · مجاني خلال فترة الاختبار",
+    b_ttl: "برنامج الفعالية", b_c1: "التاريخ", b_c2: "الوقت", b_c3: "المهمة", b_c4: "المسؤول",
     d_today: "اليوم", d_tomorrow: "غدًا", d_day2: "بعد غد", d_sat: "السبت", d_sun: "الأحد",
     d_n1: "سارة", d_n2: "أحمد", d_n3: "ليلى",
     d_i1: "تجهيز المكان", d_i2: "فحص الصوت",
@@ -1231,7 +1249,7 @@
 
   T.ur = {
     title: "SheetSnap — Excel اور Google Sheets کو فون پر آسانی سے پڑھے جانے والے صفحات میں بدلیں",
-    tagline: "الجھی ہوئی اسپریڈشیٹ کو ایک ٹیپ میں فون پر آرام سے پڑھے جانے والے صفحے میں بدلیں۔",
+    tagline: "Excel میں ترمیم۔ ویب پر پیشکش۔",
     url_ph: "Google Sheets کا لنک پیسٹ کریں", open: "کھولیں", drop: "یا .xlsx / .csv فائل چننے کے لیے یہاں ٹیپ کریں",
     hint: "<b>تبدیلی کچھ اپ لوڈ نہیں کرتی۔</b> شیٹ پڑھنا، اقسام پہچاننا اور سجانا — سب آپ ہی کے آلے پر مکمل ہوتا ہے۔ صرف ”مختصر لنک بنائیں“ دبانے پر شیٹ مع خفیہ کاری اپ لوڈ ہوتی ہے اور 30 دن بعد خود مٹ جاتی ہے۔",
     loading: "لوڈ ہو رہا ہے…",
@@ -1284,6 +1302,7 @@
     a5_c4: "وقفے کے خالی کالم", a5_c5: "ایک شیٹ پر کئی چھوٹے ٹیبل",
     a3_h: "ایک لنک، لاگ اِن نہیں۔", a3_p: "شیٹ بنانے والا ایک بار منظر چنتا ہے؛ دیکھنے والے بس کھولتے ہیں۔ شیٹ بدلے تو صفحہ بھی بدل جاتا ہے۔",
     fine: "مواد کبھی اپ لوڈ نہیں ہوتا · صرف استعمال گنا جاتا ہے · آزمائش کے دوران مفت",
+    b_ttl: "تقریب کا شیڈول", b_c1: "تاریخ", b_c2: "وقت", b_c3: "کام", b_c4: "کون",
     d_today: "آج", d_tomorrow: "کل", d_day2: "پرسوں", d_sat: "ہفتہ", d_sun: "اتوار",
     d_n1: "سارہ", d_n2: "احمد", d_n3: "لیلیٰ",
     d_i1: "جگہ کی تیاری", d_i2: "ساؤنڈ چیک",

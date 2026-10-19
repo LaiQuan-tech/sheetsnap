@@ -222,6 +222,19 @@
   .about .mo{margin:0 0 44px}
   .about h2{margin:0 0 8px;font-family:"Noto Serif TC",serif;font-size:27px;line-height:1.25;font-weight:900;color:var(--ink);letter-spacing:.01em}
   .about .mo > p{margin:0 0 16px;font-size:15px}
+  /* 前後對照。原始試算表那一半：字刻意小、格線刻意密、欄寬刻意不夠——
+     那就是在手機上打開一份 .xlsx 的樣子，不是我們把它畫醜。
+     刻意照著引擎真正要處理的毛病畫：標題在第 3 列（上面是合併的大標跟
+     一列空白），而第二筆的日期是空的（合併儲存格往下填那一條）。 */
+  .ba{display:grid;gap:7px;justify-items:center}
+  .ba .xl{width:100%;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+  .ba table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:9.5px;line-height:1.5;
+    color:var(--ink2);font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+  .ba td{border:1px solid var(--line);padding:3px 5px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .ba .cols td{width:25%;background:var(--bg);text-align:center;color:var(--muted);font-size:8.5px}
+  .ba .ttl td{font-weight:700;color:var(--ink)}
+  .ba .hd td{font-weight:700;color:var(--ink);background:var(--bg)}
+  .ba .arr{color:var(--muted);font-size:15px;line-height:1}
   .about .demo{pointer-events:none;user-select:none}
   .about .demo .octl,.about .demo .g-head{position:static}
   .about .demo .out{padding:12px 14px 14px}
@@ -471,7 +484,19 @@
     <div class="mo">
       <h2 data-i18n="a1_h"></h2>
       <p data-i18n="a1_p"></p>
-      <div class="demo phone" aria-hidden="true">
+      <div class="ba" aria-hidden="true">
+      <div class="xl">
+        <table>
+          <tr class="cols"><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+          <tr class="ttl"><td colspan="4" data-i18n="b_ttl"></td></tr>
+          <tr><td></td><td></td><td></td><td></td></tr>
+          <tr class="hd"><td data-i18n="b_c1"></td><td data-i18n="b_c2"></td><td data-i18n="b_c3"></td><td data-i18n="b_c4"></td></tr>
+          <tr><td>9/11</td><td>09:00</td><td data-i18n="d_i1"></td><td data-i18n="d_n1"></td></tr>
+          <tr><td></td><td>13:30</td><td data-i18n="d_i2"></td><td data-i18n="d_n2"></td></tr>
+        </table>
+      </div>
+      <div class="arr">↓</div>
+      <div class="demo phone">
         <div class="octl"><div class="orail groups">
           <button tabindex="-1" class="now on"><span data-i18n="d_today"></span> 2</button><button tabindex="-1"><span data-i18n="d_tomorrow"></span> 2</button><button tabindex="-1"><span data-i18n="d_day2"></span> 5</button><button tabindex="-1"><span data-i18n="d_sat"></span> 1</button><button tabindex="-1"><span data-i18n="d_sun"></span> 2</button>
         </div></div>
@@ -482,6 +507,7 @@
             <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2"></p></div><div class="metas"><span class="m" data-i18n="d_n2"></span><span class="m" data-i18n="d_n3"></span></div></div></li>
           </ol>
         </div>
+      </div>
       </div>
     </div>
 
@@ -519,14 +545,14 @@
     <details><summary data-i18n="q6"></summary><p data-i18n="f6"></p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made"></p>
-  <p class="ver">SheetSnap v95<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="ver">SheetSnap v96<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=95"></script>
-<script src="i18n.js?v=95"></script>
+<script src="detect.js?v=96"></script>
+<script src="i18n.js?v=96"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
