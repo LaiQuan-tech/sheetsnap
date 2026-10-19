@@ -230,8 +230,9 @@ for (const src of args) {
     if (sh.hiddenSheet) {
       skipped++;
       records.push({ src: base, sheet: sh.name, sheetIndex: shIdx, status: 'not-shown',
-                     show: false, why: sh.hiddenSheet, srcRows: sh.grid.length });
-      say(`${C.d('–')} ${C.d(sh.name)} ${C.d(sh.hiddenSheet)}`);
+                     show: false, why: sh.hiddenSheet.why, code: sh.hiddenSheet.code,
+                     srcRows: sh.grid.length });
+      say(`${C.d('–')} ${C.d(sh.name)} ${C.d(sh.hiddenSheet.why)}`);
       continue;
     }
 
@@ -275,7 +276,9 @@ for (const src of args) {
         srcRows: sh.grid.length, rows: a.rows.length,
         cols: a.cols.length, live: a.cols.filter(c => c.type !== 'empty').length,
         headerRow: a.headerRow, title: a.title || null,
-        notes: a.notes || [],                  // 做過哪些結構轉換
+        /* 照舊輸出中文字串：baseline 的形狀不變，已經提交的那兩份就不會作廢，
+           --private 的 kindOf 也還是對著中文比對。引擎多出來的 code 給介面用。 */
+        notes: (a.notes || []).map(n => (typeof n === 'string' ? n : n.text)),
         roles: { title: roleName(a.roles.title), group: roleName(a.roles.group),
                  lead: roleName(a.roles.lead), person: roleName(a.roles.person) },
         /* 被藏起來的欄（單號、流水號）。codeLike 同時決定「扣標題分數」與

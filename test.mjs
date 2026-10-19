@@ -890,8 +890,10 @@ for (const [head, want, why] of titleCases) {
                Workbook: { Sheets: [{ Hidden: 0 }, { Hidden: 1 }, { Hidden: 2 }] } };
   const h = S.hiddenSheets(wb);
   chk('看得見的不標記',   h.Data === undefined, true);
-  chk('隱藏的標記出來',   /隱藏起來/.test(h.calc || ''), true);
-  chk('深度隱藏講清楚',   /深度隱藏/.test(h.secret || ''), true);
+  chk('隱藏的標記出來',   /隱藏起來/.test((h.calc || {}).why || ''), true);
+  chk('隱藏帶代號',       (h.calc || {}).code, 'vd_hidden');
+  chk('深度隱藏講清楚',   /深度隱藏/.test((h.secret || {}).why || ''), true);
+  chk('深度隱藏帶代號',   (h.secret || {}).code, 'vd_hidden_very');
   // 舊檔、CSV 沒有這段 metadata，拿不到就當全部可見，不能爆
   chk('沒有 metadata 不爆', Object.keys(S.hiddenSheets({ SheetNames: ['A'] })).length, 0);
   chk('整個 wb 是空的也不爆', Object.keys(S.hiddenSheets(null)).length, 0);
@@ -974,6 +976,58 @@ for (const [head, want, why] of titleCases) {
   const faq = ['q1','q2','q3','q4','q5','q8','q6'].every(k => text.includes(zh[k]));
   chk('七題 FAQ 都在 HTML 裡', faq, true);
   chk('19 個語言都有 hreflang', (html.match(/rel="alternate" hreflang=/g) || []).length, 20);  // 19 + x-default
+}
+
+/* 引擎發出的每一個代號，字典裡都要有 zh 與 en。
+   少一條不會爆，只會默默退回引擎的中文——19 個語言又變回看中文，
+   而那正是這一版要修的事，所以要有人盯著。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} 代號 ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const G2 = { location: { search: '' }, navigator: { languages: [], language: 'en' },
+    document: { querySelectorAll: () => [], getElementById: () => null, documentElement: {} } };
+  const I2 = new Function('G', 'var window=G,location=G.location,navigator=G.navigator,' +
+    'document=G.document,localStorage=undefined;' +
+    fs.readFileSync('i18n.js', 'utf8').replace(/\)\(window\);?\s*$/, ')(G);') + 'return G.I18N;')(G2);
+
+  const src = fs.readFileSync('detect.js', 'utf8');
+  const codes = new Set();
+  /* 代號有三種寫法，三種都要掃：
+       reasonCode: 'x' / code: 'x'      直接寫在物件字面量裡
+       R('x', {...})                     detectColumn 用的小 helper
+       cond ? 'x' : 'y'                  同一個分支兩種說法 */
+  for (const m of src.matchAll(/(?:^|[^a-zA-Z])(?:reasonCode|code):\s*'([a-z][a-z0-9_]*)'/g)) codes.add(m[1]);
+  for (const m of src.matchAll(/\bR\(\s*'([a-z][a-z0-9_]*)'/g)) codes.add(m[1]);
+  for (const m of src.matchAll(/\?\s*'((?:cr|sr|vd|nt|u)_[a-z0-9_]*)'\s*:\s*'((?:cr|sr|vd|nt|u)_[a-z0-9_]*)'/g)) {
+    codes.add(m[1]); codes.add(m[2]);
+  }
+  /* sr_sched 那一組是算出來的（'sr_sched' + (time?'_t':'') + (spread?'_s':'')），
+     靜態掃描看不到四種組合，所以明列。 */
+  ['sr_sched', 'sr_sched_t', 'sr_sched_s', 'sr_sched_t_s'].forEach(c => codes.add(c));
+  // unit 也是代號，由 noteText 先翻再內插
+  ['u_slot', 'u_month', 'u_quarter', 'u_period'].forEach(c => codes.add(c));
+
+  chk('掃得到代號', codes.size >= 45, true);
+  if (codes.size < 45) console.log('      只掃到 ' + codes.size + ' 個：' + [...codes].sort().join(','));
+  const noZh = [...codes].filter(c => I2.T.zh[c] == null);
+  const noEn = [...codes].filter(c => I2.T.en[c] == null);
+  chk('每個代號都有繁中', noZh.length ? noZh.join(',') : 0, 0);
+  chk('每個代號都有英文', noEn.length ? noEn.join(',') : 0, 0);
+
+  /* 內插變數也要對得上：字典句子裡的 {x} 必須是引擎真的會給的。
+     只能驗兩邊的 {x} 集合一致，不能驗值。 */
+  const mism = [];
+  for (const c of codes) {
+    const z = I2.T.zh[c], e = I2.T.en[c];
+    if (z == null || e == null) continue;
+    const vz = (z.match(/\{(\w+)\}/g) || []).sort().join(',');
+    const ve = (e.match(/\{(\w+)\}/g) || []).sort().join(',');
+    if (vz !== ve) mism.push(c + '(zh:' + vz + ' en:' + ve + ')');
+  }
+  chk('中英的內插變數一致', mism.length ? mism.join(' ') : 0, 0);
 }
 
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],

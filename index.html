@@ -583,21 +583,68 @@
     <details><summary data-i18n="q6">Are the numbers calculated?</summary><p data-i18n="f6">No. Every number is quoted from the sheet as-is; nothing is summed or computed.</p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made">Made with <a href='./'>SheetSnap</a> · turn your own spreadsheet into this</p>
-  <p class="ver">SheetSnap v101<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
+  <p class="ver">SheetSnap v102<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=101"></script>
-<script src="i18n.js?v=101"></script>
+<script src="detect.js?v=102"></script>
+<script src="i18n.js?v=102"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
 var TX = I18N.t;
 var SHAPE_TX = { schedule:'sh_schedule', pricelist:'sh_pricelist', directory:'sh_directory',
                  board:'sh_board', ledger:'sh_ledger', matrix:'sh_matrix', cards:'sh_cards' };
-function shapeName(id){ return SHAPE_TX[id] ? TX(SHAPE_TX[id]) : id }   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
+function shapeName(id){ return SHAPE_TX[id] ? TX(SHAPE_TX[id]) : id }
+/* 判定理由：引擎回的是 { why（中文）, code, vars }。有 code 就查字典，
+   查不到才退回引擎的中文——這樣新增判定時忘了補字典也不會變成空字串。 */
+function verdictText(v){
+  if(!v) return '';
+  if(v.code){ var s = TX(v.code, v.vars || null); if(s !== v.code) return s }
+  return v.why || '';
+}
+/* 結構轉換的說明：引擎回的是 { text（中文）, code, vars }。
+   names 這種陣列要先用當地的頓號接起來，再交給 TX 內插。 */
+/* 版面判定的說明。變數有三種要先處理再交給 TX：
+   sub  —— 巢狀的另一個 { code, vars }（日期欄自己的判定依據）
+   cols —— 欄名陣列，要用當地的頓號接起來
+   其餘 —— 直接內插
+   引擎留著中文的 reason 當退路，所以漏補字典也不會變成空白。 */
+function shapeReason(sh){
+  if(sh && sh.reasonCode){
+    var v = sh.reasonVars ? JSON.parse(JSON.stringify(sh.reasonVars)) : null;
+    if(v){
+      if(v.sub && v.sub.code){ var t = TX(v.sub.code, v.sub.vars || null); v.sub = (t !== v.sub.code ? t : '') }
+      else if(v.sub) v.sub = '';
+      if(Array.isArray(v.cols)) v.cols = v.cols.join(TX('list_sep'));
+    }
+    var s = TX(sh.reasonCode, v); if(s !== sh.reasonCode) return s;
+  }
+  return (sh && sh.reason) || '';
+}
+/* 型別判定的依據：引擎留著中文的 col.reason，旁邊記了 reasonCode／reasonVars。
+   kind 這種值本身又是代號（ty_status／ty_category），要先翻再內插。 */
+function colReason(c){
+  if(c.reasonCode){
+    var v = c.reasonVars ? JSON.parse(JSON.stringify(c.reasonVars)) : null;
+    if(v && v.kind){ var k = TX(v.kind); if(k !== v.kind) v.kind = k }
+    var s = TX(c.reasonCode, v); if(s !== c.reasonCode) return s;
+  }
+  return c.reason || '';
+}
+function noteText(n){
+  if(!n) return '';
+  if(typeof n === 'string') return n;              // 舊的形狀，保險
+  if(n.code){
+    var v = n.vars ? JSON.parse(JSON.stringify(n.vars)) : null;
+    if(v && Array.isArray(v.names)) v.names = v.names.join(TX('list_sep'));
+    if(v && v.unit){ var u = TX(v.unit); if(u !== v.unit) v.unit = u }   // unit 是代號
+    var s = TX(n.code, v); if(s !== n.code) return s;
+  }
+  return n.text || '';
+}   // 介面文字都從字典來（名字刻意取得怪，不跟任何區域變數撞）
 var outQ = '', whoQ = '', outPicks = {}, filterCols = [], outGroup = '';
 var SHEETS = [], curSheet = 0;
 var VIEWS = [], ALL_VIEWS = [], focusFilter = null, VIEW = null;
@@ -716,11 +763,11 @@ function openWorkbook(wb, fname){
   // 作者自己藏起來的工作表不用再判一次——藏起來就是答案
   var hid = SheetShape.hiddenSheets(wb);
   wb.SheetNames.forEach(function(nm){
-    if(hid[nm]){ skipped.push(nm + '（' + hid[nm] + '）'); return; }
+    if(hid[nm]){ skipped.push(nm + '（' + verdictText(hid[nm]) + '）'); return; }
     var gr = XLSX.utils.sheet_to_json(wb.Sheets[nm], { header:1, defval:'', raw:false });
     var v = SheetShape.sheetVerdict(gr, SheetShape.analyseSheet(gr).tables);
     if(v.show === true) SHEETS.push({ name:nm, grid:gr, file:fname });
-    else skipped.push(nm + '（' + v.why + '）');
+    else skipped.push(nm + '（' + verdictText(v) + '）');
   });
   if(!SHEETS.length){ say(TX('err_nodata', { list:skipped.join(', ') }), true, 'nodata'); return; }
   say(skipped.length ? TX('skipped', { n:skipped.length, list:skipped.join(', ') }) : '');
@@ -867,13 +914,13 @@ function paint(){
      不然覆寫版面之後名字的語言會跟著跳。 */
   $('shape').textContent = shapeName(shape.shape);
   $('dims').textContent = A.rows.length + ' 列 · ' + A.cols.filter(function(c){return c.type!=='empty'}).length + ' 欄';
-  $('why').textContent = A.shape.reason;
+  $('why').textContent = shapeReason(A.shape);
   var st = [];
   if(A.title) st.push('<b>' + esc(A.title) + '</b>');
   st.push('標題列：第 ' + (A.headerRow + 1) + ' 列');
   if(A.headerRow > 0) st.push('略過 ' + A.headerRow + ' 列前言');
   if(A.totals && A.totals.length) st.push('合計列 ' + A.totals.length + ' 條');
-  (A.notes || []).forEach(function(nt){ st.push('<span class="fix">' + esc(nt) + '</span>') });
+  (A.notes || []).forEach(function(nt){ st.push('<span class="fix">' + esc(noteText(nt)) + '</span>') });
   if(window.__skippedBlank) st.push('<span class="fix">略過 ' + window.__skippedBlank + ' 列沒有標題的空白列</span>');
   if(eff.roles.hidden && eff.roles.hidden.length)
     st.push('<span class="fix">收起流水號／代碼欄：' + esc(eff.roles.hidden.map(function(c){return c.name}).join('、')) + '</span>');
@@ -888,7 +935,7 @@ function paint(){
         typeName(c.type) + '</span></td>' +
       '<td><span class="rtag' + (role?'':' none') + '">' + (role ? roleName(role) : '\u2014') + '</span></td>' +
       '<td class="conf">' + Math.round(c.confidence * 100) + '%</td>' +
-      '<td class="why-cell">' + esc(c.reason) + '</td></tr>';
+      '<td class="why-cell">' + esc(colReason(c)) + '</td></tr>';
   }).join('');
 
   window.__skippedBlank = 0;
@@ -1671,7 +1718,7 @@ function diagnosticText(){
   L.push('標題列：第 ' + (A.headerRow + 1) + ' 列' + (A.headerRow ? '（略過 ' + A.headerRow + ' 列前言）' : ''));
   L.push('資料：' + A.rows.length + ' 列 × ' + A.cols.length + ' 欄' +
          (A.totals && A.totals.length ? '，合計列 ' + A.totals.length + ' 條' : ''));
-  if(A.notes && A.notes.length) L.push('結構轉換：' + A.notes.join('；'));
+  if(A.notes && A.notes.length) L.push('\u7d50\u69cb\u8f49\u63db\uff1a' + A.notes.map(function(n){ return n.text }).join('\uff1b'));
   L.push('');
   L.push('欄位：');
   A.cols.forEach(function(c){

@@ -155,7 +155,7 @@ for (const f of files) {
   let shown = 0;
   const hid = S.hiddenSheets(wb);
   wb.SheetNames.forEach((nm, si) => {
-    if (hid[nm]) { rows.push({ f, cat, sheet: nm, si, skipped: hid[nm] }); return; }
+    if (hid[nm]) { rows.push({ f, cat, sheet: nm, si, skipped: hid[nm].why }); return; }
     const grid = XLSX.utils.sheet_to_json(wb.Sheets[nm], { header: 1, defval: '', raw: false });
     const tables = S.analyseSheet(grid).tables;
     const v = S.sheetVerdict(grid, tables);

@@ -272,7 +272,7 @@
       avgLen: 0,
       type: 'empty',
       confidence: 0,
-      reason: '整欄空白'
+      reason: '整欄空白', reasonCode: 'cr_allempty'
     };
     if (!n) return col;
 
@@ -298,40 +298,55 @@
     var rPhone = ratio(isPhoneish);
     var repeats = col.distinct < n;          // 至少有一個值出現過兩次才算得上分類
 
+    /* reason 旁邊再記一組 { reasonCode, reasonVars }。中文字串留著——
+       CLI 與 baseline 讀它，介面則照代號查字典。只加不換的理由同 sheetVerdict。 */
+    var R = function (code, vars) { col.reasonCode = code; col.reasonVars = vars || null; };
+
     // 依序判斷，先中先贏
     if (rDate >= 0.6) {
       col.type = 'date'; col.confidence = rDate;
       col.reason = pct(rDate) + ' 的值可解析為日期';
+      R('cr_date', { pct: pct(rDate) });
     } else if (rTime >= 0.6 || (hint('time') && rTime >= 0.3)) {
       col.type = 'time'; col.confidence = rTime;
       col.reason = pct(rTime) + ' 的值可解析為時間' + (hint('time') ? '，欄名也含時間字樣' : '');
+      R(hint('time') ? 'cr_time_hint' : 'cr_time', { pct: pct(rTime) });
     } else if (rMail >= 0.5) {
       col.type = 'email'; col.confidence = rMail;
       col.reason = pct(rMail) + ' 的值是電子郵件格式';
+      R('cr_email', { pct: pct(rMail) });
     } else if (rUrl >= 0.5) {
       col.type = 'url'; col.confidence = rUrl;
       col.reason = pct(rUrl) + ' 的值是網址';
+      R('cr_url', { pct: pct(rUrl) });
     } else if (rPhone >= 0.6 && (hint('phone') || rPhone >= 0.85)) {
       col.type = 'phone'; col.confidence = rPhone;
       col.reason = pct(rPhone) + ' 的值像電話號碼' + (hint('phone') ? '，欄名也含電話字樣' : '');
+      R(hint('phone') ? 'cr_phone_hint' : 'cr_phone', { pct: pct(rPhone) });
     } else if ((rMoney >= 0.5) || (rNum >= 0.7 && hint('money'))) {
       col.type = 'money'; col.confidence = Math.max(rMoney, rNum);
       // 理由要跟真正成立的那一條一致。原本只看欄名有沒有金額字樣，
       // 所以一欄全是 $(635.00) 的 Amount 會寫「且 0% 是數字」，看起來像弄錯了。
       col.reason = rMoney >= 0.5 ? pct(rMoney) + ' 的值帶有金額符號'
                                  : '欄名含金額字樣，且 ' + pct(rNum) + ' 是數字';
+      R(rMoney >= 0.5 ? 'cr_money_sym' : 'cr_money_name', { pct: pct(rMoney >= 0.5 ? rMoney : rNum) });
     } else if (rNum >= 0.8) {
       col.type = 'number'; col.confidence = rNum;
       col.reason = pct(rNum) + ' 的值是數字';
+      R('cr_number', { pct: pct(rNum) });
     } else if (col.multilineRatio >= 0.15 || col.avgLen > 25) {
       // 只看「有沒有換行」會誤判：145 筆裡 2 筆換行的人員欄不是長文字
       col.type = 'longtext'; col.confidence = Math.min(1, col.avgLen / 40);
       col.reason = col.multilineRatio >= 0.15
         ? Math.round(col.multilineRatio * 100) + '% 的值有換行，屬長文字'
         : '平均長度 ' + Math.round(col.avgLen) + ' 字，屬長文字';
+      R(col.multilineRatio >= 0.15 ? 'cr_long_nl' : 'cr_long_len',
+        col.multilineRatio >= 0.15 ? { pct: Math.round(col.multilineRatio * 100) + '%' }
+                                   : { n: Math.round(col.avgLen) });
     } else if (hint('person') && personish(name)) {
       col.type = 'person'; col.confidence = 0.8;
       col.reason = '欄名含人員／負責人字樣';
+      R('cr_person');
     } else if (repeats && !hint('note') && col.distinct <= 8 && col.avgLen <= 10) {
       // 用「值有沒有重複出現」當門檻，而不是比例。
       // 比例門檻（distinct < n*0.5）在小表上永遠不成立：
@@ -340,12 +355,15 @@
       col.confidence = 1 - col.distinct / Math.max(n, 1);
       col.reason = '只有 ' + col.distinct + ' 種不同的值、字都很短，適合當' +
                    (col.type === 'status' ? '狀態' : '分類');
+      R('cr_shortvals', { n: col.distinct, kind: col.type === 'status' ? 'ty_status' : 'ty_category' });
     } else if (repeats && !hint('note') && col.distinct <= 20 && col.distinct <= n * 0.6 && col.avgLen <= 14) {
       col.type = 'category'; col.confidence = 1 - col.distinct / Math.max(n, 1);
       col.reason = col.distinct + ' 種重複出現的短值，可當分類';
+      R('cr_category', { n: col.distinct });
     } else {
       col.type = 'text'; col.confidence = 0.5;
       col.reason = '一般文字（' + col.distinct + ' 種相異值）';
+      R('cr_text', { n: col.distinct });
     }
     return col;
   }
@@ -544,6 +562,8 @@
         reason: '有日期欄「' + date.name + '」但幾乎每列都不同（' +
                 date.distinct + '/' + date.filled + '），且有 ' + moneys.length +
                 ' 欄金額，判定為明細帳而非排程',
+        reasonCode: 'sr_ledger',
+        reasonVars: { date: date.name, a: date.distinct, b: date.filled, n: moneys.length },
         group: null, lead: main, title: t2, person: null
       };
     }
@@ -562,6 +582,11 @@
                 (time ? '，並有時間欄「' + time.name + '」' : '') +
                 (spread ? '；但日期幾乎每列都不同（' + date.distinct + '/' + date.filled +
                           '），不拿它分組，改當列名' : ''),
+        /* 四種組合各一個代號。把子句串起來在中文剛好成立，換成別的語言就不成立
+           ——語序、連接詞、標點都不一樣，所以寧可多四個 key。 */
+        reasonCode: 'sr_sched' + (time ? '_t' : '') + (spread ? '_s' : ''),
+        reasonVars: { date: date.name, sub: { code: date.reasonCode, vars: date.reasonVars },
+                      time: time ? time.name : '', a: date.distinct, b: date.filled },
         group: spread ? null : date, lead: time, title: title, person: person
       };
     }
@@ -570,6 +595,8 @@
       reason: '偵測到' + (phone ? '電話欄「' + phone.name + '」' : '') +
               (phone && mail ? '與' : '') + (mail ? '信箱欄「' + mail.name + '」' : '') +
               '，以「' + title.name + '」為主要名稱',
+      reasonCode: phone && mail ? 'sr_dir_both' : phone ? 'sr_dir_phone' : 'sr_dir_mail',
+      reasonVars: { phone: phone ? phone.name : '', mail: mail ? mail.name : '', title: title.name },
       group: cat, lead: null, title: title, person: person
     };
     // 只有時間、沒有日期 → 單日流程表。節目表、議程、活動流程都是這樣：
@@ -579,6 +606,7 @@
       return {
         shape: 'schedule', label: '排程／時程表',
         reason: '偵測到時間欄「' + time.name + '」但沒有日期欄，視為單日流程表',
+        reasonCode: 'sr_sched_timeonly', reasonVars: { time: time.name },
         group: null, lead: time, title: pickTitle(cols), person: person
       };
     }
@@ -655,6 +683,13 @@
       var label = (fuller || sharper) ? alt : first;
       return {
         shape: 'matrix', label: '矩陣／報表', matrix: true,
+        reasonCode: label === first ? 'sr_matrix' : fuller ? 'sr_matrix_fuller' : 'sr_matrix_sharper',
+        reasonVars: { first: first.name, n: others.length,
+                      cols: others.map(function (c) { return c.name }),
+                      pick: label.name,
+                      pctFirst: Math.round(first.fillRate * 100) + '%',
+                      pctPick: Math.round(label.fillRate * 100) + '%',
+                      distFirst: first.distinct, filled: first.filled, distPick: label.distinct },
         reason: '第一欄「' + first.name + '」是標籤，後面 ' + others.length + ' 欄是數值（' +
                 others.map(function (c) { return c.name + (c.type === 'empty' ? '：整欄空白' : ''); }).join('、') + '）' +
                 (label === first ? ''
@@ -669,11 +704,13 @@
     if (money && title) return {
       shape: 'pricelist', label: '品項／價目表',
       reason: '偵測到金額欄「' + money.name + '」，以「' + title.name + '」為品項名稱',
+      reasonCode: 'sr_pricelist', reasonVars: { money: money.name, title: title.name },
       group: cat, lead: money, title: title, person: null
     };
     if (status && title) return {
       shape: 'board', label: '狀態清單',
       reason: '偵測到狀態欄「' + status.name + '」（' + status.distinct + ' 種狀態）',
+      reasonCode: 'sr_board', reasonVars: { status: status.name, n: status.distinct },
       group: status, lead: null, title: title, person: person
     };
     // 落到這裡不代表沒有軸：底下仍然把 cat 當分組欄。
@@ -684,6 +721,8 @@
       reason: cat ? '沒有時間或人員這類主軸，改以「' + cat.name + '」分組後逐列呈現'
             : title ? '沒有可辨識的主軸，以「' + title.name + '」為標題逐列呈現'
                     : '沒有可辨識的結構，逐列呈現所有欄位',
+      reasonCode: cat ? 'sr_cards_group' : title ? 'sr_cards_title' : 'sr_cards_none',
+      reasonVars: { cat: cat ? cat.name : '', title: title ? title.name : '' },
       group: cat, lead: null, title: title, person: person
     };
   }
@@ -701,7 +740,8 @@
     var money = pick(cols, 'money'), status = pick(cols, 'status');
     var cat = pick(cols, 'category'), person = pick(cols, 'person');
     var title = pickTitle(cols);
-    var base = { shape: name, label: SHAPE_LABEL[name] || name, reason: '手動指定版面',
+    var base = { shape: name, label: SHAPE_LABEL[name] || name,
+                 reason: '手動指定版面', reasonCode: 'sr_manual',
                  group: null, lead: null, title: title, person: person };
 
     if (name === 'schedule') { base.group = date; base.lead = time; }
@@ -1134,7 +1174,8 @@
     if (col) { header = col.header; body = col.rows; notes.push(col.note); }
 
     var fd = fillDownLabels(header, body);
-    if (fd.length) notes.push('向下填補合併儲存格：' + fd.join('、'));
+    if (fd.length) notes.push({ text: '向下填補合併儲存格：' + fd.join('、'),
+                                code: 'nt_filldown', vars: { names: fd } });
 
     // 表格的名字取前言的最後一段——那通常是緊貼標題列上方的區塊標題
     // （例如 Entertainment），而不是更上面的公司抬頭或摘要金額。
@@ -1196,7 +1237,8 @@
         dateish.forEach(function (c2) { if (!v && !blank(r[c2])) v = String(r[c2]).trim(); });
         return keep.map(function (c2) { return r[c2]; }).concat([v]);
       }),
-      note: '把散在 ' + dateish.length + ' 欄時間軸上的日期收合成單一「日期」欄'
+      note: { text: '把散在 ' + dateish.length + ' 欄時間軸上的日期收合成單一「日期」欄',
+              code: 'nt_collapse', vars: { n: dateish.length } }
     };
   }
 
@@ -1316,7 +1358,8 @@
         t.totals = (t.totals || []).map(pickCols);
         // 前言也要跟著砍，否則下面依欄名週期切表時兩邊的欄位對不起來
         t.preambleRows = (t.preambleRows || []).map(pickCols);
-        t.notes = (t.notes || []).concat(['剔除 ' + dropped + ' 個排版用的空白欄']);
+        t.notes = (t.notes || []).concat([{ text: '剔除 ' + dropped + ' 個排版用的空白欄',
+          code: 'nt_dropcols', vars: { n: dropped } }]);
       }
 
       if (!(t.grid.length >= 2 && t.grid[0].length >= 2)) return;
@@ -1341,7 +1384,8 @@
             title: pre.length ? pre.join(' · ') : t.title,
             headerRow: t.headerRow,
             grid: slice, totals: t.totals.map(function (r) { return r.slice(off, off + k); }),
-            skipped: t.skipped, notes: (t.notes || []).concat(['依重複的欄名切成並排的表格']),
+            skipped: t.skipped,
+            notes: (t.notes || []).concat([{ text: '依重複的欄名切成並排的表格', code: 'nt_split' }]),
             range: { c0: cr[0] + off, c1: cr[0] + off + k - 1, r0: main.r0 }
           });
         }
@@ -1538,20 +1582,25 @@
      一個活頁簿裡有資料表，也有說明頁、下拉選單來源、圖表暫存區、公式彙總頁。
      原則是保守：藏掉一張真的資料表，比多顯示一張垃圾更糟，
      所以只有在明顯不是表格時才排除。 */
+  /* why 旁邊多一個 code（必要時加 vars）。why 留著中文：CLI 跟 baseline 照舊讀它，
+     所以這個改動不會讓已經提交的 baseline 失效。介面則改讀 code 去查字典，
+     19 個語言才看得到自己的語言——原本這 11 句不管什麼語言都是中文。
+     只加不換，是因為一次換掉會同時打破 baseline、audit、gallery、test 四邊。 */
   function sheetVerdict(grid, tables) {
     var g = normalize(grid || []);
     var filled = g.filter(function (r) { return r.some(function (v) { return !blank(v); }); });
-    if (!filled.length) return { show: false, why: '整張工作表空白' };
+    if (!filled.length) return { show: false, why: '整張工作表空白', code: 'vd_blank' };
 
     tables = tables || [];
-    if (!tables.length) return { show: false, why: '切不出任何表格區塊' };
+    if (!tables.length) return { show: false, why: '切不出任何表格區塊', code: 'vd_notable' };
 
     var main = tables.reduce(function (a, b) { return b.rows.length > a.rows.length ? b : a; });
-    if (main.calendar) return { show: false, why: '月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現' };
-    if (main.rows.length < 2) return { show: false, why: '只有 ' + main.rows.length + ' 列資料' };
+    if (main.calendar) return { show: false, why: '月曆格子（星期橫排、格子裡是日期），手機上沒有比原本更好的呈現', code: 'vd_calendar' };
+    if (main.rows.length < 2) return { show: false, why: '只有 ' + main.rows.length + ' 列資料',
+                                        code: 'vd_fewrows', vars: { n: main.rows.length } };
 
     var live = main.cols.filter(function (c) { return c.type !== 'empty'; });
-    if (!live.length) return { show: false, why: '沒有任何有值的欄位' };
+    if (!live.length) return { show: false, why: '沒有任何有值的欄位', code: 'vd_nolive' };
 
     // 欄名全是數字或空的 → 圖表資料區、控制列殘骸這類東西
     var named = main.header.filter(function (h) {
@@ -1559,7 +1608,7 @@
       return t && !/^欄 \d+$/.test(t) &&
              !/^[$€£¥＄]?\s*-?[\d,]+(\.\d+)?\s*%?$/.test(t) && !S.dateish(t);
     }).length;
-    if (!named) return { show: false, why: '沒有任何文字欄名，像圖表資料區或控制列' };
+    if (!named) return { show: false, why: '沒有任何文字欄名，像圖表資料區或控制列', code: 'vd_nonames' };
 
     // 有金額、數字、日期或時間就是真資料（例如 品項 | 金額 的支出清單）
     var hasValue = live.some(function (c) {
@@ -1573,9 +1622,9 @@
     // 不能只看資料長不長——待辦清單的「Done | Task」欄名很短、內容很長，
     // 那是不折不扣的資料表，而且正是手機最該讀的東西。
     if (live.length <= 2 && headLen > 20)
-      return { show: false, why: '欄名本身就是句子，像說明頁' };
+      return { show: false, why: '欄名本身就是句子，像說明頁', code: 'vd_headsentence' };
     if (live.length <= 1 && avgLen > 25)
-      return { show: false, why: '只有一欄長文字，像說明頁' };
+      return { show: false, why: '只有一欄長文字，像說明頁', code: 'vd_onelong' };
     /* 兩欄以內、而且每一欄都是長文字，那是說明頁而不是資料表。
        上面那條用「欄名本身就是句子」擋，門檻是平均欄名長度 20——
        budget_926cf263 › Start 的欄名是「About this template」19 個字，差一個字躲過，
@@ -1583,7 +1632,7 @@
        看內容比看欄名可靠：資料表不會整張都是長文字。
        （語料 327 個有渲染的表裡，只有這一張符合。） */
     if (live.length <= 2 && live.every(function (c) { return c.type === 'longtext'; }))
-      return { show: false, why: '每一欄都是長文字，像說明頁' };
+      return { show: false, why: '每一欄都是長文字，像說明頁', code: 'vd_alllong' };
 
     /* 宣告了好幾欄、卻只有一欄有值，而那一欄又沒有任何數值——這是整張沒填的
        範本，列名以外什麼都沒有，渲染出來是一疊只有標籤的卡片。
@@ -1593,7 +1642,7 @@
        timeline_7ec3f486 › Social Overview。
        「藏掉真的資料表比多顯示垃圾更糟」講的是資料；這裡沒有資料。 */
     if (live.length <= 1 && !hasValue && main.cols.length > live.length)
-      return { show: 'weak', why: '只有一欄有值、其餘整欄空白，像還沒填的範本' };
+      return { show: 'weak', why: '只有一欄有值、其餘整欄空白，像還沒填的範本', code: 'vd_unfilled' };
 
     // 下拉選單的來源清單：一兩欄「短文字」，沒有任何數值欄。
     /* 這裡要看「宣告了幾欄」而不是「幾欄有值」，跟矩陣那條同一個道理：
@@ -1605,9 +1654,9 @@
        真正的下拉來源清單本來就只宣告一兩欄。 */
     if (main.cols.length <= 2 && live.length <= 2 && !hasValue &&
         main.rows.length >= 3 && avgLen <= 12)
-      return { show: 'weak', why: '只有一兩欄短文字且無數值，像下拉選單的來源清單' };
+      return { show: 'weak', why: '只有一兩欄短文字且無數值，像下拉選單的來源清單', code: 'vd_dropdown' };
 
-    return { show: true, why: '' };
+    return { show: true, why: '', code: '' };
   }
 
   /* 作者在試算表裡把一張工作表隱藏起來，就是明說「這不是給人看的」——
@@ -1629,7 +1678,9 @@
     if (!meta || !wb.SheetNames) return out;
     wb.SheetNames.forEach(function (nm, i) {
       var h = meta[i] && +meta[i].Hidden;
-      if (h > 0) out[nm] = h === 2 ? '作者把這張工作表深度隱藏了' : '作者在試算表裡把這張工作表隱藏起來';
+      if (h > 0) out[nm] = h === 2
+        ? { why: '作者把這張工作表深度隱藏了', code: 'vd_hidden_very' }
+        : { why: '作者在試算表裡把這張工作表隱藏起來', code: 'vd_hidden' };
     });
     return out;
   }
@@ -1681,7 +1732,9 @@
     return {
       name: t.name, title: t.title, preambleRows: t.preambleRows, headerRow: t.headerRow,
       grid: [h].concat(out), totals: [], skipped: t.skipped, range: t.range,
-      notes: (t.notes || []).concat(['把 ' + idx.length + ' 個星期欄位攤平成「' + dayName + '」欄，一次看一天']),
+      notes: (t.notes || []).concat([{
+        text: '把 ' + idx.length + ' 個星期欄位攤平成「' + dayName + '」欄，一次看一天',
+        code: 'nt_unpivot_week', vars: { n: idx.length, col: dayName } }]),
       unpivoted: 'week'
     };
   }
@@ -1820,6 +1873,10 @@
     var allMonth = !allTime && every(RE_MONTHCOL);
     var allQtr   = !allTime && !allMonth && every(RE_QTRCOL);
     var unit = allTime ? '時段' : allMonth ? '月' : allQtr ? '季' : '期間';
+    /* unit 只出現在說明句裡，所以另外給一個代號讓介面翻。
+       pName／vName 不給代號——那是攤平出來那一欄真正的欄名，屬於資料，
+       而且它本來就照「這張表是不是中文」在切換，不該跟著介面語言跑。 */
+    var unitCode = allTime ? 'u_slot' : allMonth ? 'u_month' : allQtr ? 'u_quarter' : 'u_period';
     var pName = allTime ? (zh ? '時段' : 'Time')
               : allMonth ? (zh ? '月份' : 'Month')
               : allQtr ? (zh ? '季別' : 'Quarter')
@@ -1829,8 +1886,9 @@
       name: t.name, title: t.title, preambleRows: t.preambleRows, headerRow: t.headerRow,
       grid: [rest.map(function (i) { return header[i]; }).concat([pName, vName])].concat(out),
       totals: [], skipped: t.skipped, range: t.range,
-      notes: (t.notes || []).concat(['把 ' + idx.length + ' 個期間欄位攤平成「' + pName +
-        '」欄，一次看一個' + unit]),
+      notes: (t.notes || []).concat([{
+        text: '把 ' + idx.length + ' 個期間欄位攤平成「' + pName + '」欄，一次看一個' + unit,
+        code: 'nt_unpivot_period', vars: { n: idx.length, col: pName, unit: unitCode } }]),
       unpivoted: 'period'
     };
   }
@@ -1895,6 +1953,9 @@
               a.shape.reason = '把期間攤平成「' + periodC.name + '」欄之後，以「' +
                 a.shape.title.name + '」為列名、照「' + periodC.name + '」分段、「' +
                 a.shape.lead.name + '」當前導';
+              a.shape.reasonCode = 'sr_unpivot_pin';
+              a.shape.reasonVars = { period: periodC.name, title: a.shape.title.name,
+                                     lead: a.shape.lead.name };
               /* 攤平過又有數值前導的表不是「一般表格」。
                  一般表格的理由是「沒有時間或人員這類主軸」，但這裡軸是釘好的
                  ——chart_8be76302 › summary 跟 budget_1cbd5c5c ›
