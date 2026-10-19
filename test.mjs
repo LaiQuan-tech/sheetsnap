@@ -932,6 +932,45 @@ for (const [head, want, why] of titleCases) {
   chk('沒有時間欄但很長也給籤', /^只看某個Day/.test(lead(many)), true);
 }
 
+/* 烘進 index.html 的文案要跟 i18n.js 一致。
+   v96 把 tagline 換掉之後，index.html 裡那句預設文字還是 v95 的——
+   HTML 說一套、畫面說一套，而不跑 JS 的爬蟲讀到的是前者。
+   手寫的副本一定會過期，所以改成生成；這條就是防它再過期。 */
+{
+  const chk = (why, got, want) => {
+    const pass = got === want;
+    console.log(`${pass ? '✓' : '✗'} SEO  ${why.padEnd(24)} 期望=${String(want).padEnd(10)} 實際=${got}`);
+    pass ? ok++ : bad++;
+  };
+  const { execFileSync } = await import('node:child_process');
+  let code = 0, out = '';
+  try { out = execFileSync('node', ['prerender.mjs', '--check'], { encoding: 'utf8', stdio: ['ignore','pipe','pipe'] }); }
+  catch (e) { code = e.status; out = String(e.stderr || ''); }
+  chk('烘進去的文案沒過期', code, 0);
+
+  // 不跑 JS 時 <body> 要讀得到真正的句子，不是只有按鈕
+  const html = fs.readFileSync('index.html', 'utf8');
+  const body = html.slice(html.indexOf('<body'))
+    .replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '')
+    .replace(/<!--[\s\S]*?-->/g, '');
+  const text = body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  chk('不跑 JS 也有一千字以上', text.length > 1000, true);
+  // 五個大標、七題 FAQ 都要在原始 HTML 裡
+  /* i18n.js 是瀏覽器檔，會去讀 location／navigator／document，
+     所以要餵它一組假的——detect.js 不碰這些，只給 window 就夠，i18n.js 不行。 */
+  const G = { location: { search: '' }, navigator: { languages: [], language: 'en' },
+    document: { querySelectorAll: () => [], getElementById: () => null, documentElement: {} } };
+  const zh = new Function('G', 'var window=G,location=G.location,navigator=G.navigator,' +
+    'document=G.document,localStorage=undefined;' +
+    fs.readFileSync('i18n.js', 'utf8').replace(/\)\(window\);?\s*$/, ')(G);') +
+    'return G.I18N.T.zh;')(G);
+  const heads = ['a1_h','a4_h','a5_h','u_h','a3_h'].every(k => text.includes(zh[k]));
+  chk('五個大標都在 HTML 裡', heads, true);
+  const faq = ['q1','q2','q3','q4','q5','q8','q6'].every(k => text.includes(zh[k]));
+  chk('七題 FAQ 都在 HTML 裡', faq, true);
+  chk('19 個語言都有 hreflang', (html.match(/rel="alternate" hreflang=/g) || []).length, 20);  // 19 + x-default
+}
+
 const urls={普渡:['schedule','1b72qwLM_0xUdisA2uKxqUa98-EJwC-UJPyXsEaLJoiI'],
   甘特圖:['schedule','1DJIy4I7vbVgk9lBcnMCGq9z2wo-J8hR-hZzKHxwHSZs'],
   帳表:['ledger','1BsOykBCciRxZDDFe1-S957ONmf5chqt9']};
