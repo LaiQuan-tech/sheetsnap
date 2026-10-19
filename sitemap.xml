@@ -3,58 +3,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sheetsnap.link/?lang=en</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://sheetsnap.link/?lang=pt"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://sheetsnap.link/?lang=fr"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://sheetsnap.link/?lang=ja"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sheetsnap.link/?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://sheetsnap.link/?lang=de"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://sheetsnap.link/?lang=hi"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://sheetsnap.link/?lang=ko"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://sheetsnap.link/?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://sheetsnap.link/?lang=vi"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://sheetsnap.link/?lang=it"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://sheetsnap.link/?lang=th"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://sheetsnap.link/?lang=bn"/>
-    <xhtml:link rel="alternate" hreflang="ur" href="https://sheetsnap.link/?lang=ur"/>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sheetsnap.link/?lang=zh-Hans</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://sheetsnap.link/?lang=pt"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://sheetsnap.link/?lang=fr"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://sheetsnap.link/?lang=ja"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://sheetsnap.link/?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://sheetsnap.link/?lang=de"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://sheetsnap.link/?lang=hi"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://sheetsnap.link/?lang=ko"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://sheetsnap.link/?lang=tr"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://sheetsnap.link/?lang=vi"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://sheetsnap.link/?lang=it"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://sheetsnap.link/?lang=th"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://sheetsnap.link/?lang=bn"/>
-    <xhtml:link rel="alternate" hreflang="ur" href="https://sheetsnap.link/?lang=ur"/>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://sheetsnap.link/</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -75,10 +27,58 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sheetsnap.link/?lang=es</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <loc>https://sheetsnap.link/?lang=zh-Hans</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://sheetsnap.link/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sheetsnap.link/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sheetsnap.link/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sheetsnap.link/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sheetsnap.link/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://sheetsnap.link/?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sheetsnap.link/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://sheetsnap.link/?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://sheetsnap.link/?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sheetsnap.link/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://sheetsnap.link/?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://sheetsnap.link/?lang=bn"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://sheetsnap.link/?lang=ur"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sheetsnap.link/?lang=zh</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://sheetsnap.link/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sheetsnap.link/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sheetsnap.link/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sheetsnap.link/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sheetsnap.link/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://sheetsnap.link/?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sheetsnap.link/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://sheetsnap.link/?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://sheetsnap.link/?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sheetsnap.link/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://sheetsnap.link/?lang=th"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://sheetsnap.link/?lang=bn"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://sheetsnap.link/?lang=ur"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sheetsnap.link/?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -100,9 +100,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=ar</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -124,9 +124,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=id</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -148,9 +148,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=pt</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -172,9 +172,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=fr</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -196,9 +196,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=ja</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -220,9 +220,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=ru</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -244,9 +244,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=de</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -268,9 +268,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=hi</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -292,9 +292,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=ko</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -316,9 +316,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=tr</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -340,9 +340,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=vi</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -364,9 +364,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=it</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -388,9 +388,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=th</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -412,9 +412,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=bn</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>
@@ -436,9 +436,9 @@
   </url>
   <url>
     <loc>https://sheetsnap.link/?lang=ur</loc>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans"/>
-    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/"/>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id"/>

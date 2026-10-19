@@ -960,10 +960,15 @@ for (const [head, want, why] of titleCases) {
      所以要餵它一組假的——detect.js 不碰這些，只給 window 就夠，i18n.js 不行。 */
   const G = { location: { search: '' }, navigator: { languages: [], language: 'en' },
     document: { querySelectorAll: () => [], getElementById: () => null, documentElement: {} } };
-  const zh = new Function('G', 'var window=G,location=G.location,navigator=G.navigator,' +
+  const I = new Function('G', 'var window=G,location=G.location,navigator=G.navigator,' +
     'document=G.document,localStorage=undefined;' +
     fs.readFileSync('i18n.js', 'utf8').replace(/\)\(window\);?\s*$/, ')(G);') +
-    'return G.I18N.T.zh;')(G);
+    'return G.I18N;')(G);
+  /* 烘哪一個語言由 prerender.mjs 的 BAKE 決定，測試不要自己假設一種——
+     第一版寫死 zh，改成 en 之後這兩條就紅了，而程式其實是對的。 */
+  const BAKE = (fs.readFileSync('prerender.mjs', 'utf8').match(/^const BAKE = '([^']+)'/m) || [])[1];
+  chk('讀得到 BAKE 設定', !!BAKE && !!I.T[BAKE], true);
+  const zh = I.T[BAKE];
   const heads = ['a1_h','a4_h','a5_h','u_h','a3_h'].every(k => text.includes(zh[k]));
   chk('五個大標都在 HTML 裡', heads, true);
   const faq = ['q1','q2','q3','q4','q5','q8','q6'].every(k => text.includes(zh[k]));

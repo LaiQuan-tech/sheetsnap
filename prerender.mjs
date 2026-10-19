@@ -25,8 +25,14 @@ process.chdir(here);
 const CHECK = process.argv.includes('--check');
 
 /* 烘哪一個語言：這決定「不跑 JS 的爬蟲」讀到的是哪一種語言，
-   也就是搜尋結果裡顯示的語言。改這一行就換，其餘都會跟著走。 */
-const BAKE = 'zh';
+   也就是搜尋結果裡顯示的標題與摘要。改這一行，其餘全部跟著走
+   （<html lang>／dir、title、description、OG、Twitter、JSON-LD、
+   hreflang 的主位、sitemap 的 priority）。
+
+   設成 en：目標是英語市場。這只動「還沒跑 JS 的那一刻」與中繼標籤——
+   真人進站後 detect() 還是照 ?lang= → localStorage → navigator 決定，
+   所以台灣的使用者打開 sheetsnap.link 看到的仍然是繁中，一個字都沒變。 */
+const BAKE = 'en';
 
 // ── 讀字典（i18n.js 是瀏覽器檔，用假的 window 餵它）──
 function dict() {
@@ -57,9 +63,13 @@ let filled = 0, missing = [];
 /* 只處理「開標籤…閉標籤」成對、而且中間沒有巢狀同名標籤的元素。
    data-i18n 的值會被 innerHTML 覆寫，所以原本裡面有什麼都不重要。 */
 html = html.replace(
-  /<(h1|h2|h3|p|span|button|summary|label|div|td|b)([^>]*\sdata-i18n="([^"]+)"[^>]*)>[\s\S]*?<\/\1>/g,
+  /<(h1|h2|h3|h4|h5|h6|p|span|button|summary|label|div|td|th|li|a|b)([^>]*\sdata-i18n="([^"]+)"[^>]*)>[\s\S]*?<\/\1>/g,
   (whole, tag, attrs, key) => {
-    if (/<\s*\1[\s>]/.test(whole.slice(1))) return whole;        // 有巢狀，不碰
+    /* 巢狀同名標籤就放過（非貪婪會停在第一個閉標籤，換掉會壞掉）。
+       原本寫成 /<\s*\1[\s>]/ ——正規表示式字面量裡的 \1 不是回溯參照，
+       那個守衛等於沒作用。改成照 tag 現組一個。 */
+    const inner = whole.slice(whole.indexOf('>') + 1);
+    if (new RegExp('<\\s*' + tag + '[\\s>]').test(inner)) return whole;
     const nm = attrs.match(/\sdata-n="(\d+)"/);
     const val = T[key];
     if (val == null) { missing.push(key); return whole; }
@@ -77,10 +87,37 @@ html = html.replace(/(<input[^>]*\sdata-i18n-ph="([^"]+)"[^>]*>)/g, (whole, _el,
     : whole.replace(/<input/, '<input placeholder="' + esc + '"');
 });
 
-// ── <head>：語言、標題、描述，照烘進去的語言走 ──
+// ── <head>：語言、標題、描述、分享卡、結構化資料，全部照烘進去的語言走 ──
 const L = LANGS.filter(l => l.code === BAKE)[0];
-html = html.replace(/<html lang="[^"]*"( dir="[^"]*")?>/, '<html lang="' + L.tag + '">');
+const esc = v => String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const desc = T.meta_desc;
+if (!desc) throw new Error('字典裡沒有 ' + BAKE + '.meta_desc');
+
+html = html.replace(/<html lang="[^"]*"( dir="[^"]*")?>/,
+  '<html lang="' + L.tag + '"' + (L.rtl ? ' dir="rtl"' : '') + '>');
 html = html.replace(/<title>[\s\S]*?<\/title>/, '<title>' + T.title + '</title>');
+
+/* 中繼標籤原本是寫死的中文。一條一條照字典換掉——漏一條就會出現
+   「標題英文、摘要中文」這種分享卡，比全中文更難看。 */
+const metas = [
+  [/(<meta name="description" content=")[^"]*(")/,        desc],
+  [/(<meta property="og:title" content=")[^"]*(")/,       T.title],
+  [/(<meta property="og:description" content=")[^"]*(")/, desc],
+  [/(<meta property="og:image:alt" content=")[^"]*(")/,   T.title],
+  [/(<meta property="og:locale" content=")[^"]*(")/,      L.tag.replace('-', '_')],
+  [/(<meta name="twitter:title" content=")[^"]*(")/,      T.title],
+  [/(<meta name="twitter:description" content=")[^"]*(")/, desc],
+];
+for (const [re, val] of metas) {
+  if (!re.test(html)) throw new Error('<head> 裡找不到要換的標籤：' + re);
+  html = html.replace(re, '$1' + esc(val) + '$2');
+}
+
+// JSON-LD 的描述與語言清單
+html = html.replace(/("@type": "WebApplication"[\s\S]*?"description": ")[^"]*(")/,
+  (m, a, b) => a + esc(desc) + b);
+html = html.replace(/("inLanguage": )\[[^\]]*\]/,
+  '$1[' + LANGS.map(l => '"' + l.tag + '"').join(', ') + ']');
 
 // ── hreflang：19 個語言＋x-default。?lang= 是它們唯一的網址 ──
 const alts = LANGS.map(l =>

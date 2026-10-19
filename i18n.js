@@ -29,6 +29,7 @@
 
   T.zh = {
     title: "SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁",
+    meta_desc: "把 Google 試算表或 Excel 檔變成手機上好讀的網頁。貼上網址或上傳 .xlsx，資料不上傳，分享出去的人不用登入也不用裝 App。",
     tagline: "在 Excel 編輯，在網頁呈現。",
     url_ph: "貼上 Google 試算表網址", open: "開啟", drop: "或點這裡選擇 .xlsx / .csv 檔案",
     hint: "<b>轉換不上傳。</b>讀表、判型、排版都在你的手機裡完成。只有你按「做一個短連結」時，內容才會加密後上傳，30 天自動刪除。",
@@ -98,6 +99,7 @@
 
   T.en = {
     title: "SheetSnap — Turn Excel and Google Sheets into phone-friendly pages",
+    meta_desc: "Turn a Google Sheet or Excel file into a page that reads well on a phone. Paste a link or drop an .xlsx — nothing uploaded, no login to view.",
     tagline: "Edit in Excel. Present on the web.",
     url_ph: "Paste a Google Sheets link", open: "Open", drop: "or tap here to choose an .xlsx / .csv file",
     hint: "<b>Conversion stays on your device.</b> Reading, detecting and layout all happen in your browser. Only “Make a short link” uploads the sheet — encrypted, deleted after 30 days.",
@@ -167,6 +169,7 @@
 
   T['zh-Hans'] = {
     title: "SheetSnap｜把 Excel、Google 表格变成手机好读的网页",
+    meta_desc: "把 Google 表格或 Excel 文件变成手机上好读的网页。粘贴网址或上传 .xlsx，数据不上传，分享出去的人不用登录也不用装 App。",
     tagline: "在 Excel 编辑，在网页呈现。",
     url_ph: "粘贴 Google 表格网址", open: "打开", drop: "或点这里选择 .xlsx / .csv 文件",
     hint: "<b>转换不上传。</b>读表、判型、排版都在你的手机里完成。只有你按「做一个短链接」时，内容才会加密后上传，30 天自动删除。",
@@ -238,6 +241,7 @@
 
   T.ja = {
     title: "SheetSnap｜Excel・Googleスプレッドシートをスマホで読みやすいページに",
+    meta_desc: "Google スプレッドシートや Excel ファイルを、スマホで読みやすいページに変換します。リンクを貼るか .xlsx を置くだけ。アップロードなし、閲覧にログイン不要。",
     tagline: "Excel で編集、ウェブで見せる。",
     url_ph: "Googleスプレッドシートのリンクを貼り付け", open: "開く", drop: "またはここをタップして .xlsx / .csv を選択",
     hint: "<b>変換はアップロードしません。</b>読み取り・判定・レイアウトはすべて端末の中で終わります。「短いリンクを作る」を押したときだけ、暗号化してアップロードし、30日で自動的に消えます。",
@@ -309,6 +313,7 @@
 
   T.ko = {
     title: "SheetSnap｜Excel·Google 스프레드시트를 휴대폰에서 읽기 좋은 페이지로",
+    meta_desc: "구글 시트나 엑셀 파일을 휴대폰에서 읽기 좋은 페이지로 바꿉니다. 링크를 붙여넣거나 .xlsx를 올리세요. 업로드 없음, 보는 사람은 로그인 불필요.",
     tagline: "엑셀에서 편집하고, 웹으로 보여주세요.",
     url_ph: "Google 스프레드시트 링크 붙여넣기", open: "열기", drop: "또는 여기를 눌러 .xlsx / .csv 파일 선택",
     hint: "<b>변환은 업로드하지 않습니다.</b> 시트를 읽고 판별하고 배치하는 일은 모두 기기 안에서 끝납니다. “짧은 링크 만들기”를 누를 때만 암호화해서 업로드하고, 30일 뒤 자동으로 삭제됩니다.",
@@ -380,6 +385,7 @@
 
   T.es = {
     title: "SheetSnap — Convierte Excel y Google Sheets en páginas fáciles de leer en el móvil",
+    meta_desc: "Convierte una hoja de Google o un archivo de Excel en una página que se lee bien en el móvil. Pega un enlace o suelta un .xlsx: nada se sube, sin inicio de sesión.",
     tagline: "Edita en Excel. Presenta en la web.",
     url_ph: "Pega un enlace de Google Sheets", open: "Abrir", drop: "o toca aquí para elegir un archivo .xlsx / .csv",
     hint: "<b>La conversión no se sube.</b> Leer la hoja, detectar los tipos y maquetarla ocurre todo en tu dispositivo. Solo si pulsas “Crear un enlace corto” se sube la hoja, cifrada, y se borra a los 30 días.",
@@ -451,6 +457,7 @@
 
   T.pt = {
     title: "SheetSnap — Transforme Excel e Google Sheets em páginas fáceis de ler no celular",
+    meta_desc: "Transforme uma planilha do Google ou um arquivo Excel numa página que se lê bem no celular. Cole um link ou solte um .xlsx: nada é enviado, sem login para ver.",
     tagline: "Edite no Excel. Apresente na web.",
     url_ph: "Cole um link do Google Sheets", open: "Abrir", drop: "ou toque aqui para escolher um arquivo .xlsx / .csv",
     hint: "<b>A conversão não é enviada.</b> Ler a planilha, detectar os tipos e diagramar acontece tudo no seu aparelho. Só se você tocar em “Criar um link curto” a planilha é enviada, criptografada, e apagada depois de 30 dias.",
@@ -522,6 +529,7 @@
 
   T.fr = {
     title: "SheetSnap — Transformez Excel et Google Sheets en pages lisibles sur mobile",
+    meta_desc: "Transformez une feuille Google ou un fichier Excel en une page lisible sur téléphone. Collez un lien ou déposez un .xlsx : rien n’est envoyé, aucune connexion.",
     tagline: "Modifiez dans Excel. Présentez sur le web.",
     url_ph: "Collez un lien Google Sheets", open: "Ouvrir", drop: "ou touchez ici pour choisir un fichier .xlsx / .csv",
     hint: "<b>La conversion n’envoie rien.</b> Lecture, détection et mise en page se font entièrement sur votre appareil. Ce n’est qu’en touchant « Créer un lien court » que la feuille est envoyée, chiffrée, puis supprimée au bout de 30 jours.",
@@ -593,6 +601,7 @@
 
   T.de = {
     title: "SheetSnap — Excel und Google Sheets als handyfreundliche Seiten",
+    meta_desc: "Verwandeln Sie ein Google Sheet oder eine Excel-Datei in eine Seite, die sich auf dem Handy gut liest. Link einfügen oder .xlsx ablegen – nichts wird hochgeladen.",
     tagline: "In Excel bearbeiten. Im Web zeigen.",
     url_ph: "Google-Sheets-Link einfügen", open: "Öffnen", drop: "oder hier tippen, um eine .xlsx / .csv-Datei zu wählen",
     hint: "<b>Die Umwandlung lädt nichts hoch.</b> Lesen, Erkennen und Layout passieren vollständig auf Ihrem Gerät. Nur wenn Sie auf „Kurzlink erstellen“ tippen, wird die Tabelle verschlüsselt hochgeladen und nach 30 Tagen gelöscht.",
@@ -664,6 +673,7 @@
 
   T.it = {
     title: "SheetSnap — Trasforma Excel e Google Sheets in pagine leggibili sul telefono",
+    meta_desc: "Trasforma un foglio Google o un file Excel in una pagina che si legge bene sul telefono. Incolla un link o trascina un .xlsx: niente viene caricato, nessun accesso.",
     tagline: "Modifica in Excel. Presenta sul web.",
     url_ph: "Incolla un link di Google Sheets", open: "Apri", drop: "oppure tocca qui per scegliere un file .xlsx / .csv",
     hint: "<b>La conversione non carica nulla.</b> Leggere il foglio, riconoscere i tipi e impaginare avviene tutto sul tuo dispositivo. Solo se tocchi “Crea un link breve” il foglio viene caricato, cifrato, e cancellato dopo 30 giorni.",
@@ -735,6 +745,7 @@
 
   T.ru = {
     title: "SheetSnap — Excel и Google Таблицы в виде удобных для телефона страниц",
+    meta_desc: "Превратите Google Таблицу или файл Excel в страницу, удобную для чтения с телефона. Вставьте ссылку или перетащите .xlsx — ничего не загружается, без входа.",
     tagline: "Редактируйте в Excel. Показывайте в вебе.",
     url_ph: "Вставьте ссылку на Google Таблицу", open: "Открыть", drop: "или нажмите здесь, чтобы выбрать файл .xlsx / .csv",
     hint: "<b>Преобразование ничего не загружает.</b> Чтение, распознавание и вёрстка целиком происходят на вашем устройстве. Только если вы нажмёте «Сделать короткую ссылку», таблица загружается в зашифрованном виде и удаляется через 30 дней.",
@@ -806,6 +817,7 @@
 
   T.tr = {
     title: "SheetSnap — Excel ve Google E-Tablolar’ı telefonda rahat okunan sayfalara dönüştürün",
+    meta_desc: "Bir Google E-Tablosunu veya Excel dosyasını telefonda rahat okunan bir sayfaya dönüştürün. Bağlantı yapıştırın ya da .xlsx bırakın — hiçbir şey yüklenmez.",
     tagline: "Excel’de düzenleyin. Web’de gösterin.",
     url_ph: "Google E-Tablolar bağlantısını yapıştırın", open: "Aç", drop: "veya .xlsx / .csv dosyası seçmek için buraya dokunun",
     hint: "<b>Dönüştürme hiçbir şey yüklemez.</b> Tabloyu okumak, türleri tanımak ve sayfalamak tamamen cihazınızda olur. Yalnızca “Kısa bağlantı oluştur”a dokunduğunuzda tablo şifrelenerek yüklenir ve 30 gün sonra silinir.",
@@ -877,6 +889,7 @@
 
   T.id = {
     title: "SheetSnap — Ubah Excel dan Google Sheets jadi halaman yang enak dibaca di ponsel",
+    meta_desc: "Ubah Google Sheet atau berkas Excel menjadi halaman yang enak dibaca di ponsel. Tempel tautan atau taruh .xlsx — tidak ada yang diunggah, tanpa login.",
     tagline: "Edit di Excel. Tampilkan di web.",
     url_ph: "Tempel tautan Google Sheets", open: "Buka", drop: "atau ketuk di sini untuk memilih berkas .xlsx / .csv",
     hint: "<b>Konversi tidak mengunggah apa pun.</b> Membaca sheet, mengenali tipe dan menatanya semua terjadi di perangkat Anda. Hanya kalau Anda menekan “Buat tautan pendek”, sheet diunggah dalam bentuk terenkripsi dan dihapus setelah 30 hari.",
@@ -948,6 +961,7 @@
 
   T.vi = {
     title: "SheetSnap — Biến Excel và Google Sheets thành trang dễ đọc trên điện thoại",
+    meta_desc: "Biến một Google Sheet hay tệp Excel thành trang đọc tốt trên điện thoại. Dán liên kết hoặc thả .xlsx — không tải gì lên, người xem không cần đăng nhập.",
     tagline: "Sửa trong Excel. Trình bày trên web.",
     url_ph: "Dán liên kết Google Sheets", open: "Mở", drop: "hoặc chạm vào đây để chọn tệp .xlsx / .csv",
     hint: "<b>Chuyển đổi không tải lên.</b> Việc đọc bảng, nhận dạng kiểu và dàn trang đều xong ngay trên máy bạn. Chỉ khi bạn bấm “Tạo liên kết ngắn” thì bảng mới được mã hoá rồi tải lên, và tự xoá sau 30 ngày.",
@@ -1019,6 +1033,7 @@
 
   T.th = {
     title: "SheetSnap — เปลี่ยน Excel และ Google Sheets ให้เป็นหน้าเว็บที่อ่านง่ายบนมือถือ",
+    meta_desc: "เปลี่ยน Google ชีตหรือไฟล์ Excel ให้เป็นหน้าเว็บที่อ่านง่ายบนมือถือ วางลิงก์หรือวางไฟล์ .xlsx ไม่มีการอัปโหลด ผู้ดูไม่ต้องล็อกอิน",
     tagline: "แก้ใน Excel แสดงบนเว็บ",
     url_ph: "วางลิงก์ Google Sheets", open: "เปิด", drop: "หรือแตะที่นี่เพื่อเลือกไฟล์ .xlsx / .csv",
     hint: "<b>การแปลงไม่อัปโหลด</b> การอ่านชีต เดาชนิดข้อมูล และจัดหน้า ทำเสร็จในเครื่องของคุณทั้งหมด เฉพาะเมื่อคุณกด “สร้างลิงก์สั้น” เท่านั้นที่เนื้อหาจะถูกเข้ารหัสแล้วอัปโหลด และลบทิ้งเองใน 30 วัน",
@@ -1090,6 +1105,7 @@
 
   T.hi = {
     title: "SheetSnap — Excel और Google Sheets को फ़ोन पर आसानी से पढ़े जाने वाले पेज में बदलें",
+    meta_desc: "Google शीट या Excel फ़ाइल को फ़ोन पर पढ़ने लायक पेज में बदलें। लिंक चिपकाएँ या .xlsx डालें — कुछ अपलोड नहीं होता, देखने के लिए लॉगिन नहीं।",
     tagline: "Excel में बदलें। वेब पर दिखाएँ।",
     url_ph: "Google Sheets का लिंक पेस्ट करें", open: "खोलें", drop: "या .xlsx / .csv फ़ाइल चुनने के लिए यहाँ टैप करें",
     hint: "<b>रूपांतरण कुछ अपलोड नहीं करता।</b> शीट पढ़ना, प्रकार पहचानना और सजाना — सब आपके ही उपकरण पर पूरा होता है। केवल “छोटा लिंक बनाएँ” दबाने पर शीट एन्क्रिप्ट होकर अपलोड होती है और 30 दिन बाद मिट जाती है।",
@@ -1161,6 +1177,7 @@
 
   T.bn = {
     title: "SheetSnap — Excel ও Google Sheets-কে ফোনে সহজে পড়ার মতো পেজে বদলে নিন",
+    meta_desc: "Google শিট বা Excel ফাইলকে ফোনে পড়ার মতো পেজে বদলান। লিংক পেস্ট করুন বা .xlsx রাখুন — কিছুই আপলোড হয় না, দেখতে লগইন লাগে না।",
     tagline: "Excel-এ সম্পাদনা, ওয়েবে উপস্থাপন।",
     url_ph: "Google Sheets-এর লিংক পেস্ট করুন", open: "খুলুন", drop: "অথবা .xlsx / .csv ফাইল বেছে নিতে এখানে ট্যাপ করুন",
     hint: "<b>রূপান্তরে কিছু আপলোড হয় না।</b> শিট পড়া, ধরন চেনা আর সাজানো — সবই আপনার যন্ত্রেই শেষ হয়। শুধু “ছোট লিংক বানান” চাপলে শিটটি এনক্রিপ্ট হয়ে আপলোড হয়, আর ৩০ দিন পরে নিজেই মুছে যায়।",
@@ -1232,6 +1249,7 @@
 
   T.ar = {
     title: "SheetSnap — حوّل Excel وجداول Google إلى صفحات سهلة القراءة على الهاتف",
+    meta_desc: "حوِّل جدول Google أو ملف Excel إلى صفحة سهلة القراءة على الهاتف. ألصق رابطًا أو أفلِت ملف ‎.xlsx — لا يُرفع شيء، ولا حاجة لتسجيل الدخول.",
     tagline: "حرِّر في Excel. واعرض على الويب.",
     url_ph: "الصق رابط جداول Google", open: "فتح", drop: "أو انقر هنا لاختيار ملف .xlsx / .csv",
     hint: "<b>التحويل لا يرفع شيئًا.</b> قراءة الجدول وتمييز الأنواع والتنسيق يتم كله على جهازك. ولا يُرفع الجدول — مشفَّرًا — إلا إذا لمست «أنشئ رابطًا قصيرًا»، ويُحذف بعد 30 يومًا.",
@@ -1303,6 +1321,7 @@
 
   T.ur = {
     title: "SheetSnap — Excel اور Google Sheets کو فون پر آسانی سے پڑھے جانے والے صفحات میں بدلیں",
+    meta_desc: "Google شیٹ یا Excel فائل کو فون پر آسانی سے پڑھی جانے والی صفحے میں بدلیں۔ لنک چسپاں کریں یا ‎.xlsx رکھیں — کچھ اپ لوڈ نہیں ہوتا، دیکھنے کو لاگ اِن نہیں۔",
     tagline: "Excel میں ترمیم۔ ویب پر پیشکش۔",
     url_ph: "Google Sheets کا لنک پیسٹ کریں", open: "کھولیں", drop: "یا .xlsx / .csv فائل چننے کے لیے یہاں ٹیپ کریں",
     hint: "<b>تبدیلی کچھ اپ لوڈ نہیں کرتی۔</b> شیٹ پڑھنا، اقسام پہچاننا اور سجانا — سب آپ ہی کے آلے پر مکمل ہوتا ہے۔ صرف ”مختصر لنک بنائیں“ دبانے پر شیٹ مع خفیہ کاری اپ لوڈ ہوتی ہے اور 30 دن بعد خود مٹ جاتی ہے۔",

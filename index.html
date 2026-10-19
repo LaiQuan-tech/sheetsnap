@@ -1,19 +1,19 @@
 <!doctype html>
-<html lang="zh-TW">
+<html lang="en-US">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!-- 測試期間會頻繁更新，不讓瀏覽器抱著舊的 HTML 不放 -->
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
-<title>SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁</title>
+<title>SheetSnap — Turn Excel and Google Sheets into phone-friendly pages</title>
 <meta name="apple-mobile-web-app-title" content="SheetSnap">
-<meta name="description" content="把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。貼上 Google 試算表網址或上傳 xlsx，資料不上傳，選一個看法就能分享。">
+<meta name="description" content="Turn a Google Sheet or Excel file into a page that reads well on a phone. Paste a link or drop an .xlsx — nothing uploaded, no login to view.">
 <link rel="canonical" href="https://sheetsnap.link/">
 <!-- hreflang：prerender.mjs 生成，不要手改 -->
-<link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/?lang=en">
+<link rel="alternate" hreflang="en-US" href="https://sheetsnap.link/">
 <link rel="alternate" hreflang="zh-CN" href="https://sheetsnap.link/?lang=zh-Hans">
-<link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/">
+<link rel="alternate" hreflang="zh-TW" href="https://sheetsnap.link/?lang=zh">
 <link rel="alternate" hreflang="es" href="https://sheetsnap.link/?lang=es">
 <link rel="alternate" hreflang="ar" href="https://sheetsnap.link/?lang=ar">
 <link rel="alternate" hreflang="id" href="https://sheetsnap.link/?lang=id">
@@ -41,19 +41,19 @@
 <!-- Open Graph / Twitter：LINE、Facebook、Slack 貼連結時的預覽卡 -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SheetSnap">
-<meta property="og:title" content="SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁">
-<meta property="og:description" content="把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。">
+<meta property="og:title" content="SheetSnap — Turn Excel and Google Sheets into phone-friendly pages">
+<meta property="og:description" content="Turn a Google Sheet or Excel file into a page that reads well on a phone. Paste a link or drop an .xlsx — nothing uploaded, no login to view.">
 <meta property="og:url" content="https://sheetsnap.link/">
 <meta property="og:image" content="https://sheetsnap.link/og.png">
 <meta property="og:image:secure_url" content="https://sheetsnap.link/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SheetSnap：把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。">
-<meta property="og:locale" content="zh_TW">
+<meta property="og:image:alt" content="SheetSnap — Turn Excel and Google Sheets into phone-friendly pages">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SheetSnap｜把 Excel、Google 試算表變成手機好讀的網頁">
-<meta name="twitter:description" content="把複雜 Excel，一鍵變成最適合手機閱讀的流暢網頁。">
+<meta name="twitter:title" content="SheetSnap — Turn Excel and Google Sheets into phone-friendly pages">
+<meta name="twitter:description" content="Turn a Google Sheet or Excel file into a page that reads well on a phone. Paste a link or drop an .xlsx — nothing uploaded, no login to view.">
 <meta name="twitter:image" content="https://sheetsnap.link/og.png">
 <meta name="theme-color" content="#f3f4f6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1114" media="(prefers-color-scheme: dark)">
@@ -66,11 +66,11 @@
       "@id": "https://sheetsnap.link/#app",
       "name": "SheetSnap",
       "url": "https://sheetsnap.link/",
-      "description": "把 Google 試算表或 Excel 檔變成手機上好讀的網頁：貼上網址或上傳 .xlsx，選一個看法（照時間、只看某個人、重點數字、搜尋），產生一個不用登入就能看的分享網址。資料不上傳，全部在瀏覽器裡完成。",
+      "description": "Turn a Google Sheet or Excel file into a page that reads well on a phone. Paste a link or drop an .xlsx — nothing uploaded, no login to view.",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript",
-      "inLanguage": ["zh-Hant", "en"],
+      "inLanguage": ["en-US", "zh-CN", "zh-TW", "es", "ar", "id", "pt-BR", "fr", "ja", "ru", "de", "hi", "ko", "tr", "vi", "it", "th", "bn", "ur"],
       "image": "https://sheetsnap.link/og.png",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "測試期間免費" },
       "publisher": { "@id": "https://sheetsnap.link/#org" }
@@ -424,18 +424,18 @@
       <img src="logo.png?v=40" alt="SheetSnap" width="400" height="74">
     </picture></a></h1>
     <select id="lang" data-i18n-aria="lang"></select>
-    <p data-i18n="tagline">在 Excel 編輯，在網頁呈現。</p>
+    <p data-i18n="tagline">Edit in Excel. Present on the web.</p>
   </header>
 
   <div class="panel input">
     <div class="row">
-      <input id="url" type="url" placeholder="貼上 Google 試算表網址" data-i18n-ph="url_ph">
-      <button id="go" data-i18n="open">開啟</button>
+      <input id="url" type="url" placeholder="Paste a Google Sheets link" data-i18n-ph="url_ph">
+      <button id="go" data-i18n="open">Open</button>
     </div>
-    <label class="drop" id="drop" for="file" data-i18n="drop">或點這裡選擇 .xlsx / .csv 檔案</label>
+    <label class="drop" id="drop" for="file" data-i18n="drop">or tap here to choose an .xlsx / .csv file</label>
     <input id="file" class="vh" type="file"
       accept=".csv,.tsv,.xlsx,.xls,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
-    <p class="hint2" data-i18n="hint"><b>轉換不上傳。</b>讀表、判型、排版都在你的手機裡完成。只有你按「做一個短連結」時，內容才會加密後上傳，30 天自動刪除。</p>
+    <p class="hint2" data-i18n="hint"><b>Conversion stays on your device.</b> Reading, detecting and layout all happen in your browser. Only “Make a short link” uploads the sheet — encrypted, deleted after 30 days.</p>
     <div class="msg" id="msg"></div>
   </div>
 
@@ -445,12 +445,12 @@
   <div class="ask" id="ask" hidden></div>
 
   <div class="split" id="split" hidden>
-    <div class="reset"><span class="cur" id="curView"></span><button type="button" id="reView" data-i18n="reset">⇄ 換個看法</button></div>
+    <div class="reset"><span class="cur" id="curView"></span><button type="button" id="reView" data-i18n="reset">⇄ Change view</button></div>
     <div class="share" id="share" hidden>
-      <h4 data-i18n="share_title">分享這個網址，對方打開就是這個畫面</h4>
-      <div class="row2"><input id="shareUrl" type="text" readonly><button type="button" id="copyShare" data-i18n="copy">複製</button></div>
+      <h4 data-i18n="share_title">Share this link — it opens to exactly this page</h4>
+      <div class="row2"><input id="shareUrl" type="text" readonly><button type="button" id="copyShare" data-i18n="copy">Copy</button></div>
       <p id="shareNote"></p>
-      <button type="button" id="shortLink" class="ghost" hidden data-i18n="short_make">做一個短連結</button>
+      <button type="button" id="shortLink" class="ghost" hidden data-i18n="short_make">Make a short link</button>
       <p id="shortNote" hidden></p>
     </div>
     <section class="phonewrap">
@@ -459,10 +459,10 @@
     </section>
 
     <details class="whybox">
-      <summary data-i18n="why">為什麼這樣顯示？</summary>
+      <summary data-i18n="why">Why does it look like this?</summary>
     <div class="diag" id="diag" hidden>
-      <button type="button" id="copyDiag" data-i18n="diag_btn">複製診斷資訊</button>
-      <span data-i18n="diag_note">顯示不對的話，按這個再貼給我們。<b>只含欄位結構，不含任何內容。</b></span>
+      <button type="button" id="copyDiag" data-i18n="diag_btn">Copy diagnostics</button>
+      <span data-i18n="diag_note">If something looks wrong, tap this and send it to us. <b>Column structure only — no content.</b></span>
     </div>
     <section class="panel">
       <div class="verdict">
@@ -503,29 +503,29 @@
        字典的 key 是當初加的順序（a4＝搜尋、a5＝整理），不等於這裡的先後。 -->
   <section class="about" id="about">
     <div class="mo">
-      <h2 data-i18n="a1_h">打開就是今天。</h2>
-      <p data-i18n="a1_p">日期自動停在今天，不用找；六十個人的班表，點一個名字就只剩他的。</p>
+      <h2 data-i18n="a1_h">Opens on today.</h2>
+      <p data-i18n="a1_p">Lands on today — and on a 60-person roster, tapping a name leaves only theirs.</p>
       <div class="ba" aria-hidden="true">
       <div class="xl">
         <table>
           <tr class="cols"><td>A</td><td>B</td><td>C</td><td>D</td></tr>
-          <tr class="ttl"><td colspan="4" data-i18n="b_ttl">活動流程表</td></tr>
+          <tr class="ttl"><td colspan="4" data-i18n="b_ttl">EVENT SCHEDULE</td></tr>
           <tr><td></td><td></td><td></td><td></td></tr>
-          <tr class="hd"><td data-i18n="b_c1">日期</td><td data-i18n="b_c2">時間</td><td data-i18n="b_c3">項目</td><td data-i18n="b_c4">負責人</td></tr>
-          <tr><td>9/11</td><td>09:00</td><td data-i18n="d_i1">場地佈置</td><td data-i18n="d_n1">小美</td></tr>
-          <tr><td></td><td>13:30</td><td data-i18n="d_i2">音響測試</td><td data-i18n="d_n2">阿德</td></tr>
+          <tr class="hd"><td data-i18n="b_c1">Date</td><td data-i18n="b_c2">Time</td><td data-i18n="b_c3">Item</td><td data-i18n="b_c4">Who</td></tr>
+          <tr><td>9/11</td><td>09:00</td><td data-i18n="d_i1">Venue setup</td><td data-i18n="d_n1">Mia</td></tr>
+          <tr><td></td><td>13:30</td><td data-i18n="d_i2">Sound check</td><td data-i18n="d_n2">Leo</td></tr>
         </table>
       </div>
       <div class="arr">↓</div>
       <div class="demo phone">
         <div class="octl"><div class="orail groups">
-          <button tabindex="-1" class="now on"><span data-i18n="d_today">今天</span> 2</button><button tabindex="-1"><span data-i18n="d_tomorrow">明天</span> 2</button><button tabindex="-1"><span data-i18n="d_day2">後天</span> 5</button><button tabindex="-1"><span data-i18n="d_sat">週六</span> 1</button><button tabindex="-1"><span data-i18n="d_sun">週日</span> 2</button>
+          <button tabindex="-1" class="now on"><span data-i18n="d_today">Today</span> 2</button><button tabindex="-1"><span data-i18n="d_tomorrow">Tomorrow</span> 2</button><button tabindex="-1"><span data-i18n="d_day2">In 2 days</span> 5</button><button tabindex="-1"><span data-i18n="d_sat">Sat</span> 1</button><button tabindex="-1"><span data-i18n="d_sun">Sun</span> 2</button>
         </div></div>
         <div class="out">
-          <div class="g-head"><span class="g-name" data-i18n="d_today">今天</span><span class="g-cnt" data-i18n="rows" data-n="2">2 筆</span></div>
+          <div class="g-head"><span class="g-name" data-i18n="d_today">Today</span><span class="g-cnt" data-i18n="rows" data-n="2">2 rows</span></div>
           <ol>
-            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1">場地佈置</p></div><div class="metas"><span class="m" data-i18n="d_n1">小美</span><span class="m" data-i18n="d_n2">阿德</span></div></div></li>
-            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2">音響測試</p></div><div class="metas"><span class="m" data-i18n="d_n2">阿德</span><span class="m" data-i18n="d_n3">佩珊</span></div></div></li>
+            <li class="rec"><div class="lead">09:00</div><div><div class="titleline"><p class="t" data-i18n="d_i1">Venue setup</p></div><div class="metas"><span class="m" data-i18n="d_n1">Mia</span><span class="m" data-i18n="d_n2">Leo</span></div></div></li>
+            <li class="rec"><div class="lead">13:30</div><div><div class="titleline"><p class="t" data-i18n="d_i2">Sound check</p></div><div class="metas"><span class="m" data-i18n="d_n2">Leo</span><span class="m" data-i18n="d_n3">Ann</span></div></div></li>
           </ol>
         </div>
       </div>
@@ -533,19 +533,19 @@
     </div>
 
     <div class="mo">
-      <h2 data-i18n="a4_h">表很長，但你只想查一件事。</h2>
-      <p data-i18n="a4_p">規格表、價目表、代碼表不用分類也不用排序，打一個關鍵字就定位。</p>
+      <h2 data-i18n="a4_h">One thing to look up.</h2>
+      <p data-i18n="a4_p">Spec sheets, price lists, code tables: nothing to group or sort. Type a word, you’re there.</p>
     </div>
 
     <div class="mo">
-      <h2 data-i18n="a5_h">你的表不用先整理好。</h2>
-      <p data-i18n="a5_p">試算表很少是乾淨的資料表，多半是「排版成表格樣子」的文件。它會先把這些整理掉，再決定怎麼顯示——你不必先改成「標準格式」。</p>
+      <h2 data-i18n="a5_h">No tidying up first.</h2>
+      <p data-i18n="a5_p">A spreadsheet is rarely a clean data table — usually a document laid out to look like one. That gets cleared first, no “proper format” needed.</p>
       <!-- 標籤順序照真實檔案的出現率排，不是照 key 的編號：
            標題不在第一列 37%、合併儲存格 27%、排版空白欄 12%、並排小表 6%，
            而「月份季別橫著排」在 20 個真實檔案的 52 張表裡是 0（範本語料是 18%），
            所以它排最後。字典的 key 不動，免得 19 個語言跟著搬。 -->
       <div class="chips" aria-hidden="true">
-        <span data-i18n="a5_c1">標題不在第一列</span><span data-i18n="a5_c2">合併儲存格</span><span data-i18n="a5_c4">排版用的空白欄</span><span data-i18n="a5_c5">一頁擱著好幾個小表</span><span data-i18n="a5_c3">月份、季別橫著排</span>
+        <span data-i18n="a5_c1">Header not on row 1</span><span data-i18n="a5_c2">Merged cells</span><span data-i18n="a5_c4">Spacer columns</span><span data-i18n="a5_c5">Tables side by side</span><span data-i18n="a5_c3">Months across the top</span>
       </div>
     </div>
 
@@ -556,37 +556,37 @@
          名冊 → directory、待辦 → board、帳務 → ledger、規格表 → cards。
          籤是純標示、不可點：沒有可以點過去的範例表，假的互動不如不做。 -->
     <div class="mo">
-      <h2 data-i18n="u_h">這幾種表都可以。</h2>
+      <h2 data-i18n="u_h">These all work.</h2>
       <div class="chips" aria-hidden="true">
-        <span data-i18n="u_1">排班表</span><span data-i18n="u_2">課程表</span><span data-i18n="u_3">價目表</span><span data-i18n="u_4">產品目錄</span><span data-i18n="u_5">名冊</span><span data-i18n="u_6">待辦清單</span><span data-i18n="u_7">帳務明細</span><span data-i18n="u_8">規格表</span>
+        <span data-i18n="u_1">Shift rotas</span><span data-i18n="u_2">Timetables</span><span data-i18n="u_3">Price lists</span><span data-i18n="u_4">Catalogues</span><span data-i18n="u_5">Contacts</span><span data-i18n="u_6">To-dos</span><span data-i18n="u_7">Ledgers</span><span data-i18n="u_8">Specs</span>
       </div>
     </div>
 
     <div class="mo">
-      <h2 data-i18n="a3_h">一個網址，不用登入。</h2>
-      <p data-i18n="a3_p">做表的人選一次，看的人打開就是。試算表改了，網址裡的內容跟著改。</p>
-      <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b data-i18n="copy">複製</b></div>
+      <h2 data-i18n="a3_h">One link, no login.</h2>
+      <p data-i18n="a3_p">The sheet’s owner picks a view once; viewers just open it. When the sheet changes, the page changes with it.</p>
+      <div class="linkpill" aria-hidden="true"><span>sheetsnap.link/?s=…</span><b data-i18n="copy">Copy</b></div>
     </div>
 
-    <p class="fine" data-i18n="fine">內容不上傳 · 只記使用次數 · 測試期間免費</p>
+    <p class="fine" data-i18n="fine">Nothing uploaded · usage counts only · free while testing</p>
 
-    <details><summary data-i18n="q1">跟直接傳試算表連結差在哪？</summary><p data-i18n="f1">試算表連結打開是格子，要縮放、左右拖。這裡打開是頁面：跳到今天、點名字只看他的、能搜尋。</p></details>
-    <details><summary data-i18n="q2">資料會上傳嗎？</summary><p data-i18n="f2">內容不會。觀看者的瀏覽器直接讀試算表；上傳的檔案只在你的裝置裡處理。我們只記使用次數：哪份表被打開幾次、用一個隨機編號分辨裝置，不含任何內容。</p></details>
-    <details><summary data-i18n="q3">支援哪些檔案？</summary><p data-i18n="f3">Google 試算表網址、.xlsx、.csv。試算表權限要設「知道連結的任何人可檢視」。</p></details>
-    <details><summary data-i18n="q4">試算表改了，分享網址會跟著變嗎？</summary><p data-i18n="f4">Google 試算表會，每次打開都是當下的內容；上傳的檔案是當時的快照。</p></details>
-    <details><summary data-i18n="q5">適合什麼樣的表？</summary><p data-i18n="f5">一列標題、底下一列一筆的清單都可以：排班、流程、名單、價目、帳務、待辦、規格。標題不在第一列、有合併儲存格、一張工作表並排好幾個小表、月份或季別橫著排，這些都會自己整理好。不適合的是沒有「一筆一筆」概念的頁面——說明頁、下拉選單來源、圖表資料區、月曆格子、還沒填的空白範本，以及作者自己在試算表裡隱藏起來的工作表，這些會直接略過，不會硬塞一個版面給你。多層合併標題的財報仍然判不準。</p></details>
-    <details><summary data-i18n="q8">它會自己做哪些整理？</summary><p data-i18n="f8">找出標題在第幾列；把合併儲存格的值往下填；切開並排在同一張工作表上的多個表格；剔除只是用來排版的空白欄；把橫排的月份、季別、時段、星期攤平成「一個月一頁」；略過說明頁、下拉選單來源、圖表資料區、月曆格子、還沒填的空白範本，以及作者自己隱藏起來的工作表（藏起來就是明說這不是給人看的）。實測一批真實檔案：大約四分之一的工作表根本不是資料表（會直接略過），剩下的有四成需要至少一項整理。</p></details>
-    <details><summary data-i18n="q6">數字是算出來的嗎？</summary><p data-i18n="f6">不是，每個數字都直接引述表上原本就有的，不自己加總。</p></details>
+    <details><summary data-i18n="q1">How is this different from sending the sheet link?</summary><p data-i18n="f1">A sheet link opens as a grid you pinch and drag. This opens as a page: it lands on today, a tap on a name shows only their rows, and you can search.</p></details>
+    <details><summary data-i18n="q2">Is my data uploaded?</summary><p data-i18n="f2">The content isn’t. Viewers’ browsers read the sheet directly; uploaded files are processed on your device. We only count usage — how often a sheet was opened, with a random ID to tell devices apart. No content.</p></details>
+    <details><summary data-i18n="q3">Which files work?</summary><p data-i18n="f3">Google Sheets links, .xlsx and .csv. Sheets must be shared as “Anyone with the link can view”.</p></details>
+    <details><summary data-i18n="q4">If the sheet changes, does the link update?</summary><p data-i18n="f4">Google Sheets: yes, every open shows the current content. Uploaded files are a snapshot.</p></details>
+    <details><summary data-i18n="q5">What kind of sheets work best?</summary><p data-i18n="f5">Any list with one header row and one record per row: schedules, rosters, contact lists, price lists, ledgers, to-do lists, spec sheets. A header that isn’t on row 1, merged cells, several small tables on one worksheet, months or quarters running across the top — all handled for you. What doesn’t fit is a page with no notion of “one record”: instruction pages, dropdown sources, chart scratch areas, calendar grids, unfilled blank templates, and any worksheet the author hid inside the spreadsheet. Those are skipped rather than forced into a layout. Financial statements with multi-level merged headers still get read wrong.</p></details>
+    <details><summary data-i18n="q8">What does it tidy up by itself?</summary><p data-i18n="f8">Finds which row the header is on; fills merged cells downwards; splits tables sitting side by side on one worksheet; drops columns that exist only for spacing; flattens months, quarters, time slots and weekdays that run across the top into “one month per page”; skips instruction pages, dropdown sources, chart scratch areas, calendar grids, unfilled blank templates, and any worksheet the author hid (hiding it is saying plainly that it isn’t meant to be read). Measured on a batch of real files: about a quarter of the worksheets aren’t data tables at all (they get skipped), and four in ten of the rest need at least one of these fixes.</p></details>
+    <details><summary data-i18n="q6">Are the numbers calculated?</summary><p data-i18n="f6">No. Every number is quoted from the sheet as-is; nothing is summed or computed.</p></details>
   </section>
-  <p class="made" id="made" hidden data-i18n="made">用 <a href='./'>SheetSnap</a> 製作 · 把你自己的試算表也變成這樣</p>
-  <p class="ver">SheetSnap v99<button type="button" id="hardReload" data-i18n="reload">重新載入最新版</button></p>
+  <p class="made" id="made" hidden data-i18n="made">Made with <a href='./'>SheetSnap</a> · turn your own spreadsheet into this</p>
+  <p class="ver">SheetSnap v100<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=99"></script>
-<script src="i18n.js?v=99"></script>
+<script src="detect.js?v=100"></script>
+<script src="i18n.js?v=100"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
