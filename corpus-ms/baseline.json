@@ -1,7 +1,7 @@
 {
  "fingerprint": {
-  "engine": "eac3b91e16fa",
-  "audit": "13a389e4d378"
+  "engine": "4e34a49d9aaa",
+  "audit": "cc8cbcf8dfc6"
  },
  "summary": {
   "inputs": 163,
@@ -466,6 +466,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者把這張工作表深度隱藏了",
+   "code": "vd_hidden_very",
    "srcRows": 4
   },
   {
@@ -1580,6 +1581,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 24
   },
   {
@@ -1680,6 +1682,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 5
   },
   {
@@ -1762,6 +1765,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 7
   },
   {
@@ -2273,6 +2277,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 5
   },
   {
@@ -2656,6 +2661,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 12
   },
   {
@@ -2967,6 +2973,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 10
   },
   {
@@ -3591,6 +3598,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 4
   },
   {
@@ -4518,6 +4526,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 17
   },
   {
@@ -5863,6 +5872,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 107
   },
   {
@@ -7280,6 +7290,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 21
   },
   {
@@ -8102,6 +8113,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 114
   },
   {
@@ -8914,6 +8926,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 16
   },
   {
@@ -9434,6 +9447,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 80
   },
   {
@@ -10475,6 +10489,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 2
   },
   {
@@ -11354,6 +11369,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 349
   },
   {
@@ -11896,6 +11912,7 @@
    "status": "not-shown",
    "show": false,
    "why": "作者在試算表裡把這張工作表隱藏起來",
+   "code": "vd_hidden",
    "srcRows": 32
   },
   {
