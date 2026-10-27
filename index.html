@@ -506,6 +506,23 @@
        列上的名字籤也還在，所以「名字在裡面」沒有消失。
        字典的 key 是當初加的順序（a4＝搜尋、a5＝整理），不等於這裡的先後。 -->
   <section class="about" id="about">
+    <!-- 使用情境排在 .about 第一位。量過：原本排第四，落在 1406px，
+         要滑將近兩屏才看得到，而它是「這是不是給我用的」最便宜的答案。
+         移到最前面之後第一屏變成：定位句 → 輸入框 → 這幾種表都可以 →
+         原始試算表那一半，而手機那一半剛好在摺線下，看到「之前」會想往下滑。
+         標題就是訪客心裡那句話，底下用打勾的籤回答——
+         沿用 a5 那組 .chips 樣式（::before 已經有綠色的 ✓），所以是零行新 CSS。
+         清單本來就在 FAQ 的 f5 裡，只是收起來沒人看到；八種都對得上引擎
+         真的認得的形狀：排班／課程表 → schedule、價目／目錄 → pricelist、
+         名冊 → directory、待辦 → board、帳務 → ledger、規格表 → cards。
+         籤是純標示、不可點：沒有可以點過去的範例表，假的互動不如不做。 -->
+    <div class="mo">
+      <h2 data-i18n="u_h">These all work.</h2>
+      <div class="chips" aria-hidden="true">
+        <span data-i18n="u_1">Shift rotas</span><span data-i18n="u_2">Timetables</span><span data-i18n="u_3">Price lists</span><span data-i18n="u_4">Catalogues</span><span data-i18n="u_5">Contacts</span><span data-i18n="u_6">To-dos</span><span data-i18n="u_7">Ledgers</span><span data-i18n="u_8">Specs</span>
+      </div>
+    </div>
+
     <div class="mo">
       <h2 data-i18n="a1_h">Opens on today.</h2>
       <p data-i18n="a1_p">Lands on today — and on a 60-person roster, tapping a name leaves only theirs.</p>
@@ -553,19 +570,6 @@
       </div>
     </div>
 
-    <!-- 使用情境。標題就是訪客心裡那句話，底下用打勾的籤回答——
-         沿用 a5 那組 .chips 樣式（::before 已經有綠色的 ✓），所以是零行新 CSS。
-         清單本來就在 FAQ 的 f5 裡，只是收起來沒人看到；八種都對得上引擎
-         真的認得的形狀：排班／課程表 → schedule、價目／目錄 → pricelist、
-         名冊 → directory、待辦 → board、帳務 → ledger、規格表 → cards。
-         籤是純標示、不可點：沒有可以點過去的範例表，假的互動不如不做。 -->
-    <div class="mo">
-      <h2 data-i18n="u_h">These all work.</h2>
-      <div class="chips" aria-hidden="true">
-        <span data-i18n="u_1">Shift rotas</span><span data-i18n="u_2">Timetables</span><span data-i18n="u_3">Price lists</span><span data-i18n="u_4">Catalogues</span><span data-i18n="u_5">Contacts</span><span data-i18n="u_6">To-dos</span><span data-i18n="u_7">Ledgers</span><span data-i18n="u_8">Specs</span>
-      </div>
-    </div>
-
     <div class="mo">
       <h2 data-i18n="a3_h">One link, no login.</h2>
       <p data-i18n="a3_p">The sheet’s owner picks a view once; viewers just open it. When the sheet changes, the page changes with it.</p>
@@ -583,14 +587,14 @@
     <details><summary data-i18n="q6">Are the numbers calculated?</summary><p data-i18n="f6">No. Every number is quoted from the sheet as-is; nothing is summed or computed.</p></details>
   </section>
   <p class="made" id="made" hidden data-i18n="made">Made with <a href='./'>SheetSnap</a> · turn your own spreadsheet into this</p>
-  <p class="ver">SheetSnap v103<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
+  <p class="ver">SheetSnap v104<button type="button" id="hardReload" data-i18n="reload">Reload latest version</button></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <!-- 改引擎時要把 v 往上加，否則瀏覽器會繼續跑快取裡的舊版 -->
-<script src="detect.js?v=103"></script>
-<script src="i18n.js?v=103"></script>
+<script src="detect.js?v=104"></script>
+<script src="i18n.js?v=104"></script>
 <script>
 var $ = function(id){ return document.getElementById(id) };
 var A = null, raw = null, TABLES = [], cur = 0, sheetKey = 'local';
